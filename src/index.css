@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Custom Retro Scroll Theme */
+@theme {
+  /* Retro color palette - warm, muted tones */
+  --color-parchment: #f4ecd8;
+  --color-parchment-dark: #e8dfc5;
+  --color-ink: #2c2416;
+  --color-ink-light: #5a4a3a;
+  --color-sepia: #8b7355;
+  --color-gold: #d4af37;
+  --color-bronze: #cd7f32;
+
+  /* Semantic colors */
+  --color-primary: var(--color-gold);
+  --color-secondary: var(--color-sepia);
+  --color-background: var(--color-parchment);
+  --color-surface: var(--color-parchment-dark);
+  --color-text: var(--color-ink);
+  --color-text-muted: var(--color-ink-light);
+
+  /* Difficulty colors */
+  --color-easy: #6b8e23;
+  --color-medium: #ff8c00;
+  --color-hard: #dc143c;
+
+  /* Progress colors */
+  --color-progress-low: #cd5c5c;
+  --color-progress-medium: #ffa500;
+  --color-progress-high: #6b8e23;
+
+  /* Font families */
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-sans: 'Inter', 'system-ui', sans-serif;
+
+  /* Spacing scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Serif headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-parchment-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sepia);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-light);
+}
+
+/* Parchment texture effect */
+.parchment {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(139, 115, 85, 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(139, 115, 85, 0.03) 3px
+    );
+}
+
+/* Decorative border */
+.decorative-border {
+  border: 2px solid var(--color-sepia);
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.decorative-border::before,
+.decorative-border::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-gold);
+}
+
+.decorative-border::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.decorative-border::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Scroll reveal animation */
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  animation: scroll-reveal 0.6s ease-out;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: 2px solid var(--color-bronze);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-bronze);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Tag pill styles */
+.tag-pill {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--color-surface);
+  color: var(--color-ink-light);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-sepia);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tag-pill:hover {
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+  border-color: var(--color-bronze);
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--color-surface);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-gold);
+  transition: width 0.5s ease;
+}
+
+/* Card styles */
+.card {
+  background-color: var(--color-parchment-dark);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
