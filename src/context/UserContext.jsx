@@ -56,12 +56,41 @@ export const UserProvider = ({ children }) => {
     };
   };
 
+  // Update daily streak
+  const updateStreak = () => {
+    const today = new Date().toDateString();
+    setUserData(prev => {
+      const lastActive = prev.streak?.lastActiveDate;
+      if (lastActive === today) return prev; // Already active today
+
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yesterdayStr = yesterday.toDateString();
+
+      let currentStreak = prev.streak?.currentStreak || 0;
+      if (lastActive === yesterdayStr) {
+        currentStreak += 1;
+      } else {
+        currentStreak = 1;
+      }
+
+      const longestStreak = Math.max(currentStreak, prev.streak?.longestStreak || 0);
+      return {
+        ...prev,
+        streak: { currentStreak, longestStreak, lastActiveDate: today }
+      };
+    });
+  };
+
   // Mark principle as read
   const markPrincipleAsRead = (principleId) => {
     const progress = getPrincipleProgress(principleId);
+    if (progress.activities.read) return 0; // Already marked, no extra points
     progress.activities.read = true;
     progress.masteryPercentage = storage.calculateMastery(progress.activities);
     progress.lastVisited = new Date().toISOString();
+
+    updateStreak();
 
     setUserData(prev => ({
       ...prev,
@@ -78,7 +107,9 @@ export const UserProvider = ({ children }) => {
   // Mark multiple choice correct
   const markMultipleChoiceCorrect = (principleId) => {
     const progress = getPrincipleProgress(principleId);
+    if (progress.activities.multipleChoiceCorrect) return 0; // Already done
     progress.activities.multipleChoiceCorrect = true;
+    updateStreak();
     progress.masteryPercentage = storage.calculateMastery(progress.activities);
     progress.lastVisited = new Date().toISOString();
 
@@ -97,7 +128,9 @@ export const UserProvider = ({ children }) => {
   // Mark own example complete
   const markOwnExample = (principleId) => {
     const progress = getPrincipleProgress(principleId);
+    if (progress.activities.ownExample) return { points: 0, newlyUnlocked: [] };
     progress.activities.ownExample = true;
+    updateStreak();
     progress.masteryPercentage = storage.calculateMastery(progress.activities);
     progress.lastVisited = new Date().toISOString();
 
@@ -118,7 +151,9 @@ export const UserProvider = ({ children }) => {
   // Mark AI assisted example complete
   const markAiAssistedExample = (principleId) => {
     const progress = getPrincipleProgress(principleId);
+    if (progress.activities.aiAssistedExample) return { points: 0, newlyUnlocked: [] };
     progress.activities.aiAssistedExample = true;
+    updateStreak();
     progress.masteryPercentage = storage.calculateMastery(progress.activities);
     progress.lastVisited = new Date().toISOString();
 
@@ -240,7 +275,9 @@ export const UserProvider = ({ children }) => {
       totalPrinciples: 0,
       completedPrinciples: 0,
       averageMastery: 0,
-      unlockedCount: 0
+      unlockedCount: 0,
+      currentStreak: 0,
+      longestStreak: 0
     };
 
     const totalPrinciples = Object.keys(userData.principleProgress).length;
@@ -258,7 +295,9 @@ export const UserProvider = ({ children }) => {
       totalPrinciples,
       completedPrinciples,
       averageMastery: Math.round(averageMastery),
-      unlockedCount: userData.unlockedPrinciples.length
+      unlockedCount: userData.unlockedPrinciples.length,
+      currentStreak: userData.streak?.currentStreak || 0,
+      longestStreak: userData.streak?.longestStreak || 0
     };
   };
 
@@ -284,7 +323,8 @@ export const UserProvider = ({ children }) => {
     getRecommendedLearningStyle,
     completeOnboarding,
     getUserStats,
-    resetUserData
+    resetUserData,
+    updateStreak
   };
 
   if (loading) {

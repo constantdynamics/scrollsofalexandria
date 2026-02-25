@@ -16,7 +16,12 @@ const defaultUserData = {
   },
   unlockedPrinciples: getInitialUnlockedPrinciples(),
   learningStyleHistory: [], // Track user choices to learn preference
-  completedOnboarding: false
+  completedOnboarding: false,
+  streak: {
+    currentStreak: 0,
+    longestStreak: 0,
+    lastActiveDate: null
+  }
 };
 
 function generateUserId() {
@@ -50,13 +55,18 @@ export const loadUserData = () => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const data = JSON.parse(stored);
-      // Merge with defaults to ensure all fields exist
-      return { ...defaultUserData, ...data };
+      // Deep merge with defaults to ensure all fields exist (including nested)
+      return {
+        ...defaultUserData,
+        ...data,
+        preferences: { ...defaultUserData.preferences, ...(data.preferences || {}) },
+        streak: { ...defaultUserData.streak, ...(data.streak || {}) }
+      };
     }
-    return defaultUserData;
+    return { ...defaultUserData };
   } catch (error) {
     console.error('Error loading user data:', error);
-    return defaultUserData;
+    return { ...defaultUserData };
   }
 };
 
@@ -198,6 +208,33 @@ export const markAiAssistedExample = (principleId) => {
   checkAndUnlockPrinciples(principleId);
 
   return { progress: userData, points };
+};
+
+// Update daily streak
+export const updateStreak = () => {
+  const userData = loadUserData();
+  const today = new Date().toDateString();
+  const lastActive = userData.streak?.lastActiveDate;
+
+  if (lastActive === today) {
+    return userData.streak; // Already active today
+  }
+
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayStr = yesterday.toDateString();
+
+  let currentStreak = userData.streak?.currentStreak || 0;
+  if (lastActive === yesterdayStr) {
+    currentStreak += 1; // Consecutive day
+  } else {
+    currentStreak = 1; // Reset streak
+  }
+
+  const longestStreak = Math.max(currentStreak, userData.streak?.longestStreak || 0);
+  userData.streak = { currentStreak, longestStreak, lastActiveDate: today };
+  saveUserData(userData);
+  return userData.streak;
 };
 
 // Add points to user total

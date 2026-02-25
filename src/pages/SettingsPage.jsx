@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useUser } from '../context/UserContext';
@@ -7,6 +7,9 @@ const SettingsPage = () => {
   const navigate = useNavigate();
   const { userData, updatePreference, getUserStats, resetUserData } = useUser();
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [exportMsg, setExportMsg] = useState('');
+  const [importMsg, setImportMsg] = useState('');
+  const importRef = useRef(null);
   const stats = getUserStats();
 
   const handlePreferenceChange = (key, value) => {
@@ -19,6 +22,49 @@ const SettingsPage = () => {
     navigate('/');
   };
 
+  // Export user data as JSON file
+  const handleExport = () => {
+    try {
+      const data = JSON.stringify(userData, null, 2);
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `scrolls-of-wisdom-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      setExportMsg('Voortgang geëxporteerd!');
+      setTimeout(() => setExportMsg(''), 3000);
+    } catch {
+      setExportMsg('Export mislukt.');
+    }
+  };
+
+  // Import user data from JSON file
+  const handleImport = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      try {
+        const parsed = JSON.parse(evt.target.result);
+        // Basic validation: check expected fields
+        if (!parsed.userId || !parsed.preferences) {
+          setImportMsg('Ongeldig bestand. Gebruik een backup van deze app.');
+          return;
+        }
+        localStorage.setItem('scrolls_of_wisdom_user_data', evt.target.result);
+        setImportMsg('Voortgang hersteld! Pagina wordt herladen...');
+        setTimeout(() => window.location.reload(), 1500);
+      } catch {
+        setImportMsg('Fout bij importeren. Controleer het bestand.');
+      }
+    };
+    reader.readAsText(file);
+    // Reset file input
+    e.target.value = '';
+  };
+
   return (
     <div className="min-h-screen bg-parchment parchment">
       {/* Header */}
@@ -28,6 +74,7 @@ const SettingsPage = () => {
             <button
               onClick={() => navigate('/home')}
               className="flex items-center gap-2 text-ink-light hover:text-ink transition-colors"
+              aria-label="Terug naar home"
             >
               <span className="text-xl">←</span>
               <span>Terug</span>
@@ -36,7 +83,7 @@ const SettingsPage = () => {
               <span>⚙️</span>
               Instellingen
             </h1>
-            <div className="w-20"></div> {/* Spacer for centering */}
+            <div className="w-20"></div>
           </div>
         </div>
       </header>
@@ -52,23 +99,13 @@ const SettingsPage = () => {
             <span>📊</span>
             Je Voortgang
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-parchment rounded-lg border border-sepia">
-              <div className="text-3xl font-bold text-gold mb-1">{stats.points}</div>
-              <div className="text-sm text-ink-light">Punten</div>
-            </div>
-            <div className="text-center p-4 bg-parchment rounded-lg border border-sepia">
-              <div className="text-3xl font-bold text-gold mb-1">{stats.unlockedCount}</div>
-              <div className="text-sm text-ink-light">Ontgrendeld</div>
-            </div>
-            <div className="text-center p-4 bg-parchment rounded-lg border border-sepia">
-              <div className="text-3xl font-bold text-gold mb-1">{stats.completedPrinciples}</div>
-              <div className="text-sm text-ink-light">Beheerst</div>
-            </div>
-            <div className="text-center p-4 bg-parchment rounded-lg border border-sepia">
-              <div className="text-3xl font-bold text-gold mb-1">{stats.averageMastery}%</div>
-              <div className="text-sm text-ink-light">Gem. Beheersing</div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            <StatCard value={stats.points} label="Punten" />
+            <StatCard value={stats.unlockedCount} label="Ontgrendeld" />
+            <StatCard value={stats.completedPrinciples} label="Beheerst" />
+            <StatCard value={`${stats.averageMastery}%`} label="Gem. Beheersing" />
+            <StatCard value={stats.currentStreak > 0 ? `🔥 ${stats.currentStreak}` : '—'} label="Huidige reeks" />
+            <StatCard value={stats.longestStreak > 0 ? stats.longestStreak : '—'} label="Langste reeks" />
           </div>
         </motion.div>
 
@@ -124,7 +161,7 @@ const SettingsPage = () => {
             <p className="text-sm text-ink-light mb-3">
               Ontvang een dagelijkse herinnering om te leren (via browser notificaties)
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 flex-wrap">
               <div className="flex gap-3">
                 <button
                   onClick={() => handlePreferenceChange('dailyReminder', true)}
@@ -168,91 +205,106 @@ const SettingsPage = () => {
               Kies hoe je nieuwe principes wilt leren (je kunt dit altijd per principe aanpassen)
             </p>
             <div className="space-y-2">
-              <button
-                onClick={() => handlePreferenceChange('defaultLearningStyle', 'definition-first')}
-                className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
-                  userData?.preferences?.defaultLearningStyle === 'definition-first'
-                    ? 'border-gold bg-gold/20'
-                    : 'border-sepia hover:border-gold'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">🎯</span>
-                  <div>
-                    <div className="font-semibold text-ink">Definitie eerst</div>
-                    <div className="text-xs text-ink-light">Start met de abstracte uitleg, dan voorbeelden</div>
+              {[
+                { value: 'definition-first', emoji: '🎯', label: 'Definitie eerst', desc: 'Start met de abstracte uitleg, dan voorbeelden' },
+                { value: 'example-first', emoji: '💡', label: 'Voorbeeld eerst', desc: 'Start met concrete voorbeelden, werk naar definitie toe' },
+                { value: 'auto', emoji: '🤖', label: 'Laat app kiezen (intelligent)', desc: 'De app leert je voorkeur na enkele principes' },
+              ].map(opt => (
+                <button
+                  key={opt.value}
+                  onClick={() => handlePreferenceChange('defaultLearningStyle', opt.value)}
+                  className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+                    userData?.preferences?.defaultLearningStyle === opt.value
+                      ? 'border-gold bg-gold/20'
+                      : 'border-sepia hover:border-gold'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{opt.emoji}</span>
+                    <div>
+                      <div className="font-semibold text-ink">{opt.label}</div>
+                      <div className="text-xs text-ink-light">{opt.desc}</div>
+                    </div>
                   </div>
-                </div>
-              </button>
-              <button
-                onClick={() => handlePreferenceChange('defaultLearningStyle', 'example-first')}
-                className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
-                  userData?.preferences?.defaultLearningStyle === 'example-first'
-                    ? 'border-gold bg-gold/20'
-                    : 'border-sepia hover:border-gold'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">💡</span>
-                  <div>
-                    <div className="font-semibold text-ink">Voorbeeld eerst</div>
-                    <div className="text-xs text-ink-light">Start met concrete voorbeelden, werk naar definitie toe</div>
-                  </div>
-                </div>
-              </button>
-              <button
-                onClick={() => handlePreferenceChange('defaultLearningStyle', 'auto')}
-                className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
-                  userData?.preferences?.defaultLearningStyle === 'auto'
-                    ? 'border-gold bg-gold/20'
-                    : 'border-sepia hover:border-gold'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">🤖</span>
-                  <div>
-                    <div className="font-semibold text-ink">Laat app kiezen (intelligent)</div>
-                    <div className="text-xs text-ink-light">De app leert je voorkeur na enkele principes</div>
-                  </div>
-                </div>
-              </button>
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Theme (placeholder for future) */}
+          {/* Theme */}
           <div>
             <h3 className="font-semibold text-ink mb-3">🎨 Thema</h3>
             <p className="text-sm text-ink-light mb-3">
               Kies het uiterlijk van de app
             </p>
             <div className="grid grid-cols-3 gap-3">
+              {[
+                { value: 'classic', emoji: '📜', label: 'Klassiek Scroll', preview: 'bg-amber-100 border-amber-600' },
+                { value: 'light', emoji: '☀️', label: 'Licht', preview: 'bg-gray-50 border-gray-400' },
+                { value: 'dark', emoji: '🌙', label: 'Donker', preview: 'bg-stone-900 border-stone-600' },
+              ].map(theme => (
+                <button
+                  key={theme.value}
+                  onClick={() => handlePreferenceChange('theme', theme.value)}
+                  className={`p-4 rounded-lg border-2 transition-all ${
+                    userData?.preferences?.theme === theme.value
+                      ? 'border-gold bg-gold/20'
+                      : 'border-sepia hover:border-gold'
+                  }`}
+                >
+                  <div className={`w-full h-8 rounded mb-2 border ${theme.preview}`}></div>
+                  <div className="text-xl mb-1">{theme.emoji}</div>
+                  <div className="text-sm font-semibold text-ink">{theme.label}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Data Export / Import */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="card mb-8"
+        >
+          <h2 className="text-xl font-serif text-ink mb-4 flex items-center gap-2">
+            <span>💾</span>
+            Voortgang Opslaan & Herstellen
+          </h2>
+          <p className="text-sm text-ink-light mb-5">
+            Exporteer je voortgang als back-up, of importeer een eerder opgeslagen bestand.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex-1">
               <button
-                onClick={() => handlePreferenceChange('theme', 'classic')}
-                className={`p-4 rounded-lg border-2 transition-all ${
-                  userData?.preferences?.theme === 'classic'
-                    ? 'border-gold bg-gold/20'
-                    : 'border-sepia hover:border-gold'
-                }`}
+                onClick={handleExport}
+                className="w-full px-6 py-3 bg-gold text-ink rounded-lg font-semibold border-2 border-bronze hover:bg-bronze transition-colors"
               >
-                <div className="text-2xl mb-2">📜</div>
-                <div className="text-sm font-semibold text-ink">Klassiek Scroll</div>
+                📤 Exporteer voortgang
               </button>
+              {exportMsg && (
+                <p className="text-sm text-green-700 mt-2 text-center">{exportMsg}</p>
+              )}
+            </div>
+            <div className="flex-1">
               <button
-                disabled
-                className="p-4 rounded-lg border-2 border-gray-300 bg-gray-100 opacity-50 cursor-not-allowed"
+                onClick={() => importRef.current?.click()}
+                className="w-full px-6 py-3 bg-parchment text-ink rounded-lg font-semibold border-2 border-sepia hover:border-gold transition-colors"
               >
-                <div className="text-2xl mb-2">☀️</div>
-                <div className="text-sm font-semibold text-gray-500">Licht</div>
-                <div className="text-xs text-gray-400">Binnenkort</div>
+                📥 Importeer backup
               </button>
-              <button
-                disabled
-                className="p-4 rounded-lg border-2 border-gray-300 bg-gray-100 opacity-50 cursor-not-allowed"
-              >
-                <div className="text-2xl mb-2">🌙</div>
-                <div className="text-sm font-semibold text-gray-500">Donker</div>
-                <div className="text-xs text-gray-400">Binnenkort</div>
-              </button>
+              <input
+                ref={importRef}
+                type="file"
+                accept=".json"
+                onChange={handleImport}
+                className="hidden"
+                aria-label="Importeer voortgang JSON bestand"
+              />
+              {importMsg && (
+                <p className="text-sm text-blue-700 mt-2 text-center">{importMsg}</p>
+              )}
             </div>
           </div>
         </motion.div>
@@ -312,12 +364,19 @@ const SettingsPage = () => {
           transition={{ delay: 0.3 }}
           className="text-center mt-8 text-sm text-ink-light"
         >
-          <p>Scrolls of Wisdom v1.0</p>
+          <p>Scrolls of Wisdom v1.1</p>
           <p className="mt-1">Leer generieke denkprincipes die je overal kunt toepassen</p>
         </motion.div>
       </div>
     </div>
   );
 };
+
+const StatCard = ({ value, label }) => (
+  <div className="text-center p-3 bg-parchment rounded-lg border border-sepia">
+    <div className="text-2xl font-bold text-gold mb-1">{value}</div>
+    <div className="text-xs text-ink-light">{label}</div>
+  </div>
+);
 
 export default SettingsPage;
