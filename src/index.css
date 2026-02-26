@@ -55,6 +55,56 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+/* Light theme overrides */
+.theme-light {
+  --color-parchment: #f8f6f2;
+  --color-parchment-dark: #eeebe3;
+  --color-ink: #1a1208;
+  --color-ink-light: #4a3a2a;
+  --color-sepia: #b09070;
+  --color-gold: #c49b20;
+  --color-bronze: #b06a20;
+  --color-background: #f8f6f2;
+  --color-surface: #eeebe3;
+  --color-text: #1a1208;
+  --color-text-muted: #4a3a2a;
+}
+
+/* Dark theme overrides */
+.theme-dark {
+  --color-parchment: #1e1a14;
+  --color-parchment-dark: #2a2418;
+  --color-ink: #f0e8d0;
+  --color-ink-light: #c0a880;
+  --color-sepia: #6a5a48;
+  --color-gold: #d4af37;
+  --color-bronze: #cd7f32;
+  --color-background: #1e1a14;
+  --color-surface: #2a2418;
+  --color-text: #f0e8d0;
+  --color-text-muted: #c0a880;
+  --color-progress-low: #e05c5c;
+  --color-progress-medium: #e08c00;
+  --color-progress-high: #7db030;
+}
+
+.theme-dark .card {
+  background-color: var(--color-parchment-dark);
+  border-color: rgba(106, 90, 72, 0.3);
+}
+
+.theme-dark input,
+.theme-dark textarea {
+  background-color: var(--color-parchment-dark);
+  color: var(--color-ink);
+  border-color: var(--color-sepia);
+}
+
+.theme-dark input::placeholder,
+.theme-dark textarea::placeholder {
+  color: var(--color-ink-light);
+}
+
 /* Base styles */
 * {
   margin: 0;
@@ -69,6 +119,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Serif headings */
