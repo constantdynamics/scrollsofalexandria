@@ -53,51 +53,78 @@ class ErrorBoundary extends Component {
       const msg = this.state.error?.message || String(this.state.error) || 'Onbekende fout';
       const stack = this.state.error?.stack?.split('\n').slice(1, 4).join('\n') || '';
 
+      // Using inline styles as fallback since CSS might not have loaded
       return (
         <div style={{
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#F9FAFB',
+          backgroundColor: '#f8fafc',
           padding: '1rem',
           fontFamily: 'Inter, system-ui, sans-serif',
         }}>
           <div style={{
             background: '#fff',
-            border: '1px solid #E5E7EB',
-            borderRadius: '12px',
+            border: '1px solid #e2e8f0',
+            borderRadius: '16px',
             padding: '2rem',
             maxWidth: '480px',
             width: '100%',
             boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+            position: 'relative',
+            overflow: 'hidden',
           }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⚠️</div>
-            <h1 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#111827', marginBottom: '0.5rem' }}>
+            {/* Accent top bar */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '3px',
+              background: 'linear-gradient(90deg, #ef4444, #f59e0b, #ef4444)',
+            }} />
+
+            <div style={{
+              width: '64px',
+              height: '64px',
+              margin: '0 auto 1rem',
+              borderRadius: '16px',
+              backgroundColor: '#fee2e2',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <svg width="32" height="32" fill="none" stroke="#ef4444" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+            </div>
+
+            <h1 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f172a', marginBottom: '0.5rem', textAlign: 'center' }}>
               Er ging iets mis
             </h1>
-            <p style={{ color: '#6B7280', fontSize: '0.875rem', marginBottom: '1rem' }}>
+            <p style={{ color: '#475569', fontSize: '0.875rem', marginBottom: '1rem', textAlign: 'center' }}>
               De app is gecrasht. De fout is automatisch opgeslagen in het foutlogboek.
             </p>
 
             {/* Error details */}
             <div style={{
-              background: '#FEF2F2',
-              border: '1px solid #FECACA',
-              borderRadius: '8px',
+              background: '#fee2e2',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              borderRadius: '12px',
               padding: '0.875rem',
               marginBottom: '1.25rem',
             }}>
-              <p style={{ fontSize: '0.8rem', fontWeight: 600, color: '#DC2626', marginBottom: '0.25rem' }}>
+              <p style={{ fontSize: '0.75rem', fontWeight: 600, color: '#ef4444', marginBottom: '0.25rem' }}>
                 Foutmelding:
               </p>
-              <p style={{ fontSize: '0.8rem', color: '#991B1B', wordBreak: 'break-word', fontFamily: 'monospace' }}>
+              <p style={{ fontSize: '0.8rem', color: '#991b1b', wordBreak: 'break-word', fontFamily: 'monospace' }}>
                 {msg}
               </p>
               {stack && (
                 <pre style={{
                   fontSize: '0.7rem',
-                  color: '#9CA3AF',
+                  color: '#94a3b8',
                   marginTop: '0.5rem',
                   whiteSpace: 'pre-wrap',
                   wordBreak: 'break-all',
@@ -115,11 +142,11 @@ class ErrorBoundary extends Component {
                 onClick={() => window.location.reload()}
                 style={{
                   flex: 1,
-                  background: '#2563EB',
+                  background: 'linear-gradient(135deg, #6366f1, #4f46e5)',
                   color: '#fff',
                   border: 'none',
-                  borderRadius: '8px',
-                  padding: '0.6rem 1rem',
+                  borderRadius: '12px',
+                  padding: '0.65rem 1rem',
                   fontWeight: 600,
                   fontSize: '0.875rem',
                   cursor: 'pointer',
@@ -131,22 +158,22 @@ class ErrorBoundary extends Component {
                 onClick={this.handleCopy}
                 style={{
                   flex: 1,
-                  background: this.state.copied ? '#D1FAE5' : '#F3F4F6',
-                  color: this.state.copied ? '#065F46' : '#374151',
-                  border: '1px solid #E5E7EB',
-                  borderRadius: '8px',
-                  padding: '0.6rem 1rem',
+                  background: this.state.copied ? '#d1fae5' : '#f1f5f9',
+                  color: this.state.copied ? '#065f46' : '#475569',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '12px',
+                  padding: '0.65rem 1rem',
                   fontWeight: 600,
                   fontSize: '0.875rem',
                   cursor: 'pointer',
                 }}
               >
-                {this.state.copied ? '✓ Gekopieerd' : 'Kopieer fout'}
+                {this.state.copied ? 'Gekopieerd!' : 'Kopieer fout'}
               </button>
             </div>
 
-            <p style={{ fontSize: '0.7rem', color: '#9CA3AF', marginTop: '1rem', textAlign: 'center' }}>
-              Foutlogboek: open de browser-console (F12) of bekijk <code>scrolls_error_log</code> in localStorage.
+            <p style={{ fontSize: '0.7rem', color: '#94a3b8', marginTop: '1rem', textAlign: 'center' }}>
+              Foutlogboek beschikbaar in localStorage onder <code>scrolls_error_log</code>
             </p>
           </div>
         </div>

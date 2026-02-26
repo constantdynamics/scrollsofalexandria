@@ -12,7 +12,7 @@ function AppRoutes() {
   const themeClass = theme === 'dark' ? 'theme-dark' : theme === 'light' ? 'theme-light' : '';
 
   return (
-    <div className={themeClass} style={{ minHeight: '100vh' }}>
+    <div className={`${themeClass} min-h-screen bg-bg`}>
       <Routes>
         <Route
           path="/"
