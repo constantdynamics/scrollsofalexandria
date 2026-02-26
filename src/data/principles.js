@@ -767,36 +767,7 @@ export const principles = [
       "Wanneer werd je gedwongen om tussen twee extremen te kiezen terwijl je een tussenpositie wilde?"
     ]
   }
-];
-
-// Helper function to get principle by ID
-export const getPrincipleById = (id) => {
-  return principles.find(p => p.id === id);
-};
-
-// Helper function to get principles by category
-export const getPrinciplesByCategory = (category, system = 'academic') => {
-  const categoryKey = system === 'academic' ? 'academicCategory' : 'skillCategory';
-  return principles.filter(p => p[categoryKey] === category);
-};
-
-// Helper function to get principles by tag
-export const getPrinciplesByTag = (tag) => {
-  return principles.filter(p => p.tags.includes(tag));
-};
-
-// Helper function to get principles by difficulty
-export const getPrinciplesByDifficulty = (difficulty) => {
-  return principles.filter(p => p.difficulty === difficulty);
-};
-
-// Get all unique categories for each system
-export const getCategories = (system = 'academic') => {
-  const categoryKey = system === 'academic' ? 'academicCategory' : 'skillCategory';
-  return [...new Set(principles.map(p => p[categoryKey])),
-
-  // ── EXTRA PRINCIPES – BATCH 1 (principes 1-28) ──
-  // ── LOGICA ──────────────────────────────────────────────────
+,
   {
     id: "modus-tollens",
     title: "Modus Tollens",
@@ -3531,7 +3502,35 @@ export const getCategories = (system = 'academic') => {
     ]
   }
 ];
+
+
+// Helper function to get principle by ID
+export const getPrincipleById = (id) => {
+  return principles.find(p => p.id === id);
 };
+
+// Helper function to get principles by category
+export const getPrinciplesByCategory = (category, system = 'academic') => {
+  const categoryKey = system === 'academic' ? 'academicCategory' : 'skillCategory';
+  return principles.filter(p => p[categoryKey] === category);
+};
+
+// Helper function to get principles by tag
+export const getPrinciplesByTag = (tag) => {
+  return principles.filter(p => p.tags.includes(tag));
+};
+
+// Helper function to get principles by difficulty
+export const getPrinciplesByDifficulty = (difficulty) => {
+  return principles.filter(p => p.difficulty === difficulty);
+};
+
+// Get all unique categories for each system
+export const getCategories = (system = 'academic') => {
+  const categoryKey = system === 'academic' ? 'academicCategory' : 'skillCategory';
+  return [...new Set(principles.map(p => p[categoryKey]))];
+};
+
 
 // Get all unique tags
 export const getAllTags = () => {
