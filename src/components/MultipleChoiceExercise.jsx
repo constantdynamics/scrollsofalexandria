@@ -20,7 +20,6 @@ const MultipleChoiceExercise = ({ principle, exercise, onComplete }) => {
 
     if (correct && !alreadyCompleted) {
       const points = markMultipleChoiceCorrect(principle.id);
-      // Check for unlocks
       const { checkAndUnlockPrinciples } = require('../utils/localStorage');
       const newlyUnlocked = checkAndUnlockPrinciples(principle.id);
       if (newlyUnlocked.length > 0) {
@@ -40,33 +39,35 @@ const MultipleChoiceExercise = ({ principle, exercise, onComplete }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="decorative-border bg-parchment-dark p-8"
+      className="decorative-border bg-surface p-6 md:p-8"
     >
-      <h2 className="text-2xl font-serif text-ink mb-4 flex items-center gap-2">
-        <span>✍️</span>
-        OEFENING 1: Herkenning
-      </h2>
+      <div className="flex items-center gap-3 mb-1 pt-2">
+        <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center">
+          <span className="text-base">✍️</span>
+        </div>
+        <h2 className="text-xl font-bold text-text">Oefening 1: Herkenning</h2>
+      </div>
 
-      <div className="h-px bg-sepia my-4"></div>
+      <div className="h-px bg-border my-4"></div>
 
       {alreadyCompleted && (
-        <div className="bg-green-100 border-2 border-green-500 rounded-lg p-4 mb-4 flex items-center gap-3">
-          <span className="text-3xl">✅</span>
+        <div className="bg-success-light border border-success/20 rounded-xl p-4 mb-4 flex items-center gap-3">
+          <svg className="w-6 h-6 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           <div>
-            <div className="font-semibold text-green-800">Voltooid!</div>
-            <div className="text-sm text-green-700">Je hebt deze oefening al correct beantwoord</div>
+            <div className="font-semibold text-text text-sm">Voltooid!</div>
+            <div className="text-xs text-text-secondary">Je hebt deze oefening al correct beantwoord</div>
           </div>
         </div>
       )}
 
       {/* Question */}
-      <div className="bg-parchment p-4 rounded-lg mb-6 border-2 border-sepia">
-        <p className="text-lg text-ink font-semibold mb-2">Situatie:</p>
-        <p className="text-ink-light">{exercise.question}</p>
+      <div className="bg-bg-alt p-4 rounded-xl mb-5 border border-border">
+        <p className="text-sm font-semibold text-text mb-1">Situatie:</p>
+        <p className="text-sm text-text-secondary leading-relaxed">{exercise.question}</p>
       </div>
 
       {/* Options */}
-      <div className="space-y-3 mb-6">
+      <div className="space-y-2.5 mb-5">
         {exercise.options.map((option, index) => {
           const isSelected = selectedOption === index;
           const isThisCorrect = index === exercise.correct;
@@ -77,36 +78,39 @@ const MultipleChoiceExercise = ({ principle, exercise, onComplete }) => {
               key={index}
               onClick={() => !showResult && setSelectedOption(index)}
               disabled={showResult}
-              whileHover={!showResult ? { scale: 1.02, x: 4 } : {}}
-              whileTap={!showResult ? { scale: 0.98 } : {}}
-              className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
+              whileHover={!showResult ? { x: 2 } : {}}
+              className={`w-full text-left p-3.5 rounded-xl border transition-all ${
                 showResult
                   ? isThisCorrect
-                    ? 'border-green-500 bg-green-50'
+                    ? 'border-success bg-success-light'
                     : isSelected
-                    ? 'border-red-500 bg-red-50'
-                    : 'border-gray-300 bg-gray-50 opacity-50'
+                    ? 'border-danger bg-danger-light'
+                    : 'border-border bg-bg-alt opacity-40'
                   : isSelected
-                  ? 'border-gold bg-gold/20'
-                  : 'border-sepia bg-parchment hover:border-gold'
+                  ? 'border-primary bg-primary-50 ring-1 ring-primary/30'
+                  : 'border-border bg-surface hover:border-primary/40'
               } ${showResult ? 'cursor-default' : 'cursor-pointer'}`}
             >
               <div className="flex items-center gap-3">
                 <div
-                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
                     showResult && isThisCorrect
-                      ? 'border-green-500 bg-green-500'
+                      ? 'border-success bg-success'
                       : showResult && isSelected && !isThisCorrect
-                      ? 'border-red-500 bg-red-500'
+                      ? 'border-danger bg-danger'
                       : isSelected
-                      ? 'border-gold bg-gold'
-                      : 'border-sepia'
+                      ? 'border-primary bg-primary'
+                      : 'border-border-strong'
                   }`}
                 >
-                  {showResult && isThisCorrect && <span className="text-white text-sm">✓</span>}
-                  {showResult && isSelected && !isThisCorrect && <span className="text-white text-sm">✗</span>}
+                  {showResult && isThisCorrect && (
+                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                  )}
+                  {showResult && isSelected && !isThisCorrect && (
+                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
+                  )}
                 </div>
-                <span className={`flex-1 ${showResult && isThisCorrect ? 'font-semibold text-green-800' : 'text-ink'}`}>
+                <span className={`flex-1 text-sm ${showResult && isThisCorrect ? 'font-semibold text-text' : 'text-text-secondary'}`}>
                   {option}
                 </span>
               </div>
@@ -120,27 +124,28 @@ const MultipleChoiceExercise = ({ principle, exercise, onComplete }) => {
         <button
           onClick={handleSubmit}
           disabled={selectedOption === null}
-          className={`btn-primary w-full ${selectedOption === null ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`btn-primary w-full ${selectedOption === null ? 'opacity-40 cursor-not-allowed' : ''}`}
         >
           Controleer Antwoord
         </button>
       ) : (
         <div className="space-y-4">
-          {/* Feedback */}
           <AnimatePresence>
             {isCorrect ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-green-100 border-2 border-green-500 rounded-lg p-6"
+                className="bg-success-light border border-success/20 rounded-xl p-5"
               >
                 <div className="flex items-start gap-3">
-                  <span className="text-4xl">✅</span>
+                  <div className="w-10 h-10 rounded-xl bg-success/20 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  </div>
                   <div className="flex-1">
-                    <h3 className="font-serif text-xl text-green-800 mb-2">Correct!</h3>
-                    <p className="text-green-700">{exercise.feedback}</p>
+                    <h3 className="font-bold text-text text-base mb-1">Correct!</h3>
+                    <p className="text-sm text-text-secondary">{exercise.feedback}</p>
                     {!alreadyCompleted && (
-                      <div className="mt-3 text-green-800 font-semibold">
+                      <div className="mt-2 inline-flex items-center gap-1.5 bg-success/20 px-2.5 py-1 rounded-full text-success text-xs font-semibold">
                         🏆 +15 punten
                       </div>
                     )}
@@ -149,22 +154,24 @@ const MultipleChoiceExercise = ({ principle, exercise, onComplete }) => {
               </motion.div>
             ) : (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="space-y-4"
+                className="space-y-3"
               >
-                <div className="bg-yellow-100 border-2 border-yellow-500 rounded-lg p-6">
+                <div className="bg-warning-light border border-warning/20 rounded-xl p-5">
                   <div className="flex items-start gap-3">
-                    <span className="text-4xl">🤔</span>
+                    <div className="w-10 h-10 rounded-xl bg-warning/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl">🤔</span>
+                    </div>
                     <div className="flex-1">
-                      <h3 className="font-serif text-xl text-yellow-800 mb-2">Niet helemaal...</h3>
-                      <p className="text-yellow-700 mb-3">
+                      <h3 className="font-bold text-text text-base mb-1">Niet helemaal...</h3>
+                      <p className="text-sm text-text-secondary mb-3">
                         {socraticQuestions[Math.min(socraticStep, socraticQuestions.length - 1)]}
                       </p>
                       {attempts >= 2 && (
                         <button
                           onClick={() => setShowHint(!showHint)}
-                          className="text-yellow-800 underline hover:no-underline"
+                          className="text-sm text-primary font-medium hover:text-primary-dark"
                         >
                           {showHint ? 'Verberg hint' : 'Toon hint'}
                         </button>
@@ -177,10 +184,11 @@ const MultipleChoiceExercise = ({ principle, exercise, onComplete }) => {
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
-                    className="bg-blue-100 border-2 border-blue-500 rounded-lg p-4"
+                    className="bg-primary-50 border border-primary-100 rounded-xl p-4"
                   >
-                    <p className="text-blue-800">
-                      💡 Hint: Het correcte antwoord is optie {String.fromCharCode(65 + exercise.correct)}
+                    <p className="text-sm text-primary-dark flex items-center gap-2">
+                      <span>💡</span>
+                      Hint: Het correcte antwoord is optie {String.fromCharCode(65 + exercise.correct)}
                     </p>
                   </motion.div>
                 )}
@@ -192,7 +200,7 @@ const MultipleChoiceExercise = ({ principle, exercise, onComplete }) => {
             onClick={handleReset}
             className="btn-primary w-full"
           >
-            {isCorrect ? 'Ga verder →' : 'Probeer opnieuw'}
+            {isCorrect ? 'Ga verder' : 'Probeer opnieuw'}
           </button>
         </div>
       )}

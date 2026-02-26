@@ -22,7 +22,6 @@ const SettingsPage = () => {
     navigate('/');
   };
 
-  // Export user data as JSON file
   const handleExport = () => {
     try {
       const data = JSON.stringify(userData, null, 2);
@@ -40,7 +39,6 @@ const SettingsPage = () => {
     }
   };
 
-  // Import user data from JSON file
   const handleImport = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -48,7 +46,6 @@ const SettingsPage = () => {
     reader.onload = (evt) => {
       try {
         const parsed = JSON.parse(evt.target.result);
-        // Basic validation: check expected fields
         if (!parsed.userId || !parsed.preferences) {
           setImportMsg('Ongeldig bestand. Gebruik een backup van deze app.');
           return;
@@ -61,51 +58,47 @@ const SettingsPage = () => {
       }
     };
     reader.readAsText(file);
-    // Reset file input
     e.target.value = '';
   };
 
   return (
-    <div className="min-h-screen bg-parchment parchment">
+    <div className="min-h-screen bg-bg">
       {/* Header */}
-      <header className="bg-parchment-dark border-b-2 border-sepia shadow-md sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+      <header className="bg-surface border-b border-border sticky top-0 z-10 backdrop-blur-sm bg-surface/95">
+        <div className="max-w-4xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate('/home')}
-              className="flex items-center gap-2 text-ink-light hover:text-ink transition-colors"
+              className="flex items-center gap-2 text-text-secondary hover:text-text transition-colors text-sm font-medium"
               aria-label="Terug naar home"
             >
-              <span className="text-xl">←</span>
-              <span>Terug</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              Terug
             </button>
-            <h1 className="text-2xl font-serif text-ink flex items-center gap-2">
-              <span>⚙️</span>
-              Instellingen
-            </h1>
-            <div className="w-20"></div>
+            <h1 className="text-lg font-bold text-text">Instellingen</h1>
+            <div className="w-16"></div>
           </div>
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-6">
         {/* Stats Overview */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="card mb-8"
+          className="card mb-6"
         >
-          <h2 className="text-xl font-serif text-ink mb-4 flex items-center gap-2">
-            <span>📊</span>
+          <h2 className="text-base font-bold text-text mb-4 flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-primary-50 flex items-center justify-center"><span className="text-sm">📊</span></div>
             Je Voortgang
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            <StatCard value={stats.points} label="Punten" />
-            <StatCard value={stats.unlockedCount} label="Ontgrendeld" />
-            <StatCard value={stats.completedPrinciples} label="Beheerst" />
-            <StatCard value={`${stats.averageMastery}%`} label="Gem. Beheersing" />
-            <StatCard value={stats.currentStreak > 0 ? `🔥 ${stats.currentStreak}` : '—'} label="Huidige reeks" />
-            <StatCard value={stats.longestStreak > 0 ? stats.longestStreak : '—'} label="Langste reeks" />
+            <StatCard value={stats.points} label="Punten" color="text-primary" />
+            <StatCard value={stats.unlockedCount} label="Ontgrendeld" color="text-primary" />
+            <StatCard value={stats.completedPrinciples} label="Beheerst" color="text-success" />
+            <StatCard value={`${stats.averageMastery}%`} label="Gem. Beheersing" color="text-accent-dark" />
+            <StatCard value={stats.currentStreak > 0 ? stats.currentStreak : '—'} label="Huidige reeks" color="text-accent-dark" icon={stats.currentStreak > 0 ? '🔥' : null} />
+            <StatCard value={stats.longestStreak > 0 ? stats.longestStreak : '—'} label="Langste reeks" color="text-text-secondary" />
           </div>
         </motion.div>
 
@@ -113,118 +106,103 @@ const SettingsPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="card mb-8"
+          transition={{ delay: 0.08 }}
+          className="card mb-6"
         >
-          <h2 className="text-xl font-serif text-ink mb-6 flex items-center gap-2">
-            <span>🎨</span>
+          <h2 className="text-base font-bold text-text mb-6 flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-primary-50 flex items-center justify-center"><span className="text-sm">🎨</span></div>
             Voorkeuren
           </h2>
 
           {/* Organization Preference */}
-          <div className="mb-6 pb-6 border-b border-sepia">
-            <h3 className="font-semibold text-ink mb-3">📜 Organisatie Voorkeur</h3>
-            <p className="text-sm text-ink-light mb-3">
-              Kies hoe je principes wilt browsen
-            </p>
+          <div className="mb-6 pb-6 border-b border-border">
+            <h3 className="font-semibold text-text text-sm mb-1">Organisatie Voorkeur</h3>
+            <p className="text-xs text-text-muted mb-3">Kies hoe je principes wilt browsen</p>
             <div className="flex gap-3">
-              <button
-                onClick={() => handlePreferenceChange('organization', 'academic')}
-                className={`flex-1 p-4 rounded-lg border-2 transition-all ${
-                  userData?.preferences?.organization === 'academic'
-                    ? 'border-gold bg-gold/20'
-                    : 'border-sepia hover:border-gold'
-                }`}
-              >
-                <div className="text-2xl mb-2">🎓</div>
-                <div className="font-semibold text-ink">Academisch</div>
-                <div className="text-xs text-ink-light mt-1">Logica, Ethiek, etc.</div>
-              </button>
-              <button
-                onClick={() => handlePreferenceChange('organization', 'skills')}
-                className={`flex-1 p-4 rounded-lg border-2 transition-all ${
-                  userData?.preferences?.organization === 'skills'
-                    ? 'border-gold bg-gold/20'
-                    : 'border-sepia hover:border-gold'
-                }`}
-              >
-                <div className="text-2xl mb-2">🎯</div>
-                <div className="font-semibold text-ink">Vaardigheden</div>
-                <div className="text-xs text-ink-light mt-1">Argumenteren, Beslissen, etc.</div>
-              </button>
+              {[
+                { value: 'academic', icon: '🎓', label: 'Academisch', desc: 'Logica, Ethiek, etc.' },
+                { value: 'skills', icon: '🎯', label: 'Vaardigheden', desc: 'Argumenteren, Beslissen, etc.' },
+              ].map(opt => (
+                <button
+                  key={opt.value}
+                  onClick={() => handlePreferenceChange('organization', opt.value)}
+                  className={`flex-1 p-4 rounded-xl border transition-all text-left ${
+                    userData?.preferences?.organization === opt.value
+                      ? 'border-primary bg-primary-50 ring-1 ring-primary/30'
+                      : 'border-border hover:border-primary/40'
+                  }`}
+                >
+                  <div className="text-xl mb-1.5">{opt.icon}</div>
+                  <div className="font-semibold text-text text-sm">{opt.label}</div>
+                  <div className="text-xs text-text-muted mt-0.5">{opt.desc}</div>
+                </button>
+              ))}
             </div>
           </div>
 
           {/* Daily Reminder */}
-          <div className="mb-6 pb-6 border-b border-sepia">
-            <h3 className="font-semibold text-ink mb-3">🔔 Dagelijkse Herinnering</h3>
-            <p className="text-sm text-ink-light mb-3">
-              Ontvang een dagelijkse herinnering om te leren (via browser notificaties)
-            </p>
+          <div className="mb-6 pb-6 border-b border-border">
+            <h3 className="font-semibold text-text text-sm mb-1">Dagelijkse Herinnering</h3>
+            <p className="text-xs text-text-muted mb-3">Ontvang een dagelijkse herinnering om te leren</p>
             <div className="flex items-center gap-4 flex-wrap">
-              <div className="flex gap-3">
+              <div className="inline-flex rounded-lg bg-bg-alt p-1 border border-border">
                 <button
                   onClick={() => handlePreferenceChange('dailyReminder', true)}
-                  className={`px-6 py-2 rounded-lg border-2 transition-all ${
+                  className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
                     userData?.preferences?.dailyReminder
-                      ? 'border-gold bg-gold/20 font-semibold'
-                      : 'border-sepia hover:border-gold'
+                      ? 'bg-surface text-text shadow-sm border border-border'
+                      : 'text-text-muted hover:text-text'
                   }`}
                 >
                   Aan
                 </button>
                 <button
                   onClick={() => handlePreferenceChange('dailyReminder', false)}
-                  className={`px-6 py-2 rounded-lg border-2 transition-all ${
+                  className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
                     !userData?.preferences?.dailyReminder
-                      ? 'border-gold bg-gold/20 font-semibold'
-                      : 'border-sepia hover:border-gold'
+                      ? 'bg-surface text-text shadow-sm border border-border'
+                      : 'text-text-muted hover:text-text'
                   }`}
                 >
                   Uit
                 </button>
               </div>
               {userData?.preferences?.dailyReminder && (
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-ink-light">Tijd:</span>
-                  <input
-                    type="time"
-                    value={userData?.preferences?.reminderTime || '08:00'}
-                    onChange={(e) => handlePreferenceChange('reminderTime', e.target.value)}
-                    className="px-3 py-2 rounded-lg border-2 border-sepia bg-parchment text-ink focus:border-gold focus:outline-none"
-                  />
-                </div>
+                <input
+                  type="time"
+                  value={userData?.preferences?.reminderTime || '08:00'}
+                  onChange={(e) => handlePreferenceChange('reminderTime', e.target.value)}
+                  className="px-3 py-1.5 rounded-lg border border-border bg-surface text-text text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                />
               )}
             </div>
           </div>
 
           {/* Learning Style */}
-          <div className="mb-6 pb-6 border-b border-sepia">
-            <h3 className="font-semibold text-ink mb-3">💡 Standaard Leerstijl</h3>
-            <p className="text-sm text-ink-light mb-3">
-              Kies hoe je nieuwe principes wilt leren (je kunt dit altijd per principe aanpassen)
-            </p>
+          <div className="mb-6 pb-6 border-b border-border">
+            <h3 className="font-semibold text-text text-sm mb-1">Standaard Leerstijl</h3>
+            <p className="text-xs text-text-muted mb-3">Kies hoe je nieuwe principes wilt leren</p>
             <div className="space-y-2">
               {[
-                { value: 'definition-first', emoji: '🎯', label: 'Definitie eerst', desc: 'Start met de abstracte uitleg, dan voorbeelden' },
-                { value: 'example-first', emoji: '💡', label: 'Voorbeeld eerst', desc: 'Start met concrete voorbeelden, werk naar definitie toe' },
-                { value: 'auto', emoji: '🤖', label: 'Laat app kiezen (intelligent)', desc: 'De app leert je voorkeur na enkele principes' },
+                { value: 'definition-first', icon: '🎯', label: 'Definitie eerst', desc: 'Start met de abstracte uitleg, dan voorbeelden' },
+                { value: 'example-first', icon: '💡', label: 'Voorbeeld eerst', desc: 'Start met concrete voorbeelden, werk naar definitie toe' },
+                { value: 'auto', icon: '🤖', label: 'Laat app kiezen', desc: 'De app leert je voorkeur na enkele principes' },
               ].map(opt => (
                 <button
                   key={opt.value}
                   onClick={() => handlePreferenceChange('defaultLearningStyle', opt.value)}
-                  className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+                  className={`w-full p-3.5 rounded-xl border text-left transition-all flex items-center gap-3 ${
                     userData?.preferences?.defaultLearningStyle === opt.value
-                      ? 'border-gold bg-gold/20'
-                      : 'border-sepia hover:border-gold'
+                      ? 'border-primary bg-primary-50 ring-1 ring-primary/30'
+                      : 'border-border hover:border-primary/40'
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{opt.emoji}</span>
-                    <div>
-                      <div className="font-semibold text-ink">{opt.label}</div>
-                      <div className="text-xs text-ink-light">{opt.desc}</div>
-                    </div>
+                  <div className="w-9 h-9 rounded-lg bg-bg-alt flex items-center justify-center flex-shrink-0">
+                    <span className="text-lg">{opt.icon}</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-text text-sm">{opt.label}</div>
+                    <div className="text-xs text-text-muted">{opt.desc}</div>
                   </div>
                 </button>
               ))}
@@ -233,28 +211,25 @@ const SettingsPage = () => {
 
           {/* Theme */}
           <div>
-            <h3 className="font-semibold text-ink mb-3">🎨 Thema</h3>
-            <p className="text-sm text-ink-light mb-3">
-              Kies het uiterlijk van de app
-            </p>
+            <h3 className="font-semibold text-text text-sm mb-1">Thema</h3>
+            <p className="text-xs text-text-muted mb-3">Kies het uiterlijk van de app</p>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { value: 'classic', emoji: '📜', label: 'Klassiek Scroll', preview: 'bg-amber-100 border-amber-600' },
-                { value: 'light', emoji: '☀️', label: 'Licht', preview: 'bg-gray-50 border-gray-400' },
-                { value: 'dark', emoji: '🌙', label: 'Donker', preview: 'bg-stone-900 border-stone-600' },
+                { value: 'classic', label: 'Standaard', gradient: 'from-slate-100 to-slate-200', dot: 'bg-primary' },
+                { value: 'light', label: 'Licht', gradient: 'from-white to-gray-100', dot: 'bg-gray-300' },
+                { value: 'dark', label: 'Donker', gradient: 'from-slate-800 to-slate-900', dot: 'bg-slate-600' },
               ].map(theme => (
                 <button
                   key={theme.value}
                   onClick={() => handlePreferenceChange('theme', theme.value)}
-                  className={`p-4 rounded-lg border-2 transition-all ${
+                  className={`p-4 rounded-xl border transition-all text-center ${
                     userData?.preferences?.theme === theme.value
-                      ? 'border-gold bg-gold/20'
-                      : 'border-sepia hover:border-gold'
+                      ? 'border-primary ring-1 ring-primary/30 bg-primary-50'
+                      : 'border-border hover:border-primary/40'
                   }`}
                 >
-                  <div className={`w-full h-8 rounded mb-2 border ${theme.preview}`}></div>
-                  <div className="text-xl mb-1">{theme.emoji}</div>
-                  <div className="text-sm font-semibold text-ink">{theme.label}</div>
+                  <div className={`w-full h-8 rounded-lg bg-gradient-to-br ${theme.gradient} mb-2 border border-border`}></div>
+                  <div className="text-sm font-semibold text-text">{theme.label}</div>
                 </button>
               ))}
             </div>
@@ -265,34 +240,36 @@ const SettingsPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="card mb-8"
+          transition={{ delay: 0.12 }}
+          className="card mb-6"
         >
-          <h2 className="text-xl font-serif text-ink mb-4 flex items-center gap-2">
-            <span>💾</span>
+          <h2 className="text-base font-bold text-text mb-2 flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-primary-50 flex items-center justify-center"><span className="text-sm">💾</span></div>
             Voortgang Opslaan & Herstellen
           </h2>
-          <p className="text-sm text-ink-light mb-5">
+          <p className="text-xs text-text-muted mb-4">
             Exporteer je voortgang als back-up, of importeer een eerder opgeslagen bestand.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <div className="flex-1">
               <button
                 onClick={handleExport}
-                className="w-full px-6 py-3 bg-gold text-ink rounded-lg font-semibold border-2 border-bronze hover:bg-bronze transition-colors"
+                className="btn-primary w-full flex items-center justify-center gap-2"
               >
-                📤 Exporteer voortgang
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
+                Exporteer voortgang
               </button>
               {exportMsg && (
-                <p className="text-sm text-green-700 mt-2 text-center">{exportMsg}</p>
+                <p className="text-xs text-success mt-2 text-center font-medium">{exportMsg}</p>
               )}
             </div>
             <div className="flex-1">
               <button
                 onClick={() => importRef.current?.click()}
-                className="w-full px-6 py-3 bg-parchment text-ink rounded-lg font-semibold border-2 border-sepia hover:border-gold transition-colors"
+                className="w-full px-4 py-3 bg-surface text-text rounded-xl font-semibold border border-border hover:border-primary/40 hover:bg-bg-alt transition-all flex items-center justify-center gap-2 text-sm"
               >
-                📥 Importeer backup
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                Importeer backup
               </button>
               <input
                 ref={importRef}
@@ -303,7 +280,7 @@ const SettingsPage = () => {
                 aria-label="Importeer voortgang JSON bestand"
               />
               {importMsg && (
-                <p className="text-sm text-blue-700 mt-2 text-center">{importMsg}</p>
+                <p className="text-xs text-primary mt-2 text-center font-medium">{importMsg}</p>
               )}
             </div>
           </div>
@@ -313,42 +290,42 @@ const SettingsPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="card border-2 border-red-500"
+          transition={{ delay: 0.16 }}
+          className="card border-danger/30"
         >
-          <h2 className="text-xl font-serif text-red-700 mb-4 flex items-center gap-2">
-            <span>⚠️</span>
+          <h2 className="text-base font-bold text-danger mb-2 flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-danger-light flex items-center justify-center"><span className="text-sm">⚠️</span></div>
             Danger Zone
           </h2>
-          <p className="text-sm text-ink-light mb-4">
+          <p className="text-xs text-text-muted mb-4">
             Reset alle voortgang en begin opnieuw. Dit kan niet ongedaan worden gemaakt!
           </p>
 
           {!showResetConfirm ? (
             <button
               onClick={() => setShowResetConfirm(true)}
-              className="px-6 py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+              className="px-4 py-2.5 bg-danger text-white rounded-xl font-semibold text-sm hover:bg-red-600 transition-colors"
             >
               Reset Alle Data
             </button>
           ) : (
             <div className="space-y-3">
-              <div className="bg-red-100 border-2 border-red-500 rounded-lg p-4">
-                <p className="text-red-800 font-semibold mb-2">Weet je het zeker?</p>
-                <p className="text-sm text-red-700">
+              <div className="bg-danger-light border border-danger/30 rounded-xl p-4">
+                <p className="text-danger font-semibold text-sm mb-1">Weet je het zeker?</p>
+                <p className="text-xs text-text-secondary">
                   Dit verwijdert al je voortgang, punten, en ontgrendelde principes.
                 </p>
               </div>
               <div className="flex gap-3">
                 <button
                   onClick={handleReset}
-                  className="flex-1 px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                  className="flex-1 px-4 py-2.5 bg-danger text-white rounded-xl font-semibold text-sm hover:bg-red-600 transition-colors"
                 >
                   Ja, reset alles
                 </button>
                 <button
                   onClick={() => setShowResetConfirm(false)}
-                  className="flex-1 px-6 py-3 bg-gray-500 text-white rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+                  className="flex-1 px-4 py-2.5 bg-bg-alt text-text rounded-xl font-semibold text-sm hover:bg-border transition-colors border border-border"
                 >
                   Annuleer
                 </button>
@@ -361,8 +338,8 @@ const SettingsPage = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="text-center mt-8 text-sm text-ink-light"
+          transition={{ delay: 0.25 }}
+          className="text-center mt-8 text-xs text-text-muted"
         >
           <p>Scrolls of Wisdom v1.1</p>
           <p className="mt-1">Leer generieke denkprincipes die je overal kunt toepassen</p>
@@ -372,10 +349,13 @@ const SettingsPage = () => {
   );
 };
 
-const StatCard = ({ value, label }) => (
-  <div className="text-center p-3 bg-parchment rounded-lg border border-sepia">
-    <div className="text-2xl font-bold text-gold mb-1">{value}</div>
-    <div className="text-xs text-ink-light">{label}</div>
+const StatCard = ({ value, label, color = 'text-primary', icon }) => (
+  <div className="text-center p-3 bg-bg-alt rounded-xl border border-border">
+    <div className={`text-xl font-bold ${color} mb-0.5`}>
+      {icon && <span className="mr-0.5">{icon}</span>}
+      {value}
+    </div>
+    <div className="text-xs text-text-muted">{label}</div>
   </div>
 );
 

@@ -34,13 +34,11 @@ const PrinciplePage = () => {
       return;
     }
 
-    // Set initial learning style based on recommendation
     const recommended = getRecommendedLearningStyle();
     setLearningStyle(recommended);
   }, [principle, isUnlocked, navigate, getRecommendedLearningStyle]);
 
   useEffect(() => {
-    // Mark as read when user scrolls through content
     if (!hasMarkedAsRead && !progress.activities.read) {
       const handleScroll = () => {
         const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
@@ -70,7 +68,6 @@ const PrinciplePage = () => {
       markPrincipleAsRead(principleId);
     }
     setShowExercises(true);
-    // Scroll to exercises
     setTimeout(() => {
       document.getElementById('exercises')?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
@@ -81,54 +78,52 @@ const PrinciplePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-parchment parchment">
+    <div className="min-h-screen bg-bg">
       {/* Header */}
-      <header className="bg-parchment-dark border-b-2 border-sepia shadow-md sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+      <header className="bg-surface border-b border-border sticky top-0 z-10 backdrop-blur-sm bg-surface/95">
+        <div className="max-w-4xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate('/home')}
-              className="flex items-center gap-2 text-ink-light hover:text-ink transition-colors"
+              className="flex items-center gap-2 text-text-secondary hover:text-text transition-colors text-sm font-medium"
             >
-              <span className="text-xl">←</span>
-              <span>Terug</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              Terug
             </button>
-            <div className="flex items-center gap-4">
-              <MasteryBadge progress={progress} />
-            </div>
+            <MasteryBadge progress={progress} />
           </div>
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-6">
         {/* Learning Style Toggle */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 flex justify-center"
+          className="mb-6 flex justify-center"
         >
-          <div className="inline-flex rounded-lg border-2 border-gold bg-parchment-dark p-1 shadow-md">
+          <div className="inline-flex rounded-xl bg-bg-alt p-1 border border-border">
             <button
               onClick={() => handleLearningStyleToggle('definition-first')}
-              className={`px-6 py-2 rounded-md font-semibold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
                 learningStyle === 'definition-first'
-                  ? 'bg-gold text-ink shadow-md'
-                  : 'text-ink-light hover:text-ink'
+                  ? 'bg-surface text-text shadow-sm border border-border'
+                  : 'text-text-muted hover:text-text'
               }`}
             >
               <span>🎯</span>
-              <span>Start met Definitie</span>
+              <span>Definitie eerst</span>
             </button>
             <button
               onClick={() => handleLearningStyleToggle('example-first')}
-              className={`px-6 py-2 rounded-md font-semibold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
                 learningStyle === 'example-first'
-                  ? 'bg-gold text-ink shadow-md'
-                  : 'text-ink-light hover:text-ink'
+                  ? 'bg-surface text-text shadow-sm border border-border'
+                  : 'text-text-muted hover:text-text'
               }`}
             >
               <span>💡</span>
-              <span>Start met Voorbeeld</span>
+              <span>Voorbeeld eerst</span>
             </button>
           </div>
         </motion.div>
@@ -137,28 +132,25 @@ const PrinciplePage = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="decorative-border bg-parchment-dark p-8 mb-8 scroll-reveal"
+          transition={{ duration: 0.5 }}
+          className="decorative-border bg-surface p-6 md:p-8 mb-8 scroll-reveal"
         >
           {/* Title */}
-          <div className="flex items-start gap-4 mb-6">
-            <div className="text-6xl">{principle.emoji}</div>
+          <div className="flex items-start gap-4 mb-6 pt-2">
+            <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center flex-shrink-0">
+              <span className="text-4xl">{principle.emoji}</span>
+            </div>
             <div className="flex-1">
-              <h1 className="text-4xl font-serif text-ink mb-3">{principle.title}</h1>
-              <div className="flex items-center gap-3 flex-wrap">
+              <h1 className="text-2xl md:text-3xl font-extrabold text-text mb-2 tracking-tight">{principle.title}</h1>
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="tag-pill">{principle.academicCategory}</span>
                 <span className="tag-pill">{principle.skillCategory}</span>
-                <span className="text-ink-light">
-                  {'⭐'.repeat(principle.difficulty)}
-                  {principle.difficulty === 1 && ' Beginner'}
-                  {principle.difficulty === 2 && ' Gemiddeld'}
-                  {principle.difficulty === 3 && ' Gevorderd'}
-                </span>
+                <DifficultyBadge difficulty={principle.difficulty} />
               </div>
             </div>
           </div>
 
-          <div className="h-px bg-sepia my-6"></div>
+          <div className="h-px bg-border my-6"></div>
 
           {/* Content based on learning style */}
           {learningStyle === 'definition-first' ? (
@@ -167,16 +159,14 @@ const PrinciplePage = () => {
             <ExampleFirstContent principle={principle} />
           )}
 
-          <div className="h-px bg-sepia my-6"></div>
+          <div className="h-px bg-border my-6"></div>
 
           {/* Tags */}
           <div className="mb-6">
-            <h3 className="text-sm font-semibold text-ink-light mb-3">🏷️ Tags:</h3>
+            <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {principle.tags.map(tag => (
-                <span key={tag} className="tag-pill">
-                  {tag}
-                </span>
+                <span key={tag} className="tag-pill">{tag}</span>
               ))}
             </div>
           </div>
@@ -184,12 +174,13 @@ const PrinciplePage = () => {
           {/* Understand Button */}
           {!showExercises && (
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
               onClick={handleUnderstand}
-              className="btn-primary w-full text-lg py-4"
+              className="btn-primary w-full text-base py-3.5 flex items-center justify-center gap-2"
             >
-              ✅ Ik begrijp het - Ga naar oefening
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+              Ik begrijp het - Ga naar oefening
             </motion.button>
           )}
         </motion.div>
@@ -202,10 +193,9 @@ const PrinciplePage = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
             >
-              {/* Multiple Choice Exercise */}
               {principle.exercises?.[0] && (
                 <MultipleChoiceExercise
                   principle={principle}
@@ -214,7 +204,6 @@ const PrinciplePage = () => {
                 />
               )}
 
-              {/* Creative Exercise */}
               <CreativeExercise
                 principle={principle}
                 onComplete={handleUnlock}
@@ -239,46 +228,57 @@ const PrinciplePage = () => {
   );
 };
 
+const DifficultyBadge = ({ difficulty }) => {
+  const config = {
+    1: { label: 'Beginner', bg: 'bg-success/10', text: 'text-success', border: 'border-success/20' },
+    2: { label: 'Gemiddeld', bg: 'bg-warning/10', text: 'text-warning', border: 'border-warning/20' },
+    3: { label: 'Gevorderd', bg: 'bg-danger/10', text: 'text-danger', border: 'border-danger/20' },
+  };
+  const c = config[difficulty] || config[1];
+  return (
+    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${c.bg} ${c.text} border ${c.border}`}>
+      {c.label}
+    </span>
+  );
+};
+
 const DefinitionFirstContent = ({ principle }) => {
   return (
     <div className="space-y-6">
-      {/* Definition */}
       <div>
-        <h2 className="text-2xl font-serif text-ink mb-3 flex items-center gap-2">
-          <span>📍</span>
+        <h2 className="text-xl font-bold text-text mb-3 flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center"><span className="text-base">📍</span></div>
           Definitie
         </h2>
-        <p className="text-lg text-ink leading-relaxed">{principle.definition}</p>
+        <p className="text-base text-text-secondary leading-relaxed">{principle.definition}</p>
       </div>
 
-      {/* Abstract Example */}
       {principle.abstractExample && (
-        <div className="bg-gold/10 border-l-4 border-gold p-4 rounded">
-          <h3 className="font-semibold text-ink mb-2">Abstract Voorbeeld:</h3>
-          <p className="text-ink-light">{principle.abstractExample}</p>
+        <div className="bg-primary-50 border-l-3 border-primary p-4 rounded-r-xl">
+          <h3 className="font-semibold text-text text-sm mb-1">Abstract Voorbeeld</h3>
+          <p className="text-sm text-text-secondary">{principle.abstractExample}</p>
         </div>
       )}
 
-      {/* Concrete Examples */}
       <div>
-        <h2 className="text-2xl font-serif text-ink mb-4 flex items-center gap-2">
-          <span>💡</span>
+        <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center"><span className="text-base">💡</span></div>
           Concrete Voorbeelden
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {principle.examples.map((example, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="card"
+              transition={{ delay: index * 0.08 }}
+              className="card p-4"
             >
-              <h3 className="font-serif text-lg text-ink mb-2 flex items-center gap-2">
+              <h3 className="font-semibold text-text text-sm mb-1.5 flex items-center gap-2">
                 <span>{example.icon}</span>
                 {getDomainName(example.domain)}
               </h3>
-              <p className="text-ink-light">{example.text}</p>
+              <p className="text-sm text-text-secondary leading-relaxed">{example.text}</p>
             </motion.div>
           ))}
         </div>
@@ -290,42 +290,40 @@ const DefinitionFirstContent = ({ principle }) => {
 const ExampleFirstContent = ({ principle }) => {
   return (
     <div className="space-y-6">
-      {/* Start with Examples */}
       <div>
-        <h2 className="text-2xl font-serif text-ink mb-4 flex items-center gap-2">
-          <span>💡</span>
+        <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center"><span className="text-base">💡</span></div>
           Voorbeelden
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {principle.examples.map((example, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="card"
+              transition={{ delay: index * 0.08 }}
+              className="card p-4"
             >
-              <h3 className="font-serif text-lg text-ink mb-2 flex items-center gap-2">
+              <h3 className="font-semibold text-text text-sm mb-1.5 flex items-center gap-2">
                 <span>{example.icon}</span>
                 {getDomainName(example.domain)}
               </h3>
-              <p className="text-ink-light">{example.text}</p>
+              <p className="text-sm text-text-secondary leading-relaxed">{example.text}</p>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Then Definition */}
-      <div className="bg-gold/10 border-2 border-gold p-6 rounded-lg">
-        <h2 className="text-2xl font-serif text-ink mb-3 flex items-center gap-2">
-          <span>📍</span>
+      <div className="bg-primary-50 border border-primary-100 p-6 rounded-xl">
+        <h2 className="text-xl font-bold text-text mb-3 flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center"><span className="text-base">📍</span></div>
           Algemene Definitie
         </h2>
-        <p className="text-lg text-ink leading-relaxed mb-4">{principle.definition}</p>
+        <p className="text-base text-text-secondary leading-relaxed mb-4">{principle.definition}</p>
         {principle.abstractExample && (
           <>
-            <h3 className="font-semibold text-ink mb-2">Abstract:</h3>
-            <p className="text-ink-light">{principle.abstractExample}</p>
+            <h3 className="font-semibold text-text text-sm mb-1">Abstract</h3>
+            <p className="text-sm text-text-secondary">{principle.abstractExample}</p>
           </>
         )}
       </div>
@@ -339,20 +337,18 @@ const MasteryBadge = ({ progress }) => {
   return (
     <div className="flex items-center gap-3">
       <div className="text-right">
-        <div className="text-sm text-ink-light">Beheersing</div>
-        <div className="text-lg font-bold text-gold">{percentage}%</div>
+        <div className="text-xs text-text-muted">Beheersing</div>
+        <div className="text-sm font-bold text-primary">{percentage}%</div>
       </div>
-      <div className="w-24 h-2 bg-parchment-dark rounded-full overflow-hidden border border-sepia">
+      <div className="w-20 h-1.5 bg-bg-alt rounded-full overflow-hidden">
         <div
-          className="h-full bg-gold transition-all duration-500"
+          className="h-full rounded-full bg-gradient-to-r from-primary to-primary-light transition-all duration-500"
           style={{ width: `${percentage}%` }}
         />
       </div>
-      <div className="text-3xl">
-        {percentage === 0 && '📜'}
-        {percentage > 0 && percentage < 100 && '📖'}
-        {percentage === 100 && '✅'}
-      </div>
+      {percentage === 100 && (
+        <svg className="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+      )}
     </div>
   );
 };
