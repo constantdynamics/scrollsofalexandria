@@ -30,7 +30,7 @@ export const principles = [
       }
     ],
     prerequisites: [],
-    unlocks: ["affirming-consequent", "modus-tollens"],
+    unlocks: ["affirming-consequent", "modus-tollens", "circular-reasoning"],
     relatedPrinciples: ["deduction-induction", "necessary-sufficient"],
     exercises: [
       {
@@ -183,7 +183,7 @@ export const principles = [
       }
     ],
     prerequisites: ["affirming-consequent"],
-    unlocks: ["post-hoc-ergo", "cause-reason"],
+    unlocks: ["post-hoc-ergo", "cause-reason", "narrative-fallacy"],
     relatedPrinciples: ["post-hoc-ergo", "confirmation-bias", "availability-heuristic"],
     exercises: [
       {
@@ -234,7 +234,7 @@ export const principles = [
       }
     ],
     prerequisites: [],
-    unlocks: ["availability-heuristic", "anchoring"],
+    unlocks: ["availability-heuristic", "anchoring", "halo-effect"],
     relatedPrinciples: ["availability-heuristic", "dunning-kruger", "false-dilemma"],
     exercises: [
       {
@@ -438,7 +438,7 @@ export const principles = [
       }
     ],
     prerequisites: [],
-    unlocks: ["ad-hominem", "false-dilemma"],
+    unlocks: ["ad-hominem", "false-dilemma", "red-herring"],
     relatedPrinciples: ["ad-hominem", "false-dilemma", "slippery-slope"],
     exercises: [
       {
@@ -540,7 +540,7 @@ export const principles = [
       }
     ],
     prerequisites: ["modus-ponens"],
-    unlocks: ["scientific-method", "black-swan"],
+    unlocks: ["scientific-method", "black-swan", "composition-fallacy"],
     relatedPrinciples: ["modus-ponens", "necessary-sufficient", "falsification"],
     exercises: [
       {
@@ -591,7 +591,7 @@ export const principles = [
       }
     ],
     prerequisites: ["confirmation-bias"],
-    unlocks: ["representativeness-heuristic"],
+    unlocks: ["representativeness-heuristic", "mere-exposure-effect", "affect-heuristic"],
     relatedPrinciples: ["confirmation-bias", "correlation-causation", "base-rate-fallacy"],
     exercises: [
       {
@@ -642,7 +642,7 @@ export const principles = [
       }
     ],
     prerequisites: ["confirmation-bias"],
-    unlocks: ["framing-effect"],
+    unlocks: ["framing-effect", "decoy-effect"],
     relatedPrinciples: ["confirmation-bias", "availability-heuristic", "status-quo-bias"],
     exercises: [
       {
@@ -1019,7 +1019,7 @@ export const principles = [
       { domain: "politics", icon: "🏛️", text: "De val van de Berlijnse Muur in 1989 was voor nagenoeg iedereen onverwacht – maar had enorme gevolgen." }
     ],
     prerequisites: ["deduction-induction"],
-    unlocks: [],
+    unlocks: ["normalcy-bias"],
     relatedPrinciples: ["falsification", "base-rate-fallacy", "availability-heuristic"],
     exercises: [{
       type: "multiple-choice",
@@ -1047,7 +1047,7 @@ export const principles = [
       { domain: "business", icon: "💼", text: "95% van de startups mislukt. Dat je een gepassioneerde ondernemer bent, verandert het basispercentage niet." }
     ],
     prerequisites: [],
-    unlocks: [],
+    unlocks: ["conjunction-fallacy"],
     relatedPrinciples: ["availability-heuristic", "representativeness-heuristic", "correlation-causation"],
     exercises: [{
       type: "multiple-choice",
@@ -1142,7 +1142,7 @@ export const principles = [
       { domain: "politics", icon: "🏛️", text: "'We kunnen deze rechten niet verliezen!' mobiliseert meer kiezers dan 'We kunnen nieuwe rechten winnen!'" }
     ],
     prerequisites: ["sunk-cost-fallacy"],
-    unlocks: ["status-quo-bias", "framing-effect"],
+    unlocks: ["status-quo-bias", "framing-effect", "endowment-effect"],
     relatedPrinciples: ["sunk-cost-fallacy", "status-quo-bias", "framing-effect"],
     exercises: [{
       type: "multiple-choice",
@@ -1702,7 +1702,7 @@ export const principles = [
       { domain: "politics", icon: "🏛️", text: "Een moreel overtuigd persoon steunt een partij die iets doet dat hij normaal afkeurt. Oplossing: het goedpraten of bagatelliseren." }
     ],
     prerequisites: [],
-    unlocks: [],
+    unlocks: ["moral-licensing"],
     relatedPrinciples: ["confirmation-bias", "framing-effect", "sunk-cost-fallacy"],
     exercises: [{
       type: "multiple-choice",
@@ -1829,7 +1829,7 @@ export const principles = [
       { domain: "politics", icon: "🏛️", text: "Arme mensen zijn arm 'omdat ze lui zijn' (karakter). Maar contextfactoren (structurele ongelijkheid, kansen) worden vaak onderschat." }
     ],
     prerequisites: [],
-    unlocks: [],
+    unlocks: ["ingroup-bias"],
     relatedPrinciples: ["confirmation-bias", "cognitive-dissonance", "availability-heuristic"],
     exercises: [{
       type: "multiple-choice",
@@ -2061,7 +2061,7 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Mensen die overleven schipbreuken worden geïnterviewd over reddingstechnieken – maar we horen nooit van degenen voor wie dezelfde technieken niet werkten." }
     ],
     prerequisites: ["survivorship-bias"],
-    unlocks: ["multiple-comparisons"],
+    unlocks: ["multiple-comparisons", "simpsons-paradox"],
     relatedPrinciples: ["survivorship-bias", "confirmation-bias", "base-rate-fallacy"],
     exercises: [{
       type: "multiple-choice",
@@ -2322,7 +2322,7 @@ export const principles = [
       { domain: "science", icon: "🔬", text: "In Milgrams gehoorzaamheidsexperiment speelde de aanwezigheid van anderen die meededen een grote rol in het gedrag van deelnemers." }
     ],
     prerequisites: ["availability-heuristic"],
-    unlocks: ["scarcity-effect"],
+    unlocks: ["scarcity-effect", "bystander-effect"],
     relatedPrinciples: ["availability-heuristic", "confirmation-bias", "dunning-kruger"],
     exercises: [{
       type: "multiple-choice",
@@ -2516,7 +2516,7 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Je kiest een vaste baan boven zelfstandig ondernemen met hogere verwachte inkomsten maar meer onzekerheid – dat is risicoaversie in de praktijk." }
     ],
     prerequisites: ["expected-value", "loss-aversion"],
-    unlocks: [],
+    unlocks: ["zero-risk-bias"],
     relatedPrinciples: ["loss-aversion", "expected-value", "hyperbolic-discounting"],
     exercises: [{
       type: "multiple-choice",
@@ -2580,7 +2580,7 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Een huurder die weet dat de verhuurder de borg toch terug betaalt, past minder goed op het huurhuis. De scheiding van kosten en baten verandert gedrag." }
     ],
     prerequisites: ["opportunity-cost", "prisoners-dilemma"],
-    unlocks: [],
+    unlocks: ["principal-agent"],
     relatedPrinciples: ["prisoners-dilemma", "tragedy-commons", "nash-equilibrium"],
     exercises: [{
       type: "multiple-choice",
@@ -3499,6 +3499,649 @@ export const principles = [
       "Hoe herken je overfitting in menselijk redeneren (overgeneralisatie van kleine steekproeven)?",
       "Hoe balanceer je modellcomplexiteit met generaliseerbaarheid?",
       "Wanneer is meer data beter dan een simpeler model?"
+    ]
+  },
+
+  // ── BATCH 8: 20 NIEUWE PRINCIPES ──────────────────────────────
+
+  {
+    id: "halo-effect",
+    title: "Halo-effect",
+    difficulty: 2,
+    emoji: "😇",
+    academicCategory: "Psychologie",
+    skillCategory: "Mensen Begrijpen",
+    tags: ["Psychologie", "Bias", "Beoordeling", "Mensen Begrijpen"],
+    definition: "Eén positieve eigenschap van een persoon, product of merk kleurt onze beoordeling van al hun andere eigenschappen. Aantrekkelijke mensen worden automatisch als slimmer, vriendelijker en competenter gezien.",
+    abstractExample: "Als persoon P eigenschap A heeft die positief beoordeeld wordt, dan worden P's andere eigenschappen B, C, D ook positiever beoordeeld – onafhankelijk van bewijs. De 'halo' straalt uit van A naar alles.",
+    examples: [
+      { domain: "business", icon: "💼", text: "Apple's designreputatie zorgt ervoor dat klanten ook aannemen dat Apple-producten betrouwbaarder en veiliger zijn – los van de feiten." },
+      { domain: "science", icon: "🔬", text: "Thorndike (1920) toonde aan dat militaire officieren die als fysiek aantrekkelijk werden beoordeeld, ook hoger scoorden op intelligentie en leiderschap – zonder bewijs daarvoor." },
+      { domain: "daily", icon: "🏠", text: "Een charismatische docent wordt automatisch als deskundiger ervaren, terwijl een saaie maar briljante docent als minder competent wordt gezien." }
+    ],
+    prerequisites: ["confirmation-bias"],
+    unlocks: [],
+    relatedPrinciples: ["confirmation-bias", "fundamental-attribution-error", "anchoring"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een knappe sollicitant krijgt hogere scores op 'analytisch vermogen' zonder dat dit getest is. Welk principe verklaart dit?",
+      options: ["Sociale bewijskracht", "Halo-effect: zijn uiterlijk beïnvloedt de beoordeling van niet-gerelateerde eigenschappen", "Anchoring", "Zelfbevestigingsbias"],
+      correct: 1,
+      feedback: "Halo-effect: de positieve indruk van het uiterlijk straalt uit naar de beoordeling van andere, ongerelateerde eigenschappen zoals analytisch vermogen."
+    }],
+    creativePrompt: "Bedenk een situatie waarin je iemands competentie hoger (of lager) inschatte op basis van een eerste indruk die niets met competentie te maken had.",
+    aiHelperPrompts: [
+      "Welke merken beoordeel jij positief op alle vlakken puur door één sterke eigenschap?",
+      "Hoe beïnvloedt het halo-effect sollicitatiegesprekken?",
+      "Hoe kun je het halo-effect tegengaan bij het beoordelen van mensen?"
+    ]
+  },
+  {
+    id: "mere-exposure-effect",
+    title: "Blootstellingseffect",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Psychologie",
+    skillCategory: "Mensen Begrijpen",
+    tags: ["Psychologie", "Voorkeur", "Bekendheid", "Mensen Begrijpen"],
+    definition: "We ontwikkelen een voorkeur voor dingen simpelweg omdat we er vaker aan worden blootgesteld. Bekendheid kweekt sympathie, zelfs als we ons de eerdere blootstelling niet herinneren.",
+    abstractExample: "Na n blootstellingen aan stimulus S neemt de waardering voor S toe, zelfs als S neutraal of aanvankelijk licht negatief beoordeeld werd. Het effect werkt ook sublimin: zonder bewuste herkenning.",
+    examples: [
+      { domain: "business", icon: "💼", text: "Reclamecampagnes herhalen merknamen eindeloos. Zelfs als je de reclame bewust negeert, ontwikkel je een voorkeur voor het merk bij de volgende aankoopbeslissing." },
+      { domain: "science", icon: "🔬", text: "Zajonc (1968): deelnemers beoordeelden Chinese karakters die ze vaker hadden gezien als 'mooier', zonder de betekenis te kennen." },
+      { domain: "daily", icon: "🏠", text: "Een nummer dat je eerst irritant vond, ga je leuk vinden nadat je het tien keer op de radio hebt gehoord." }
+    ],
+    prerequisites: ["availability-heuristic"],
+    unlocks: [],
+    relatedPrinciples: ["availability-heuristic", "halo-effect", "social-proof"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Waarom kiezen consumenten in supermarkten vaker bekende merken, zelfs als huismerken goedkoper en even goed zijn?",
+      options: ["Bekende merken zijn altijd beter", "Blootstellingseffect: herhaalde blootstelling aan merknamen creëert onbewuste voorkeur", "Consumenten onderzoeken altijd kwaliteit", "Supermarkten verbergen huismerken"],
+      correct: 1,
+      feedback: "Blootstellingseffect: door herhaalde blootstelling aan reclame en verpakkingen voelen bekende merken 'vertrouwder' en daarmee beter aan, ongeacht objectieve kwaliteit."
+    }],
+    creativePrompt: "Welk product, nummer of persoon ben je gaan waarderen puur door herhaalde blootstelling?",
+    aiHelperPrompts: [
+      "Hoe gebruiken politici het blootstellingseffect in campagnes?",
+      "Wanneer slaat herhaalde blootstelling om in irritatie?",
+      "Hoe beïnvloedt het blootstellingseffect je muziek- en filmsmaak?"
+    ]
+  },
+  {
+    id: "bystander-effect",
+    title: "Omstandereffect",
+    difficulty: 2,
+    emoji: "👀",
+    academicCategory: "Psychologie",
+    skillCategory: "Mensen Begrijpen",
+    tags: ["Psychologie", "Groepsgedrag", "Verantwoordelijkheid", "Mensen Begrijpen"],
+    definition: "Hoe meer omstanders aanwezig zijn bij een noodsituatie, hoe minder waarschijnlijk het is dat iemand ingrijpt. De verantwoordelijkheid wordt onbewust verdeeld over alle aanwezigen.",
+    abstractExample: "Bij n omstanders daalt de individuele verantwoordelijkheid naar 1/n. Iedereen denkt: 'Iemand anders zal wel helpen.' Het resultaat: niemand helpt.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Darley & Latané (1968): deelnemers die dachten alleen te zijn bij een noodgeval, hielpen in 85% van de gevallen. Bij 4 andere aanwezigen daalde dit naar 31%." },
+      { domain: "business", icon: "💼", text: "Een e-mail naar het hele team ('Kan iemand dit oppakken?') leidt vaker tot niets dan een direct verzoek aan één persoon. Gedeelde verantwoordelijkheid is geen verantwoordelijkheid." },
+      { domain: "daily", icon: "🏠", text: "Op een druk station zakt iemand in elkaar. Honderden mensen lopen door. Iedereen verwacht dat een ander zal helpen." }
+    ],
+    prerequisites: ["social-proof"],
+    unlocks: [],
+    relatedPrinciples: ["social-proof", "tragedy-commons", "abilene-paradox"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Je ziet iemand vallen op een druk plein. Wat is de meest effectieve manier om hulp te activeren?",
+      options: ["Roep 'Kan iemand helpen?'", "Wijs één specifiek persoon aan en zeg: 'Jij, in het blauwe shirt, bel 112'", "Wacht tot iemand anders begint", "Bel zelf 112 en doe niets anders"],
+      correct: 1,
+      feedback: "Door één persoon direct aan te spreken doorbreek je de diffusie van verantwoordelijkheid. De persoon voelt zich nu individueel verantwoordelijk in plaats van deel van een anonieme menigte."
+    }],
+    creativePrompt: "Beschrijf een situatie waarin je zelf een omstander was en niet ingreep. Wat weerhield je?",
+    aiHelperPrompts: [
+      "Hoe kun je het omstandereffect tegengaan in een organisatie?",
+      "Wanneer heb je gezien dat niemand reageerde terwijl iedereen het probleem zag?",
+      "Hoe ontwerp je systemen die individuele verantwoordelijkheid stimuleren?"
+    ]
+  },
+  {
+    id: "narrative-fallacy",
+    title: "Narratieve Drogreden",
+    difficulty: 2,
+    emoji: "📖",
+    academicCategory: "Epistemologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Epistemologie", "Bias", "Verhalen", "Beter Redeneren"],
+    definition: "We construeren achteraf coherente verhalen om willekeurige of complexe gebeurtenissen te verklaren. Ons brein zoekt causale verbanden en narratieven, zelfs waar die niet bestaan.",
+    abstractExample: "Gegeven reeks gebeurtenissen E1, E2, E3 construeert het brein een verhaal: 'E1 veroorzaakte E2 wat leidde tot E3.' Dit verhaal voelt bevredigend maar is vaak een post-hoc constructie.",
+    examples: [
+      { domain: "business", icon: "💼", text: "Succesverhalen van bedrijven worden achteraf gepresenteerd als logische paden: 'Ze hadden een visie → ze voerden die uit → ze werden succesvol.' In werkelijkheid speelden toeval en geluk grote rollen." },
+      { domain: "science", icon: "🔬", text: "Nassim Taleb (The Black Swan): we maken van willekeurige beursbewegingen achteraf logische verhalen. 'De markt daalde omdat investeerders nerveus waren' – dit is een verklaring achteraf, geen voorspelling." },
+      { domain: "daily", icon: "🏠", text: "Je vertelt het verhaal van je carrière als een logisch pad, maar in werkelijkheid was het vol toevalligheden, gemiste kansen en onverwachte wendingen." }
+    ],
+    prerequisites: ["correlation-causation", "hindsight-bias"],
+    unlocks: [],
+    relatedPrinciples: ["hindsight-bias", "confirmation-bias", "post-hoc-ergo"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een autobiografie beschrijft hoe elke carrièrekeuze logisch naar het huidige succes leidde. Wat is het probleem?",
+      options: ["Autobiografieën zijn altijd waar", "Narratieve drogreden: achteraf wordt een coherent verhaal geconstrueerd uit wat in werkelijkheid chaotisch en toevallig was", "De auteur liegt", "Dit is gewoon goed vertellen"],
+      correct: 1,
+      feedback: "Narratieve drogreden: ons brein maakt van complexe, deels toevallige gebeurtenissen een logisch verhaal. Dit voelt bevredigend maar verbergt de rol van toeval en geluk."
+    }],
+    creativePrompt: "Vertel het verhaal van een belangrijke beslissing in je leven. Hoeveel daarvan was echt gepland en hoeveel was toeval?",
+    aiHelperPrompts: [
+      "Hoe beïnvloedt de narratieve drogreden hoe je over je eigen leven denkt?",
+      "Waarom zijn succesboeken vaak misleidend door de narratieve drogreden?",
+      "Hoe kun je beter omgaan met onzekerheid zonder te vervallen in narratieven?"
+    ]
+  },
+  {
+    id: "conjunction-fallacy",
+    title: "Conjunctiefout",
+    difficulty: 2,
+    emoji: "🔗",
+    academicCategory: "Logica",
+    skillCategory: "Beter Redeneren",
+    tags: ["Logica", "Statistiek", "Kansrekening", "Beter Redeneren"],
+    definition: "We schatten de kans op twee gecombineerde gebeurtenissen vaak hoger in dan de kans op één van die gebeurtenissen alleen. Een specifiekere beschrijving voelt waarschijnlijker dan een algemene – maar is dat logisch nooit.",
+    abstractExample: "P(A en B) ≤ P(A). Altijd. Maar als B het verhaal 'completer' maakt, schatten mensen P(A en B) hoger in dan P(A) alleen. Representativiteit overschaduwt logica.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Tversky & Kahneman's Linda-probleem: deelnemers vonden 'Linda is bankmedewerker én actief in de feministische beweging' waarschijnlijker dan 'Linda is bankmedewerker.' Logisch onmogelijk." },
+      { domain: "business", icon: "💼", text: "'Ons product is populair bij millennials die yoga doen en biologisch eten' klinkt specifieker en geloofwaardiger dan 'ons product is populair bij millennials' – maar de eerste groep is per definitie kleiner." },
+      { domain: "daily", icon: "🏠", text: "'Hij is vast een gepensioneerde wiskundeleraar die graag schaakt' voelt overtuigender dan 'hij is gepensioneerd' – maar de eerste beschrijving is altijd onwaarschijnlijker." }
+    ],
+    prerequisites: ["base-rate-fallacy", "representativeness-heuristic"],
+    unlocks: [],
+    relatedPrinciples: ["representativeness-heuristic", "base-rate-fallacy", "availability-heuristic"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Wat is waarschijnlijker: 'Morgen regent het' of 'Morgen regent het en is het koud'?",
+      options: ["Morgen regent het en is het koud", "Morgen regent het", "Beide zijn even waarschijnlijk", "Dat hangt af van het seizoen"],
+      correct: 1,
+      feedback: "Conjunctiefout: P(regen EN koud) kan nooit groter zijn dan P(regen) alleen. Elke extra voorwaarde maakt een gebeurtenis minder waarschijnlijk, niet meer."
+    }],
+    creativePrompt: "Bedenk een scenario waarin een specifiekere beschrijving 'waarschijnlijker' aanvoelt dan een algemene – en verklaar waarom dat misleidend is.",
+    aiHelperPrompts: [
+      "Waarom voelen specifieke voorspellingen geloofwaardiger dan vage?",
+      "Hoe helpt het Linda-probleem om de conjunctiefout te onthouden?",
+      "Hoe kun je de conjunctiefout herkennen in nieuwsberichten?"
+    ]
+  },
+  {
+    id: "simpsons-paradox",
+    title: "Paradox van Simpson",
+    difficulty: 3,
+    emoji: "🔀",
+    academicCategory: "Statistiek",
+    skillCategory: "Beter Redeneren",
+    tags: ["Statistiek", "Data", "Verwarring", "Beter Redeneren"],
+    definition: "Een trend die in elke subgroep zichtbaar is, kan verdwijnen of zelfs omdraaien als de subgroepen worden gecombineerd. Geaggregeerde data kan het tegenovergestelde tonen van wat er werkelijk gebeurt.",
+    abstractExample: "Behandeling A is beter dan B in groep 1 én in groep 2. Maar als je de groepen combineert, lijkt B beter – omdat de groepen ongelijk verdeeld zijn. De samenstelling van de groepen vertekent het totaalbeeld.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Berkeley-toelatingsbias (1973): in elke faculteit werden vrouwen niet gediscrimineerd, maar het totaalcijfer suggereerde discriminatie. Vrouwen solliciteerden vaker bij competitievere faculteiten." },
+      { domain: "business", icon: "💼", text: "Een bedrijf verlaagt de gemiddelde prijs per product maar verhoogt de omzet – omdat het nu meer dure producten verkoopt. De mix verandert, niet de individuele prijzen." },
+      { domain: "daily", icon: "🏠", text: "Een dokter is beter dan een collega bij zowel milde als ernstige gevallen. Maar zijn totale slagingspercentage is lager – omdat hij meer ernstige gevallen krijgt." }
+    ],
+    prerequisites: ["selection-bias", "base-rate-fallacy"],
+    unlocks: [],
+    relatedPrinciples: ["selection-bias", "base-rate-fallacy", "correlation-causation"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Ziekenhuis A heeft een lager totaal overlevingspercentage dan ziekenhuis B, maar presteert beter bij zowel milde als ernstige gevallen. Hoe kan dit?",
+      options: ["Ziekenhuis A liegt over de cijfers", "Ziekenhuis A behandelt relatief meer ernstige gevallen, wat het totaalcijfer drukt", "Ziekenhuis B heeft betere artsen", "Dit is statistisch onmogelijk"],
+      correct: 1,
+      feedback: "Paradox van Simpson: de samenstelling van de patiëntenpopulatie vertekent het totaalcijfer. Ziekenhuis A is in elke categorie beter, maar krijgt de moeilijkste gevallen."
+    }],
+    creativePrompt: "Zoek een voorbeeld van geaggregeerde data die een misleidend beeld geeft wanneer je niet op subgroepen split.",
+    aiHelperPrompts: [
+      "Welke vergelijkingen worden vaak gemaakt op basis van totaalcijfers terwijl subgroepanalyse een ander beeld zou geven?",
+      "Hoe herken je situaties waar Simpson's paradox kan optreden?",
+      "Waarom is het gevaarlijk om beleid te baseren op geaggregeerde statistieken?"
+    ]
+  },
+  {
+    id: "endowment-effect",
+    title: "Bezitseffect",
+    difficulty: 2,
+    emoji: "🏠",
+    academicCategory: "Behavioral Economics",
+    skillCategory: "Beter Beslissen",
+    tags: ["Economie", "Psychologie", "Bezit", "Beter Beslissen"],
+    definition: "We waarderen dingen hoger zodra we ze bezitten. De prijs die we vragen om iets te verkopen is systematisch hoger dan wat we bereid zouden zijn om hetzelfde te kopen.",
+    abstractExample: "Willingness to accept (WTA) > Willingness to pay (WTP) voor hetzelfde object. Bezit creëert een psychologische band die de objectieve waarde overstijgt.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Kahneman, Knetsch & Thaler (1990): studenten die een mok kregen, vroegen gemiddeld $7 om hem te verkopen. Studenten zonder mok boden gemiddeld $3 om hem te kopen. Zelfde mok, dubbele prijs." },
+      { domain: "business", icon: "💼", text: "Onderhandelaars vragen meer voor hun eigen voorstel dan ze bereid zijn te betalen voor een identiek tegenvoorstel. Bezit van het idee verhoogt de gepercipieerde waarde." },
+      { domain: "daily", icon: "🏠", text: "Je oude fiets staat al een jaar in de schuur. Iemand biedt €100 – 'Nee, hij is zeker €200 waard!' Maar zou jij €200 betalen voor dezelfde fiets van iemand anders?" }
+    ],
+    prerequisites: ["loss-aversion"],
+    unlocks: [],
+    relatedPrinciples: ["loss-aversion", "ikea-effect", "status-quo-bias"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Je hebt een concertkaartje voor €50 gekocht. Iemand biedt €80. Je weigert. Maar als je geen kaartje had, zou je er geen €80 voor betalen. Wat verklaart dit?",
+      options: ["Het concert is meer waard geworden", "Bezitseffect: je waardeert het kaartje hoger omdat je het bezit", "Je wilt per se naar het concert", "€80 is te weinig"],
+      correct: 1,
+      feedback: "Bezitseffect: het bezit zelf verhoogt de gepercipieerde waarde. Je WTA (verkoopprijs) is hoger dan je WTP (aankoopprijs) voor hetzelfde object."
+    }],
+    creativePrompt: "Denk aan iets dat je bezit en dat je niet zou verkopen voor de prijs die je ervoor zou betalen als je het niet had.",
+    aiHelperPrompts: [
+      "Welke bezittingen waardeer jij hoger dan hun marktwaarde?",
+      "Hoe beïnvloedt het bezitseffect onderhandelingen?",
+      "Hoe kun je het bezitseffect bewust gebruiken in marketing?"
+    ]
+  },
+  {
+    id: "decoy-effect",
+    title: "Lokvogel-effect",
+    difficulty: 2,
+    emoji: "🪤",
+    academicCategory: "Behavioral Economics",
+    skillCategory: "Beter Beslissen",
+    tags: ["Economie", "Keuze", "Manipulatie", "Beter Beslissen"],
+    definition: "Door een derde, inferieure optie toe te voegen die op één optie lijkt, verschuift de voorkeur naar die optie. De 'lokvogel' wordt zelf niet gekozen maar beïnvloedt de keuze tussen de andere twee.",
+    abstractExample: "Optie A en B zijn gelijkwaardig. Voeg optie C toe die duidelijk slechter is dan A maar niet vergelijkbaar met B. Nu kiest een meerderheid A – niet omdat A beter is, maar omdat C het vergelijken makkelijker maakt.",
+    examples: [
+      { domain: "business", icon: "💼", text: "The Economist: online-abonnement €59, print €125, online+print €125. De print-only optie (lokvogel) maakt de combo aantrekkelijk – niemand kiest print-only, maar het stuurt de keuze." },
+      { domain: "science", icon: "🔬", text: "Ariely (2008): zonder lokvogel koos 68% de goedkope optie. Met lokvogel koos 84% de dure combo. Eén nutteloze optie verschoof het beslisgedrag radicaal." },
+      { domain: "daily", icon: "🏠", text: "Een bioscoop biedt kleine popcorn (€4), grote (€7), en medium (€6.50). De medium is de lokvogel: bijna net zo duur als groot, wat groot de 'logische' keuze maakt." }
+    ],
+    prerequisites: ["anchoring", "framing-effect"],
+    unlocks: [],
+    relatedPrinciples: ["anchoring", "framing-effect", "choice-overload"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een webshop verkoopt basisplan (€10) en premiumplan (€25). Conversie naar premium is laag. Wat zou helpen volgens het lokvogel-effect?",
+      options: ["Een derde, goedkoper plan toevoegen", "Een tussenplan toevoegen dat bijna net zo duur is als premium maar met minder features", "De prijs van premium verlagen", "Het basisplan verwijderen"],
+      correct: 1,
+      feedback: "Lokvogel-effect: een tussenplan dat dicht bij de premiumprijs zit maar minder biedt, maakt premium de 'logische' keuze. De lokvogel wordt zelf nauwelijks gekozen."
+    }],
+    creativePrompt: "Zoek een voorbeeld van het lokvogel-effect in een prijsstructuur die je onlangs bent tegengekomen.",
+    aiHelperPrompts: [
+      "Waar zie jij het lokvogel-effect in abonnementen of menukaarten?",
+      "Hoe kun je jezelf beschermen tegen het lokvogel-effect?",
+      "Is het ethisch om het lokvogel-effect te gebruiken in prijsbeleid?"
+    ]
+  },
+  {
+    id: "principal-agent",
+    title: "Principaal-agentprobleem",
+    difficulty: 3,
+    emoji: "🤵",
+    academicCategory: "Besliskunde",
+    skillCategory: "Beter Beslissen",
+    tags: ["Economie", "Organisatie", "Prikkels", "Beter Beslissen"],
+    definition: "Wanneer een persoon (de agent) handelt namens een ander (de principaal), kunnen hun belangen uiteenlopen. De agent kan zijn eigen belang nastreven ten koste van de principaal, vooral als de principaal het gedrag niet kan controleren.",
+    abstractExample: "Principaal P huurt agent A in voor doel D. A heeft eigen belangen I ≠ D. Als P niet kan monitoren of A echt D nastreeft, kan A I nastreven. De oplossing: prikkels alignen of monitoring verbeteren.",
+    examples: [
+      { domain: "business", icon: "💼", text: "Aandeelhouders (principaal) huren een CEO (agent) in. De CEO kan risicovolle bonusstructuren nastreven die hemzelf verrijken maar het bedrijf op lange termijn schaden." },
+      { domain: "science", icon: "🔬", text: "Een patiënt (principaal) vertrouwt een arts (agent). De arts kan onnodige behandelingen voorschrijven als hij per behandeling wordt betaald – zijn belang is niet identiek aan dat van de patiënt." },
+      { domain: "daily", icon: "🏠", text: "Je huurt een makelaar in om je huis te verkopen. De makelaar verdient een percentage – hij wil snel verkopen, jij wilt de hoogste prijs. Jullie belangen zijn niet gelijk." }
+    ],
+    prerequisites: ["moral-hazard", "opportunity-cost"],
+    unlocks: [],
+    relatedPrinciples: ["moral-hazard", "goodharts-law", "tragedy-commons"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een financieel adviseur verdient commissie op producten die hij verkoopt. Wat is het principaal-agentprobleem hier?",
+      options: ["De adviseur is niet gekwalificeerd", "De adviseur heeft een prikkel om dure producten te adviseren die niet per se het best zijn voor de klant", "De klant begrijpt financiën niet", "Commissie is altijd onethisch"],
+      correct: 1,
+      feedback: "Principaal-agentprobleem: de adviseur (agent) heeft een financiële prikkel die afwijkt van het belang van de klant (principaal). De oplossing is fee-based advies of transparantieverplichtingen."
+    }],
+    creativePrompt: "Identificeer drie relaties in jouw leven waar een principaal-agentprobleem speelt. Hoe zijn de prikkels gestructureerd?",
+    aiHelperPrompts: [
+      "Welke dienstverleners in jouw leven hebben prikkels die niet aansluiten bij jouw belang?",
+      "Hoe kun je principaal-agentproblemen oplossen zonder micromanagement?",
+      "Wanneer is vertrouwen voldoende en wanneer zijn contractuele prikkels nodig?"
+    ]
+  },
+  {
+    id: "information-asymmetry",
+    title: "Informatieasymmetrie",
+    difficulty: 3,
+    emoji: "🔍",
+    academicCategory: "Besliskunde",
+    skillCategory: "Beter Beslissen",
+    tags: ["Economie", "Markt", "Informatie", "Beter Beslissen"],
+    definition: "Wanneer één partij in een transactie meer of betere informatie heeft dan de andere, ontstaan marktverstoring en wantrouwen. De beter geïnformeerde partij kan dit uitbuiten.",
+    abstractExample: "Verkoper V kent de kwaliteit van product P; koper K niet. V kan lage kwaliteit verkopen tegen hoge-kwaliteitsprijzen. K anticipeert dit → K biedt minder → hoge-kwaliteitsverkopers verlaten de markt → 'markt voor citroenen'.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Akerlof's Market for Lemons (1970): op de tweedehandsautomarkt weet de verkoper of de auto goed of slecht is. Kopers bieden gemiddeld → goede auto's verdwijnen van de markt." },
+      { domain: "business", icon: "💼", text: "Bij een fusie weet het verkopende bedrijf meer over verborgen problemen dan de koper. Due diligence probeert deze informatiekloof te dichten." },
+      { domain: "daily", icon: "🏠", text: "De huisverkoper weet van lekkage in de kelder; de koper niet. Zonder verplichte bouwkundige keuring profiteert de verkoper van informatieasymmetrie." }
+    ],
+    prerequisites: ["moral-hazard", "principal-agent"],
+    unlocks: [],
+    relatedPrinciples: ["moral-hazard", "principal-agent", "scarcity-effect"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Waarom bieden verzekeraars geen perfecte dekking voor alle risico's?",
+      options: ["Te duur om te berekenen", "Informatieasymmetrie: de verzekerde weet meer over zijn eigen risico dan de verzekeraar, wat leidt tot adverse selectie", "Verzekeraars zijn hebzuchtig", "De wet verbiedt het"],
+      correct: 1,
+      feedback: "Informatieasymmetrie leidt tot adverse selectie: vooral mensen met hoge risico's kopen verzekeringen. De verzekeraar kan niet onderscheiden wie hoog of laag risico is."
+    }],
+    creativePrompt: "Beschrijf een transactie die je hebt gedaan waarbij de andere partij duidelijk meer informatie had. Hoe pakte dat uit?",
+    aiHelperPrompts: [
+      "In welke markten is informatieasymmetrie het grootst?",
+      "Hoe helpen garanties en reviews om informatieasymmetrie te verminderen?",
+      "Waarom zijn reviews en ratings zo belangrijk in de deeleconomie?"
+    ]
+  },
+  {
+    id: "red-herring",
+    title: "Afleidingsmanoeuvre (Red Herring)",
+    difficulty: 1,
+    emoji: "🐟",
+    academicCategory: "Retorica",
+    skillCategory: "Manipulatie Herkennen",
+    tags: ["Retorica", "Drogreden", "Afleidng", "Manipulatie Herkennen"],
+    definition: "Een irrelevant onderwerp introduceren om af te leiden van het oorspronkelijke argument. De afleidingsmanoeuvre verschuift de aandacht naar iets dat niet ter zake doet.",
+    abstractExample: "Vraag Q wordt gesteld. In plaats van Q te beantwoorden, introduceert de spreker onderwerp R dat geen verband heeft met Q maar emotioneel of interessant genoeg is om de aandacht te verschuiven.",
+    examples: [
+      { domain: "business", icon: "💼", text: "Journalist: 'Waarom zijn de winstcijfers gedaald?' CEO: 'We investeren enorm in duurzaamheid en hebben net een prijs gewonnen.' De vraag wordt niet beantwoord." },
+      { domain: "science", icon: "🔬", text: "'Moeten we kernenergie overwegen voor CO₂-reductie?' 'Maar denk aan de armoede in ontwikkelingslanden!' – relevant, maar niet het onderwerp." },
+      { domain: "daily", icon: "🏠", text: "Kind: 'Waarom mag ik niet naar dat feestje?' Ouder: 'Heb je je huiswerk al af?' De vraag wordt ontweken met een nieuw onderwerp." }
+    ],
+    prerequisites: ["straw-man-fallacy"],
+    unlocks: [],
+    relatedPrinciples: ["straw-man-fallacy", "ad-hominem", "tu-quoque"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een politicus wordt gevraagd over stijgende zorgkosten en antwoordt met een verhaal over zijn bezoek aan een school. Wat is dit?",
+      options: ["Een goed antwoord", "Een afleidingsmanoeuvre: het schoolverhaal is irrelevant voor de vraag over zorgkosten", "Een metafoor", "Een persoonlijke anekdote als bewijs"],
+      correct: 1,
+      feedback: "Afleidingsmanoeuvre: het schoolverhaal is interessant maar heeft niets met zorgkosten te maken. De politicus vermijdt de oorspronkelijke vraag door de aandacht te verschuiven."
+    }],
+    creativePrompt: "Herken een afleidingsmanoeuvre in een recent debat, interview of gesprek dat je hebt gevolgd.",
+    aiHelperPrompts: [
+      "Hoe herken je dat iemand de vraag ontwijkt in plaats van beantwoordt?",
+      "Wanneer is een zijpad relevante context en wanneer is het afleiding?",
+      "Hoe breng je een gesprek terug naar de oorspronkelijke vraag?"
+    ]
+  },
+  {
+    id: "circular-reasoning",
+    title: "Cirkelredenering",
+    difficulty: 1,
+    emoji: "🔄",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "Een argument waarbij de conclusie al verondersteld wordt in de premisse. Het argument bewijst zichzelf met zichzelf – er wordt geen onafhankelijk bewijs geleverd.",
+    abstractExample: "Premisse: A is waar omdat B. Bewijs voor B: B is waar omdat A. Het argument is een gesloten cirkel zonder externe onderbouwing.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "'De Bijbel is waar want het is het woord van God. Hoe weet je dat? Omdat de Bijbel dat zegt.' De bron wordt bewezen door zichzelf." },
+      { domain: "business", icon: "💼", text: "'Dit is het beste product op de markt. Hoe weet je dat? Omdat klanten het kopen. Waarom kopen ze het? Omdat het het beste is.' De conclusie is de premisse." },
+      { domain: "daily", icon: "🏠", text: "'Ik heb gelijk omdat ik altijd gelijk heb. Hoe weet je dat? Omdat ik nu ook gelijk heb.' Er is geen onafhankelijk bewijs." }
+    ],
+    prerequisites: ["modus-ponens"],
+    unlocks: [],
+    relatedPrinciples: ["burden-of-proof", "appeal-to-authority", "falsification"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "'Vrijhandel is goed, want het stimuleert de economie. Waarom stimuleert het de economie? Omdat vrijhandel goed is.' Wat is het probleem?",
+      options: ["Het argument is te kort", "Cirkelredenering: de conclusie wordt als bewijs voor zichzelf gebruikt", "Vrijhandel is niet altijd goed", "Het ontbreekt aan data"],
+      correct: 1,
+      feedback: "Cirkelredenering: de conclusie ('vrijhandel is goed') wordt als premisse gebruikt om diezelfde conclusie te ondersteunen. Er is geen onafhankelijk bewijs."
+    }],
+    creativePrompt: "Zoek een cirkelredenering in een reclame, politiek debat of dagelijks gesprek.",
+    aiHelperPrompts: [
+      "Hoe herken je dat een argument eigenlijk een cirkelredenering is?",
+      "Welke overtuigingen in jouw leven zijn misschien cirkelredeneringen?",
+      "Hoe doorbreek je een cirkelredenering in een discussie?"
+    ]
+  },
+  {
+    id: "composition-fallacy",
+    title: "Drogreden van Compositie",
+    difficulty: 2,
+    emoji: "🧱",
+    academicCategory: "Logica",
+    skillCategory: "Beter Redeneren",
+    tags: ["Logica", "Drogreden", "Geheel-Deel", "Beter Redeneren"],
+    definition: "De foutieve aanname dat wat waar is voor de delen, ook waar moet zijn voor het geheel (of andersom). Eigenschappen van individuen gelden niet automatisch voor de groep, en groepseigenschappen niet voor individuen.",
+    abstractExample: "Compositie: elke speler in team T is uitstekend, dus T is een uitstekend team. Divisie: bedrijf B is winstgevend, dus elke afdeling van B is winstgevend. Beide zijn ongeldig.",
+    examples: [
+      { domain: "business", icon: "💼", text: "Elk individu in het team is briljant, maar het team als geheel functioneert slecht door slechte communicatie. Individuele kwaliteit garandeert geen groepsprestatie." },
+      { domain: "science", icon: "🔬", text: "Elke atoom in een tafel is grotendeels lege ruimte, maar de tafel is niet grotendeels lege ruimte (in de functionele zin). Microscopische eigenschappen vertalen niet direct naar macroscopische." },
+      { domain: "daily", icon: "🏠", text: "Elk ingrediënt in een gerecht is heerlijk, maar samen smaken ze vreselijk. De som is niet altijd gelijk aan de delen." }
+    ],
+    prerequisites: ["deduction-induction"],
+    unlocks: [],
+    relatedPrinciples: ["hasty-generalization", "ecological-fallacy", "fundamental-attribution-error"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "'Waterstof is brandbaar. Zuurstof ondersteunt verbranding. Dus water (H₂O) moet brandbaar zijn.' Wat is de fout?",
+      options: ["Waterstof is niet brandbaar", "Drogreden van compositie: eigenschappen van de delen gelden niet automatisch voor het geheel", "Water kan wel branden", "Dit is een tegenspraak"],
+      correct: 1,
+      feedback: "Drogreden van compositie: de chemische eigenschappen van waterstof en zuurstof apart zeggen niets over de eigenschappen van water als verbinding."
+    }],
+    creativePrompt: "Bedenk een voorbeeld waarbij eigenschappen van individuen niet opgaan voor de groep.",
+    aiHelperPrompts: [
+      "Wanneer gelden groepseigenschappen wel voor individuen en wanneer niet?",
+      "Hoe verschilt de drogreden van compositie van een overhaaste generalisatie?",
+      "Waar zie jij deze drogreden in economische of politieke argumenten?"
+    ]
+  },
+  {
+    id: "no-true-scotsman",
+    title: "Geen-Echte-Schot",
+    difficulty: 2,
+    emoji: "🏴",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Definitie", "Beter Argumenteren"],
+    definition: "Een ad-hoc aanpassing van de definitie om een tegenvoorbeeld te ontkrachten. In plaats van de claim te herzien, wordt het tegenvoorbeeld weggedefinieerd als 'geen echte' vertegenwoordiger van de groep.",
+    abstractExample: "Claim: 'Geen A doet X.' Tegenvoorbeeld: 'B is een A en doet X.' Reactie: 'B is geen echte A.' De definitie wordt aangepast om de claim immuun te maken voor weerlegging.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "'Echte wetenschap levert altijd reproduceerbare resultaten.' Wanneer een studie niet reproceert: 'Dat was geen echte wetenschap.' De definitie wordt aangepast om de claim te beschermen." },
+      { domain: "business", icon: "💼", text: "'Goede managers verliezen nooit klanten.' Wanneer een gerespecteerde manager klanten verliest: 'Hij was dan geen echte goede manager.' De definitie verschuift." },
+      { domain: "daily", icon: "🏠", text: "'Nederlanders zijn altijd direct.' Wanneer een Nederlander diplomatiek is: 'Ja, maar dat is geen echte Nederlander.' Het tegenvoorbeeld wordt weggedefinieerd." }
+    ],
+    prerequisites: ["straw-man-fallacy", "falsification"],
+    unlocks: [],
+    relatedPrinciples: ["falsification", "confirmation-bias", "circular-reasoning"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "'Veganisten eten nooit dierlijke producten.' Iemand noemt een zelfverklaarde veganist die soms vis eet. Reactie: 'Dan is die persoon geen echte veganist.' Wat is dit?",
+      options: ["Een correcte observatie", "Geen-Echte-Schot: de definitie wordt aangepast om het tegenvoorbeeld uit te sluiten", "Een logisch argument", "Een empirische weerlegging"],
+      correct: 1,
+      feedback: "Geen-Echte-Schot: in plaats van de oorspronkelijke claim te nuanceren, wordt het tegenvoorbeeld eenvoudigweg buitengesloten door de definitie aan te passen."
+    }],
+    creativePrompt: "Herken een moment waarop jij (of iemand anders) een definitie aanpaste om een tegenvoorbeeld weg te wuiven.",
+    aiHelperPrompts: [
+      "Hoe onderscheid je een legitieme herdefiniëring van een Geen-Echte-Schot?",
+      "In welke discussies zie je deze drogreden het vaakst?",
+      "Hoe reageer je effectief als iemand deze drogreden gebruikt?"
+    ]
+  },
+  {
+    id: "is-ought-problem",
+    title: "Sein-Sollen-probleem (Hume)",
+    difficulty: 3,
+    emoji: "⚖️",
+    academicCategory: "Ethiek",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Ethiek", "Logica", "Filosofie", "Beter Argumenteren"],
+    definition: "Uit hoe de wereld is (feiten), kun je niet logisch afleiden hoe de wereld zou moeten zijn (normen). De sprong van 'is' naar 'ought' vereist een aanvullende morele premisse.",
+    abstractExample: "Premisse: X is het geval (feit). Conclusie: X behoort het geval te zijn (norm). Dit is ongeldig zonder een aanvullende normatieve premisse die de brug slaat van feiten naar waarden.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "'Dieren in de natuur doden elkaar. Dus is het moreel acceptabel voor mensen om te doden.' Het natuurlijke gedrag van dieren zegt niets over menselijke moraal." },
+      { domain: "business", icon: "💼", text: "'De markt bepaalt dat CEO's 300× meer verdienen dan werknemers. Dus is dat eerlijk.' Marktuitkomsten zijn feiten, geen morele rechtvaardiging." },
+      { domain: "daily", icon: "🏠", text: "'Mensen zijn van nature egoïstisch. Dus moeten we accepteren dat iedereen alleen voor zichzelf zorgt.' De menselijke natuur dicteert niet onze morele standaarden." }
+    ],
+    prerequisites: ["deduction-induction", "appeal-to-nature"],
+    unlocks: [],
+    relatedPrinciples: ["appeal-to-nature", "burden-of-proof", "false-dilemma"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "'Evolutie beloont de sterkste. Dus moeten we de zwakkeren niet helpen.' Welk probleem zit hierin?",
+      options: ["Evolutie werkt niet zo", "Sein-Sollen: uit een feit over evolutie kun je geen morele norm afleiden", "Sociale selectie is beter", "Dit is een cirkelredenering"],
+      correct: 1,
+      feedback: "Sein-Sollen: zelfs als de premisse over evolutie correct zou zijn, kun je daaruit niet afleiden wat we moreel moeten doen. Feiten ≠ normen."
+    }],
+    creativePrompt: "Zoek een argument in het publieke debat dat een morele conclusie trekt uit een feitelijke beschrijving.",
+    aiHelperPrompts: [
+      "Welke ethische argumenten in het nieuws bevatten een verborgen Sein-Sollen-sprong?",
+      "Hoe herken je dat iemand een norm presenteert als een feit?",
+      "Wat is de rol van waarden en normen naast feiten in goede argumentatie?"
+    ]
+  },
+  {
+    id: "normalcy-bias",
+    title: "Normaliteitsbias",
+    difficulty: 2,
+    emoji: "🙈",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Beslissen",
+    tags: ["Psychologie", "Bias", "Risico", "Beter Beslissen"],
+    definition: "We onderschatten de waarschijnlijkheid en impact van catastrofes omdat we ervan uitgaan dat dingen blijven zoals ze altijd zijn geweest. 'Het is nooit eerder gebeurd, dus het zal niet gebeuren.'",
+    abstractExample: "Gegeven dreiging D met lage maar reële waarschijnlijkheid, neigen mensen naar inactie en ontkenning omdat D niet past in hun 'normale' ervaringswereld. Pas als D manifest is, reageren ze – vaak te laat.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Bewoners van Pompeii negeerden waarschuwingssignalen van de Vesuvius omdat 'hij nooit eerder was uitgebarsten in hun leven.' Normaliteitsbias verhinderde evacuatie." },
+      { domain: "business", icon: "💼", text: "Banken voor 2008: 'Huizenprijzen zijn nog nooit landelijk gedaald.' Normaliteitsbias maakte risicomanagers blind voor de mogelijkheid van een systeemcrash." },
+      { domain: "daily", icon: "🏠", text: "Bewoners in overstromingsgebieden weigeren te evacueren: 'Het water is hier nooit zo hoog gekomen.' Ze wegen decennia van normaliteit zwaarder dan de huidige dreiging." }
+    ],
+    prerequisites: ["availability-heuristic", "black-swan"],
+    unlocks: [],
+    relatedPrinciples: ["black-swan", "availability-heuristic", "status-quo-bias"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een IT-manager zegt: 'We hebben nog nooit een cyberaanval gehad, dus we hoeven geen extra beveiligingsbudget.' Wat illustreert dit?",
+      options: ["Goede risico-inschatting", "Normaliteitsbias: het ontbreken van eerdere incidenten garandeert niet dat het niet kan gebeuren", "De manager heeft gelijk", "Dit is status-quo-bias"],
+      correct: 1,
+      feedback: "Normaliteitsbias: de afwezigheid van eerdere incidenten wordt verward met de afwezigheid van risico. 'Het is nooit gebeurd' ≠ 'het kan niet gebeuren.'"
+    }],
+    creativePrompt: "Welke risico's in jouw leven of werk negeer je omdat 'het nog nooit is gebeurd'?",
+    aiHelperPrompts: [
+      "Hoe verschilt normaliteitsbias van optimismebias?",
+      "Welke historische rampen werden verergerd door normaliteitsbias?",
+      "Hoe kun je je voorbereiden op zeldzame maar impactvolle gebeurtenissen?"
+    ]
+  },
+  {
+    id: "zero-risk-bias",
+    title: "Zero-risicobias",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Besliskunde",
+    skillCategory: "Beter Beslissen",
+    tags: ["Besliskunde", "Risico", "Bias", "Beter Beslissen"],
+    definition: "We prefereren het compleet elimineren van een klein risico boven het veel sterker verminderen van een groot risico. De aantrekkingskracht van 'nul risico' overstijgt rationele afwegingen.",
+    abstractExample: "Keuze A: verlaag risico van 5% naar 0% (eliminatie van klein risico). Keuze B: verlaag risico van 50% naar 10% (grotere absolute verlaging). Mensen kiezen vaak A, ook al redt B meer levens.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "De FDA besteedt onevenredig veel middelen aan het elimineren van zeldzame bijwerkingen (0,01% → 0%) terwijl grotere gezondheidsrisico's (roken, obesitas) meer levens zouden redden." },
+      { domain: "business", icon: "💼", text: "Een bedrijf investeert miljoenen om een 0,1% defectpercentage naar 0% te brengen, terwijl hetzelfde budget de klantretentie van 60% naar 80% kon brengen – veel meer impact." },
+      { domain: "daily", icon: "🏠", text: "Je koopt een extra slot voor een deur die al twee sloten heeft (risico bijna nul) terwijl je achterdeur wagenwijd openstaat." }
+    ],
+    prerequisites: ["risk-aversion", "expected-value"],
+    unlocks: [],
+    relatedPrinciples: ["risk-aversion", "loss-aversion", "planning-fallacy"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Overheid A elimineert een zeldzame voedselbesmetting (10 gevallen/jaar → 0). Overheid B halveert een veelvoorkomende ziekte (10.000 → 5.000). Welke redt meer levens?",
+      options: ["Overheid A, want zero risk is beter", "Overheid B, want 5.000 voorkomen gevallen is meer dan 10", "Beide zijn gelijk", "Dat hangt af van de kosten"],
+      correct: 1,
+      feedback: "Zero-risicobias: de emotionele aantrekkingskracht van 'nul risico' maakt ons blind voor het feit dat Overheid B 5.000 gevallen voorkomt versus 10 bij Overheid A."
+    }],
+    creativePrompt: "Waar in jouw leven besteed je onevenredig veel aandacht aan het elimineren van kleine risico's ten koste van grotere?",
+    aiHelperPrompts: [
+      "Hoe beïnvloedt zero-risicobias overheidsbeleid over voedselveiligheid of milieu?",
+      "Waarom voelt 'nul risico' zo bevredigend vergeleken met risicoverkleining?",
+      "Hoe maak je betere risicovergelijkingen op basis van verwachte waarde?"
+    ]
+  },
+  {
+    id: "moral-licensing",
+    title: "Morele Licentie",
+    difficulty: 2,
+    emoji: "😈",
+    academicCategory: "Psychologie",
+    skillCategory: "Mensen Begrijpen",
+    tags: ["Psychologie", "Ethiek", "Gedrag", "Mensen Begrijpen"],
+    definition: "Na het doen van iets goeds geven we onszelf onbewust toestemming om iets slechts te doen. Een goede daad wordt een 'moreel krediet' dat we mogen uitgeven aan toekomstig slecht gedrag.",
+    abstractExample: "Actie A (moreel goed) → gevoel van moreel krediet → actie B (moreel twijfelachtig) voelt gerechtvaardigd. De goede daad 'compenseert' de slechte in ons hoofd.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Sachdeva et al. (2009): deelnemers die zichzelf als moreel beschreven, doneerden minder aan goede doelen. Het positieve zelfbeeld gaf hen 'toestemming' om minder genereus te zijn." },
+      { domain: "business", icon: "💼", text: "Een bedrijf met een sterk duurzaamheidsprogramma voelt zich gerechtvaardigd om op andere vlakken minder ethisch te handelen: 'We doen al zo veel voor het milieu.'" },
+      { domain: "daily", icon: "🏠", text: "'Ik ben naar de sportschool geweest, dus ik mag vanavond een hele pizza eten.' De sportieve inspanning geeft morele licentie voor ongezond gedrag." }
+    ],
+    prerequisites: ["cognitive-dissonance"],
+    unlocks: [],
+    relatedPrinciples: ["cognitive-dissonance", "self-serving-bias", "mental-accounting"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Je doet vrijwilligerswerk en neemt daarna een taxi voor een rit van 500 meter. Wat kan hier spelen?",
+      options: ["Je bent moe van het vrijwilligerswerk", "Morele licentie: de goede daad geeft onbewust toestemming voor een minder milieuvriendelijke keuze", "Taxi's zijn soms nodig", "Je bent gewoon praktisch"],
+      correct: 1,
+      feedback: "Morele licentie: het vrijwilligerswerk fungeert als moreel krediet. Je voelt je gerechtvaardigd om een minder 'deugdzame' keuze te maken omdat je al iets goeds hebt gedaan."
+    }],
+    creativePrompt: "Herken een moment waarop je jezelf iets 'gunde' na het doen van iets goeds. Was die compensatie bewust?",
+    aiHelperPrompts: [
+      "Hoe beïnvloedt morele licentie duurzaam gedrag (bijv. na het kopen van groene producten)?",
+      "Hoe kun je morele licentie bij jezelf herkennen en tegengaan?",
+      "Wanneer is beloning na een goede daad gezond en wanneer is het morele licentie?"
+    ]
+  },
+  {
+    id: "ingroup-bias",
+    title: "Ingroepbias",
+    difficulty: 2,
+    emoji: "🏘️",
+    academicCategory: "Psychologie",
+    skillCategory: "Mensen Begrijpen",
+    tags: ["Psychologie", "Groepsgedrag", "Bias", "Mensen Begrijpen"],
+    definition: "We bevoordelen automatisch leden van onze eigen groep en beoordelen buitenstaanders negatiever. Deze voorkeur ontstaat snel, op basis van zelfs willekeurige groepsindeling.",
+    abstractExample: "Persoon P behoort tot groep G. P beoordeelt leden van G positiever op competentie, betrouwbaarheid en moreel dan leden van groep H, ongeacht individueel bewijs.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Tajfel's minimale-groepsexperimenten (1970): zelfs willekeurige groepsindeling (op basis van een muntworp) leidde tot voorkeur voor de eigen groep bij het verdelen van middelen." },
+      { domain: "business", icon: "💼", text: "In sollicitatieprocedures worden kandidaten met dezelfde achtergrond als de interviewer systematisch hoger beoordeeld – niet op basis van kwalificaties maar op basis van herkenning." },
+      { domain: "daily", icon: "🏠", text: "Sportfans schrijven de overwinning van hun team toe aan talent en het verlies aan pech. Voor het tegenovergestelde team geldt het omgekeerde." }
+    ],
+    prerequisites: ["fundamental-attribution-error", "confirmation-bias"],
+    unlocks: [],
+    relatedPrinciples: ["fundamental-attribution-error", "halo-effect", "self-serving-bias"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Twee identieke cv's worden beoordeeld. De ene heeft dezelfde universiteit als de beoordelaar. Wat voorspelt ingroepbias?",
+      options: ["Beide worden gelijk beoordeeld", "Het cv van de mede-alumnus wordt hoger beoordeeld, ongeacht de inhoud", "Het andere cv wordt hoger beoordeeld", "Universiteit speelt geen rol"],
+      correct: 1,
+      feedback: "Ingroepbias: gedeeld lidmaatschap (in dit geval dezelfde universiteit) creëert een onbewuste voorkeur die losstaat van de feitelijke kwalificaties."
+    }],
+    creativePrompt: "Identificeer drie groepen waartoe je behoort. Hoe beïnvloedt dit je beoordeling van buitenstaanders?",
+    aiHelperPrompts: [
+      "Hoe manifesteert ingroepbias zich in jouw werkomgeving?",
+      "Hoe kun je ingroepbias tegengaan in selectieprocedures?",
+      "Wanneer is groepsvoorkeur functioneel en wanneer schadelijk?"
+    ]
+  },
+  {
+    id: "affect-heuristic",
+    title: "Affect Heuristiek",
+    difficulty: 2,
+    emoji: "💗",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Beslissen",
+    tags: ["Psychologie", "Emotie", "Beslissen", "Beter Beslissen"],
+    definition: "We laten onze huidige emotie de inschatting van risico's en voordelen bepalen. Als iets een positief gevoel oproept, schatten we de voordelen hoger en de risico's lager in – en omgekeerd.",
+    abstractExample: "Als emotionele reactie E op stimulus S positief is, dan worden voordelen van S overschat en risico's onderschat. Als E negatief is, worden risico's overschat en voordelen onderschat. Emotie vervangt analyse.",
+    examples: [
+      { domain: "science", icon: "🔬", text: "Slovic et al.: deelnemers die een positief gevoel hadden bij kernenergie schatten de voordelen hoger en de risico's lager in. Negatief gevoel: omgekeerd. Feiten speelden nauwelijks een rol." },
+      { domain: "business", icon: "💼", text: "Beleggers die enthousiast zijn over een technologiebedrijf onderschatten de risico's. Wie bang is voor een sector overschat de risico's – ongeacht de fundamentele analyse." },
+      { domain: "daily", icon: "🏠", text: "Je beoordeelt een restaurant positiever als je in een goede stemming bent, en negatiever als je gestrest bent – los van de werkelijke kwaliteit van het eten." }
+    ],
+    prerequisites: ["availability-heuristic", "loss-aversion"],
+    unlocks: [],
+    relatedPrinciples: ["availability-heuristic", "halo-effect", "framing-effect"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Je hebt een fantastische vakantie in land X gehad. Nu wil je investeren in een bedrijf uit land X. Welk principe kan je oordeel vertekenen?",
+      options: ["Confirmation bias", "Affect heuristiek: je positieve emotie bij land X beïnvloedt je risico-inschatting van de investering", "Blootstellingseffect", "Halo-effect"],
+      correct: 1,
+      feedback: "Affect heuristiek: je positieve emotionele associatie met land X maakt je blinder voor de risico's van de investering. Gevoel vervangt rationele analyse."
+    }],
+    creativePrompt: "Beschrijf een beslissing die je nam op basis van gevoel. Hoe zou je oordeel veranderen als je de emotie buiten beschouwing liet?",
+    aiHelperPrompts: [
+      "Wanneer is intuïtie (gevoel) een goede leidraad en wanneer niet?",
+      "Hoe kun je de affect heuristiek herkennen bij jezelf?",
+      "Hoe beïnvloedt je stemming je inschatting van risico's op dit moment?"
     ]
   }
 ];
