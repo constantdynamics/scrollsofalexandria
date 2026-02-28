@@ -15,8 +15,6 @@ const PrinciplePage = () => {
     markPrincipleAsRead,
     getRecommendedLearningStyle,
     trackLearningStyleChoice,
-    isPrincipleUnlocked,
-    userData
   } = useUser();
 
   const [learningStyle, setLearningStyle] = useState('');
@@ -26,17 +24,16 @@ const PrinciplePage = () => {
 
   const principle = getPrincipleById(principleId);
   const progress = getPrincipleProgress(principleId);
-  const isUnlocked = isPrincipleUnlocked(principleId);
 
   useEffect(() => {
-    if (!principle || !isUnlocked) {
+    if (!principle) {
       navigate('/home');
       return;
     }
 
     const recommended = getRecommendedLearningStyle();
     setLearningStyle(recommended);
-  }, [principle, isUnlocked, navigate, getRecommendedLearningStyle]);
+  }, [principle, navigate, getRecommendedLearningStyle]);
 
   useEffect(() => {
     if (!hasMarkedAsRead && !progress.activities.read) {
