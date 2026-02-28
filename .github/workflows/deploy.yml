@@ -3,7 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - claude/improve-webapp-ApbWk
+      - claude/scrolls-wisdom-app-IfttL
+      - claude/redesign-webapp-ui-TX0mS
   workflow_dispatch:
 
 permissions:

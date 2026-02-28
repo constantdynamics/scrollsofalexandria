@@ -6,7 +6,7 @@ import { principles, getCategories, getPrinciplesByCategory } from '../data/prin
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { userData, getUserStats, isPrincipleUnlocked } = useUser();
+  const { userData, getUserStats } = useUser();
   const [organizationSystem, setOrganizationSystem] = useState(userData?.preferences?.organization || 'academic');
   const [searchQuery, setSearchQuery] = useState('');
   const [difficultyFilter, setDifficultyFilter] = useState('all');
@@ -16,11 +16,10 @@ const HomePage = () => {
   const featuredPrinciple = useMemo(() => {
     const today = new Date().toDateString();
     const dayHash = today.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    const unlockedPrinciples = principles.filter(p => isPrincipleUnlocked(p.id));
-    if (unlockedPrinciples.length === 0) return null;
-    const index = dayHash % unlockedPrinciples.length;
-    return unlockedPrinciples[index];
-  }, [isPrincipleUnlocked]);
+    if (principles.length === 0) return null;
+    const index = dayHash % principles.length;
+    return principles[index];
+  }, []);
 
   const categories = useMemo(() => {
     return getCategories(organizationSystem);
@@ -45,7 +44,6 @@ const HomePage = () => {
 
   const getCategoryProgress = (category) => {
     const categoryPrinciples = getPrinciplesByCategory(category, organizationSystem);
-    const unlockedCount = categoryPrinciples.filter(p => isPrincipleUnlocked(p.id)).length;
     const completedCount = categoryPrinciples.filter(p => {
       const progress = userData?.principleProgress[p.id];
       return progress?.masteryPercentage === 100;
@@ -53,16 +51,13 @@ const HomePage = () => {
 
     return {
       total: categoryPrinciples.length,
-      unlocked: unlockedCount,
       completed: completedCount,
       percentage: (completedCount / categoryPrinciples.length) * 100
     };
   };
 
   const handlePrincipleClick = (principleId) => {
-    if (isPrincipleUnlocked(principleId)) {
-      navigate(`/principle/${principleId}`);
-    }
+    navigate(`/principle/${principleId}`);
   };
 
   return (
@@ -183,13 +178,11 @@ const HomePage = () => {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {filteredPrinciples.map((principle, index) => {
-                  const isUnlocked = isPrincipleUnlocked(principle.id);
                   const principleProgress = userData?.principleProgress[principle.id];
                   return (
                     <PrincipleCard
                       key={principle.id}
                       principle={principle}
-                      isUnlocked={isUnlocked}
                       principleProgress={principleProgress}
                       onClick={() => handlePrincipleClick(principle.id)}
                       index={index}
@@ -316,14 +309,12 @@ const HomePage = () => {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2.5">
                       {categoryPrinciples.map(principle => {
-                        const isUnlocked = isPrincipleUnlocked(principle.id);
                         const principleProgress = userData?.principleProgress[principle.id];
 
                         return (
                           <PrincipleCard
                             key={principle.id}
                             principle={principle}
-                            isUnlocked={isUnlocked}
                             principleProgress={principleProgress}
                             onClick={() => handlePrincipleClick(principle.id)}
                             compact
@@ -356,54 +347,46 @@ const DifficultyBadge = ({ difficulty }) => {
   );
 };
 
-const PrincipleCard = ({ principle, isUnlocked, principleProgress, onClick, compact, index = 0 }) => {
+const PrincipleCard = ({ principle, principleProgress, onClick, compact, index = 0 }) => {
   return (
     <motion.div
       initial={compact ? undefined : { opacity: 0, y: 10 }}
       animate={compact ? undefined : { opacity: 1, y: 0 }}
       transition={{ delay: index * 0.04 }}
-      whileHover={isUnlocked ? { y: -2 } : {}}
+      whileHover={{ y: -2 }}
       onClick={onClick}
-      role={isUnlocked ? 'button' : undefined}
-      tabIndex={isUnlocked ? 0 : undefined}
-      onKeyDown={isUnlocked ? (e) => e.key === 'Enter' && onClick() : undefined}
-      aria-label={isUnlocked ? `Open principe: ${principle.title}` : `Vergrendeld principe`}
-      className={`p-3.5 rounded-xl border transition-all ${
-        isUnlocked
-          ? 'border-border bg-surface hover:border-primary/40 cursor-pointer hover:shadow-sm'
-          : 'border-border bg-bg-alt opacity-40 cursor-not-allowed'
-      }`}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && onClick()}
+      aria-label={`Open principe: ${principle.title}`}
+      className="p-3.5 rounded-xl border transition-all border-border bg-surface hover:border-primary/40 cursor-pointer hover:shadow-sm"
     >
       <div className="flex items-start gap-3">
-        <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-          isUnlocked ? 'bg-primary-50' : 'bg-bg-alt'
-        }`}>
-          <span className="text-xl">{isUnlocked ? principle.emoji : '🔒'}</span>
+        <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary-50">
+          <span className="text-xl">{principle.emoji}</span>
         </div>
         <div className="flex-1 min-w-0">
           <h4 className="font-semibold text-text text-sm mb-0.5 truncate">
-            {isUnlocked ? principle.title : 'Vergrendeld'}
+            {principle.title}
           </h4>
           <div className="flex items-center gap-2 mb-1.5">
             <DifficultyBadge difficulty={principle.difficulty} />
-            {isUnlocked && principleProgress && principleProgress.masteryPercentage > 0 && (
+            {principleProgress && principleProgress.masteryPercentage > 0 && (
               <span className="text-xs font-semibold text-primary">
                 {principleProgress.masteryPercentage}%
               </span>
             )}
           </div>
-          {isUnlocked && !compact && (
+          {!compact && (
             <p className="text-xs text-text-secondary mb-2 line-clamp-2">{principle.definition.substring(0, 80)}...</p>
           )}
-          {isUnlocked && (
-            <div className="flex flex-wrap gap-1">
-              {principle.tags.slice(0, 2).map(tag => (
-                <span key={tag} className="text-xs bg-bg-alt text-text-muted px-2 py-0.5 rounded-md">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+          <div className="flex flex-wrap gap-1">
+            {principle.tags.slice(0, 2).map(tag => (
+              <span key={tag} className="text-xs bg-bg-alt text-text-muted px-2 py-0.5 rounded-md">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>
@@ -448,11 +431,19 @@ const getCategoryIcon = (category) => {
     'Wetenschapsfilosofie': '🔬',
     'Behavioral Economics': '💰',
     'Speltheorie': '🎲',
+    'Psychologie': '🧠',
+    'Besliskunde': '🎯',
+    'Systeemdenken': '🔄',
+    'Statistiek': '📊',
+    'Organisatie': '🏢',
     'Beter Argumenteren': '💬',
     'Manipulatie Herkennen': '🎭',
     'Complexiteit Begrijpen': '🧩',
     'Patronen Zien': '👁️',
     'Beslissingen Nemen': '🎯',
+    'Beter Redeneren': '🧩',
+    'Beter Beslissen': '🎯',
+    'Mensen Begrijpen': '👥',
     'Causale Verbanden Begrijpen': '🔗'
   };
   return icons[category] || '📖';
