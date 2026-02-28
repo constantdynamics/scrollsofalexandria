@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import * as storage from '../utils/localStorage';
+import { getPrincipleById } from '../data/principles';
 
 const UserContext = createContext();
 
@@ -190,7 +191,6 @@ export const UserProvider = ({ children }) => {
 
   // Check and unlock related principles
   const checkAndUnlockPrinciples = (principleId) => {
-    const { getPrincipleById } = require('../data/principles');
     const principle = getPrincipleById(principleId);
 
     if (!principle) return [];

@@ -1,4 +1,5 @@
 // LocalStorage utility functions for persisting user data
+import { getPrincipleById } from '../data/principles';
 
 const STORAGE_KEY = 'scrolls_of_wisdom_user_data';
 
@@ -264,8 +265,6 @@ export const unlockPrinciple = (principleId) => {
 
 // Check and unlock related principles based on current principle completion
 export const checkAndUnlockPrinciples = (principleId) => {
-  // Import is done inside function to avoid circular dependency
-  const { getPrincipleById } = require('../data/principles');
   const principle = getPrincipleById(principleId);
 
   if (!principle) return [];
