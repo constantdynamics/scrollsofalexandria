@@ -2551,5 +2551,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Denk aan de laatste feedback die je iemand gaf. Was het specifiek? Gedragsgericht? Toekomstgericht? Herschrijf het naar het effectieve model.",
     aiHelperPrompts: ["Wanneer geef ik feedback direct en wanneer wacht ik?", "Hoe geef ik feedback omhoog (aan mijn leidinggevende)?", "Hoe ontvang ik feedback constructief?"]
+  },
+
+  // ── BATCH B: LEIDERSCHAP & INVLOED ───────────────────────────
+  {
+    id: "servant-leadership",
+    title: "Dienend Leiderschap",
+    difficulty: 2,
+    emoji: "🫂",
+    academicCategory: "Leiderschap",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Leiderschap", "Organisatie", "Motivatie", "Beter Samenwerken"],
+    definition: "Een leiderschapsstijl waarbij de leider in de eerste plaats dient: de behoeften van medewerkers staan centraal. De leider verwijdert obstakels, ontwikkelt mensen en faciliteert hun succes.",
+    abstractExample: "Een traditionele leider vraagt: 'Hoe kunnen mijn medewerkers mij helpen mijn doelen te bereiken?' Een dienend leider vraagt: 'Hoe kan ik mijn medewerkers helpen hún doelen te bereiken — die samenvallen met die van de organisatie?'",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een ouder als dienend leider: niet het kind in dienst stellen van de ouders' plannen, maar de omgeving creëren waarin het kind kan floreren." },
+      { domain: "business", icon: "💼", text: "Bedrijven als Southwest Airlines en The Container Store bouwen culturen op dienend leiderschap — medewerkers eerst, klanten tweede, aandeelhouders derde." },
+      { domain: "science", icon: "🔬", text: "Robert Greenleaf introduceerde het concept in 1970; onderzoek toont correlatie tussen dienend leiderschap en hogere medewerkersbetrokkenheid en teameffectiviteit." }
+    ],
+    prerequisites: ["self-determination-theory"],
+    unlocks: ["psychological-safety"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de kernvraag van dienend leiderschap?", options: ["Hoe maximaliseer ik mijn macht?", "Hoe help ik mijn mensen te groeien en hun werk te doen?", "Hoe bereik ik mijn persoonlijke doelen via mijn team?", "Hoe zorg ik voor efficiency?"], correctIndex: 1, explanation: "Dienend leiderschap begint bij de behoeften van de mensen die worden geleid, niet bij de doelen of status van de leider zelf." }
+    ],
+    creativePrompt: "Als je een leiderschapsrol hebt: vraag je teamleden wat jij kunt doen om hun werk makkelijker te maken. Luister zonder te verdedigen. Wat hoor je?",
+    aiHelperPrompts: ["Hoe combineer ik dienend leiderschap met het halen van harde doelen?", "Wanneer is dienend leiderschap niet de juiste stijl?", "Hoe bouw ik een dienende cultuur in een hiërarchische organisatie?"]
+  },
+  {
+    id: "psychological-safety",
+    title: "Psychologische Veiligheid",
+    difficulty: 2,
+    emoji: "🛡️",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Organisatiepsychologie", "Leiderschap", "Teams", "Beter Samenwerken"],
+    definition: "De gedeelde overtuiging in een team dat het veilig is om interpersoonlijke risico's te nemen — ideeën delen, fouten toegeven, kritiek uiten — zonder angst voor vergelding of beschaming.",
+    abstractExample: "In een team met hoge psychologische veiligheid zegt iemand: 'Ik denk dat we een fout maken' en wordt serieus genomen. In een team zonder veiligheid wordt dezelfde persoon buitengesloten of ontslagen.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In een gezin met psychologische veiligheid kunnen kinderen fouten toegeven zonder angst voor bestraffing — wat eerlijkheid en leren bevordert." },
+      { domain: "business", icon: "💼", text: "Google's Project Aristotle (2015) ontdekte dat psychologische veiligheid de sterkste predictor is van teamprestaties — sterker dan individuele competentie." },
+      { domain: "science", icon: "🔬", text: "Amy Edmondson (Harvard) ontwikkelde het construct in 1999 en toonde aan dat hoge psychologische veiligheid leidt tot meer innovatie en minder vermijdbaar falen." }
+    ],
+    prerequisites: ["servant-leadership"],
+    unlocks: ["radical-candor"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe creëer je als leider psychologische veiligheid?", options: ["Door hoge eisen te stellen", "Door kwetsbaarheid te modelleren, nieuwsgierigheid te tonen en fouten te normaliseren", "Door geen kritiek te geven", "Door altijd positief te zijn"], correctIndex: 1, explanation: "Leiders die zelf fouten toegeven, vragen stellen en oordelen opschorten, signaleren dat het veilig is om hetzelfde te doen." }
+    ],
+    creativePrompt: "Beoordeel de psychologische veiligheid in jouw team of omgeving op een schaal van 1-10. Wat maakt het veilig of onveilig? Wat kun jij doen om het te verbeteren?",
+    aiHelperPrompts: ["Hoe meet ik psychologische veiligheid in mijn team?", "Hoe herstel ik psychologische veiligheid na een incident?", "Wat is het verschil tussen psychologische veiligheid en vriendelijkheid?"]
+  },
+  {
+    id: "situational-leadership",
+    title: "Situationeel Leiderschap",
+    difficulty: 2,
+    emoji: "🎛️",
+    academicCategory: "Leiderschap",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Leiderschap", "Organisatie", "Aanpassen", "Beter Samenwerken"],
+    definition: "Effectieve leiders passen hun stijl aan de situatie en het ontwikkelingsniveau van de medewerker aan. Er is geen one-size-fits-all leiderschap: beginners hebben sturing nodig, experts hebben autonomie nodig.",
+    abstractExample: "Een nieuwe medewerker heeft directe instructies en toezicht nodig (S1: directief). Een ervaren medewerker met laag vertrouwen heeft begeleiding en uitleg nodig (S2). Een competente medewerker met hoge motivatie heeft vrijheid (S4: delegeren).",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een ouder past zijn stijl aan de leeftijd en vaardigheid van het kind aan — meer directief met een kleuter, meer coachend met een tiener." },
+      { domain: "business", icon: "💼", text: "Een manager die alle medewerkers hetzelfde behandelt, demotiveert zowel beginners (te weinig sturing) als experts (te weinig autonomie)." },
+      { domain: "science", icon: "🔬", text: "Hersey & Blanchard ontwikkelden het situationeel leiderschapsmodel in 1969; het is sindsdien een van de meest gebruikte managementtrainingen worldwide." }
+    ],
+    prerequisites: ["servant-leadership"],
+    unlocks: ["delegation-principles"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke leiderschapsstijl past bij een competente medewerker met hoge motivatie?", options: ["Directief: stap-voor-stap instrueren", "Coachend: uitleggen en overtuigen", "Ondersteunend: aanmoedigen", "Delegeren: autonomie geven"], correctIndex: 3, explanation: "Competente en gemotiveerde medewerkers hebben minimale sturing nodig — te veel toezicht ondermijnt hun autonomie en motivatie." }
+    ],
+    creativePrompt: "Identificeer drie mensen die je leidt of samenwerkt. Wat is hun ontwikkelingsniveau? Welke leiderschapsstijl vraagt elk? Pas je jouw stijl daar op aan?",
+    aiHelperPrompts: ["Hoe bepaal ik het ontwikkelingsniveau van een medewerker?", "Hoe schakel ik soepel tussen leiderschapsstijlen?", "Wanneer werkt situationeel leiderschap niet?"]
+  },
+  {
+    id: "delegation-principles",
+    title: "Delegatieprincipes",
+    difficulty: 2,
+    emoji: "📤",
+    academicCategory: "Leiderschap",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Leiderschap", "Productiviteit", "Vertrouwen", "Betere Beslissingen"],
+    definition: "Effectief delegeren betekent de juiste taak overdragen aan de juiste persoon met de juiste bevoegdheid, duidelijke verwachtingen en adequate ondersteuning — en vervolgens loslaten.",
+    abstractExample: "Zwak delegeren: 'Regel dit.' Effectief delegeren: 'Ik vertrouw je met het organiseren van de klantevenement [taak]. Je hebt €5000 budget en beslist zelf [bevoegdheid]. Doel: 50 tevreden klanten [resultaat]. Ik sta beschikbaar voor vragen [ondersteuning].'",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Kinderen verantwoordelijkheid geven voor huistaken met duidelijke verwachtingen — niet opnieuw doen wat ze deden, maar ze laten leren van hun eigen aanpak." },
+      { domain: "business", icon: "💼", text: "Managers die niet delegeren, creëren een flessenhals: alles gaat via hen, medewerkers groeien niet, en de manager raakt overbelast." },
+      { domain: "science", icon: "🔬", text: "Onderzoek toont dat delegeren medewerkersbetrokkenheid verhoogt, competentie ontwikkelt en leiderschapscapaciteit opbouwt in de organisatie." }
+    ],
+    prerequisites: ["situational-leadership"],
+    unlocks: ["psychological-safety"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de grootste fout bij delegeren?", options: ["Te veel vertrouwen geven", "Micromanagen na delegatie: de taak terugpakken of elk detail controleren", "Te weinig uitleggen", "Te snel delegeren"], correctIndex: 1, explanation: "Micromanagen na delegatie ondermijnt het vertrouwen, ontneemt medewerkers autonomie en maakt delegatie ineffectief." }
+    ],
+    creativePrompt: "Maak een lijst van taken die jij doet maar die iemand anders ook zou kunnen (of beter) doen. Welke kun je delegeren? Wat weerhoudt je?",
+    aiHelperPrompts: ["Hoe delegeer ik aan iemand die minder ervaren is dan ik?", "Hoe geef ik delegatie en behoud ik eindverantwoordelijkheid?", "Wanneer is delegeren niet de juiste keuze?"]
+  },
+  {
+    id: "influence-without-authority",
+    title: "Invloed Zonder Autoriteit",
+    difficulty: 2,
+    emoji: "🧲",
+    academicCategory: "Leiderschap",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Leiderschap", "Organisatie", "Invloed", "Beter Samenwerken"],
+    definition: "Het vermogen om anderen te bewegen en bij te sturen zonder gebruik te maken van formele macht of hiërarchische positie. Invloed via relaties, expertise, netwerk en afstemming op belangen.",
+    abstractExample: "Een junior medewerker zonder titel die een nieuw project wil starten, heeft geen bevoegdheid om te 'eisen'. Maar door draagvlak te bouwen, de voordelen voor anderen te benoemen en sleutelpersonen te betrekken, creëert ze beweging.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een kind dat zijn ouders overtuigt van iets zonder 'autoritaire' macht — door een sterk argument te maken, alternatieven te bieden en empathie te tonen." },
+      { domain: "business", icon: "💼", text: "Projectmanagers, consultants en experts opereren vaak zonder directe autoriteit over mensen en moeten invloed opbouwen via vertrouwen en afstemming." },
+      { domain: "science", icon: "🔬", text: "Cohen & Bradford beschreven in 'Influence Without Authority' (1989) hoe 'valuta' (iets van waarde voor de ander) de basis is voor invloed zonder macht." }
+    ],
+    prerequisites: ["signaling-theory", "reciprocity"],
+    unlocks: ["servant-leadership"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de basis van invloed zonder formele autoriteit?", options: ["Hogere senioriteit", "Wederzijdse belangen begrijpen en aansluiten bij wat de ander waardevol vindt", "Dreigen met consequenties", "Hogere intelligentie"], correctIndex: 1, explanation: "Invloed zonder autoriteit werkt via waarde creëren voor de ander — door te geven wat zij nodig hebben, bouw je de 'valuta' op voor jouw eigen verzoeken." }
+    ],
+    creativePrompt: "Identificeer iemand die je wilt beïnvloeden maar waar je geen formele autoriteit over hebt. Wat zijn hun belangen? Hoe kun je die aansluiten bij wat jij nodig hebt?",
+    aiHelperPrompts: ["Hoe bouw ik invloed op in een nieuwe organisatie?", "Hoe ga ik om met weerstand als ik geen formele macht heb?", "Hoe verschilt invloed van manipulatie?"]
+  },
+  {
+    id: "vision-clarity",
+    title: "Visieduidelijkheid",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Leiderschap",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Leiderschap", "Strategie", "Richting", "Betere Beslissingen"],
+    definition: "Een heldere, inspirerende en begrijpelijke visie geeft richting aan een team of organisatie. Zonder visie werken mensen aan taken, niet aan een doel. Met visie kunnen zij zelf prioriteiten stellen.",
+    abstractExample: "Martin Luther King zei niet: 'Ik heb een plan met vijf stappen voor rassengelijkheid.' Hij zei: 'I have a dream.' De kracht van een visie ligt in haar aantrekkingskracht, niet in haar precisie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een gezin met een gedeeld beeld van hun ideale leven (meer tijd samen, minder werkdruk) neemt betere beslissingen over werk, huis en prioriteiten." },
+      { domain: "business", icon: "💼", text: "Teams zonder duidelijke visie optimaliseren lokaal: ieder doet zijn deel goed, maar het geheel klopt niet. Met visie coördineren ze zichzelf." },
+      { domain: "science", icon: "🔬", text: "Onderzoek naar doel-oriëntatie toont dat een helder, betekenisvol doel de intrinsieke motivatie en doorzettingsvermogen van mensen significant verhoogt." }
+    ],
+    prerequisites: ["servant-leadership"],
+    unlocks: ["delegation-principles"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt een visie inspirerend?", options: ["Zo gedetailleerd mogelijk zijn", "Een aantrekkelijk toekomstig beeld schetsen dat aansluit bij diepere waarden en behoeften", "Meetbare KPI's bevatten", "Realistisch zijn"], correctIndex: 1, explanation: "Visie werkt via emotionele aansluiting: het aantrekkelijke beeld van de toekomst motiveert mensen om er naartoe te bewegen." }
+    ],
+    creativePrompt: "Schrijf een persoonlijke visie van 5 jaar in drie zinnen: wat wil jij hebben bereikt, wie wil jij zijn, en welke impact wil jij gemaakt hebben?",
+    aiHelperPrompts: ["Hoe communiceer ik een visie effectief aan een divers team?", "Hoe ga ik om met mensen die mijn visie niet delen?", "Hoe maak ik een visie concreet zonder het inspirerende te verliezen?"]
+  },
+  {
+    id: "trust-building",
+    title: "Vertrouwen Opbouwen",
+    difficulty: 1,
+    emoji: "🌉",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Sociale Psychologie", "Leiderschap", "Relaties", "Beter Samenwerken"],
+    definition: "Vertrouwen is opgebouwd uit competentie (kan je het?), integriteit (doe je wat je zegt?) en welwillendheid (geef je om mij?). Vertrouwen groeit langzaam en breekt snel.",
+    abstractExample: "Een manager bouwt vertrouwen door beloftes na te komen (integriteit), resultaten te leveren (competentie) en oprecht in medewerkers te investeren (welwillendheid). Elke breuk in één dimensie schade het totale vertrouwen.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een vriend die altijd op tijd is, zijn beloftes nakomt en er is als je hem nodig hebt, is iemand die je vertrouwt — alle drie dimensies zijn aanwezig." },
+      { domain: "business", icon: "💼", text: "Één publiek gelogen statement van een CEO kan decennialang opgebouwd merkvertrouwen in dagen vernietigen." },
+      { domain: "science", icon: "🔬", text: "Mayer, Davis & Schoorman (1995) modelleerden vertrouwen in organisaties als functie van de drie dimensies: vermogen, welwillendheid en integriteit." }
+    ],
+    prerequisites: ["reciprocity"],
+    unlocks: ["psychological-safety"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de snelste manier om vertrouwen te breken?", options: ["Een kleine fout maken", "Een duidelijke leugen of gebroken belofte", "Te laat zijn", "Minder competent dan verwacht zijn"], correctIndex: 1, explanation: "Integrity-breuken (liegen, beloftes breken) zijn het meest destructief voor vertrouwen — ze signaleren dat de persoon niet te vertrouwen is ongeacht andere kwaliteiten." }
+    ],
+    creativePrompt: "Analyseer een relatie (werk of privé) waarbij vertrouwen laag is. Welke dimensie schort het aan: competentie, integriteit of welwillendheid? Wat kun je eraan doen?",
+    aiHelperPrompts: ["Hoe herstel ik gebroken vertrouwen?", "Hoe bouw ik snel vertrouwen op in een nieuwe werkomgeving?", "Wanneer is vertrouwen 'te naïef'?"]
+  },
+  {
+    id: "accountability-culture",
+    title: "Cultuur van Verantwoordelijkheid",
+    difficulty: 2,
+    emoji: "✋",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Organisatiepsychologie", "Leiderschap", "Teams", "Beter Samenwerken"],
+    definition: "Een cultuur waarin mensen verantwoording nemen voor hun acties en commitments, zonder schuld of angst maar met een focus op leren en verbeteren. Verantwoordelijkheid is een gift, geen straf.",
+    abstractExample: "In een angstcultuur worden fouten verborgen. In een verantwoordelijkheidscultuur worden fouten openlijk gedeeld met de vraag: 'Wat leren we hiervan en hoe voorkomen we het?' De cultuur bepaalt welk gedrag veilig is.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een kind dat leert 'ik heb dit gebroken, hoe kan ik het herstellen?' heeft meer aan verantwoordelijkheid dan schuldbewustzijn." },
+      { domain: "business", icon: "💼", text: "Teams waar mensen fouten melden voor ze groter worden, presteren beter dan teams waar fouten worden verstopt uit angst voor consequenties." },
+      { domain: "science", icon: "🔬", text: "Edmondson's onderzoek naar medische fouten toonde aan dat teams die fouten meldden betere zorg leverden — niet omdat ze meer fouten maakten, maar omdat ze ze vroeger corrigeerden." }
+    ],
+    prerequisites: ["psychological-safety"],
+    unlocks: ["normalization-deviance"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt verantwoordelijkheid van schuld?", options: ["Ze zijn identiek", "Verantwoordelijkheid focust op leren en verbeteren; schuld focust op straf en oordeel", "Schuld is altijd aanwezig bij fouten", "Verantwoordelijkheid is vrijwillig; schuld is verplicht"], correctIndex: 1, explanation: "Schuldculturen leiden tot verbergen van fouten; verantwoordelijkheidsculturen leiden tot open leren — beide reageren op dezelfde fouten maar met tegengesteld effect." }
+    ],
+    creativePrompt: "Denk aan een fout die je recent maakte. Hoe reageerde je omgeving? Hoe zou je gereageerd hebben in een ideale verantwoordelijkheidscultuur?",
+    aiHelperPrompts: ["Hoe transformeer ik een schuldcultuur naar een verantwoordelijkheidscultuur?", "Hoe houd ik iemand verantwoordelijk zonder hem te beschamen?", "Wanneer is consequentie nodig naast verantwoordelijkheid?"]
+  },
+  {
+    id: "change-leadership",
+    title: "Veranderleiderschap",
+    difficulty: 3,
+    emoji: "🔄",
+    academicCategory: "Leiderschap",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Leiderschap", "Verandering", "Organisatie", "Betere Beslissingen"],
+    definition: "Het proces van het leiden van mensen door organisatieverandering op een manier die betrokkenheid creëert, weerstand vermindert en duurzame adoptie bevordert. Verandering is menselijk, niet technisch.",
+    abstractExample: "Een nieuw IT-systeem invoeren is technisch eenvoudig. Mensen ertoe brengen het te omarmen is de echte uitdaging. Veranderleiderschap begrijpt dat mensen verandering weerstand bieden niet uit luiheid maar uit verlies: controle, routine, identiteit.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een gezin dat verhuist: het logistieke gedeelte (dozen, verhuiswagen) is eenvoudig. De emotionele overgang (het oude thuis loslaten) is het echte werk." },
+      { domain: "business", icon: "💼", text: "70% van organisatieveranderingen mislukt — niet door slechte plannen maar door gebrek aan aandacht voor menselijke dimensies van verandering." },
+      { domain: "science", icon: "🔬", text: "Kotter's 8-stappen model en Kübler-Ross' veranderingscurve (rouw/verlies analoog) zijn de meest gebruikte kaders voor veranderleiderschap." }
+    ],
+    prerequisites: ["vision-clarity", "psychological-safety"],
+    unlocks: ["adaptive-capacity"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom bieden mensen weerstand aan verandering?", options: ["Ze zijn lui", "Ze verliezen vertrouwde routines, controle of identiteit", "Ze begrijpen de voordelen niet", "Ze zijn bang voor nieuw werk"], correctIndex: 1, explanation: "Weerstand is bijna altijd een reactie op verlies, niet op de verandering zelf. Wie het verlies erkent en adresseert, vermindert de weerstand." }
+    ],
+    creativePrompt: "Identificeer een verandering die je wilt doorvoeren (persoonlijk of professioneel). Wie worden beïnvloed? Wat verliezen zij? Hoe kun je dat verlies erkennen en compenseren?",
+    aiHelperPrompts: ["Hoe begeleid ik mensen door de emotionele fasen van verandering?", "Hoe creëer ik urgentie zonder paniek bij veranderingen?", "Hoe ga ik om met actieve weerstand van sleutelpersonen?"]
+  },
+  {
+    id: "leading-by-example",
+    title: "Leiden door Voorbeeld",
+    difficulty: 1,
+    emoji: "⭐",
+    academicCategory: "Leiderschap",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Leiderschap", "Integriteit", "Cultuur", "Beter Samenwerken"],
+    definition: "Mensen kopiëren gedrag van hun leiders, bewust en onbewust. Wat een leider doet is krachtiger dan wat hij zegt. Culturele normen worden gevormd door welk gedrag de leider modelleert.",
+    abstractExample: "Een manager die zegt 'werk-privébalans is belangrijk' maar zelf elke avond tot middernacht werkt en 's weekends e-mails stuurt, communiceert het tegenovergestelde. Medewerkers kijken naar gedrag, niet naar woorden.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Ouders die zelf boeken lezen, kweken eerder lezende kinderen dan ouders die 'lees meer!' zeggen terwijl ze zelf televisie kijken." },
+      { domain: "business", icon: "💼", text: "Een CEO die persoonlijk onkosten verantwoord en geen vluchten in business class neemt, maakt kostenbewustzijn geloofwaardiger in de organisatie." },
+      { domain: "science", icon: "🔬", text: "Observationeel leren (Bandura): mensen leren het effectiefst door gedrag van anderen te observeren — vooral van gezaghebbende figuren." }
+    ],
+    prerequisites: ["trust-building"],
+    unlocks: ["accountability-culture"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het effect als een leider inconsistent is tussen woord en daad?", options: ["Mensen negeren het", "Geloofwaardigheid daalt en cynisme groeit; medewerkers volgen het gedrag, niet de woorden", "Mensen worden extra gemotiveerd", "Het heeft geen invloed op cultuur"], correctIndex: 1, explanation: "Inconsistentie tussen woord en daad is een van de grootste vertrouwensbrekers in leiderschap — mensen zien het altijd en passen hun gedrag aan op wat ze zien." }
+    ],
+    creativePrompt: "Welk gedrag wil jij in je omgeving (team, gezin, vrienden) zien? Doe je dat gedrag zelf? Waar is er een kloof?",
+    aiHelperPrompts: ["Hoe kan ik mijn leiderschapsgedrag meer consistent maken?", "Wat zijn de meest zichtbare vormen van 'leiden door voorbeeld'?", "Hoe handel ik als ik mezelf betrap op inconsistentie?"]
   }
 ];
