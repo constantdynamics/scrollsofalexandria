@@ -5767,6 +5767,238 @@ export const principles = [
     ],
     creativePrompt: "Analyseer hoe een organisatie of persoon die je bewondert omging met grote veranderingen. Wat waren de bronnen van hun aanpassingsvermogen?",
     aiHelperPrompts: ["Hoe bouw ik aanpassingsvermogen op in mijn carrière?", "Wat blokkeert aanpassingsvermogen in grote organisaties?", "Hoe hangt aanpassingsvermogen samen met leercultuur?"]
+  },
+
+  // ── BATCH 8: SPELTHEORIE & STRATEGIE ─────────────────────────
+  {
+    id: "signaling-theory",
+    title: "Signaleringstheorie",
+    difficulty: 2,
+    emoji: "📡",
+    academicCategory: "Speltheorie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Speltheorie", "Economie", "Informatie", "Betere Beslissingen"],
+    definition: "Partijen met private informatie sturen signalen naar anderen om die informatie geloofwaardig te communiceren. Een signaal is alleen geloofwaardig als het duur of moeilijk te imiteren is.",
+    abstractExample: "Een universiteitsgraad communiceert intellect aan werkgevers. Zelfs als de opleiding weinig praktische vaardigheden geeft, werkt het als signaal omdat het alleen haalbaar is voor mensen met voldoende cognitieve capaciteit.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een pauw met een zware staart bewijst zijn gezondheid juist doordat de last zo groot is — alleen gezonde pauwen kunnen hem dragen." },
+      { domain: "business", icon: "💼", text: "Een bedrijf dat een hoog dividend uitkeert, signaleert financiële gezondheid — alleen gezonde bedrijven kunnen zich dit veroorloven." },
+      { domain: "science", icon: "🔬", text: "Michael Spence won in 2001 de Nobelprijs voor zijn signaleringsmodel op de arbeidsmarkt (1973)." }
+    ],
+    prerequisites: ["information-asymmetry", "nash-equilibrium"],
+    unlocks: ["screening-theory"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is een duur signaal geloofwaardiger dan een goedkoop signaal?", options: ["Dure signalen zijn altijd accuraat", "Alleen individuen met de gesignaleerde kwaliteit kunnen het hoge signaalgedrag veroorloven", "Goedkope signalen zijn verboden", "Prijs bepaalt kwaliteit"], correctIndex: 1, explanation: "Als een signaal goedkoop is, kunnen ook partijen zonder de gesignaleerde kwaliteit het geven. De duurte filtert imitators eruit." }
+    ],
+    creativePrompt: "Welke signalen geeft jij af (kleding, diploma's, auto, linkedin-profiel)? Wat communiceren ze? Zijn het geloofwaardige signalen of zijn ze gemakkelijk te imiteren?",
+    aiHelperPrompts: ["Hoe herken ik signaleringsgedrag in de arbeidsmarkt?", "Is signalering economisch efficiënt of is het verspilling?", "Hoe hangt signaleringstheorie samen met screening?"]
+  },
+  {
+    id: "screening-theory",
+    title: "Screeningstheorie",
+    difficulty: 2,
+    emoji: "🔍",
+    academicCategory: "Speltheorie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Speltheorie", "Economie", "Selectie", "Betere Beslissingen"],
+    definition: "Partijen zonder private informatie ontwerpen contracten of mechanismen die partijen met verschillende kwaliteiten ertoe aanzetten zichzelf te onthullen. De geïnformeerde partij 'screent' zichzelf.",
+    abstractExample: "Een verzekeraar kan niet weten of een klant hoog of laag risico is. Door verschillende contracten aan te bieden (hoge premie/laag eigen risico vs. lage premie/hoog eigen risico), laten klanten hun eigen risicoprofiel blijken.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Proefperiodes bij abonnementen screenen klanten: wie blijft na de proefperiode, is serieus; wie opzegt, wilde toch niet betalen." },
+      { domain: "business", icon: "💼", text: "Sollicitatiegesprekken met casussen screenen sollicitanten: goede kandidaten presteren beter dan kandidaten die slechts het curriculum hadden geleerd." },
+      { domain: "science", icon: "🔬", text: "Joseph Stiglitz formaliseerde screening in de economie en won er mede de Nobelprijs voor in 2001." }
+    ],
+    prerequisites: ["signaling-theory", "information-asymmetry"],
+    unlocks: ["mechanism-design"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen signalering en screening?", options: ["Ze zijn identiek", "Bij signalering onthult de geïnformeerde partij zichzelf; bij screening ontwerpt de ongeïnformeerde partij een mechanisme", "Screening is altijd effectiever", "Signalering vereist extern bewijs"], correctIndex: 1, explanation: "Signalering: de geïnformeerde partij stuurt een signaal. Screening: de ongeïnformeerde partij creëert omstandigheden die zelfopenbaring uitlokken." }
+    ],
+    creativePrompt: "Ontwerp een screeningsmechanisme voor een probleem van informatieasymmetrie in je werk of dagelijks leven (bijv. betrouwbare dienstverleners vinden, goede medewerkers selecteren).",
+    aiHelperPrompts: ["Hoe vermijdt screening adverse selection?", "Welke screeningsmechanismen zijn ethisch problematisch?", "Hoe hangt screening samen met mechanisme-ontwerp?"]
+  },
+  {
+    id: "credible-commitment",
+    title: "Geloofwaardige Toezegging",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Speltheorie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Speltheorie", "Strategie", "Onderhandeling", "Betere Beslissingen"],
+    definition: "Een belofte of dreiging is geloofwaardig als de toezeggende partij zich zo heeft gebonden dat ze er werkelijk belang bij heeft de toezegging na te komen. Geloofwaardigheid vereist kosten voor terugdraaien.",
+    abstractExample: "Een generaal die zijn terugtrekroute afsluit, stuurt een geloofwaardige boodschap aan de vijand: zijn troepen moeten winnen, want terugtrekken is onmogelijk. De beperking van eigen vrijheid is de bron van geloofwaardigheid.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een deadline publiek maken vergroot de kans dat je het haalt — je hebt jezelf gebonden aan sociale consequenties." },
+      { domain: "business", icon: "💼", text: "Een contractuele boete voor niet-nakoming maakt een belofte geloofwaardiger dan een verbale garantie." },
+      { domain: "science", icon: "🔬", text: "Thomas Schelling analyseerde in 'The Strategy of Conflict' (1960) hoe geloofwaardige toezeggingen de kern vormen van onderhandeling en afschrikking." }
+    ],
+    prerequisites: ["nash-equilibrium", "prisoners-dilemma"],
+    unlocks: ["repeated-game"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is een onomkeerbare actie een sterkere toezegging dan een belofte?", options: ["Beloften zijn wettelijk bindend", "Onomkeerbaarheid maakt terugdraaien onmogelijk, waardoor de actor de toezegging werkelijk moet nakomen", "Beloften zijn goedkoper", "Onomkeerbare acties zijn riskanter"], correctIndex: 1, explanation: "Als terugdraaien niet mogelijk is, heeft de actor geen keuze meer dan door te zetten — dat maakt de commitment geloofwaardig voor anderen." }
+    ],
+    creativePrompt: "Denk aan een persoonlijk doel waarbij je moeite hebt met volhouden. Hoe zou je een geloofwaardige toezegging kunnen doen die terugdraaien kostbaarder maakt?",
+    aiHelperPrompts: ["Wanneer is precommitment een goede strategie?", "Hoe gebruik ik geloofwaardige toezeggingen in onderhandelingen?", "Hoe hangt dit samen met het herhaalde-spel principe?"]
+  },
+  {
+    id: "repeated-game",
+    title: "Herhaald Spel",
+    difficulty: 2,
+    emoji: "🔁",
+    academicCategory: "Speltheorie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Speltheorie", "Strategie", "Samenwerking", "Beter Samenwerken"],
+    definition: "Wanneer spelers een interactie herhalen, veranderen de strategische mogelijkheden drastisch. Samenwerking en reputatie worden rationeel in herhaalde spelen, ook als ze dat in een éénmalig spel niet zijn.",
+    abstractExample: "In een eenmalige ontmoeting is bedriegen rationeel als het voordeel oplevert. In een herhaald spel schept bedriegen een slechte reputatie die toekomstige samenwerking vernietigt — waardoor eerlijkheid rationeel wordt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Restauranthouders in toeristische trekpleisters bedriegen vaker dan restaurants in woonwijken — toeristen komen éénmalig; buren komen terug." },
+      { domain: "business", icon: "💼", text: "Leveranciers die weten dat ze een langdurige relatie met een afnemer hebben, leveren betrouwbaarder dan bij éénmalige transacties." },
+      { domain: "science", icon: "🔬", text: "Axelrod's toernooien (1980) toonden dat 'Tit-for-Tat' de succesvolste strategie is in herhaalde gevangendilemma's." }
+    ],
+    prerequisites: ["prisoners-dilemma", "tit-for-tat"],
+    unlocks: ["credible-commitment"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is samenwerking rationeel in een herhaald spel maar niet in een eenmalig spel?", options: ["Mensen worden altruïstischer", "Reputatie en toekomstige interacties creëren incentives voor eerlijk gedrag", "Het speltheoretisch evenwicht verandert", "Herhaalde spelen zijn anders dan eenmalige spelen"], correctIndex: 1, explanation: "In herhaald spel betaal je de prijs van verraad in toekomstige rondes — reputatie maakt coöperatie rationeel." }
+    ],
+    creativePrompt: "Identificeer drie langdurige relaties in je leven (werk, persoonlijk). Hoe verandert de herhaalde aard van de interactie jouw strategie versus een éénmalige transactie?",
+    aiHelperPrompts: ["Wat is de 'schaduw van de toekomst' in speltheorie?", "Wanneer breekt samenwerking in herhaalde spelen af?", "Hoe hangt dit samen met tit-for-tat strategie?"]
+  },
+  {
+    id: "information-cascade",
+    title: "Informatiecascade",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Speltheorie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Speltheorie", "Sociale Psychologie", "Informatie", "Betere Beslissingen"],
+    definition: "Wanneer individuen hun eigen private informatie negeren en de beslissingen van anderen imiteren, ongeacht of die anderen ook goede informatie hadden. Collectieve dwaling via informatiecascade.",
+    abstractExample: "Tien mensen kiezen een restaurant. De eerste twee kiezen restaurant A. De derde heeft twijfels maar ziet twee mensen al gekozen hebben en volgt ook. De vierde ziet drie mensen en volgt. Zo kiest iedereen A — ook als restaurant B beter was.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Boeken en films die 'bestsellers' worden omdat mensen ze kopen omdat anderen ze kopen — ook als andere boeken beter zijn." },
+      { domain: "business", icon: "💼", text: "Financiële zeepbellen: investeerders stappen in omdat anderen instappen, ongeacht de fundamentele waarde van het actief." },
+      { domain: "science", icon: "🔬", text: "Bikhchandani, Hirshleifer & Welch (1992) formaliseerden het model van informatiecascades als verklaring voor kuddegedrag." }
+    ],
+    prerequisites: ["social-proof", "herding"],
+    unlocks: ["group-polarization"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is een informatiecascade gevaarlijk?", options: ["Als de eerste beslissers slechte informatie hadden maar anderen hen volgden", "Als iedereen dezelfde informatie heeft", "Als er weinig deelnemers zijn", "Als de informatie openbaar is"], correctIndex: 0, explanation: "Als een cascade begint op basis van slechte eerste informatie, volgt iedereen een verkeerde keuze terwijl ze denken wijs te zijn." }
+    ],
+    creativePrompt: "Beschrijf een situatie waarbij jij meedeed met een trend omdat 'iedereen het deed'. Had je onafhankelijke informatie om de keuze te rechtvaardigen of volgde je de cascade?",
+    aiHelperPrompts: ["Hoe bescherm ik mezelf tegen informatiecascades?", "Welke rol speelt sociale media bij informatiecascades?", "Hoe hangt dit samen met het bijenvolk-effect?"]
+  },
+  {
+    id: "mechanism-design",
+    title: "Mechanisme-Ontwerp",
+    difficulty: 3,
+    emoji: "⚙️",
+    academicCategory: "Speltheorie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Speltheorie", "Economie", "Strategie", "Betere Beslissingen"],
+    definition: "Het ontwerpen van regels, incentives en procedures zodat rationele agenten, die hun eigenbelang nastreven, collectief gewenste uitkomsten produceren. Omgekeerde speltheorie: van uitkomst naar regels.",
+    abstractExample: "Een veiling ontwerpen zodat bieders hun ware waarde onthullen, niet strategisch bieden. Het juiste mechanisme zorgt dat eerlijk gedrag de dominante strategie wordt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Peer-review bij wetenschappelijke publicaties is een mechanisme dat incentives voor kwaliteitscontrole creëert door reputatiestimuli." },
+      { domain: "business", icon: "💼", text: "Bonussystemen zijn mechanismes: slecht ontworpen bonussen leiden tot korte-termijn denken; goed ontworpen bonussen stimuleren het gewenste gedrag." },
+      { domain: "science", icon: "🔬", text: "Hurwicz, Maskin & Myerson wonnen in 2007 de Nobelprijs voor hun grondleggende werk aan mechanisme-ontwerp." }
+    ],
+    prerequisites: ["nash-equilibrium", "principal-agent"],
+    unlocks: ["screening-theory"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het doel van mechanisme-ontwerp?", options: ["Mensen dwingen goed gedrag te vertonen", "Regels ontwerpen zodat eigenbelang leidt tot gewenste collectieve uitkomsten", "De sterkste partij bevoordelende regels", "Informatieasymmetrie elimineren"], correctIndex: 1, explanation: "Mechanisme-ontwerp werkt met eigenbelang — het allineert individu's incentives met het collectief belang via de juiste spelregels." }
+    ],
+    creativePrompt: "Ontwerp een mechanisme voor een collectief actieprobleem in je omgeving (bijv. schoon houden van gemeenschappelijke ruimtes, punctualiteit bij vergaderingen). Hoe maak je goed gedrag de rationele keuze?",
+    aiHelperPrompts: ["Hoe verschilt mechanisme-ontwerp van gewone regelgeving?", "Welke veilingvormen zijn bekend in mechanisme-ontwerp?", "Hoe hangt dit samen met de principaal-agentverhouding?"]
+  },
+  {
+    id: "backward-induction",
+    title: "Achterwaartse Inductie",
+    difficulty: 3,
+    emoji: "⏪",
+    academicCategory: "Speltheorie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Speltheorie", "Strategie", "Logica", "Betere Beslissingen"],
+    definition: "Een methode om de optimale strategie te vinden door te beginnen bij het eindpunt en terug te redeneren naar het beginpunt. Elke speler voorspelt toekomstige keuzes en handelt nu dienovereenkomstig.",
+    abstractExample: "Schaak: om de beste zet nu te vinden, bedenk je welke positie je einddoel is, welke zetten daartoe leiden, en redeneer je terug naar de huidige situatie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Om je loopbaandoel in 10 jaar te bereiken, bedenk je wat je in jaar 9 nodig hebt, dan jaar 8, enzovoort terug naar nu." },
+      { domain: "business", icon: "💼", text: "Projectplanning: begin bij de deadline en werk terug naar het begin om te zien welke stappen wanneer moeten worden gezet." },
+      { domain: "science", icon: "🔬", text: "Zermelo bewees in 1913 dat schaak in principe volledig analyseerbaar is via achterwaartse inductie — de uitkomst is theoretisch bepaald." }
+    ],
+    prerequisites: ["dominant-strategy", "nash-equilibrium"],
+    unlocks: ["credible-commitment"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de achterwaartse-inductieparadox bij het geketende gevangendilemma?", options: ["Samenwerking is altijd optimaal", "Rationele spelers defecten in elke ronde — ook in ronde 1 — door achterwaartse inductie vanuit de laatste ronde", "Samenwerking is onmogelijk", "Inductie werkt niet in speltheorie"], correctIndex: 1, explanation: "Als spelers weten wanneer het spel eindigt, defecten ze in de laatste ronde, waarna ook de voorlaatste ronde onstabiel wordt — helemaal terug naar ronde 1." }
+    ],
+    creativePrompt: "Neem een doel dat je over 5 jaar wilt bereiken. Gebruik achterwaartse inductie om de kritische paden en beslissingen te identificeren. Wat moet je nu doen?",
+    aiHelperPrompts: ["Wanneer faalt achterwaartse inductie als voorspellingsmethode?", "Hoe gebruik ik achterwaartse inductie bij projectplanning?", "Hoe hangt dit samen met het eindige herhaalde-spel probleem?"]
+  },
+  {
+    id: "evolutionary-stable-strategy",
+    title: "Evolutionair Stabiele Strategie",
+    difficulty: 3,
+    emoji: "🧬",
+    academicCategory: "Speltheorie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Speltheorie", "Evolutiebiologie", "Strategie", "Beter Redeneren"],
+    definition: "Een strategie die, eenmaal wijdverspreid in een populatie, niet geïnvadeerd kan worden door een afwijkende strategie. Een ESS is evolutionair stabiel: zelfinvaders slagen er niet in zich te verspreiden.",
+    abstractExample: "In een populatie van 'duiven' (niet agressief) kan een 'havik' (agressief) slagen. Maar een populatie puur haviken is ook instabiel — ze vernietigen elkaar. ESS is often een gemend evenwicht.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In menselijke samenleving is een mix van coöperatie en assertiviteit vaak een evolutionair stabiel evenwicht — pure agressie of pure passiviteit worden beiden uitgeroeid." },
+      { domain: "business", icon: "💼", text: "In markten is een mix van concurrentie en samenwerking (co-opetitie) vaak stabieler dan puur agressieve marktstrategie." },
+      { domain: "science", icon: "🔬", text: "John Maynard Smith introduceerde ESS in 1973 als toepassing van speltheorie op biologische evolutie." }
+    ],
+    prerequisites: ["nash-equilibrium", "tit-for-tat"],
+    unlocks: ["repeated-game"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt een ESS van een Nash-evenwicht?", options: ["Ze zijn identiek", "Een ESS is stabiel tegen kleine populatiemutaties; een Nash-evenwicht niet per se", "Nash-evenwicht is sterker", "ESS is alleen biologisch relevant"], correctIndex: 1, explanation: "Een ESS-eis is strenger: niet alleen niemand wil afwijken, maar ook kleine groepen afwijkers kunnen de strategie niet overnemen." }
+    ],
+    creativePrompt: "Analyseer de dominante strategie in een sociale groep die je kent (sport, werk, familie). Is het een ESS? Wat zou er gebeuren als iemand een radicaal andere strategie koos?",
+    aiHelperPrompts: ["Hoe verklaart ESS altruïsme in de biologie?", "Welke menselijke sociale normen zijn ESS?", "Hoe hangt dit samen met Nash-evenwicht?"]
+  },
+  {
+    id: "winner-curse",
+    title: "Vloek van de Winnaar",
+    difficulty: 2,
+    emoji: "🏆",
+    academicCategory: "Speltheorie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Speltheorie", "Economie", "Veiling", "Betere Beslissingen"],
+    definition: "De winnaar van een veiling of competitie heeft systematisch overbetaald. Door de verdeling van biedingen zal de hoogste bieder degene zijn die de waarde het meest heeft overschat.",
+    abstractExample: "Bij een veiling op een oliebronrecht is de winnaar degene die de oliereserves het hoogst heeft ingeschat. Maar als alle schattingen rond de ware waarde zijn verdeeld, is de hoogste schatting vrijwel zeker een overschatting.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Wie het meest biedt op een huis in een biedingssituatie, heeft waarschijnlijk de waarde overschat — ze betalen meer dan het waard is." },
+      { domain: "business", icon: "💼", text: "Bedrijven die overnames doen via biedstrijd, betalen gemiddeld te veel — overnames vernietigen statistisch gezien aandeelhouderswaarde." },
+      { domain: "science", icon: "🔬", text: "Capen, Clapp & Campbell (1971) ontdekten de winners curse bij olieveilingen — hun studie was de eerste empirische documentatie." }
+    ],
+    prerequisites: ["expected-value", "signaling-theory"],
+    unlocks: ["information-asymmetry"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de optimale strategie bij gemeenschappelijke-waarde-veilingen?", options: ["Zo hoog mogelijk bieden om te winnen", "Bied minder dan je schatting om de winners curse te compenseren", "Bied exact je geschatte waarde", "Niet bieden is het veiligst"], correctIndex: 1, explanation: "Rationele bieders in gemeenschappelijke-waarde-veilingen corrigeren hun bod naar beneden omdat winnen impliceert dat anderen lager schatten." }
+    ],
+    creativePrompt: "Analyseer een situatie waar je concurreerde om iets (baan, contract, relatie). Betaalde de winnaar (jij of iemand anders) meer dan het waard was? Hoe herken je de vloek van de winnaar?",
+    aiHelperPrompts: ["Hoe vermijd ik de vloek van de winnaar bij aanbestedingen?", "Is de vloek van de winnaar altijd aanwezig bij veilingen?", "Hoe hangt dit samen met cursus van kennisverwerving?"]
+  },
+  {
+    id: "focal-point-game",
+    title: "Coördinatiepunt",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Speltheorie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Speltheorie", "Coördinatie", "Samenwerking", "Beter Samenwerken"],
+    definition: "Wanneer mensen zonder communicatie moeten coördineren, kiezen ze instinctief opties die prominent, uniek of cultureel opvallen. Coördinatiepunten ontstaan door gedeelde culturele kennis of saillantie.",
+    abstractExample: "Stel: je moet een vriend ontmoeten in New York zonder afspraken te maken. Wanneer ga je? Wat zou jij kiezen? De meeste New Yorkers zeggen: 12:00, Grand Central Station. Dit is een coördinatiepunt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Bij een groepsreis zonder planning kiest iedereen instinctief om bij de ingang te wachten — de meest opvallende locatie wordt coördinatiepunt." },
+      { domain: "business", icon: "💼", text: "In een markt zonder expliciete afspraken convergeren concurrenten naar 'ronde getallen' als prijspunten — €9,99, €100, €1000." },
+      { domain: "science", icon: "🔬", text: "Thomas Schelling beschreef coördinatiepunten in 'The Strategy of Conflict' (1960) als 'focal points' of 'Schelling points'." }
+    ],
+    prerequisites: ["nash-equilibrium", "schelling-point"],
+    unlocks: ["information-cascade"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat bepaalt of iets een coördinatiepunt wordt?", options: ["Rationele analyse", "Culturele saillantie en gedeelde verwachtingen", "Formele afspraken", "Wettelijke regelgeving"], correctIndex: 1, explanation: "Coördinatiepunten werken door gedeelde culturele kennis — iets is een coördinatiepunt als iedereen verwacht dat iedereen het kiest." }
+    ],
+    creativePrompt: "Stel dat je een nieuwe standaard wilt introduceren in je team zonder vergadering. Welk coördinatiepunt zou je kunnen creëren dat mensen spontaan zouden adopteren?",
+    aiHelperPrompts: ["Hoe kunnen leiders coördinatiepunten creëren?", "Waarom zijn coördinatiepunten cultureel gebonden?", "Hoe hangt dit samen met de Nash-evenwichttheorie?"]
   }
 ];
 
