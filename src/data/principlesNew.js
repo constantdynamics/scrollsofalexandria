@@ -2087,5 +2087,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Kies een tekst (artikel, contract, reclame). Analyseer de woordkeuze: welke woorden zijn bewust gekozen? Welke associaties laden ze? Wat zou het effect zijn van andere woorden?",
     aiHelperPrompts: ["Hoe ontwikkel ik metalinguïstisch bewustzijn?", "Hoe hangt metalinguïstisch bewustzijn samen met kritisch denken?", "Hoe gebruik ik dit bij het analyseren van politieke taal?"]
+  },
+
+  // ── BATCH 10: PERSOONLIJKE ONTWIKKELING & PSYCHOLOGIE ────────
+  {
+    id: "impostor-syndrome",
+    title: "Impostor-Syndroom",
+    difficulty: 1,
+    emoji: "🎭",
+    academicCategory: "Psychologie",
+    skillCategory: "Zelfkennis",
+    tags: ["Psychologie", "Zelfkennis", "Carrière", "Beter Redeneren"],
+    definition: "Het gevoel dat je successen te danken zijn aan geluk of misleiding, en dat anderen je vroeg of laat zullen 'ontmaskeren' als onbekwaam — ook als objectief bewijs het tegendeel aantoont.",
+    abstractExample: "Een expert met twintig jaar ervaring die voor een conferentie staat denkt: 'Ze zullen erachter komen dat ik eigenlijk niks weet.' Tegelijkertijd ziet het publiek een autoriteit.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een student die een hoog cijfer haalt denkt: 'Ik had mazzel, volgende keer prik ik door de mand'." },
+      { domain: "business", icon: "💼", text: "Onderzoek toont dat 70% van hoogpresteerders zich af en toe 'oplichters' voelt — inclusief veel bekende wetenschappers en leiders." },
+      { domain: "science", icon: "🔬", text: "Clance & Imes (1978) beschreven het 'impostor phenomeen' eerst bij academisch succesvolle vrouwen; het bleek later universeel." }
+    ],
+    prerequisites: ["self-serving-bias", "dunning-kruger"],
+    unlocks: ["self-efficacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is een effectieve aanpak tegen het impostor-syndroom?", options: ["Meer bewijzen verzamelen voor je competentie", "Erkennen dat het gevoel universeel is en succesverhalen bewust documenteren", "Verwachtingen verlagen", "Het gevoel negeren"], correctIndex: 1, explanation: "Bewust bijhouden van successen en beseffen dat het gevoel bijna universeel is, helpt het impostor-syndroom te normaliseren en relativeren." }
+    ],
+    creativePrompt: "Maak een lijst van je vijf grootste professionele successen. Schrijf bij elk: was dit puur geluk, of droeg jouw inzet en kennis bij? Hoe objectief is je beoordeling?",
+    aiHelperPrompts: ["Hoe onderscheid ik gezonde bescheidenheid van impostor-syndroom?", "Waarom treft impostor-syndroom juist hoogpresteerders?", "Hoe help ik iemand die lijdt aan impostor-syndroom?"]
+  },
+  {
+    id: "learned-helplessness",
+    title: "Aangeleerde Hulpeloosheid",
+    difficulty: 2,
+    emoji: "😔",
+    academicCategory: "Psychologie",
+    skillCategory: "Zelfkennis",
+    tags: ["Psychologie", "Zelfkennis", "Motivatie", "Beter Redeneren"],
+    definition: "Na herhaalde blootstelling aan situaties waar men geen controle heeft, stopt men met pogingen te ondernemen — ook wanneer situatie verandert en controle wel mogelijk is. Hulpeloosheid wordt geleerd.",
+    abstractExample: "Honden die herhaaldelijk elektrische schokken krijgen die ze niet kunnen stoppen, maken later geen poging meer te ontsnappen als dat wél mogelijk is. Ze leerden dat acties zinloos zijn.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Iemand die jarenlang in armoede leefde, ziet nieuwe kansen soms niet — de overtuiging 'niets helpt toch' is geïnternaliseerd." },
+      { domain: "business", icon: "💼", text: "Een medewerker wiens ideeën altijd worden afgewezen, stopt na verloop van tijd met initiatieven nemen — ook als de manager verandert." },
+      { domain: "science", icon: "🔬", text: "Seligman & Maier (1967) ontdekten aangeleerde hulpeloosheid bij honden en koppelden het later aan depressie bij mensen." }
+    ],
+    prerequisites: ["locus-of-control"],
+    unlocks: ["self-efficacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de beste interventie voor aangeleerde hulpeloosheid?", options: ["Meer mislukkingen toevoegen", "Kleine successen creëren waarbij de persoon controle ervaart", "Vermijden van alle uitdagingen", "Uitleggen dat de situatie veranderd is"], correctIndex: 1, explanation: "Kleine, behaalbare successen waarbij de persoon merkt dat zijn acties wél effect hebben, beginnen de aangeleerde hulpeloosheid te doorbreken." }
+    ],
+    creativePrompt: "Herken je in je leven een domein waar je gestopt bent met proberen na herhaald falen? Is de situatie nu anders? Wat zou je anders kunnen proberen?",
+    aiHelperPrompts: ["Hoe herken ik aangeleerde hulpeloosheid bij mijzelf?", "Hoe herstel ik mijn gevoel van controle na langdurig falen?", "Hoe hangt dit samen met locus of control?"]
+  },
+  {
+    id: "self-efficacy",
+    title: "Zelf-Effectiviteit",
+    difficulty: 1,
+    emoji: "💪",
+    academicCategory: "Psychologie",
+    skillCategory: "Zelfkennis",
+    tags: ["Psychologie", "Zelfkennis", "Motivatie", "Beter Redeneren"],
+    definition: "De overtuiging in je eigen vermogen om specifieke taken uit te voeren en gewenste uitkomsten te bereiken. Zelf-effectiviteit is specifiek (niet globaal zelfvertrouwen) en sterk bepalend voor prestatie.",
+    abstractExample: "Twee studenten met identieke vaardigheid gaan een examen in. De student met hoge zelf-effectiviteit presteert beter — niet door meer kennis, maar door hogere inzet en beter omgaan met obstakels.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Iemand die gelooft dat hij een presentatie aankan, bereidt zich beter voor, spreekt zelfverzekerder en presteert dan ook beter." },
+      { domain: "business", icon: "💼", text: "Verkopers met hogere zelf-effectiviteit verwerven statistisch meer deals — niet door betere productkennis maar door volharding bij weigeringen." },
+      { domain: "science", icon: "🔬", text: "Bandura (1977) introduceerde de term en toonde aan dat zelf-effectiviteit gedrag, inspanning en doorzettingsvermogen sterker voorspelt dan vaardigheidsniveau." }
+    ],
+    prerequisites: ["learned-helplessness", "locus-of-control"],
+    unlocks: ["growth-mindset"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe bouw je zelf-effectiviteit het meest effectief op?", options: ["Door anderen te observeren", "Door verbale aanmoediging", "Door eigen ervaringen van succes (mastery experiences)", "Door theorie te bestuderen"], correctIndex: 2, explanation: "Bandura identificeerde mastery experiences (eigen successen) als de sterkste bron van zelf-effectiviteit — sterker dan observatie of aanmoediging." }
+    ],
+    creativePrompt: "Kies een vaardigheid die je wilt verbeteren. Stel een serie oplopende uitdagingen op waarbij je telkens net buiten je comfortzone werkt. Hoe bouw je mastery experiences op?",
+    aiHelperPrompts: ["Hoe beïnvloedt zelf-effectiviteit leergedrag?", "Hoe onderscheidt zelf-effectiviteit zich van zelfvertrouwen?", "Hoe kan ik zelf-effectiviteit bij anderen versterken?"]
+  },
+  {
+    id: "growth-mindset",
+    title: "Groeimindset",
+    difficulty: 1,
+    emoji: "🌱",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Leren",
+    tags: ["Psychologie", "Leren", "Motivatie", "Beter Leren"],
+    definition: "De overtuiging dat talenten en intelligentie kunnen worden ontwikkeld door inspanning, goede strategieën en ondersteuning. Tegenover een vaste mindset die aanneemt dat kwaliteiten aangeboren en onveranderlijk zijn.",
+    abstractExample: "Twee kinderen krijgen een moeilijke opgave. Vast mindset-kind: 'Dit kan ik niet, ik ben niet slim genoeg.' Groeimindset-kind: 'Dit is moeilijk, maar als ik oefen, leer ik het.' Beide zullen uitlopen op zelfvervullende profetieën.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Bij het leren van een nieuw instrument: vaste mindset zegt 'ik heb geen muzikaal talent'. Groeimindset zegt 'ik heb nog niet genoeg geoefend'." },
+      { domain: "business", icon: "💼", text: "Teams met groeimindset reageren constructiever op fouten — ze zien fouten als leermomenten, niet als bewijs van incompetentie." },
+      { domain: "science", icon: "🔬", text: "Carol Dweck's decennialange onderzoek (samengevat in 'Mindset', 2006) toonde robuust aan dat mindset prestatie en welbevinden beïnvloedt." }
+    ],
+    prerequisites: ["self-efficacy"],
+    unlocks: ["deliberate-practice"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de kritiek op het mindset-onderzoek van Dweck?", options: ["Het werkt nooit", "De effecten zijn in sommige meta-analyses kleiner dan oorspronkelijk gerapporteerd en interventies zijn soms moeilijk te repliceren", "De theorie is fout", "Alle kritiek is onterecht"], correctIndex: 1, explanation: "Groeimindset-interventies zijn veelbelovend maar sommige effecten zijn kleiner dan verwacht; de context en implementatie bepalen sterk het resultaat." }
+    ],
+    creativePrompt: "Identificeer een terrein waarop je een 'vaste mindset' hebt ('ik ben geen wiskundige/kunstenaar/sporter'). Herschrijf die overtuiging als een groeimindset-statement. Wat verandert er?",
+    aiHelperPrompts: ["Hoe cultiveer ik een groeimindset in mijn dagelijks leven?", "Wanneer is een vaste mindset ook nuttig?", "Hoe geef ik groeimindset-feedback als manager of leraar?"]
+  },
+  {
+    id: "deliberate-practice",
+    title: "Doelgerichte Oefening",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Leren",
+    tags: ["Psychologie", "Leren", "Expertise", "Beter Leren"],
+    definition: "Oefening die specifiek gericht is op verbetering door feedback, het aanpakken van zwakke punten en bewuste concentratie, buiten de comfortzone. Niet alle oefening leidt tot verbetering.",
+    abstractExample: "Een pianist die zijn lievelingsstukken herhaalt, oefent — maar verbetert weinig. Een pianist die focust op de moeilijkste passages, feedback vraagt en systematisch zijn zwakke punten aanpakt, doet deliberate practice.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Taal leren door gesprekken met native speakers met gerichte feedback verbetert sneller dan passief luisteren naar dezelfde films." },
+      { domain: "business", icon: "💼", text: "Topsprekers verbeteren door gerichte oefening met feedback op specifieke aspecten (openingszin, contact met publiek), niet door simpelweg meer toespraken te geven." },
+      { domain: "science", icon: "🔬", text: "Anders Ericsson toonde aan dat de '10.000 uren'-regel van Gladwell sloeg op deliberate practice, niet op elk soort oefening." }
+    ],
+    prerequisites: ["growth-mindset"],
+    unlocks: ["metacognition"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt deliberate practice van gewone oefening?", options: ["Het duurt langer", "Het is gericht op specifieke zwakke punten, met feedback, buiten de comfortzone", "Het is altijd plezieriger", "Het vereist geen leraar"], correctIndex: 1, explanation: "Deliberate practice vereist bewuste concentratie, gerichte aandacht voor verbetering en constante feedback — het tegenovergestelde van routineuze herhaling." }
+    ],
+    creativePrompt: "Kies een vaardigheid die je wilt verbeteren. Ontwerp een deliberate practice-sessie: welk specifiek zwak punt pak je aan, hoe krijg je feedback, en wat is de uitdaging?",
+    aiHelperPrompts: ["Hoe ontwerp ik deliberate practice voor mijn vakgebied?", "Waarom is deliberate practice vaak niet leuk?", "Hoe kan ik feedback krijgen als ik geen coach of leraar heb?"]
+  },
+  {
+    id: "flow-state",
+    title: "Flowstaat",
+    difficulty: 1,
+    emoji: "🌊",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Leren",
+    tags: ["Psychologie", "Motivatie", "Productiviteit", "Beter Leren"],
+    definition: "Een mentale toestand van volledige absorptie in een uitdagende activiteit, waarbij het tijdsbesef verloren gaat en prestatie en plezier tegelijk optimaal zijn. Flow vereist balans tussen uitdaging en vaardigheid.",
+    abstractExample: "Een schaker die zo verdiept is in een wedstrijd dat ze uren voorbijvlogen zonder dat het opviel. Noch te gemakkelijk (saai), noch te moeilijk (angstig). Precies op de rand van vaardigheid.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een programmeur die zo diep in een probleem duikt dat ze pas uren later opkijkt — flow is de reden dat 'time flies when you're having fun' werkt." },
+      { domain: "business", icon: "💼", text: "Topchirurgen in complexe operaties, professionele atleten in wedstrijden — flow is gerapporteerd als het beste gevoel in hun loopbaan." },
+      { domain: "science", icon: "🔬", text: "Mihaly Csikszentmihalyi beschreef flow in 1975 na decennialang onderzoek naar wanneer mensen optimaal gelukkig en productief zijn." }
+    ],
+    prerequisites: ["self-efficacy", "deliberate-practice"],
+    unlocks: ["metacognition"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke condities zijn noodzakelijk voor flow?", options: ["Alleen rust en geen stress", "Balans tussen uitdaging en vaardigheid, duidelijke doelen en directe feedback", "Maximale ontspanning", "Externe druk van anderen"], correctIndex: 1, explanation: "Flow vereist een activiteit die net uitdagend genoeg is om volledige concentratie te vereisen, maar niet zo moeilijk dat angst ontstaat." }
+    ],
+    creativePrompt: "Beschrijf een situatie waarbij je in flowstaat was. Wat maakte die ervaring zo? Hoe kun je vaker die condities creëren in je werk of hobby?",
+    aiHelperPrompts: ["Hoe creëer ik de omstandigheden voor flow in mijn werk?", "Is flow altijd productief?", "Hoe hangt flow samen met deliberate practice — zijn ze tegenstrijdig?"]
+  },
+  {
+    id: "metacognition",
+    title: "Metacognitie",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Beter Leren",
+    tags: ["Cognitieve Psychologie", "Leren", "Zelfkennis", "Beter Leren"],
+    definition: "Denken over je eigen denkproces — het bewustzijn en de regulatie van je eigen cognitie. Metacognitie stelt je in staat te monitoren wat je weet, hoe je leert en waar je tekortschiet.",
+    abstractExample: "Een leerling die beseft 'Ik denk dat ik dit begrijp, maar kan ik het ook uitleggen?' en zichzelf toetst voor het examen, gebruikt metacognitie. Ze weten wanneer ze weten.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Het 'gevoel van weten' dat je de naam kent maar niet kunt ophalen — dit is metacognitief bewustzijn van je geheugenprocessen." },
+      { domain: "business", icon: "💼", text: "Een manager die na een beslissing denkt: 'Was ik beïnvloed door confirmation bias?' gebruikt metacognitie om zijn eigen redeneerfouten te corrigeren." },
+      { domain: "science", icon: "🔬", text: "Flavell (1979) introduceerde de term; sindsdien toont onderzoek consistent dat metacognitief bewustzijn een sterke predictor is van leerprestaties." }
+    ],
+    prerequisites: ["epistemic-humility"],
+    unlocks: ["deliberate-practice"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke leerstrategie is het meest gebaseerd op metacognitie?", options: ["Herhaaldelijk lezen", "Zichzelf toetsen na leren (retrieval practice)", "Markeren van teksten", "Samenvatten in de marge"], correctIndex: 1, explanation: "Retrieval practice vereist dat je inschat wat je weet en niet weet — een directe metacognitieve activiteit die ook het geheugen versterkt." }
+    ],
+    creativePrompt: "Gebruik na je volgende leeractiviteit metacognitie: schrijf op wat je wist, wat je niet wist, en hoe effectief je leerstrategie was. Wat had je anders gedaan?",
+    aiHelperPrompts: ["Hoe train ik mijn metacognitieve vaardigheden?", "Hoe gebruik ik metacognitie bij het beoordelen van informatie?", "Hoe hangt metacognitie samen met dunning-kruger effect?"]
+  },
+  {
+    id: "emotional-regulation",
+    title: "Emotieregulatie",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Psychologie",
+    skillCategory: "Zelfkennis",
+    tags: ["Psychologie", "Emoties", "Zelfkennis", "Betere Beslissingen"],
+    definition: "Het bewuste of onbewuste proces van het moduleren van emotionele ervaringen en uitingen — welke emoties we hebben, wanneer, en hoe we ze uitdrukken. Effectieve regulatie verbetert welzijn en relaties.",
+    abstractExample: "Je raakt gefrustreerd in een vergadering. Regulatie kan betekenen: herwaarderen ('dit is een kans om te oefenen'), suppressie (geen reactie tonen), of de situatie verlaten. Elke strategie heeft andere langetermijneffecten.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Bij hevige teleurstelling pauzeren en doorademen alvorens te reageren — cognitieve herwaardering vermindert de emotionele intensiteit." },
+      { domain: "business", icon: "💼", text: "Leiders die hun emoties effectief reguleren, worden als betrouwbaarder beschouwd en hebben beter presterende teams." },
+      { domain: "science", icon: "🔬", text: "Gross (1998) beschreef het procesmodel van emotieregulatie; herwaardering (reappraisal) bleek langetermijn effectiever dan suppressie." }
+    ],
+    prerequisites: ["affect-heuristic"],
+    unlocks: ["metacognition"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke regulatiestrategie is langetermijn het meest effectief?", options: ["Emoties onderdrukken (suppressie)", "Cognitieve herwaardering (de situatie anders interpreteren)", "Emoties volledig uiten", "Emoties ontkennen"], correctIndex: 1, explanation: "Herwaardering verandert de emotie zelf; suppressie vermindert de uiting maar verhoogt de fysiologische stress. Herwaardering is duurzamer." }
+    ],
+    creativePrompt: "Kies een situatie die je sterk van je stuk brengt. Oefen cognitieve herwaardering: schrijf drie alternatieve interpretaties van de situatie die minder emotioneel laden.",
+    aiHelperPrompts: ["Wat is het verschil tussen emotieregulatie en het onderdrukken van emoties?", "Hoe leer ik herwaardering als emotieregulatietechniek?", "Hoe hangt emotieregulatie samen met besluitvorming?"]
+  },
+  {
+    id: "implementation-intention",
+    title: "Implementatievoornemen",
+    difficulty: 1,
+    emoji: "📋",
+    academicCategory: "Psychologie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Psychologie", "Gedragsverandering", "Planning", "Betere Beslissingen"],
+    definition: "Een specifiek plan van de vorm 'Als situatie X zich voordoet, dan voer ik actie Y uit.' Implementatievoornemens zijn bewezen effectiever dan vage intenties voor het vertalen van doelen naar gedrag.",
+    abstractExample: "Vage intentie: 'Ik wil meer sporten.' Implementatievoornemen: 'Als het maandag is en ik thuiskom van werk, trek ik direct mijn sportschoenen aan en ga ik hardlopen.' Het specifieke if-then plan overbrugt de kloof tussen intentie en actie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Als ik opstaat zet ik mijn vitamines naast mijn tandenborstel' — een implementatievoornemen dat het vergeten elimineert." },
+      { domain: "business", icon: "💼", text: "'Als ik na een vergadering mijn agenda open, schrijf ik direct de actiepunten op' — context-triggered gedrag vermijdt uitstel." },
+      { domain: "science", icon: "🔬", text: "Gollwitzer (1999) toonde aan dat implementatievoornemens de kans op gewenst gedrag met 200-300% verhogen ten opzichte van vage intenties." }
+    ],
+    prerequisites: ["nudge-theory", "default-effect"],
+    unlocks: ["self-efficacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt een implementatievoornemen effectiever dan een gewone intentie?", options: ["Het is positiever geformuleerd", "Het koppelt een specifieke trigger-situatie aan een specifieke actie, waardoor de handeling automatisch kan plaatsvinden", "Het is schriftelijk", "Het heeft een deadline"], correctIndex: 1, explanation: "Door de trigger expliciet te koppelen aan de actie, wordt de situatie zelf de herinnering — zonder willenskracht of mentale monitoring." }
+    ],
+    creativePrompt: "Kies een doel dat je al lang wilt bereiken. Formuleer vijf concrete if-then implementatieplannen. Hoe verandert dit de kans dat je werkelijk actie onderneemt?",
+    aiHelperPrompts: ["Hoe maak ik effectieve implementatieplannen?", "Wanneer werken implementatieplannen niet?", "Hoe combineer ik implementatieplannen met omgevingsontwerp?"]
+  },
+  {
+    id: "self-determination-theory",
+    title: "Zelfbeschikkingstheorie",
+    difficulty: 2,
+    emoji: "🔑",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Psychologie", "Motivatie", "Leiderschap", "Beter Samenwerken"],
+    definition: "Mensen gedijen wanneer drie basisbehoeften worden vervuld: autonomie (keuze en regie), competentie (gevoel van meesterschap) en verbondenheid (betekenisvolle relaties). Externe beloning kan intrinsieke motivatie ondermijnen.",
+    abstractExample: "Een kind dat enthousiast tekent voor het plezier, begint minder te tekenen als het een beloning krijgt voor elk tekening. De externe beloning vervangt de intrinsieke motivatie en ondermijnt die.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Vrijwilligerswerk dat men doet uit persoonlijke motivatie, maar dat betaald gaat worden, kan minder aantrekkelijk worden door het 'crowding out'-effect van extrinsieke beloning." },
+      { domain: "business", icon: "💼", text: "Managers die autonomie geven (keuze in hoe taken worden uitgevoerd) hebben gemotiveerdere en productiever medewerkers dan managers die nauwgezet controleren." },
+      { domain: "science", icon: "🔬", text: "Deci & Ryan (1985) beschreven de zelfbeschikkingstheorie; het 'overjustification effect' (beloning ondermijnt intrinsieke motivatie) is replicated in honderden studies." }
+    ],
+    prerequisites: ["locus-of-control", "social-capital"],
+    unlocks: ["growth-mindset"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer ondermijnt beloning intrinsieke motivatie?", options: ["Altijd", "Wanneer de beloning contingent is aan het uitvoeren van intrinsiek motiverende activiteiten", "Nooit bij volwassenen", "Alleen bij kinderen"], correctIndex: 1, explanation: "Belonen voor activiteiten die mensen al uit zichzelf leuk vinden, signaleert dat de activiteit zelf niet de moeite waard is — de beloning is het doel geworden." }
+    ],
+    creativePrompt: "Analyseer een activiteit die je vroeger leuk vond maar nu minder aantrekkelijk is. Is er een externe beloning of verplichting bijgekomen? Hoe hervindt je de intrinsieke motivatie?",
+    aiHelperPrompts: ["Hoe ontwerp ik taken die autonomie, competentie en verbondenheid bevorderen?", "Wanneer is extrinsieke motivatie wél nuttig?", "Hoe hangt zelfbeschikkingstheorie samen met groeimindset?"]
   }
 ];
