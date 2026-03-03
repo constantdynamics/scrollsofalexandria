@@ -5071,6 +5071,238 @@ export const principles = [
     ],
     creativePrompt: "Bedenk een situatie in je leven of werk waar samenwerking mislukt door te veel vetorechten of eigendomsclaims. Hoe zou je dit kunnen oplossen?",
     aiHelperPrompts: ["Hoe verschilt de tragedie van de anti-meent van de klassieke tragedie van de meent?", "Hoe kunnen patentpools de anti-meent aanpakken?", "Welke rol speelt de overheid bij het voorkomen van anti-meent-situaties?"]
+  },
+
+  // ── BATCH 5: SOCIOLOGIE ───────────────────────────────────────
+  {
+    id: "matthew-effect",
+    title: "Matteüs-Effect",
+    difficulty: 2,
+    emoji: "📈",
+    academicCategory: "Sociologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Sociologie", "Ongelijkheid", "Systemen", "Beter Redeneren"],
+    definition: "Voordelen stapelen zich op bij degenen die al voordelen hebben; nadelen stapelen zich op bij wie al achtergesteld is. Successen vergroten de kansen op verder succes.",
+    abstractExample: "Een wetenschapper met veel citaties krijgt meer funding, publicaties en erkenning, waardoor ze nog meer citaties krijgen. Wie al veel heeft, krijgt nog meer — wie weinig heeft, raakt verder achterop.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Kinderen die vroeg goed leren lezen, lezen meer en worden nog beter — terwijl kinderen die achterlopen verder achteropraken." },
+      { domain: "business", icon: "💼", text: "Grote platforms (Amazon, Google) trekken meer gebruikers aan, waardoor ze meer data hebben, waardoor ze beter worden." },
+      { domain: "science", icon: "🔬", text: "Socioloog Robert Merton bedacht de term in 1968, gebaseerd op de bijbeltekst: 'Aan wie heeft, zal gegeven worden.'" }
+    ],
+    prerequisites: ["network-effects", "feedback-loop"],
+    unlocks: ["relative-deprivation"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe draagt het Matteüs-effect bij aan ongelijkheid?", options: ["Het maakt alle rijken armer", "Cumulatieve voordelen vergroten de kloof tussen wie al heeft en wie niet", "Het treft alleen wetenschappers", "Het werkt alleen in het onderwijs"], correctIndex: 1, explanation: "Elke ronde versterkende feedback vergroot het verschil tussen winnaars en verliezers, ook als de initiële kansen klein waren." }
+    ],
+    creativePrompt: "Identificeer een domein in je leven of werk waar het Matteüs-effect zichtbaar is. Hoe versterken initiële voordelen of nadelen zich over tijd?",
+    aiHelperPrompts: ["Hoe kan beleid het Matteüs-effect tegengaan?", "Is het Matteüs-effect altijd slecht, of heeft het ook positieve effecten?", "Hoe hangt dit samen met het netwerk-effect?"]
+  },
+  {
+    id: "broken-windows",
+    title: "Gebroken-Ramen-Theorie",
+    difficulty: 2,
+    emoji: "🪟",
+    academicCategory: "Criminologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Criminologie", "Sociologie", "Omgeving", "Beter Redeneren"],
+    definition: "Zichtbare tekenen van wanorde en verwaarlozing (gebroken ramen, graffiti, zwerfvuil) bevorderen meer wanorde en criminaliteit. De omgeving communiceert normen over wat acceptabel is.",
+    abstractExample: "Een gebroken raam dat niet gerepareerd wordt, signaleert dat niemand let. Dit nodigt uit tot meer vandalisme. Schone, goed onderhouden omgevingen communiceren het tegengestelde.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een schone wijk heeft minder zwerfvuil — mensen gooien minder snel een wikkel weg als de stoep al schoon is." },
+      { domain: "business", icon: "💼", text: "Kleine overtredingen op kantoor (snoepen uit de koffiekas) die getolereerd worden, normaliseren grotere overtredingen." },
+      { domain: "science", icon: "🔬", text: "Wilson & Kelling (1982) publiceerden de theorie; het beleid werd controversieel getest in New York City in de jaren '90." }
+    ],
+    prerequisites: ["social-proof", "normalization-deviance"],
+    unlocks: ["normalization-deviance"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de kernlogica van de gebroken-ramen-theorie?", options: ["Criminaliteit veroorzaakt armoede", "Omgevingssignalen normaliseren bepaald gedrag", "Gebroken ramen veroorzaken onveiligheid", "Criminaliteit is altijd intentioneel"], correctIndex: 1, explanation: "De omgeving communiceert sociale normen — wanorde signaleert dat regels niet gehandhaafd worden, wat meer wanorde uitlokt." }
+    ],
+    creativePrompt: "Observeer je directe omgeving (thuis, werk, buurt). Welke kleine tekenen van wanorde zijn er? Hoe beïnvloeden die jouw eigen gedrag?",
+    aiHelperPrompts: ["Is de gebroken-ramen-theorie wetenschappelijk bewezen?", "Hoe kan ik de gebroken-ramen-theorie toepassen in mijn eigen omgeving?", "Hoe hangt dit samen met sociale normen en conformiteit?"]
+  },
+  {
+    id: "social-capital",
+    title: "Sociaal Kapitaal",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Sociologie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Sociologie", "Netwerken", "Vertrouwen", "Beter Samenwerken"],
+    definition: "De waarde die voortvloeit uit sociale netwerken, relaties en gedeelde normen van vertrouwen en wederkerigheid. Sociaal kapitaal maakt samenwerking goedkoper en effectiever.",
+    abstractExample: "Twee buren die elkaar kennen en vertrouwen, kunnen elkaars pakketjes aannemen, om gereedschap vragen en in noodsituaties helpen — zonder formeel contract. Dat is sociaal kapitaal in actie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In een gemeenschap met hoog sociaal vertrouwen worden winkelwagens teruggebracht, deuren niet gesloten en informele overeenkomsten nagekomen." },
+      { domain: "business", icon: "💼", text: "Teams met goede onderlinge relaties communiceren beter, lossen conflicten sneller op en presteren beter dan teams met hetzelfde talent maar lage cohesie." },
+      { domain: "science", icon: "🔬", text: "Robert Putnam toonde in 'Bowling Alone' (2000) aan dat het sociaal kapitaal in de VS sterk was gedaald en dit correleerde met lagere democratische participatie." }
+    ],
+    prerequisites: ["reciprocity", "dunbar-number"],
+    unlocks: ["homophily"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen bonding en bridging sociaal kapitaal?", options: ["Ze zijn identiek", "Bonding verbindt gelijkgestemden; bridging verbindt verschillende groepen", "Bridging gaat over technologie", "Bonding gaat over familie"], correctIndex: 1, explanation: "Bonding sociaal kapitaal versterkt bestaande groepen; bridging sociaal kapitaal verbindt verschillende groepen en creëert nieuwe kansen." }
+    ],
+    creativePrompt: "Inventariseer je sociale netwerk. Wie zijn je sterkste relaties (bonding)? Wie zijn mensen in andere kringen die je informatie of kansen geven (bridging)?",
+    aiHelperPrompts: ["Hoe bouw ik bewust sociaal kapitaal op?", "Wanneer is sociaal kapitaal exclusief (in-group) en wanneer inclusief?", "Hoe hangt sociaal kapitaal samen met economische welvaart?"]
+  },
+  {
+    id: "moral-panic",
+    title: "Morele Paniek",
+    difficulty: 2,
+    emoji: "😱",
+    academicCategory: "Sociologie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Sociologie", "Media", "Sociale Controle", "Kritisch Denken"],
+    definition: "Een heftige, soms overdreven reactie van de samenleving op een veronderstelde bedreiging voor sociale waarden en normen. Media, politici en experts versterken de angst en creëren een 'folk devil'.",
+    abstractExample: "In de jaren '80 leidde de 'Satanic Panic' in de VS tot massale veroordelingen van onschuldige kleuterschoolleidsters op basis van nauwelijks bewijs — aangewakkerd door media en therapeuten.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Nieuwe muziekstijlen (rock, hiphop) worden telkens als morele gevaren voor de jeugd gepresenteerd — dit herhaalpatroon is een klassieker morele paniek." },
+      { domain: "business", icon: "💼", text: "Morele paniek rond videogames en geweld leidde tot regelgeving, terwijl wetenschappelijk bewijs voor een direct verband zwak is." },
+      { domain: "science", icon: "🔬", text: "Stanley Cohen beschreef morele paniek voor het eerst in 1972 bij zijn studie van de 'Mods and Rockers'-rellen in Groot-Brittannië." }
+    ],
+    prerequisites: ["availability-heuristic", "illusory-truth-effect"],
+    unlocks: ["overton-window"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat zijn de typische kenmerken van een morele paniek?", options: ["Rationeel bewijs voor een echte dreiging", "Overdreven reactie, een aangewezen vijand, media-versterking, en uiteindelijk verdwijning van de paniek", "Een langdurige wetenschappelijke consensus", "Democratische besluitvorming over een probleem"], correctIndex: 1, explanation: "Morele paniek kenmerkt zich door disproportionaliteit, een 'folk devil' (vijand), mediaversterking en vaak tijdelijkheid." }
+    ],
+    creativePrompt: "Denk aan een recente publieke angst of ophef. Voldeed die aan de kenmerken van morele paniek? Was de dreiging reëel of overdreven?",
+    aiHelperPrompts: ["Hoe onderscheid ik een legitieme sociale zorg van morele paniek?", "Welke rol speelt sociale media in moderne morele paniek?", "Hoe kunnen we als samenleving beter omgaan met nieuwe technologie zonder in morele paniek te vervallen?"]
+  },
+  {
+    id: "homophily",
+    title: "Gelijksoortigheidsprincipe",
+    difficulty: 1,
+    emoji: "🪞",
+    academicCategory: "Sociologie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Sociologie", "Netwerken", "Diversiteit", "Beter Samenwerken"],
+    definition: "De neiging van mensen om zich te associëren met en te verbinden aan anderen die op hen lijken. Gelijke trekken gelijke aan — in opleiding, etniciteit, politieke overtuiging, leeftijd en waarden.",
+    abstractExample: "Sociale netwerken zijn zelden willekeurig. Mensen hebben gemiddeld vaker vrienden met dezelfde politieke overtuiging, achtergrond en opleiding. Dit creëert homogene 'bubbels'.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Onderzoek toont dat de meeste mensen vijf beste vrienden hebben die op hen lijken qua opleiding, politieke overtuiging en etniciteit." },
+      { domain: "business", icon: "💼", text: "Recruiters kiezen onbewust kandidaten die op hen lijken — dit ondermijnt diversiteit en versterkt homogeniteit in teams." },
+      { domain: "science", icon: "🔬", text: "McPherson, Smith-Lovin & Cook toonden in 2001 aan dat homofily de sterkste structurerende kracht in sociale netwerken is." }
+    ],
+    prerequisites: ["ingroup-bias", "confirmation-bias"],
+    unlocks: ["social-capital"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het risico van sterke homofily in informatienetwerken?", options: ["Meer diversiteit van meningen", "Echokamers en versterking van bestaande overtuigingen", "Snellere informatieverspreiding", "Betere besluitvorming"], correctIndex: 1, explanation: "Als we alleen contact hebben met gelijkgestemden, krijgen we alleen informatie die onze eigen overtuigingen bevestigt." }
+    ],
+    creativePrompt: "Analyseer je vijf nauwste sociale relaties. Hoe gelijkend zijn ze op jou qua opleiding, politieke overtuiging en achtergrond? Wat is de impact van deze homogeniteit?",
+    aiHelperPrompts: ["Hoe kan ik bewust diversere sociale verbindingen opbouwen?", "Is homofily altijd negatief of heeft het ook voordelen?", "Hoe hangt homofily samen met de filterbubbel online?"]
+  },
+  {
+    id: "diffusion-of-responsibility",
+    title: "Verspreiding van Verantwoordelijkheid",
+    difficulty: 2,
+    emoji: "👥",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Sociale Psychologie", "Groepen", "Verantwoordelijkheid", "Beter Samenwerken"],
+    definition: "Hoe meer mensen aanwezig zijn in een noodsituatie, hoe minder ieder individu zich persoonlijk verantwoordelijk voelt om in te grijpen. Aanwezigheid van anderen vermindert individuele actie.",
+    abstractExample: "In een grote menigte valt iemand flauw. Iedereen wacht totdat iemand anders helpt — want er zijn zoveel mensen, zeker één zal wel ingrijpen. Niemand doet iets. In een kleine groep helpt iemand direct.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In een druk bezet kantoor zijn de keuken en badkamer het vuilste — iedereen denkt dat een ander het wel schoonmaakt." },
+      { domain: "business", icon: "💼", text: "In grote vergaderingen neemt niemand verantwoordelijkheid voor een slecht besluit — iedereen dacht dat iemand anders het zou tegenhouden." },
+      { domain: "science", icon: "🔬", text: "Latané & Darley (1968) ontdekten het fenomeen na de Kitty Genovese-zaak, waarbij tientallen buren beweren getuige te zijn geweest maar niemand ingreep." }
+    ],
+    prerequisites: ["bystander-effect"],
+    unlocks: ["social-loafing"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe neutraliseer je verspreiding van verantwoordelijkheid in een noodgeval?", options: ["Wachten tot iemand anders ingrijpt", "Een specifiek persoon aanwijzen ('u in de rode jas, bel 112')", "Harder roepen", "Meer mensen verzamelen"], correctIndex: 1, explanation: "Specifieke aanwijzing doorbreekt de diffusie — een benoemde persoon kan de verantwoordelijkheid niet meer aan anderen overlaten." }
+    ],
+    creativePrompt: "Beschrijf een situatie op je werk of in je leven waar een probleem lang bleef bestaan omdat iedereen dacht dat iemand anders het zou aanpakken. Hoe had dit voorkomen kunnen worden?",
+    aiHelperPrompts: ["Hoe ontwerp ik projectteams zodat verantwoordelijkheden duidelijk zijn?", "Wanneer is dit effect het sterkst aanwezig?", "Hoe hangt dit samen met sociaal luieren?"]
+  },
+  {
+    id: "relative-deprivation",
+    title: "Relatieve Deprivatie",
+    difficulty: 2,
+    emoji: "😤",
+    academicCategory: "Sociologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Sociologie", "Welzijn", "Vergelijking", "Beter Redeneren"],
+    definition: "Het gevoel van ontevredenheid dat ontstaat niet door absolute armoede maar door vergelijking met anderen. We meten onze welvaart aan de hand van de omgeving, niet aan absolute standaarden.",
+    abstractExample: "Iemand die €60.000 verdient in een buurt van miljonairs voelt zich arm. Diezelfde persoon in een armere buurt voelt zich welvarend. Het inkomen is gelijk; de referentiegroep verschilt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Na een salarisverhoging voel je je slechter wanneer je hoort dat een collega een grotere verhoging kreeg — ook al verdien je meer dan ervoor." },
+      { domain: "business", icon: "💼", text: "Onderzoek toont dat tevredenheid over salaris meer bepaald wordt door de positie ten opzichte van collega's dan door het absolute bedrag." },
+      { domain: "science", icon: "🔬", text: "Stouffer et al. beschreven het fenomeen in 1949 bij onderzoek naar tevredenheid van soldaten: promotieontevredenheid was groter in eenheden met meer promoties." }
+    ],
+    prerequisites: ["loss-aversion", "social-proof"],
+    unlocks: ["matthew-effect"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke referentiegroep beïnvloedt relatieve deprivatie het meest?", options: ["Mensen die veel slechter af zijn", "Mensen die net iets beter of vergelijkbaar af zijn", "Historische generaties", "Mensen in andere landen"], correctIndex: 1, explanation: "We vergelijken ons het meest met mensen in onze directe omgeving — collega's, buren, vrienden — niet met mensen ver van ons bed." }
+    ],
+    creativePrompt: "Met wie vergelijk jij jezelf het meest (salaris, succes, bezit)? Hoe beïnvloedt deze referentiegroep jouw tevredenheid? Wat zou een andere referentiegroep veranderen?",
+    aiHelperPrompts: ["Hoe kan ik mijn referentiegroep bewust kiezen voor meer tevredenheid?", "Is relatieve deprivatie een politieke of persoonlijke kwestie?", "Hoe hangt dit samen met de hedonic treadmill?"]
+  },
+  {
+    id: "labeling-theory",
+    title: "Labelingtheorie",
+    difficulty: 2,
+    emoji: "🏷️",
+    academicCategory: "Sociologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Sociologie", "Identiteit", "Afwijking", "Beter Redeneren"],
+    definition: "Wanneer mensen gelabeld worden als afwijkend, internaliseren ze dit label en gedragen ze zich er naar. Het label wordt een self-fulfilling prophecy. Sociale reactie op gedrag is medebepalend voor toekomstig gedrag.",
+    abstractExample: "Een kind dat op school als 'probleemkind' wordt bestempeld, gedraagt zich steeds meer als een probleemkind — niet omdat het 'slecht' is, maar omdat de sociale omgeving dat verwacht en versterkt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Iemand die na een incident 'crimineel' wordt gelabeld, ondervindt dat dit label sociale uitsluiting veroorzaakt, wat de kans op herhaling vergroot." },
+      { domain: "business", icon: "💼", text: "Medewerkers die als 'high potential' worden gelabeld, groeien sneller — deels door meer aandacht en kansen die ze krijgen." },
+      { domain: "science", icon: "🔬", text: "Howard Becker beschreef in 'Outsiders' (1963) hoe deviantie een sociaal geconstrueerd label is, niet een intrinsieke eigenschap." }
+    ],
+    prerequisites: ["social-proof", "self-serving-bias"],
+    unlocks: ["normalization-deviance"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat impliceert de labelingtheorie voor de aanpak van recidive?", options: ["Strenger straffen", "Labels verwijderen en re-integratie bevorderen", "Meer gevangenisstraf", "Labels zijn onschadelijk"], correctIndex: 1, explanation: "Als labels gedrag beïnvloeden, helpt het verwijderen van stigma en het bieden van nieuwe identiteiten bij het doorbreken van criminele patronen." }
+    ],
+    creativePrompt: "Denk aan een label dat jij ooit op jezelf of een ander hebt geplakt. Hoe beïnvloedde dit label het gedrag? Was het label eerlijk of te simpel?",
+    aiHelperPrompts: ["Hoe kan ik voorkomen dat ik anderen onterecht labelt?", "Welke positieve labels kunnen gedrag constructief beïnvloeden?", "Hoe hangt de labelingtheorie samen met de zelfvervullende profetie?"]
+  },
+  {
+    id: "social-loafing",
+    title: "Sociaal Luieren",
+    difficulty: 1,
+    emoji: "😴",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Beter Samenwerken",
+    tags: ["Sociale Psychologie", "Groepen", "Prestatie", "Beter Samenwerken"],
+    definition: "Individuen leveren minder inspanning wanneer ze werken als deel van een groep dan wanneer ze individueel werken. Anonimiteit in een groep vermindert persoonlijk accountability.",
+    abstractExample: "Bij touwtrekken trekt een groep van acht mensen niet acht keer zo hard als één persoon — elke persoon levert gemiddeld minder kracht dan wanneer ze alleen trekken.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In groepsprojecten op school doen sommige studenten minder, wetende dat het groepsgemiddelde hun individuele bijdrage maskeert." },
+      { domain: "business", icon: "💼", text: "In grote vergaderingen zijn bijdragen van individuen minder specifiek en minder eigenaardig dan in een-op-een gesprekken." },
+      { domain: "science", icon: "🔬", text: "Ringelmann ontdekte in 1913 als eerste dat de individuele inspanning bij touwtrekken daalt naarmate de groep groter wordt." }
+    ],
+    prerequisites: ["diffusion-of-responsibility"],
+    unlocks: ["abilene-paradox"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe verminder je sociaal luieren in teamprojecten?", options: ["De groep groter maken", "Individuele bijdragen zichtbaar en meetbaar maken", "Niemand verantwoordelijk maken", "Meer groepsleden aannemen"], correctIndex: 1, explanation: "Zichtbaarheid van individuele bijdragen heft de anonimiteit op die sociaal luieren mogelijk maakt." }
+    ],
+    creativePrompt: "Denk aan een groepsproject uit je verleden. Wie deed hoeveel? Was er sprake van sociaal luieren? Hoe had de groepsstructuur dit kunnen voorkomen?",
+    aiHelperPrompts: ["Hoe ontwerp ik samenwerking die sociaal luieren minimaliseert?", "Wanneer werkt anonimiteit positief in groepen?", "Hoe hangt dit samen met de verspreiding van verantwoordelijkheid?"]
+  },
+  {
+    id: "normalization-deviance",
+    title: "Normalisering van Afwijking",
+    difficulty: 3,
+    emoji: "⚠️",
+    academicCategory: "Organisatiesociologie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Organisatiesociologie", "Veiligheid", "Risico", "Betere Beslissingen"],
+    definition: "Wanneer kleine afwijkingen van veiligheidsnormen geen onmiddellijke gevolgen hebben, worden ze geleidelijk als normaal geaccepteerd — totdat een catastrofale mislukking optreedt.",
+    abstractExample: "Een team stelt vast dat er kleine scheurtjes in een onderdeel zijn, maar het onderdeel houdt het steeds. Na tientallen vluchten wordt dit als 'normaal' beschouwd — totdat het onderdeel fataal faalt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Autobanden met iets te lage spanning rijden de eerste honderd keer prima. Men stopt het controleren — totdat er een klapband is." },
+      { domain: "business", icon: "💼", text: "Kleine veiligheidsprotocollen worden genegeerd omdat ze 'altijd goed gaan'. Tot er een ongeluk is." },
+      { domain: "science", icon: "🔬", text: "Diane Vaughan beschreef normalisering van afwijking als de kernverklaring voor de Challenger-ramp (1986) in haar boek 'The Challenger Launch Decision'." }
+    ],
+    prerequisites: ["hindsight-bias", "confirmation-bias"],
+    unlocks: ["broken-windows"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is normalisering van afwijking zo gevaarlijk in veiligheidskritische systemen?", options: ["Kleine afwijkingen zijn altijd onschadelijk", "Ze creëren een valse zekerheid die grote risico's maskeert", "Veiligheidsnormen zijn altijd te streng", "Afwijkingen worden altijd opgemerkt"], correctIndex: 1, explanation: "Elke 'succesvolle' overtreding zonder gevolgen versterkt de overtuiging dat de norm onnodig was, waardoor de risicograad geleidelijk stijgt." }
+    ],
+    creativePrompt: "Zoek in je dagelijks leven of werk drie kleine 'afwijkingen' die je accepteert omdat ze nooit direct problemen gaven. Wat is het maximale risico als ze tegelijk fout gaan?",
+    aiHelperPrompts: ["Hoe bouw ik een organisatiecultuur die normalisering van afwijking tegengaat?", "Welke bekende rampen werden veroorzaakt door normalisering van afwijking?", "Hoe hangt dit samen met de gebroken-ramen-theorie?"]
   }
 ];
 
