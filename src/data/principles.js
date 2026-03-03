@@ -5303,6 +5303,238 @@ export const principles = [
     ],
     creativePrompt: "Zoek in je dagelijks leven of werk drie kleine 'afwijkingen' die je accepteert omdat ze nooit direct problemen gaven. Wat is het maximale risico als ze tegelijk fout gaan?",
     aiHelperPrompts: ["Hoe bouw ik een organisatiecultuur die normalisering van afwijking tegengaat?", "Welke bekende rampen werden veroorzaakt door normalisering van afwijking?", "Hoe hangt dit samen met de gebroken-ramen-theorie?"]
+  },
+
+  // ── BATCH 6: WETENSCHAPSFILOSOFIE & EPISTEMOLOGIE ─────────────
+  {
+    id: "replication-crisis",
+    title: "Replicatiecrisis",
+    difficulty: 2,
+    emoji: "🔬",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Wetenschapsfilosofie", "Wetenschap", "Methodologie", "Kritisch Denken"],
+    definition: "De ontdekking dat veel gepubliceerde wetenschappelijke bevindingen niet reproduceerbaar zijn door onafhankelijke onderzoekers. Factoren als publicatiebias, kleine steekproeven en p-hacking dragen bij.",
+    abstractExample: "Slechts 36% van de gepubliceerde psychologiestudies gaf hetzelfde resultaat bij herhaling (Open Science Collaboration, 2015). Veel klassieke bevindingen bleken niet te repliceren.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Populair wetenschappelijk nieuws over 'bewezen' effecten van koffie, wijn of bepaalde diëten keert vaak terug als 'toch niet bewezen'." },
+      { domain: "business", icon: "💼", text: "Managementinterventies gebaseerd op psychologieonderzoek (sommige priming-experimenten) bleken in de praktijk niet te werken." },
+      { domain: "science", icon: "🔬", text: "De replicatiecrisis leidde tot open science beweging: pre-registratie, open data en grotere steekproeven als structurele oplossingen." }
+    ],
+    prerequisites: ["falsification", "selection-bias"],
+    unlocks: ["publication-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is een van de oorzaken van de replicatiecrisis?", options: ["Wetenschappers liegen systematisch", "Publicatiebias: positieve resultaten worden vaker gepubliceerd dan negatieve", "Wetenschap is onbetrouwbaar", "Replicatie is onmogelijk"], correctIndex: 1, explanation: "Tijdschriften publiceren liever positieve resultaten; negatieve resultaten verdwijnen in een la, waardoor het gedrukte beeld vertekend is." }
+    ],
+    creativePrompt: "Zoek een wetenschappelijk 'feit' dat je altijd voor waar aannam. Controleer of het gebaseerd is op gerepliceerd onderzoek of op een enkele studie.",
+    aiHelperPrompts: ["Hoe kan ik als leek beoordelen of wetenschappelijk nieuws betrouwbaar is?", "Wat is pre-registratie van studies en waarom helpt het?", "Welke vakgebieden hebben het meeste last van de replicatiecrisis?"]
+  },
+  {
+    id: "publication-bias",
+    title: "Publicatiebias",
+    difficulty: 2,
+    emoji: "📰",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Wetenschapsfilosofie", "Statistiek", "Methodologie", "Kritisch Denken"],
+    definition: "De neiging van wetenschappelijke tijdschriften om studies met positieve, statistisch significante resultaten vaker te publiceren dan studies met negatieve of nulresultaten. Het gepubliceerde beeld is systematisch te positief.",
+    abstractExample: "Stel: 20 onderzoeken naar een medicijn. Vijf vinden een positief effect (door kans); vijftien vinden niets. Alleen de vijf positieve worden gepubliceerd. Het lijkt of het medicijn werkt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Dieetonderzoek dat werkt haalt het nieuws; het grote deel dat niet werkt wordt niet gepubliceerd of vergeten." },
+      { domain: "business", icon: "💼", text: "Positieve casestudies van managementstrategieën worden gepubliceerd; de vele mislukkingen zijn minder zichtbaar." },
+      { domain: "science", icon: "🔬", text: "Meta-analyses correcting for publication bias via funnel plots tonen systematisch dat effectgroottes kleiner zijn dan de gepubliceerde literatuur suggereert." }
+    ],
+    prerequisites: ["selection-bias", "replication-crisis"],
+    unlocks: ["multiple-comparisons"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is een 'funnel plot' in meta-analyse?", options: ["Een grafiek van publicatieaantallen per jaar", "Een visualisatie die publicatiebias zichtbaar maakt door asymmetrie in studieresultaten", "Een statistisch toets voor effect", "Een soort barplot"], correctIndex: 1, explanation: "In een funnel plot zonder bias zijn kleine en grote studies symmetrisch verdeeld rond het ware effect; asymmetrie wijst op bias." }
+    ],
+    creativePrompt: "Zoek een terrein waar je veel positieve berichten hoort (diëten, investeringen, therapieën). Hoeveel negatieve resultaten zijn er? Is het beeld compleet?",
+    aiHelperPrompts: ["Hoe kan ik publicatiebias detecteren bij het lezen van onderzoek?", "Wat doet pre-registratie om publicatiebias te verminderen?", "Is publicatiebias bewust of onbewust?"]
+  },
+  {
+    id: "demarcation-problem",
+    title: "Afbakeningsprobleem",
+    difficulty: 3,
+    emoji: "🔭",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Wetenschapsfilosofie", "Wetenschap", "Pseudowetenschap", "Kritisch Denken"],
+    definition: "De filosofische vraag hoe we wetenschap kunnen onderscheiden van pseudowetenschap, metafysica en andere vormen van kennis. Er is geen scherpe grens die breed geaccepteerd is.",
+    abstractExample: "Is astrologie wetenschap? Is de evolutietheorie te falsificeren? Is Freudiaanse psychoanalyse wetenschappelijk? Het afbakeningsprobleem vraagt naar de criteria voor 'echte wetenschap'.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Homeopathie promoot zichzelf als wetenschap maar voldoet niet aan de criteria van herhaalbaarheid en falsificeerbaarheid." },
+      { domain: "business", icon: "💼", text: "Bedrijven die wetenschappelijke taal gebruiken voor onbewezen claims maken gebruik van de vage grens tussen wetenschap en pseudowetenschap." },
+      { domain: "science", icon: "🔬", text: "Karl Popper stelde falsificeerbaarheid voor als demarkatiecriterium; Lakatos en Kuhn boden complexere alternatieven." }
+    ],
+    prerequisites: ["falsification", "scientific-method"],
+    unlocks: ["inference-to-best-explanation"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is Poppers falsificeerbaarheidscriterium niet volledig adequaat?", options: ["Het is correct en volledig", "Sommige wetenschappelijke theorieën zijn technisch niet falsificeerbaar maar toch wetenschappelijk", "Falsificatie is onmogelijk", "Popper was geen filosoof"], correctIndex: 1, explanation: "Evolutietheorie, kosmologie en kwantummechanica zijn in sommige opzichten moeilijk falsificeerbaar maar zijn duidelijk wetenschappelijk van karakter." }
+    ],
+    creativePrompt: "Kies een claim (bv. 'multivitamines verbeteren gezondheid', 'astrologie klopt'). Stel de vraag: is dit wetenschappelijk? Welke criteria gebruik je?",
+    aiHelperPrompts: ["Hoe herken ik pseudowetenschap in de media?", "Waarom is het afbakeningsprobleem filosofisch zo lastig?", "Welke criteria zijn het meest bruikbaar voor niet-wetenschappers?"]
+  },
+  {
+    id: "inference-to-best-explanation",
+    title: "Redeneren naar Beste Verklaring",
+    difficulty: 2,
+    emoji: "🕵️",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Wetenschapsfilosofie", "Logica", "Redeneren", "Beter Redeneren"],
+    definition: "We kiezen de hypothese die, als ze waar is, het bestaande bewijs het beste verklaart. Ook wel 'abductieve redenering' of 'abductie' — redeneren naar de meest plausibele verklaring.",
+    abstractExample: "Je komt thuis en je hond zit bij zijn lege bakje te huilen. De beste verklaring: hij heeft honger en wil eten. Er zijn andere mogelijkheden, maar dit verklaart het bewijs het eenvoudigst en volledigst.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "De dokter ziet symptomen (koorts, hoest, vermoeidheid) en concludeert 'waarschijnlijk griep' — de beste verklaring voor het patroon." },
+      { domain: "business", icon: "💼", text: "Een bedrijf ziet verkopen dalen en klachten stijgen na een productupdating: de beste verklaring is een probleem in de update." },
+      { domain: "science", icon: "🔬", text: "Darwin's evolutietheorie was oorspronkelijk een abductieve gevolgtrekking: deze theorie verklaart de variatie in soorten het best." }
+    ],
+    prerequisites: ["abduction", "scientific-method"],
+    unlocks: ["occams-razor"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt abductie van deductie?", options: ["Abductie geeft zekere conclusies; deductie niet", "Deductie trekt zekere conclusies uit premissen; abductie kiest de meest plausibele verklaring voor data", "Ze zijn identiek", "Abductie is altijd fout"], correctIndex: 1, explanation: "Deductie garandeert conclusies als premissen waar zijn. Abductie selecteert de beste verklaring — plausibel maar niet zeker." }
+    ],
+    creativePrompt: "Beschrijf een probleem of situatie waarbij je 'op zoek was naar de waarheid'. Welke verklaringen overwoog je? Welke koos je en waarom?",
+    aiHelperPrompts: ["Hoe verhoudt abductie zich tot Occams scheermes?", "Wanneer is redeneren naar beste verklaring riskant?", "Hoe gebruiken detectives en wetenschappers abductie?"]
+  },
+  {
+    id: "underdetermination",
+    title: "Onderbepaling",
+    difficulty: 3,
+    emoji: "🔀",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Wetenschapsfilosofie", "Wetenschap", "Epistemologie", "Kritisch Denken"],
+    definition: "Bewijzen zijn altijd compatibel met meerdere concurrerende theorieën. Data bepalen niet uniek welke theorie juist is — er zijn altijd alternatieven die hetzelfde bewijs verklaren.",
+    abstractExample: "Alle meetresultaten van het sterrenstelsel zijn compatibel met Newton's zwaartekrachtswet én met Einsteins relativiteitstheorie (voor normale situaties). Het bewijs 'onderbepalt' de theorie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een arts ziet dezelfde symptomen bij tien patiënten maar vijf hebben ziekte A, vijf hebben ziekte B. De symptomen bepalen de diagnose niet uniek." },
+      { domain: "business", icon: "💼", text: "Dezelfde verkoopdaling kan verklaard worden door economische recessie, slechte marketing of productproblemen — de data sluiten geen van de theorieën uit." },
+      { domain: "science", icon: "🔬", text: "Quine-Duhem-stelling: bij een experiment test je nooit één theorie maar altijd een combinatie van theorieën en hulphypothesen." }
+    ],
+    prerequisites: ["falsification", "demarcation-problem"],
+    unlocks: ["principle-of-charity"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat betekent onderbepaling voor wetenschappelijke zekerheid?", options: ["Wetenschap is onmogelijk", "Zelfs bij bewijs zijn er altijd concurrerende theorieën die hetzelfde verklaren", "Alle theorieën zijn gelijkwaardig", "Meer bewijs elimineert alle alternatieven"], correctIndex: 1, explanation: "Onderbepaling betekent dat bewijs altijd meerdere theorieën ondersteunt — wetenschappelijke keuze vraagt ook om eenvoud, coherentie en voorspellingskracht." }
+    ],
+    creativePrompt: "Neem een overtuiging die je stevig houdt. Bedenk drie alternatieve verklaringen voor hetzelfde bewijs. Hoe sterk is jouw favoriete verklaring echt?",
+    aiHelperPrompts: ["Hoe gaan wetenschappers om met onderbepaling bij het kiezen van theorieën?", "Maakt onderbepaling realisme onhoudbaar?", "Hoe hangt dit samen met Occams scheermes?"]
+  },
+  {
+    id: "principle-of-charity",
+    title: "Liefdadigheidsprincipe",
+    difficulty: 1,
+    emoji: "🫱",
+    academicCategory: "Filosofie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Filosofie", "Debat", "Communicatie", "Beter Communiceren", "Argumenteren"],
+    definition: "Interpreteer het argument van de ander in zijn sterkst mogelijke vorm voordat je het beantwoordt. Dit leidt tot eerlijker debat en betere begrip van het tegenstandpunt.",
+    abstractExample: "Als iemand een zwak geformuleerd argument geeft, zoek dan de sterkste interpretatie voordat je reageert. Zeg: 'Ik begrijp jouw punt als X, klopt dat?' — en debatteer dan met die sterkste versie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In een discussie met je partner zoek je de beste interpretatie van hun klacht in plaats van het zwakste punt aan te vallen." },
+      { domain: "business", icon: "💼", text: "Een goede advocaat of debater begrijpt het tegenstandpunt zo goed dat ze het zelf kunnen verdedigen voordat ze het weerleggen." },
+      { domain: "science", icon: "🔬", text: "Het liefdadigheidsprincipe is de tegenhanger van de 'steel man' versus 'straw man' aanpak in argumentatie." }
+    ],
+    prerequisites: ["straw-man-fallacy"],
+    unlocks: ["epistemic-humility"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is het liefdadigheidsprincipe nuttig in debat?", options: ["Het maakt je verzwakken van het tegenstandpunt gemakkelijker", "Het leidt tot eerlijker debat en sterker begrip van het tegenstandpunt", "Het maakt je argument altijd winnen", "Het is een teken van zwakte"], correctIndex: 1, explanation: "Door het sterkste argument te weerleggen, weerleg je het tegenstandpunt echt — niet slechts een karikateur ervan." }
+    ],
+    creativePrompt: "Kies een mening die je niet deelt. Schrijf het sterkst mogelijke argument voor die mening. Hoe heeft dit je begrip van het tegenstandpunt veranderd?",
+    aiHelperPrompts: ["Hoe pas ik het liefdadigheidsprincipe toe in sociale media-discussies?", "Wat is het verschil tussen een steel man en een straw man?", "Wanneer is het liefdadigheidsprincipe niet van toepassing?"]
+  },
+  {
+    id: "epistemic-closure",
+    title: "Epistemische Afsluiting",
+    difficulty: 3,
+    emoji: "🔒",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Epistemologie", "Filosofie", "Kennisleer", "Kritisch Denken"],
+    definition: "Een gesloten kennissysteem waarin alle nieuwe informatie wordt geïnterpreteerd als bevestiging van bestaande overtuigingen. Tegenbewijzen worden weggeredeneerd of gereïnterpreteerd.",
+    abstractExample: "Een samenzweringsdenker gelooft in een complot. Bewijs voor het complot bevestigt het. Afwezigheid van bewijs is ook bewijs: 'ze verbergen het'. Tegenbewijzen zijn 'plantingen'. Het systeem is gesloten.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Iemand die gelooft in een medisch complot beschouwt afwijkende wetenschappers als betalend door de farmaceutische industrie, waardoor elke weerlegging in het systeem past." },
+      { domain: "business", icon: "💼", text: "Een manager die overtuigd is van het succes van een strategie interpreteert tegenvallers als tijdelijke obstakels in plaats van bewijs dat de strategie faalt." },
+      { domain: "science", icon: "🔬", text: "Popper beschreef dit als het kenmerk van pseudowetenschap: een theorie die altijd bevestigd wordt en nooit weerlegd kan worden, is informatieloos." }
+    ],
+    prerequisites: ["confirmation-bias", "falsification"],
+    unlocks: ["epistemic-humility"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kenmerk van epistemische afsluiting?", options: ["Open houding tegenover nieuwe informatie", "Alle informatie — inclusief tegenbewijzen — past in het bestaande systeem", "Verandering van overtuiging bij nieuw bewijs", "Systematisch zoeken naar weerlegging"], correctIndex: 1, explanation: "Epistemische afsluiting is wanneer een overtuiging principieel niet meer weerlegbaar is — elk bewijs wordt geabsorbeerd als bevestiging." }
+    ],
+    creativePrompt: "Identificeer een overtuiging van jezelf die je moeilijk kunt loslaten. Welk bewijs zou jou écht van mening doen veranderen? Als je dat niet kunt noemen, is de overtuiging mogelijk epistemisch gesloten.",
+    aiHelperPrompts: ["Hoe herken ik epistemische afsluiting bij mezelf?", "Hoe verschilt gezond scepticisme van epistemische afsluiting?", "Hoe ga ik in gesprek met iemand met een gesloten overtuigingssysteem?"]
+  },
+  {
+    id: "theory-ladenness",
+    title: "Theoriebeladenheid",
+    difficulty: 3,
+    emoji: "🔭",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Wetenschapsfilosofie", "Wetenschap", "Waarneming", "Kritisch Denken"],
+    definition: "Waarnemingen zijn altijd gekleurd door de theoretische achtergrond van de waarnemer. Er bestaat geen 'onschuldige' observatie — wat je ziet, is deels wat je al gelooft.",
+    abstractExample: "Een arts en een leek kijken naar een röntgenfoto. De arts 'ziet' een tumor; de leek ziet grijze vlekken. Dezelfde retinale stimulatie, verschillende waarnemingen door verschillende theoretische achtergronden.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een expert ziet een schaakbord heel anders dan een beginner — de theoretische kennis structureert de waarneming." },
+      { domain: "business", icon: "💼", text: "Een econoom en een socioloog bekijken dezelfde arbeidsmarktdata maar 'zien' heel verschillende problemen en patronen." },
+      { domain: "science", icon: "🔬", text: "Norwood Hanson beschreef in 'Patterns of Discovery' (1958) hoe Tycho Brahe en Copernicus dezelfde zonsopgang 'zagen' maar verschillende dingen waarnamen." }
+    ],
+    prerequisites: ["confirmation-bias", "scientific-method"],
+    unlocks: ["underdetermination"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat impliceert theoriebeladenheid voor objectiviteit in wetenschap?", options: ["Objectiviteit is onmogelijk", "Pure, theorievrije observatie bestaat niet maar intersubjectiviteit en kritische toetsing compenseren dit", "Wetenschap is puur subjectief", "Theorieën bepalen niet wat we zien"], correctIndex: 1, explanation: "Geen enkel waarnemend subject is theorievrij, maar wetenschappelijke methoden bouwen controles in om theoriebeladenheid te compenseren." }
+    ],
+    creativePrompt: "Kies een domein waar je expertise hebt. Wat 'zie' je nu dat je tien jaar geleden niet zag in dezelfde situaties? Hoe heeft kennis je waarneming veranderd?",
+    aiHelperPrompts: ["Hoe kan wetenschap objectief zijn als observaties theoriebeladen zijn?", "Hoe verschilt theoriebeladenheid van subjectiviteit?", "Welke rol speelt training in het veranderen van waarneming?"]
+  },
+  {
+    id: "confirmation-holism",
+    title: "Bevestigingsholisme",
+    difficulty: 3,
+    emoji: "🌐",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Wetenschapsfilosofie", "Wetenschap", "Epistemologie", "Kritisch Denken"],
+    definition: "Wetenschappelijke statements worden niet afzonderlijk getest maar als deel van een netwerk van overtuigingen. Een gefaalde voorspelling kan aan elke schakel worden toegeschreven.",
+    abstractExample: "Een experiment faalt. Is de theorie fout? Of de meetinstrumenten? Of de randcondities? Of de mathematische modellen? Je test nooit één stelling maar altijd een heel stelsel tegelijk.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Als je recept mislukt, is het de fout van het recept, de kwaliteit van ingrediënten, de oven of jouw techniek? Je weet het niet zeker." },
+      { domain: "business", icon: "💼", text: "Een marketingcampagne faalt. Was het de boodschap, het kanaal, het product, de timing, of de concurrentie? Elke schakel kan de oorzaak zijn." },
+      { domain: "science", icon: "🔬", text: "Duhem (1914) en Quine (1951) formuleerden de these dat theorieën het empirische bewijs altijd als netwerk confronteren, niet stuk voor stuk." }
+    ],
+    prerequisites: ["falsification", "underdetermination"],
+    unlocks: ["demarcation-problem"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de implicatie van bevestigingsholisme voor falsificatie?", options: ["Falsificatie is altijd eenvoudig", "Een mislukt experiment kan toegeschreven worden aan hulphypothesen, niet aan de kerntheorie", "Falsificatie is onmogelijk", "Holisme versterkt falsificatie"], correctIndex: 1, explanation: "Omdat je altijd een netwerk test, kan een anomalie de kerntheorie intact laten door een hulphypothese aan te passen." }
+    ],
+    creativePrompt: "Beschrijf een situatie waarbij je plan faalde. Maak een lijst van alle mogelijke oorzaken. Hoe besloot je welke schakel de oorzaak was?",
+    aiHelperPrompts: ["Hoe gaan wetenschappers om met anomalieën zonder hun theorie op te geven?", "Is bevestigingsholisme een probleem voor wetenschappelijke kennis?", "Hoe hangt dit samen met de Quine-Duhem-these?"]
+  },
+  {
+    id: "instrumentalism",
+    title: "Instrumentalisme",
+    difficulty: 3,
+    emoji: "🔧",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Wetenschapsfilosofie", "Wetenschap", "Filosofie", "Kritisch Denken"],
+    definition: "De opvatting dat wetenschappelijke theorieën niet letterlijk waar hoeven te zijn, maar slechts nuttige instrumenten voor voorspelling en controle. Tegenover wetenschappelijk realisme: theorieën beschrijven werkelijkheid.",
+    abstractExample: "Een instrumentalist zegt over de kwantummechanica: 'Ik hoef niet te geloven dat elektronen echt bestaan — het is een model dat perfect voorspelt.' Een realist zegt: 'Elektronen zijn echt.'",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Gebruik van GPS werkt perfect zonder te begrijpen dat de relativiteitstheorie 'echt' is — het instrument werkt, de filosofie is onbelangrijk." },
+      { domain: "business", icon: "💼", text: "Economische modellen worden als instrumenten gebruikt om beleidseffecten te voorspellen, ongeacht of ze de economische realiteit 'werkelijk' beschrijven." },
+      { domain: "science", icon: "🔬", text: "Niels Bohr hanteerde een instrumentalistische houding tegenover de kwantummechanica: 'Shut up and calculate'." }
+    ],
+    prerequisites: ["scientific-method", "falsification"],
+    unlocks: ["demarcation-problem"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kernverschil tussen instrumentalisme en realisme?", options: ["Instrumentalisme is altijd correct; realisme niet", "Instrumentalisme ziet theorieën als nuttige instrumenten; realisme als beschrijvingen van werkelijkheid", "Realisme is pragmatischer", "Ze zijn identiek voor de wetenschappelijke praktijk"], correctIndex: 1, explanation: "Instrumentalisme vraagt alleen om voorspellende kracht; realisme vraagt ook om correspondentie met de werkelijkheid." }
+    ],
+    creativePrompt: "Kies een wetenschappelijke theorie die je gebruikt. Geef je echt om of ze 'echt' is of alleen of ze werkt? Wat verschilt er praktisch voor jou?",
+    aiHelperPrompts: ["Wanneer is instrumentalisme een beter standpunt dan realisme?", "Hoe beïnvloedt de instrumentalisme-realisme kwestie hoe we wetenschap financieren?", "Hoe hangt dit samen met het afbakeningsprobleem?"]
   }
 ];
 
