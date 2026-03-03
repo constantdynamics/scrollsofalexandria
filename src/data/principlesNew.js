@@ -3014,5 +3014,235 @@ export const principlesNew = [
     ],
     creativePrompt: "Kies een project waar je de neiging hebt te perfectioneren. Wat is het minimale dat je kunt doen om het 'goed genoeg' te maken? Wat win je als je daarbij stopt?",
     aiHelperPrompts: ["Hoe weet ik wanneer iets 'goed genoeg' is?", "Hoe overwin ik perfectionisme zonder kwaliteit te verliezen?", "Welke taken vragen wel maximale inspanning en welke niet?"]
+  },
+  {
+    id: "spaced-repetition",
+    title: "Gespreide Herhaling",
+    difficulty: 2,
+    emoji: "🔁",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["geheugen", "leren", "studie", "retentie"],
+    definition: "Gespreide herhaling is een leertechniek waarbij informatie wordt herhaald op toenemend langere intervallen, net voordat je het vergeet. Dit maakt gebruik van het 'spacing effect': verspreid leren is aanzienlijk effectiever dan herhaling in één blok.",
+    abstractExample: "Stel je een curve voor die daalt naarmate de tijd verstrijkt — de vergeetcurve. Gespreide herhaling hakt telkens in op de curve net voor het dieptepunt, waarna de curve minder snel daalt. Na elke herhaling duurt het langer voor je vergeet.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Apps als Anki gebruiken algoritmen om flashcards precies op het juiste moment te tonen: woorden die je goed kent zie je minder; woorden die je bijna vergeet zie je vaker." },
+      { domain: "Werk", icon: "💼", text: "Een verkoper herhaalt de kenmerken van nieuwe producten op dag 1, dag 3, dag 7 en dag 14 na de training — in plaats van alles op dag 1 te stampen." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Namen leren op feestjes: herhaal de naam direct bij kennismaking, zeg hem drie minuten later in een zin, en gebruik hem aan het einde van het gesprek nog een keer." }
+    ],
+    prerequisites: [],
+    unlocks: ["retrieval-practice", "interleaving"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is gespreide herhaling effectiever dan 'crammen' (alles in één sessie leren)?", options: ["Crammen geeft stress die leren blokkeert", "Gespreide herhaling benut de vergeetcurve om geheugensporen te versterken op het optimale moment", "Crammen werkt alleen voor feiten, niet voor begrip", "Spreiding maakt leren leuker"], correctIndex: 1, explanation: "Elke keer dat je iets net voor het vergeetpunt herhaalt, versterkt de hersenen de geheugensporen sterker dan wanneer je het recent nog zag. Dit resulteert in diepere, langdurigere opslag." }
+    ],
+    creativePrompt: "Kies iets wat je wil onthouden (vocabulaire, feiten, concepten). Maak 10 flashcards en oefen ze vandaag, dan morgen, dan over drie dagen. Hoe verschilt dit van hoe je normaal leert?",
+    aiHelperPrompts: ["Hoe begin ik met Anki of een ander spaced repetition systeem?", "Wat zijn goede intervallen voor spaced repetition?", "Voor welk type kennis werkt spaced repetition het best?"]
+  },
+  {
+    id: "retrieval-practice",
+    title: "Ophaaleffect",
+    difficulty: 2,
+    emoji: "🧲",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["geheugen", "testen", "actief leren", "retentie"],
+    definition: "Retrieval practice (het ophaaleffect) is de bevinding dat actief proberen informatie uit het geheugen op te halen — in plaats van het opnieuw te lezen — het geheugen veel sterker versterkt. Testen is een leeractiviteit, niet alleen een meetinstrument.",
+    abstractExample: "Lezen is als water in een lekkende emmer gieten. Opzoeken (retrieving) is als de gaten dichten — elke keer dat je iets ophaalt, wordt de opslag sterker en duurzamer.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Na het lezen van een hoofdstuk het boek sluiten en opschrijven wat je je herinnert (brain dump) is effectiever dan het hoofdstuk herlezen — ook al voelt herlezen makkelijker en comfortabeler." },
+      { domain: "Werk", icon: "💼", text: "Na een vergadering de belangrijkste punten opschrijven zonder je aantekeningen te raadplegen versterkt het geheugen beter dan de notulen herlezen." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Jezelf quizzen over wat je gisteren las of zag — in plaats van het opnieuw bekijken — is een eenvoudige maar krachtige dagelijkse gewoonte." }
+    ],
+    prerequisites: ["spaced-repetition"],
+    unlocks: ["elaborative-interrogation"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het 'testing effect' in leerpsychologie?", options: ["Toetsen verlagen de leerprestaties door angst", "Regelmatig jezelf testen verbetert het langetermijngeheugen meer dan herlezen", "Testen werkt alleen voor feitenkennis", "Het testing effect verdwijnt na het middelbaar onderwijs"], correctIndex: 1, explanation: "Het testing effect is een van de meest robuuste bevindingen in de cognitieve psychologie: de handeling van ophalen versterkt geheugensporen sterker dan passief herhalen, zelfs als je fouten maakt." }
+    ],
+    creativePrompt: "Lees een artikel of hoofdstuk. Leg het weg. Schrijf in 5 minuten alles op wat je je herinnert. Lees dan terug. Wat ontbrak? Wat klopt? Hoe voelt dit vergeleken met herlezen?",
+    aiHelperPrompts: ["Hoe integreer ik retrieval practice in mijn studie?", "Welke quizmethodes zijn het meest effectief?", "Hoe maak ik goede vragen voor mezelf?"]
+  },
+  {
+    id: "interleaving",
+    title: "Verweven Leren",
+    difficulty: 2,
+    emoji: "🔀",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["leren", "variatie", "probleemoplossing", "transfer"],
+    definition: "Verweven leren (interleaving) is het afwisselen van verschillende onderwerpen of soorten problemen tijdens een studiesessie, in tegenstelling tot geblokt leren (één onderwerp volledig afronden voor je verder gaat). Interleaving voelt moeilijker maar leidt tot beter begrip en overdracht.",
+    abstractExample: "Blokkeren is als elke dag alleen linksbenig trappen om dat te verbeteren. Verweven is afwisselen: links, rechts, hoofd. Het voelt minder gecontroleerd maar maakt je een betere voetballer.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Wiskunde oefenen door steeds van type te wisselen (algebra, meetkunde, statistiek) in één sessie levert beter begrip op dan drie uur puur algebra, ook al voelt het minder vloeiend." },
+      { domain: "Werk", icon: "💼", text: "Een designer die wisselt tussen verschillende soorten ontwerpuitdagingen (UX, visueel, typografie) in een werkdag, ontwikkelt flexibeler vaardigheden dan iemand die een week puur aan UX werkt." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Gitaarlessen waarbij je afwisselt tussen akkoorden, melodielijnen en ritme geven sneller een volledig muzikant dan maanden uitsluitend akkoorden studeren." }
+    ],
+    prerequisites: ["spaced-repetition"],
+    unlocks: ["transfer-of-learning"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom voelt verweven leren moeilijker dan geblokt leren, terwijl het effectiever is?", options: ["Het is niet moeilijker — het is gewoon minder populair", "Wisselen van context vereist meer cognitieve inspanning, wat leidt tot diepere verwerking", "Interleaving werkt beter voor gevorderde leerders", "De moeilijkheid zelf is het leren"], correctIndex: 1, explanation: "De extra cognitieve inspanning van contextswitch is precies wat het effectief maakt. Hersenen moeten harder werken om verbanden te leggen, wat leidt tot robuustere kennisstructuren." }
+    ],
+    creativePrompt: "Plan je volgende studiesessie met drie verschillende maar gerelateerde onderwerpen die je afwisselt. Hoe verschilt dit van je gebruikelijke aanpak?",
+    aiHelperPrompts: ["Hoe pas ik interleaving toe in mijn studie?", "Welke onderwerpen zijn goed om te verweven?", "Hoeveel wissel ik idealiter per sessie?"]
+  },
+  {
+    id: "elaborative-interrogation",
+    title: "Uitdiepend Vragen Stellen",
+    difficulty: 2,
+    emoji: "❓",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["begrip", "waarom", "redeneren", "diep leren"],
+    definition: "Uitdiepend vragen stellen (elaborative interrogation) is de techniek van jezelf 'waarom' en 'hoe' vragen stellen bij nieuwe informatie, in plaats van feiten passief te accepteren. Dit verbindt nieuwe kennis met bestaande kennis en verdiept begrip.",
+    abstractExample: "In plaats van te onthouden 'bomen verliezen blad in de herfst', vraag je 'waarom verliezen bomen blad?' Je antwoord verbindt het feit met fotosynthese, koude, waterverlies — een web van kennis.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Een student leert 'de Franse Revolutie begon in 1789'. In plaats van dit te memoriseren vraagt hij: 'Waarom juist 1789? Wat maakte die periode rijp voor revolutie?' Dit bouwt een causaal begrip." },
+      { domain: "Werk", icon: "💼", text: "Na het lezen van een bedrijfsrapport: 'Waarom daalde de omzet juist in dit kwartaal? Hoe hangt dit samen met markttrends?' Dit leidt tot dieper inzicht dan het onthouden van de cijfers." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Bij het koken een nieuw recept niet alleen volgen, maar vragen: 'Waarom voeg ik zout toe aan het kookwater? Waarom laat ik vlees rusten na het bakken?' Zo word je een beter kok." }
+    ],
+    prerequisites: ["retrieval-practice"],
+    unlocks: ["feynman-technique"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt uitdiepend vragen stellen effectiever dan simpelweg herhalen?", options: ["Het duurt korter", "Het verbindt nieuwe informatie met bestaande kennis via causale verklaringen", "Het is makkelijker om te onthouden dan herhaling", "Het maakt leren leuker"], correctIndex: 1, explanation: "Elaborative interrogation werkt omdat causale verbanden (waarom X leidt tot Y) sterkere geheugensporen vormen dan losse feiten. Begrip is duurzamer dan memorisatie." }
+    ],
+    creativePrompt: "Lees een pagina uit een boek of artikel. Stop na elke alinea en stel jezelf de vraag 'waarom?' of 'hoe?' bij de hoofdpunten. Hoe dieper begrijp je de stof vergeleken met gewoon lezen?",
+    aiHelperPrompts: ["Hoe formuleer ik goede 'waarom'-vragen bij studiemateriaal?", "Hoe weet ik of mijn uitleg klopt?", "Hoe combineer ik dit met andere leertechnieken?"]
+  },
+  {
+    id: "feynman-technique",
+    title: "Feynman-techniek",
+    difficulty: 2,
+    emoji: "🧑‍🏫",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["begrip", "uitleggen", "leertechniek", "vereenvoudigen"],
+    definition: "De Feynman-techniek is een vierstapsleermethode: 1) Kies een concept, 2) Leg het uit alsof je het uitlegt aan een kind, 3) Identificeer hiaten in je begrip en bestudeer opnieuw, 4) Vereenvoudig en gebruik analogieën. Het doel: diep begrip, geen oppervlakkige memorisatie.",
+    abstractExample: "Als je iets echt begrijpt, kun je het simpel uitleggen. Als je het niet eenvoudig kunt uitleggen, begrijp je het zelf niet goed genoeg. De techniek gebruikt uitleggen als spiegel van begrip.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Na het leren van 'elektromagnetische inductie' probeer je het uit te leggen zonder vaktermen: 'Als je een magneet beweegt door een koper ring, gaan elektronen stromen.' Kun je dit? Dan begrijp je het." },
+      { domain: "Werk", icon: "💼", text: "Een consultant die een strategie kan uitleggen aan een sceptische buurman zonder jargon, begrijpt het echt — en kan het beter verkopen dan iemand die alleen de buzzwords kent." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Uitleggen aan je kind waarom er seizoenen zijn (niet 'de aarde kantelt op zijn as' maar: 'in de winter staat de zon lager, dus geeft hij minder warmte aan ons stukje aarde') verdiept je eigen begrip." }
+    ],
+    prerequisites: ["elaborative-interrogation"],
+    unlocks: ["chunking"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onthult het als je een concept niet kunt uitleggen in eenvoudige taal?", options: ["Dat het concept te moeilijk is", "Dat je begrip oppervlakkiger is dan je dacht", "Dat je meer feiten moet memoriseren", "Dat het concept niet nuttig is"], correctIndex: 1, explanation: "Jargon en technische taal verbergen vaak hiaten in begrip. Wanneer je eenvoudige taal moet gebruiken, word je gedwongen de essentie te begrijpen en niet te verbergen achter complexe terminologie." }
+    ],
+    creativePrompt: "Kies een concept dat je 'denkt te begrijpen'. Leg het uit in eenvoudige taal aan een denkbeeldig kind van 10 jaar. Waar stok je? Dat zijn de gaten in je begrip.",
+    aiHelperPrompts: ["Hoe vind ik eenvoudige analogieën voor complexe concepten?", "Wat doe ik als ik een concept niet kan vereenvoudigen?", "Hoe gebruik ik de Feynman-techniek voor technische vakken?"]
+  },
+  {
+    id: "chunking",
+    title: "Chunking",
+    difficulty: 1,
+    emoji: "🧩",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["geheugen", "werkgeheugen", "organisatie", "patroonherkenning"],
+    definition: "Chunking is het groeperen van losse informatie-eenheden in betekenisvolle clusters ('chunks'), zodat ze als één eenheid in het werkgeheugen kunnen worden opgeslagen. Experts denken in chunks; beginners in losse onderdelen.",
+    abstractExample: "Een telefoonnummer als '0612345678' onthouden is moeilijk. Als '06-1234-5678' is het drie chunks. In muziek is een akkoord een chunk — een expert ziet 'Dm7' als één ding, een beginner ziet vier losse noten.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Een schaakmeesters ziet niet 32 losse stukken, maar patronen en formaties — chunks. Beginners zien losse stukken. Chunking is waarom experts sneller en beter denken in hun domein." },
+      { domain: "Werk", icon: "💼", text: "Een ervaren programmeur ziet 'een lus die filtert en transformeert' als één chunk — een beginner ziet afzonderlijke regels. Dit maakt experts sneller bij code lezen en schrijven." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Leren typen begint met losse letters, dan worden woorden chunks, dan zinnen. Je hoeft niet meer na te denken over elke letter afzonderlijk." }
+    ],
+    prerequisites: ["feynman-technique"],
+    unlocks: ["mind-mapping"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe vergroot chunking de capaciteit van het werkgeheugen?", options: ["Door het werkgeheugen te trainen meer te bevatten", "Door meerdere eenheden samen te voegen tot één betekenisvolle eenheid", "Door irrelevante informatie te vergeten", "Door te slapen na het leren"], correctIndex: 1, explanation: "Het werkgeheugen heeft een beperkte capaciteit (7±2 items). Chunking omzeilt dit door losse items samen te voegen tot één betekenisvol item, waardoor er effectief meer informatie in past." }
+    ],
+    creativePrompt: "Kies iets dat je moeilijk vindt te onthouden (namen, nummers, stappen). Hoe kun je het organiseren in betekenisvolle groepen? Probeer dit en test het na een dag.",
+    aiHelperPrompts: ["Hoe maak ik effectieve chunks voor studiemateriaal?", "Hoe weet ik of een chunk te groot is?", "Hoe gebruik ik chunking voor het leren van talen?"]
+  },
+  {
+    id: "mind-mapping",
+    title: "Mind Mapping",
+    difficulty: 1,
+    emoji: "🗺️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["visueel leren", "organisatie", "creativiteit", "geheugen"],
+    definition: "Mind mapping is een visuele denkorganisatietechniek waarbij je een centraal concept in het midden plaatst en gerelateerde ideeën als takken uitbreidt. Dit weerspiegelt hoe de hersenen associatief werken en helpt bij begrijpen, onthouden en creatief denken.",
+    abstractExample: "Een mind map is als een boom. De stam is het hoofdonderwerp. Grote takken zijn hoofdthema's. Kleine takken zijn details. De boom toont hoe alles samenhangt — een lineaire lijst doet dat niet.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "In plaats van lineaire aantekeningen maakt een student een mind map van een hoofdstuk: centraal 'fotosynthese', takken voor 'lichtreactie', 'donkerreactie', 'chloroplasten', etc." },
+      { domain: "Werk", icon: "💼", text: "Bij een brainstorm over een nieuw product wordt een mind map gemaakt met 'productlancering' in het midden, takken voor marketing, techniek, klantenservice, tijdlijn." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een vakantie plannen via mind map: centraal 'zomervakantie', takken voor bestemming, budget, activiteiten, logistiek — geeft overzicht en mist niets." }
+    ],
+    prerequisites: ["chunking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de belangrijkste reden dat mind mapping beter werkt dan lineaire notities voor begrip?", options: ["Het is sneller te maken", "Het weerspiegelt de associatieve manier waarop de hersenen informatie opslaan", "Het ziet er mooier uit", "Je schrijft minder tekst"], correctIndex: 1, explanation: "De hersenen slaan informatie niet lineair op, maar in netwerken van associaties. Mind maps weerspiegelen deze structuur, waardoor ze beter aansluiten bij hoe geheugen werkt." }
+    ],
+    creativePrompt: "Maak een mind map van een onderwerp dat je interesseert of wil leren. Begin met het centrale concept en breid uit in takken zonder censuur. Wat ontdek je over je eigen kennisstructuur?",
+    aiHelperPrompts: ["Hoe maak ik een effectieve mind map?", "Welke tools zijn goed voor digitale mind maps?", "Wanneer gebruik ik mind mapping versus lineaire aantekeningen?"]
+  },
+  {
+    id: "desirable-difficulty",
+    title: "Gewenste Moeilijkheid",
+    difficulty: 3,
+    emoji: "💪",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["leren", "uitdaging", "diepgaand leren", "cognitie"],
+    definition: "Gewenste moeilijkheid (desirable difficulty) is het principe dat leren dat zich moeilijk aanvoelt — ophalen, interleaven, genereren — leidt tot robuustere en duurzamere kennis, terwijl leren dat makkelijk aanvoelt (herlezen, blokkeren) oppervlakkiger is.",
+    abstractExample: "Een spier groeit niet van makkelijke oefeningen — die houden hem alleen actief. Zo ook het geheugen: gemakkelijk leren houdt kennis oppervlakkig. De juiste moeilijkheidsgraad bouwt echte kracht.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Herlezen voelt productief (je herkent alles) maar leidt tot illusie van kennis. Jezelf quizzen voelt moeilijker en frustrerender, maar leidt tot werkelijk leren — desirable difficulty in actie." },
+      { domain: "Werk", icon: "💼", text: "Een trainingsprogramma dat medewerkers direct aan moeilijke cases zet (niet eerst makkelijke oefeningen) is minder comfortabel maar leidt tot snellere competentieontwikkeling." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een nieuwe taal leren zonder vertaaltools (moeilijker) leidt tot betere taalbeheersing dan met constante hulpmiddelen studeren." }
+    ],
+    prerequisites: ["retrieval-practice", "interleaving"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom geeft makkelijk leren een gevoel van vaardigheid dat misleidend kan zijn?", options: ["Makkelijk leren activeert geen geheugensporen", "Herkenning (passief) is makkelijker dan ophalen (actief), maar herkenning bewijst geen werkelijke kennis", "Makkelijk leren is altijd ineffectief", "Het gevoel van leren is altijd betrouwbaar"], correctIndex: 1, explanation: "Wanneer je herkent dat iets bekend is (bij herlezen), voelt dat als kennis — maar herkenning en ophaalvermogen zijn verschillende processen. Echte kennis is testen of je het kunt ophalen zonder hints." }
+    ],
+    creativePrompt: "Denk aan iets wat je 'weet' maar al lang niet actief hebt gebruikt. Test jezelf: kun je het uitleggen zonder hulp? Wat zegt dit over het verschil tussen herkennen en weten?",
+    aiHelperPrompts: ["Hoe weet ik of mijn studie moeilijk genoeg is?", "Hoe vind ik de juiste moeilijkheidsgraad voor leren?", "Hoe ga ik om met de frustratie van moeilijk leren?"]
+  },
+  {
+    id: "transfer-of-learning",
+    title: "Transfer van Leren",
+    difficulty: 3,
+    emoji: "🔗",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["transfer", "toepassing", "generalisatie", "abstractie"],
+    definition: "Transfer van leren is het vermogen om kennis of vaardigheden opgedaan in één context toe te passen in een nieuwe, andere context. Diep begrip bevordert transfer; oppervlakkige memorisatie doet dat niet. Onderscheid: nabije transfer (gelijke context) en verre transfer (andere context).",
+    abstractExample: "Leren pianospelen tranfsereert deels naar gitaar spelen — de muziektheorie en ritmevaardigheden zijn overdraagbaar. Maar als je alleen de noten memoriseert (niet de muziektheorie), is die transfer minimaal.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Een student die statistiek begrijpt als 'hoe meet ik onzekerheid' kan dit toepassen in psychologie, economie en biologie — verre transfer. Iemand die formules stampt, struikelt bij elke nieuw type vraag." },
+      { domain: "Werk", icon: "💼", text: "Projectmanagementvaardigheden (plannen, risicomanagement, communicatie) transfereren naar diverse branches — een ervaren projectmanager kan snel omschakelen." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Iemand die heeft leren debuggen in programmering, past diezelfde systematische probleemoplossende aanpak toe op technische problemen thuis of in de auto." }
+    ],
+    prerequisites: ["interleaving", "desirable-difficulty"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat bevordert transfer van leren het meest?", options: ["Veel oefenen in precies dezelfde context", "Begrip van onderliggende principes en oefenen in diverse contexten", "Memoriseren van zoveel mogelijk feiten", "Focussen op één specifiek toepassingsdomein"], correctIndex: 1, explanation: "Transfer vereist abstractie: de onderliggende structuur herkennen los van de specifieke context. Oefenen in variatie helpt hersenen patronen te extraheren die overdraagbaar zijn naar nieuwe situaties." }
+    ],
+    creativePrompt: "Kies een vaardigheid die je goed beheerst. In welke onverwachte contexten zou je deze vaardigheid kunnen toepassen? Probeer één concrete transfer te identificeren en te testen.",
+    aiHelperPrompts: ["Hoe train ik bewust op transfer van leren?", "Waarom lukt transfer mij niet altijd?", "Hoe ontwerp ik leeromgevingen die transfer bevorderen?"]
+  },
+  {
+    id: "worked-examples",
+    title: "Uitgewerkte Voorbeelden",
+    difficulty: 1,
+    emoji: "📝",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Leren",
+    tags: ["leren", "voorbeelden", "cognitieve belasting", "instructie"],
+    definition: "Uitgewerkte voorbeelden (worked examples) zijn volledig uitgewerkte oplossingen die stap voor stap tonen hoe een probleem wordt opgelost. Beginners leren effectiever van uitgewerkte voorbeelden dan van zelfstandig problemen oplossen — later, als expertise groeit, verschuift dit.",
+    abstractExample: "Bij leren koken is het efficiënter te kijken hoe een chef een recept stap voor stap bereidt, dan zelf te experimenteren. Later, als je de basis kent, helpt eigenlijk experimenteren meer.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Een student die wiskundeproblemen leert door uitgewerkte voorbeelden grondig te analyseren, leert sneller de principes dan iemand die meteen zelf oefenopgaven probeert zonder voorbeeld." },
+      { domain: "Werk", icon: "💼", text: "Nieuwe medewerkers leren sneller van geannoteerde voorbeeldprojecten (wat gedaan werd en waarom) dan van een abstracte handleiding." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Leren beleggen door uitgewerkte analyses van succesvolle en mislukte investeringsbeslissingen te bestuderen geeft dieper inzicht dan alleen theorie lezen." }
+    ],
+    prerequisites: [],
+    unlocks: ["feynman-technique"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer zijn uitgewerkte voorbeelden het meest effectief als leermateriaal?", options: ["Voor experts die al goed begrijpen hoe een probleem werkt", "Voor beginners die nog geen schema's hebben voor probleemoplossing in een domein", "Voor gemakkelijke, routineuze taken", "Nooit — zelfstandig oefenen is altijd beter"], correctIndex: 1, explanation: "Beginners missen de cognitieve schema's om problemen efficiënt aan te pakken. Uitgewerkte voorbeelden bieden die structuur direct, waardoor cognitieve overbelasting wordt verminderd en leren versnelt." }
+    ],
+    creativePrompt: "Zoek een uitgewerkt voorbeeld van een probleem in een domein dat je wil leren. Analyseer elk stap: waarom wordt deze stap genomen? Wat is het achterliggende principe?",
+    aiHelperPrompts: ["Waar vind ik goede uitgewerkte voorbeelden voor mijn vakgebied?", "Hoe analyseer ik uitgewerkte voorbeelden effectief?", "Wanneer moet ik overstappen van voorbeelden naar zelfstandig oefenen?"]
   }
 ];
