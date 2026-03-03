@@ -5535,6 +5535,238 @@ export const principles = [
     ],
     creativePrompt: "Kies een wetenschappelijke theorie die je gebruikt. Geef je echt om of ze 'echt' is of alleen of ze werkt? Wat verschilt er praktisch voor jou?",
     aiHelperPrompts: ["Wanneer is instrumentalisme een beter standpunt dan realisme?", "Hoe beïnvloedt de instrumentalisme-realisme kwestie hoe we wetenschap financieren?", "Hoe hangt dit samen met het afbakeningsprobleem?"]
+  },
+
+  // ── BATCH 7: SYSTEEMDENKEN & COMPLEXITEIT ────────────────────
+  {
+    id: "emergence",
+    title: "Emergentie",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Beter Redeneren",
+    tags: ["Systeemdenken", "Complexiteit", "Organisatie", "Beter Redeneren"],
+    definition: "Eigenschappen die ontstaan op het niveau van een systeem maar niet aanwezig zijn in de afzonderlijke onderdelen. Het geheel heeft eigenschappen die niet kunnen worden afgeleid uit de delen.",
+    abstractExample: "Water is nat, maar een afzonderlijk watermolecule is niet nat. Nat-zijn is een emergente eigenschap die ontstaat door de collectieve interactie van miljoenen moleculen.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een verkeersopstopping bestaat als patroon, maar geen enkel afzonderlijk voertuig 'is' de file. Het patroon emergeert uit interacties." },
+      { domain: "business", icon: "💼", text: "Bedrijfscultuur is een emergent verschijnsel: geen enkel individu draagt de cultuur, maar ze ontstaat uit alle interacties samen." },
+      { domain: "science", icon: "🔬", text: "Bewustzijn wordt door velen beschouwd als een emergente eigenschap van neurale netwerken — niet aanwezig in een enkel neuron." }
+    ],
+    prerequisites: ["feedback-loop", "second-order-effects"],
+    unlocks: ["self-organization"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is een voorbeeld van emergentie?", options: ["Water bestaat uit waterstof en zuurstof", "Nattigheid als eigenschap van water terwijl moleculen niet nat zijn", "Een auto heeft vier wielen", "Delen zijn de som van het geheel"], correctIndex: 1, explanation: "Nattigheid is een emergente eigenschap van water — aanwezig op het systeemniveau maar afwezig op het moleculaire niveau." }
+    ],
+    creativePrompt: "Bedenk drie voorbeelden van emergentie in je dagelijks leven — situaties waar het geheel iets heeft dat de delen niet hebben.",
+    aiHelperPrompts: ["Is bewustzijn echt emergent of kan het gereduceerd worden tot neuronen?", "Hoe beïnvloedt emergentie ons vermogen om complexe systemen te begrijpen?", "Hoe hangt emergentie samen met zelforganisatie?"]
+  },
+  {
+    id: "tipping-point",
+    title: "Kantelpunt",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Beter Redeneren",
+    tags: ["Systeemdenken", "Complexiteit", "Verandering", "Beter Redeneren"],
+    definition: "Het punt waarop een systeem abrupt van één stabiele toestand naar een andere overgaat. Na het kantelpunt versnelt verandering dramatisch en is ze moeilijk te keren.",
+    abstractExample: "Water bij 99°C: nog vloeibaar. Bij 100°C: kookt plotseling. De temperatuur steeg langzaam, maar de gedragsverandering is abrupt. Veel sociale en ecologische systemen hebben vergelijkbare drempels.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een geruchtenverspreiding verspreidt langzaam totdat een kritisch punt wordt bereikt — dan verspreidt het zich exponentieel." },
+      { domain: "business", icon: "💼", text: "Een merk dat jarenlang leegloopt bereikt een reputatiekantelpunt waarna negatief nieuws viraal gaat en de omzet instort." },
+      { domain: "science", icon: "🔬", text: "Klimaatmodellen beschrijven kantelpunten: verlies van poolijs, ontdooiing van permafrost, die klimaatverandering onomkeerbaar versnellen." }
+    ],
+    prerequisites: ["feedback-loop", "emergence"],
+    unlocks: ["path-dependency"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt kantelpunten gevaarlijk bij complexe systemen?", options: ["Ze zijn altijd zichtbaar van tevoren", "Ze zijn moeilijk te voorspellen en de overgang is snel en moeilijk te keren", "Ze zijn altijd positief", "Ze vertrouwen op lineaire verandering"], correctIndex: 1, explanation: "Kantelpunten zijn verradelijk omdat het systeem lang stabiel lijkt terwijl de verandering onder de oppervlakte groeit, tot abrupte omschakeling." }
+    ],
+    creativePrompt: "Identificeer een systeem in je leven (relatie, gezondheid, werk, milieu) waarbij je denkt dat er een kantelpunt nadert. Wat zijn de vroege signalen?",
+    aiHelperPrompts: ["Hoe herken ik vroege waarschuwingssignalen van een kantelpunt?", "Zijn kantelpunten altijd negatief?", "Hoe hangt dit samen met padafhankelijkheid?"]
+  },
+  {
+    id: "leverage-points",
+    title: "Hefboompunten",
+    difficulty: 3,
+    emoji: "🔧",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Systeemdenken", "Strategie", "Verandering", "Betere Beslissingen"],
+    definition: "Plaatsen in een systeem waar een kleine verandering grote effecten teweegbrengt. Donella Meadows identificeerde twaalf hefboompunten, van zwak (getallen veranderen) tot sterk (paradigma's veranderen).",
+    abstractExample: "In een schoolsysteem: meer boeken kopen is een zwak hefboompunt. De structuur van examens veranderen is sterker. Het paradigma over wat leren is veranderen is het sterkst.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een kleine verandering in je ochtendroutine kan een dagelijks patroon volledig kantelen — een zwak hefboompunt met groot cumulatief effect." },
+      { domain: "business", icon: "💼", text: "Een bedrijf dat zijn beloningssysteem aanpast (incentives) verandert gedrag meer dan regels toevoegen — een sterker hefboompunt." },
+      { domain: "science", icon: "🔬", text: "Donella Meadows beschreef in 'Thinking in Systems' (2008) twaalf hefboompunten in oplopende effectiviteit." }
+    ],
+    prerequisites: ["feedback-loop", "second-order-effects"],
+    unlocks: ["emergence"],
+    exercises: [
+      { type: "multipleChoice", question: "Welk type hefboompunt heeft doorgaans het grootste effect?", options: ["Het aanpassen van getallen (subsidies, tarieven)", "Het veranderen van de structuur van informatiestroom", "Het veranderen van het dominante paradigma", "Het aanpassen van regels"], correctIndex: 2, explanation: "Meadows toonde aan dat het veranderen van het mentale model of paradigma van een systeem het sterkste en moeilijkste hefboompunt is." }
+    ],
+    creativePrompt: "Kies een systeem dat je wilt veranderen (persoonlijk of professioneel). Identificeer drie mogelijke hefboompunten op verschillende niveaus. Welke is het krachtigst?",
+    aiHelperPrompts: ["Hoe identificeer ik hefboompunten in een complex systeem?", "Waarom zijn de sterkste hefboompunten zo moeilijk te gebruiken?", "Hoe hangt dit samen met het vlindereffect?"]
+  },
+  {
+    id: "path-dependency",
+    title: "Padafhankelijkheid",
+    difficulty: 2,
+    emoji: "🛤️",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Beter Redeneren",
+    tags: ["Systeemdenken", "Economie", "Geschiedenis", "Beter Redeneren"],
+    definition: "Eerdere beslissingen beperken de huidige keuzemogelijkheden. Historische toevalligheden in vroege keuzes kunnen een systeem voor lange tijd in een suboptimale richting vastzetten.",
+    abstractExample: "Het QWERTY-toetsenbord was ontworpen om typewriter-mechanismen te beschermen, niet voor snelheid. Hoewel ergonomischere alternatieven bestaan, is overstappen bijna onmogelijk door het netwerk van gebruikers.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een stad met historisch slecht geplande weginfrastructuur kan die infrastructuur moeilijk vervangen omdat zoveel gebouwen eromheen zijn gebouwd." },
+      { domain: "business", icon: "💼", text: "Technologiebedrijven die vroeg kozen voor een bepaalde programmeertaal of architectuur zijn er decennialang aan gebonden door legacy code." },
+      { domain: "science", icon: "🔬", text: "David (1985) beschreef QWERTY als het klassieke voorbeeld van padafhankelijkheid in technologie-adoptie." }
+    ],
+    prerequisites: ["status-quo-bias", "lock-in-effect"],
+    unlocks: ["tipping-point"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is een ander woord voor een situatie van sterke padafhankelijkheid?", options: ["Optimale situatie", "Lock-in", "Kantelpunt", "Emergentie"], correctIndex: 1, explanation: "Lock-in is een extreme padafhankelijkheid waarbij overstappen naar alternatieven nagenoeg onmogelijk is geworden." }
+    ],
+    creativePrompt: "Welke vroege beslissingen in jouw leven of werk hebben je 'pad' gezet? Hoe moeilijk was het om van dat pad af te wijken? Waar klopt padafhankelijkheid voor jou?",
+    aiHelperPrompts: ["Is padafhankelijkheid altijd slecht of kan het ook stabiliteit bieden?", "Hoe doorbreek je padafhankelijkheid in organisaties?", "Welke technologische lock-ins zijn er vandaag de dag?"]
+  },
+  {
+    id: "lock-in-effect",
+    title: "Vergrendeling",
+    difficulty: 2,
+    emoji: "🔐",
+    academicCategory: "Economie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Economie", "Strategie", "Technologie", "Betere Beslissingen"],
+    definition: "Wanneer gebruikers of bedrijven zo afhankelijk zijn geworden van een product, platform of technologie dat overstappen naar een alternatief te kostbaar is, ook als het alternatief beter is.",
+    abstractExample: "Zodra al jouw contacten op één social media platform zitten, is de overstapdrempel enorm — ook als een beter platform bestaat. De netwerkwaarde houdt je gevangen.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Microsoft Office: iedereen gebruikt het, waardoor je het ook moet gebruiken voor compatibiliteit, ook als alternatieven goedkoper zijn." },
+      { domain: "business", icon: "💼", text: "Bedrijven die hun data in één cloud-platform opslaan, zijn vatbaar voor prijsverhogingen omdat migratie naar concurrenten duur is." },
+      { domain: "science", icon: "🔬", text: "Switching costs (overstapkosten) zijn het economische mechanisme achter lock-in: de som van leer-, compatibiliteits- en verlieskosten." }
+    ],
+    prerequisites: ["path-dependency", "network-effects"],
+    unlocks: ["tragedy-anticommons"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke strategie helpt bedrijven lock-in te creëren?", options: ["Lage prijzen voor nieuwe klanten", "Hoge overstapkosten door data-eigendom, ecosystemen en gewenning", "Open standaarden en interoperabiliteit", "Goedkopere producten"], correctIndex: 1, explanation: "Lock-in wordt versterkt door gegevensaccumulatie, ecosystem-afhankelijkheden en de hoge kosten van overstap naar een concurrent." }
+    ],
+    creativePrompt: "Inventariseer drie producten of diensten waarvan je afhankelijk bent. Hoe hoog zijn de overstapkosten? Ben je bewust voor een lock-in gegaan of is het ongemerkt ontstaan?",
+    aiHelperPrompts: ["Hoe vermijd ik als consument of bedrijf ongewenste lock-in?", "Wanneer is lock-in voor een bedrijf een strategisch voordeel?", "Hoe hangt vergrendeling samen met patdafhankelijkheid?"]
+  },
+  {
+    id: "self-organization",
+    title: "Zelforganisatie",
+    difficulty: 2,
+    emoji: "🐝",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Beter Redeneren",
+    tags: ["Systeemdenken", "Complexiteit", "Natuur", "Beter Redeneren"],
+    definition: "Het proces waarbij orde en structuur spontaan ontstaan in een systeem zonder centrale aansturing. Lokale interacties leiden tot globale patronen zonder dat iemand het patroon ontworpen heeft.",
+    abstractExample: "Een bijenkorf heeft geen architect of manager. Tienduizenden bijen volgen simpele regels en produceren samen een perfect geoptimaliseerde structuur. De orde is het gevolg van lokale interacties.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Drukke markten regelen prijzen zonder centrale planning — vraag en aanbod leiden via lokale interacties tot globale evenwichten." },
+      { domain: "business", icon: "💼", text: "Open source software-projecten produceren complexe producten zonder hiërarchie: duizenden individuen coördineren via gedeelde normen en code." },
+      { domain: "science", icon: "🔬", text: "Murmurations (spreeuwen in vlucht) tonen hoe duizenden vogels via eenvoudige lokale regels complexe groepspatronen creëren zonder leider." }
+    ],
+    prerequisites: ["emergence", "feedback-loop"],
+    unlocks: ["tipping-point"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de minimale vereiste voor zelforganisatie?", options: ["Een centrale coördinator", "Lokale interacties met eenvoudige regels die global patronen produceren", "Perfecte informatie voor alle actoren", "Externe sturing"], correctIndex: 1, explanation: "Zelforganisatie vereist alleen lokale interacties met eenvoudige regels — globale orde ontstaat emergent uit die lokale handelingen." }
+    ],
+    creativePrompt: "Zoek een systeem in je omgeving dat zichzelf organiseert zonder centrale leiding (verkeer, taal, mode). Welke simpele lokale regels produceren de complexe globale patronen?",
+    aiHelperPrompts: ["Hoe kan zelforganisatie worden gestimuleerd in organisaties?", "Is zelforganisatie altijd efficiënt?", "Hoe hangt zelforganisatie samen met emergentie?"]
+  },
+  {
+    id: "butterfly-effect",
+    title: "Vlindereffect",
+    difficulty: 2,
+    emoji: "🦋",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Beter Redeneren",
+    tags: ["Systeemdenken", "Chaos", "Complexiteit", "Beter Redeneren"],
+    definition: "In chaotische systemen kunnen kleine initiële verschillen leiden tot grote, onvoorspelbare uitkomsten. Sensitieve afhankelijkheid van begincondities maakt langetetermijn voorspelling fundamenteel onmogelijk.",
+    abstractExample: "Edward Lorenz: een vlinder die zijn vleugels beweegt in Brazilië kan theoretisch een tornado in Texas veroorzaken. Kleine verstoringen versterken zich exponentieel in chaotische systemen.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een toevallige ontmoeting leidt tot een nieuw contact, een baan-aanbieding, verhuizing naar een andere stad. Kleine begineventen, grote levensuitkomsten." },
+      { domain: "business", icon: "💼", text: "Een vroeg klantreview (positief of negatief) op een platform kan het succes van een product fundamenteel bepalen via sneeuwbaleffecten." },
+      { domain: "science", icon: "🔬", text: "Lorenz ontdekte het effect bij computersimulaties van het weer in 1961: afrondingsverschillen in beginwaarden produceerden totaal verschillende weerpatronen." }
+    ],
+    prerequisites: ["feedback-loop", "emergence"],
+    unlocks: ["nonlinear-dynamics"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de praktische implicatie van het vlindereffect voor weersvoorspelling?", options: ["Weer is exact te voorspellen met voldoende data", "Langetermijn weersvoorspelling is fundamenteel begrensd door sensitieve afhankelijkheid", "Het weer is deterministisch en voorspelbaar", "Computers kunnen het vlindereffect elimineren"], correctIndex: 1, explanation: "Zelfs met perfecte begindata blijft kleine meetfout exponentieel groeien, waardoor weersvoorspelling na ~10 dagen fundamenteel onbetrouwbaar wordt." }
+    ],
+    creativePrompt: "Trace een grote levensgebeurtenis terug. Welke kleine, ogenschijnlijk onbelangrijke gebeurtenissen leidden indirect tot die uitkomst?",
+    aiHelperPrompts: ["Hoe gaan we om met onzekerheid in chaotische systemen?", "Is het vlindereffect een reden voor fatalisme?", "Hoe hangt het vlindereffect samen met niet-lineaire dynamica?"]
+  },
+  {
+    id: "nonlinear-dynamics",
+    title: "Niet-Lineaire Dynamica",
+    difficulty: 3,
+    emoji: "📈",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Beter Redeneren",
+    tags: ["Systeemdenken", "Wiskunde", "Complexiteit", "Beter Redeneren"],
+    definition: "In niet-lineaire systemen zijn uitkomsten niet evenredig met oorzaken. Kleine oorzaken kunnen grote effecten hebben; grote oorzaken soms kleine effecten. De wereld is overwegend niet-lineair.",
+    abstractExample: "Lineair: twee keer zo hard duwen = twee keer zo snel. Niet-lineair: bij een bepaalde drempel verandert de stroom plotseling van laminair naar turbulent — geen evenredige relatie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Stress en prestatie: een beetje stress verbetert prestatie; te veel stress doet de prestatie instorten. Geen lineaire relatie." },
+      { domain: "business", icon: "💼", text: "Virale marketing: de meeste campagnes mislukken, maar incidenteel versterkt een kleine initiale verspreiding zich naar miljoenen." },
+      { domain: "science", icon: "🔬", text: "Populatiedynamica: een paar roofdieren toegevoegen kan een ecosysteem stabiliseren (niet-lineair) — geen simpele evenredige relatie." }
+    ],
+    prerequisites: ["feedback-loop", "butterfly-effect"],
+    unlocks: ["tipping-point"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is lineair denken gevaarlijk bij complexe systemen?", options: ["Het is te simpel", "Het verwacht evenredige reacties waar het systeem niet evenredig reageert", "Lineaire modellen zijn onnauwkeurig", "Er is geen probleem"], correctIndex: 1, explanation: "Lineaire extrapolaties falen bij tipping points, exponentiële groei en niet-lineaire terugkoppelingsprocessen." }
+    ],
+    creativePrompt: "Bedenk drie situaties waarbij 'meer van hetzelfde' niet het verwachte lineaire resultaat gaf. Wat was het werkelijke niet-lineaire patroon?",
+    aiHelperPrompts: ["Hoe herken ik niet-lineaire dynamica in sociale systemen?", "Welke modellen helpen bij het denken over niet-lineariteit?", "Hoe hangt dit samen met exponentiële groei?"]
+  },
+  {
+    id: "resilience-ecology",
+    title: "Ecologische Weerbaarheid",
+    difficulty: 2,
+    emoji: "🌿",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Beter Redeneren",
+    tags: ["Systeemdenken", "Ecologie", "Risico", "Beter Redeneren"],
+    definition: "Het vermogen van een systeem om verstoringen te absorberen en te herstellen naar zijn oorspronkelijke staat, of te transformeren naar een nieuwe stabiele toestand. Veerkracht is anders dan stabiliteit.",
+    abstractExample: "Een oerbos is weerbaarder dan een monocultuur: als een parasiet één boomsoort treft, overleven andere soorten en herstelt het bos. De monocultuur heeft geen interne buffers.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een persoon met diverse sociale connecties en vaardigheden is weerbaarder bij een baanverlies dan iemand met één baan en één netwerk." },
+      { domain: "business", icon: "💼", text: "Bedrijven met diverse productportfolios en markten overleven economische crises beter dan bedrijven die afhankelijk zijn van één product." },
+      { domain: "science", icon: "🔬", text: "C.S. Holling (1973) introduceerde het concept van ecologische veerkracht als het vermogen van systemen om verstoringen te absorberen terwijl ze hun structuur behouden." }
+    ],
+    prerequisites: ["feedback-loop", "tipping-point"],
+    unlocks: ["self-organization"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen weerbaarheid en robuustheid?", options: ["Ze zijn identiek", "Robuustheid weerstaat verstoringen; weerbaarheid absorbeert ze en herstelt", "Weerbaarheid vermijdt verstoringen; robuustheid herstelt na verstoringen", "Robuustheid is altijd beter"], correctIndex: 1, explanation: "Een robuust systeem verbuigt niet; een weerbaar systeem kan verbuigen maar keert terug. Weerbaarheid is flexibeler en vaak duurzamer." }
+    ],
+    creativePrompt: "Analyseer hoe weerbaar jij bent op drie domeinen (financieel, sociaal, gezondheid). Wat zijn jouw buffers? Waar ben je kwetsbaar?",
+    aiHelperPrompts: ["Hoe bouw ik persoonlijke weerbaarheid op?", "Is diversiteit altijd de sleutel tot weerbaarheid?", "Hoe hangt ecologische weerbaarheid samen met crisismanagement?"]
+  },
+  {
+    id: "adaptive-capacity",
+    title: "Aanpassingsvermogen",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Systeemdenken",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Systeemdenken", "Organisatie", "Verandering", "Betere Beslissingen"],
+    definition: "Het vermogen van een systeem, organisatie of individu om te leren, te innoveren en de structuur te veranderen als reactie op veranderende omstandigheden. Aanpassingsvermogen gaat verder dan aanpassen: het omvat fundamenteel veranderen.",
+    abstractExample: "Een taxi-bedrijf dat zijn diensten verbetert om Uber bij te houden, past zich aan. Een bedrijf dat zichzelf transformeert tot een mobiliteitsplatform, heeft aanpassingsvermogen op het diepste niveau.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Mensen met hoog aanpassingsvermogen leren nieuwe vaardigheden, zoeken nieuwe perspectieven en herdefiniëren hun identiteit bij tegenslagen." },
+      { domain: "business", icon: "💼", text: "Amazon begon als boekverkoper en transformeerde tot cloud-provider, streamingdienst en logistiek bedrijf — hoog aanpassingsvermogen." },
+      { domain: "science", icon: "🔬", text: "In evolutie is aanpassingsvermogen niet 'snelst' of 'sterkst' maar 'meest responsief op omgevingsveranderingen' — Darwin's echte boodschap." }
+    ],
+    prerequisites: ["resilience-ecology", "feedback-loop"],
+    unlocks: ["path-dependency"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt aanpassingsvermogen van eenvoudige aanpassing?", options: ["Ze zijn identiek", "Aanpassingsvermogen omvat het vermogen om de eigen structuur en paradigma te veranderen", "Aanpassing is dieper dan aanpassingsvermogen", "Aanpassingsvermogen is alleen relevant voor organisaties"], correctIndex: 1, explanation: "Aanpassing is het optimaliseren binnen bestaande parameters; aanpassingsvermogen omvat het veranderen van de parameters zelf." }
+    ],
+    creativePrompt: "Analyseer hoe een organisatie of persoon die je bewondert omging met grote veranderingen. Wat waren de bronnen van hun aanpassingsvermogen?",
+    aiHelperPrompts: ["Hoe bouw ik aanpassingsvermogen op in mijn carrière?", "Wat blokkeert aanpassingsvermogen in grote organisaties?", "Hoe hangt aanpassingsvermogen samen met leercultuur?"]
   }
 ];
 
