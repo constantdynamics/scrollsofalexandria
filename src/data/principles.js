@@ -5999,6 +5999,238 @@ export const principles = [
     ],
     creativePrompt: "Stel dat je een nieuwe standaard wilt introduceren in je team zonder vergadering. Welk coördinatiepunt zou je kunnen creëren dat mensen spontaan zouden adopteren?",
     aiHelperPrompts: ["Hoe kunnen leiders coördinatiepunten creëren?", "Waarom zijn coördinatiepunten cultureel gebonden?", "Hoe hangt dit samen met de Nash-evenwichttheorie?"]
+  },
+
+  // ── BATCH 9: COMMUNICATIE & TAAL ─────────────────────────────
+  {
+    id: "ethos-pathos-logos",
+    title: "Ethos, Pathos en Logos",
+    difficulty: 1,
+    emoji: "🎙️",
+    academicCategory: "Retorica",
+    skillCategory: "Beter Communiceren",
+    tags: ["Retorica", "Communicatie", "Overtuigen", "Beter Communiceren"],
+    definition: "Aristoteles' drie middelen van overtuiging: ethos (geloofwaardigheid van de spreker), pathos (emotionele aansluiting bij het publiek) en logos (logische argumenten en bewijs).",
+    abstractExample: "Een arts die een gezondheidsadvies geeft: ethos = zijn opleiding en ervaring, pathos = zijn empathie met de patiënt, logos = de wetenschappelijke onderbouwing. Alle drie versterken de overtuigingskracht.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In een gesprek met je baas: ethos (jouw trackrecord), pathos (toon die respect en begrip uitstraalt), logos (concrete feiten en cijfers)." },
+      { domain: "business", icon: "💼", text: "Een succesvolle presentatie combineert credentialsk (ethos), een emotioneel verhaal (pathos) en harde data (logos)." },
+      { domain: "science", icon: "🔬", text: "Aristoteles beschreef deze retorica-driehoek in zijn 'Rhetorica' (~330 v.Chr.) als het fundament van effectieve communicatie." }
+    ],
+    prerequisites: ["appeal-to-emotion"],
+    unlocks: ["narrative-framing"],
+    exercises: [
+      { type: "multipleChoice", question: "Welk overtuigingsmiddel is het meest kwetsbaar voor misbruik?", options: ["Logos, want bewijs kan worden vervalst", "Pathos, want emotie kan los van de inhoud worden aangewend om te manipuleren", "Ethos, want geloofwaardigheid is altijd juist", "Alle drie zijn even kwetsbaar"], correctIndex: 1, explanation: "Pathos kan worden losgemaakt van inhoud — een emotioneel beroep kan mensen overtuigen ongeacht de feiten of de betrouwbaarheid van de spreker." }
+    ],
+    creativePrompt: "Analyseer een overtuigende toespraak of advertentie. Identificeer hoe ethos, pathos en logos worden ingezet. Welke werkt het sterkst voor het publiek?",
+    aiHelperPrompts: ["Hoe balanceer ik ethos, pathos en logos in een presentatie?", "Wanneer moet ik meer inzetten op logos dan op pathos?", "Hoe bouw ik ethos op als ik minder bekende spreker ben?"]
+  },
+  {
+    id: "euphemism-treadmill",
+    title: "Eufemisme-Loopband",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Linguïstiek",
+    skillCategory: "Beter Communiceren",
+    tags: ["Linguïstiek", "Taal", "Communicatie", "Beter Communiceren"],
+    definition: "Eufemismen die gecreëerd zijn om beladen woorden te vervangen, worden zelf beladen door associatie met de geassocieerde realiteit. Dan is er weer een nieuw eufemisme nodig. De loopband draait door.",
+    abstractExample: "Shell shock → combat fatigue → PTSD. Elk nieuw woord probeerde de stigma te verminderen. Maar de ervaring bleef, het nieuwe woord werd beladen, en het proces herhaalt zich.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Gehandicapt → beperkt → anders-valide → persoon met een beperking. Elk nieuw woord wordt op zijn beurt gevoelig." },
+      { domain: "business", icon: "💼", text: "Ontslagen → afgevloeid → bedrijfsorganisatie-optimalisatie. Bedrijfstaal vult de eufemisme-loopband voortdurend aan." },
+      { domain: "science", icon: "🔬", text: "Steven Pinker beschreef de eufemisme-loopband als bewijs dat de negativiteit van een concept aan het woord kleeft, niet aan de klank." }
+    ],
+    prerequisites: ["semantic-drift"],
+    unlocks: ["linguistic-relativity"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat veroorzaakt de eufemisme-loopband?", options: ["Taalverandering door generaties", "De negatieve connotatie van een concept kleeft aan elk woord dat ermee geassocieerd raakt", "Politieke censuur", "Gebrek aan goede woorden"], correctIndex: 1, explanation: "De realiteit waarnaar een woord verwijst, kleurt het woord zelf. Elk nieuw eufemisme absorbeert dezelfde negatieve lading." }
+    ],
+    creativePrompt: "Zoek drie voorbeelden van eufemismen in jouw vakgebied of dagelijks leven. Trace hoe ze zijn veranderd over de jaren. Wat zegt dit over de realiteit erachter?",
+    aiHelperPrompts: ["Wanneer zijn eufemismen nuttig en wanneer misleidend?", "Hoe beïnvloeden eufemismen beleidsdiscussies?", "Hoe hangt de eufemisme-loopband samen met taalrelativiteit?"]
+  },
+  {
+    id: "linguistic-relativity",
+    title: "Taalrelativiteit",
+    difficulty: 2,
+    emoji: "🌐",
+    academicCategory: "Linguïstiek",
+    skillCategory: "Beter Redeneren",
+    tags: ["Linguïstiek", "Cognitie", "Cultuur", "Beter Redeneren"],
+    definition: "De hypothese dat de taal die je spreekt je denken en perceptie beïnvloedt. De sterke versie (Sapir-Whorf): taal bepaalt denken. De zwakke versie: taal beïnvloedt denken.",
+    abstractExample: "Het Russische heeft twee woorden voor blauw (lichtblauw en donkerblauw). Russische sprekers onderscheiden deze tinten sneller in tests dan Engelse sprekers — talige categorieën versnellen perceptie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Het Inuïtische heeft vele woorden voor sneeuw — dit maakt genuanceerder waarnemen van sneeuwtypes makkelijker voor sprekers." },
+      { domain: "business", icon: "💼", text: "Organisaties die andere woorden gebruiken voor 'falen' (vs. 'leren') bouwen een andere omgang met tegenslag in hun taal — en daarmee in hun cultuur." },
+      { domain: "science", icon: "🔬", text: "Boroditsky et al. (2003) toonden empirisch aan dat ruimtelijk taalgebruik ruimtelijk denken beïnvloedt." }
+    ],
+    prerequisites: ["euphemism-treadmill"],
+    unlocks: ["semantic-drift"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke versie van de Sapir-Whorf-hypothese is wetenschappelijk het best onderbouwd?", options: ["Sterke versie: taal bepaalt denken volledig", "Zwakke versie: taal beïnvloedt denken", "Geen van beide is aannemelijk", "De sterke versie is recent bewezen"], correctIndex: 1, explanation: "De zwakke versie is goed gedocumenteerd: taalcategorieën beïnvloeden waarneming en categorisering. De sterke versie heeft weinig empirisch support." }
+    ],
+    creativePrompt: "Kies een concept dat in jouw moedertaal een woord heeft maar moeilijk te vertalen is. Hoe beïnvloedt het bestaan van dit woord jouw denken over dat concept?",
+    aiHelperPrompts: ["Hoe beïnvloedt de taal die ik spreek mijn professioneel denken?", "Welke taalkundige concepten heeft het Nederlands die andere talen missen?", "Hoe hangt taalrelativiteit samen met interculturele communicatie?"]
+  },
+  {
+    id: "semantic-drift",
+    title: "Semantische Drift",
+    difficulty: 1,
+    emoji: "⏳",
+    academicCategory: "Linguïstiek",
+    skillCategory: "Kritisch Denken",
+    tags: ["Linguïstiek", "Taal", "Geschiedenis", "Kritisch Denken"],
+    definition: "Woorden veranderen van betekenis over tijd, soms volledig tegengesteld aan hun oorspronkelijke betekenis. Wat een woord nu betekent, is het product van eeuwen aan taalmutatie.",
+    abstractExample: "'Verschrikkelijk' betekende ooit 'dat ontzag wekt' (als in 'angst/ontzag inboezemen'). Nu is het puur negatief. 'Leuk' is een afkorting van 'lauk' dat ooit 'flauw of zouteloos' betekende.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Vrij' had in middeleeuws Nederlands de betekenis van 'dapper'. Nu betekent het 'niet gebonden'. De politieke lading verschoof volledig." },
+      { domain: "business", icon: "💼", text: "'Investering' heeft een positieve klank gekregen waar het vroeger neutraal was — 'we investeren in medewerkers' klinkt beter dan 'we betalen voor training'." },
+      { domain: "science", icon: "🔬", text: "Etymologie bestudeert semantische drift systematisch. 'Terrible' en 'terrific' deelden een Latijnse wortel maar evolueerden naar tegengestelde betekenissen." }
+    ],
+    prerequisites: ["euphemism-treadmill"],
+    unlocks: ["linguistic-relativity"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat toont semantische drift aan over taal?", options: ["Taal is stabiel en betrouwbaar", "Taal is een levend systeem waarvan betekenissen evolueren door gebruik", "Woorden hebben vaste betekenissen", "Semantische drift is altijd bewust"], correctIndex: 1, explanation: "Semantische drift toont dat taal een sociaal systeem is dat continu verandert door collectief gebruik — niet vastgepind door logica of regelgeving." }
+    ],
+    creativePrompt: "Kies drie woorden die voor ouderen een andere betekenis hebben dan voor jongeren. Welk maatschappelijk verandering weerspiegelt deze semantische drift?",
+    aiHelperPrompts: ["Hoe beïnvloedt semantische drift politieke discussies?", "Hoe kan ik bewust omgaan met semantische drift in communicatie?", "Geef voorbeelden van semantische drift in management-jargon."]
+  },
+  {
+    id: "speech-act-theory",
+    title: "Taalhandeling",
+    difficulty: 2,
+    emoji: "🗣️",
+    academicCategory: "Filosofie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Filosofie", "Linguïstiek", "Communicatie", "Beter Communiceren"],
+    definition: "Taal doet meer dan beschrijven — het voert handelingen uit. Een belofte, een uitnodiging, een vonnis, een huwelijk zijn allemaal taalhandelingen die de werkelijkheid veranderen door het spreken zelf.",
+    abstractExample: "'Hierbij verklaar ik u man en vrouw' beschrijft geen werkelijkheid maar creëert die. 'Ik beloof je dat' verandert de sociale werkelijkheid door de uitspraak zelf.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Ik verontschuldig me' is niet alleen een beschrijving maar een handeling die de sociale relatie herstelt." },
+      { domain: "business", icon: "💼", text: "'Ik bied je de baan aan' (performatief) vs. 'Ik beschrijf de baanvereisten' (constatatief) — fundamenteel verschillende taalhandelingen." },
+      { domain: "science", icon: "🔬", text: "J.L. Austin beschreef in 'How to Do Things with Words' (1962) de driedeling: locutionaire (inhoud), illocutionaire (intentie) en perlocutionaire (effect) acten." }
+    ],
+    prerequisites: ["linguistic-relativity"],
+    unlocks: ["pragmatic-implicature"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt een taalhandeling geldig?", options: ["De juiste woordkeuze", "De juiste context, autoriteit van de spreker en sociale conventies", "Luid uitspreken", "Schriftelijk vastleggen"], correctIndex: 1, explanation: "Een taalhandeling vereist de juiste sociale context en autoriteit — een willekeurig persoon kan je niet 'aanstellen als minister' door simpelweg de woorden te zeggen." }
+    ],
+    creativePrompt: "Maak een lijst van vijf uitspraken die je vandaag deed. Waren ze beschrijvend of voerden ze handelingen uit? Hoe veranderden ze de sociale realiteit?",
+    aiHelperPrompts: ["Hoe beïnvloedt bewustzijn van taalhandelingen mijn communicatie?", "Wanneer heeft een taalhandeling niet het gewenste effect?", "Hoe hangt dit samen met pragmatische implicatuur?"]
+  },
+  {
+    id: "pragmatic-implicature",
+    title: "Pragmatische Implicatuur",
+    difficulty: 2,
+    emoji: "💬",
+    academicCategory: "Linguïstiek",
+    skillCategory: "Beter Communiceren",
+    tags: ["Linguïstiek", "Communicatie", "Begrip", "Beter Communiceren"],
+    definition: "De betekenis die wordt gecommuniceerd maar niet letterlijk gezegd. Wat we bedoelen is altijd meer dan wat we zeggen, gebaseerd op contextuele aannames en cooperatieve communicatieprincipes.",
+    abstractExample: "Gevraagd: 'Kan jij de deur dichtdoen?' Letterlijk: 'Bezit jij het vermogen dit te doen?' Bedoeld: 'Doe de deur dicht.' De letterlijke vraag en de pragmatische betekenis zijn totaal verschillend.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een recensie zegt 'de acteur was aanwezig op het toneel' — letterlijk een niet-evaluatieve uitspraak, maar pragmatisch impliceert het 'de acteur was slecht'." },
+      { domain: "business", icon: "💼", text: "Een manager zegt 'interessante aanpak' — letterlijk neutraal, maar de context impliceert kritiek." },
+      { domain: "science", icon: "🔬", text: "Paul Grice beschreef in 1975 de conversationele maximes (kwantiteit, kwaliteit, relatie, manier) die de basis vormen voor implicatuur." }
+    ],
+    prerequisites: ["speech-act-theory"],
+    unlocks: ["ethos-pathos-logos"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is Grice's coöperatieprincipe?", options: ["Wees altijd aardig in gesprekken", "Communiceer op een manier die het doel van de interactie dient: wees informatief, oprecht, relevant en duidelijk", "Zeg altijd meer dan nodig", "Vermijd implicaturen"], correctIndex: 1, explanation: "Grice's principe stelt dat spreker en luisteraar in normale communicatie samenwerken volgens gedeelde normen — afwijking hiervan creëert implicatuur." }
+    ],
+    creativePrompt: "Luister een dag bewust naar indirecte communicatie. Noteer drie situaties waarbij de letterlijke betekenis sterk verschilt van de bedoelde boodschap.",
+    aiHelperPrompts: ["Hoe herken ik pragmatische implicatuur in professionele communicatie?", "Wanneer is directe communicatie beter dan indirecte?", "Hoe hangt implicatuur samen met culturele verschillen in communicatie?"]
+  },
+  {
+    id: "narrative-framing",
+    title: "Narratieve Framing",
+    difficulty: 2,
+    emoji: "🖼️",
+    academicCategory: "Communicatiewetenschap",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatiewetenschap", "Psychologie", "Media", "Beter Communiceren"],
+    definition: "Hoe een verhaal wordt ingekaderd bepaalt mede hoe het publiek het interpreteert en waardeert. Dezelfde feiten kunnen tot tegengestelde conclusies leiden afhankelijk van het frame.",
+    abstractExample: "Een politiek programma kan worden omschreven als 'ondersteuning voor kwetsbare groepen' of als 'beloning voor niet-werken'. Dezelfde maatregel, twee tegengestelde frames, twee verschillende reacties.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Ons glas is halfvol' vs. 'ons glas is halfleeg' — dezelfde situatie, maar het frame stuurt de emotionele reactie." },
+      { domain: "business", icon: "💼", text: "Een reorganisatie als 'noodzakelijke herstructurering' vs. 'kaalslag door hebzuchtige aandeelhouders' — het frame bepaalt de publieke reactie." },
+      { domain: "science", icon: "🔬", text: "George Lakoff toonde aan dat politieke frames zo diep in taal zijn ingebed dat enkel tegenargumenten het frame versterken." }
+    ],
+    prerequisites: ["framing-effect"],
+    unlocks: ["ethos-pathos-logos"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is het zo moeilijk om een frame te doorbreken door het te ontkennen?", options: ["Ontkenning werkt altijd", "Door een frame te ontkennen activeer je het — de ontkenning roept het frame op", "Frames zijn niet ontkenbaar", "Mensen luisteren niet naar ontkenningen"], correctIndex: 1, explanation: "Lakoff: ontkenning van een frame activeert dat frame. 'Ik ben geen crimineel' roept 'crimineel' op — je moet een nieuw frame aanbieden." }
+    ],
+    creativePrompt: "Kies een maatregel of beleid dat je wilt communiceren. Schrijf twee totaal verschillende frames voor dezelfde feitelijke inhoud. Welke verwacht je dat beter aanslaat?",
+    aiHelperPrompts: ["Hoe herken ik wanneer ik door een frame wordt beïnvloed?", "Hoe creëer ik een effectief frame voor mijn boodschap?", "Hoe hangt dit samen met Lakoffs politieke taalkunde?"]
+  },
+  {
+    id: "overgeneralization",
+    title: "Overgeneralisatie",
+    difficulty: 1,
+    emoji: "🌍",
+    academicCategory: "Logica",
+    skillCategory: "Beter Redeneren",
+    tags: ["Logica", "Cognitie", "Redeneren", "Beter Redeneren"],
+    definition: "Een conclusie trekken die te breed is voor de beschikbare specifieke gevallen. Van één of weinig observaties een algemene regel afleiden die niet gerechtvaardigd is.",
+    abstractExample: "Eén slechte ervaring met een product van een merk: 'Dat merk is altijd slecht.' Of één positieve interactie: 'Alle mensen uit dat land zijn vriendelijk.' Beide zijn overgeneralisaties.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Ik ben één keer gevallen bij dat pad. Het pad is altijd gevaarlijk.' Één incident bepaalt niet het patroon." },
+      { domain: "business", icon: "💼", text: "Een mislukte productlancering leiden leidt tot: 'Onze doelgroep koopt nooit nieuwe producten' — een overgeneralisatie van één mislukking." },
+      { domain: "science", icon: "🔬", text: "Overgeneralisatie is een cognitieve fout in de cognitieve therapie van Beck: negatieve ervaringen worden als universele wetmatigheden behandeld." }
+    ],
+    prerequisites: ["hasty-generalization", "induction-problem"],
+    unlocks: ["confirmation-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt een geldige inductie van overgeneralisatie?", options: ["Ze zijn identiek", "Geldige inductie is gebaseerd op voldoende gevarieerde observaties; overgeneralisatie op te weinig of te homogene gevallen", "Overgeneralisatie is altijd fout", "Inductie vereist logisch bewijs"], correctIndex: 1, explanation: "De stap van specifieke observaties naar algemene conclusies is alleen gerechtvaardigd bij een representatieve en grote genoeg steekproef." }
+    ],
+    creativePrompt: "Identificeer drie overtuigingen over groepen mensen, producten of situaties die je hebt gevormd op basis van slechts een paar ervaringen. Hoe representatief waren die ervaringen?",
+    aiHelperPrompts: ["Hoe herken ik overgeneralisatie bij mezelf?", "Wanneer is generalisatie wél gerechtvaardigd?", "Hoe hangt overgeneralisatie samen met stereotypering?"]
+  },
+  {
+    id: "dog-whistle",
+    title: "Hondenfluittaal",
+    difficulty: 2,
+    emoji: "🐕",
+    academicCategory: "Communicatiewetenschap",
+    skillCategory: "Kritisch Denken",
+    tags: ["Communicatiewetenschap", "Politiek", "Taal", "Kritisch Denken"],
+    definition: "Communicatie die voor het algemeen publiek onschuldig klinkt maar een specifieke boodschap overbrengt aan een doelgroep die de code kent. De boodschap is ontworpen voor dubbele interpretatie.",
+    abstractExample: "Een politicus gebruikt de term 'wet en orde' in een context die voor brede kiezers klinkt als veiligheidsbeleid, maar voor een specifieke groep een raciale politieke boodschap bevat.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Verborgen berichten in teksten, slogans of humor die alleen herkenbaar zijn voor insiders — een sociale binding via gedeelde code." },
+      { domain: "business", icon: "💼", text: "Bedrijfstaal die klinkt als neutrale efficiëntieretoriek maar een specifieke stakeholder-groep aanspreekt met impliciete beleidsbelofte." },
+      { domain: "science", icon: "🔬", text: "Politicologen als Mendelberg analyseren hoe raciale politiek via codetaal opereerde zonder expliciet racistisch te zijn, en daarmee breder aanvaardbaar bleef." }
+    ],
+    prerequisites: ["pragmatic-implicature", "narrative-framing"],
+    unlocks: ["ethos-pathos-logos"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is hondenfluittaal effectief in politieke communicatie?", options: ["Het is altijd puur figuurlijk", "Het bereikt doelgroepen met een specifieke boodschap zonder het brede publiek te vervreemden", "Het is wettelijk verboden", "Mensen luisteren er niet naar"], correctIndex: 1, explanation: "Hondenfluittaal biedt deniability — de spreker kan ontkennen dat de boodschap bedoeld was, terwijl de doelgroep de bedoeling perfect begrijpt." }
+    ],
+    creativePrompt: "Zoek in een politieke toespraak of advertentie taalgebruik dat mogelijk dubbel gelezen kan worden. Wat is de oppervlakkige en de diepere boodschap?",
+    aiHelperPrompts: ["Hoe herken ik hondenfluittaal in media en politiek?", "Is hondenfluittaal altijd kwaadaardig of heeft het legitieme toepassingen?", "Hoe hangt dit samen met framing?"]
+  },
+  {
+    id: "metalinguistic-awareness",
+    title: "Metalinguïstisch Bewustzijn",
+    difficulty: 2,
+    emoji: "🪞",
+    academicCategory: "Linguïstiek",
+    skillCategory: "Kritisch Denken",
+    tags: ["Linguïstiek", "Communicatie", "Zelfbewustzijn", "Kritisch Denken"],
+    definition: "Het vermogen om taal als object te beschouwen en erover na te denken — reflectief bewustzijn van hoe taal werkt, hoe woorden worden gebruikt en hoe betekenis wordt geconstrueerd.",
+    abstractExample: "Een kind dat ontdekt dat het woord 'bank' zowel een zitbank als een financiële instelling kan betekenen, heeft metalinguïstisch bewustzijn ontwikkeld — het begrijpt dat taal een systeem is los van de werkelijkheid.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Beseffen dat 'gratis' in reclametaal bijna nooit werkelijk gratis betekent — dit is metalinguïstisch bewustzijn over marketingtaal." },
+      { domain: "business", icon: "💼", text: "Een jurist die contracttaal analyseert op dubbele interpretatie, gebruikt metalinguïstisch bewustzijn professioneel." },
+      { domain: "science", icon: "🔬", text: "Metalinguïstisch bewustzijn is een kernvaardigheid voor leesvaardigheid: onderzoek toont dat kinderen beter leren lezen als ze over taal kunnen nadenken." }
+    ],
+    prerequisites: ["linguistic-relativity"],
+    unlocks: ["semantic-drift"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke praktische vaardigheid profiteert het meest van metalinguïstisch bewustzijn?", options: ["Sneller lezen", "Kritische media-analyse en detectie van framing en manipulatie", "Sneller typen", "Beter spellen"], correctIndex: 1, explanation: "Metalinguïstisch bewustzijn stelt je in staat taal te analyseren als systeem — waardoor framing, dubbele betekenissen en manipulatieve woordkeuzes zichtbaar worden." }
+    ],
+    creativePrompt: "Kies een tekst (artikel, contract, reclame). Analyseer de woordkeuze: welke woorden zijn bewust gekozen? Welke associaties laden ze? Wat zou het effect zijn van andere woorden?",
+    aiHelperPrompts: ["Hoe ontwikkel ik metalinguïstisch bewustzijn?", "Hoe hangt metalinguïstisch bewustzijn samen met kritisch denken?", "Hoe gebruik ik dit bij het analyseren van politieke taal?"]
   }
 ];
 
