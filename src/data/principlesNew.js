@@ -2784,4 +2784,235 @@ export const principlesNew = [
     creativePrompt: "Welk gedrag wil jij in je omgeving (team, gezin, vrienden) zien? Doe je dat gedrag zelf? Waar is er een kloof?",
     aiHelperPrompts: ["Hoe kan ik mijn leiderschapsgedrag meer consistent maken?", "Wat zijn de meest zichtbare vormen van 'leiden door voorbeeld'?", "Hoe handel ik als ik mezelf betrap op inconsistentie?"]
   }
+,
+  {
+    id: "eisenhower-matrix",
+    title: "Eisenhower Matrix",
+    difficulty: 1,
+    emoji: "🗂️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["prioritering", "tijdbeheer", "urgentie", "focus"],
+    definition: "De Eisenhower Matrix verdeelt taken in vier kwadranten op basis van urgentie en belang: doe het nu (urgent + belangrijk), plan het (niet-urgent + belangrijk), delegeer het (urgent + niet-belangrijk), elimineer het (niet-urgent + niet-belangrijk).",
+    abstractExample: "Stel je inbox voor als een trechter. Niet alles wat binnenkomt is even waardevol — de matrix helpt je filteren wat echte aandacht verdient versus wat slechts rumoer is.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een projectdeadline van morgen valt in kwadrant I (doe nu). Langetermijnplanning valt in kwadrant II (plan). Onnodige vergaderingen val je in kwadrant III (delegeer of weiger)." },
+      { domain: "Studie", icon: "📚", text: "Een tentamen volgende week is belangrijk maar nog niet urgent — plan er nu al studietijd voor in. Sociale media checken is noch urgent noch belangrijk: elimineer het uit studietijd." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een lekkende kraan is urgent en belangrijk (doe nu). Sporten is belangrijk maar niet urgent — plan het. Elk telefoontje direct beantwoorden is urgent maar zelden echt belangrijk." }
+    ],
+    prerequisites: [],
+    unlocks: ["time-blocking", "decision-fatigue"],
+    exercises: [
+      { type: "multipleChoice", question: "Welk kwadrant bevat taken die je idealiter het meeste tijd aan besteedt voor langetermijnsucces?", options: ["Kwadrant I: urgent en belangrijk", "Kwadrant II: niet-urgent maar belangrijk", "Kwadrant III: urgent maar niet-belangrijk", "Kwadrant IV: niet-urgent en niet-belangrijk"], correctIndex: 1, explanation: "Kwadrant II — langetermijnplanning, relaties onderhouden, persoonlijke ontwikkeling — is de sleutel tot duurzaam succes. Wie hier voldoende tijd insteekt, voorkomt dat taken escaleren naar kwadrant I." }
+    ],
+    creativePrompt: "Maak een Eisenhower Matrix van je huidige takenlijst. Welk kwadrant is het meest gevuld? Wat zegt dat over hoe je je tijd spendeert?",
+    aiHelperPrompts: ["Hoe categoriseer ik mijn taken effectief met de Eisenhower Matrix?", "Wat doe ik als bijna alles urgent lijkt?", "Hoe leer ik meer tijd in kwadrant II te investeren?"]
+  },
+  {
+    id: "time-blocking",
+    title: "Time Blocking",
+    difficulty: 1,
+    emoji: "🧱",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["planning", "focus", "agenda", "tijdbeheer"],
+    definition: "Time blocking is de techniek waarbij je vaste tijdsblokken in je agenda reserveert voor specifieke taken of categorieën van werk, zodat je kalender je intenties weerspiegelt in plaats van reactieve verplichtingen.",
+    abstractExample: "Denk aan je dag als een container. Zonder structuur vult het zich met andermans prioriteiten. Time blocking is het van tevoren vullen van de container met wat jíj belangrijk vindt.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een software-ontwikkelaar blokkeert elke ochtend van 9-12 voor focuswerk (coderen), van 12-13 voor e-mail/Slack, en van 14-16 voor vergaderingen — zo beschermt hij zijn meest productieve uren." },
+      { domain: "Studie", icon: "📚", text: "Een student blokkeert elke dag van 19-21 voor studietijd en markeert dit in de agenda als een onbreekbare afspraak met zichzelf, net als een college." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een ouder blokkeert zaterdagochtend als 'gezinstijd' zonder telefoon, en vrijdagmiddag voor boodschappen en huishoudelijke taken." }
+    ],
+    prerequisites: ["eisenhower-matrix"],
+    unlocks: ["single-tasking"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste voordeel van time blocking ten opzichte van een gewone to-do lijst?", options: ["Je schrijft taken sneller op", "Je hoeft minder taken te doen", "Je weet wanneer je iets doet, niet alleen wát je doet", "Je kalender wordt mooier"], correctIndex: 2, explanation: "Een to-do lijst zegt 'wat', time blocking zegt 'wanneer'. Door tijd te reserveren behandel je je taken als echte afspraken, wat de kans dat je ze doet enorm vergroot." }
+    ],
+    creativePrompt: "Ontwerp je ideale werkdag in tijdsblokken. Wanneer doe je diepgaand werk? Wanneer ben je beschikbaar? Vergelijk het met hoe je dag er nu uitziet.",
+    aiHelperPrompts: ["Hoe begin ik met time blocking zonder mijn flexibiliteit te verliezen?", "Wat doe ik als mijn tijdsblokken steeds verstoord worden?", "Hoeveel blokken zijn realistisch per dag?"]
+  },
+  {
+    id: "two-minute-rule",
+    title: "De Twee-minutenregel",
+    difficulty: 1,
+    emoji: "⏱️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["GTD", "actie", "uitstelgedrag", "efficiëntie"],
+    definition: "De twee-minutenregel (van David Allen's GTD-systeem) stelt: als een taak minder dan twee minuten kost, doe het dan onmiddellijk — de overhead van het opschrijven en later oppakken kost meer tijd dan de taak zelf.",
+    abstractExample: "Stel je voor dat je elke kleine taak in een bakje gooit om later te sorteren. Op een gegeven moment kost het sorteren meer tijd dan de taken zelf hadden gekost. De twee-minutenregel voorkomt dat bakje.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Je collega stuurt een korte vraag per e-mail die je in één zin kunt beantwoorden — beantwoord het nu. Je pakt een document op maar het moet naar een andere map — doe het direct." },
+      { domain: "Studie", icon: "📚", text: "Je ziet dat je notitieboek vol is en je een nieuwe nodig hebt — bestel het nu (2 minuten). Wacht niet tot 'later' met dit soort kleine beslissingen." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Na het koken: zet het bord gelijk in de vaatwasser (30 seconden), niet op het aanrecht 'voor later'. Kleine handelingen direct doen voorkomt stapeling van rommel." }
+    ],
+    prerequisites: [],
+    unlocks: ["batch-processing"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de belangrijkste reden om de twee-minutenregel te volgen?", options: ["Het maakt je dag korter", "De overhead van uitstellen is groter dan de taak zelf", "Je hebt dan meer vergadertijd", "Je hoeft minder te plannen"], correctIndex: 1, explanation: "Kleine taken opschrijven, onthouden, herplannen en later oppakken kost mentale energie en tijd. Als de taak minder dan twee minuten duurt, is direct doen bijna altijd efficiënter." }
+    ],
+    creativePrompt: "Ga één dag bewust de twee-minutenregel toepassen. Hoeveel kleine taken kun je direct afhandelen? Wat merk je aan het einde van de dag?",
+    aiHelperPrompts: ["Hoe weet ik of iets echt minder dan twee minuten duurt?", "Wanneer is de twee-minutenregel juist niet handig?", "Hoe combineer ik deze regel met time blocking?"]
+  },
+  {
+    id: "single-tasking",
+    title: "Single-Tasking",
+    difficulty: 1,
+    emoji: "🎯",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["focus", "aandacht", "multitasking", "kwaliteit"],
+    definition: "Single-tasking is de praktijk van bewust slechts aan één taak tegelijk werken, in tegenstelling tot multitasking. Onderzoek toont dat de hersenen niet echt kunnen multitasken — ze schakelen snel heen en weer, wat leidt tot fouten, meer tijd en minder diep werk.",
+    abstractExample: "Multitasken is als proberen twee boeken tegelijk te lezen door afwisselend één zin per boek te lezen. Je 'leest' beide, maar begrijpt geen van beide goed.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "In plaats van e-mail checken terwijl je een rapport schrijft, sluit je alle afleidingen en schrijft je gedurende een uur uitsluitend het rapport. Het resultaat is beter en het kost minder tijd." },
+      { domain: "Studie", icon: "📚", text: "Studeren met Netflix aan de achtergrond voelt productief maar verlaagt het begrip. Eén onderwerp, één sessie, zonder andere schermen — dit is single-tasking." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Tijdens het eten met je partner de telefoon wegleggen en écht aanwezig zijn — dit is single-tasking in relaties, wat de verbinding verdiept." }
+    ],
+    prerequisites: ["time-blocking"],
+    unlocks: ["pomodoro-technique"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat laat onderzoek zien over de tijd die verloren gaat bij taakwisseling (task switching)?", options: ["Vrijwel geen tijdverlies", "Tot 40% minder productiviteit door context-switching", "Multitasking is sneller voor eenvoudige taken", "Alleen experts verliezen tijd bij taakwisseling"], correctIndex: 1, explanation: "Elke keer dat je van taak wisselt, kost de hersenen tijd om opnieuw context te laden. Dit zogeheten 'switching cost' kan bij kenniswerk oplopen tot 40% productiviteitsverlies." }
+    ],
+    creativePrompt: "Probeer één ochtendsessie te werken met alle notificaties uit en slechts één taak open. Wat merk je aan je gedachten, productiviteit en gevoel van voldoening?",
+    aiHelperPrompts: ["Hoe ga ik om met onderbrekingen als ik single-task?", "Welke tools helpen bij single-tasking?", "Hoe overtuig ik mijn omgeving dat ik niet afgeleid wil worden?"]
+  },
+  {
+    id: "pomodoro-technique",
+    title: "Pomodoro-techniek",
+    difficulty: 1,
+    emoji: "🍅",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["focus", "pauze", "ritme", "tijdbeheer"],
+    definition: "De Pomodoro-techniek is een tijdmanagementmethode waarbij je 25 minuten geconcentreerd werkt (een 'pomodoro'), gevolgd door een korte pauze van 5 minuten. Na vier pomodoro's neem je een langere pauze van 15-30 minuten.",
+    abstractExample: "Denk aan werken als sprinten in plaats van marathonlopen. Korte, intense inspanningsblokken afgewisseld met herstel zijn effectiever dan urenlang doorzwoegen zonder pauze.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een schrijver zet een timer op 25 minuten en schrijft uitsluitend, zonder e-mail of social media. Na de timer: 5 minuten koffie. Na vier rondes: een uur pauze of andere activiteit." },
+      { domain: "Studie", icon: "📚", text: "Een student plant vijf pomodoro's voor studietijd. Door de vaste structuur is uitstelgedrag minder verleidelijk — je hoeft maar 25 minuten vol te houden, niet de hele avond." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Thuis opruimen voelt overweldigend. Maar 'ik doe één pomodoro aan opruimen' is behapbaar. Na 25 minuten stop je — en vaak is er al veel gedaan." }
+    ],
+    prerequisites: ["single-tasking"],
+    unlocks: ["energy-management"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het belangrijkste principe achter de Pomodoro-techniek?", options: ["Je werkt altijd precies 25 minuten, nooit langer", "Regelmatige onderbrekingen verhogen de algehele focus en productiviteit", "Pauzes zijn tijdverspilling", "Je moet altijd vier pomodoro's achter elkaar doen"], correctIndex: 1, explanation: "De techniek is gebaseerd op het idee dat regelmatige pauzes de mentale wendbaarheid bewaren en burn-out voorkomen. De timer creëert ook urgentie en vermindert perfectionisme." }
+    ],
+    creativePrompt: "Doe vandaag drie pomodoro's voor een taak die je al lang uitstelt. Hoe voelt het om jezelf toestemming te geven te stoppen na 25 minuten?",
+    aiHelperPrompts: ["Wat doe ik als 25 minuten te kort voelt?", "Hoe pas ik de Pomodoro-techniek aan mijn eigen ritme aan?", "Welke Pomodoro-apps zijn goed?"]
+  },
+  {
+    id: "batch-processing",
+    title: "Batch Processing",
+    difficulty: 1,
+    emoji: "📦",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["efficiëntie", "planning", "context-switching", "systeem"],
+    definition: "Batch processing is het groeperen van vergelijkbare taken en ze in één blok uitvoeren, in plaats van ze verspreid door de dag te doen. Dit vermindert context-switching en maakt gebruik van mentale 'opwarmtijd'.",
+    abstractExample: "Het is als de was doen: je doet niet na elke jas één wasbeurt. Je verzamelt en doet alles tegelijk. Dezelfde logica geldt voor mentaal werk.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "In plaats van e-mails de hele dag door te beantwoorden, reserveer je twee vaste momenten per dag (bijv. 9:00 en 16:00) voor alle e-mailcommunicatie." },
+      { domain: "Studie", icon: "📚", text: "Alle citaten voor een essay zoek je in één sessie op, in plaats van steeds heen en weer te gaan tussen schrijven en zoeken." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Alle telefoontjes naar instanties, afspraken maken en administratie doe je op één vaste middag per week — niet tussendoor verspreid." }
+    ],
+    prerequisites: ["two-minute-rule"],
+    unlocks: ["decision-fatigue"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom vermindert batch processing de algehele tijdsbesteding aan taken?", options: ["Taken duren individueel korter", "Er is minder context-switching, waardoor de hersenen in 'flow' kunnen blijven", "Je vergeet minder taken", "Het is een kwestie van discipline"], correctIndex: 1, explanation: "Elke taakwissel kost mentale energie en tijd om opnieuw op te starten. Door gelijksoortige taken te bundelen, hoef je maar één keer 'op te warmen' en behoud je momentum." }
+    ],
+    creativePrompt: "Welke terugkerende taken in jouw leven kun je batchen? Maak een lijst van drie categorieën en plan vaste momenten voor elk.",
+    aiHelperPrompts: ["Welke taken lenen zich het best voor batch processing?", "Hoe combineer ik batch processing met time blocking?", "Wat doe ik met urgente taken die mijn batches verstoren?"]
+  },
+  {
+    id: "energy-management",
+    title: "Energiebeheer",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["energie", "ritme", "circadiaan", "prestatie"],
+    definition: "Energiebeheer is de praktijk van afstemmen van taken op je energieniveaus in plaats van uitsluitend op tijd. Je hebt beperkte aandacht, emotionele en fysieke energie per dag — het slim inzetten ervan is effectiever dan meer uren maken.",
+    abstractExample: "Tijd is oneindig deelbaar maar energie is dat niet. Een uur werken met volle energie levert meer op dan drie uur werken met lege accu. Beheer de accu, niet de klok.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een ochtendmens plant creatief en analytisch werk voor 9-12 uur, vergaderingen na de lunch, en administratief werk aan het einde van de dag wanneer diep denken moeilijker is." },
+      { domain: "Studie", icon: "📚", text: "Een student merkt dat hij het best begrijpt na een dutje van 20 minuten na de lunch. Hij plant zijn moeilijkste stof bewust na dat dutje." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Regelmatig sporten, goed slapen en bewust pauzes nemen zijn energiemanagement-strategieën die de productiviteit de rest van de dag verhogen." }
+    ],
+    prerequisites: ["pomodoro-technique"],
+    unlocks: ["decision-fatigue"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de kern van energiebeheer als productiviteitsstrategie?", options: ["Zoveel mogelijk uren werken", "Taken afstemmen op je energieniveaus voor maximale output", "Altijd vroeg opstaan", "Minder slapen om meer tijd te hebben"], correctIndex: 1, explanation: "Energiebeheer erkent dat menselijke energie een beperkte, herlaadbare hulpbron is. Door taken te plannen wanneer je energie piekt, bereik je meer in minder tijd." }
+    ],
+    creativePrompt: "Houd drie dagen bij wanneer je je meest energiek en gefocust voelt. Wat patroon zie je? Hoe kun je je schema aanpassen op basis hiervan?",
+    aiHelperPrompts: ["Hoe herken ik mijn persoonlijke energiepieken en -dalen?", "Welke gewoontes bouwen energie op in plaats van verbruiken?", "Hoe herstel ik sneller na energieverlies?"]
+  },
+  {
+    id: "decision-fatigue",
+    title: "Beslissingsvermoeidheid",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["beslissingen", "willpower", "cognitieve belasting", "routine"],
+    definition: "Beslissingsvermoeidheid beschrijft het verschijnsel dat de kwaliteit van beslissingen afneemt naarmate je meer keuzes maakt. Elke beslissing verbruikt mentale energie — aan het einde van de dag zijn we minder rationeel en vatbaarder voor impulsiviteit of vermijding.",
+    abstractExample: "De wilskracht is als een spier. Na intensief gebruik vermoeit hij en functioneert hij minder goed — totdat hij herstelt door rust. Elke beslissing is een rep aan de machine.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Rechters blijken aanzienlijk vaker parole toe te kennen aan het begin van de dag dan aan het einde — beslissingsvermoeidheid beïnvloedt zelfs kritieke professionele oordelen." },
+      { domain: "Studie", icon: "📚", text: "Een student die elke dag beslissingen maakt over wat, wanneer en hoe te studeren, raakt mentaal vermoeid. Een vast studiesysteem elimineert deze keuzes en spaart energie." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Barack Obama en Steve Jobs droegen bewust elke dag hetzelfde soort kleding om beslissingsenergie te sparen voor belangrijkere zaken." }
+    ],
+    prerequisites: ["energy-management", "batch-processing"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke strategie helpt het meest om beslissingsvermoeidheid te verminderen?", options: ["Meer beslissingen nemen om te oefenen", "Routines en standaardkeuzes instellen voor terugkerende situaties", "Beslissingen uitstellen naar de avond", "Altijd anderen laten beslissen"], correctIndex: 1, explanation: "Door routines te creëren voor terugkerende keuzes (wat te eten, wanneer te sporten, welke kleren te dragen) elimineer je de mentale belasting van die keuzes en behoud je energie voor wat echt telt." }
+    ],
+    creativePrompt: "Identificeer vijf terugkerende beslissingen in je dag die je zou kunnen automatiseren of standaardiseren. Wat zou dat opleveren?",
+    aiHelperPrompts: ["Hoe bouw ik routines op om beslissingsvermoeidheid te verminderen?", "Op welk moment van de dag neem ik mijn beste beslissingen?", "Hoe herken ik dat ik last heb van beslissingsvermoeidheid?"]
+  },
+  {
+    id: "parkinson-law-time",
+    title: "Wet van Parkinson",
+    difficulty: 2,
+    emoji: "🕰️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["deadlines", "tijd", "efficiëntie", "uitstelgedrag"],
+    definition: "De wet van Parkinson stelt: 'Werk breidt zich uit om de tijd die ervoor beschikbaar is, te vullen.' Als je drie uur hebt voor een taak die een uur kost, duurt het drie uur. Kunstmatige deadlines verhogen efficiëntie.",
+    abstractExample: "Water vult altijd de container volledig, ongeacht de grootte van de container. Zo vult werk ook altijd de beschikbare tijd — tenzij je bewust de container verkleint.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een rapport waarvoor een week uitgetrokken is, kost een week. Hetzelfde rapport met een deadline van twee dagen kost twee dagen — en is vaak van vergelijkbare kwaliteit." },
+      { domain: "Studie", icon: "📚", text: "Een student die 'de hele dag' heeft om te studeren, procrastineert tot de avond. Dezelfde student met een afgesproken sociale activiteit om 17:00 studeert efficiënt van 13:00-17:00." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Vergaderingen duren standaard een uur, ongeacht de agenda. Verander ze naar 45 minuten en je merkt dat alles evengoed behandeld wordt — efficiënter en zonder uitloop." }
+    ],
+    prerequisites: ["eisenhower-matrix"],
+    unlocks: ["minimum-viable-effort"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe kun je de wet van Parkinson gebruiken om je productiviteit te verhogen?", options: ["Altijd meer tijd plannen voor taken", "Bewust kortere deadlines instellen dan je denkt nodig te hebben", "Werken zonder deadlines voor maximale creativiteit", "Taken delegeren aan anderen"], correctIndex: 1, explanation: "Door bewust kortere tijdsvensters te plannen, creëer je constructieve druk die focus en besluitvaardigheid verhoogt. Parkinson's Law werkt ook omgekeerd: minder tijd = minder uitrekken." }
+    ],
+    creativePrompt: "Kies een taak die je altijd uitstelt. Geef jezelf de helft van de tijd die je normaal zou plannen. Wat gebeurt er?",
+    aiHelperPrompts: ["Hoe stel ik realistische maar ambitieuze deadlines?", "Wat doe ik als ik mijn zelfopgelegde deadline niet haal?", "Hoe voorkom ik dat kortere deadlines kwaliteit schaden?"]
+  },
+  {
+    id: "minimum-viable-effort",
+    title: "Minimale Effectieve Inspanning",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Productiviteit",
+    tags: ["perfectionism", "Pareto", "efficiëntie", "pragmatisme"],
+    definition: "De minimale effectieve inspanning is de kleinste hoeveelheid actie die het gewenste resultaat oplevert. Gebaseerd op het Pareto-principe (80/20): 20% van de inspanning levert 80% van het resultaat op. Meer doen levert afnemende meeropbrengsten.",
+    abstractExample: "Je kunt water laten koken bij 100°C. Meer energie erin stoppen maakt het niet natter — het kookt al. Zo geldt voor veel taken: voorbij een bepaald punt voegt meer inspanning weinig toe.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een presentatie die 'goed genoeg' is voor de vergadering kost vier uur. Haar perfectioneren tot 'perfect' kost nog eens acht uur, maar het effect op het publiek is minimaal." },
+      { domain: "Studie", icon: "📚", text: "De eerste 70% begrijpen van een onderwerp kost weinig tijd; de laatste 30% volledig beheersen kost vaak evenveel of meer. Soms is 70% voldoende voor het doel." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Twee keer per week 30 minuten intensief sporten geeft al grote gezondheidsbaten. Elke dag twee uur gaat je niet lineair gezonder maken — de meerwaarde daalt snel." }
+    ],
+    prerequisites: ["parkinson-law-time"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de kern van het concept 'minimale effectieve inspanning'?", options: ["Zo min mogelijk doen", "De inspanning vinden waarbij meeropbrengst niet langer opweegt tegen de kosten", "Altijd 80% van taken overslaan", "Nooit perfectionistisch zijn"], correctIndex: 1, explanation: "Het gaat niet om luiheid maar om efficiëntie: het punt vinden waar extra inspanning nauwelijks extra resultaat oplevert. Voorbij dat punt is meer doen verspilling van tijd en energie." }
+    ],
+    creativePrompt: "Kies een project waar je de neiging hebt te perfectioneren. Wat is het minimale dat je kunt doen om het 'goed genoeg' te maken? Wat win je als je daarbij stopt?",
+    aiHelperPrompts: ["Hoe weet ik wanneer iets 'goed genoeg' is?", "Hoe overwin ik perfectionisme zonder kwaliteit te verliezen?", "Welke taken vragen wel maximale inspanning en welke niet?"]
+  }
 ];
