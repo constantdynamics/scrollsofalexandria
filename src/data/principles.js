@@ -4375,6 +4375,238 @@ export const principles = [
     ],
     creativePrompt: "Denk aan een ervaring die je nu positief herinnert. Schrijf op wat er echt gebeurde, inclusief de moeilijke momenten. Hoe verschilt dit van je huidige herinnering?",
     aiHelperPrompts: ["Is rooskleurige terugblik altijd slecht of heeft het ook voordelen voor geluk?", "Hoe kan ik nauwkeuriger herinneringen bijhouden om te leren van ervaringen?", "Hoe hangt dit samen met het piek-eindeffect?"]
+  },
+
+  // ── BATCH 2: COGNITIEVE BIASES (2) ───────────────────────────
+  {
+    id: "attentional-bias",
+    title: "Aandachtsvertekening",
+    difficulty: 1,
+    emoji: "🔍",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Psychologie", "Cognitieve Bias", "Aandacht", "Beter Redeneren"],
+    definition: "Onze aandacht wordt automatisch getrokken naar informatie die emotioneel relevant is voor ons, waardoor we een vertekend beeld krijgen van hoe vaak of hoe significant iets is.",
+    abstractExample: "Iemand met een fobie voor spinnen ziet spinnen in een kamer eerder dan andere mensen. Iemand die op dieet is, ziet voedsel eerder in zijn omgeving. Aandacht is niet neutraal.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Als je ziek bent, valt je op hoeveel mensen hoesten en niezen in het openbaar vervoer — voorheen merkte je dit nauwelijks." },
+      { domain: "business", icon: "💼", text: "Een manager die bang is voor slechte resultaten let meer op negatieve signalen van medewerkers dan op positieve." },
+      { domain: "science", icon: "🔬", text: "In klinische psychologie is aandachtsvertekening een kernsymptoom van angststoornissen en wordt het behandeld met aandachtstraining." }
+    ],
+    prerequisites: ["frequency-illusion"],
+    unlocks: ["confirmation-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe beïnvloedt aandachtsvertekening risicobeoordelingen?", options: ["Het maakt ze accurater", "Het vergroot de aandacht voor risico's die emotioneel relevant zijn", "Het neutraliseert angst", "Het heeft geen invloed"], correctIndex: 1, explanation: "Emotioneel geladen risico's — voor jou persoonlijk — krijgen meer aandacht dan objectief even grote risico's." }
+    ],
+    creativePrompt: "Kies een onderwerp waar je nu emotioneel bij betrokken bent. Let een dag lang op hoe vaak je informatie over dit onderwerp opmerkt. Is het objectief vaker aanwezig of is het je aandacht?",
+    aiHelperPrompts: ["Hoe kan ik mijn aandachtsvertekening verminderen bij belangrijke beslissingen?", "Hoe wordt aandachtstraining gebruikt in therapie?", "Wat is het verband tussen aandachtsvertekening en stress?"]
+  },
+  {
+    id: "reactance",
+    title: "Psychologische Reactantie",
+    difficulty: 2,
+    emoji: "🚫",
+    academicCategory: "Psychologie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Psychologie", "Cognitieve Bias", "Vrijheid", "Betere Beslissingen", "Gedrag"],
+    definition: "Wanneer mensen het gevoel hebben dat hun vrijheid wordt beperkt, reageren ze met een sterk verlangen om juist dat te doen wat verboden of beperkt wordt. Verbod wekt begeerte.",
+    abstractExample: "Zeg tegen een kind dat het niet aan een rode knop mag komen, en het enige wat het wil is die knop indrukken. De beperking verhoogt de aantrekkingskracht.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Ouders die een bepaald muziekgenre verbieden, maken het daarmee aantrekkelijker voor hun tieners." },
+      { domain: "business", icon: "💼", text: "'Nog maar 3 op voorraad!' verhoogt de koopbereidheid door een gevoel van schaarste en dreigende beperking." },
+      { domain: "science", icon: "🔬", text: "Brehm (1966) beschreef reactantie als een motivationele staat die wordt geactiveerd wanneer gedragskeuzevrijheid bedreigd wordt." }
+    ],
+    prerequisites: ["scarcity-effect"],
+    unlocks: ["reverse-psychology"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe kan een manager gebruik maken van kennis over reactantie?", options: ["Meer verboden instellen", "Autonomie en keuzevrijheid geven in plaats van opdrachten", "Strikte regels instellen", "Mensen negeren"], correctIndex: 1, explanation: "Wanneer mensen keuzevrijheid hebben, ervaren ze minder reactantie en zijn ze gemotiveerder." }
+    ],
+    creativePrompt: "Schrijf over een situatie waarin je iets wilde juist doordat het niet mocht of moeilijk verkrijgbaar was. Wat vertelt dit over de psychologie van verbod?",
+    aiHelperPrompts: ["Hoe gebruik ik kennis over reactantie bij opvoeden of leidinggeven?", "Wanneer is reactantie een beschermend mechanisme voor autonomie?", "Hoe hangt dit samen met schaarste-effect in marketing?"]
+  },
+  {
+    id: "effort-justification",
+    title: "Inspanningsrechtvaardiging",
+    difficulty: 2,
+    emoji: "💪",
+    academicCategory: "Psychologie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Psychologie", "Cognitieve Bias", "Investering", "Betere Beslissingen"],
+    definition: "We waarderen uitkomsten hoger naarmate we meer moeite hebben gedaan om ze te bereiken, zelfs als de kwaliteit objectief niet verschilt. Inspanning rechtvaardigt achteraf de waarde.",
+    abstractExample: "Studenten die een moeilijk initiatieraproces doorliepen voor een studentenvereniging vonden de groep waardevoller dan studenten die gemakkelijk werden toegelaten — ook bij dezelfde objectieve groepskwaliteit.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een zelf gemonteerde kast van IKEA voelt waardevoller dan een identieke kant-en-klare kast (het IKEA-effect is hieraan verwant)." },
+      { domain: "business", icon: "💼", text: "Initiatieprogramma's voor nieuwe medewerkers creëren binding: hoe zwaarder het programma, hoe loyaler de medewerkers." },
+      { domain: "science", icon: "🔬", text: "Aronson & Mills (1959) toonden aan dat zware initiatie leidt tot hogere waardering van de groep, zelfs als die groep tegenvalt." }
+    ],
+    prerequisites: ["sunk-cost-fallacy", "cognitive-dissonance"],
+    unlocks: ["ikea-effect"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom leidt harde training tot meer binding met een team?", options: ["Training verbetert objectief de kwaliteit", "Gedeelde inspanning creëert een gevoel van gerechtvaardigde investering", "Teams worden beter door training", "Er is geen verband"], correctIndex: 1, explanation: "Inspanningsrechtvaardiging maakt dat gedeelde zwakte of moeilijkheid de waarde van de beloning vergroot." }
+    ],
+    creativePrompt: "Denk aan iets wat je heel moeilijk hebt bereikt. Hoe waardevol vind je het? Vraag jezelf eerlijk: zou je het even waardevol vinden als je er nauwelijks moeite voor had gedaan?",
+    aiHelperPrompts: ["Hoe kan ik onderscheid maken tussen echte kwaliteit en inspanningsrechtvaardiging?", "Hoe gebruiken organisaties dit effect bij onboarding?", "Hoe hangt dit samen met cognitieve dissonantie?"]
+  },
+  {
+    id: "projection-bias",
+    title: "Projectievertekening",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Psychologie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Psychologie", "Cognitieve Bias", "Toekomst", "Betere Beslissingen"],
+    definition: "We overschatten in hoeverre onze huidige voorkeuren, gevoelens en staat ook onze toekomstige staat zullen bepalen. We projecteren ons huidige zelf op de toekomst.",
+    abstractExample: "Honger boodschappen doen leidt tot het kopen van te veel eten, omdat je verwacht ook later even hongerig te zijn. In werkelijkheid veranderen onze behoeften voortdurend.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Als je je nu slecht voelt, kun je je moeilijk voorstellen ooit gelukkig te zijn — en omgekeerd." },
+      { domain: "business", icon: "💼", text: "Mensen onderschrijven abonnementen terwijl ze denken ze even intensief te gebruiken als nu — maar gebruik daalt na verloop van tijd." },
+      { domain: "science", icon: "🔬", text: "Loewenstein, O'Donoghue & Rabin (2003) formaliseerden projectievertekening als een economitheorie van irrationeel toekomstgedrag." }
+    ],
+    prerequisites: ["hot-cold-empathy-gap"],
+    unlocks: ["hyperbolic-discounting"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de gevolg van projectievertekening bij langetermijnbeslissingen?", options: ["Betere plannen door consistentie", "Beslissingen die passen bij de huidige staat maar niet bij de toekomstige", "Meer realistische verwachtingen", "Grotere gevoeligheid voor risico"], correctIndex: 1, explanation: "Omdat we de toekomst inkleuren met onze huidige emoties en behoeften, maken we beslissingen die daar niet bij passen." }
+    ],
+    creativePrompt: "Denk aan een grote aankoop of beslissing die je hebt genomen op een moment van sterke emotie. Wat dacht je dat je in de toekomst zou willen? Wat bleek er te kloppen van die verwachting?",
+    aiHelperPrompts: ["Hoe kan ik projectievertekening verminderen bij toekomstplanning?", "Waarom kopen mensen meer bij boodschappen als ze hongerig zijn?", "Hoe hangt dit samen met affectieve prognosefouten?"]
+  },
+  {
+    id: "social-desirability-bias",
+    title: "Sociale Wenselijkheidsvertekening",
+    difficulty: 1,
+    emoji: "😇",
+    academicCategory: "Psychologie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Psychologie", "Cognitieve Bias", "Sociaal", "Kritisch Denken", "Onderzoek"],
+    definition: "De neiging om te antwoorden of te gedragen op een manier die sociaal acceptabel of positief gewaardeerd wordt, in plaats van eerlijk over de eigen meningen, gevoelens of gedrag te zijn.",
+    abstractExample: "Gevraagd hoeveel alcohol iemand drinkt, geeft men in een enquête minder op dan werkelijk. Bij vragen over milieubewust gedrag zegt men meer te recyclen dan men echt doet.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In gesprekken zeg je vaker dat je sport en gezond eet dan je werkelijk doet, om een goede indruk te wekken." },
+      { domain: "business", icon: "💼", text: "Medewerkers geven in tevredenheidsonderzoeken positiever antwoord als hun namen bekend zijn bij de werkgever." },
+      { domain: "science", icon: "🔬", text: "Enquêteonderzoekers corrigeren voor sociale wenselijkheid met anonimiteit, indirecte vragen en impliciete metingen." }
+    ],
+    prerequisites: ["self-serving-bias"],
+    unlocks: ["selection-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom zijn anonieme enquêtes betrouwbaarder dan enquêtes met naam?", options: ["Anonieme mensen liegen meer", "Zonder identificatie is er minder druk om sociaal wenselijk te antwoorden", "Anonimiteit maakt mensen onbetrouwbaarder", "Er is geen verschil"], correctIndex: 1, explanation: "Sociale wenselijkheidsvertekening neemt af wanneer er geen sociale consequenties zijn aan eerlijk antwoorden." }
+    ],
+    creativePrompt: "Schrijf eerlijk op hoe je werkelijk leeft op een dag (voeding, sport, schermtijd, etc.). Vergelijk dit met hoe je het zou beschrijven in een gesprek met iemand die je bewondert.",
+    aiHelperPrompts: ["Hoe ontwerp ik een enquête die sociale wenselijkheidsvertekening vermindert?", "Hoe beïnvloedt sociale wenselijkheid de uitkomsten van klinische onderzoeken?", "Wat is het verband met zelfpresentatie in sociale media?"]
+  },
+  {
+    id: "optimism-bias",
+    title: "Optimismevertekening",
+    difficulty: 1,
+    emoji: "🌞",
+    academicCategory: "Psychologie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Psychologie", "Cognitieve Bias", "Risico", "Betere Beslissingen", "Plannen"],
+    definition: "De neiging om te geloven dat goede dingen eerder ons zullen overkomen en slechte dingen minder snel dan gemiddeld. We overschatten onze kansen op succes en onderschatten risico's.",
+    abstractExample: "De meeste mensen denken dat hun huwelijk niet zal eindigen in scheiding, dat ze niet ziek worden van roken, en dat hun bedrijf zal slagen — ook al wijzen statistieken op andere uitkomsten.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Negen van de tien nieuwe restaurants falen binnen vijf jaar, maar elke restauranteigenaar denkt tot de uitzonderingen te behoren." },
+      { domain: "business", icon: "💼", text: "Projecten eindigen structureel later en duurder dan gepland, deels door de planningsdrogreden die gevoed wordt door optimismevertekening." },
+      { domain: "science", icon: "🔬", text: "Sharot (2011) toonde via hersenscans aan dat het brein positieve informatie over de toekomst sterker verwerkt dan negatieve." }
+    ],
+    prerequisites: ["planning-fallacy", "illusory-superiority"],
+    unlocks: ["overconfidence"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is een positieve kant van optimismevertekening?", options: ["Het maakt beslissingen altijd beter", "Het geeft motivatie en veerkracht bij tegenslag", "Het elimineert risico's", "Het verbetert statistisch inzicht"], correctIndex: 1, explanation: "Ondanks de risico's zorgt optimismevertekening ook voor doorzettingsvermogen en hogere motivatie bij uitdagingen." }
+    ],
+    creativePrompt: "Schat de kans dat een specifiek project of doel van jou succesvol wordt. Zoek dan de basispercentages op voor vergelijkbare projecten. Hoe realistisch is jouw schatting?",
+    aiHelperPrompts: ["Hoe balanceer ik optimisme met realisme bij plannen?", "Is optimismevertekening universeel of verschilt het per cultuur?", "Hoe kan ik een pre-mortem doen om optimismevertekening te corrigeren?"]
+  },
+  {
+    id: "group-polarization",
+    title: "Groepspolarisatie",
+    difficulty: 2,
+    emoji: "⬆️",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Sociale Psychologie", "Groepen", "Besluitvorming", "Beter Communiceren"],
+    definition: "Na groepsdiscussie worden meningen extremer dan de aanvankelijke individuele standpunten. Gelijkgestemde groepen versterken elkaars overtuigingen en duwen ze naar extremen.",
+    abstractExample: "Een groep licht-risicovolle personen besluit na discussie meer risico te nemen. Een groep die al voorzichtig is, wordt na discussie nog voorzichtiger. De groep versterkt de dominante neiging.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In online echokamers worden politieke meningen steeds extremer naarmate mensen meer met gelijkgestemden communiceren." },
+      { domain: "business", icon: "💼", text: "Een managementteam dat al positief staat tegenover een risicovolle investering, neemt na overleg nog grotere risico's." },
+      { domain: "science", icon: "🔬", text: "Moscovici & Zavalloni (1969) documenteerden als eersten het 'risky shift'-fenomeen dat later werd uitgebreid tot groepspolarisatie." }
+    ],
+    prerequisites: ["confirmation-bias", "social-proof"],
+    unlocks: ["abilene-paradox"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom versterkt groepsdiscussie bestaande meningen?", options: ["Mensen worden overtuigd door de meerderheid", "Meer argumenten voor de dominante mening worden gedeeld en herhaald", "Mensen passen hun mening altijd aan in groepen", "Groepen zijn altijd extremistisch"], correctIndex: 1, explanation: "In homogene groepen worden meer argumenten voor de gedeelde mening uitgewisseld, waardoor die mening sterker wordt." }
+    ],
+    creativePrompt: "Denk aan een groep waar je deel van uitmaakt (familie, werk, vrienden). Zijn er onderwerpen waarbij de groep steeds extremere standpunten heeft gekregen? Hoe is dat gebeurd?",
+    aiHelperPrompts: ["Hoe voorkom je groepspolarisatie in vergaderingen?", "Wat is de relatie tussen groepspolarisatie en online radicaliserng?", "Hoe verschilt groepspolarisatie van groepsdenken?"]
+  },
+  {
+    id: "zero-sum-thinking",
+    title: "Nulsom-Denken",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Psychologie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Psychologie", "Cognitieve Bias", "Samenwerking", "Betere Beslissingen"],
+    definition: "De overtuiging dat in elke situatie de winst van één partij gelijk staat aan het verlies van een andere, ook als dat objectief niet het geval is. Nulsom-denken ondermijnt samenwerking.",
+    abstractExample: "Als een collega promotie maakt, denk je dat jouw kansen daardoor kleiner worden — zelfs als beide promoties mogelijk waren. Niet elke situatie is een nulsom-spel.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Mensen denken soms dat als anderen gelukkiger of succesvoller zijn, er minder geluk of succes voor henzelf overblijft." },
+      { domain: "business", icon: "💼", text: "In onderhandelingen denken partijen dat elke concessie een verlies is voor hen, terwijl win-win-oplossingen mogelijk zijn." },
+      { domain: "science", icon: "🔬", text: "Onderzoek toont dat nulsom-denken sterk correleert met competitiviteit, nationalisme en weerstand tegen immigratie." }
+    ],
+    prerequisites: ["zero-sum-games", "prisoners-dilemma"],
+    unlocks: ["nash-equilibrium"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is nulsom-denken een juiste inschatting?", options: ["Altijd", "Nooit", "Alleen bij echte nulsom-situaties zoals wedstrijden of verdeling van vaste middelen", "Bij alle economische transacties"], correctIndex: 2, explanation: "Bij vaste middelen (een taart verdelen, een wedstrijd) is nulsom correct. Bij handel, innovatie en samenwerking is het dat zelden." }
+    ],
+    creativePrompt: "Identificeer een situatie in jouw leven waar je nulsom denkt maar het wellicht niet is. Hoe zou de situatie er uitzien als beide partijen kunnen winnen?",
+    aiHelperPrompts: ["Hoe kan ik onderhandelen zonder nulsom-denken?", "In welke echte situaties is nulsom-denken correct?", "Hoe hangt nulsom-denken samen met jaloezie?"]
+  },
+  {
+    id: "telescope-effect",
+    title: "Telescoop-Effect",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Psychologie", "Cognitieve Bias", "Geheugen", "Tijd", "Beter Redeneren"],
+    definition: "Recente gebeurtenissen lijken verder weg dan ze zijn (telescoop omgekeerd), en verre gebeurtenissen lijken dichterbij dan ze zijn (telescoop rechtop). Ons tijdsgevoel is systematisch vertekend.",
+    abstractExample: "Een vakantie van twee jaar geleden voelt als 'pas nog', terwijl iets wat vijf jaar geleden was aanvoelt als 'heel lang geleden'. Mensen plaatsen zowel recente als oude gebeurtenissen verkeerd in de tijd.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Iemand schat dat een evenement van drie jaar geleden 'misschien anderhalf jaar geleden' was — forward telescoping." },
+      { domain: "business", icon: "💼", text: "Managers onderschatten hoe lang projecten duurden in het verleden, waardoor ze toekomstige planningen onderschatten." },
+      { domain: "science", icon: "🔬", text: "Watkins & Peynircioğlu (1990) documenteerden systematische fouten in tijdsschatting bij autobiografisch geheugen." }
+    ],
+    prerequisites: ["rosy-retrospection"],
+    unlocks: ["planning-fallacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Welk type telescoop-effect leidt tot onderschatting van projectduur?", options: ["Omgekeerd telescopen van recent verleden", "Recht telescopen van recent verleden maakt het dichter voelen", "Forward telescoping waarbij recente projecten dichterbij voelen", "Alle typen hebben hetzelfde effect"], correctIndex: 2, explanation: "Als recente projecten dichterbij voelen dan ze zijn, lijken ze ook sneller verlopen — wat leidt tot onderschatting van benodigde tijd." }
+    ],
+    creativePrompt: "Denk aan vijf gebeurtenissen uit je leven. Schrijf op wanneer je denkt dat ze waren. Check dan de werkelijke datum. Hoe groot zijn de fouten en in welke richting?",
+    aiHelperPrompts: ["Hoe beïnvloedt het telescoop-effect projectplanning?", "Waarom is ons tijdgevoel zo onbetrouwbaar?", "Hoe kan ik betere schattingen maken van tijdsduur?"]
+  },
+  {
+    id: "verbatim-effect",
+    title: "Verbatim-Effect",
+    difficulty: 2,
+    emoji: "📝",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Beter Leren",
+    tags: ["Cognitieve Psychologie", "Geheugen", "Begrip", "Beter Leren"],
+    definition: "We onthouden de betekenis en essentie van informatie beter dan de exacte woorden. Ons geheugen slaat snel de kern op maar verliest de letterlijke formulering. Tegelijkertijd denken we soms dat we woord-voor-woord onthouden terwijl we reconstueren.",
+    abstractExample: "Na het lezen van een artikel kun je perfect uitleggen waar het over ging, maar de exacte zinnen kun je niet herhalen. Ons geheugen is meer interpretatief dan fotografisch.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Na een gesprek onthoud je de teneur en het gevoel, maar kun je de exacte woorden van de ander niet herhalen." },
+      { domain: "business", icon: "💼", text: "Getuigen in rechtszaken reconstrueren uitspraken die ze 'woordelijk' denken te onthouden, maar in werkelijkheid interpreteren." },
+      { domain: "science", icon: "🔬", text: "Brainerd & Reyna's fuzzy-trace theorie onderscheidt 'verbatim traces' van 'gist traces' en toont dat gist langer bewaard blijft." }
+    ],
+    prerequisites: ["hindsight-bias"],
+    unlocks: ["narrative-fallacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de praktische implicatie van het verbatim-effect voor getuigenverklaringen?", options: ["Getuigen zijn volledig betrouwbaar", "Getuigen reconstrueren herinneringen en kunnen onbedoeld fout zijn", "Getuigen liegen bewust", "Getuigen onthouden alles fotografisch"], correctIndex: 1, explanation: "Omdat we de gist opslaan en de letterlijke woorden reconstrueren, zijn getuigenverklaringen feilbaar ook zonder kwade wil." }
+    ],
+    creativePrompt: "Lees een artikel en leg het weg. Schrijf daarna uit je hoofd de kerninformatie op. Vergelijk dit met het origineel. Wat heb je onthouden en wat hebt je vervormd?",
+    aiHelperPrompts: ["Hoe kan ik beter leren met kennis van het verbatim-effect?", "Hoe beïnvloedt het verbatim-effect de betrouwbaarheid van getuigenverklaringen?", "Wat is het verschil tussen begrip en memorizatie?"]
   }
 ];
 
