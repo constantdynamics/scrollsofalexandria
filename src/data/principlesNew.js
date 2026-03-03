@@ -2319,5 +2319,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Analyseer een activiteit die je vroeger leuk vond maar nu minder aantrekkelijk is. Is er een externe beloning of verplichting bijgekomen? Hoe hervindt je de intrinsieke motivatie?",
     aiHelperPrompts: ["Hoe ontwerp ik taken die autonomie, competentie en verbondenheid bevorderen?", "Wanneer is extrinsieke motivatie wél nuttig?", "Hoe hangt zelfbeschikkingstheorie samen met groeimindset?"]
+  },
+
+  // ── BATCH A: COMMUNICATIE & GESPREKSTECHNIEKEN ────────────────
+  {
+    id: "active-listening",
+    title: "Actief Luisteren",
+    difficulty: 1,
+    emoji: "👂",
+    academicCategory: "Communicatie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatie", "Relaties", "Empathie", "Beter Communiceren"],
+    definition: "Volledig aanwezig zijn in een gesprek door bewust te luisteren, te begrijpen en te reageren op de ander — zonder al te formuleren wat je zelf wilt zeggen. Actief luisteren gaat verder dan horen.",
+    abstractExample: "In een gesprek waarbij je actief luistert, richt je alle aandacht op de ander: je houdt oogcontact, knikt, parafraseert wat je hoort en stelt verdiepende vragen. Je denkt niet aan je eigen volgende zin.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een partner die klaagt over zijn dag voelt het verschil tussen iemand die 'mmm' zegt achter zijn telefoon en iemand die echt aanwezig is en doorvraagt." },
+      { domain: "business", icon: "💼", text: "Managers die actief luisteren ontdekken problemen eerder en medewerkers delen meer nuttige informatie met hen." },
+      { domain: "science", icon: "🔬", text: "Onderzoek van Itzchakov & Kluger (2018) toont dat kwalitatief luisteren de gesprekspartner helderder laat denken en openheid vergroot." }
+    ],
+    prerequisites: ["principle-of-charity"],
+    unlocks: ["nonviolent-communication"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de grootste belemmering voor actief luisteren?", options: ["Te weinig woorden kennen", "Innerlijke dialoog: al formuleren wat je zelf wilt zeggen", "Te snel praten", "Te weinig kennis over het onderwerp"], correctIndex: 1, explanation: "De meeste mensen luisteren om te antwoorden, niet om te begrijpen. De innerlijke dialoog verstoort echte aandacht voor de ander." }
+    ],
+    creativePrompt: "Voer vandaag een gesprek waarbij je jezelf verbiedt iets over jezelf te zeggen. Stel alleen vragen en parafraseer. Wat merk je?",
+    aiHelperPrompts: ["Hoe kan ik mijn luisterkwaliteit meten?", "Wat zijn praktische technieken voor actief luisteren?", "Hoe helpt actief luisteren bij conflictoplossing?"]
+  },
+  {
+    id: "nonviolent-communication",
+    title: "Geweldloze Communicatie",
+    difficulty: 2,
+    emoji: "🕊️",
+    academicCategory: "Communicatie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatie", "Conflictoplossing", "Empathie", "Beter Communiceren"],
+    definition: "Een communicatiemethode gebaseerd op vier stappen: observatie (feiten zonder oordeel), gevoel (jouw emotie), behoefte (onderliggende waarde) en verzoek (concreet, uitvoerbaar). Scheidt feiten van interpretaties.",
+    abstractExample: "Aanklacht: 'Jij luistert nooit.' GCC: 'Wanneer je tijdens ons gesprek op je telefoon kijkt [observatie], voel ik me niet gehoord [gevoel], want verbinding is voor mij belangrijk [behoefte]. Kun je je telefoon wegleggen? [verzoek]'",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In plaats van 'Je bent altijd te laat!': 'Wanneer je 20 minuten later komt dan afgesproken, voel ik me niet gewaardeerd. Ik heb behoefte aan stiptheid. Kun je me laten weten als je vertraging hebt?'" },
+      { domain: "business", icon: "💼", text: "GCC-feedback op het werk scheidt gedrag ('Je rapport miste drie secties') van persoon ('Je bent slordig'), wat minder defensieve reacties uitlokt." },
+      { domain: "science", icon: "🔬", text: "Marshall Rosenberg ontwikkelde GCC in de jaren '60; onderzoek toont dat het empathisch begrip vergroot en conflicten constructiever maakt." }
+    ],
+    prerequisites: ["active-listening"],
+    unlocks: ["conflict-resolution"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen een observatie en een evaluatie in GCC?", options: ["Ze zijn identiek", "Een observatie beschrijft concrete feiten; een evaluatie bevat oordelen over de ander", "Een evaluatie is objectiever", "GCC gebruikt alleen evaluaties"], correctIndex: 1, explanation: "Observatie: 'Je was er niet bij de vergadering.' Evaluatie: 'Je bent onbetrouwbaar.' De eerste beschrijft feiten; de tweede bevat een oordeel dat defensiviteit uitlokt." }
+    ],
+    creativePrompt: "Denk aan een recente ruzie of irritatie. Herschrijf jouw reactie in vier GCC-stappen: observatie, gevoel, behoefte, verzoek.",
+    aiHelperPrompts: ["Hoe leer ik mijn behoeften te onderscheiden van mijn verzoeken?", "Wanneer werkt GCC niet of minder goed?", "Hoe gebruik ik GCC met iemand die er niet bekend mee is?"]
+  },
+  {
+    id: "assertiveness",
+    title: "Assertiviteit",
+    difficulty: 1,
+    emoji: "🦁",
+    academicCategory: "Communicatie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatie", "Zelfkennis", "Grenzen", "Beter Communiceren"],
+    definition: "De vaardigheid om je mening, behoeften en grenzen duidelijk en respectvol te uiten, zonder passief (alles accepteren) of agressief (anderen overheersen) te zijn. Assertiviteit is de middenweg.",
+    abstractExample: "Passief: 'Oh, het maakt mij niet uit.' Agressief: 'Jij hebt het altijd mis!' Assertief: 'Ik denk hier anders over. Mijn perspectief is...' Dezelfde situatie, drie totaal verschillende reacties.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Nee zeggen op een verzoek zonder schuldgevoel: 'Ik heb die avond al iets gepland, ik kan er niet bij zijn.'" },
+      { domain: "business", icon: "💼", text: "Een medewerker die assertief zijn werkdrempel aangeeft ('Ik kan dit kwalitatief leveren als ik tot vrijdag heb') werkt duurzamer dan iemand die stil instemt maar overbelast raakt." },
+      { domain: "science", icon: "🔬", text: "Assertiviteitstraining is een bewezen effectieve cognitief-gedragstherapeutische techniek voor angst- en zelfbeeldproblemen." }
+    ],
+    prerequisites: ["nonviolent-communication"],
+    unlocks: ["boundary-setting"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt assertiviteit van agressiviteit?", options: ["Assertiviteit is zachter van toon", "Assertiviteit respecteert zowel de eigen als andermans rechten; agressiviteit negeert andermans rechten", "Assertiviteit vraagt altijd toestemming", "Agressiviteit is assertiever"], correctIndex: 1, explanation: "Assertiviteit is gericht op wederzijds respect. Agressiviteit gaat ten koste van de ander om de eigen wil door te zetten." }
+    ],
+    creativePrompt: "Kies drie situaties waar je passief reageerde maar eigenlijk 'nee' wilde zeggen. Herschrijf jouw reactie assertief. Hoe voelt dat?",
+    aiHelperPrompts: ["Hoe ontwikkel ik assertiviteit als ik van nature vermijdend ben?", "Wat zijn de culturele grenzen van assertiviteit?", "Hoe blijf ik assertief zonder te botsen?"]
+  },
+  {
+    id: "radical-candor",
+    title: "Radicale Openheid",
+    difficulty: 2,
+    emoji: "💬",
+    academicCategory: "Leiderschap",
+    skillCategory: "Beter Communiceren",
+    tags: ["Leiderschap", "Communicatie", "Feedback", "Beter Communiceren"],
+    definition: "Feedback geven die zowel direct als oprecht bezorgd is — tegelijkertijd uitdagen en persoonlijk betrokken zijn. Het kwadrant van Kim Scott: ruineuze empathie, wrede eerlijkheid, manipulatieve onoprechtheid en radicale openheid.",
+    abstractExample: "Ruineuze empathie: problemen verzwijgen om gevoelens te sparen. Radicale openheid: 'Ik zeg je dit omdat ik geloof in jouw potentieel: dit rapport mist drie cruciale secties. Laten we kijken hoe we het aanpakken.'",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een vriend eerlijk vertellen dat zijn idee een kritisch probleem heeft, maar hem ook aanbieden te helpen het te verbeteren." },
+      { domain: "business", icon: "💼", text: "Een manager die direct feedback geeft ('Je presentatie miste structuur') maar ook persoonlijke ondersteuning biedt, bouwt meer vertrouwen dan een die zwijgt of alleen kritiseert." },
+      { domain: "science", icon: "🔬", text: "Kim Scott beschreef het concept in 'Radical Candor' (2017) op basis van haar ervaring bij Google en Apple." }
+    ],
+    prerequisites: ["assertiveness", "active-listening"],
+    unlocks: ["psychological-safety"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is 'ruineuze empathie'?", options: ["Te veel feedback geven", "Kritische feedback achterhouden om gevoelens te sparen, waardoor de ander niet kan groeien", "Te direct zijn", "Feedback die anderen kwetst"], correctIndex: 1, explanation: "Ruineuze empathie klinkt vriendelijk maar is uiteindelijk schadelijk: door problemen te verzwijgen, ontneemt je iemand de kans om te verbeteren." }
+    ],
+    creativePrompt: "Denk aan kritische feedback die je al een tijdje niet geeft aan iemand om die te sparen. Hoe zou je die feedback formuleren in de geest van radicale openheid?",
+    aiHelperPrompts: ["Hoe geef ik moeilijke feedback zonder de relatie te beschadigen?", "Hoe verschilt radicale openheid van bot zijn?", "Hoe creëer ik een cultuur van radicale openheid in een team?"]
+  },
+  {
+    id: "power-of-silence",
+    title: "Kracht van Stilte",
+    difficulty: 1,
+    emoji: "🤫",
+    academicCategory: "Communicatie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatie", "Onderhandeling", "Bewustzijn", "Beter Communiceren"],
+    definition: "Stilte in communicatie is geen leegte maar een krachtig instrument — het geeft ruimte voor reflectie, dwingt de ander te reageren, en versterkt de impact van wat voorafging.",
+    abstractExample: "Na een sterk argument bewust zwijgen laat het bezinken. In onderhandeling: na het noemen van je prijs zwijgen. De eerste die praat, geeft concessies. Stilte is onderhandelingskracht.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Na het stellen van een moeilijke vraag niet meteen de stilte opvullen — de ander heeft ruimte nodig om eerlijk na te denken." },
+      { domain: "business", icon: "💼", text: "Ervaren onderhandelaars zwijgen na hun openingsbod. Wie als eerste de stilte verbreekt, geeft gewoonlijk toe." },
+      { domain: "science", icon: "🔬", text: "Onderzoek toont dat mensen gemiddeld maar 1,5 seconde stilte tolereren voor ze de stilte opvullen. Bewust langer zwijgen geeft strategisch voordeel." }
+    ],
+    prerequisites: ["active-listening"],
+    unlocks: ["assertiveness"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom vullen mensen stilte zo snel op?", options: ["Ze hebben altijd iets te zeggen", "Stilte voelt ongemakkelijk en mensen proberen die discomfort te reduceren", "Stilte is sociaal onaanvaardbaar", "Ze vergeten te zwijgen"], correctIndex: 1, explanation: "Stilte triggert discomfort; mensen praten om de spanning te verminderen. Degene die bewust de stilte aanhoudt, heeft meer controle in het gesprek." }
+    ],
+    creativePrompt: "Oefening: stel vandaag een vraag aan iemand en tel daarna bewust tot tien voor je reageert op hun antwoord. Wat merk je aan het gesprek?",
+    aiHelperPrompts: ["Hoe gebruik ik stilte effectief in onderhandelingen?", "Wanneer is stilte als instrument manipulatief?", "Hoe leer ik mijn discomfort bij stilte te verdragen?"]
+  },
+  {
+    id: "mirroring",
+    title: "Spiegelen",
+    difficulty: 1,
+    emoji: "🪞",
+    academicCategory: "Communicatie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatie", "Rapport", "Empathie", "Beter Communiceren"],
+    definition: "Het subtiel imiteren van de lichaamstaal, toon, tempo en woordkeuze van de gesprekspartner. Spiegelen bouwt onbewust rapport op en laat de ander zich begrepen voelen.",
+    abstractExample: "Iemand leunt achterover; jij leunt ook iets achterover. Iemand spreekt langzaam en rustig; jij past je tempo aan. Dit gaat niet over bewust nadoen maar over aansluiting bij de energie en stijl van de ander.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Vrienden die al lang bevriend zijn, synchroniseren automatisch hun lichaamstaal. Bewust spiegelen versnelt dit rapport-opbouwproces." },
+      { domain: "business", icon: "💼", text: "FBI-onderhandelaar Chris Voss beschrijft spiegelen (het herhalen van de laatste 2-3 woorden van de ander) als een van de krachtigste gesprekstechnieken." },
+      { domain: "science", icon: "🔬", text: "Spiegelneuronen in de hersenen zijn deels verantwoordelijk voor spontaan spiegelgedrag; bewust toepassen vergroot prosociaal gedrag." }
+    ],
+    prerequisites: ["active-listening"],
+    unlocks: ["rapport-building"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het effect van bewust spiegelen in een gesprek?", options: ["Irritatie bij de ander", "Verhoogd gevoel van verbinding en begrip bij de gesprekspartner", "Verwarring", "Dominantie over de ander"], correctIndex: 1, explanation: "Spiegelen communiceert non-verbaal 'ik stem af op jou', wat een gevoel van synchronie en begrip opwekt." }
+    ],
+    creativePrompt: "Probeer in je volgende gesprek bewust de woordkeuze en het spreektempo van de ander te weerspiegelen. Let op hoe het gesprek verloopt.",
+    aiHelperPrompts: ["Hoe spiegel ik subtiel zonder dat het nep voelt?", "Wanneer werkt spiegelen averechts?", "Hoe hangt spiegelen samen met empathie?"]
+  },
+  {
+    id: "reframing-technique",
+    title: "Herkadering",
+    difficulty: 2,
+    emoji: "🖼️",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Psychologie", "Communicatie", "Creativiteit", "Beter Communiceren"],
+    definition: "Een situatie, probleem of overtuiging in een ander kader plaatsen zodat de betekenis verandert. Herkader je een situatie, dan verandert niet de situatie zelf maar de manier waarop je er tegenaan kijkt.",
+    abstractExample: "Falen op een examen: 'Ik ben mislukt' → 'Ik heb waardevolle informatie ontvangen over wat ik nog moet leren.' Dezelfde gebeurtenis, ander kader, andere emotie en ander vervolggedrag.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een drukke dag als 'overladen' herkaderd naar 'mijn vaardigheden zijn gevraagd' verandert de ervaring zonder de feiten te veranderen." },
+      { domain: "business", icon: "💼", text: "Een kritische klant herkaderd als 'een kans om ons product te verbeteren' verandert de emotionele reactie van het team." },
+      { domain: "science", icon: "🔬", text: "Cognitieve herkadering is een kerntechniek in cognitieve gedragstherapie (CBT); het veranderen van gedachtenpatronen beïnvloedt emoties en gedrag." }
+    ],
+    prerequisites: ["cognitive-dissonance", "narrative-framing"],
+    unlocks: ["cognitive-reappraisal"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat verandert herkadering in een situatie?", options: ["De feiten van de situatie", "De betekenis die je aan de situatie geeft", "Andermans gedrag", "De externe omstandigheden"], correctIndex: 1, explanation: "Herkadering verandert niet de werkelijkheid maar wel de lens waardoorheen je die bekijkt — wat directe invloed heeft op emoties en gedrag." }
+    ],
+    creativePrompt: "Kies een situatie die je als negatief ervaart. Schrijf vijf alternatieve frames voor diezelfde situatie. Welk frame geeft je de meeste energie?",
+    aiHelperPrompts: ["Is herkadering altijd positief of kan het ook ontkenning zijn?", "Hoe gebruik ik herkadering in moeilijke gesprekken met anderen?", "Welke herkaderingen zijn wetenschappelijk het meest effectief?"]
+  },
+  {
+    id: "storytelling-structure",
+    title: "Verhalenstructuur",
+    difficulty: 2,
+    emoji: "📖",
+    academicCategory: "Communicatie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatie", "Overtuigen", "Creativiteit", "Beter Communiceren"],
+    definition: "Informatie gestructureerd als verhaal (met protagonist, conflict, klimax en resolutie) overtuigt en wordt beter onthouden dan droge feiten. Het menselijk brein is ontworpen voor verhalen.",
+    abstractExample: "Statistiek: '1 op de 5 mensen lijdt aan slaaptekort.' Verhaal: 'Maria werkte 70 uur per week, sliep 5 uur en maakte een dodelijk verkeersongeluk. Slaaptekort doodt.' De statistiek informeert; het verhaal beweegt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Op een feestje je werk uitleggen via een boeiend verhaal over een klant die je hielp, werkt beter dan een functieomschrijving." },
+      { domain: "business", icon: "💼", text: "De beste TED-talks gebruiken altijd een persoonlijk verhaal als anker voor een abstract idee — de emotionele verbinding maakt het memorabel." },
+      { domain: "science", icon: "🔬", text: "Neuraal koppeling ('neural coupling'): bij een goed verhaal synchroniseren de hersengolven van luisteraar en verteller, wat begrip en empathie vergroot." }
+    ],
+    prerequisites: ["ethos-pathos-logos"],
+    unlocks: ["narrative-framing"],
+    exercises: [
+      { type: "multipleChoice", question: "Welk verhaalstructuur-element is het meest essentieel voor overtuiging?", options: ["Een happy end", "Conflict en spanning die de protagonist moet overwinnen", "Een morele les", "Veel details"], correctIndex: 1, explanation: "Conflict is de motor van een verhaal. Zonder conflict is er geen spanning, geen emotie, en daalt de aandacht van het publiek." }
+    ],
+    creativePrompt: "Vertel iets wat je wilt communiceren (een idee, je werk, een overtuiging) als een verhaal met een protagonist, een probleem en een oplossing. Hoe verandert de impact?",
+    aiHelperPrompts: ["Wat zijn de meest gebruikte verhalenstructuren en wanneer gebruik ik welke?", "Hoe gebruik ik verhalen in professionele presentaties?", "Hoe hangt de verhalenstructuur samen met geheugen?"]
+  },
+  {
+    id: "crucial-conversations",
+    title: "Cruciale Gesprekken",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Communicatie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatie", "Conflictoplossing", "Leiderschap", "Beter Communiceren"],
+    definition: "Gesprekken met hoge inzet, sterke emoties en tegenstrijdige meningen. De meeste mensen vermijden ze of voeren ze slecht. Cruciale gesprekken goed voeren is een van de meest waardevolle sociale vaardigheden.",
+    abstractExample: "Een cruciaal gesprek is: je baas confronteren over oneerlijk gedrag, je partner over een fundamenteel probleem, of een medewerker over zijn prestaties. Ze worden vermeden — maar de kosten van vermijding zijn groter dan die van het gesprek.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een gesprek over geld met je partner dat al maanden uitgesteld wordt. Elke dag dat het uitgesteld wordt, groeit de spanning." },
+      { domain: "business", icon: "💼", text: "Onderzoek toont dat mislukte cruciale gesprekken de hoofdoorzaak zijn van projectmislukkingen, toxische werkomgevingen en ontslagen." },
+      { domain: "science", icon: "🔬", text: "Patterson et al. beschreven in 'Crucial Conversations' (2002) dat de kwaliteit van cruciale gesprekken de kwaliteit van relaties en organisaties bepaalt." }
+    ],
+    prerequisites: ["nonviolent-communication", "assertiveness"],
+    unlocks: ["conflict-resolution"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de eerste stap in een cruciaal gesprek?", options: ["Meteen je probleem benoemen", "Een veilige omgeving creëren door je intentie duidelijk te maken", "De ander overtuigen dat je gelijk hebt", "De feiten presenteren"], correctIndex: 1, explanation: "Zonder psychologische veiligheid sluiten mensen zich af en wordt het gesprek defensief. Veiligheid creëren is de eerste stap." }
+    ],
+    creativePrompt: "Identificeer een cruciaal gesprek dat je al uitstelt. Wat maakt het moeilijk? Schrijf hoe je het zou openen met als doel: veiligheid creëren.",
+    aiHelperPrompts: ["Hoe bereid ik me voor op een cruciaal gesprek?", "Hoe herstel ik de veiligheid als het gesprek escaleert?", "Hoe voer ik een cruciaal gesprek met een machtigere persoon?"]
+  },
+  {
+    id: "feedback-giving",
+    title: "Effectief Feedback Geven",
+    difficulty: 1,
+    emoji: "🎯",
+    academicCategory: "Communicatie",
+    skillCategory: "Beter Communiceren",
+    tags: ["Communicatie", "Leiderschap", "Groei", "Beter Communiceren"],
+    definition: "Feedback is effectief als ze specifiek, tijdig, gedragsgericht (niet persoonsgericht), toekomstgericht en uitnodigend tot dialoog is. Goede feedback helpt groeien; slechte feedback demotiveert.",
+    abstractExample: "Slechte feedback: 'Jij bent slordig.' Goede feedback: 'In dit rapport ontbreken drie onderbouwingen op pagina 4 en 7. Als je die toevoegt, wordt het veel sterker. Wat heb je nodig om dat goed te doen?'",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Aan een kind dat een tekening maakt: 'Wat fijn dat je zoveel tijd hebt gestoken in de kleuren!' werkt beter dan 'Goed gedaan!' (te vaag) of 'De oren zijn raar' (demotiverend)." },
+      { domain: "business", icon: "💼", text: "360-graden feedback systemen zijn effectiever als ze gedragsgericht zijn en specifieke voorbeelden bevatten in plaats van vage kwalificaties." },
+      { domain: "science", icon: "🔬", text: "Kluger & DeNisi (1996) toonden aan dat 38% van alle feedback-interventies prestaties verlaagde — vooral wanneer feedback gericht was op de persoon, niet op het gedrag." }
+    ],
+    prerequisites: ["radical-candor"],
+    unlocks: ["growth-mindset"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt feedback het meest effectief?", options: ["Positief beginnen (sandwich-methode)", "Specifiek, gedragsgericht en toekomstgericht zijn", "Zo snel mogelijk na een incident geven", "Schriftelijk zodat het bewaard blijft"], correctIndex: 1, explanation: "Specificiteit en gerichtheid op gedrag (niet op persoon) zijn de sterkste predictors van effectieve feedback die tot verbetering leidt." }
+    ],
+    creativePrompt: "Denk aan de laatste feedback die je iemand gaf. Was het specifiek? Gedragsgericht? Toekomstgericht? Herschrijf het naar het effectieve model.",
+    aiHelperPrompts: ["Wanneer geef ik feedback direct en wanneer wacht ik?", "Hoe geef ik feedback omhoog (aan mijn leidinggevende)?", "Hoe ontvang ik feedback constructief?"]
   }
 ];
