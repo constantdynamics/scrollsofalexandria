@@ -4839,6 +4839,238 @@ export const principles = [
     ],
     creativePrompt: "Denk aan een situatie waar jij een uitzondering voor jezelf opeiste. Kon je die rechtvaardiging voor iedereen in die situatie verdedigen, of was het echt speciaal voor jou?",
     aiHelperPrompts: ["Hoe herken ik speciale pleitering bij mezelf?", "Is hypocrisie altijd speciale pleitering?", "Hoe hangt dit samen met de tu quoque-drogreden?"]
+  },
+
+  // ── BATCH 4: ECONOMIE & BESLISKUNDE ──────────────────────────
+  {
+    id: "bounded-rationality",
+    title: "Begrensd Rationaliteit",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Gedragseconomie", "Besluitvorming", "Cognitie", "Betere Beslissingen"],
+    definition: "Mensen streven niet naar perfecte rationaliteit maar naar 'goed genoeg' beslissingen, vanwege beperkte informatie, cognitieve capaciteit en tijd. Echte rationaliteit is altijd begrensd.",
+    abstractExample: "Een volledig rationele actor vergelijkt alle supermarktproducten op prijs per gram en kiest altijd de optimale optie. In werkelijkheid kijkt iemand naar 3-4 opties en kiest de eerste die goed genoeg lijkt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Bij het kiezen van een restaurant vergelijk je niet elke optie in de stad; je pakt de eerste die redelijk lijkt." },
+      { domain: "business", icon: "💼", text: "Managers nemen beslissingen met onvolledige informatie onder tijdsdruk — perfecte analyse is luxe die de werkelijkheid zelden toelaat." },
+      { domain: "science", icon: "🔬", text: "Herbert Simon bedacht de term 'bounded rationality' in 1955 en won er de Nobelprijs voor economie mee in 1978." }
+    ],
+    prerequisites: ["opportunity-cost"],
+    unlocks: ["satisficing"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de reden dat beslissingen altijd begrensd rationeel zijn?", options: ["Mensen zijn lui", "Informatie, tijd en cognitieve capaciteit zijn altijd beperkt", "Rationaliteit bestaat niet", "Mensen maken altijd fouten"], correctIndex: 1, explanation: "Perfecte rationaliteit vereist volledige informatie en onbeperkte verwerkingscapaciteit — beides is in de praktijk nooit beschikbaar." }
+    ],
+    creativePrompt: "Beschrijf een recente beslissing die je nam. Hoeveel opties heb je echt overwogen? Hoeveel informatie had je? Wat zou een 'volledig rationele' keuze hebben vereist?",
+    aiHelperPrompts: ["Hoe kan ik betere beslissingen nemen binnen mijn cognitieve begrenzingen?", "Wanneer is een snelle beslissing beter dan een uitgebreide analyse?", "Hoe verschilt begrensd rationaliteit van irrationeel gedrag?"]
+  },
+  {
+    id: "satisficing",
+    title: "Voldoenend Kiezen",
+    difficulty: 1,
+    emoji: "✅",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Gedragseconomie", "Besluitvorming", "Strategie", "Betere Beslissingen"],
+    definition: "De strategie om de eerste optie te kiezen die aan een minimumdrempel voldoet, in plaats van te zoeken naar de absolute beste optie. Satisficing = 'satisfying' + 'sufficing' (bevredigend + voldoende).",
+    abstractExample: "Je zoekt een appartement en stelt minimumcriteria (prijs, ligging, grootte). Je neemt het eerste appartement dat aan al deze criteria voldoet, in plaats van maanden te zoeken naar het perfecte appartement.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "In een restaurant kies je een gerecht dat goed klinkt en aan je wensen voldoet, in plaats van het menu te analyseren voor de theoretisch beste keuze." },
+      { domain: "business", icon: "💼", text: "Een HR-manager selecteert de eerste kandidaat die aan alle functie-eisen voldoet, in plaats van alle sollicitanten te ranken." },
+      { domain: "science", icon: "🔬", text: "Barry Schwartz toonde aan dat 'maximizers' (die altijd het beste zoeken) minder gelukkig zijn dan 'satisficers' die 'goed genoeg' accepteren." }
+    ],
+    prerequisites: ["bounded-rationality", "choice-overload"],
+    unlocks: ["default-effect"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is satisficing een betere strategie dan maximeren?", options: ["Nooit", "Altijd", "Als de zoekkosten hoger zijn dan de verwachte meerwaarde van de perfecte optie", "Alleen bij kleine beslissingen"], correctIndex: 2, explanation: "Als het vinden van de perfecte optie meer kost (tijd, energie, stress) dan het voordeel ervan, is satisficing rationeel." }
+    ],
+    creativePrompt: "Stel minimumcriteria voor een beslissing die voor jou ligt. Kies de eerste optie die eraan voldoet. Hoe voelt dit vergeleken met uitgebreid zoeken?",
+    aiHelperPrompts: ["Hoe stel ik goede minimumcriteria op voor beslissingen?", "Wanneer moet ik wél maximeren en niet satisficen?", "Hoe hangt dit samen met de paradox van keuze?"]
+  },
+  {
+    id: "nudge-theory",
+    title: "Duwtjestheorie",
+    difficulty: 2,
+    emoji: "👆",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Gedragseconomie", "Gedragsverandering", "Beleid", "Betere Beslissingen"],
+    definition: "Kleine aanpassingen in de omgeving of de manier waarop keuzes worden gepresenteerd, leiden tot betere beslissingen zonder keuzevrijheid te beperken. Mensen worden 'geduwd' naar betere opties.",
+    abstractExample: "In een schoolkantine worden gezonde opties op ooghoogte gezet en ongezonde opties aan het einde. Kinderen kiezen vaker gezond — zonder verbod op ongezond eten.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Automatische inschrijving voor pensioenfondsen (opt-out in plaats van opt-in) verhoogt deelname dramatisch zonder verplichting." },
+      { domain: "business", icon: "💼", text: "Trappen in zichtbare positie en liften verstopt achter een deur verhoogt trapgebruik op kantoren." },
+      { domain: "science", icon: "🔬", text: "Thaler & Sunstein's boek 'Nudge' (2008) populariseerde de theorie; beide auteurs adviseerden overheden wereldwijd over gedragsbeleid." }
+    ],
+    prerequisites: ["default-effect", "choice-overload"],
+    unlocks: ["satisficing"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt een nudge van een verbod?", options: ["Een nudge dwingt gedrag af; een verbod suggereert", "Een nudge behoudt keuzevrijheid; een verbod elimineert opties", "Ze zijn identiek", "Een nudge is altijd effectiever"], correctIndex: 1, explanation: "Een nudge is per definitie niet-dwingend — alle opties blijven beschikbaar, maar de context wordt aangepast." }
+    ],
+    creativePrompt: "Ontwerp een nudge voor een gewoonte die je wilt verbeteren (sport, voeding, slaap). Welke aanpassing in je omgeving zou je in de goede richting duwen zonder wilskracht?",
+    aiHelperPrompts: ["Is nudging manipulatief of is het paternalistisch?", "Welke nudges werken in de praktijk het beste?", "Hoe kan ik mijn eigen omgeving inrichten als een nudge voor goed gedrag?"]
+  },
+  {
+    id: "veblen-effect",
+    title: "Veblen-Effect",
+    difficulty: 2,
+    emoji: "💎",
+    academicCategory: "Economie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Economie", "Consumptie", "Status", "Kritisch Denken"],
+    definition: "Het verschijnsel waarbij de vraag naar een product toeneemt als de prijs stijgt, in tegenstelling tot normale vraagcurves. Hogere prijs signaleert status en exclusiviteit.",
+    abstractExample: "Een duur handtas verkoopt beter na een prijsverhoging omdat de hogere prijs de sociale status van het bezit vergroot. De prijs zelf is het product.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Luxe auto's, designer kleding en dure horloges worden deels gekocht vanwege hun prijs — die is het bewijs van exclusiviteit." },
+      { domain: "business", icon: "💼", text: "Een consultancybureau verhoogde zijn dagprijs en kreeg plotseling meer aanvragen — de hogere prijs signaleerde kwaliteit." },
+      { domain: "science", icon: "🔬", text: "Thorstein Veblen beschreef in 1899 'conspicuous consumption' — zichtbare consumptie als statusvertoon, de basis van het effect." }
+    ],
+    prerequisites: ["scarcity-effect", "decoy-effect"],
+    unlocks: ["information-asymmetry"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom werkt het Veblen-effect alleen voor bepaalde producten?", options: ["Alle producten werken zo", "Alleen producten die zichtbaar geconsumeerd worden en status symboliseren", "Alleen dure producten", "Het werkt voor goedkope producten"], correctIndex: 1, explanation: "Het Veblen-effect vereist zichtbaarheid en een sociale context waar prijs als statussignaal werkt." }
+    ],
+    creativePrompt: "Denk aan een aankoop waarbij de prijs onderdeel was van de aantrekkingskracht. Wat kocht je eigenlijk — het product of het signaal?",
+    aiHelperPrompts: ["Hoe beïnvloedt het Veblen-effect luxe marketing?", "Is er een grens aan wat als statusgoed kan worden verkocht?", "Hoe hangt het Veblen-effect samen met informatieasymmetrie?"]
+  },
+  {
+    id: "hot-cold-empathy-gap",
+    title: "Warm-Koud-Empatiekloof",
+    difficulty: 2,
+    emoji: "🌡️",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Gedragseconomie", "Emotie", "Besluitvorming", "Betere Beslissingen"],
+    definition: "In een koude (emotieloze) toestand onderschatten we hoe sterk emoties ons gedrag en beslissingen zullen beïnvloeden in een warme (emotionele) toestand, en vice versa.",
+    abstractExample: "Nuchter plannen om matig te drinken op een feest klinkt logisch. Op het feest zelf, in de warme toestand, voelt die afspraak heel ver weg. De koude je kan de warme je niet goed voorspellen.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Op een dieet besluit je dat je op feestjes geen cake zult eten. Maar de geur van verse cake in een sociale setting overmant je plan." },
+      { domain: "business", icon: "💼", text: "Onderhandelaars plannen kalm hun strategie — maar in hitte van debat reageren ze emotioneel in strijd met hun plan." },
+      { domain: "science", icon: "🔬", text: "Loewenstein (1996, 2005) documenteerde de warm-koud-kloof uitgebreid en toonde de asym metrische zelfinschatting aan." }
+    ],
+    prerequisites: ["projection-bias"],
+    unlocks: ["restraint-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de beste manier om de warm-koud-kloof te overbruggen?", options: ["Meer vertrouwen in jezelf kweken", "Bindende afspraken maken in koude toestand", "Warme toestand vermijden", "Meer emotie toelaten in koude planning"], correctIndex: 1, explanation: "Precommitment — bindende afspraken maken als je nuchter bent — helpt om de warme versie van jezelf te sturen." }
+    ],
+    creativePrompt: "Beschrijf een situatie waar je in koude toestand plannen maakte die je in warme toestand niet volgde. Wat had je anders kunnen plannen?",
+    aiHelperPrompts: ["Hoe gebruik ik precommitment om mijn koude beslissingen te handhaven?", "In welke situaties is de warm-koud-kloof het gevaarlijkst?", "Hoe hangt dit samen met zelfcontrole in psychologie?"]
+  },
+  {
+    id: "default-effect",
+    title: "Standaard-Effect",
+    difficulty: 1,
+    emoji: "⚙️",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Gedragseconomie", "Besluitvorming", "Keuze-architectuur", "Betere Beslissingen"],
+    definition: "Mensen kiezen vaker de standaardoptie dan alternatieven, ook als de standaard niet de beste keuze is. Inactiviteit en het vermijden van keuze leiden naar de default.",
+    abstractExample: "Als donorregistratie standaard 'ja' is (opt-out), zijn veel meer mensen donor dan bij standaard 'nee' (opt-in) — ook al is het een identieke keuzesituatie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Software installeert standaard extra toolbars of instellingen; de meeste gebruikers laten dit staan zonder bewust te kiezen." },
+      { domain: "business", icon: "💼", text: "Abonnementen verlengen automatisch tenzij opgezegd — de meeste klanten blijven door inactiviteit." },
+      { domain: "science", icon: "🔬", text: "Johnson & Goldstein (2003) toonden aan dat orgaandonatiegraden dramatisch verschilden tussen landen op basis van opt-in vs. opt-out systemen." }
+    ],
+    prerequisites: ["status-quo-bias"],
+    unlocks: ["nudge-theory"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom kiezen mensen zo vaak de standaardoptie?", options: ["De standaard is altijd de beste optie", "Status-quo-bias, inactiviteit en de aanname dat de standaard aanbevolen is", "Ze weten niet dat er alternatieven zijn", "Standaarden zijn wettelijk verplicht"], correctIndex: 1, explanation: "De standaard profiteert van status-quo-bias, gemak én de impliciete aanbeveling die er van uitgaat." }
+    ],
+    creativePrompt: "Controleer de standaardinstellingen van een apparaat of dienst die je gebruikt. Zijn ze in jouw belang of in het belang van de aanbieder? Wat wijzig je?",
+    aiHelperPrompts: ["Hoe kan ik bewust omgaan met standaardopties in mijn leven?", "Hoe gebruiken bedrijven het standaard-effect om inkomsten te maximeren?", "Hoe hangt dit samen met opt-in vs. opt-out in beleid?"]
+  },
+  {
+    id: "transaction-costs",
+    title: "Transactiekosten",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Economie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Economie", "Organisatie", "Kosten", "Betere Beslissingen"],
+    definition: "De kosten die verbonden zijn aan het verrichten van een transactie, buiten de directe prijs: zoeken, onderhandelen, contracteren en handhaven. Transactiekosten bepalen hoe economische activiteit georganiseerd wordt.",
+    abstractExample: "Een bedrijf kan een product zelf maken of inkopen bij een leverancier. Zelfs als de externe prijs lager is, kunnen de transactiekosten (zoeken, onderhandelen, contractbeheer) het zinvol maken om intern te produceren.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een klusjesman inhuren kost niet alleen zijn uurtarief, maar ook tijd om hem te zoeken, afspraken te maken en zijn werk te controleren." },
+      { domain: "business", icon: "💼", text: "Fusies en overnames kunnen zinvol zijn om transactiekosten te verminderen die ontstaan bij marktinkoop van diensten." },
+      { domain: "science", icon: "🔬", text: "Ronald Coase won in 1991 de Nobelprijs voor economie voor zijn theorie van transactiekosten als verklaring voor de bestaansreden van bedrijven." }
+    ],
+    prerequisites: ["opportunity-cost", "comparative-advantage"],
+    unlocks: ["principal-agent"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom bestaan bedrijven volgens Coase?", options: ["Om winst te maken", "Om transactiekosten te verminderen ten opzichte van marktinkoop", "Om werknemers te beschermen", "Omdat de overheid ze verplicht"], correctIndex: 1, explanation: "Bedrijven internaliseren transacties die te duur zijn om via de markt te organiseren vanwege hoge zoek-, contract- en handhavingskosten." }
+    ],
+    creativePrompt: "Analyseer een recente beslissing om iets zelf te doen vs. uit te besteden. Welke transactiekosten waren er bij beide opties? Was je keuze optimaal?",
+    aiHelperPrompts: ["Hoe bereken ik transactiekosten bij een make-or-buy beslissing?", "Hoe veranderen digitale platforms de transactiekosten in de economie?", "Hoe hangt dit samen met de principaal-agent verhouding?"]
+  },
+  {
+    id: "price-signaling",
+    title: "Prijs als Signaal",
+    difficulty: 2,
+    emoji: "📡",
+    academicCategory: "Economie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Economie", "Informatie", "Markten", "Kritisch Denken"],
+    definition: "Prijzen werken niet alleen als allocatiemechanisme maar ook als informatiesignaal: een hoge prijs communiceert kwaliteit en omgekeerd. Prijzen bevatten kennis die verspreid is over miljoenen actoren.",
+    abstractExample: "Als de prijs van olie stijgt, weten producenten wereldwijd dat ze meer moeten produceren en consumenten dat ze minder moeten verbruiken — zonder centrale planning. De prijs bevat alle relevante informatie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een duur restaurant signaleert kwaliteit; zelfs mensen die er nooit geweest zijn, nemen dit aan op basis van de prijs." },
+      { domain: "business", icon: "💼", text: "Een bedrijf dat zijn product te goedkoop prijst, wekt het vermoeden van lage kwaliteit — ook als het product goed is." },
+      { domain: "science", icon: "🔬", text: "Hayek (1945) betoogde dat het prijssysteem een coördinatiemechanisme is dat gedecentraliseerde kennis samenbrengt die geen centrale planner kan bezitten." }
+    ],
+    prerequisites: ["information-asymmetry"],
+    unlocks: ["veblen-effect"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is Hayeks centraal argument over prijzen?", options: ["Prijzen zijn willekeurig", "Prijzen coördineren gedecentraliseerde kennis die geen planner kan bezitten", "Prijzen zijn altijd eerlijk", "Prijzen zijn alleen numerieke labels"], correctIndex: 1, explanation: "De prijs integreert informatie van miljoenen individuen over vraag, aanbod en schaarste — een functie die geen centrale instantie kan repliceren." }
+    ],
+    creativePrompt: "Kijk naar een plotselinge prijsverandering van iets wat je koopt. Wat 'zegt' de prijs je over de onderliggende situatie van dat product? Welke informatie zit erin?",
+    aiHelperPrompts: ["Wanneer falen prijssignalen als coördinatiemechanisme?", "Hoe beïnvloeden subsidies en belastingen de signaalkracht van prijzen?", "Hoe hangt dit samen met informatieasymmetrie?"]
+  },
+  {
+    id: "rent-seeking",
+    title: "Renteniergedrag",
+    difficulty: 3,
+    emoji: "🏰",
+    academicCategory: "Politieke Economie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Politieke Economie", "Organisatie", "Macht", "Kritisch Denken"],
+    definition: "Het nastreven van rijkdom door het manipuleren van de politieke of economische omgeving in plaats van door productieve activiteit te creëren. Renteniergedrag redistributeert waarde zonder nieuwe waarde te scheppen.",
+    abstractExample: "Een bedrijf besteedt miljoenen aan lobbyen voor importtarieven die concurrenten buitensluiten. Het bedrijf wordt rijker, maar de samenleving wordt armer — er is geen extra productie, alleen een verschuiving van rijkdom.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een taxibedrijf dat meer lobby t voor regelgeving die Uber buiten houdt dan dat het de service voor klanten verbetert." },
+      { domain: "business", icon: "💼", text: "Farmaceutische bedrijven die patentwetten lobbyen om generieke concurrentie uit te stellen in plaats van nieuwe medicijnen te ontwikkelen." },
+      { domain: "science", icon: "🔬", text: "Gordon Tullock (1967) introduceerde het concept; Anne Krueger bedacht de term 'rent-seeking' in 1974 om dit economisch parasitisme te beschrijven." }
+    ],
+    prerequisites: ["externalities", "tragedy-commons"],
+    unlocks: ["principal-agent"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen ondernemen en renteniergedrag?", options: ["Ondernemen creëert waarde; renteniergedrag redistributeert het", "Ze zijn economisch equivalent", "Renteniergedrag is efficiënter", "Ondernemen is altijd legaal, renteniergedrag niet"], correctIndex: 0, explanation: "Ondernemen verhoogt de totale welvaart door productie; renteniergedrag vergroot het aandeel van één partij zonder de totale taart te vergroten." }
+    ],
+    creativePrompt: "Zoek een sector in de economie die sterk gelobbyd heeft voor regelgeving. Wie profiteert, wie betaalt? Is de samenleving er beter van geworden?",
+    aiHelperPrompts: ["Hoe kan democratie renteniergedrag tegengaan?", "Hoe onderscheid ik legitiem lobbyen van rent-seeking?", "Hoe hangt dit samen met de tragedie van de meent?"]
+  },
+  {
+    id: "tragedy-anticommons",
+    title: "Tragedie van de Anti-Meent",
+    difficulty: 3,
+    emoji: "🔒",
+    academicCategory: "Economie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Economie", "Eigendomsrechten", "Samenwerking", "Kritisch Denken"],
+    definition: "Wanneer te veel partijen vetorecht hebben over een gedeelde hulpbron, wordt de hulpbron onderbenut. Het tegengestelde van de tragedie van de meent: hier leidt versnipperd eigendom tot blokkades.",
+    abstractExample: "Een medicijn blijft onontwikkeld omdat tientallen patenthouders elk een klein stukje van de benodigde kennis bezitten en geen van allen toestemming wil geven. Alles samen bezit niemand het medicijn.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een leeg pand in een stad blijft braak liggen omdat het eigendom is van zoveel erfgenamen dat niemand het kan kopen of ontwikkelen." },
+      { domain: "business", icon: "💼", text: "Patent-thickets in de halfgeleiderindustrie: zo veel overlappende patenten dat innovatie stagneert door transactiekosten en blokkeringen." },
+      { domain: "science", icon: "🔬", text: "Michael Heller beschreef in 1998 de 'tragedy of the anticommons' als spiegelbeeld van Hardin's klassieke tragedie van de meent." }
+    ],
+    prerequisites: ["tragedy-commons", "transaction-costs"],
+    unlocks: ["externalities"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer ontstaat een tragedie van de anti-meent?", options: ["Als niemand eigendomsrechten heeft", "Als te veel partijen vetorecht hebben over gebruik", "Als er te veel eigenaren zijn die willen verkopen", "Als de overheid eigendom nationaliseert"], correctIndex: 1, explanation: "De anti-meent ontstaat door gefragmenteerd vetorecht — te veel eigenaren die elk gebruik kunnen blokkeren." }
+    ],
+    creativePrompt: "Bedenk een situatie in je leven of werk waar samenwerking mislukt door te veel vetorechten of eigendomsclaims. Hoe zou je dit kunnen oplossen?",
+    aiHelperPrompts: ["Hoe verschilt de tragedie van de anti-meent van de klassieke tragedie van de meent?", "Hoe kunnen patentpools de anti-meent aanpakken?", "Welke rol speelt de overheid bij het voorkomen van anti-meent-situaties?"]
   }
 ];
 
