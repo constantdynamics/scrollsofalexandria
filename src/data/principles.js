@@ -4607,6 +4607,238 @@ export const principles = [
     ],
     creativePrompt: "Lees een artikel en leg het weg. Schrijf daarna uit je hoofd de kerninformatie op. Vergelijk dit met het origineel. Wat heb je onthouden en wat hebt je vervormd?",
     aiHelperPrompts: ["Hoe kan ik beter leren met kennis van het verbatim-effect?", "Hoe beïnvloedt het verbatim-effect de betrouwbaarheid van getuigenverklaringen?", "Wat is het verschil tussen begrip en memorizatie?"]
+  },
+
+  // ── BATCH 3: DROGREDEN & LOGICA ───────────────────────────────
+  {
+    id: "appeal-to-tradition",
+    title: "Beroep op Traditie",
+    difficulty: 1,
+    emoji: "🏛️",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "De drogreden waarbij iets gerechtvaardigd wordt louter omdat het altijd zo gedaan is, of omdat het traditioneel is. Ouderdom is geen bewijs van juistheid.",
+    abstractExample: "We hanteren dit beleid al twintig jaar, dus het moet wel goed zijn.' De leeftijd van een gewoonte zegt niets over haar waarde of correctheid.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'We vieren Kerstmis altijd op deze manier in onze familie, dus we kunnen dat niet veranderen.' Traditie als argument mist de vraag of het ook goed is." },
+      { domain: "business", icon: "💼", text: "'We gebruiken dit formulier al dertig jaar' is geen reden om niet te digitaliseren als dat efficiënter is." },
+      { domain: "science", icon: "🔬", text: "Vóór Semmelweis werden handen wassen bij operaties niet gedaan 'omdat dat altijd zo was'. Miljoenen stierven aan deze traditie." }
+    ],
+    prerequisites: ["modus-ponens"],
+    unlocks: ["appeal-to-novelty"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is een beroep op traditie wél legitiem?", options: ["Altijd", "Nooit", "Als bewezen is dat de traditie goede uitkomsten heeft", "Als het om cultuur gaat"], correctIndex: 2, explanation: "Traditie kan een aanwijzing zijn dat iets werkt, maar alleen als er bewijs is voor de uitkomsten — niet puur op basis van ouderdom." }
+    ],
+    creativePrompt: "Benoem drie gewoonten of regels in je leven of werk die er zijn 'omdat het altijd zo was'. Vraag voor elk: is er een goede reden buiten de traditie zelf?",
+    aiHelperPrompts: ["Hoe onderscheid ik een legitiem gebruik van traditie van een drogreden?", "Wanneer is innovatie versus respect voor traditie gepast?", "Hoe hangt dit samen met het argument van autoriteit?"]
+  },
+  {
+    id: "appeal-to-novelty",
+    title: "Beroep op Nieuwigheid",
+    difficulty: 1,
+    emoji: "✨",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "De drogreden waarbij iets gerechtvaardigd wordt louter omdat het nieuw is. Nieuwheid op zich is geen bewijs van kwaliteit of juistheid.",
+    abstractExample: "'Dit is de nieuwste aanpak, dus het moet beter zijn dan de oude.' Nieuwheid garandeert geen vooruitgang — nieuwe dingen kunnen ook slechter zijn.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'De nieuwste smartphone moet de beste zijn, dus ik koop hem.' Technologische nieuwheid is niet automatisch verbeterd." },
+      { domain: "business", icon: "💼", text: "Managementmodes komen en gaan: 'agile' of 'holacracy' zijn aantrekkelijk door nieuwheid, niet altijd door bewijs." },
+      { domain: "science", icon: "🔬", text: "Nieuwe medische behandelingen worden soms aangeprezen als revolutionair voordat klinische trials ze gevalideerd hebben." }
+    ],
+    prerequisites: ["appeal-to-tradition"],
+    unlocks: ["false-dilemma"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het probleem met 'dit is de nieuwste methode dus het is de beste'?", options: ["Nieuwheid is geen bewijs van superioriteit", "Nieuwe dingen zijn altijd beter", "Oude methoden zijn altijd beter", "Er is geen probleem"], correctIndex: 0, explanation: "Nieuwheid zegt niets over effectiviteit. Alleen vergelijkend onderzoek of bewijs kan bepalen wat beter is." }
+    ],
+    creativePrompt: "Noem drie dingen die je kocht of deed puur omdat ze nieuw of de nieuwste versie waren. Waren ze werkelijk beter dan het oude?",
+    aiHelperPrompts: ["Hoe balanceer ik nieuwsgierigheid naar het nieuwe met kritisch evalueren?", "In welke domeinen is nieuwheid wél een goede proxy voor kwaliteit?", "Hoe hangt dit samen met reclame en marketing?"]
+  },
+  {
+    id: "appeal-to-emotion",
+    title: "Beroep op Emotie",
+    difficulty: 1,
+    emoji: "😢",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Retorica", "Beter Argumenteren"],
+    definition: "Een argument wordt gepresenteerd op basis van emotionele impact in plaats van logische redenering of bewijs. Emotie vervangt argumenten en bewijslast.",
+    abstractExample: "'Denk aan de kinderen!' is een emotioneel beroep dat een discussie kan sluiten zonder het argument te beantwoorden. Medelijden, angst of woede worden aangewend om redenering te vervangen.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Een reclame toont een zielig dier om donaties te werven, zonder informatie te geven over hoe effectief de organisatie is." },
+      { domain: "business", icon: "💼", text: "Een kandidaat wordt aangenomen omdat het verhaal van zijn strijd zo indrukwekkend was, terwijl zijn competenties niet objectief geëvalueerd werden." },
+      { domain: "science", icon: "🔬", text: "In debatten over vaccinaties worden patiëntverhalen gebruikt om statistisch bewijs te overtroefen — zowel voor als tegen." }
+    ],
+    prerequisites: ["modus-ponens", "ad-hominem"],
+    unlocks: ["narrative-fallacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is een emotioneel appel in een argument legitiem?", options: ["Nooit", "Als het de emotionele component van het onderwerp illustreert zonder het bewijs te vervangen", "Altijd als mensen ermee instemmen", "Als het bewijs ontbreekt"], correctIndex: 1, explanation: "Emotie kan een argumentonderdeel zijn als het de menselijke impact illustreert, maar mag niet als vervanging voor bewijs fungeren." }
+    ],
+    creativePrompt: "Bekijk drie reclameboodschappen. Identificeer welk emotie ze aanspreken. Vraag daarna: welk bewijs geven ze dat hun product of dienst echt werkt?",
+    aiHelperPrompts: ["Wanneer is emotionele retoriek manipulatief versus legitiem?", "Hoe herken ik een beroep op emotie in politieke toespraken?", "Hoe kan ik reageren op emotionele argumenten zonder bot te lijken?"]
+  },
+  {
+    id: "ad-populum",
+    title: "Beroep op de Massa",
+    difficulty: 1,
+    emoji: "👥",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "De drogreden waarbij iets als waar of goed wordt gepresenteerd omdat veel mensen het geloven of doen. Populariteit is geen bewijs van juistheid.",
+    abstractExample: "'Miljarden mensen geloven in dit, dus het moet kloppen.' Of: 'Iedereen koopt bij dit merk, dus het moet het beste zijn.' Meerderheid bepaalt geen waarheid.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Iedereen in onze buurt heeft zonnepanelen, dus wij moeten ze ook nemen' is sociale druk, geen onderbouwde redenering." },
+      { domain: "business", icon: "💼", text: "Een beleggingshype: 'Alle experts investeren hierin' — populariteit creëert zeepbellen, geen garanties." },
+      { domain: "science", icon: "🔬", text: "Vóór Copernicus geloofde vrijwel iedereen dat de zon om de aarde draaide. Consensus was verkeerd; bewijs was doorslaggevend." }
+    ],
+    prerequisites: ["social-proof", "confirmation-bias"],
+    unlocks: ["group-polarization"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt een beroep op de massa van een legitiem gebruik van consensus?", options: ["Er is geen verschil", "Wetenschappelijke consensus is gebaseerd op bewijs, populaire consensus niet per se", "Masse-consensus is altijd juist", "Wetenschappelijke consensus is ook een drogreden"], correctIndex: 1, explanation: "Wetenschappelijke consensus is gebaseerd op herhaaldelijk getest bewijs. Populariteit in het dagelijks leven is dat niet." }
+    ],
+    creativePrompt: "Identificeer drie overtuigingen die je hebt mede omdat 'iedereen' ze heeft. Vraag voor elk: wat is het daadwerkelijke bewijs, los van populariteit?",
+    aiHelperPrompts: ["Hoe onderscheid ik een beroep op de massa van legitieme sociale normen?", "Wanneer is het rationeel om de meerderheid te volgen?", "Hoe hangt dit samen met het sociale-bewijs principe?"]
+  },
+  {
+    id: "genetic-fallacy",
+    title: "Genetische Drogreden",
+    difficulty: 2,
+    emoji: "🧬",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "Een argument verwerpen of accepteren op basis van zijn oorsprong in plaats van zijn inhoud. De herkomst van een idee bepaalt niet zijn juistheid.",
+    abstractExample: "'Dit idee komt van een lobbyist, dus het deugt niet.' Of: 'Einstein zei dit, dus het klopt.' Beide redeneren vanuit oorsprong, niet vanuit inhoud.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Die informatie staat op een nepnieuws-site, dus het is sowieso fout' — soms staat feitelijk correcte informatie op slechte bronnen." },
+      { domain: "business", icon: "💼", text: "'Het idee van die stagiaire kan nooit goed zijn' — goede ideeën kunnen van overal komen." },
+      { domain: "science", icon: "🔬", text: "Mendel's erfelijkheidswetten werden decennialang genegeerd deels omdat hij een monnik was, geen professioneel wetenschapper." }
+    ],
+    prerequisites: ["ad-hominem", "appeal-to-authority"],
+    unlocks: ["confirmation-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen de genetische drogreden en een legitieme bronkritiek?", options: ["Ze zijn identiek", "Genetische drogreden verwerpt de inhoud op basis van oorsprong; bronkritiek evalueert de betrouwbaarheid van bewijs", "Bronkritiek is altijd ongeldig", "Genetische drogreden gaat over DNA"], correctIndex: 1, explanation: "Het beoordelen of een bron betrouwbaar is voor bewijs is legitiem; het verwerpen van een claim puur vanwege de afzender is een drogreden." }
+    ],
+    creativePrompt: "Zoek een bewering die je aanvankelijk afwees vanwege de bron. Evalueer nu de bewering op haar eigen merites. Was je eerste oordeel juist?",
+    aiHelperPrompts: ["Hoe kan ik een idee evalueren zonder te laten afleiden door de bron?", "Wanneer is het oorsprong van informatie wél relevant?", "Hoe hangt de genetische drogreden samen met ad hominem?"]
+  },
+  {
+    id: "middle-ground-fallacy",
+    title: "Gulden-Middenweg-Drogreden",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "De aanname dat het midden tussen twee standpunten altijd de juiste positie is. Soms is een van de extremen correct en het midden verkeerd.",
+    abstractExample: "'Wetenschapper A zegt 5 graden opwarming, scepticus B zegt 0 graden, dus de waarheid is 2,5 graden.' Het gemiddelde van twee standpunten is geen bewijs.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Jij wilt het raam dicht, ik wil het open, dus laten we het op een kier zetten' — soms is dit goed, soms is een van de extremen correct." },
+      { domain: "business", icon: "💼", text: "In onderhandelingen denken mensen dat het midden van twee eisen de eerlijke uitkomst is, maar een van de partijen kan juist zijn." },
+      { domain: "science", icon: "🔬", text: "Aardebol versus platte aarde: het 'midden' (deels bol?) is niet de oplossing. Bewijs bepaalt welk standpunt correct is." }
+    ],
+    prerequisites: ["false-dilemma"],
+    unlocks: ["appeal-to-consequences"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is het midden kiezen wél rationeel?", options: ["Altijd bij meningsverschillen", "Als beide standpunten grond van waarheid bevatten en bewijs voor beide bestaat", "Nooit", "Als iemand agressief debatteert"], correctIndex: 1, explanation: "Compromis en het midden zijn soms rationeel als beide perspectieven deels gegrond zijn — maar niet automatisch omdat er onenigheid is." }
+    ],
+    creativePrompt: "Denk aan een recent debat of conflict. Was er een echte 'middenweg'? Of was een van de standpunten beter onderbouwd dan het andere?",
+    aiHelperPrompts: ["Hoe onderscheid ik een goed compromis van een gulden-middenweg-drogreden?", "Waarom neigen mensen naar het midden bij meningsverschillen?", "Hoe hangt dit samen met valse dichotomie?"]
+  },
+  {
+    id: "appeal-to-consequences",
+    title: "Beroep op Gevolgen",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "Een bewering als waar of onwaar bestempelen op basis van de wenselijkheid van de gevolgen als de bewering waar zou zijn. Wat we wensen te geloven bepaalt niet wat waar is.",
+    abstractExample: "'Als er geen God zou zijn, zou het leven zinloos zijn, dus er moet een God zijn.' De wenselijkheid van een conclusie maakt haar niet waar.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Als klimaatverandering echt is, moeten we onze economie aanpassen — dat wil ik niet, dus klimaatverandering is overdreven.'" },
+      { domain: "business", icon: "💼", text: "'Als de studie aantoont dat ons product schadelijk is, krijgen we rechtszaken. Dus de studie klopt niet.' Gewenste gevolgen staan los van feiten." },
+      { domain: "science", icon: "🔬", text: "Wetenschapsfilosofen noemen dit ook 'wishful thinking' — de voorkeur voor bepaalde waarheden beïnvloedt de evaluatie van bewijs." }
+    ],
+    prerequisites: ["modus-ponens", "appeal-to-emotion"],
+    unlocks: ["confirmation-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is 'als dit waar is, wil ik het niet, dus het is niet waar' een drogreden?", options: ["Omdat wenselijkheid de werkelijkheid niet bepaalt", "Omdat gevolgen altijd positief moeten zijn", "Omdat het een emotioneel argument is", "Omdat het over de toekomst gaat"], correctIndex: 0, explanation: "De waarheid van een uitspraak is onafhankelijk van onze voorkeur voor de gevolgen als het waar zou zijn." }
+    ],
+    creativePrompt: "Denk aan een onaangename waarheid die je liever niet wilde geloven. Hoe heb je argumenten gezocht om haar te verwerpen? Was dat rationeel?",
+    aiHelperPrompts: ["Hoe herken ik beroep op gevolgen in politiek debat?", "Hoe kan ik mijn eigen wishful thinking corrigeren?", "Hoe hangt dit samen met motivational reasoning?"]
+  },
+  {
+    id: "begging-the-question",
+    title: "Circulair Bewijs",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "Een argument waarbij de conclusie als premisse wordt gebruikt. De redenering bewijst niets nieuws omdat de conclusie al impliciet in de aanname zit.",
+    abstractExample: "'De Bijbel is waar omdat de Bijbel zegt dat hij waar is.' De bron bewijst zichzelf. Of: 'Hij liegt omdat hij een leugenaar is' — het woord 'leugenaar' veronderstelt al wat bewezen moet worden.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'We moeten deze regel volgen omdat het de regel is.' De rechtvaardiging van de regel is de regel zelf." },
+      { domain: "business", icon: "💼", text: "'Ons product is het beste omdat wij de beste zijn' — de conclusie (best) staat al in de premisse (beste bedrijf)." },
+      { domain: "science", icon: "🔬", text: "In ethiek: 'Abortus is moord omdat het een leven beëindigt' veronderstelt al dat een foetus een 'leven' is in de morele zin — dit is precies wat in debat is." }
+    ],
+    prerequisites: ["circular-reasoning"],
+    unlocks: ["false-dilemma"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt circulair bewijs ongeldig?", options: ["Het gebruikt emotie", "De conclusie staat al in de premisse — er wordt niets bewezen", "Het heeft geen premissen", "Het is te simplistisch"], correctIndex: 1, explanation: "Een goed argument voegt informatie toe: de premissen leiden tot de conclusie. Bij circulair bewijs is de conclusie al de premisse." }
+    ],
+    creativePrompt: "Schrijf drie argumenten die je geregeld hoort of gebruikt. Zijn de conclusies verborgen in de premissen? Probeer de circulaire redenering te identificeren.",
+    aiHelperPrompts: ["Hoe kan ik circulaire bewijsvoering herkennen in debatten?", "Wat is het verschil tussen circulair bewijs en een tautologie?", "Geef een voorbeeld van circulair bewijs in politiek beleid."]
+  },
+  {
+    id: "equivocation-fallacy",
+    title: "Dubbelzinnigheidsvertekening",
+    difficulty: 2,
+    emoji: "🔀",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Taal", "Beter Argumenteren"],
+    definition: "Een drogreden waarbij een woord of uitdrukking in twee verschillende betekenissen gebruikt wordt in hetzelfde argument, waardoor de redenering ongeldig wordt.",
+    abstractExample: "'Niks is beter dan eeuwig geluk. Een boterham is beter dan niks. Dus een boterham is beter dan eeuwig geluk.' 'Niks' betekent eerst 'niets bestaat' en daarna 'leegte als optie'.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'De wet van de natuur dicteert dat de sterkste overleeft. Mensen zijn deel van de natuur. Dus de sterkste mensen moeten heersen.' 'Wet' en 'sterk' worden dubbelzinnig gebruikt." },
+      { domain: "business", icon: "💼", text: "'We moeten kritisch zijn op onze concurrenten (kritisch = analyserend). Kritisch zijn is destructief (kritisch = afbrekend). Dus analyse is destructief.'" },
+      { domain: "science", icon: "🔬", text: "Filosofische debatten over 'realiteit' zijn vaak vertroebeld door dubbelzinnig gebruik van 'bestaan', 'object' of 'bewustzijn'." }
+    ],
+    prerequisites: ["modus-ponens", "necessary-sufficient"],
+    unlocks: ["begging-the-question"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe herken je dubbelzinnigheidsvertekening?", options: ["Het argument is emotioneel", "Een sleutelwoord heeft verschillende betekenissen in de premisse en conclusie", "Het argument is te lang", "Het argument heeft geen conclusie"], correctIndex: 1, explanation: "Zoek naar sleutelwoorden die een betekenisverschuiving ondergaan tijdens het argument." }
+    ],
+    creativePrompt: "Zoek drie woorden die meerdere betekenissen hebben (bijv. 'bank', 'recht', 'macht'). Schrijf een argument dat ongeldig wordt doordat het de betekenis halverwege verschuift.",
+    aiHelperPrompts: ["Hoe kan ik dubbelzinnigheid in taal vermijden bij mijn eigen argumenten?", "Geef voorbeelden van dubbelzinnigheidsvertekening in politiek taalgebruik.", "Hoe hangt dit samen met semantische drift?"]
+  },
+  {
+    id: "special-pleading",
+    title: "Speciale Uitzondering",
+    difficulty: 2,
+    emoji: "🙋",
+    academicCategory: "Logica",
+    skillCategory: "Beter Argumenteren",
+    tags: ["Logica", "Drogreden", "Redeneren", "Beter Argumenteren"],
+    definition: "Een uitzondering eisen op een algemene regel voor jezelf of een favoriete positie, zonder die uitzondering te rechtvaardigen. De standaard wordt selectief toegepast.",
+    abstractExample: "Iemand zegt dat iedereen deadlines moet halen, maar als hun eigen deadline voorbij gaat: 'Bij mij was het uitzonderlijk druk.' De uitzondering wordt geclaimd maar niet onderbouwd.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "'Roddelen is fout, maar ik vertel dit alleen omdat ik bezorgd ben.' Iedereen die roddelt heeft een rechtvaardiging — dat maakt het niet anders." },
+      { domain: "business", icon: "💼", text: "Een land bepleit vrije handel voor andere landen, maar beschermt zijn eigen industrie met subsidies en tarieven." },
+      { domain: "science", icon: "🔬", text: "Homeopaten accepteren wetenschappelijke standaarden voor reguliere geneesmiddelen, maar eisen andere standaarden voor hun eigen behandelingen." }
+    ],
+    prerequisites: ["no-true-scotsman", "confirmation-bias"],
+    unlocks: ["tu-quoque"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt een legitieme uitzondering van speciale pleitering?", options: ["Legitieme uitzonderingen worden onderbouwd met principes die voor iedereen gelden", "Alle uitzonderingen zijn dropgreden", "Speciale pleitering is altijd bewust", "Uitzonderingen voor jezelf zijn altijd oneerlijk"], correctIndex: 0, explanation: "Een uitzondering is legitiem als je een principe kunt aanwijzen dat voor iedereen in die situatie geldt, niet alleen voor jou." }
+    ],
+    creativePrompt: "Denk aan een situatie waar jij een uitzondering voor jezelf opeiste. Kon je die rechtvaardiging voor iedereen in die situatie verdedigen, of was het echt speciaal voor jou?",
+    aiHelperPrompts: ["Hoe herken ik speciale pleitering bij mezelf?", "Is hypocrisie altijd speciale pleitering?", "Hoe hangt dit samen met de tu quoque-drogreden?"]
   }
 ];
 
