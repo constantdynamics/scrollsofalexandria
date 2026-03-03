@@ -4143,6 +4143,238 @@ export const principles = [
       "Hoe kun je de affect heuristiek herkennen bij jezelf?",
       "Hoe beïnvloedt je stemming je inschatting van risico's op dit moment?"
     ]
+  },
+
+  // ── BATCH 1: COGNITIEVE BIASES (1) ───────────────────────────
+  {
+    id: "actor-observer-bias",
+    title: "Acteur-Observator-Bias",
+    difficulty: 2,
+    emoji: "🎭",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Psychologie", "Cognitieve Bias", "Attributie", "Beter Redeneren"],
+    definition: "We verklaren ons eigen gedrag door externe omstandigheden, maar het gedrag van anderen door hun persoonlijkheid of karakter. Als acteur zie je de situatie; als observator zie je de persoon.",
+    abstractExample: "Wanneer jij te laat bent, lag dat aan het verkeer. Wanneer een ander te laat is, is die persoon onbetrouwbaar of lui. Dezelfde handeling krijgt een andere verklaring afhankelijk van wie die uitvoert.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Je fout in een discussie kwam door stress; de fout van je partner komt door onzorgvuldigheid." },
+      { domain: "business", icon: "💼", text: "Je eigen mislukte project had onvoorziene obstakels; het mislukte project van een collega was slechte planning." },
+      { domain: "science", icon: "🔬", text: "Sociaal-psychologisch onderzoek toont dat mensen consequent meer situationele verklaringen geven voor eigen gedrag dan voor andermans gedrag." }
+    ],
+    prerequisites: ["fundamental-attribution-error"],
+    unlocks: ["self-serving-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Je collega maakt een fout. Wat doet de acteur-observator-bias waarschijnlijk?", options: ["Je schrijft het toe aan zijn persoonlijkheid", "Je schrijft het toe aan de situatie", "Je zoekt de fout bij jezelf", "Je negeert de fout"], correctIndex: 0, explanation: "Als observator schrijven we andermans fouten toe aan hun karakter, niet aan de situatie." }
+    ],
+    creativePrompt: "Beschrijf een situatie waarbij jij 'het slechtoffer was van omstandigheden'. Schrijf daarna dezelfde situatie opnieuw alsof jij de observator bent die jouw eigen gedrag beoordeelt.",
+    aiHelperPrompts: ["Hoe kan ik mezelf eraan herinneren dat anderen ook in situaties zitten die hun gedrag beïnvloeden?", "Geef een voorbeeld van acteur-observator-bias op de werkvloer.", "Hoe hangt deze bias samen met empathie?"]
+  },
+  {
+    id: "barnum-effect",
+    title: "Barnum-Effect",
+    difficulty: 1,
+    emoji: "🔮",
+    academicCategory: "Psychologie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Psychologie", "Cognitieve Bias", "Kritisch Denken", "Zelfkennis"],
+    definition: "De neiging om vage, algemene persoonlijkheidsbeschrijvingen als heel specifiek en accuraat voor jezelf te accepteren. Mensen herkennen zich in uitspraken die eigenlijk voor bijna iedereen gelden.",
+    abstractExample: "De zin 'Je hebt soms twijfels over jezelf, maar diep van binnen weet je wat je waard bent' lijkt heel persoonlijk, maar geldt voor nagenoeg iedereen. Toch voelt het als een scherpe karakterschets.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Horoscopen beschrijven je als 'creatief maar ook praktisch' — een combinatie die voor de meeste mensen klopt." },
+      { domain: "business", icon: "💼", text: "Vage leiderschapsprofielen ('U bent ambitieus maar ook bezorgd om anderen') worden als perfect passend ervaren door vrijwel alle managers." },
+      { domain: "science", icon: "🔬", text: "Psycholoog Bertram Forer gaf studenten identieke profielen; ze beoordeelden die als 'uiterst nauwkeurig' voor henzelf." }
+    ],
+    prerequisites: ["confirmation-bias"],
+    unlocks: ["illusory-superiority"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom voelen horoscopen zo persoonlijk aan?", options: ["Ze zijn gebaseerd op gedetailleerde data", "Ze gebruiken vage taal die voor iedereen geldt", "Ze zijn wetenschappelijk gevalideerd", "Ze lezen gedachten"], correctIndex: 1, explanation: "Barnum-effect werkt precies omdat de beschrijvingen breed genoeg zijn om voor bijna iedereen te gelden." }
+    ],
+    creativePrompt: "Schrijf een 'persoonlijk' psychologisch profiel van twee alinea's dat eigenlijk voor iedereen geldt. Test het op iemand en vraag hoe nauwkeurig ze het vinden.",
+    aiHelperPrompts: ["Hoe kan ik herkennen wanneer een beschrijving te vaag is om zinvol te zijn?", "Welke andere contexten buiten horoscopen maken gebruik van het Barnum-effect?", "Hoe bescherm ik mezelf tegen het Barnum-effect bij persoonlijkheidstests?"]
+  },
+  {
+    id: "frequency-illusion",
+    title: "Frequentie-Illusie",
+    difficulty: 1,
+    emoji: "👁️",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Psychologie", "Cognitieve Bias", "Aandacht", "Beter Redeneren"],
+    definition: "Zodra je iets nieuws leert of een nieuw concept tegenkomt, lijkt het alsof je het plotseling overal ziet. De frequentie is niet echt gestegen — je aandacht is erop gericht.",
+    abstractExample: "Na het kopen van een rode auto zie je overal rode auto's. Het aantal rode auto's is niet veranderd; jouw selectieve aandacht en geheugen zijn veranderd.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Je leert een nieuw woord en hoort het de volgende week drie keer. Het woord bestond al eerder, maar viel je niet op." },
+      { domain: "business", icon: "💼", text: "Na een training over agressieve verkooptactieken herken je ze plotseling in elke vergadering." },
+      { domain: "science", icon: "🔬", text: "Cognitief psychologen noemen dit ook het Baader-Meinhof-fenomeen: selectieve aandacht gecombineerd met bevestigingsneiging." }
+    ],
+    prerequisites: ["availability-heuristic"],
+    unlocks: ["attentional-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat veroorzaakt de frequentie-illusie?", options: ["Een echte toename van het fenomeen", "Selectieve aandacht en geheugen", "Toeval", "Telepathie"], correctIndex: 1, explanation: "Je brein filtert informatie en zodra iets relevant is geworden, valt het vaker op — maar de werkelijke frequentie is gelijk gebleven." }
+    ],
+    creativePrompt: "Kies vandaag een kleur of een specifiek object. Tel hoe vaak je het ziet. Reflecteer daarna: zag je het vroeger ook, maar merkte je het niet?",
+    aiHelperPrompts: ["Hoe kan ik dit gebruiken om goede gewoontes te versterken?", "Is de frequentie-illusie altijd een bias, of is het soms nuttig?", "Hoe hangt dit samen met priming in de psychologie?"]
+  },
+  {
+    id: "denomination-effect",
+    title: "Denominatie-Effect",
+    difficulty: 1,
+    emoji: "💶",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Gedragseconomie", "Cognitieve Bias", "Geld", "Betere Beslissingen"],
+    definition: "Mensen geven minder snel grote biljetten uit dan kleine biljetten of muntgeld, ook al is de totale waarde gelijk. Een briefje van €50 voelt 'te kostbaar' om te breken.",
+    abstractExample: "Je hebt €50 in één biljet en €50 in vijfjes. Je geeft het kleine geld eerder uit voor impulsaankopen. De geldhoeveelheid is identiek, maar de psychologische drempel verschilt.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Je koopt eerder een snack als je wisselgeld op zak hebt dan wanneer je alleen een briefje van €50 hebt." },
+      { domain: "business", icon: "💼", text: "Casino's gebruiken chips juist om het 'echte geld'-gevoel te verminderen en uitgaven te verhogen." },
+      { domain: "science", icon: "🔬", text: "Onderzoek van Priya Raghubir en Joydeep Srivastava toonde aan dat mensen met grotere coupures consistent minder uitgeven." }
+    ],
+    prerequisites: ["mental-accounting"],
+    unlocks: ["loss-aversion"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom geven mensen grote biljetten minder snel uit?", options: ["Ze zijn banger voor diefstal", "Het 'breken' van groot geld voelt als een groter verlies", "Groot geld is zeldzamer", "Ze vergeten het geld te gebruiken"], correctIndex: 1, explanation: "Het denominatie-effect is een vorm van mentale boekhouding waarbij de vorm van geld de uitgavenbereidheid beïnvloedt." }
+    ],
+    creativePrompt: "Houd een week bij hoe je betalingen doet (contant, pin, app). Merk je verschil in hoeveel je uitgeeft per betaalvorm? Wat zegt dit over jouw geldpsychologie?",
+    aiHelperPrompts: ["Hoe gebruik ik het denominatie-effect om meer te sparen?", "Waarom werken digitale betalingen anders dan contant geld psychologisch gezien?", "Hoe gebruiken marketeers dit effect bij prijsstelling?"]
+  },
+  {
+    id: "illusory-truth-effect",
+    title: "Illusoire-Waarheidseffect",
+    difficulty: 2,
+    emoji: "🔁",
+    academicCategory: "Psychologie",
+    skillCategory: "Kritisch Denken",
+    tags: ["Psychologie", "Cognitieve Bias", "Waarheid", "Kritisch Denken", "Media"],
+    definition: "Herhaalde blootstelling aan een bewering vergroot de kans dat je die bewering als waar beschouwt, ook als je weet dat ze onwaar is. Herhaling creëert een gevoel van vertrouwdheid dat als waarheid wordt ervaren.",
+    abstractExample: "Als een politieke slogan honderd keer herhaald wordt, beginnen mensen hem als vanzelfsprekend te accepteren — zelfs critici twijfelen uiteindelijk. Herhaling vervangt evaluatie.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Reclameslogans worden door herhaling geloofwaardig: 'Rood Kruis, altijd betrouwbaar' klinkt na jaren als een feit." },
+      { domain: "business", icon: "💼", text: "Fake news verspreidt zich sneller dan correcties omdat herhaalde leugens geloofwaardiger aanvoelen dan eenmalige waarheden." },
+      { domain: "science", icon: "🔬", text: "Hasher et al. (1977) toonden als eersten aan dat herhaling de subjectieve waarheidswaarde verhoogt, onafhankelijk van feitelijke juistheid." }
+    ],
+    prerequisites: ["confirmation-bias"],
+    unlocks: ["narrative-fallacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom wordt een bewering geloofwaardiger door herhaling?", options: ["Herhaling geeft meer bewijzen", "Vertrouwdheid wordt als waarheid ervaren", "Mensen worden het eens", "Herhaling verhoogt de logica van een stelling"], correctIndex: 1, explanation: "Het gevoel 'dit heb ik vaker gehoord' wordt onbewust verward met 'dit klopt'." }
+    ],
+    creativePrompt: "Zoek drie overtuigingen die je altijd als vanzelfsprekend hebt beschouwd. Vraag jezelf: heb je ooit bewijs gezien, of heb je het gewoon heel vaak gehoord?",
+    aiHelperPrompts: ["Hoe bescherm ik mezelf tegen het illusoire-waarheidseffect in nieuwsconsumptie?", "Hoe kan een leraar dit effect gebruiken om leerstof te laten beklijven?", "Wat is het verschil tussen herhaling als leren en herhaling als manipulatie?"]
+  },
+  {
+    id: "hot-hand-fallacy",
+    title: "Hete-Hand-Drogreden",
+    difficulty: 2,
+    emoji: "🏀",
+    academicCategory: "Statistiek",
+    skillCategory: "Beter Redeneren",
+    tags: ["Statistiek", "Cognitieve Bias", "Kansrekening", "Beter Redeneren"],
+    definition: "De overtuiging dat iemand die een reeks successen heeft behaald, meer kans heeft op het volgende succes. In werkelijkheid zijn veel opeenvolgende uitkomsten statistisch onafhankelijk.",
+    abstractExample: "Een basketbalspeler maakt vijf schoten op rij. Toeschouwers denken hij 'heet' is en meer kans heeft op het zesde schot. Maar elke worp heeft zijn eigen kanspercentage.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Na drie goede handelsdag op rij denkt een belegger op een winning streak te zitten en neemt hij meer risico." },
+      { domain: "business", icon: "💼", text: "Een verkoper die drie deals sloot geeft de volgende prospect minder aandacht — hij verwacht de vierde deal ook te sluiten." },
+      { domain: "science", icon: "🔬", text: "Gilovich, Vallone & Tversky (1985) vonden geen statistisch bewijs voor de hete hand in basketbal, maar de overtuiging bleef bestaan." }
+    ],
+    prerequisites: ["gambler-fallacy", "law-of-large-numbers"],
+    unlocks: ["clustering-illusion"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen de hete-hand-drogreden en de gokkersdrogreden?", options: ["Ze zijn identiek", "Hete hand verwacht meer van hetzelfde; gokkersdrogreden verwacht verandering", "Hete hand gaat over sport, gokkersdrogreden over gokken", "Er is geen verband"], correctIndex: 1, explanation: "Beide zijn onjuiste patronen in kansperceptie, maar hete hand zegt 'de serie gaat door' en gokkersdrogreden zegt 'de serie keert om'." }
+    ],
+    creativePrompt: "Denk aan een domein waar jij gelooft in 'momentum' (sport, werk, geluk). Analyseer: is dat momentum statistisch aantoonbaar of is het een patroon dat jij erin ziet?",
+    aiHelperPrompts: ["Wanneer is momentum in prestaties wél reëel en wanneer is het illusoir?", "Hoe beïnvloedt de hete-hand-drogreden sportcoaching?", "Hoe hangt dit samen met clustering-illusie?"]
+  },
+  {
+    id: "clustering-illusion",
+    title: "Clusteringsillusie",
+    difficulty: 2,
+    emoji: "🎲",
+    academicCategory: "Statistiek",
+    skillCategory: "Beter Redeneren",
+    tags: ["Statistiek", "Cognitieve Bias", "Patroonherkenning", "Beter Redeneren"],
+    definition: "De neiging om betekenisvolle patronen te zien in willekeurige reeksen. Ons brein is zo goed in patroonherkenning dat het patronen 'vindt' ook waar ze niet bestaan.",
+    abstractExample: "Gooi een munt twintig keer. Je krijgt waarschijnlijk clusters van meerdere 'koppen' op rij of meerdere 'munten' op rij. Dit ziet er niet-willekeurig uit, maar is precies wat verwacht mag worden bij toeval.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Mensen zien 'gezichten' in wolken, toast of boomschors — ons brein zoekt patronen die er niet zijn." },
+      { domain: "business", icon: "💼", text: "Een manager ziet drie slechte kwartalen als 'een trend' terwijl het normale variatie in bedrijfsresultaten kan zijn." },
+      { domain: "science", icon: "🔬", text: "In epidemiologie worden kankercluster-onderzoeken vaak gestart op basis van toevallige geografische clustering van gevallen." }
+    ],
+    prerequisites: ["gambler-fallacy"],
+    unlocks: ["hot-hand-fallacy", "narrative-fallacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom verwachten mensen dat willekeurige reeksen er 'meer wisselend' uitzien?", options: ["Ze kennen statistiek niet", "Ze denken dat willekeur betekent: regelmatig afwisselen", "Ze geloven in pech en geluk", "Ze begrijpen kans verkeerd door ervaring"], correctIndex: 1, explanation: "Mensen verwarren willekeur met gelijkmatige verdeling. Echte willekeur produceert clusters." }
+    ],
+    creativePrompt: "Genereer een reeks van 20 muntwerpuitkomsten door echt een munt te gooien en schrijf deze op. Genereer daarna een 'nep-willekeurige' reeks die willekeurig aanvoelt. Vergelijk ze.",
+    aiHelperPrompts: ["Hoe kan ik mezelf trainen om echte patronen te onderscheiden van willekeurige clusters?", "In welke wetenschappelijke vakgebieden is de clusteringsillusie het gevaarlijkst?", "Hoe hangt dit samen met de narratieve drogreden?"]
+  },
+  {
+    id: "restraint-bias",
+    title: "Terughoudendheidsvertekening",
+    difficulty: 2,
+    emoji: "🍰",
+    academicCategory: "Psychologie",
+    skillCategory: "Betere Beslissingen",
+    tags: ["Psychologie", "Cognitieve Bias", "Zelfcontrole", "Betere Beslissingen"],
+    definition: "We overschatten onze vermogen om verleidingen te weerstaan als we ze nog niet ondervinden. In koud-toestand denken we dat we sterker zijn dan we zijn in warm-toestand.",
+    abstractExample: "Iemand op dieet zegt: 'Als er cake is op het feest, neem ik gewoon een klein stukje — ik heb voldoende zelfcontrole.' Maar op het feest, met de geur van cake, valt de zelfcontrole weg.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Je denkt dat je je telefoon makkelijk kunt negeren tijdens studeren. Maar zodra je ermee in de buurt bent, check je hem toch." },
+      { domain: "business", icon: "💼", text: "Onderhandelaars denken dat ze rustig kunnen blijven onder druk — maar in hitte van onderhandeling reageren ze emotioneel." },
+      { domain: "science", icon: "🔬", text: "Nordgren et al. (2009) toonden aan dat mensen die zich sterk in zelfcontrole voelden, eerder aan verleidingen bezweken door blootstelling te onderschatten." }
+    ],
+    prerequisites: ["hot-cold-empathy-gap"],
+    unlocks: ["self-efficacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de beste strategie als je weet dat je terughoudendheidsvertekening hebt?", options: ["Meer vertrouwen in jezelf kweken", "Verleidingen vermijden in plaats van ertegen vechten", "Harder oefenen op zelfcontrole", "Negatieve gevolgen negeren"], correctIndex: 1, explanation: "Als je weet dat je zelfcontrole overschat, is de beste strategie situaties vermijden die zelfcontrole vereisen." }
+    ],
+    creativePrompt: "Beschrijf een situatie waar je jezelf hebt beloofd dat je je goed zou gedragen, maar dit niet lukte. Wat had je anders kunnen doen in de planning?",
+    aiHelperPrompts: ["Hoe kan ik rekening houden met mijn terughoudendheidsvertekening bij het plannen van gezond gedrag?", "Wat is het verschil tussen zelfcontrole en situatieontwerp?", "Hoe hangt dit samen met implementatieplannen?"]
+  },
+  {
+    id: "declinism",
+    title: "Achteruitgangsdenken",
+    difficulty: 1,
+    emoji: "📉",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Psychologie", "Cognitieve Bias", "Nostalgie", "Beter Redeneren"],
+    definition: "De neiging om te geloven dat de wereld of een situatie vroeger beter was en nu achteruitgaat, terwijl objectieve data dit niet altijd ondersteunen. Het verleden wordt geïdealiseerd en het heden overdreven negatief beoordeeld.",
+    abstractExample: "Elke generatie klaagt dat 'de jeugd van tegenwoordig' slechter is dan vroeger, en dat de samenleving verloedert. Historici vinden dezelfde klachten in teksten van 2000 jaar oud.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Ouders denken dat muziek, films en omgangsvormen vroeger beter waren — ook al was er altijd schandaal en 'verval'." },
+      { domain: "business", icon: "💼", text: "Langdurige werknemers zeggen dat de bedrijfscultuur vroeger beter was, ook als productiviteit en winst gestegen zijn." },
+      { domain: "science", icon: "🔬", text: "Pinker toont in 'Enlightenment Now' met data aan dat geweld, armoede en kindersterfte historisch gezien sterk zijn gedaald ondanks algemeen pessimisme." }
+    ],
+    prerequisites: ["availability-heuristic"],
+    unlocks: ["rosy-retrospection"],
+    exercises: [
+      { type: "multipleChoice", question: "Welk cognitief mechanisme versterkt achteruitgangsdenken?", options: ["Perfecte herinnering van het verleden", "Rooskleurige terugblik die het verleden idealiseer", "Logische analyse van feiten", "Beschikbaarheidsheuristiek voor positieve herinneringen"], correctIndex: 1, explanation: "Rooskleurige terugblik maakt dat we slechte herinneringen dimmen en goede versterken, waardoor het verleden beter lijkt dan het was." }
+    ],
+    creativePrompt: "Noem drie dingen die vroeger 'beter' waren. Zoek voor elk punt data of concrete feiten die je bewering ondersteunen of weerleggen.",
+    aiHelperPrompts: ["Hoe kan ik onderscheid maken tussen terechte zorgen over achteruitgang en achteruitgangsdenken?", "Welke rol speelt media bij het versterken van achteruitgangsdenken?", "Hoe kan nostalgie zowel nuttig als schadelijk zijn?"]
+  },
+  {
+    id: "rosy-retrospection",
+    title: "Rooskleurige Terugblik",
+    difficulty: 1,
+    emoji: "🌹",
+    academicCategory: "Psychologie",
+    skillCategory: "Beter Redeneren",
+    tags: ["Psychologie", "Cognitieve Bias", "Geheugen", "Beter Redeneren"],
+    definition: "De neiging om het verleden positiever te beoordelen dan het in werkelijkheid was. Negatieve ervaringen worden afgevlakt in het geheugen terwijl positieve worden uitvergroot.",
+    abstractExample: "Een vakantie die deels regenachtig en vermoeiend was, herinnert je later als bijna perfect. De slechte momenten verbleken; de goede blijven glinsteren.",
+    examples: [
+      { domain: "daily", icon: "🏠", text: "Schooljaren worden later herinnerd als de beste jaren van je leven, ook al waren er ook pestproblemen en stress." },
+      { domain: "business", icon: "💼", text: "Voormalige medewerkers herinneren hun oude baan als veel beter dan de nieuwe, ook als ze destijds ontevreden vertrokken." },
+      { domain: "science", icon: "🔬", text: "Mitchell et al. (1997) toonden aan dat mensen reizen beter evalueerden na afloop dan vooraf verwacht, door rooskleurige terugblik." }
+    ],
+    prerequisites: ["peak-end-rule"],
+    unlocks: ["declinism"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe beïnvloedt rooskleurige terugblik beslissingen over de toekomst?", options: ["Het maakt ons voorzichtiger", "Het laat ons dezelfde fouten herhalen doordat we problemen vergeten", "Het verbetert ons plannen", "Het heeft geen invloed op beslissingen"], correctIndex: 1, explanation: "Als we het negatieve vergeten, plannen we opnieuw dezelfde situaties in zonder de lessen mee te nemen." }
+    ],
+    creativePrompt: "Denk aan een ervaring die je nu positief herinnert. Schrijf op wat er echt gebeurde, inclusief de moeilijke momenten. Hoe verschilt dit van je huidige herinnering?",
+    aiHelperPrompts: ["Is rooskleurige terugblik altijd slecht of heeft het ook voordelen voor geluk?", "Hoe kan ik nauwkeuriger herinneringen bijhouden om te leren van ervaringen?", "Hoe hangt dit samen met het piek-eindeffect?"]
   }
 ];
 
