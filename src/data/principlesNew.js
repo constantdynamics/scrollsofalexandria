@@ -8639,4 +8639,156 @@ export const principlesNew = [
       { domain: "Samenwerking", icon: "🤝", text: "In teamverband rekening houden met elkaars chronotypes voor vergaderplanning — moeilijke beslissingen niet plannen op tijden die voor een deel van het team buiten hun cognitieve piek vallen." }
     ],
   },
+
+  // ========== BATCH B4: DAGELIJKSE BESLUITVORMING ==========
+  {
+    id: "decision-fatigue",
+    title: "Beslissingsmoeheid Vermijden",
+    difficulty: 1,
+    emoji: "🧠",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Beslissingsmoeheid is de achteruitgang van de kwaliteit van beslissingen na het nemen van veel beslissingen op een dag. De prefrontale cortex raakt uitgeput van voortdurende afwegingen, wat leidt tot impulsieve keuzes, uitstelgedrag of het accepteren van standaardopties. Strategisch reduceren van het aantal beslissingen bewaart cognitieve capaciteit voor wat belangrijk is.",
+    abstractExample: "Barack Obama droeg altijd blauw of grijs pak om één dagelijkse keuze te elimineren. Steve Jobs droeg elke dag hetzelfde. Dit is geen excentriek gedrag maar evidence-based energiebeheer: elke beslissing kost cognitieve energie, ongeacht het belang.",
+    examples: [
+      { domain: "Ochtendrutine", icon: "🌅", text: "Avondvoorbereiding: kleding klaarleggen, maaltijden plannen, agenda doornemen. Dit elimineert tientallen kleine ochtendkeuzes en reserveert frisheid voor moeilijke professionele beslissingen." },
+      { domain: "Eten", icon: "🥗", text: "Weekmenu van tevoren plannen elimineert de dagelijkse 'wat eten we?'-vraag — een disproportioneel uitputtende beslissing die meerdere keren per dag terugkeert en bij beslissingsmoeheid leidt tot ongezondere keuzes." },
+      { domain: "Werk", icon: "💼", text: "Moeilijke of creativiteit vereisende taken inplannen in de ochtend (voor beslissingsmoeheid toeslaat) en emails en administratie in de middag — urgentie en moeilijkheid bewust ontkoppelen." }
+    ],
+  },
+  {
+    id: "10-10-10-rule",
+    title: "De 10-10-10 Beslissingsregel",
+    difficulty: 1,
+    emoji: "⏱️",
+    academicCategory: "Besliskunde",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De 10-10-10 methode (Suzy Welch) is een beslissingstechniek waarbij je drie vragen stelt: Hoe voel ik me over deze beslissing over 10 minuten? Over 10 maanden? Over 10 jaar? Dit helpt onmiddellijke emotionele impulsen te scheiden van langetermijnwaarden en prioriteiten.",
+    abstractExample: "Veel slechte beslissingen worden genomen op de tijdshorizon van 10 minuten — impulsaankopen, conflicten aangaan, vermijdingsgedrag. Door bewust te shiften naar langere tijdshorizonten activeer je de prefrontale cortex en dempt de amygdala.",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Bij een jobaanbieding die je twijfelt: over 10 minuten — spannend? Over 10 maanden — past het bij mijn levenssituatie? Over 10 jaar — draagt het bij aan wie ik wil zijn? Elk tijdskader geeft andere informatie." },
+      { domain: "Conflicten", icon: "⚡", text: "Voor je een scherpe email verstuurt: over 10 minuten zal het goed voelen. Over 10 maanden — heeft het de relatie beschadigd? Over 10 jaar — was dit het waard? De oefening koelt af en maakt proportioneler." },
+      { domain: "Aankopen", icon: "💸", text: "Bij impulsaankopen de 10-10-10 toepassen: nu wil ik het. Over 10 maanden gebruik ik het waarschijnlijk niet meer. Over 10 jaar merk ik het niet in mijn financiën als ik het niet had gekocht." }
+    ],
+  },
+  {
+    id: "second-order-thinking",
+    title: "Second-Order Denken",
+    difficulty: 2,
+    emoji: "♟️",
+    academicCategory: "Besliskunde",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Second-order denken is het vermogen om niet alleen te denken aan de directe gevolgen van een beslissing (eerste orde), maar ook aan de gevolgen van die gevolgen (tweede orde) en verder. De meeste mensen stoppen bij eerste-orde effecten; superieure beslissers anticiperen op downstream consequenties.",
+    abstractExample: "First order: als ik dit nu eet, voel ik me lekker. Second order: als ik dit patroon aanhoud, voel ik me over een jaar slechter. Third order: als ik me slechter voel, neem ik slechtere beslissingen op het werk en in relaties. Elke keuze heeft een causale keten.",
+    examples: [
+      { domain: "Financiën", icon: "💰", text: "First order: ik koop nu een groter huis (ik wil meer ruimte). Second order: hogere hypotheek betekent minder vrij te besteden. Third order: financiële druk betekent minder keuzes in werk en meer stress." },
+      { domain: "Leiderschap", icon: "🎯", text: "First order: ik neem alle beslissingen zelf (sneller, meer controle). Second order: team ontwikkelt geen besliskracht. Third order: organisatie schaalt niet, ik word bottleneck, team raakt gedemotiveerd." },
+      { domain: "Gewoonten", icon: "🔄", text: "First order: ik sla de training over (te moe). Second order: de gewoonte verzwakt. Third order: na twee weken is de gewoonte verdwenen en is heropbouw moeilijker. Kleine beslissingen hebben grote downstream effecten." }
+    ],
+  },
+  {
+    id: "inversion-thinking",
+    title: "Inversie: Omgekeerd Denken",
+    difficulty: 2,
+    emoji: "🔃",
+    academicCategory: "Besliskunde",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Inversie is een denktechniek waarbij je de vraag omkeert: in plaats van 'hoe bereik ik succes?' vraag je 'hoe garandeer ik mislukking?' — en vervolgens die dingen vermijdt. Charlie Munger en Warren Buffett gebruiken dit systematisch. Door na te denken over wat je niet wilt voorkomen, zie je obstakels die vooruit denken mist.",
+    abstractExample: "Als je wilt weten hoe je gelukkig blijft in een relatie, vraag ook: wat zijn de zekere manieren om een relatie te ruïneren? Leugens, gebrek aan respect, niet luisteren. Vermijd die dingen systematisch — dit is even effectief als actief het goede nastreven.",
+    examples: [
+      { domain: "Projectplanning", icon: "📋", text: "Pre-mortem: stel je voor dat het project gefaald heeft. Waarom? Dit inversie-denken onthult risico's en blinde vlekken die een traditionele planning mist — mensen zijn beter in diagnostiseren dan voorspellen." },
+      { domain: "Gezondheid", icon: "🏃", text: "In plaats van 'hoe word ik gezonder?' ook vragen: 'wat zijn de zekere paden naar slechte gezondheid?' Weinig slapen, weinig bewegen, roken, chronische stress. Systematisch elimineren is effectief." },
+      { domain: "Financiën", icon: "💰", text: "In plaats van 'hoe word ik rijk?' vragen: 'hoe blijft iemand zeker arm?' Uitgeven wat je verdient, schulden opbouwen, niet investeren, grote risico's nemen. De inverse is het financieel solide pad." }
+    ],
+  },
+  {
+    id: "opportunity-cost-awareness",
+    title: "Opportunity Cost Bewustzijn",
+    difficulty: 1,
+    emoji: "💰",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Opportunity cost is de waarde van de beste alternatieven die je opgeeft bij een keuze. Elke keuze heeft een verborgen prijs: de keuze voor A betekent automatisch de keuze tegen B. De meeste mensen overwegen alleen de directe kosten en baten van een keuze, niet wat ze opgeven.",
+    abstractExample: "Een avond Netflix kijken heeft geen directe financiële kosten, maar de opportuniteitskosten zijn: een boek lezen, een vaardigheid oefenen, iemand bellen. De vrije tijd was begrensd — je keuze voor X is altijd tegelijk een keuze tegen Y.",
+    examples: [
+      { domain: "Tijd", icon: "⏰", text: "Vier uur per dag op social media doorbrengen betekent vier uur minder voor lezen, sporten, relaties en creatieve projecten. Tijd is de meest absolute schaarse resource — de opportuniteitskosten zijn altijd reëel." },
+      { domain: "Carrière", icon: "💼", text: "Een goed betaalde baan waarbij je ongelukkig bent heeft naast salaris ook kosten: de groei die je had kunnen doormaken, de energie die je niet had gespendeerd aan iets zinvollers, de jaren die voorbijgaan." },
+      { domain: "Relaties", icon: "❤️", text: "Elke relatie die je onderhoudt kost tijd en aandacht — opportuniteitskosten van een toxische relatie zijn de energie en tijd die naar gezonde relaties hadden kunnen gaan. Nee zeggen tegen het slechte maakt ruimte voor het goede." }
+    ],
+  },
+  {
+    id: "satisficing-vs-maximizing",
+    title: "Satisficeren vs. Maximaliseren",
+    difficulty: 2,
+    emoji: "✅",
+    academicCategory: "Besliskunde",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Barry Schwartz onderscheidt maximizers (die altijd de beste optie willen vinden) van satisficers (die een optie kiezen die 'goed genoeg' is). Paradoxaal genoeg zijn satisficers gemiddeld gelukkiger: maximizers lijden meer aan keuzeparalyse, spijt en teleurstelling ondanks objectief betere keuzes.",
+    abstractExample: "Als je uur zoekt naar de perfecte film en dan bekijkt met de vraag of het de beste keuze was, heb je twee problemen gecreëerd die de satisficer niet heeft. Het is rationeel om 'goed genoeg' te kiezen voor beslissingen met lage inzet.",
+    examples: [
+      { domain: "Consumptie", icon: "🛒", text: "Voor een gewone aankoop (t-shirt, restaurant) de eerste optie kiezen die voldoet aan minimumcriteria in plaats van alle opties te vergelijken. De tijd en energie bespaard is meer waard dan het marginale verschil in kwaliteit." },
+      { domain: "Carrière", icon: "💼", text: "De maximizer die eindeloos vacatures vergelijkt en na elke keuze afvraagt 'had ik een betere optie gemist?' is gemiddeld minder tevreden dan de satisficer die een goede baan accepteert en er volledig voor gaat." },
+      { domain: "Perfectionisme", icon: "🎯", text: "Een goed afgerond project is beter dan een perfect project dat nooit klaar is. Satisficeren — een drempel bepalen en stoppen als die bereikt is — is bij de meeste taken efficiënter dan maximaliseren." }
+    ],
+  },
+  {
+    id: "present-bias-correction",
+    title: "Tegenwoordig Bias Corrigeren",
+    difficulty: 2,
+    emoji: "📅",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Present bias is de cognitieve neiging om directe beloningen zwaarder te wegen dan toekomstige beloningen, ook als de toekomstige beloning objectief groter is. Dit verklaart procrastinatie, ongezond eten, te weinig sparen en andere inconsistenties tussen wat we willen worden en hoe we dagelijks handelen.",
+    abstractExample: "Nu een sigaret roken voelt beter dan de abstracte betere gezondheid over 20 jaar. Nu Netflix kijken voelt beter dan de abstracte voldoening van een goed boek over een week. Present bias maakt de nabije toekomst reëel en de verre toekomst abstract.",
+    examples: [
+      { domain: "Financiën", icon: "💰", text: "Automatisch sparen via een vaste maandelijkse overboeking op de eerste van de maand omzeilt present bias — de keuze is al gemaakt voordat de verleiding toeslaat. Commitment devices werken omdat ze present bias structureel neutraliseren." },
+      { domain: "Gezondheid", icon: "🏃", text: "Sporten voor morgen inplannen en kleding alvast klaarleggen vermindert present bias doordat de activering al gedaan is — de drempel is verlaagd zodat het vluchtige gevoel van 'ik heb er geen zin in' minder gewicht heeft." },
+      { domain: "Leren", icon: "📚", text: "Leren voor een examen over drie weken feels abstract; procrastineren feels immediately comfortable. Methode: het examen terugrekenen in concrete stukken per dag, zodat de actie vandaag direct koppelt aan een voelbaar doel." }
+    ],
+  },
+  {
+    id: "mental-models-toolkit",
+    title: "Mentale Modellen als Denktoolkit",
+    difficulty: 2,
+    emoji: "🗺️",
+    academicCategory: "Epistemologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Mentale modellen zijn vereenvoudigde representaties van hoe iets werkt — frameworks die helpen de werkelijkheid te begrijpen en voorspellen. Een brede toolkit van mentale modellen uit verschillende disciplines (economie, psychologie, biologie, statistiek) maakt denken robuuster dan één enkel framework.",
+    abstractExample: "Een hamer ziet overal spijkers. Iemand met alleen economisch denken ziet incentives overal. Iemand met alleen psychologisch denken ziet emoties overal. Een rijke toolkit van modellen laat je switchen tussen lenzen afhankelijk van wat de situatie vereist.",
+    examples: [
+      { domain: "Probleemoplossing", icon: "🔧", text: "First principles denken (herleid tot basiswaarheden), systems thinking (zie feedbackloops) en probabilistisch denken (hoe waarschijnlijk is X?) zijn drie modellen die samen rijkere probleemanalyse geven dan elk afzonderlijk." },
+      { domain: "Beslissingen", icon: "🎯", text: "Een investering beoordelen via meerdere lenzen: financieel rendement (economie), cognitieve belasting (psychologie), tweede-orde effecten (systems thinking), base rates (statistiek). Elke lens voegt iets toe dat de anderen missen." },
+      { domain: "Communicatie", icon: "💬", text: "Begrijpen dat mensen denken vanuit verschillende mentale modellen maakt communicatie effectiever — de ander begrijpen vereist soms van model wisselen: wat is zijn of haar mental map van de situatie?" }
+    ],
+  },
+  {
+    id: "regret-minimization",
+    title: "Spijt Minimalisatie als Beslissingsregel",
+    difficulty: 1,
+    emoji: "⛵",
+    academicCategory: "Besliskunde",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Jeff Bezos' regret minimization framework: stel jezelf voor als 80-jarige die terugkijkt op je leven. Welke beslissing zou jij dan het minst betreuren? Mensen betreuren acties die ze niet namen (gemiste kansen) meer dan acties die ze wel namen maar die mislukten. Dit framework verschuift naar actie en risico nemen.",
+    abstractExample: "Op je tachtigste kijk je niet terug en zeg je 'ik ben blij dat ik die risicovolle kans niet heb genomen'. Maar je kunt wél spijt hebben dat je het niet geprobeerd hebt. De asymmetrie van spijt wijst richting actie bij betekenisvolle kansen.",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Jeff Bezos besloot Amazon te starten door te bedenken: op mijn 80ste, kijk ik terug en betreuro ik dat ik het niet geprobeerd heb? Ja. De spijt van het niet proberen woog zwaarder dan de potentiële mislukking." },
+      { domain: "Relaties", icon: "❤️", text: "De spijt van een liefde niet uitgezocht te hebben weegt doorgaans zwaarder dan de spijt van een relatie die uiteindelijk niet werkte. De asymmetrie pleit voor actie bij betekenisvolle verbindingen." },
+      { domain: "Persoonlijke groei", icon: "🌱", text: "Op je 80ste betreur je zelden de avonturen die je nam maar wél de kansen die je liet liggen uit angst voor mislukking of oordeel. Spijt-minimalisatie geeft de moed voor lastige keuzes." }
+    ],
+  },
+  {
+    id: "good-enough-decision",
+    title: "De Goede-Genoeg Beslissing",
+    difficulty: 1,
+    emoji: "👍",
+    academicCategory: "Besliskunde",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Voor de meeste beslissingen is een tijdige, goede-genoeg beslissing beter dan een late, perfecte beslissing. Besluiteloosheid heeft kosten (gemiste kansen, stress, stilstand) die vaak hoger zijn dan de kosten van een suboptimale keuze. Onderscheid maken tussen beslissingen die onomkeerbaar zijn (meer tijd) en omkeerbare beslissingen (snel beslissen) is essentieel.",
+    abstractExample: "Amazon's CEO Andy Jassy onderscheidt type-1 beslissingen (onomkeerbaar, moeilijk terug — neem de tijd) van type-2 beslissingen (omkeerbaar, te corrigeren — beslis snel). De meeste dagelijkse beslissingen zijn type-2 maar worden behandeld als type-1.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Welk restaurant voor een teamlunch? Een type-2 beslissing die een minuut waard is, niet een uur. Welk kantoor huren voor 10 jaar? Een type-1 beslissing die diepe analyse rechtvaardigt. Categoriseren voorkomt overthinking." },
+      { domain: "Procrastinatie", icon: "⏸️", text: "Uitstelgedrag wordt vaak gevoed door het gevoel dat elke beslissing perfect moet zijn. Herframen naar 'dit is omkeerbaar en corrigeerbaar' verlaagt de drempel dramatisch en laat actie stromen." },
+      { domain: "Projecten", icon: "📋", text: "Een imperfect product lanceren en itereren op basis van feedback levert sneller echte inzichten dan eindeloos intern optimaliseren — 80% goed en gelanceerd klopt meer dan 100% goed maar te laat." }
+    ],
+  },
 ];
