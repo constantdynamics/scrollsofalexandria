@@ -9022,5 +9022,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Maak een lijst van al jouw huidige commitments, projecten en verplichtingen. Markeer de drie die de hoogste bijdrage leveren aan wat jij het meest waardeert. Wat kun je kwijt zonder dat het leven slechter wordt?",
     aiHelperPrompts: ["Hoe leer ik nee te zeggen zonder relaties te beschadigen?", "Hoe onderscheid ik het essentiële van het urgente?", "Welke criteria gebruik ik om te bepalen wat essentieel is?"]
+  },
+
+  // Batch Z6 – Leren & Geheugen
+  {
+    id: "spaced-repetition",
+    title: "Gespreide Herhaling",
+    difficulty: 2,
+    emoji: "📅",
+    academicCategory: "Leerpsychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["geheugen", "herhaling", "leren", "retentie"],
+    definition: "Gespreide herhaling is het principe dat herhaling van leerstof op toenemende intervallen (1 dag, 3 dagen, 1 week, 1 maand) dramatisch effectiever is voor langetermijnretentie dan herhaling in één sessie (cramming).",
+    abstractExample: "Je brein vergeet informatie volgens een exponentiële curve — maar elke herhaling vlak voor het vergeetpunt herstelt én verlengt de retentie. Timing is alles.",
+    examples: [
+      { domain: "Talen", icon: "🗣️", text: "Anki-flashcards met spaced repetition-algoritme: woordenschat die je gisteren leerde, herhaal je morgen; die van een maand geleden, over een week." },
+      { domain: "Geneeskunde", icon: "🏥", text: "Medische studenten die gestratificeerde herhaling gebruiken, scoren jaren later nog significant beter op staatsexamens dan 'crammers'." },
+      { domain: "Muziek", icon: "🎵", text: "Pianisten die hetzelfde stuk iedere dag spelen leren het langzamer dan pianisten die het op dag 1, 3, 7 en 14 instuderen." }
+    ],
+    prerequisites: [],
+    unlocks: ["retrieval-practice"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat beschrijft de vergeetcurve van Ebbinghaus?", options: ["Mensen vergeten alles na één dag", "Zonder herhaling daalt retentie exponentieel maar stabiliseert bij kern", "Herhaling heeft geen effect op retentie", "Retentie neemt lineair af over tijd"], correct: 1, explanation: "Ebbinghaus ontdekte dat zonder herhaling ~70% binnen 24 uur vergeten is, daarna langzamer — gespreide herhaling reset de curve steeds opnieuw." }
+    ],
+    creativePrompt: "Kies één kennisdomein dat je beter wil kennen. Ontwerp een 30-dagen spaced repetition-schema: wat leer je wanneer en op welke intervallen ga je de stof herhalen?",
+    aiHelperPrompts: ["Welke spaced repetition-apps zijn het meest effectief?", "Hoe werkt het SRS-algoritme in Anki?", "Hoe combineer ik spaced repetition met normaal studeren?"]
+  },
+  {
+    id: "retrieval-practice",
+    title: "Ophaaloefen",
+    difficulty: 2,
+    emoji: "🧲",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["geheugen", "testen", "leren", "retentie"],
+    definition: "Ophaaloefen (retrieval practice) is de techniek van actief proberen informatie uit je geheugen op te halen — zelftesten, flashcards, vrije recall — wat leren sterker verankert dan passief herlezen.",
+    abstractExample: "Het ophalen van een herinnering maakt die herinnering sterker — net zoals een spier die getraind wordt. Passief herlezen geeft het gevoel van kennen zonder het geheugenspoor te versterken.",
+    examples: [
+      { domain: "Studeren", icon: "📚", text: "Studenten die na het lezen het boek sluiten en opschrijven wat ze weten (free recall), onthouden 50% meer dan studenten die opnieuw lezen." },
+      { domain: "Vergaderingen", icon: "💼", text: "Na een presentatie de aanwezigen vragen drie kernpunten op te schrijven verbetert retentie meer dan een samenvatting te geven." },
+      { domain: "Talen", icon: "🗣️", text: "Flashcards (Anki): de ophaalmoeite bij moeilijk te herinneren woorden versterkt het geheugenspoor — de moeite zelf is het voordeel." }
+    ],
+    prerequisites: ["spaced-repetition"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke studiemethode is het meest effectief voor langetermijnretentie?", options: ["Herlezen", "Markeren met stift", "Samenvatten in eigen woorden", "Zelftesten via retrieval practice"], correct: 3, explanation: "Retrieval practice — actief ophalen uit geheugen — is consistent de meest effectieve leerinterventie voor langetermijnretentie, bewezen in honderden studies." }
+    ],
+    creativePrompt: "Na het lezen van dit principe, sluit de app en schrijf op een leeg blaadje alle principes op die je je herinnert uit de afgelopen sessie. Geen herlezen eerst. Dit is retrieval practice in actie.",
+    aiHelperPrompts: ["Hoe implementeer ik retrieval practice in dagelijkse studie?", "Werkt zelftesten ook voor procedurele vaardigheden?", "Hoe gebruik ik retrieval practice in onderwijs?"]
+  },
+  {
+    id: "interleaving-learning",
+    title: "Doorweven Oefenen",
+    difficulty: 2,
+    emoji: "🧩",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["oefenen", "variatie", "leren", "transfer"],
+    definition: "Doorweven oefenen (interleaving) is het afwisselen van verschillende onderwerpen of probleemtypen in één sessie — aanvankelijk minder efficiënt voelend maar op lange termijn effectiever dan geblokt oefenen.",
+    abstractExample: "In plaats van 30 vermenigvuldigsommen, dan 30 deelsommen, doe je 10 vermenigvuldig, 10 deel, 10 vermenigvuldig — de afwisseling dwingt actieve discriminatie van probleemtypes.",
+    examples: [
+      { domain: "Wiskunde", icon: "🔢", text: "Studenten die oefenen met gemengde probleemsoorten scoren op de eindtoets 43% hoger dan studenten die per type geblokt oefenden — ook al voelden de geblokte oefeningen 'beter'." },
+      { domain: "Sport", icon: "⚽", text: "Tennissers die services, forehand en backhand afwisselen, leren beter dan spelers die per slag oefent — doorweven dwingt adaptatie." },
+      { domain: "Muziek", icon: "🎵", text: "Muzikanten die stukken uit verschillende periodes afwisselen, bouwen flexibelere muzikale interpretatie dan zij die per componist blokken." }
+    ],
+    prerequisites: ["retrieval-practice"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom voelt doorweven oefenen moeilijker dan geblokt oefenen maar leidt het tot beter leren?", options: ["Het is gewoon harder", "De moeite van discrimineren wat je weet en niet weet versterkt het leerproces", "Het is verwarrender", "Het werkt alleen voor wiskunde"], correct: 1, explanation: "Doorweven dwingt steeds opnieuw te discrimineren welk probleemtype dit is en welke aanpak past — die cognitieve moeite is precies wat leren versterkt." }
+    ],
+    creativePrompt: "Herschrijf jouw studieroutine voor één onderwerp via interleaving. Hoe wissel je onderwerpen af? Wat merk je wanneer je dit een week probeert versus je normale aanpak?",
+    aiHelperPrompts: ["Hoe combineer ik interleaving met spaced repetition?", "Werkt interleaving voor alle typen leermateriaal?", "Hoe help ik studenten die doorweven te frustrerend vinden?"]
+  },
+  {
+    id: "desirable-difficulty",
+    title: "Wenselijke Moeilijkheid",
+    difficulty: 2,
+    emoji: "💪",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["moeilijkheid", "leren", "cognitie", "prestatie"],
+    definition: "Wenselijke moeilijkheid (Bjork) is het principe dat bepaalde leerhindernisnissen — retrieval practice, interleaving, gespreide herhaling — leren verbeteren juist doordat ze het moeilijker maken, ook als ze in het moment minder effectief lijken.",
+    abstractExample: "Lezen met een moeilijk lettertype maakt lezen moeilijker maar vergroot retentie — de extra cognitieve inspanning diept het geheugenspoor uit.",
+    examples: [
+      { domain: "Studeren", icon: "📚", text: "Studenten die handgeschreven aantekeningen maken onthouden meer dan studenten die alles intikken — de vertragende moeilijkheid dwingt verwerking." },
+      { domain: "Instructie", icon: "🎓", text: "Een leraar die leerlingen vraagt problemen op te lossen voordat hij de oplossing toont (productief falen) bereikt meer diep begrip dan directe instructie." },
+      { domain: "Training", icon: "⚽", text: "Sporters die trainen in variabele omstandigheden (regen, wind, onbekend veld) presteren beter in wedstrijden dan sporters die altijd in ideale omstandigheden trainden." }
+    ],
+    prerequisites: ["interleaving-learning"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke leeractiviteit is een klassiek voorbeeld van wenselijke moeilijkheid?", options: ["Herlezen van aantekeningen", "Markeren met stift", "Zelftesten vóór het antwoord te kennen", "Luisteren naar een podcast"], correct: 2, explanation: "Zelftesten vóór het antwoord te kennen (generation effect) is wenselijk moeilijk: de moeite van proberen te genereren versterkt later leren van het antwoord." }
+    ],
+    creativePrompt: "Welke studiegewoontes die jij nu hanteert zijn 'gemakkelijk maar ineffectief'? Welke wenselijk moeilijke alternatieven kun je substitueren? Probeer ze een week en vergelijk resultaten.",
+    aiHelperPrompts: ["Hoe onderscheid ik wenselijke van onwenselijke moeilijkheid?", "Werkt wenselijke moeilijkheid ook bij beginners?", "Welke omgevingsfactoren kunnen wenselijke moeilijkheid creëren?"]
+  },
+  {
+    id: "elaborative-interrogation",
+    title: "Elaboratieve Ondervraging",
+    difficulty: 2,
+    emoji: "❓",
+    academicCategory: "Leerpsychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["begrip", "diepgaand leren", "vragen", "verbanden"],
+    definition: "Elaboratieve ondervraging is de techniek van 'waarom'-vragen stellen bij leerstof — 'Waarom is dit waar?' — wat feiten verankert in een conceptueel netwerk en diep begrip bevordert boven oppervlakkige memorisatie.",
+    abstractExample: "In plaats van te onthouden 'haaien hebben geen zwemblaas', vraag je 'waarom missen haaien een zwemblaas?' — het antwoord (ze moeten blijven zwemmen om niet te zinken) creëert een memorabel netwerk.",
+    examples: [
+      { domain: "Biologie", icon: "🦎", text: "Studenten die bij feiten vragen 'waarom is dit zo?' voor relevante feiten, onthouden significant meer dan studenten die herhalen of samenvatten." },
+      { domain: "Geschiedenis", icon: "📜", text: "Waarom verloor Napoleon bij Waterloo? Het verbinden van oorzaken (vermoeidheid, slechte communicatie, Pruisische aankomst) maakt de factoren onvergetelijk." },
+      { domain: "Wiskunde", icon: "🔢", text: "Waarom werkt de stelling van Pythagoras? Het begrijpen van de geometrische reden maakt de formule makkelijker te herinneren dan memorisatie." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe verankert elaboratieve ondervraging geheugen beter dan memorisatie?", options: ["Door herhaling", "Door feiten te verbinden met bestaande kennis via causale verklaringen", "Door meer tijd te besteden", "Door het feit mooier te formuleren"], correct: 1, explanation: "Elaboratieve ondervraging schept causale verbanden in het geheugennetwerk — feiten die zijn ingebed in een verklarend netwerk zijn makkelijker te herinneren en toe te passen." }
+    ],
+    creativePrompt: "Kies vijf feiten uit een onderwerp dat je studeert. Stel bij elk feit de 'waarom'-vraag en probeer het te beantwoorden. Welke feiten kwamen je daarna gemakkelijker terug?",
+    aiHelperPrompts: ["Hoe combineer ik elaboratieve ondervraging met spaced repetition?", "Werkt elaboratieve ondervraging voor alle vakken?", "Hoe leer ik 'waarom'-vragen te stellen bij alles?"]
+  },
+  {
+    id: "memory-palace",
+    title: "Geheugenpaleis",
+    difficulty: 2,
+    emoji: "🏛️",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["geheugen", "ruimtelijk", "techniek", "loci"],
+    definition: "Het geheugenpaleis (method of loci) is een memorisatietechniek waarbij informatie wordt gevisualiseerd op bekende ruimtelijke locaties — het brein herinnert ruimtelijke en visuele informatie makkelijker dan abstracte feiten.",
+    abstractExample: "Om de planeten te onthouden visualiseer je elke planeet als een object op een bekende route door jouw huis: Mercurius is een kwikzilverbal bij de voordeur, Venus een spiegel in de gang...",
+    examples: [
+      { domain: "Geheugenwereld", icon: "🏆", text: "Geheugenwereldkampioen Dominic O'Brien memoriseerde willekeurige kaartspelen via geheugenpaleis-technieken — soms 50+ kaartspellen." },
+      { domain: "Medicijnen", icon: "🏥", text: "Medische studenten gebruiken geheugenpaleis voor anatomie: elk orgaan op een locatie in een vertrouwde ruimte — het mnemotische netwerk verankert complexe systemen." },
+      { domain: "Speeches", icon: "🎤", text: "Cicero gebruikte al het geheugenpaleis voor zijn redevoeringen — elke sectie van de speech gekoppeld aan een ruimte in zijn villa." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk aspect van het brein maakt geheugenpaleis zo effectief?", options: ["Het logische denkvermogen", "Het sterke ruimtelijke en visuele geheugen van de menselijke hersenen", "Het talig geheugen", "Het werkgeheugen"], correct: 1, explanation: "Mensen zijn bijzonder goed in ruimtelijk navigeren en visuele herkenning — evolutionair essentieel. Geheugenpaleis maakt gebruik van die sterke cognitieve kanalen voor abstracte informatie." }
+    ],
+    creativePrompt: "Leer de namen van de 27 EU-landen via een geheugenpaleis. Loop mentaal door jouw huis en plaats elk land als een object op een andere locatie. Test jezelf na een uur — wat merk je?",
+    aiHelperPrompts: ["Hoe begin ik met het bouwen van een geheugenpaleis?", "Hoe groot moet het geheugenpaleis zijn?", "Welke informatie is het meest geschikt voor een geheugenpaleis?"]
+  },
+  {
+    id: "sleep-and-memory",
+    title: "Slaap en Geheugen",
+    difficulty: 1,
+    emoji: "😴",
+    academicCategory: "Neurowetenschappen",
+    skillCategory: "Leren & Geheugen",
+    tags: ["slaap", "geheugen", "consolidatie", "leren"],
+    definition: "Slaap is essentieel voor geheugenconsolidatie: tijdens slow-wave slaap worden herinneringen van de hippocampus naar de neocortex overgebracht en tijdens REM-slaap worden verbanden versterkt en emotionele herinneringen verwerkt.",
+    abstractExample: "Slaap is als een back-up systeem: overdag sla je informatie tijdelijk op (hippocampus); 's nachts worden de meest waardevolle bestanden permanent opgeslagen (neocortex) en geïntegreerd.",
+    examples: [
+      { domain: "Studeren", icon: "📚", text: "Studenten die na het studeren slapen onthouden significant meer dan studenten die studeren en daarna wakker blijven voor een activiteit — slaap is cruciaal voor retentie." },
+      { domain: "Motorisch leren", icon: "🎵", text: "Pianisten die een nieuw stuk 's avonds oefenen en slapen, presteren de volgende ochtend beter dan pianisten die direct verder oefenen — motore consolidatie vindt 's nachts plaats." },
+      { domain: "Creativiteit", icon: "💡", text: "REM-slaap verbindt disparate ideeën — veel creatieve 'aha-momenten' komen na een goede nachtrust over een uitdagend probleem." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke slaapfase is het meest cruciaal voor procedureel geheugen (vaardigheden)?", options: ["Inslaapdommeling", "Slow-wave slaap (diepe slaap)", "REM-slaap", "Lichte slaap (N2)"], correct: 1, explanation: "Slow-wave slaap (N3) is cruciaal voor procedureel geheugen en motorische vaardigheidsleren — ook al draagt REM ook bij aan creatieve verbanden." }
+    ],
+    creativePrompt: "Plan een week waarbij je na elke significante leersessie voldoende slaap garandeert. Houd bij hoe je je herinnering vergelijkt met weken waar je niet goed sliep na studeren.",
+    aiHelperPrompts: ["Hoeveel slaap is nodig voor optimale geheugenconsolidatie?", "Helpen powernaps ook bij geheugenconsolidatie?", "Hoe beïnvloedt slaaptekort leren op lange termijn?"]
+  },
+  {
+    id: "chunking-memory",
+    title: "Chunken",
+    difficulty: 1,
+    emoji: "🧩",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["geheugen", "werkgeheugen", "chunks", "expertise"],
+    definition: "Chunken is het groeperen van informatie in betekenisvolle eenheden (chunks) die het beperkte werkgeheugen effectiever benutten — experts chunken automatisch, waardoor ze meer informatie tegelijk kunnen verwerken.",
+    abstractExample: "Een telefoonnummer '0612345678' is moeilijk te onthouden als 10 losse cijfers, maar makkelijk als drie chunks '06-123-45-678' — het werkgeheugen ziet dan drie items in plaats van tien.",
+    examples: [
+      { domain: "Schaken", icon: "♟️", text: "Schaakgrootmeesters onthouden schaakposities als betekenisvolle patronen (aanvalsstelling, gevangengezette toren) — niet als losse stukken." },
+      { domain: "Muziek", icon: "🎵", text: "Een ervaren pianist leest bladmuziek als musikalische zinnen (chunks), niet als individuele noten — dat maakt het lezen veel sneller." },
+      { domain: "Programmeren", icon: "💻", text: "Een ervaren programmeur herkent code-patronen ('dit is een singleton factory') terwijl een beginner elke regel apart verwerkt." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom kunnen experts meer informatie tegelijk verwerken dan beginners?", options: ["Ze hebben een groter werkgeheugen", "Ze chunken informatie in grotere betekenisvolle eenheden", "Ze zijn intelligenter", "Ze vergeten minder snel"], correct: 1, explanation: "Het werkgeheugen heeft een vaste capaciteit (~4 chunks). Experts hebben grotere, rijkere chunks door expertise, waardoor ze meer informatie per chunk verwerken." }
+    ],
+    creativePrompt: "Kies een domein waar je expert wil worden. Welke patronen of chunks zou je moeten leren herkennen? Hoe zou je bewust die chunks kunnen trainen?",
+    aiHelperPrompts: ["Hoe leer ik bewust chunks te vormen?", "Hoe groot kan een chunk worden?", "Hoe verschilt chunken bij experts in verschillende domeinen?"]
+  },
+  {
+    id: "metacognition",
+    title: "Metacognitie",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["metacognitie", "leren leren", "zelfregulatie", "bewustzijn"],
+    definition: "Metacognitie is het denken over het eigen denken — bewust zijn van wat je weet en niet weet, hoe je leert en hoe effectief jouw leerstrategieën zijn — en het aanpassen van leergedrag op basis van die bewustheid.",
+    abstractExample: "Metacognitie is als een rijinstructeur die tegelijkertijd rijdt én observeert hoe goed hij rijdt — en op basis van die observatie zijn techniek aanpast.",
+    examples: [
+      { domain: "Studeren", icon: "📚", text: "Een leerling die na het studeren zichzelf toetst en herkent dat hij het begrip niet echt begrijpt (alleen herkenning), past zijn studieroutine aan — metacognitie in actie." },
+      { domain: "Probleemoplossing", icon: "💡", text: "Een ingenieur die vastzit, stapt bewust terug om te evalueren of zijn aanpak juist is voor dit type probleem — metacognitieve strategie-switch." },
+      { domain: "Onderwijs", icon: "🎓", text: "Studenten met hogere metacognitieve bewustheid presteren consistent beter, ongeacht intelligentie — ze monitoren en sturen hun eigen leren effectiever." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Uit welke twee componenten bestaat metacognitie?", options: ["Kennis en geheugen", "Metacognitieve kennis (wat weet ik over mijn leren) en metacognitieve regulatie (hoe stuur ik mijn leren)", "Zelfreflectie en actie", "Intelligentie en motivatie"], correct: 1, explanation: "Flavell's model: metacognitieve kennis (wat je weet over jezelf als leerder) en metacognitieve regulatie (plannen, monitoren en evalueren van je leerproces)." }
+    ],
+    creativePrompt: "Na jouw volgende leersessie: schrijf op (1) wat je zeker weet, (2) wat je denkt te weten maar niet zeker bent, en (3) wat je nog niet snapt. Hoe nauwkeurig was jouw zelfevaluatie bij een test?",
+    aiHelperPrompts: ["Hoe ontwikkel ik mijn metacognitieve vaardigheden?", "Hoe leer ik studenten metacognitief te denken?", "Welk verband bestaat er tussen metacognitie en leerprestaties?"]
+  },
+  {
+    id: "illusion-of-knowing",
+    title: "Illusie van Kennen",
+    difficulty: 2,
+    emoji: "🪞",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Leren & Geheugen",
+    tags: ["zelfkennis", "illusie", "begrip", "leren"],
+    definition: "De illusie van kennen is het fenomeen dat mensen denken een concept of vaardigheid te beheersen terwijl ze het slechts herkennen of oppervlakkig begrijpen — het verschil tussen herkenning en werkelijk beheersen.",
+    abstractExample: "Je leest een wiskundeoplossing en denkt 'ik snap het' — maar als je het blad omkeert en het zelf moet oplossen, lukt het niet. Je herkende de stappen, je begreep ze niet.",
+    examples: [
+      { domain: "Wiskunde", icon: "🔢", text: "Studenten die uitgewerkte voorbeelden bestuderen, ervaren de illusie van kennen — pas bij zelfstandig problemen oplossen blijkt het begrip oppervlakkig." },
+      { domain: "Techniek", icon: "💻", text: "Een programmeur die code leest en denkt het te begrijpen, ontdekt bij zelf schrijven dat zijn begrip hiaten had — 'read to understand' vs. 'write to know'." },
+      { domain: "Talen", icon: "🗣️", text: "Woorden herkennen in een tekst (passief) is fundamenteel anders van woorden actief kunnen gebruiken (productief) — de herkenningsillusie van taalverwerving." }
+    ],
+    prerequisites: ["metacognition"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke teststrategie onthult het best de illusie van kennen?", options: ["Multiple choice toets", "Open boek toets", "Toets waarbij je het concept uitlegt in eigen woorden zonder aantekeningen", "Herkenningstoets"], correct: 2, explanation: "Productieopdrachten (uitleggen, opschrijven, toepassen) onthullen wat je werkelijk begrijpt, terwijl herkenningstoetsen de illusie van kennen in stand houden." }
+    ],
+    creativePrompt: "Sluit dit principe en probeer het in eigen woorden uit te leggen aan een denkbeeldig kind van 10 jaar. Waar haperde je? Welke delen bleek je minder goed te begrijpen dan je dacht?",
+    aiHelperPrompts: ["Hoe vermijd ik de illusie van kennen?", "Hoe herken ik bij studenten de illusie van kennen?", "Waarom voelt herlezen zo goed maar werkt het zo slecht?"]
   }
 ];
