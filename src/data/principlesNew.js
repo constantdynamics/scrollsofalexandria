@@ -8031,4 +8031,156 @@ export const principlesNew = [
       { domain: "Carrière", icon: "💼", text: "Jaren investeren in moeilijke vaardigheden, studie of een baan met lager salaris maar meer leerwaarde — uitgestelde bevrediging in carrièreontwikkeling die op lange termijn meer oplevert." }
     ],
   },
+
+  // ── Batch A10: Levensfilosofie & Zingeving ───────────────────────────────────
+  {
+    id: "stoic-dichotomy",
+    title: "Stoïsche Dichotomie van Controle",
+    difficulty: 1,
+    emoji: "⚖️",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De stoïsche dichotomie van controle (Epictetus) onderscheidt wat in onze macht is (oordelen, verlangens, reacties, keuzes) van wat buiten onze macht is (andermans gedrag, weersomstandigheden, verleden, reputatie). Concentreer energie uitsluitend op het eerste.",
+    abstractExample: "Je kunt niet controleren of het regent, maar je kunt je reactie daarop controleren. Je kunt niet controleren of je wordt ontslagen, maar je kunt je reactie, je volgende stap en je houding controleren.",
+    examples: [
+      { domain: "Tegenslag", icon: "💪", text: "Een sportief verlies: het resultaat was buiten je controle (de tegenstander speelde beter). Wat in je macht is: hoe je traint, hoe je je voorbereidt, hoe je met de teleurstelling omgaat — focus daarop." },
+      { domain: "Werk", icon: "💼", text: "Je kunt niet controleren of je promotie krijgt. Je kunt wel controleren hoe goed je werk is, welke relaties je opbouwt, en hoe je reageert als het niet lukt. Stoïcijnse focus op het beheersbare vermindert nutteloze angst." },
+      { domain: "Relaties", icon: "❤️", text: "Je kunt niet controleren of iemand van je houdt of je accepteert. Je kunt wel controleren hoe authentiek, vriendelijk en aanwezig je bent. Verlies van controle over andermans gevoelens is bron van chronische onvrede." }
+    ],
+  },
+  {
+    id: "memento-mori-personal",
+    title: "Memento Mori",
+    difficulty: 2,
+    emoji: "⏳",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Memento mori — 'gedenk dat je sterft' — is de stoïsche en middeleeuwse meditatie over sterfelijkheid als motivator voor het leven van een betekenisvol, authentiek leven. Bewustzijn van eindigheid verhoogt de waarde van het heden.",
+    abstractExample: "Als je weet dat je eindig bent, verschuiven prioriteiten. Zaken die nu belangrijk lijken (andermans mening, kleine ergernissen) worden klein. Wat echt telt, wordt duidelijker. De dood is een bruikbaar kompas.",
+    examples: [
+      { domain: "Prioriteiten", icon: "🎯", text: "Bezef goed: als dit je laatste jaar was, wat zou je anders doen? De vraag is geen drama maar een filtertest voor prioriteiten — veel ergernissen verdwijnen, echte dingen worden zichtbaarder." },
+      { domain: "Relaties", icon: "❤️", text: "Rouwen om mensen die je liefhebt nog tijdens hun leven, niet daarna. Bewustzijn van eindigheid van relaties maakt je aandachtiger aanwezig, minder bezig met kleine conflicten." },
+      { domain: "Werk", icon: "💼", text: "Steve Jobs: 'Als je elke dag denkt dat het de laatste dag van je leven zou kunnen zijn, zul je op een dag bijna zeker gelijk hebben.' Het was zijn filtertest voor wat hij deed en weigerde." }
+    ],
+  },
+  {
+    id: "hedonic-adaptation",
+    title: "Hedonische Aanpassing",
+    difficulty: 2,
+    emoji: "🎡",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Hedonische aanpassing beschrijft hoe mensen emotioneel terugkeren naar hun geluksbasisniveau na positieve of negatieve levensveranderingen. De nieuwe auto, het grotere huis en de promotie verhogen het geluk tijdelijk, maar het neigt terug naar het startpunt.",
+    abstractExample: "Je denkt dat de nieuwe baan je gelukkiger maakt. Na 6 maanden is het normaal geworden. Dit is hedonische aanpassing — je loopt op een hedonische molen waarop je hard loopt zonder verder te komen.",
+    examples: [
+      { domain: "Bezit", icon: "🛒", text: "Onderzoek: lotto-winnaars zijn een jaar na de grote win niet significant gelukkiger dan voor de win — hedonische aanpassing heeft het grotere geluk opgeslokt. Bezit is een slechte geluksstrategie." },
+      { domain: "Ervaringen", icon: "✈️", text: "Ervaringen (reizen, concerten, gesprekken) adapteren minder dan bezit — de herinnering blijft waardevol terwijl de herinnering aan een aankoop vervaagt. Investeer in ervaringen boven spullen." },
+      { domain: "Dankbaarheid", icon: "🙏", text: "Dankbaarheidspraktijk werkt deels door hedonische aanpassing te vertragen — bewust opmerken en waarderen van het gewone doorbreekt de automatische normalisatie van wat je al hebt." }
+    ],
+  },
+  {
+    id: "meaning-making",
+    title: "Zingeving",
+    difficulty: 2,
+    emoji: "✨",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Zingeving (Frankl) is het vermogen om betekenis te vinden in elke situatie — inclusief lijden. Mensen die een 'waarom' hebben kunnen elk 'hoe' verdragen. Zin wordt niet gevonden maar gecreëerd via keuzes, bijdragen en houding.",
+    abstractExample: "Viktor Frankl ontdekte in een concentratiekamp dat zij die bleven leven degenen waren die betekenis in het lijden vonden — voor de kinderen, voor het boek dat ze wilden schrijven, voor geliefden buiten het kamp.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Hetzelfde werk kan zinvol of zinloos voelen afhankelijk van het verhaal dat je eraan koppelt — de schoonmaker in een ziekenhuis die zijn werk ziet als 'infecties voorkomen' versus 'vloeren schoonmaken' ervaart fundamenteel ander welzijn." },
+      { domain: "Tegenslag", icon: "💪", text: "Zingeving is de sterkste beschermfactor bij tegenslag — mensen die betekenis in moeilijkheden kunnen vinden, herstellen sneller en zijn psychologisch veerkrachtiger dan degenen voor wie de tegenslag simpelweg zinloos is." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "Ouders rapporteren lager momentaan geluk dan niet-ouders (meer stress, minder vrije tijd) maar hogere zingeving — zin en geluk zijn verschillende dimensies die niet altijd in dezelfde richting bewegen." }
+    ],
+  },
+  {
+    id: "present-moment-awareness",
+    title: "Aanwezigheid in het Heden",
+    difficulty: 1,
+    emoji: "🌅",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Aanwezigheid in het heden is het bewust richten van aandacht op de huidige ervaring — wat je nu waarneemt, voelt en doet — in plaats van te leven in herinneringen (verleden) of anticipatie (toekomst). Het is de enige plek waar het leven werkelijk plaatsvindt.",
+    abstractExample: "Je eet terwijl je je zorgen maakt over de vergadering van morgen. Je eet maar ervaart het eten niet. Je bent overal behalve waar je bent. Aanwezigheid is het antidotum voor een leven dat voorbijgaat terwijl je erin leeft.",
+    examples: [
+      { domain: "Geluk", icon: "😊", text: "Harvard-onderzoek: mensen zijn gemiddeld 47% van de tijd mentaal afwezig van wat ze doen. Mentale aanwezigheid correleert sterker met geluk dan de activiteit zelf — het hoe overtreft het wat." },
+      { domain: "Relaties", icon: "❤️", text: "Volledig aanwezig zijn bij een gesprek — telefoon weg, oogcontact, volledig luisteren — is een van de meest waardevolle geschenken die je kunt geven. Mensen voelen onmiddellijk het verschil." },
+      { domain: "Ervaring", icon: "✈️", text: "Op vakantie voortdurend foto's maken voor sociale media, leidt tot minder herinneringen aan de vakantie zelf — je was er mentaal niet. Ervaring vereist aanwezigheid, niet documentatie." }
+    ],
+  },
+  {
+    id: "growth-vs-fixed-mindset",
+    title: "Groeimindset vs. Vaste Mindset",
+    difficulty: 1,
+    emoji: "🧠",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Groeimindset (Dweck) is de overtuiging dat vaardigheden en intelligentie kunnen worden ontwikkeld door inzet, goede strategieën en feedback. Vaste mindset gelooft dat kwaliteiten aangeboren en onveranderlijk zijn. De mindset stuurt hoe mensen reageren op uitdaging en mislukking.",
+    abstractExample: "Vaste mindset bij mislukking: 'Ik ben niet slim genoeg' (conclusie over identiteit). Groeimindset: 'Ik heb nog niet de juiste aanpak gevonden' (conclusie over proces). Dezelfde mislukking, fundamenteel andere implicatie.",
+    examples: [
+      { domain: "School", icon: "📚", text: "Kinderen geprezen voor intelligentie ('je bent zo slim') kiezen makkelijker taken — ze beschermen hun identiteit. Kinderen geprezen voor inspanning ('je hebt hard gewerkt') kiezen moeilijker uitdagingen." },
+      { domain: "Werk", icon: "💼", text: "Medewerkers met groeimindset gaan meer de uitdaging aan, vragen meer feedback en leren sneller dan collega's met vaste mindset die vermijden situaties waarin ze er slecht uit kunnen zien." },
+      { domain: "Sport", icon: "🏋️", text: "Michael Jordan werd als tiener van zijn schoolteam gegooid — zijn reactie (harder trainen) is een klassiek groeimindset-voorbeeld. Vaste mindset had hem tot het conclusie gebracht dat hij het niet kon." }
+    ],
+  },
+  {
+    id: "eudaimonia",
+    title: "Eudaimonie",
+    difficulty: 2,
+    emoji: "🌟",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Eudaimonie (Aristoteles) is het bloeiende leven — niet het plezierige leven (hedonisme) maar het leven in lijn met je hoogste mogelijkheden en deugden. Het is geluk als activiteit, niet als gevoel: actief goed zijn in het zijn wie je kunt zijn.",
+    abstractExample: "Hedoon (plezier) is passief — het overkomt je. Eudaimonia is actief — je beoefent het. Een kunstenaar in flow, een ouder die volledig aanwezig is, een wetenschapper die een probleem doorgrond — dat is eudaimonia.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Jobs die eudaimonisch zijn (uitdagend, zinvol, in lijn met je sterke punten) leiden tot dieper welzijn dan plezierige maar zinloze jobs — comfort en geluk zijn niet hetzelfde." },
+      { domain: "Relaties", icon: "❤️", text: "Eudaimonische relaties zijn niet altijd makkelijk of plezierig — ze vereisen groei, eerlijkheid en inspanning. Maar ze leiden tot dieper welzijn dan comfortabele relaties zonder uitdaging of diepte." },
+      { domain: "Vrije tijd", icon: "🎨", text: "Eudaimonisch vrije-tijdsgebruik (hobby's die vaardigheden vergen, vrijwilligerswerk, leren) leidt tot meer welzijn dan passieve vrije tijd (scrollen, tv kijken) — activiteit overtreft passiviteit." }
+    ],
+  },
+  {
+    id: "examined-life",
+    title: "Het Onderzochte Leven",
+    difficulty: 2,
+    emoji: "🔍",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Socrates' uitspraak 'het niet-onderzochte leven is het niet waard te leven' is een oproep tot zelfreflectie als morele verplichting. Bewust nadenken over je waarden, keuzes en leven is niet een luxe maar een voorwaarde voor authentiek bestaan.",
+    abstractExample: "De meeste mensen leven de aannames, waarden en verwachtingen van anderen zonder ze ooit te bevragen. Het onderzochte leven begint met de vraag: 'Is dit wat ík kies, of is het wat ik nooit heb bevraagd?'",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Iemand die 20 jaar in hetzelfde vak werkt zonder ooit te vragen 'is dit wat ik zou kiezen als ik nu opnieuw kon beginnen?' leeft een niet-onderzocht carrièreleven. De vraag alleen kan bevrijdend zijn." },
+      { domain: "Waarden", icon: "⚖️", text: "Journaling, therapie, meditatie en filosofische gesprekken zijn methodes voor het onderzochte leven — ze helpen je aannames expliciet te maken die anders onzichtbaar maar sturend zijn." },
+      { domain: "Keuzes", icon: "🎯", text: "Regelmatig terugkijken: 'Is mijn huidig leven gebouwd op keuzes die ik bewust heb gemaakt?' — niet als zelfkritiek maar als kompas. Het onderzochte leven is een levenshouding, niet een eenmalige sessie." }
+    ],
+  },
+  {
+    id: "amor-fati",
+    title: "Amor Fati",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Amor fati — 'liefde voor het lot' — is de stoïsche en Nietzscheaanse levenshouding waarbij je niet alleen aanvaardt wat er gebeurt, maar het actief omarmt en bemint — inclusief het moeilijke en pijnlijke.",
+    abstractExample: "Niet: 'Ik accepteer dit tegenvallende resultaat.' Maar: 'Ik omarm dit als precies wat moest gebeuren voor wat ik kan worden.' Een fundamenteel andere relatie met de realiteit dan verzet of louter acceptatie.",
+    examples: [
+      { domain: "Tegenslag", icon: "💪", text: "Marcus Aurelius: 'Het beletsel bij de actie bevordert de actie. Wat in de weg staat, wordt de weg.' Tegenslagen omvormen van obstakels naar brandstof — amor fati als cognitieve alchemie." },
+      { domain: "Verlies", icon: "💔", text: "Nietzsche: de sterkste wens is de ewige Wiederkehr — elk moment zo leven dat je het eindeloos zou willen herhalen. Dit dwingt keuzes die je kunt omarmen, niet keuzes die je spijt van hebt." },
+      { domain: "Groeimindset", icon: "🌱", text: "Amor fati vertaald naar groei: elk moeilijk moment is een trainingskans. De atleet die moeilijke trainingen 'liefheeft' omdat ze hem sterker maken, incarneert amor fati in de sportpraktijk." }
+    ],
+  },
+  {
+    id: "legacy-thinking",
+    title: "Nagedachtenisdenken",
+    difficulty: 2,
+    emoji: "🏺",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Nagedachtenisdenken is het bewust nadenken over welk spoor je achterlaat — in mensen, gemeenschappen en de wereld — als kompas voor huidig handelen. Hoe wil je herinnerd worden, en leef je nu in lijn met dat antwoord?",
+    abstractExample: "Covey: begin met het einde in gedachten. Stel je je eigen begrafenis voor: wat wil je dat mensen over je zeggen? Het antwoord onthult je diepste waarden en toetst of je huidig leven daarmee overeenkomt.",
+    examples: [
+      { domain: "Beslissingen", icon: "🎯", text: "Bij moeilijke keuzes: 'Welke versie van mijzelf wordt herinnerd door deze keuze?' — de nagedachtenistoets helpt kortetermijn-verleidingen te wegen tegen langetermijn-integriteit." },
+      { domain: "Werk", icon: "💼", text: "Leiders die zich afvragen 'welk soort organisatie laat ik achter?' maken andere beslissingen over cultuur, waarden en de behandeling van mensen dan leiders die alleen aan kwartaalresultaten denken." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "De vraag 'wat wil ik dat mijn kinderen later over mijn ouderschap zeggen?' is een krachtige dagelijkse spiegel — ze herschikt prioriteiten van urgentie naar belang." }
+    ],
+  },
 ];
