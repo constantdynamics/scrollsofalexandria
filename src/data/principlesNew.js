@@ -5774,5 +5774,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Ontwerp de ideale 'priming-omgeving' voor een doel dat je wil bereiken: een productieve werkdag, een creatieve sessie, een moeilijk gesprek. Welke elementen in je omgeving kun je aanpassen om je de juiste richting te primen?",
     aiHelperPrompts: ["Hoe gebruik ik priming bewust voor betere prestaties?", "Hoe herken ik wanneer ik ongewenst geprimd word?", "Welke omgevingsfactoren primen het meest?"]
+  },
+
+  // Batch Q – Ondernemerschap & Innovatie
+  {
+    id: "lean-startup",
+    title: "Lean Startup",
+    difficulty: 2,
+    emoji: "🚀",
+    academicCategory: "Bedrijfskunde",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["startup", "validatie", "mvp", "iteratie"],
+    definition: "De Lean Startup-methode bouwt snel een minimaal werkbaar product (MVP), meet de reactie van echte gebruikers en leert van die data om te beslissen of je doorgaat of van richting verandert.",
+    abstractExample: "In plaats van een jaar aan een perfect product te bouwen, lanceer je in zes weken een eenvoudige versie, kijk je wie het gebruikt en pas je aan op basis van wat je leert.",
+    examples: [
+      { domain: "Technologie", icon: "💻", text: "Een app-idee wordt eerst getest met een simpele landingspagina om te meten of mensen zich aanmelden, vóór een regel code wordt geschreven." },
+      { domain: "Horeca", icon: "🍽️", text: "Een restaurantconcept wordt getest met een pop-up van één weekend voordat je een lang huurcontract tekent." },
+      { domain: "Onderwijs", icon: "📚", text: "Een nieuwe cursus wordt eerst als live workshop gegeven voor vijf studenten om te zien wat werkt voordat het online platform wordt gebouwd." }
+    ],
+    prerequisites: [],
+    unlocks: ["minimum-viable-product", "pivot-persevere"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het primaire doel van een MVP?", options: ["Een perfect product lanceren", "Zo snel mogelijk leren van echte gebruikers", "Investeerders indrukken", "Concurrenten voor zijn"], correct: 1, explanation: "Een MVP is bedoeld om maximaal te leren met minimale inspanning." }
+    ],
+    creativePrompt: "Kies een idee dat je al lang hebt. Beschrijf de absolute minimale versie die je in één week zou kunnen testen. Wat wil je precies leren?",
+    aiHelperPrompts: ["Hoe bepaal ik wat essentieel is voor mijn MVP?", "Wanneer is het tijd om te pivotten versus doorzetten?", "Hoe valideer ik een business-idee zonder code te schrijven?"]
+  },
+  {
+    id: "minimum-viable-product",
+    title: "Minimaal Levensvatbaar Product",
+    difficulty: 2,
+    emoji: "🧪",
+    academicCategory: "Bedrijfskunde",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["mvp", "prototyping", "iteratie", "launch"],
+    definition: "Een MVP is de meest basale versie van een product die genoeg waarde biedt om vroege gebruikers aan te trekken en waardevolle feedback te verzamelen voor verdere ontwikkeling.",
+    abstractExample: "Een MVP is als een schets van een huis: gedetailleerd genoeg om feedback te krijgen over de indeling, maar zonder de dure bouw van muren en daken.",
+    examples: [
+      { domain: "Software", icon: "💻", text: "Dropbox begon met een eenvoudige demovideo om te testen of er vraag was naar cloudopslag, vóór het product technisch bestond." },
+      { domain: "Fashion", icon: "👗", text: "Een kledingmerk test nieuwe stijlen door een kleine oplage van tien stuks te maken en die op markten te verkopen." },
+      { domain: "Dienstverlening", icon: "🤝", text: "Een consultant biedt één specifieke dienst aan via een eenvoudige website voordat een volledig bureau wordt opgericht." }
+    ],
+    prerequisites: ["lean-startup"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk criterium is het meest essentieel voor een MVP?", options: ["Zo goedkoop mogelijk", "Geeft de kern van de waardepropositie weer", "Heeft alle gewenste functies", "Is technisch perfect"], correct: 1, explanation: "Een MVP moet de kern van de waardepropositie aantonen om echte lessen te genereren." }
+    ],
+    creativePrompt: "Voor jouw favoriete product of dienst: welke ene kernfunctie maakt alles waardevol? Hoe zou je alleen díé functie in één dag kunnen bouwen?",
+    aiHelperPrompts: ["Wat is het verschil tussen MVP en prototype?", "Hoe voorkom ik dat mijn MVP te klein wordt?", "Welke metrics zijn belangrijk bij een MVP-test?"]
+  },
+  {
+    id: "pivot-persevere",
+    title: "Pivotten of Doorzetten",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Bedrijfskunde",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["strategie", "beslissing", "richting", "aanpassen"],
+    definition: "Op basis van wat je leert van gebruikers besluit je of je de huidige richting doorzet (persevere) of een fundamentele koerswijziging maakt (pivot) naar een kansrijkere aanpak.",
+    abstractExample: "Een pivot is als een zeiler die de wind verkeerd inschat: je houdt hetzelfde doel (de bestemming), maar kiest een andere route om er toch te komen.",
+    examples: [
+      { domain: "Technologie", icon: "💻", text: "Instagram begon als een locatie-check-in app (Burbn) maar pivotteerde naar foto's delen toen bleek dat gebruikers alleen die functie gebruikten." },
+      { domain: "Gaming", icon: "🎮", text: "Slack begon als een interne communicatietool voor een gamebedrijf dat mislukte, en werd gelanceerd als zelfstandig product." },
+      { domain: "Retail", icon: "🛍️", text: "Een webshop voor hondenvoer stopt daarmee maar start met gepersonaliseerde huisdierabonnementen na feedback van trouwe klanten." }
+    ],
+    prerequisites: ["lean-startup"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is pivotten de juiste keuze?", options: ["Als het moeilijk wordt", "Als data aantoont dat de huidige aanpak niet werkt", "Als investeerders het vragen", "Na één maand altijd"], correct: 1, explanation: "Pivotten is een datagedreven beslissing, niet een emotionele reactie op tegenslagen." }
+    ],
+    creativePrompt: "Denk aan een project dat 'mislukte'. Welke onverwachte inzichten of bijproducten kwamen er uit? Had een pivot geholpen, en zo ja, welke richting had je kunnen inslaan?",
+    aiHelperPrompts: ["Hoe weet ik wanneer ik moet pivotten?", "Wat zijn klassieke pivot-patronen bij startups?", "Hoe communiceer ik een pivot naar investeerders?"]
+  },
+  {
+    id: "design-thinking",
+    title: "Design Thinking",
+    difficulty: 2,
+    emoji: "🎨",
+    academicCategory: "Ontwerpleer",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["creativiteit", "empathie", "prototyping", "gebruiker"],
+    definition: "Design Thinking is een mensgerichte aanpak voor innovatie die empathie voor de gebruiker, creatief brainstormen, prototyping en testen combineert om oplossingen te vinden die écht werken.",
+    abstractExample: "Design Thinking is als een detective die eerst de misdaadscène grondig onderzoekt (empathie), dan theorieën bedenkt (ideeën), een vermoeden test (prototype) en dan aanpasst op basis van bewijs.",
+    examples: [
+      { domain: "Gezondheidszorg", icon: "🏥", text: "Ziekenhuizen ontwerpen patiëntroutes door eerst een dag als patiënt mee te lopen en de emotionele reis in kaart te brengen." },
+      { domain: "Onderwijs", icon: "📚", text: "Scholen herontwerpen de kantine door leerlingen te interviewen over wat ze écht vervelend vinden aan de lunchpauze." },
+      { domain: "Productontwerp", icon: "🛠️", text: "IDEO ontwierp betere ziekenhuisbedsystemen door nachtdiensten van verpleegkundigen bij te wonen." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de eerste stap in Design Thinking?", options: ["Prototypen", "Brainstormen", "Empathie opbouwen met de gebruiker", "Testen"], correct: 2, explanation: "Empathie staat centraal: je moet de gebruiker echt begrijpen voordat je oplossingen bedenkt." }
+    ],
+    creativePrompt: "Kies een alledaags probleem (wachten bij de kassa, vergeten sleutels). Doe 30 minuten 'veldonderzoek' door mensen te observeren. Wat zie je dat je daarvoor niet zag?",
+    aiHelperPrompts: ["Hoe voer ik een empathie-interview?", "Wat zijn goede prototyping-technieken?", "Hoe combineer ik Design Thinking met Agile?"]
+  },
+  {
+    id: "opportunity-recognition",
+    title: "Kansen Herkennen",
+    difficulty: 1,
+    emoji: "🔍",
+    academicCategory: "Bedrijfskunde",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["kansen", "observatie", "markt", "creativiteit"],
+    definition: "Kansen herkennen is het vermogen om problemen, frustraties of inefficiënties in de wereld te zien als mogelijke basis voor een waardevol product, dienst of verbetering.",
+    abstractExample: "Kansen herkennen is als een plumber die niet alleen een lekkende kraan ziet, maar ook beseft dat er een markt is voor preventief leidingonderhoud.",
+    examples: [
+      { domain: "Transport", icon: "🚕", text: "Uber ontstond doordat de oprichters op een koude avond geen taxi konden vinden in Parijs en zich afvroegen: 'Wat als je via een app direct een rit kon bestellen?'" },
+      { domain: "Voeding", icon: "🥗", text: "HelloFresh herkende dat mensen gezond willen koken maar te druk zijn om te plannen en boodschappen te doen." },
+      { domain: "Werkplek", icon: "🏢", text: "WeWork zag dat freelancers nood hadden aan professionele werkruimte zonder de hoge kosten van een kantoorhuur." }
+    ],
+    prerequisites: [],
+    unlocks: ["lean-startup"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de beste bron voor het herkennen van ondernemerskansen?", options: ["Businessplanwedstrijden", "Dagelijkse frustraties en problemen", "Wat investeerders leuk vinden", "Academische trends"], correct: 1, explanation: "De meeste succesvolle bedrijven lossen een probleem op dat de oprichter zelf ervaarde." }
+    ],
+    creativePrompt: "Houd één dag een 'frustratielijst' bij: noteer elk moment dat iets je ergert of niet werkt zoals je wilt. Aan het eind van de dag: welke frustratieoplossing zou het meest waardevol zijn?",
+    aiHelperPrompts: ["Hoe onderscheid ik een echte kans van een vals-positief?", "Welke vragen helpen bij het evalueren van een kans?", "Hoe vind ik onontdekte marktkansen?"]
+  },
+  {
+    id: "value-proposition",
+    title: "Waardepropositie",
+    difficulty: 2,
+    emoji: "💎",
+    academicCategory: "Bedrijfskunde",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["waarde", "klant", "differentiatie", "propositie"],
+    definition: "Een waardepropositie is een heldere uitleg van hoe jouw product of dienst een specifiek klantprobleem oplost, welke voordelen het biedt en waarom de klant jou zou kiezen boven alternatieven.",
+    abstractExample: "Een waardepropositie is als een eerste date: je legt in één zin uit wie je bent, wat je te bieden hebt en waarom dit de moeite waard is om verder te verkennen.",
+    examples: [
+      { domain: "Technologie", icon: "💻", text: "Zoom: 'Videovergaderen dat gewoon werkt' — eenvoudig, betrouwbaar, geen technische rompslomp." },
+      { domain: "Financiën", icon: "💳", text: "Revolut: 'Bankieren voor de geglobaliseerde wereld' — geen wisselkosten, directe internationale overschrijvingen." },
+      { domain: "Gezondheidszorg", icon: "🏥", text: "Een huisartsenpraktijk met avondopenstelling: 'Medische zorg die past bij jouw agenda, niet andersom.'" }
+    ],
+    prerequisites: ["opportunity-recognition"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk element is NIET deel van een sterke waardepropositie?", options: ["Het probleem dat je oplost", "De voordelen voor de klant", "Jouw oprichtingsverhaal", "Waarom jij beter bent dan alternatieven"], correct: 2, explanation: "Je oprichtingsverhaal is interessant maar maakt geen deel uit van de kernwaardepropositie." }
+    ],
+    creativePrompt: "Schrijf de waardepropositie voor jezelf als professional in één zin: 'Ik help [doelgroep] om [probleem] op te lossen door [unieke aanpak], waardoor zij [resultaat].'",
+    aiHelperPrompts: ["Hoe test ik of mijn waardepropositie resoneert?", "Wat is het verschil tussen waardepropositie en missie?", "Hoe maak ik mijn waardepropositie concreter?"]
+  },
+  {
+    id: "network-effects",
+    title: "Netwerkeffecten",
+    difficulty: 2,
+    emoji: "🕸️",
+    academicCategory: "Economie",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["netwerk", "schaalvoordeel", "platform", "groei"],
+    definition: "Netwerkeffecten treden op wanneer een product of dienst waardevoller wordt naarmate meer mensen het gebruiken — elk nieuw lid vergroot de waarde voor alle bestaande leden.",
+    abstractExample: "Een telefoon is nutteloos als jij de enige bent die er een heeft; elke nieuwe gebruiker maakt het netwerk voor iedereen waardevoller.",
+    examples: [
+      { domain: "Technologie", icon: "💻", text: "WhatsApp: hoe meer vrienden er zitten, hoe groter de reden voor anderen om ook te stappen." },
+      { domain: "Marktplaatsen", icon: "🛍️", text: "Airbnb: meer hosts trekken meer reizigers aan, wat weer meer hosts aantrekt — een zichzelf versterkende cyclus." },
+      { domain: "Betalen", icon: "💳", text: "Creditcards zijn waardevoller als meer winkels ze accepteren en meer klanten ze gebruiken." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat beschrijft het netwerkeffect het best?", options: ["Hoe groot het netwerk van investeerders is", "Hoe waarde toeneemt met het aantal gebruikers", "Hoe snel een product groeit", "Hoeveel servers nodig zijn"], correct: 1, explanation: "Netwerkeffecten beschrijven de relatie tussen het aantal gebruikers en de waarde per gebruiker." }
+    ],
+    creativePrompt: "Welke producten gebruik jij dagelijks die sterke netwerkeffecten hebben? Hoe zou jouw leven eruitzien als je de enige gebruiker was? Schrijf de gedachtenexperiment uit.",
+    aiHelperPrompts: ["Hoe bouw ik netwerkeffecten in mijn product?", "Wat is het 'cold start'-probleem bij netwerkeffecten?", "Hoe beschermen netwerkeffecten tegen concurrentie?"]
+  },
+  {
+    id: "business-model-canvas",
+    title: "Business Model Canvas",
+    difficulty: 2,
+    emoji: "📊",
+    academicCategory: "Bedrijfskunde",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["businessmodel", "strategie", "canvas", "planning"],
+    definition: "Het Business Model Canvas is een strategisch hulpmiddel dat een businessmodel visualiseert in negen bouwblokken: klantsegmenten, waardepropositie, kanalen, klantrelaties, inkomstenstromen, sleutelbronnen, sleutelactiviteiten, sleutelpartners en kostenstructuur.",
+    abstractExample: "Een Business Model Canvas is als een röntgenfoto van een bedrijf: het toont alle interne structuren tegelijkertijd op één pagina.",
+    examples: [
+      { domain: "Media", icon: "📺", text: "Netflix's canvas toont twee klantsegmenten (kijkers en contentmakers), meerdere inkomstenstromen en technologie als sleutelbron." },
+      { domain: "Retail", icon: "🛒", text: "IKEA's canvas benadrukt zelfbouw als waardepropositie, gecombineerd met enorme inkoopkracht als sleutelbron." },
+      { domain: "Onderwijs", icon: "📚", text: "Een online cursusplatform tekent apart de kanalen voor studenten (social media) en docenten (partnerschappen met universiteiten)." }
+    ],
+    prerequisites: ["value-proposition"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke van de negen bouwblokken staat centraal in het Business Model Canvas?", options: ["Kostenstructuur", "Waardepropositie", "Klantsegmenten", "Inkomstenstromen"], correct: 1, explanation: "De waardepropositie is het hart: alle andere bouwblokken organiseren zich er omheen." }
+    ],
+    creativePrompt: "Teken het Business Model Canvas voor een hypothetisch bedrijf dat jouw grootste dagelijkse ergernis oplost. Vul alle negen vakjes in.",
+    aiHelperPrompts: ["Hoe gebruik ik het Business Model Canvas voor een bestaand bedrijf?", "Wat is het verschil tussen Business Model Canvas en businessplan?", "Welke bouwblokken veranderen het meest bij een pivot?"]
+  },
+  {
+    id: "bootstrapping",
+    title: "Bootstrappen",
+    difficulty: 1,
+    emoji: "👢",
+    academicCategory: "Bedrijfskunde",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["financiering", "autonomie", "groei", "zelfvoorzienend"],
+    definition: "Bootstrappen betekent een bedrijf starten en laten groeien met eigen middelen en inkomsten uit klanten, zonder externe investeerders of leningen — wat leidt tot maximale controle maar beperkt de groeisnelheid.",
+    abstractExample: "Bootstrappen is als een boom kweken van een eikel die je zelf plant: het duurt langer dan een kant-en-klare boom kopen, maar de boom is helemaal van jou.",
+    examples: [
+      { domain: "Technologie", icon: "💻", text: "Basecamp (nu Hey) groeide jarenlang zonder externe investeerders en is nog steeds volledig in eigendom van de oprichters." },
+      { domain: "Dienstverlening", icon: "🤝", text: "Een freelance designer bouwt een agency op door winst te herinvesteren in een eerste werknemer, dan een tweede." },
+      { domain: "Retail", icon: "🛍️", text: "Een handgemaakt sieradenmerk verkoopt op Etsy, gebruikt die inkomsten om materialen te kopen en groeit maand voor maand." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste voordeel van bootstrappen?", options: ["Snelle groei", "Volledige controle en eigenaarschap", "Toegang tot expertise van investeerders", "Minder risico bij mislukking"], correct: 1, explanation: "Bootstrappers behouden 100% eigendom en hoeven geen verantwoording af te leggen aan externe partijen." }
+    ],
+    creativePrompt: "Stel je voor dat je een bedrijf start met €500 en geen externe financiering. Welke stappen zou je de eerste drie maanden zetten? Beschrijf hoe je de eerste euro's verdient.",
+    aiHelperPrompts: ["Hoe financier ik groei zonder investeerders?", "Wanneer is externe financiering toch verstandig?", "Wat zijn de valkuilen van bootstrappen?"]
+  },
+  {
+    id: "disruptive-innovation",
+    title: "Disruptieve Innovatie",
+    difficulty: 3,
+    emoji: "💥",
+    academicCategory: "Innovatiemanagement",
+    skillCategory: "Ondernemerschap & Innovatie",
+    tags: ["disruptie", "innovatie", "markt", "strategie"],
+    definition: "Disruptieve innovatie beschrijft hoe kleinere bedrijven met eenvoudigere, goedkopere producten eerst de onderkant van de markt bedienen en geleidelijk de marktleiders verdringen die te veel focussen op hun beste klanten.",
+    abstractExample: "Disruptieve innovatie is als water dat langzaam een rots uitholst: aanvankelijk lijkt het verwaarloosbaar, maar uiteindelijk verandert het de hele landschapsvorm.",
+    examples: [
+      { domain: "Media", icon: "📺", text: "Netflix begon met dvd-verhuur per post (goedkoper dan Blockbuster) en verdrong uiteindelijk de gehele videotheeksector." },
+      { domain: "Fotografie", icon: "📷", text: "Digitale camera's begonnen als lagekwaliteitsalternatieven voor film, maar verbeterden snel en maakten analoge fotografie marginaal." },
+      { domain: "Transport", icon: "🚗", text: "Uber en Lyft begonnen in niches die taxi's negeerden (luchthaventransport laat op de nacht) en veroverden de hele markt." }
+    ],
+    prerequisites: ["opportunity-recognition"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe beginnen de meeste disruptieve innovaties?", options: ["Door de beste klanten te bedienen", "Door de marktleider direct aan te vallen", "Door eenvoudige producten aan verwaarloosde marktsegmenten te bieden", "Door hogere kwaliteit tegen hogere prijzen"], correct: 2, explanation: "Disruptieve innovaties beginnen onderaan de markt of in niches die gevestigde spelers negeren." }
+    ],
+    creativePrompt: "Welke sector zou jij graag 'verstoren'? Beschrijf welk marktsegment nu wordt verwaarloosd en hoe een eenvoudiger, goedkoper alternatief eruit zou zien.",
+    aiHelperPrompts: ["Hoe onderscheid ik disruptieve van gewone innovatie?", "Hoe bescherm ik mijn bedrijf tegen disruptie?", "Welke sectoren zijn het meest kwetsbaar voor disruptie?"]
   }
 ];
