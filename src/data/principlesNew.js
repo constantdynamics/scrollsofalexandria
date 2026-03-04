@@ -4348,5 +4348,212 @@ export const principlesNew = [
     ],
     creativePrompt: "Kies één dagelijkse activiteit die je normaal 'op de automatische piloot' doet. Doe het morgen volledig bewust — geef er al je zintuigen en aandacht aan. Wat merk je dat je anders normaal mist?",
     aiHelperPrompts: ["Hoe train ik focus op het huidige moment in een druk leven?", "Wat doe ik als mijn geest steeds afdwaalt naar zorgen?", "Hoe verschilt focus op het nu van vermijding van de toekomst?"]
+  },
+  {
+    id: "categorical-imperative",
+    title: "Categorische Imperatief",
+    difficulty: 3,
+    emoji: "⚖️",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["ethiek", "Kant", "moraal", "universaliteit"],
+    definition: "De categorische imperatief (Immanuel Kant) is een moreel principe: 'Handel alleen op grond van die maxime waarvan je tegelijkertijd kunt willen dat ze een algemene wet wordt.' Anders gezegd: doe alleen wat je zou willen dat iedereen doet in dezelfde situatie.",
+    abstractExample: "Voordat je liegt, vraag: 'Wat als iedereen loog wanneer het hen uitkwam?' De samenleving zou instorten — vertrouwen is onmogelijk zonder eerlijkheid. Dus: liegen is moreel verkeerd, ongeacht de gevolgen voor jou.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Je overweegt je prestaties op je cv op te blazen. Kategorische imperatief: 'Wat als iedereen dit deed?' CV's zouden zinloos worden. Conclusie: het mag niet, ongeacht hoe klein de leugen lijkt." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Afval dumpen in de natuur: 'Wat als iedereen dit deed?' Natuur raakt vernield. De maxime kan niet universeel worden gewild — dus het is verkeerd." },
+      { domain: "Relaties", icon: "❤️", text: "Beloftes breken als het uitkomt: 'Wat als iedereen beloftes brak wanneer het handig was?' Belofte als instituut verliest alle betekenis. Kant: beloftes zijn heilig." }
+    ],
+    prerequisites: [],
+    unlocks: ["moral-realism"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het centrale criterium in Kants categorische imperatief?", options: ["Het goede gevoel dat een handeling geeft", "Of de maxime van de handeling universaliseerbaar is zonder zichzelf te ondermijnen", "De gevolgen van de handeling voor de meeste mensen", "De intentie van de persoon die handelt"], correctIndex: 1, explanation: "Kant wilde een objectief moreel principe dat onafhankelijk van gevoel of gevolg werkte. De universaliseerbaarheidstest vraagt: als iedereen zo handelde, zou de handeling zichzelf logisch tegenspreken of de samenleving vernietigen? Dan is het moreel verboden." }
+    ],
+    creativePrompt: "Kies een morele grenszone die je zelf ervaart (kleine leugentjes, belasting, regels omzeilen). Pas Kants test toe: wat als iedereen dit deed? Hoe voelt die gedachte?",
+    aiHelperPrompts: ["Hoe verschilt Kant van consequentialism?", "Is de categorische imperatief realistisch in het echte leven?", "Hoe ga ik om met Kants principes als ze leiden tot ondraaglijk resultaat?"]
+  },
+  {
+    id: "utilitarianism",
+    title: "Utilitarisme",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["ethiek", "gevolgen", "welzijn", "Bentham"],
+    definition: "Utilitarisme (Bentham, Mill) is de ethische theorie dat een handeling moreel juist is als ze het totale geluk (of welzijn) van alle betrokkenen maximaliseert. Het is een consequentialistische ethiek: de morele waarde van een handeling hangt uitsluitend af van haar gevolgen.",
+    abstractExample: "Stel je vijf mensen op een treinspoor en één op een zijspoor. Je kunt de trein omzetten — één persoon sterft, vijf worden gered. Utilitarisme: zet om (meer geluk, minder leed). Kant: nooit actief iemand doden (ook al redt het vijf). Dit is het trolleyprobleem.",
+    examples: [
+      { domain: "Beleid", icon: "🏛️", text: "Vaccinatiebeleid is utilitaristisch: beperkte individuele keuzevrijheid voor maximale collectieve gezondheidswinst. De meeste gezondheidsmaatregelen denken in termen van totale welzijnsmaximalisatie." },
+      { domain: "Werk", icon: "💼", text: "Een moeilijk besluit om één medewerker te ontslaan om tien banen te redden — utilitaristisch redeneren. Maar het negeert de impact op die ene persoon specifiek." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Het verdelen van schaarse middelen (wie krijgt het laatste orgaan? wie gaat er voor in de rij?) is bijna altijd impliciet utilitaristisch van aard." }
+    ],
+    prerequisites: ["categorical-imperative"],
+    unlocks: ["moral-realism"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de grootste kritiek op het utilitarisme?", options: ["Het is te ingewikkeld om te berekenen", "Het kan individuen opofferen voor het grotere goed, wat fundamentele rechten schendt", "Het werkt alleen in theorie", "Het negeert gevolgen volledig"], correctIndex: 1, explanation: "Utilitarisme kan legitimeren dat minderheden worden opgeofferd als de meerderheid er genoeg van profiteert. Dit botst met intuïties over onvervreemdbare rechten — het verkrachten van één persoon kan nooit 'goed' zijn, ook niet als tien anderen er blij van worden." }
+    ],
+    creativePrompt: "Denk aan een moeilijke morele keuze in je leven. Redeneer er eerst utilitaristisch over (wat maximaliseert het totale welzijn?), dan deontologisch (Kant: wat is je plicht, ongeacht gevolgen?). Welk antwoord voelt juister en waarom?",
+    aiHelperPrompts: ["Hoe verschilt Mill's utilitarisme van Bentham's?", "Wanneer leidt utilitarisme tot onacceptabele conclusies?", "Hoe gebruik ik utilitaristisch denken in dagelijkse beslissingen?"]
+  },
+  {
+    id: "moral-realism",
+    title: "Moreel Realisme vs. Relativisme",
+    difficulty: 3,
+    emoji: "🌐",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["ethiek", "objectiviteit", "relativisme", "moraal"],
+    definition: "Moreel realisme is de opvatting dat morele feiten objectief bestaan, onafhankelijk van wat mensen denken of voelen. Moreel relativisme stelt dat morele oordelen enkel gelden binnen een cultuur of persoon. Het debat hierover raakt aan fundamentele vragen over de basis van ethiek.",
+    abstractExample: "Is slavernij altijd moreel fout, of was het 'goed' in culturen die het normaal vonden? Realisten zeggen: fout, altijd en overal. Relativisten zeggen: morele oordelen gelden alleen binnen een cultureel kader. Beide standpunten hebben radicale implicaties.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Mensenrechten zijn gebaseerd op moreel realisme: ze gelden universeel, ongeacht culturele context. Relativisme zou impliceren dat mensenrechtenschendingen 'goed' kunnen zijn in culturen die ze accepteren." },
+      { domain: "Persoonlijk", icon: "💙", text: "Zeggen 'Wie ben ik om te oordelen over een andere cultuur?' is een relativistische houding. Zeggen 'Marteling van kinderen is altijd verkeerd' is een realistische uitspraak." },
+      { domain: "Filosofie", icon: "🦉", text: "Kan de wetenschap morele feiten ontdekken? Sam Harris denkt van wel. Veel filosofen zijn sceptisch. Dit is het hart van het realisme-relativisme debat." }
+    ],
+    prerequisites: ["utilitarianism"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke uitdaging stelt moreel relativisme voor aan het concept mensenrechten?", options: ["Relativisme versterkt mensenrechten", "Als morele oordelen cultuurgebonden zijn, kunnen mensenrechten niet universeel worden geclaimd", "Relativisme is neutraal over mensenrechten", "Mensenrechten zijn niet moreel van aard"], correctIndex: 1, explanation: "Als morele oordelen alleen gelden binnen culturele kaders, is er geen basis om culturen te veroordelen die andere waarden hanteren. Dit ondermijnt universele mensenrechten fundamenteel — een van de sterkste argumenten tegen radicaal moreel relativisme." }
+    ],
+    creativePrompt: "Kies een culturele praktijk ergens ter wereld die je moreel verkeerd vindt. Is dat oordeel absoluut (moreel realistisch) of enkel vanuit jouw cultureel perspectief (relativistisch)? Hoe verdedig je je standpunt?",
+    aiHelperPrompts: ["Hoe vermijd ik moreel relativisme dat leidt tot passiviteit bij onrecht?", "Hoe vermijd ik moreel arrogantie als ik universele oordelen vel?", "Bestaat er een middenweg tussen relativisme en dogmatisch realisme?"]
+  },
+  {
+    id: "trolley-problem",
+    title: "Het Trolleyprobleem",
+    difficulty: 2,
+    emoji: "🚋",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["ethiek", "dilemma", "intuïtie", "moreel redeneren"],
+    definition: "Het trolleyprobleem (Philippa Foot, Judith Jarvis Thomson) is een gedankenexperiment dat morele intuïties blootlegt: mag je actief één persoon doden om vijf te redden? De meeste mensen zeggen 'ja' bij een hendel, 'nee' bij het duwen van een persoon — terwijl het rekenkundig identiek is.",
+    abstractExample: "Vijf mensen zijn vastgebonden aan een spoor. Een trein komt eraan. Je kunt: (A) een hendel overhalen die de trein omlegt — één persoon sterft; (B) niets doen — vijf sterven. De meeste mensen kiezen A. Maar: mag je een dikke man van een brug duwen om met zijn lichaam de trein te stoppen en vijf te redden? De meeste mensen zeggen nee — terwijl de berekening identiek is.",
+    examples: [
+      { domain: "Geneeskunde", icon: "🏥", text: "Orgaantoewijzing: één patiënt weigeren om vijf anderen te redden is moreel geaccepteerd. Een patiënt aktief doden voor zijn organen is dat niet — hoewel de uitkomst hetzelfde kan zijn." },
+      { domain: "Oorlog", icon: "⚔️", text: "Collateral damage (burgerslachtoffers om militaire doelen te bereiken) is een reëel trolleydilemma dat legerethici dagelijks confronteert." },
+      { domain: "Tech", icon: "💻", text: "Zelfrijdende auto's moeten geprogrammeerd worden om te 'kiezen' bij onvermijdelijke botsingen. Hoe? Dit is het trolleyprobleem als softwareontwerp." }
+    ],
+    prerequisites: ["utilitarianism", "categorical-imperative"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom reageren de meeste mensen anders op de hendel- versus de brug-versie, terwijl de uitkomst identiek is?", options: ["Mensen zijn inconsistent en irrationeel", "De psychologische afstand en het directe handelen (aanraken) activeren andere morele intuïties dan indirect handelen", "De uitkomsten zijn niet werkelijk identiek", "De meeste mensen zijn utilitaristisch"], correctIndex: 1, explanation: "Onderzoek toont dat persoonlijk fysiek contact (iemand duwen) sterkere deontologische intuïties activeert dan afstandelijk handelen (hendel). Dit onthult dat morele oordelen niet puur rationeel zijn maar deels worden bepaald door emotionele en evolutionaire systemen." }
+    ],
+    creativePrompt: "Welke versie van het trolleyprobleem vind jij moeilijker en waarom? Wat zegt de inconsistentie (als die er is) tussen je antwoorden over hoe jij moreel redeneert?",
+    aiHelperPrompts: ["Wat leert het trolleyprobleem ons over hoe we ethisch redeneren?", "Hoe gebruiken filosofen gedankenexperimenten om ethiek te onderzoeken?", "Zijn er echte toepassingen van het trolleydilemma in beleidsmaker?"]
+  },
+  {
+    id: "virtue-ethics",
+    title: "Deugdethiek",
+    difficulty: 2,
+    emoji: "🦁",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["Aristoteles", "deugd", "karakter", "ethiek"],
+    definition: "Deugdethiek (Aristoteles) vraagt niet 'Wat moet ik doen?' maar 'Wat voor persoon moet ik zijn?' Het gaat om het cultiveren van karaktereigenschappen (deugden) zoals moed, eerlijkheid, rechtvaardigheid en gematigdheid — niet om regels of gevolgen.",
+    abstractExample: "Een deugenethicus vraagt niet 'Is liegen toegestaan?' maar 'Zou een eerlijk persoon in mijn situatie liegen?' Karakter is het kompas, niet regels of berekeningen. Je wordt wat je herhaaldelijk doet.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Integriteit op de werkvloer is deugdethiek in actie: niet 'Wat mag ik er mee wegkomen?' maar 'Hoe zou iemand met integriteit hier handelen?' Het gaat om wie je bent, niet wat je kunt." },
+      { domain: "Relaties", icon: "❤️", text: "Een goede vriend zijn als deugdethische praktijk: niet wat vriendschap verplicht, maar welke eigenschappen een goede vriend heeft, en die actief cultiveren." },
+      { domain: "Opvoeding", icon: "👨‍👩‍👧", text: "Kinderen opvoeden met deugdethiek: niet regels geven maar karaktereigenschappen voorleven — moed, eerlijkheid, vriendelijkheid — zodat het kind een moreel kompas ontwikkelt." }
+    ],
+    prerequisites: ["categorical-imperative"],
+    unlocks: ["eudaimonia"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe verschilt deugdethiek van Kants plichtethiek?", options: ["Deugdethiek geeft dezelfde antwoorden als Kant", "Deugdethiek richt zich op karakter en wie je bent; Kant richt zich op plicht en wat je doet", "Kant heeft ook deugdethiek geschreven", "Ze zijn hetzelfde maar voor verschillende culturen"], correctIndex: 1, explanation: "Kant vraagt: 'Wat is je plicht?' (deontologie). Deugdethiek vraagt: 'Wat voor persoon ben je?' Beide kijken naar het handelen, maar het referentiepunt verschilt: externe wet vs. intern karakter." }
+    ],
+    creativePrompt: "Welke drie deugden wil jij het sterkst cultiveren in de komende vijf jaar? Welk concrete dagelijks gedrag zou elk van die deugden uitdrukken? Begin met één.",
+    aiHelperPrompts: ["Hoe cultiveer ik deugden als ze niet van nature bij me komen?", "Welke deugden zijn het meest waardevol in de moderne wereld?", "Hoe verschilt deugdethiek van karakterontwikkeling in de psychologie?"]
+  },
+  {
+    id: "social-contract",
+    title: "Sociaal Contract",
+    difficulty: 2,
+    emoji: "📜",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["politiek", "Rousseau", "Locke", "rechtvaardigheid"],
+    definition: "Het sociaal contract (Hobbes, Locke, Rousseau) is de filosofische theorie dat politieke autoriteit gebaseerd is op een (impliciete) overeenkomst tussen individuen: zij geven bepaalde vrijheden op in ruil voor bescherming, orde en gezamenlijk voordeel. Het legt de basis voor modern democratisch denken.",
+    abstractExample: "Stel je een wereld voor zonder regels — iedereen voor zichzelf. Hobbes noemde dit 'een oorlog van allen tegen allen'. Mensen sluiten dan vrijwillig een contract: we creëren samen regels en een overheid, en geven daarvoor deel van onze ongebreidelde vrijheid op.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Belasting betalen is een vorm van het sociaal contract: je staat deel van je inkomen af in ruil voor wegen, onderwijs, veiligheid — collectieve goederen die niemand alleen kan organiseren." },
+      { domain: "Werk", icon: "💼", text: "Een arbeidscontract is een micro-sociaal contract: jij geeft tijd en inspanning; de werkgever geeft salaris en zekerheid. Beide geven iets op voor wederzijds voordeel." },
+      { domain: "Gemeenschap", icon: "🏘️", text: "Buurtregels, HOA-overeenkomsten, Wikipedia-richtlijnen — allemaal micro-versies van het sociaal contract: individuen stemmen in met regels voor collectief voordeel." }
+    ],
+    prerequisites: [],
+    unlocks: ["moral-realism"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het centrale dilemma in het sociaal contractdenken?", options: ["Hoe groot de overheid moet zijn", "Hoeveel vrijheid mensen bereid zijn op te geven voor veiligheid en orde, en wie dat contract bepaalt", "Of belasting ethisch is", "Hoe democratie werkt"], correctIndex: 1, explanation: "Het fundamentele dilemma is de spanning tussen individuele vrijheid en collectieve orde. Hobbes wil meer orde (sterke staat); Locke en Rousseau meer vrijheid. Dit debat is de basis van moderne politieke filosofie." }
+    ],
+    creativePrompt: "Welke regels in jouw samenleving vind jij een eerlijke ruil (vrijheid voor voordeel) en welke niet? Wat maakt een social contract in jouw ogen legitiem of illegitiem?",
+    aiHelperPrompts: ["Hoe verschilt Hobbes van Locke in hun visie op het sociaal contract?", "Is het sociaal contract een realistische beschrijving of een nuttige fictie?", "Hoe is Rawls' sluier van onwetendheid een moderne versie van het sociaal contract?"]
+  },
+  {
+    id: "existentialism",
+    title: "Existentialisme",
+    difficulty: 3,
+    emoji: "🌑",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["existentialisme", "vrijheid", "verantwoordelijkheid", "Sartre"],
+    definition: "Existentialisme (Sartre, Camus, de Beauvoir) is de filosofische stroming die stelt dat mensen geen vooraf bepaald wezen of doel hebben ('existentie gaat aan essence vooraf'). We zijn volledig vrij en volledig verantwoordelijk voor wie we worden — en dat vrijheid is zowel bevrijdend als angstaanjagend.",
+    abstractExample: "Een stoel heeft een doel dat de maker bepaalde. Mensen hebben geen vooraf bepaald doel — we zijn als een blanco canvas. Dit is radicale vrijheid: jij bepaalt de betekenis van je leven. En die vrijheid brengt ook radicale verantwoordelijkheid.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💙", text: "Sartre's concept 'bad faith' (mauvaise foi): jezelf voordoen alsof je geen keuze hebt ('Ik ben nou eenmaal zo', 'Ik had geen andere keus') is zelfbedrog. Altijd is er een keuze, ook als die pijnlijk is." },
+      { domain: "Werk", icon: "💼", text: "Zeggen 'Mijn werk is mijn identiteit' is existentialistische bad faith: je reduceert jezelf tot een rol. Sartre: je bent altijd meer dan de functies die je vervult." },
+      { domain: "Maatschappij", icon: "🏛️", text: "Camus' absurdisme: het leven heeft geen inherente betekenis, maar de rebel — die betekenis creëert ondanks de absurditeit — is vrijer dan wie zich neerlegt bij passiviteit of valse zekerheden." }
+    ],
+    prerequisites: ["examined-life"],
+    unlocks: ["amor-fati"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat bedoelt Sartre met 'existentie gaat aan essence vooraf'?", options: ["We bestaan voor een essentieel doel", "Mensen hebben geen vooraf bepaalde aard — we bepalen onszelf door onze keuzes en daden", "Essentie is belangrijker dan bestaan", "Filosofie gaat voor praktijk"], correctIndex: 1, explanation: "In tegenstelling tot religieuze of essentialistische visies (mensen hebben een door God of natuur bepaald doel), stelt Sartre dat mensen eerst bestaan, dan zichzelf definiëren door hun keuzes. Dit maakt ons radicaal vrij én radicaal verantwoordelijk." }
+    ],
+    creativePrompt: "In welk deel van je leven handelt je vanuit 'bad faith' — alsof je geen keuze hebt, terwijl je die wel hebt? Wat zou je kiezen als je de volle verantwoordelijkheid aannam?",
+    aiHelperPrompts: ["Hoe ga ik om met de angst die radicale vrijheid met zich meebrengt?", "Wat is het verschil tussen existentialisme en nihilisme?", "Hoe past Camus' absurdisme bij existentialisme?"]
+  },
+  {
+    id: "epistemic-humility",
+    title: "Epistemische Bescheidenheid",
+    difficulty: 2,
+    emoji: "🙇",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["kennis", "onzekerheid", "epistemologie", "bescheidenheid"],
+    definition: "Epistemische bescheidenheid is de intellectuele houding van erkennen dat je kennis en overtuigingen onvolledig, feilbaar en beïnvloed zijn door je perspectief en ervaring. Het is de bereidheid te twijfelen, te updaten en andermans perspectieven serieus te nemen — zonder relativisme.",
+    abstractExample: "Het verschil tussen 'Ik weet het' en 'Ik denk het met hoge zekerheid' is epistemische bescheidenheid. De eerste sluit verdere informatie uit; de tweede houdt ruimte voor correctie. Een groot wetenschapper vraagt altijd: 'Hoe kan ik dit falsifiëren?'",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een manager die zegt 'Ik kan het mis hebben — vertel me waarom ik fout zit' geeft epistemische bescheidenheid blijk en creëert een cultuur van eerlijkheid en leren." },
+      { domain: "Politiek", icon: "🏛️", text: "Politici die toegeven 'We hadden het mis' over beleid (ipv spin) tonen epistemische bescheidenheid — zeldzaam maar effectief voor langetermijnvertrouwen." },
+      { domain: "Persoonlijk", icon: "💙", text: "Je overtuigingen bijstellen op basis van nieuwe informatie — in plaats van nieuwe info te filteren om bestaande overtuigingen te bevestigen — is epistemische bescheidenheid in de praktijk." }
+    ],
+    prerequisites: [],
+    unlocks: ["moral-realism"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt epistemische bescheidenheid van relativisme?", options: ["Ze zijn hetzelfde", "Bescheidenheid erkent dat kennis feilbaar is; relativisme ontkent dat sommige overtuigingen beter zijn dan andere", "Relativisme is bescheidener", "Bescheidenheid heeft geen positief kennisbegrip"], correctIndex: 1, explanation: "Epistemische bescheidenheid zegt: 'Mijn overtuigingen kunnen fout zijn, ik update ze op basis van bewijs.' Relativisme zegt: 'Alle overtuigingen zijn even geldig.' De eerste is een deugd; de tweede leidt tot intellectuele stasis." }
+    ],
+    creativePrompt: "Kies drie overtuigingen die je heel zeker houdt. Voor elke overtuiging: welk bewijs zou je doen twijfelen of je mening doen veranderen? Als je geen antwoord kunt geven, is dat een rode vlag.",
+    aiHelperPrompts: ["Hoe oefen ik epistemische bescheidenheid zonder alles te betwijfelen?", "Hoe onderscheid ik overtuigingen waar ik terecht zeker over ben van overmoedigheid?", "Hoe ga ik om met mensen die geen epistemische bescheidenheid tonen?"]
+  },
+  {
+    id: "golden-rule",
+    title: "De Gulden Regel",
+    difficulty: 1,
+    emoji: "🌿",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Zingeving",
+    tags: ["empathie", "ethiek", "universeel", "religie"],
+    definition: "De Gulden Regel ('Behandel anderen zoals je zelf behandeld wil worden') is het meest universele ethische principe — aanwezig in vrijwel alle grote religies en filosofieën. Het is de basisvorm van perspectiefname als morele handlingsrichtlijn.",
+    abstractExample: "Confucius, Jezus, Hillel, Mohammed — allemaal formuleerden ze versies van hetzelfde principe. Dit universalisme suggereert dat de Gulden Regel een diepgeworteld menselijk moreel inzicht uitdrukt dat cultuuroverstijgend is.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een manager die overweegt een medewerker onverwacht zijn contract te beëindigen, vraagt zichzelf: 'Hoe zou ik het willen dat dit werd gedaan als het mij overkwam?' Dat beïnvloedt het proces." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Bij elke kritische reactie op social media: 'Zou ik willen dat iemand dit over mij schrijft?' Zo simpel — en zo zelden toegepast." },
+      { domain: "Zaken", icon: "💰", text: "Een leverancier die aan klanten levert zoals hij zelf als klant behandeld wil worden — eerlijk, transparant, tijdig — bouwt duurzamere relaties dan een kortetermijnoptimizer." }
+    ],
+    prerequisites: [],
+    unlocks: ["categorical-imperative", "virtue-ethics"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de beperking van de Gulden Regel?", options: ["Ze is te simpel", "Ze gaat ervan uit dat anderen dezelfde wensen en behoeften hebben als jij", "Ze is te moeilijk toe te passen", "Ze is niet universeel"], correctIndex: 1, explanation: "De Platina Regel verbetert de Gulden Regel: 'Behandel anderen zoals zíj behandeld willen worden.' Mensen verschillen — wat jij prettig vindt (veel lof in het openbaar) kan voor een ander (introverte voorkeur voor private feedback) onaangenaam zijn." }
+    ],
+    creativePrompt: "Denk aan drie recente interacties met anderen. Hoe zou jij willen dat je zelf in die situaties was behandeld? Verschilt dat van hoe je hebt gehandeld? Wat leer je hieruit?",
+    aiHelperPrompts: ["Wat is het verschil tussen de Gulden en de Platina Regel?", "Hoe werkt de Gulden Regel bij mensen met heel andere behoeften dan ik?", "Is de Gulden Regel voldoende als ethisch kompas?"]
   }
 ];
