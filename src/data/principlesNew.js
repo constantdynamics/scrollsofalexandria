@@ -3244,5 +3244,235 @@ export const principlesNew = [
     ],
     creativePrompt: "Zoek een uitgewerkt voorbeeld van een probleem in een domein dat je wil leren. Analyseer elk stap: waarom wordt deze stap genomen? Wat is het achterliggende principe?",
     aiHelperPrompts: ["Waar vind ik goede uitgewerkte voorbeelden voor mijn vakgebied?", "Hoe analyseer ik uitgewerkte voorbeelden effectief?", "Wanneer moet ik overstappen van voorbeelden naar zelfstandig oefenen?"]
+  },
+  {
+    id: "post-traumatic-growth",
+    title: "Posttraumatische Groei",
+    difficulty: 3,
+    emoji: "🌱",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["veerkracht", "trauma", "groei", "betekenis"],
+    definition: "Posttraumatische groei (PTG) is het fenomeen waarbij mensen na moeilijke levensgebeurtenissen niet alleen herstellen maar daadwerkelijk groeien — in zelfkennis, relaties, levensvisie of spiritualiteit. Het is geen ontkenning van pijn, maar groei erdoor heen.",
+    abstractExample: "Botbreuken herstellen soms sterker op de breukplaats dan het bot daarvoor was. Zo kunnen mensen na ernstige tegenslag op bepaalde gebieden veerkrachtiger en dieper worden dan ze ooit waren.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💙", text: "Iemand die een ernstige ziekte overleeft, rapporteert vaak waardering voor kleine dingen, diepere relaties en een hernieuwd gevoel van richting — ook al was de ziekte vreselijk." },
+      { domain: "Werk", icon: "💼", text: "Een ondernemer wiens bedrijf failliet gaat, bouwt een tweede bedrijf met meer zelfkennis, realisme en authenticiteit — geworteld in de pijnlijke ervaring." },
+      { domain: "Studie", icon: "📚", text: "Een student die een jaar verliest door ziekte en achterloopt, ontwikkelt discipline, tijdsmanagement en veerkracht die studiegenoten zonder die ervaring niet hebben." }
+    ],
+    prerequisites: [],
+    unlocks: ["resilience-building", "meaning-making"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt posttraumatische groei van simpelweg 'herstellen'?", options: ["PTG is herstellen zonder littekens", "PTG betekent dat mensen boven hun uitgangsconditie uitstijgen op bepaalde gebieden", "PTG impliceert dat trauma niet echt schadelijk was", "PTG treedt bij iedereen op na moeilijkheden"], correctIndex: 1, explanation: "Herstellen betekent terugkeren naar het baseline-niveau van functioneren. PTG beschrijft groei voorbij dat niveau — nieuwe capaciteiten, diepere relaties of een rijkere levensvisie die zonder de moeilijkheid niet was ontstaan." }
+    ],
+    creativePrompt: "Denk aan een moeilijke ervaring uit je verleden. Welke krachten, inzichten of waarden heeft het je gebracht die je zonder die ervaring niet zou hebben? Schrijf drie dingen op.",
+    aiHelperPrompts: ["Hoe stimuleer ik posttraumatische groei na een moeilijke periode?", "Is het normaal dat ik nog pijn voel maar ook gegroeid ben?", "Hoe onderscheid ik PTG van het ontkennen van pijn?"]
+  },
+  {
+    id: "gratitude-practice",
+    title: "Dankbaarheidspraktijk",
+    difficulty: 1,
+    emoji: "🙏",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["geluk", "positieve psychologie", "welzijn", "aandacht"],
+    definition: "Dankbaarheidspraktijk is de bewuste, regelmatige gewoonte van aandacht schenken aan wat goed gaat en waardering uiten voor mensen, ervaringen en omstandigheden. Onderzoek toont dat regelmatige dankbaarheidspraktijk welzijn, slaap en relaties verbetert.",
+    abstractExample: "De hersenen hebben een negativiteitsbias — ze scannen automatisch op gevaar en problemen. Dankbaarheid is als een tegengewicht: bewust aandacht richten op wat werkt, bestaat en geschonken wordt.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Elke avond drie specifieke dingen opschrijven waarvoor je dankbaar bent (niet 'mijn gezin' maar 'dat mijn dochter lachte bij het avondeten') verhoogt aantoonbaar welzijn na zes weken." },
+      { domain: "Werk", icon: "💼", text: "Een manager die wekelijks een handgeschreven bedankbriefje schrijft aan teamleden, verbetert de teammoraal en eigen welzijn tegelijk." },
+      { domain: "Relaties", icon: "❤️", text: "Partners die elkaar regelmatig vertellen waarvoor ze dankbaar zijn (niet alleen bij grote dingen) bouwen positieve reservoirs op die hen door moeilijker periodes helpen." }
+    ],
+    prerequisites: [],
+    unlocks: ["hedonic-adaptation", "present-moment-focus"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt dankbaarheid effectiever dan algemene positieve denken?", options: ["Dankbaarheid is positiever dan andere technieken", "Dankbaarheid richt aandacht op specifieke, werkelijke goede dingen — niet op abstracte optimisme", "Dankbaarheid vereist minder discipline", "Er is geen verschil"], correctIndex: 1, explanation: "Specifieke dankbaarheid — voor concrete mensen, momenten en ervaringen — activeert werkelijke herinneringen en verbindingen. Algemeen positief denken zonder specificiteit heeft minder effect op welbevinden." }
+    ],
+    creativePrompt: "Schrijf een brief van drie alinea's aan iemand die een positief verschil in je leven heeft gemaakt, maar die je dat nooit hebt verteld. Lees het voor (eventueel aan de persoon zelf).",
+    aiHelperPrompts: ["Hoe bouw ik een consistente dankbaarheidspraktijk op?", "Wat doe ik als ik niets kan bedenken waarvoor ik dankbaar ben?", "Hoe maak ik dankbaarheid niet oppervlakkig of dwangmatig?"]
+  },
+  {
+    id: "cognitive-reappraisal",
+    title: "Cognitieve Herwaardering",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["emoties", "cognitie", "perspectief", "regulatie"],
+    definition: "Cognitieve herwaardering is de emotieregulatietechniek waarbij je de betekenis van een situatie bewust herinterpreteert om de emotionele impact te veranderen. In tegenstelling tot onderdrukking verandert herwaardering de emotionele beleving zelf.",
+    abstractExample: "Dezelfde berg kan gezien worden als een hindernis of als een avontuur. De berg verandert niet — de interpretatie wel. Herwaardering is het bewust kiezen van een andere lens voor dezelfde werkelijkheid.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Kritiek ontvangen op een project: in plaats van 'Ik faal' denken 'Dit is informatie die mij helpt groeien'. Dezelfde feedback, fundamenteel andere emotionele reactie." },
+      { domain: "Persoonlijk", icon: "💙", text: "Een afwijzing voor een baan: 'Dit was duidelijk niet de juiste match' in plaats van 'Ik ben niet goed genoeg'. Herwaardering verschuift de interpretatie zonder de realiteit te ontkennen." },
+      { domain: "Relaties", icon: "❤️", text: "De irritante eigenschap van een partner herinterpreteren als uitdrukking van een waarde — 'Hij is traag maar grondig' — vermindert irritatie zonder de situatie te negeren." }
+    ],
+    prerequisites: [],
+    unlocks: ["emotional-flexibility", "acceptance-commitment"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is cognitieve herwaardering effectiever dan emotionele onderdrukking?", options: ["Herwaardering is makkelijker", "Herwaardering verandert de emotionele beleving zelf; onderdrukking kost energie en lekt toch uit", "Onderdrukking werkt beter op lange termijn", "Ze zijn even effectief"], correctIndex: 1, explanation: "Emotionele onderdrukking (het gevoel verborgen houden) kost cognitieve middelen en lekt toch uit in fysiologische reacties en gedrag. Herwaardering verandert de appraisal — de bron van de emotie — wat fundamenteel efficiënter is." }
+    ],
+    creativePrompt: "Denk aan een situatie die je momenteel negatief beïnvloedt. Schrijf drie alternatieve interpretaties op van dezelfde situatie. Welke klopt ook en geeft je meer handlingsruimte?",
+    aiHelperPrompts: ["Hoe onderscheid ik herwaardering van zelfbedrog of ontkenning?", "Welke situaties lenen zich goed voor cognitieve herwaardering?", "Hoe oefen ik cognitieve herwaardering in het moment?"]
+  },
+  {
+    id: "mindfulness-practice",
+    title: "Mindfulness",
+    difficulty: 2,
+    emoji: "🧘",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["aandacht", "bewustzijn", "meditatie", "aanwezigheid"],
+    definition: "Mindfulness is de praktijk van bewuste, niet-oordelende aandacht voor het huidige moment — gedachten, gevoelens, lichaamssensaties. Het is geen leeghoofd, maar het observeren van de stroom van ervaringen zonder erin meegesleurd te worden.",
+    abstractExample: "De geest is als water dat altijd in beweging is. Mindfulness is niet het water stilzetten — dat kan niet. Het is leren op de oever staan en de stroom observeren zonder erin te springen.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Vijf minuten aandacht geven aan je adem — niet om het te veranderen maar om te observeren — traint het vermogen om uit automatische reactiviteit te stappen en bewuster te reageren." },
+      { domain: "Werk", icon: "💼", text: "Voor een moeilijk gesprek even stoppen, drie keer adem halen en opmerken wat je voelt (spanning in de borst, snellere hartslag) helpt je bewuster en minder reactief te reageren." },
+      { domain: "Eten", icon: "🍽️", text: "Mindful eten — langzaam, zonder afleiding, met aandacht voor smaak, textuur en gevoel — leidt tot beter eten, meer voldoening en minder overeten." }
+    ],
+    prerequisites: [],
+    unlocks: ["present-moment-focus", "emotional-regulation"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het doel van mindfulness bij gedachten die opkomen?", options: ["Gedachten stoppen of onderdrukken", "Gedachten observeren zonder erin meegezogen te worden of ze te beoordelen", "Positieve gedachten versterken", "Negatieve gedachten vervangen door positieve"], correctIndex: 1, explanation: "Mindfulness leert dat gedachten mentale evenementen zijn, niet de werkelijkheid. Door ze te observeren als 'er is een gedachte dat X' creëer je afstand tussen jezelf en de gedachte, wat reactief gedrag vermindert." }
+    ],
+    creativePrompt: "Doe een vijf-minuten lichaamsscan: breng aandacht naar elk lichaamsdeel van voeten tot hoofd. Wat merk je? Wat werd eerder genegeerd dat er nu is?",
+    aiHelperPrompts: ["Hoe begin ik met een mindfulness-praktijk?", "Wat doe ik als mijn geest steeds afdwaalt?", "Hoeveel mindfulness per dag is voldoende?"]
+  },
+  {
+    id: "self-compassion",
+    title: "Zelfmededogen",
+    difficulty: 2,
+    emoji: "💗",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["zelfkritiek", "welzijn", "veerkracht", "innerlijke stem"],
+    definition: "Zelfmededogen (self-compassion) is de houding van vriendelijkheid en begrip naar jezelf bij pijn, falen of tekortkoming — dezelfde warmte die je een goede vriend zou tonen. Het bestaat uit drie elementen: zelfvriendelijkheid, gedeelde menselijkheid, en mindfulness.",
+    abstractExample: "Stel je voor dat een vriend dezelfde fout maakt die jij maakte. Wat zou je zeggen? Zelfmededogen is: dat zeggen tegen jezelf. De meeste mensen zijn veel vriendelijker voor anderen dan voor zichzelf.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💙", text: "Na een sociaal blunder jezelf niet eeuwig de les lezen ('wat was ik dom') maar denken: 'Dat was ongemakkelijk. Iedereen maakt fouten. Ik kan hier van leren.' — dat is zelfmededogen." },
+      { domain: "Werk", icon: "💼", text: "Na een mislukt project: in plaats van zelfkastijding erkennen dat presteren moeilijk is, dat falen deel is van het proces, en je afvragen wat je kunt leren." },
+      { domain: "Studie", icon: "📚", text: "Een slecht tentamenresultaat: niet plagen ('ik ben stom') maar begrijpen ('ik was niet goed voorbereid, ik was gespannen — dat is menselijk') en plannen hoe het beter kan." }
+    ],
+    prerequisites: ["mindfulness-practice"],
+    unlocks: ["resilience-building"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe verschilt zelfmededogen van zelfmedelijden of verwennerij?", options: ["Zelfmededogen is hetzelfde als zelfmedelijden", "Zelfmededogen erkent moeilijkheid als deel van de menselijke ervaring en motiveert groei; zelfmedelijden isoleert en versterkt lijden", "Zelfmededogen maakt je lui", "Zelfmededogen vereist dat je je fouten goedkeurt"], correctIndex: 1, explanation: "Zelfmededogen erkent pijn zonder te dramatiseren en verbindt je aan de gedeelde menselijke ervaring van mislukken. Het motiveert verandering vanuit vriendelijkheid — effectiever dan zelfkritiek voor langetermijnontwikkeling." }
+    ],
+    creativePrompt: "Schrijf een brief aan jezelf vanuit het perspectief van een meelevende vriend die weet wat je doormaakt. Wat zou die vriend zeggen?",
+    aiHelperPrompts: ["Hoe oefen ik zelfmededogen als ik gewend ben aan zelfkritiek?", "Is zelfmededogen hetzelfde als lage standaarden hebben?", "Hoe verbind ik zelfmededogen met persoonlijke groei?"]
+  },
+  {
+    id: "hedonic-adaptation",
+    title: "Hedonische Adaptatie",
+    difficulty: 2,
+    emoji: "📉",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["geluk", "aanpassing", "verwachting", "tevredenheid"],
+    definition: "Hedonische adaptatie is het psychologische fenomeen waarbij mensen snel wennen aan positieve of negatieve veranderingen in hun leven, terugkerend naar hun baseline geluksniveau. Dit verklaart waarom nieuwe dingen snel gewoon worden en waarom rampen minder lang pijn doen dan verwacht.",
+    abstractExample: "Een nieuwe auto geeft een week lang vreugde, dan is het gewoon vervoer. Een promotie geeft blijdschap, dan is het de nieuwe norm. We zijn adaptatiemachines — zowel aan het goede als het kwade.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Onderzoek toont dat lottowinnaar en mensen die verlamd raakten na een jaar gemiddeld vergelijkbare geluksniveaus rapporteren als daarvoor — hedonische adaptatie werkt in beide richtingen." },
+      { domain: "Werk", icon: "💼", text: "Die droomsalaris verhoging: de eerste maand voel je het. Na drie maanden is het de nieuwe norm. Materiële winsten adapteren snel — ervaringen en relaties minder snel." },
+      { domain: "Persoonlijk", icon: "💙", text: "Nieuwheid van een hobby die maanden geleden je passie was voelt nu gewoon. Begrip van hedonische adaptatie helpt bewust variatie in te bouwen om enjoyment te behouden." }
+    ],
+    prerequisites: ["gratitude-practice"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke strategie werkt het beste om hedonische adaptatie te vertragen?", options: ["Meer en grotere aankopen doen", "Genot spreiden en variëren, en periodiek afzien om waardering te hernieuwen", "Hogere verwachtingen stellen", "Vermijden van positieve ervaringen"], correctIndex: 1, explanation: "We adapteren sneller aan constante, continue ervaringen dan aan gevarieerde of afgewisselde ervaringen. Bewust genieten van kleine dingen, en soms afzien van iets om het later te herwaarderen, vertraagt adaptatie." }
+    ],
+    creativePrompt: "Kies drie dingen in je leven waaraan je gewend bent geraakt maar die vroeger bijzonder aanvoelden. Hoe kun je ze weer 'vers' zien? Probeer één ding te doen alsof het de eerste keer is.",
+    aiHelperPrompts: ["Hoe gebruik ik kennis van hedonische adaptatie om gelukkiger te zijn?", "Hoe weet ik wat langdurig geluk geeft versus wat snel adapteert?", "Zijn ervaringen beter dan bezittingen voor geluk?"]
+  },
+  {
+    id: "meaning-making",
+    title: "Betekenisgeving",
+    difficulty: 3,
+    emoji: "🌟",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["betekenis", "veerkracht", "narratief", "zingeving"],
+    definition: "Betekenisgeving is het actieve proces van het construeren van betekenis uit ervaringen — met name moeilijke — door ze te integreren in een coherent levensverhaal. Mensen die betekenis kunnen geven aan tegenslag verwerken dit beter en herstellen sneller.",
+    abstractExample: "Dezelfde verlieservaring kan worden beleefd als 'mijn leven is verwoest' of als 'dit heeft me geleerd wat werkelijk telt'. De feiten zijn identiek — de betekenis die we eraan geven bepaalt de impact.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💙", text: "Iemand die kanker overleeft en zegt 'dit heeft mij doen inzien wat echt belangrijk is' heeft betekenis gegeven — niet ontkend dat de ziekte erg was, maar er iets zinvols in gevonden." },
+      { domain: "Werk", icon: "💼", text: "Een professional die zijn baan verliest en dit herinterpreteert als 'de duw die ik nodig had om mijn eigenlijke passie na te jagen' maakt actief betekenis van pijn." },
+      { domain: "Relaties", icon: "❤️", text: "Een scheiding verwerken door te begrijpen wat je ervan hebt geleerd over jezelf en over wat je nodig hebt in een relatie, in plaats van puur te ervaren als falen." }
+    ],
+    prerequisites: ["post-traumatic-growth", "cognitive-reappraisal"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen betekenisgeving en het 'goedpraten' van iets moelijks?", options: ["Er is geen verschil — beide zijn vormen van zelfbedrog", "Betekenisgeving erkent pijn volledig maar integreert de ervaring in een groter zinvol verhaal", "Goedpraten is constructiever", "Betekenisgeving werkt alleen bij kleine tegenslagen"], correctIndex: 1, explanation: "Betekenisgeving ontkent de pijn niet — het erkent haar volledig. Het integreert de ervaring in een groter verhaal waarbij de ervaring bijdraagt aan wie je bent of wat je waardeert, wat fundamenteel verschilt van ontkenning." }
+    ],
+    creativePrompt: "Denk aan een moeilijke ervaring die je hebt overwonnen. Schrijf een paragraaf vanuit toekomstig perspectief: hoe zal je over tien jaar op deze periode terugkijken? Welke betekenis geef je er dan aan?",
+    aiHelperPrompts: ["Hoe geef ik betekenis aan iets dat zinloos lijkt?", "Wanneer is betekenisgeving gezond versus een vlucht voor pijn?", "Hoe help ik anderen betekenis te vinden na verlies?"]
+  },
+  {
+    id: "acceptance-commitment",
+    title: "Acceptatie en Commitment",
+    difficulty: 3,
+    emoji: "🤝",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["acceptatie", "waarden", "psychologische flexibiliteit", "ACT"],
+    definition: "Acceptatie en Commitment Therapie (ACT) is een gedragsmatige benadering die psychologische flexibiliteit bevordert: het vermogen om moeilijke gedachten en gevoelens te accepteren (zonder ze te bestrijden), terwijl je leeft in lijn met je diepste waarden.",
+    abstractExample: "Stel je voor dat je een zak met stenen draagt (ongewenste gedachten/gevoelens). ACT zegt niet: 'Zet de stenen neer.' Het vraagt: 'Kun je de zak dragen terwijl je tóch naar je bestemming loopt?' Acceptatie maakt de zak lichter; commitment geeft richting.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💙", text: "Angst voor falen volledig accepteren — voelen, erkennen — maar toch het moeilijke gesprek aangaan omdat verbinding een waarde is die groter is dan de angst." },
+      { domain: "Werk", icon: "💼", text: "Onzekerheid over een carrièrebeslissing accepteren als inherent aan de situatie, en toch stappen zetten in de richting van werk dat zinvol aanvoelt." },
+      { domain: "Relaties", icon: "❤️", text: "Pijn na een conflict accepteren zonder erin vast te blijven, en je gedrag richten op wat jij wil zijn als partner — vanuit waarden, niet vanuit de emotie." }
+    ],
+    prerequisites: ["mindfulness-practice", "self-compassion"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de kern van de ACT-benadering?", options: ["Negatieve gedachten elimineren", "Ongewenste gedachten en gevoelens accepteren terwijl je handelt naar diepste waarden", "Altijd positief denken", "Cognitieve uitdaging van irrationele gedachten"], correctIndex: 1, explanation: "ACT onderscheidt zich van andere benaderingen door niet te streven naar het elimineren van ongewenste innerlijke ervaringen, maar naar psychologische flexibiliteit: de ervaringen te accepteren en toch in lijn met waarden te handelen." }
+    ],
+    creativePrompt: "Identificeer één moeilijk gevoel dat je vermijdt. Probeer het bewust op te zoeken en er vijf minuten bij te blijven — observeer het als een meteoroloog die weer bestudeert. Wat merk je?",
+    aiHelperPrompts: ["Hoe verschilt ACT van gewone cognitieve gedragstherapie?", "Hoe oefen ik acceptatie zonder in passiviteit te vervallen?", "Hoe vind ik mijn kernwaarden voor commitment?"]
+  },
+  {
+    id: "resilience-building",
+    title: "Veerkracht Opbouwen",
+    difficulty: 2,
+    emoji: "🏋️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["veerkracht", "stress", "aanpassing", "sterk"],
+    definition: "Veerkracht is het vermogen om te herstellen van tegenslagen, stress en moeilijkheden. Het is geen aangeboren eigenschap maar een vaardigheid die opgebouwd wordt via sociale verbinding, zingeving, coping-strategieën en bewuste omgang met stress.",
+    abstractExample: "Veerkracht werkt als een veer: ze kan worden ingedrukt, maar keert terug. Hoe sterker en flexibeler de veer (door training en onderhoud), hoe dieper ze kan worden ingedrukt zonder te breken.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💙", text: "Na een verlies tijdelijk stilstaan, rouw toelaten, steun zoeken, en kleine stappen zetten naar herstel — dit is actieve veerkracht, niet stoïcijnse gevoelloosheid." },
+      { domain: "Werk", icon: "💼", text: "Na een mislukt project: wat ging mis analyseren, lessen trekken, het team samenhouden en met hernieuwd enthousiasme beginnen aan het volgende — veerkracht in teamcontext." },
+      { domain: "Studie", icon: "📚", text: "Een student die na een slecht semester zijn studieaanpak herziet, hulp zoekt en opnieuw start met concrete verbeteringen, oefent veerkracht als leerproces." }
+    ],
+    prerequisites: ["self-compassion", "post-traumatic-growth"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke factor draagt het meest bij aan veerkracht, volgens onderzoek?", options: ["Positief denken altijd", "Sociale verbinding en het gevoel te kunnen steunen op anderen", "Vermijden van moeilijke situaties", "Professioneel succes"], correctIndex: 1, explanation: "Sociale steun is de sterkste voorspeller van veerkracht in bijna alle onderzoeken. Mensen die kunnen steunen op sterke sociale verbindingen herstellen sneller en beter van tegenslagen dan mensen die dat niet kunnen." }
+    ],
+    creativePrompt: "Kijk terug op een moeilijke periode in je leven die je hebt overleefd. Wat heeft je toen geholpen? Welke bronnen van veerkracht gebruikte je, bewust of onbewust?",
+    aiHelperPrompts: ["Hoe bouw ik veerkracht op vóórdat ik hem nodig heb?", "Wat zijn concrete dagelijkse praktijken voor veerkrachtontwikkeling?", "Hoe ondersteun ik anderen bij het opbouwen van veerkracht?"]
+  },
+  {
+    id: "emotional-flexibility",
+    title: "Emotionele Flexibiliteit",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Emotioneel Welzijn",
+    tags: ["emoties", "flexibiliteit", "regulatie", "aanpassing"],
+    definition: "Emotionele flexibiliteit is het vermogen om een breed scala van emoties te ervaren en te reguleren — passend bij de context — zonder vast te zitten in rigide patronen van onderdrukking of overweldiging. Het omvat het kunnen bewegen tussen emoties en het aanpassen van emotionele responses.",
+    abstractExample: "Emotionele flexibiliteit is als een goed gestemde gitaar: alle snaren kunnen klinken, van zacht tot hard, afhankelijk van wat de muziek vraagt. Een rigide instrument kan maar één toon spelen.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een manager die verdriet kan tonen bij slecht nieuws, assertief kan zijn bij moeilijke beslissingen, en enthousiast bij inspirerende presentaties — zonder te berekend of onecht over te komen." },
+      { domain: "Relaties", icon: "❤️", text: "In staat zijn te huilen met een vriend die rouwt, te lachen bij een feest, en zakelijk te zijn bij een conflict — allemaal authentiek, allemaal gepast." },
+      { domain: "Persoonlijk", icon: "💙", text: "Teleurstelling voelen bij een tegenslag (eerlijk), het verwerken, en dan kiezen voor actie — zonder vast te blijven in de teleurstelling of deze weg te drukken." }
+    ],
+    prerequisites: ["cognitive-reappraisal", "mindfulness-practice"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt emotionele flexibiliteit van emotionele instabiliteit?", options: ["Ze zijn hetzelfde", "Flexibiliteit is doelgerichte aanpassing aan context; instabiliteit is reactief en ongecontroleerd wisselen", "Flexibele mensen voelen minder intens", "Instabiele mensen zijn flexibeler"], correctIndex: 1, explanation: "Emotionele flexibiliteit is een actieve, bewuste capaciteit om emoties te moduleren passend bij de situatie. Instabiliteit is reactief — gedreven door triggers, niet door bewuste keuze of contextbewustzijn." }
+    ],
+    creativePrompt: "Reflecteer op een situatie waarin je een emotie onderdrukte die eigenlijk gepast was, of een situatie waarin je emotie niet paste bij de context. Wat zou emotionele flexibiliteit er anders aan gemaakt hebben?",
+    aiHelperPrompts: ["Hoe vergroot ik mijn emotionele flexibiliteit?", "Hoe weet ik welke emotie past bij een situatie?", "Hoe ga ik om met emoties die ik niet wil voelen maar die toch aanwezig zijn?"]
   }
 ];
