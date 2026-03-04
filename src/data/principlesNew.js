@@ -4555,5 +4555,212 @@ export const principlesNew = [
     ],
     creativePrompt: "Denk aan drie recente interacties met anderen. Hoe zou jij willen dat je zelf in die situaties was behandeld? Verschilt dat van hoe je hebt gehandeld? Wat leer je hieruit?",
     aiHelperPrompts: ["Wat is het verschil tussen de Gulden en de Platina Regel?", "Hoe werkt de Gulden Regel bij mensen met heel andere behoeften dan ik?", "Is de Gulden Regel voldoende als ethisch kompas?"]
+  },
+  {
+    id: "sleep-science",
+    title: "Slaapwetenschap",
+    difficulty: 2,
+    emoji: "😴",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["slaap", "herstel", "cognitie", "gezondheid"],
+    definition: "Slaapwetenschap bestudeert hoe slaap het brein en lichaam herstelt, consolideert en reguleert. Slaaptekort heeft ernstige gevolgen voor cognitie, emotieregulatie, immuunfunctie en gezondheid op lange termijn. Kwaliteitsvolle slaap is geen luxe maar een biologische noodzaak.",
+    abstractExample: "Slaap is het meest onderschatte herstelprotocol dat bestaat — het is wanneer het brein de dag verwerkt, het geheugen consolideert, gifstoffen uitruimt en het lichaam herstelt. Elke nacht slechte slaap is als gedeeltelijk leeglaten van de batterij terwijl je steeds meer van haar vraagt.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Na 17 uur wakker zijn presteren mensen cognitief vergelijkbaar met iemand met een promillage van 0,5 (licht dronken). Toch beschouwen de meeste professionals slaaptekort als prestige." },
+      { domain: "Studie", icon: "📚", text: "Geleerde informatie wordt tijdens slaap geconsolideerd van korte- naar langetermijngeheugen. Slaapt een student na het studeren, dan is de retentie tot 40% hoger dan bij doorleren." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "Chronisch slaaptekort (onder 7 uur) verhoogt het risico op hart- en vaatziekten, diabetes, depressie en zelfs Alzheimer. Slaap is letterlijk een preventieve gezondheidsmaatregel." }
+    ],
+    prerequisites: [],
+    unlocks: ["energy-management", "circadian-rhythm"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het meest bewezen effect van slaaptekort op cognitief functioneren?", options: ["Verhoogde creativiteit door vermoeidheid", "Significant verminderd oordeelsvermogen, werkgeheugen en emotionele regulatie", "Slaaptekort heeft vooral lichamelijke, niet cognitieve effecten", "Het effect verschilt sterk per persoon"], correctIndex: 1, explanation: "Slaaptekort tast vrijwel alle cognitieve functies aan: aandacht, beslissingssnelheid, werkgeheugen, creativiteit en emotionele controle. Bovendien zijn slaapgebrektige mensen slechte beoordelaars van hun eigen cognitieve achteruitgang — ze denken dat het prima gaat." }
+    ],
+    creativePrompt: "Houd een week lang bij hoe lang je slaapt en hoe je je de dag erna voelt (energie, stemming, concentratie). Welk patroon zie je? Wat is jouw optimale slaaplengte?",
+    aiHelperPrompts: ["Hoe verbeter ik mijn slaapkwaliteit praktisch?", "Wat is slaaphygiëne en hoe pas ik het toe?", "Hoe herstel ik van chronisch slaaptekort?"]
+  },
+  {
+    id: "circadian-rhythm",
+    title: "Circadiaans Ritme",
+    difficulty: 2,
+    emoji: "🌅",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["bioritme", "slaap", "energie", "licht"],
+    definition: "Het circadiaanse ritme is het interne ~24-uurs biologisch klokken van het lichaam dat slaap, waakzaamheid, hormoonafgifte, lichaamstemperatuur en metabolisme reguleert. Het wordt primair gesynchroniseerd door licht en bepaalt wanneer je het meest alert, energiek of moe bent.",
+    abstractExample: "Je lichaam heeft een intern horloge dat onafhankelijk van externe prikkels tikt — in een donkere kamer zonder klok zou je nog steeds een dag-nacht-ritme hebben. Maar dit horloge is instelbaar via licht, timing van maaltijden en activiteit.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Ochtendmensen (chronotype 'leeuw') presteren cognitief het best tussen 9-12. Avondmensen ('wolf') pas na de middag. Taken afstemmen op je chronotype verhoogt productiviteit zonder extra inspanning." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "Blauw licht van schermen 's avonds onderdrukt melatonine en verschuift je circadiaanse ritme. Dit maakt inslapen moeilijker en vermindert slaapkwaliteit — zelfs als je voldoende uren slaapt." },
+      { domain: "Reizen", icon: "✈️", text: "Jetlag is een desynchronisatie van het circadiaanse ritme en de externe tijdzone. Strategisch gebruik van licht, maaltijden en beweging helpt het ritme sneller te resetten." }
+    ],
+    prerequisites: ["sleep-science"],
+    unlocks: ["energy-management"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke aanpassing heeft het grootste effect op het verbeteren van het circadiaanse ritme?", options: ["Elke nacht precies hetzelfde tijdstip naar bed gaan", "Vaste blootstelling aan helder licht 's ochtends en vermijding van blauw licht 's avonds", "Veel koffie drinken om alert te blijven", "Later opstaan in het weekend om bij te slapen"], correctIndex: 1, explanation: "Licht is de sterkste zeitgeber (tijdgever) voor het circadiaanse systeem. Ochtendzonnlicht verankert je ritme vroeg, terwijl blauw licht 's avonds het ritme verschuift en melatonine onderdrukt." }
+    ],
+    creativePrompt: "Wat is jouw chronotype? Wanneer voel je je het meest energiek? Hoe sluit je huidige schema aan bij dat biologische ritme? Welke aanpassing zou één uur energie geven zonder extra inspanning?",
+    aiHelperPrompts: ["Hoe bepaal ik mijn chronotype?", "Hoe reset ik mijn circadiaans ritme na nachtwerk of reizen?", "Hoe gebruik ik kennis van mijn bioritme voor betere prestaties?"]
+  },
+  {
+    id: "exercise-brain",
+    title: "Bewegen voor de Hersenen",
+    difficulty: 1,
+    emoji: "🏃",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["beweging", "cognitie", "hersenen", "gezondheid"],
+    definition: "Lichaamsbeweging heeft directe, bewezen effecten op hersenstructuur en -functie: het vergroot de hippocampus (geheugen), verhoogt BDNF (breingroeifactor), vermindert stress en angst, verbetert focus en beschermt tegen cognitieve achteruitgang. Bewegen is de sterkste nootropica die bestaat.",
+    abstractExample: "We beschouwen sporten als iets voor het lichaam. In werkelijkheid is het ook de meest krachtige behandeling voor het brein — effectiever dan veel cognitieve supplementen, vergelijkbaar met antidepressiva bij milde tot matige depressie.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Onderzoek toont dat 20 minuten aëroob bewegen vóór een leestaak het begrip en de retentie significant verbetert — meer dan hetzelfde tijd extra studeren." },
+      { domain: "Werk", icon: "💼", text: "Een middagsessie van 15-20 minuten wandelen combatteert de post-lunch dip effectiever dan koffie, en zonder het later slaapverstorende effect." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "Regelmatig bewegen (3-5 uur per week moderate intensiteit) is de meest effectieve preventieve maatregel tegen Alzheimer — effectiever dan elke huidige medicamenteuze behandeling." }
+    ],
+    prerequisites: [],
+    unlocks: ["keystone-habits"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is BDNF en waarom is het relevant voor cognitief functioneren?", options: ["Een negatief bijproduct van beweging", "Brain-Derived Neurotrophic Factor: een stof die neuronen laat groeien en nieuwe verbindingen bevordert — aangemaakt bij beweging", "Een voedingsstof die je via eten binnenkrijgt", "Een hormoon dat slaap reguleert"], correctIndex: 1, explanation: "BDNF wordt 'miracle-gro voor de hersenen' genoemd: het stimuleert groei van nieuwe neuronen en verbindingen, met name in de hippocampus. Aerobe beweging is de sterkste bekende trigger voor BDNF-productie." }
+    ],
+    creativePrompt: "Probeer drie ochtenden lang je dag te beginnen met 20 minuten beweging (wandelen, lopen, fietsen). Registreer je energie, focus en stemming die dag. Wat merk je?",
+    aiHelperPrompts: ["Welk type beweging is het beste voor de hersenen?", "Hoeveel beweging is nodig voor cognitieve voordelen?", "Hoe integreer ik beweging in een zittend werk?"]
+  },
+  {
+    id: "stress-response",
+    title: "Stressrespons",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["stress", "cortisol", "vecht-vlucht", "regulatie"],
+    definition: "De stressrespons is de fysiologische reactie van het lichaam op (vermeende) bedreiging: adrenaline en cortisol verhogen, hartslag en ademhaling versnellen, spieren spannen. Dit is functioneel bij acute bedreiging maar schadelijk bij chronische activering. Begrip van de stressrespons helpt hem bewust te reguleren.",
+    abstractExample: "De stressrespons is ontworpen voor een leeuw die je achtervolgt — een burst van energie en alertheid voor gevecht of vlucht. Maar in de moderne wereld is de 'leeuw' een inbox, een vergadering of financiële zorgen — chronisch, niet acuut. Het systeem raakt overbelast.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Presentatieangst is de stressrespons op een sociale dreiging. Het lichaam reageert alsof er een leeuw is. Begrip hiervan — 'dit is adrenaline, geen gevaar' — helpt de respons te reguleren." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "Chronische stress (verhoogd cortisol over weken of maanden) beschadigt letterlijk de hippocampus, verzwakt het immuunsysteem, verhoogt bloeddruk en verstoort slaap en spijsvertering." },
+      { domain: "Sport", icon: "🏃", text: "Topsporters leren het onderscheid tussen 'good stress' (eustress: optimale activering voor prestatie) en 'bad stress' (distress: te hoog voor optimale functie). Regulatie is een trainbare vaardigheid." }
+    ],
+    prerequisites: [],
+    unlocks: ["resilience-building", "mindfulness-practice"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is chronische stress schadelijker dan acute stress?", options: ["Acute stress is altijd onschadelijk", "Chronische stressactivering raakt het systeem uit en beschadigt fysieke en mentale gezondheid structureel", "Chronische stress is minder intens", "Het lichaam adapteert volledig aan chronische stress"], correctIndex: 1, explanation: "Acute stress is functioneel en herstelt snel. Chronische stress houdt het lichaam in een permanente staat van activering, wat cortisol chronisch verhoogt. Dit tast immuunsysteem, geheugen, cardiovasculaire gezondheid en mentale welzijn structureel aan." }
+    ],
+    creativePrompt: "Welke situaties triggeren jouw stressrespons het sterkst? Zijn dat echte bedreigingen of sociale/symbolische? Welke ademhaling- of mindfulnesstechniek helpt jou om van 'aan' naar 'uit' te schakelen?",
+    aiHelperPrompts: ["Welke ademhalingstechnieken verlagen de stressrespons het snelst?", "Hoe herken ik chronische stress bij mezelf?", "Wat is de rol van cortisol in dagelijks functioneren?"]
+  },
+  {
+    id: "nutrition-basics",
+    title: "Voedingswetenschap Basis",
+    difficulty: 1,
+    emoji: "🥦",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["voeding", "gezondheid", "energie", "biochemie"],
+    definition: "Basisprincipes van voedingswetenschap: het lichaam heeft macronutriënten (koolhydraten, eiwitten, vetten) en micronutriënten (vitaminen, mineralen) nodig in de juiste balans. Voeding beïnvloedt energie, cognitie, stemming en gezondheid op lange termijn — maar het bewijs is genuanceerder dan populaire dieetclaims.",
+    abstractExample: "Voeding is brandstof én bouwmateriaal. De kwaliteit van de brandstof bepaalt hoe de motor draait. Maar het is complexer dan een auto: het lichaam past zich aan, heeft micronutriënten nodig naast energie, en varieert sterk per persoon.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "De glycemische index van voedsel bepaalt hoe snel bloedsuiker stijgt. Hoog-glycemische voeding (wit brood, suiker) geeft snelle energie-pieken gevolgd door dalen — niet ideaal voor stabiele concentratie." },
+      { domain: "Werk", icon: "💼", text: "Eiwitrijke lunch (peulvruchten, vis, eieren) geeft stabieler energie dan koolhydraatrijke lunch — door langzamere vertering en stabielere bloedsuiker. Meetbaar effect op middagproductiviteit." },
+      { domain: "Sport", icon: "🏃", text: "Timing van koolhydraten (voor training) en eiwitten (na training) optimaliseert prestatie en herstel — gebaseerd op hoe spieren glucose en aminozuren gebruiken." }
+    ],
+    prerequisites: [],
+    unlocks: ["energy-management"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de meest bewezen voedingsaanbeveling voor algemene gezondheid?", options: ["Een ketogeen dieet voor iedereen", "Veel bewerkte voeding vermijden en gevarieerd eten met veel groente, fruit en volle granen", "Zo weinig mogelijk vet eten", "Elke dag supplementen nemen"], correctIndex: 1, explanation: "Ondanks de veelheid aan dieettrends is het meest consistente bewijs: minimale verwerking, gevarieerd plantaardig eten, matig dierlijk, en vermijding van toegevoegd suiker en transvetten — dit reduceert risico op vrijwel alle chronische ziekten." }
+    ],
+    creativePrompt: "Houd drie dagen bij wat je eet. Hoeveel bewerkte voeding? Hoeveel groente en fruit? Welk patroon zie je in hoe je energie en stemming correleren met wat je eet?",
+    aiHelperPrompts: ["Hoe onderscheid ik goede voedingswetenschap van dieettrends?", "Wat zijn de meest bewezen voedingsinterventies voor cognitieve prestatie?", "Hoe eet ik gezonder zonder ingewikkelde diëten te volgen?"]
+  },
+  {
+    id: "pain-discomfort-distinction",
+    title: "Pijn vs. Ongemak",
+    difficulty: 2,
+    emoji: "💪",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["pijn", "ongemak", "groei", "begrenzing"],
+    definition: "Het onderscheid tussen pijn (signaal van weefselschade of gevaar — stop) en ongemak (onaangename maar veilige sensatie die groei of aanpassing signaleert — doorgaan) is cruciaal voor zowel sport als persoonlijke ontwikkeling. Verwarring tussen beide leidt tot blessures of vermijding van groei.",
+    abstractExample: "Spierpijn na training is ongemak — groeisignaal. Scherpe pijn in een gewricht is pijn — stopsignaal. In het leven: de ongemakelijkheid van een moeilijk gesprek is ongemak (groeizaam). Angst die wijst op werkelijk gevaar is pijn (pas op). Het leren onderscheiden is een vaardigheid.",
+    examples: [
+      { domain: "Sport", icon: "🏃", text: "Brandend gevoel in de spieren tijdens intensieve training is ongemak — de spieren zijn bezig te groeien. Kniepijn tijdens hardlopen is pijn — stop en onderzoek. Dit onderscheid voorkomt zowel blessures als vermijding van groei." },
+      { domain: "Persoonlijk", icon: "💙", text: "De discomfort van een moeilijk gesprek is productief ongemak — vermijden kost meer. Angst die je vertelt dat iemand je bedreigt is een wezenlijk signaal — luister ernaar." },
+      { domain: "Studie", icon: "📚", text: "Het hoofd vol en gefrustreerd voelen bij een moeilijke taak is leerongemak — de hersenen zijn bezig patronen te bouwen. Dit is anders dan de angst die wijst op een reëel probleem." }
+    ],
+    prerequisites: [],
+    unlocks: ["desirable-difficulty", "resilience-building"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe onderscheid je functioneel ongemak van wezenlijke pijn?", options: ["Pijn is altijd heviger dan ongemak", "Ongemak is een diffuus groei- of inspanningssignaal; pijn is scherp, gelokaliseerd en wijst op schade of gevaar", "Ongemak verdwijnt als je doorgaat; pijn ook", "Er is geen betrouwbaar onderscheid"], correctIndex: 1, explanation: "Pijn heeft specifieke kwaliteiten: scherp, gelokaliseerd, worsening bij doorgaan. Ongemak is meer diffuus, de sensatie van aanpassing of inspanning. Maar ook: sociale en emotionele 'pijn' kan hetzelfde zijn als fysieke pijn in het brein — de vraag is of het een signaal van gevaar of van groei is." }
+    ],
+    creativePrompt: "Denk aan een situatie die je vermijdt 'omdat het pijn doet'. Is het werkelijk pijn (signaal van schade) of ongemak (signaal van groei)? Wat doe je met dat onderscheid?",
+    aiHelperPrompts: ["Hoe train ik mezelf om meer ongemak te tolereren zonder pijn te negeren?", "Hoe herken ik het verschil tussen productief ongemak en schadelijke overbelasting?", "Hoe gebruik ik dit onderscheid bij emotionele groei?"]
+  },
+  {
+    id: "gut-brain-axis",
+    title: "Darm-Brein As",
+    difficulty: 3,
+    emoji: "🦠",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["microbioom", "darmen", "cognitie", "stemming"],
+    definition: "De darm-brein as is de bidirectionele communicatie tussen het darmstelsel en de hersenen — via de nervus vagus, hormonen en immuunsysteem. Het darmmicrobioom beïnvloedt stemming, cognitie, stress en immuunfunctie. Een gezond microbioom is onderdeel van mentale gezondheid.",
+    abstractExample: "90% van het serotonine in het lichaam wordt geproduceerd in de darmen, niet de hersenen. De darmen bevatten meer zenuwcellen dan het ruggenmerg. De darmen zijn een 'tweede brein' — en ze communiceren constant met het eerste.",
+    examples: [
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "Onderzoek toont dat patiënten met prikkelbare darm (IBS) hogere angst- en depressiescores hebben — en omgekeerd: psychische stress verergert darmproblemen. De verbinding is bidirectioneel." },
+      { domain: "Voeding", icon: "🥦", text: "Vezelrijk dieet (groente, fruit, peulvruchten) voedt gunstige darmbacteriën die korteketenvetzuren produceren — stoffen met directe positieve effecten op breinontwikkeling en stemming." },
+      { domain: "Stress", icon: "⚡", text: "Chronische stress verandert de darmsamenstelling (dysbiose) wat ontstekingen bevordert die op hun beurt de stemming negatief beïnvloeden — een negatieve spiraal die van twee kanten kan worden aangepakt." }
+    ],
+    prerequisites: ["nutrition-basics"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom wordt de darm ook wel 'het tweede brein' genoemd?", options: ["De darmen denken onafhankelijk van de hersenen", "Het enterisch zenuwstelsel in de darmen bevat ~500 miljoen neuronen en werkt semi-autonoom, met intensieve tweerichtingscommunicatie met de hersenen", "Darmen zijn net zo groot als hersenen", "De darmen produceren gedachten"], correctIndex: 1, explanation: "Het enterisch zenuwstelsel in de darmen is zo uitgebreid en geïntegreerd dat het zelfstandig kan functioneren. De communicatie met de hersenen is intensief en bidirectioneel — wat we eten, voelen en denken beïnvloedt de darmen en vice versa." }
+    ],
+    creativePrompt: "Let een week lang bewust op de verbinding tussen wat je eet en hoe je je voelt (mentaal en emotioneel). Zie je patronen? Wat beïnvloedt jouw stemming vanuit je voeding?",
+    aiHelperPrompts: ["Hoe verbeter ik mijn darmmicrobioom voor betere stemming?", "Welke probiotica zijn bewezen effectief?", "Hoe beïnvloedt stress mijn darmgezondheid?"]
+  },
+  {
+    id: "hormesis",
+    title: "Hormesis",
+    difficulty: 3,
+    emoji: "🔆",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["stress", "veerkracht", "aanpassing", "groei"],
+    definition: "Hormesis is het biologisch principe dat lage doses van stressoren (die in hoge doses schadelijk zijn) adaptieve, versterkende effecten hebben. Kortom: kleine dosissen van wat je uitdaagt, maakt je sterker. Dit geldt voor lichamelijke training, thermische stress en zelfs bepaalde toxines.",
+    abstractExample: "Spiertraining is hormesis: je beschadigt microscopisch spiervezels (stressor) en ze herstellen sterker dan daarvoor. Zonnebrand is het schadelijke extreme; matige blootstelling stimuleert vitamine D en melanineproductie. De dosis maakt het geneesmiddel of het gif.",
+    examples: [
+      { domain: "Sport", icon: "🏃", text: "Intervaltraining is geconcentreerde hormesis: korte perioden van hoge inspanning zorgen voor aanpassing van hart, longen en spieren die continue matige training niet bereikt." },
+      { domain: "Koudetherapie", icon: "🧊", text: "Koud douchen of koude onderdompeling (10-15 minuten op 15°C) is een hormese-stressor die aantoonbaar noradrenaline, dopamine en metabolisme verhoogt — adaptieve respons op milde kou-stress." },
+      { domain: "Vasten", icon: "🥗", text: "Intermittent fasting is hormetisch: perioden van calorierestrictie activeren celreparatiemechanismen (autofagie) die bij constante voedseltoevoer niet actief worden." }
+    ],
+    prerequisites: ["stress-response"],
+    unlocks: ["resilience-building"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de kernwet van hormesis?", options: ["Meer stress is altijd beter", "Lage doses van een stressor produceren adaptieve voordelen; hoge doses zijn schadelijk", "Rust is altijd beter dan stress", "Het effect van stressoren is lineair"], correctIndex: 1, explanation: "Hormesis beschrijft een omgekeerde U-curve: te weinig stress geeft geen aanpassing, de juiste dosering geeft versterking, te veel geeft schade. Dit heeft implicaties voor training, dieet, temperatuurblootstelling en zelfs psychologische uitdaging." }
+    ],
+    creativePrompt: "Welke hormese-stressoren pas jij al toe in je leven? Welke zou je willen toevoegen? Denk aan koude, hitte, vasten, intensieve training of mentale uitdaging.",
+    aiHelperPrompts: ["Hoe vind ik de juiste dosering voor hormese-stressoren?", "Welke bewijzen zijn er voor koud douchen?", "Is intermittent fasting veilig voor iedereen?"]
+  },
+  {
+    id: "placebo-effect",
+    title: "Placebo-effect",
+    difficulty: 2,
+    emoji: "💊",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["verwachting", "geloof", "genezing", "psychologie"],
+    definition: "Het placebo-effect is de bewezen verbetering in gezondheid of welzijn die optreedt door de verwachting van een behandeling, niet door de behandeling zelf. Het is niet 'verbeelding' maar een werkelijk fysiologisch mechanisme waarbij verwachting neurochemische processen activeert.",
+    abstractExample: "Een suikerpil werkt als een dokter hem vol overtuiging voorschrijft — en zelfs in sommige studies als de patiënt weet dat het een placebo is. Verwachting is een biologisch actieve kracht, geen fantasie.",
+    examples: [
+      { domain: "Geneeskunde", icon: "🏥", text: "Placebo-pijnstillers activeren in het brein dezelfde gebieden als echte pijnstillers — en produceren endorfines. Dit is meetbaar neurochemie, geen inbeelding." },
+      { domain: "Sport", icon: "🏃", text: "Atleten die dachten een prestatieverbeterend supplement te nemen presteerden beter — ook als het alleen suiker was. Verwachting optimaliseert prestatie via reële fysiologische routes." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Koffie 'werkt' voor sommige mensen al bij de geur, voordat ze het drinken. De verwachting van alertheid activeert aandachtssystemen proactief." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is het placebo-effect wetenschappelijk interessant in plaats van alleen misleidend?", options: ["Het bewijst dat alle behandelingen nep zijn", "Het toont dat verwachting, geloof en context reële fysiologische processen activeren die therapeutisch benut kunnen worden", "Het is enkel een meetkundig artefact", "Het werkt alleen bij inbeeldingszieke mensen"], correctIndex: 1, explanation: "Het placebo-effect onthult de kracht van de geest op het lichaam. Het is het bewijs dat mentale staat, verwachting en context reële neurochemische, immunologische en autonome effecten hebben — kennis die hoe we geneeskunde en zelfzorg conceptualiseren diepgaand beïnvloedt." }
+    ],
+    creativePrompt: "Hoe kun je bewust positieve verwachtingen benutten in je dagelijks leven — voor sport, herstel of leren? Wat is het verschil tussen het gebruik van het placebo-effect en zelfbedrog?",
+    aiHelperPrompts: ["Hoe gebruik ik de kracht van verwachting constructief?", "Is het placebo-effect ethisch als het werkt?", "Hoe herken ik pseudowetenschap die ten onrechte naar het placebo-effect verwijst?"]
   }
 ];
