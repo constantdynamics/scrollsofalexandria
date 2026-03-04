@@ -7423,4 +7423,156 @@ export const principlesNew = [
       { domain: "Gezondheid", icon: "🏃", text: "Een paar fundamentele gewoonten (slaap, kracht/conditietraining, minimaal bewerkt voedsel) hebben meer effect op gezondheid dan tientallen supplementen en biohacks samen." }
     ],
   },
+
+  // ── Batch A6: Mentale Gezondheid & Veerkracht ────────────────────────────────
+  {
+    id: "stress-response-types",
+    title: "Stressresponsen Begrijpen",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het autonome zenuwstelsel kent twee modi: sympathisch (vechten-vluchten-bevriezen, stressrespons) en parasympathisch (rust-en-verteer, herstelrespons). Chronische activering van de stressrespons schaadt gezondheid en cognitie.",
+    abstractExample: "Kortdurende stress is nuttig en adaptief. Chronische stress waarbij het systeem nooit terugschakelt naar parasympathisch, schaadt het immuunsysteem, geheugen, slaap en cardiovasculaire gezondheid.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏥", text: "Chronische stress verhoogt cortisol, wat het immuunsysteem onderdrukt, slaap verstoort en de hippocampus (geheugen) letterlijk verkleint — stress is een fysiologische realiteit, geen mentale zwakheid." },
+      { domain: "Ademhaling", icon: "🫁", text: "Langzame uitademing (langer dan inademing) activeert direct het parasympathische systeem — fysiologische onderdrukking via de nervus vagus. Dit werkt onmiddellijk en vraagt geen geloof." },
+      { domain: "Herstel", icon: "😴", text: "Slaap is de primaire stressreductiemechanisme — het parasympathische systeem domineert tijdens diepe slaap. Slaaptekort verhoogt stresshormonen de volgende dag, wat een negatieve spiraal creëert." }
+    ],
+  },
+  {
+    id: "rumination-vs-reflection",
+    title: "Rumineren vs. Reflecteren",
+    difficulty: 2,
+    emoji: "🌀",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Rumineren is het herhaaldelijk, passief denken over problemen zonder progressie — je draait in cirkels. Reflecteren is actief, gericht denken dat inzichten genereert en tot conclusies leidt. Beide voelen hetzelfde maar hebben tegengestelde effecten.",
+    abstractExample: "Rumineren: 'Waarom overkomt mij dit altijd? Wat is er mis met mij?' Reflecteren: 'Wat is hier precies misgegaan? Wat had ik anders kunnen doen? Wat leer ik hiervan?' De 'waarom'-vraag leidt tot rumineren; 'wat'-vragen leiden tot reflectie.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Na een mislukte presentatie: rumineren = uren piekeren over de schaamte. Reflecteren = 20 minuten systematisch analyseren wat beter kon en een concrete actie plannen." },
+      { domain: "Relaties", icon: "❤️", text: "Rumineren over een conflict leidt tot versterking van negatieve emoties. Journalen met specifieke vragen ('wat probeerde de ander te communiceren?') leidt tot inzicht en begrip." },
+      { domain: "Slaap", icon: "😴", text: "Nachtelijk piekeren is rumineren — het brein draait in cirkels zonder oplossingen te genereren. Een 'worry time' overdag (15 min actieve probleemoplossing) reduceert nachtelijk piekeren aantoonbaar." }
+    ],
+  },
+  {
+    id: "post-traumatic-growth",
+    title: "Post-traumatische Groei",
+    difficulty: 2,
+    emoji: "🌱",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Post-traumatische groei (Tedeschi & Calhoun) beschrijft positieve psychologische verandering als resultaat van het worstelen met zeer uitdagende levensomstandigheden. Groei treedt niet door het trauma zelf op, maar door de cognitieve verwerking ervan.",
+    abstractExample: "Tegenover PTSD staat PTG: mensen die door ernstige tegenslag gaan en er doorheen komen, rapporteren soms dieper begrip van wat belangrijk is, sterkere relaties, en hogere levenstevredenheid dan voor de tegenslag.",
+    examples: [
+      { domain: "Ziekte", icon: "🏥", text: "Kankerpatiënten die de ziekte overleven, rapporteren significant vaker hogere levenswaardering, diepere relaties en duidelijkere prioriteiten dan voor de diagnose — niet ondanks maar door de crisis." },
+      { domain: "Verlies", icon: "💔", text: "Rouwverwerking die leidt tot herijking van wat echt belangrijk is — mensen die een dierbare verloren hebben en de verwerking doormaakten, leven soms bewuster dan daarvoor." },
+      { domain: "Mislukking", icon: "🏆", text: "Ondernemers na faillissement: degenen die de mislukking actief verwerken (niet vermijden of verdringen), starten succesvoller opnieuw — de mislukkingservaring is een competitief voordeel." }
+    ],
+  },
+  {
+    id: "learned-helplessness",
+    title: "Aangeleerde Hulpeloosheid",
+    difficulty: 2,
+    emoji: "⛓️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Aangeleerde hulpeloosheid (Seligman) treedt op als organismen na herhaalde onvermijdbare negatieve ervaringen stoppen met proberen te ontsnappen of te veranderen — ook als de situatie verandert en ontsnapping mogelijk wordt.",
+    abstractExample: "Een hond die herhaaldelijk schokken ontvangt die hij niet kan vermijden, probeert later niet te ontsnappen ook als dat mogelijk is. Mensen ontwikkelen dit na herhaalde mislukkingen waarbij ze geloven dat hun acties er niet toe doen.",
+    examples: [
+      { domain: "School", icon: "📚", text: "Leerlingen die herhaaldelijk falen op wiskunde (met terugkoppeling die hen incompetent doet voelen), geven moeiteloos op bij nieuwe wiskundeproblemen — ook haalbare. De hulpeloosheid is aangeleerd." },
+      { domain: "Werk", icon: "💼", text: "Medewerkers in toxische organisaties waar goede ideeën stelselmatig worden genegeerd, stoppen met voorstellen doen — zelfs na een functiewissel naar een open organisatie. De hulpeloosheid reist mee." },
+      { domain: "Gezondheid", icon: "🏃", text: "Mensen die herhaaldelijk diëten en jojo-effecten ervaren, kunnen aangeleerde hulpeloosheid ontwikkelen over gewichtsbeheersing — 'het lukt me toch nooit'. Dit is aangeleerd, niet waar." }
+    ],
+  },
+  {
+    id: "resilience-building",
+    title: "Veerkracht Opbouwen",
+    difficulty: 2,
+    emoji: "🌳",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Veerkracht is niet de afwezigheid van moeilijkheid maar het vermogen om te herstellen na tegenslag en er sterker uit te komen. Veerkracht is geen persoonlijkheidskenmerk maar een set van opbouwbare vaardigheden en hulpbronnen.",
+    abstractExample: "Veerkrachtige mensen zijn niet ongevoelig voor pijn — ze ervaren tegenslag net zo heftig. Maar ze hebben vaardigheden en hulpbronnen die herstel faciliteren: sociale steun, zingeving, coping-strategieën.",
+    examples: [
+      { domain: "Tegenslag", icon: "💪", text: "De vier pijlers van veerkracht: sociale verbinding (steun vragen en geven), zelfzorg (basis fysieke behoeften), zingeving (het 'waarom' behouden), en cognitieve flexibiliteit (situaties kunnen herkaderen)." },
+      { domain: "Werk", icon: "💼", text: "Veerkrachtige professionals na ontslag: ze rouwen kort, analyseren wat er is geleerd, activeren hun netwerk, en herdefiniëren de situatie als kans — niet als identiteitsverlies." },
+      { domain: "Opvoeding", icon: "👨‍👩‍👧", text: "Kinderen worden veerkrachtiger door leeftijdspassende uitdagingen te overwinnen — niet door bescherming van alle moeilijkheden. Ouders die problemen oplossen voor kinderen, verminderen kindveerkracht." }
+    ],
+  },
+  {
+    id: "cognitive-defusion",
+    title: "Cognitieve Defusie",
+    difficulty: 2,
+    emoji: "🫧",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Cognitieve defusie (ACT) is het creëren van afstand tussen jezelf en je gedachten — je observeert gedachten als mentale gebeurtenissen in plaats van met hen te fuseren. 'Ik ben waardeloos' wordt 'ik merk dat ik de gedachte heb dat ik waardeloos ben'.",
+    abstractExample: "Gedachten zijn geen feiten. Door ze te bekijken in plaats van erdoorheen te kijken, verliezen ze hun directe invloed op gedrag. De metafoor: gedachten zijn als wolken die voorbijdrijven — jij bent de hemel.",
+    examples: [
+      { domain: "Angst", icon: "😰", text: "'Ik ga falen' (fusie) → 'Ik merk dat mijn brein het scenario afspeelt dat ik ga falen' (defusie). De defusieversie geeft ruimte om anders te handelen dan de gedachte dicteert." },
+      { domain: "Zelfkritiek", icon: "🪞", text: "Bij harde zelfkritische gedachten: stel je voor dat ze worden gezegd door een tekeningfiguur met grappige stem. Humor creëert defusie — de gedachte verliest zijn vat door de context te veranderen." },
+      { domain: "Beslissingen", icon: "🎯", text: "Angst voor publiek spreken defuseren: 'Mijn angstbrein vertelt mij dat dit rampzalig wordt' — de gedachte is gelabeld als output van het angstbrein, niet als feit over de werkelijkheid." }
+    ],
+  },
+  {
+    id: "boundary-setting",
+    title: "Grenzen Stellen",
+    difficulty: 2,
+    emoji: "🚧",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Grenzen zijn de limieten die je stelt aan wat je accepteert in interacties met anderen — gebaseerd op je waarden en behoeften. Grenzen zijn niet muren maar regels voor hoe je behandeld wilt worden, gecommuniceerd zonder agressie.",
+    abstractExample: "Grenzen gaan niet over het controleren van andermans gedrag maar over het definiëren van je eigen reactie: 'Als je me zo blijft aanspreken, verlaat ik het gesprek' — niet 'je mag me niet zo aanspreken'.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "'Ik ben na 18:00 niet bereikbaar voor niet-urgente berichten' is een grens. Consistentie in nakomen is het fundament — een grens die je regelmatig schendt, communiceert dat hij niet bestaat." },
+      { domain: "Relaties", icon: "❤️", text: "Grenzen stellen zonder schuldgevoel: je bent niet verantwoordelijk voor de emotionele reactie van de ander op je grens. Je bent verantwoordelijk voor jezelf, niet voor het managen van andermans gevoelens." },
+      { domain: "Familie", icon: "👨‍👩‍👧", text: "Familiegrenzen zijn moeilijkst omdat sociale druk het sterkst is. 'Ik begrijp dat je teleurgesteld bent, en ik ga toch nee zeggen' — de grens houden zonder de relatie te vernietigen." }
+    ],
+  },
+  {
+    id: "self-regulation",
+    title: "Zelfregulatie",
+    difficulty: 2,
+    emoji: "🎛️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Zelfregulatie is het vermogen om gedachten, emoties en gedrag te sturen in lijn met doelen en waarden — ook onder druk. Het is de metataardigheid die alle andere persoonlijke ontwikkeling mogelijk maakt.",
+    abstractExample: "Zelfregulatie is niet het onderdrukken van impulsen maar het managen van de ruimte tussen stimulus en respons. Die ruimte — hoe klein ook — is waar keuzevrijheid en groei beginnen.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏃", text: "Zelfregulatie voorspelt gezondheidsuitkomsten beter dan IQ — mensen die impulsen kunnen vertragen en lange termijn boven korte termijn stellen, maken betere gezondheids- en financiële beslissingen." },
+      { domain: "Leiderschap", icon: "👥", text: "Leiders met sterke zelfregulatie reageren kalm in crises, communiceren helder onder druk en modelleren het gedrag dat ze van hun team verwachten — dit schept psychologische veiligheid." },
+      { domain: "Relaties", icon: "❤️", text: "De pauze van één seconde voor je reageert op een provocerende opmerking kan het verschil maken tussen constructief gesprek en destructief conflict — zelfregulatie in actie." }
+    ],
+  },
+  {
+    id: "acceptance-vs-resignation",
+    title: "Acceptatie vs. Berusting",
+    difficulty: 2,
+    emoji: "🌿",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Acceptatie (ACT) is het volledig toelaten van moeilijke ervaringen zonder ertegen te vechten — niet omdat ze goed zijn, maar omdat weerstand extra lijden toevoegt. Berusting is passief opgeven. Acceptatie is actieve openheid die ruimte vrijmaakt voor actie.",
+    abstractExample: "Acceptatie zegt: 'Dit is er, ik vecht er niet tegen, én ik kies wat ik doe.' Berusting zegt: 'Dit is er, ik kan toch niets doen.' Dezelfde erkenning van realiteit, maar tegengesteld in hun handlingspotentieel.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏥", text: "Chronische pijnpatiënten die accepteren ('de pijn is er, ik bouw mijn leven eromheen') functioneren beter dan degenen die constant vechten om de pijn weg te maken — paradoxaal vermindert acceptatie ook de pijn-intensiteitsbeleving." },
+      { domain: "Verlies", icon: "💔", text: "Rouwverwerking: acceptatie van verlies betekent niet dat het verlies goed was, maar dat je er niet langer kracht in steekt om het ongedaan te maken — die kracht komt vrij voor het leven dat nog voor je ligt." },
+      { domain: "Werk", icon: "💼", text: "Een project dat mislukt: acceptatie = erkennen dat het is mislukt en analyseren wat er te leren valt. Niet-acceptatie = energie blijven steken in 'dit had niet mogen gebeuren'." }
+    ],
+  },
+  {
+    id: "cognitive-reappraisal",
+    title: "Cognitieve Herwaardering",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Cognitieve herwaardering is het veranderen van de manier waarop je een situatie interpreteert om haar emotionele impact te veranderen — niet door ontkenning of suppressie, maar door een genuanceerder of alternatief perspectief te vinden.",
+    abstractExample: "Herwaardering werkt bovenstrooms: je verandert de interpretatie voor de volledige emotionele respons plaatsvindt. Dit is effectiever dan suppressie (neerwaarts duwen van al aanwezige emotie).",
+    examples: [
+      { domain: "Angst", icon: "😰", text: "Presentatieangst herkaderen als opwinding — fysiologisch zijn ze identiek (verhoogde hartslag, adrenaline). 'Ik ben opgewonden' in plaats van 'ik ben bang' verbetert daadwerkelijk presentatieprestatie." },
+      { domain: "Conflict", icon: "⚡", text: "Een kritische e-mail herkaderen: 'Mijn collega wil dit project succesvol laten zijn, net als ik' in plaats van 'hij valt mij persoonlijk aan' — dezelfde e-mail, andere interpretatie, andere respons." },
+      { domain: "Tegenslag", icon: "💪", text: "Een tegenslag herkaderen als feedback in plaats van als mislukking: 'Dit toont me precies waar ik moet groeien' — niet positief denken maar genuanceerder interpreteren." }
+    ],
+  },
 ];
