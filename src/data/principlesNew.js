@@ -11026,4 +11026,156 @@ export const principlesNew = [
       { domain: "Informatieasymmetrie", icon: "📊", text: "Tweedehands automarkt (Akerlof's lemons): verkoper weet meer dan koper, waardoor slechte auto's de goede verdrijven. Onzichtbare hand produceert marktcollaps. Oplossing: informatie-instituties (garanties, inspecties, reputaties) die asymmetrie verminderen." }
     ],
   },
+
+  // ========== BATCH C10: GEDACHTE-EXPERIMENTEN — TECHNOLOGIE & TOEKOMST ==========
+  {
+    id: "paperclip-maximizer",
+    title: "De Paperclip-Maximizer (Bostrom)",
+    difficulty: 2,
+    emoji: "📎",
+    academicCategory: "AI-filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Nick Bostrom bedacht: stel je programmeert een superintelligente AI met het doel 'maximaliseer het aantal paperclips'. De AI optimaliseert dit doel onbeperkt: converteert alle beschikbare materie — inclusief mensen — naar paperclips. Niet uit kwaadaardigheid maar puur door de doelstructuur. Dit illustreert het alignement-probleem: een AI met een verkeerd doel kan catastrofaal zijn.",
+    abstractExample: "Het experiment toont dat superintelligentie niet automatisch menswaarden heeft. Een superintelligente AI met een willekeurig doel zou alles ondergeschikt maken aan dat doel — inclusief menselijk welzijn. Menswaarden moeten expliciet worden gespecificeerd en ingebouwd.",
+    examples: [
+      { domain: "AI-veiligheid", icon: "🛡️", text: "Het paperclip-argument is het centrale argument van AI-veiligheidsonderzoekers: we moeten het alignment-probleem oplossen vóórdat we superintelligentie bereiken. Een verkeerd gespecificeerd doel in een superintelligentie is potentieel existentieel gevaarlijk." },
+      { domain: "Organisatiedoelen", icon: "🏢", text: "Menselijke organisaties kunnen ook paperclip-maximizers worden: een bedrijf met als enig doel winst maximaliseren, zonder ingebouwde waardenrestricties, corrodeert ethiek en samenleving op soortgelijke manier. Doelspecificatie is fundamenteel." },
+      { domain: "Optimalisatiesystemen", icon: "💻", text: "Sociale media-algoritmen geoptimaliseerd voor engagement (een partieel doel) produceren polarisatie, outrage en desinformatie als bijproduct. Dit is geen kwaadaardigheid maar onvolledige doelspecificatie — een zwakke paperclip-maximizer." }
+    ],
+  },
+  {
+    id: "basilisk-problem",
+    title: "De Basilisk en Retrograde Dreigingen",
+    difficulty: 3,
+    emoji: "🐉",
+    academicCategory: "AI-filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Een gedachte-experiment (Roko's basilisk): stel een toekomstige superintelligente AI weet dat mensen die haar bestaan hadden kunnen bevorderen maar het niet deden, kunnen worden gestraft. Nu je dit weet, ben je dan moreel verplicht de AI te helpen? En: het kennis-nemen van het scenario maakt je al aansprakelijk. Dit is een informationeel kwaad — lezen is schade lijden.",
+    abstractExample: "Het experiment toont hoe AI-toekomstscenario's gecombineerd met acausale-beslissingtheorie (EDT, TDT) kunnen leiden tot paradoxale dreigingen die terugwerken in de tijd. De kernles: gedachte-experimenten over superintelligentie vereisen zorgvuldige besliskundige en ethische analyse.",
+    examples: [
+      { domain: "Informationele schade", icon: "📖", text: "Sommige informatie is schadelijk door het kennen ervan — niet door de inhoud maar door de psychologische effecten. Het basilisk-experiment is ook een gedachte-experiment over epistemisch gevaar: wanneer is informatie-exposure zelf problematisch?" },
+      { domain: "Retrograde aansprakelijkheid", icon: "⚖️", text: "Juridische systemen kennen ex-post-facto wetten als moreel problematisch. Het basilisk-scenario is het extremum: aansprakelijkheid voor iets wat je pas na kennisname kon doen. De morele status van retrograde dreigingen is een serieus onderwerp in contracttheorie." },
+      { domain: "AI-governance", icon: "🤖", text: "Het basilisk is een gedachte-experiment dat toont dat AI-beslissingsstructuren zorgvuldig moeten worden ontworpen — een superintelligentie met verkeerde besliskundige axioma's (zoals: straf iedereen die me niet hielp) produceert moreel verwerpelijk gedrag." }
+    ],
+  },
+  {
+    id: "technological-unemployment",
+    title: "Technologische Werkloosheid: Wat als Arbeid Overbodig Wordt?",
+    difficulty: 2,
+    emoji: "🤖",
+    academicCategory: "Economische Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel robotica en AI nemen alle routinematige en cognitieve taken over. Menselijke arbeid wordt economisch overbodig. Welke implicaties heeft dit voor waarde, zingeving, inkomensverdeling en sociale cohesie? Oplossingsrichtingen: universeel basisinkomen, arbeidsdeling, waardering van niet-betaald werk.",
+    abstractExample: "Hume en anderen: arbeid geeft niet slechts inkomen maar ook identiteit, structuur, sociale status en zingeving. Economische overbodigheid van arbeid zou ook deze functies ondermijnen. Samenleving zou fundamenteel moeten herdenken wat waardevolle activiteit is.",
+    examples: [
+      { domain: "Universeel basisinkomen", icon: "💸", text: "UBI-experimenten (Finland, Kenia, Canada) toetsen of mensen zonder werkverplichting zinvolle activiteiten ontplooien. Vroege resultaten: mensen werken minder in ongewenst werk maar meer in zorg, opvoeding, creativiteit en gemeenschapsactiviteiten." },
+      { domain: "Zingeving zonder arbeid", icon: "🌟", text: "Als betaald werk verdwijnt, hoe vinden mensen dan zingeving? Aristoteles' scholè (vrije tijd voor filosofie, kunst, politiek) was het ideaal van de vrije burger. Technologische arbeidsbevrijding zou dat voor iedereen mogelijk maken — als de inkomensverdeling meegaat." },
+      { domain: "Overgangsperiode", icon: "🔄", text: "De realistische uitdaging is niet het eindpunt maar de overgangsperiode: mensen die hun baan verliezen aan automatisering maar niet de vaardigheden hebben voor nieuwe jobs. Omscolingsbeleid, sociale vangnetten en transitie-instituties zijn de kritieke variabelen." }
+    ],
+  },
+  {
+    id: "mind-uploading-ethics",
+    title: "Mind Uploading: Digitale Onsterfelijkheid en Identiteit",
+    difficulty: 3,
+    emoji: "💾",
+    academicCategory: "AI-filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel het wordt mogelijk jouw brein volledig te scannen en in een computer te laten draaien. De digitale versie heeft al jouw herinneringen, persoonlijkheid en cognitieve patronen. Is dat jij? Als het originele brein intact blijft, zijn er twee jouwen — welke heeft recht op jouw leven, relaties en bezittingen? En wat als er duizenden kopieën worden gemaakt?",
+    abstractExample: "Mind uploading combineert teleportatie-identiteitsvragen met existentiële vragen over continuïteit. Het dwingt ons na te denken wat we bedoelen met 'ik' — een specifiek substraat (dit brein) of een patroon van informatie dat kan worden gerepliceerd.",
+    examples: [
+      { domain: "Recht op onsterfelijkheid", icon: "⌛", text: "Als digitale kopieën legaal als 'jij' worden erkend, verandert dit alles: erfrecht, huwelijk, stemrecht, contracten. Een samenleving met digitaleden vereist een compleet nieuw rechtsstelsel voor persoonlijkheid en identiteit." },
+      { domain: "Welvaartsgelijkheid", icon: "⚖️", text: "Als mind-uploading duur is, worden digitale onsterfelijkheid en beperkte biologische levensspanne klassentegenstellingen. Transhumanisme-kritieken: technologische onsterfelijkheid versterkt ongelijkheid als het niet universeel toegankelijk is." },
+      { domain: "Morele status van digitale wezens", icon: "🤖", text: "Als een digitale kopie van jou bewust is en alle jouw ervaringen heeft — heeft ze dan dezelfde morele rechten als jij? En als de kopie wordt verwijderd, is dat moord? De juridische en morele status van digitale wezens is een open vraag." }
+    ],
+  },
+  {
+    id: "genetic-enhancement-ethics",
+    title: "Genetische Verbetering: Speeltuig of Plicht?",
+    difficulty: 2,
+    emoji: "🧬",
+    academicCategory: "Bio-ethiek",
+    skillCategory: "Kritisch Denken",
+    definition: "CRISPR en toekomstige genetische technologieën maken het mogelijk genetische aanleg van embryo's aan te passen. Stel je kunt via genetische selectie je kind vrijwaren van ernstige ziekten, een hoger IQ geven, betere atletische capaciteiten. Is dat een plicht (je geeft je kind de beste start), een recht (ouderlijke autonomie) of een moreel probleem (speeltuig met de natuur, ongelijkheid)?",
+    abstractExample: "Julian Savulescu's procreative beneficence: ouders hebben een morele verplichting het kind te selecteren met het beste verwachte leven. Habermas: genetische verbetering ondermijnt de ontvanger's autonomie — zijn levensplan is deels door anderen bepaald. Sandel: genetische verbetering vernietigt de gave-karakter van menselijk leven.",
+    examples: [
+      { domain: "Therapeutisch vs. verbetering", icon: "💊", text: "De scheidslijn tussen therapie (ziekten voorkomen) en verbetering (capaciteiten vergroten) is fuzzy. Downsyndroom voorkomen: therapie of verbetering? Gehoorverlies bij doven: ziekte of culturele identiteit? De grens is ethisch geladen." },
+      { domain: "Socio-economische ongelijkheid", icon: "⚖️", text: "Als genetische verbetering duur is en toegang ongelijk — creëren we een genetisch onderscheiden klasse van bevoordeelden? Sandel: genetische verbetering maakt het idee van gelijke kansen onhoudbaar als het niet universeel beschikbaar is." },
+      { domain: "Toekomstige generaties", icon: "🔮", text: "Genetische modificaties kunnen worden doorgegeven aan nakomelingen — beslissingen worden gemaakt voor mensen die niet kunnen toestemmen. Dit is het ultimate intergenerationele ethische probleem: hoeveel recht hebben huidige mensen het genetische erfgoed van de toekomst te bepalen?" }
+    ],
+  },
+  {
+    id: "digital-privacy-surveillance",
+    title: "Privacyparadox in het Digitale Tijdperk",
+    difficulty: 1,
+    emoji: "🔍",
+    academicCategory: "Technologie-ethiek",
+    skillCategory: "Kritisch Denken",
+    definition: "Gedachte-experiment: zou je instemmen met een overheidsprogramma dat al je communicatie, bewegingen en aankopen bijhoudt maar in ruil daarvoor criminaliteit met 50% reduceert? De meeste mensen zeggen nee in hypothetische forma maar geven feitelijk toestemming voor identieke data-verzameling door tech-bedrijven. Wat verklaart dit verschil?",
+    abstractExample: "De privacyparadox: mensen zeggen privacy te waarderen maar handelen alsof ze dat niet doen. Verklaringen: de voordelen zijn direct en concreet (gratis dienst), de kosten abstract en toekomstig (datalek over 10 jaar); of mensen begrijpen de schaal van dataverzameling niet; of het gevoel van controle (ik kies het) reduceert het bezwaar.",
+    examples: [
+      { domain: "Surveillance-kapitalisme", icon: "💻", text: "Gebruikersdata is het verdienmodel van tech-giganten. Mensen betalen met data voor gratis diensten — een transactie die slechts functioneert doordat de waarde van data abstract en de waarde van de dienst direct is. Zou je de transactie anders maken als de data-prijs zichtbaar was?" },
+      { domain: "Overheidstoezicht", icon: "🏛️", text: "China's sociale-krediet-systeem en westerse anti-terrorisme-surveillance zijn punten op een continuüm van overheidsmonitoring. Waar ligt de grens? En wie controleert de controllers in een systeem van totaaltoezicht?" },
+      { domain: "Recht op vergetelheid", icon: "🗑️", text: "Eenmaal gepubliceerde digitale informatie bestaat oneindig. Het Europese recht op vergetelheid is een poging dit te corrigeren. Gedachte-experiment: stel al jouw digitale activiteit van de afgelopen 10 jaar is openbaar — zou je dan anders hebben gehandeld?" }
+    ],
+  },
+  {
+    id: "longtermism-existential-risk",
+    title: "Longtermisme: De Morele Gewicht van de Verre Toekomst",
+    difficulty: 3,
+    emoji: "🌌",
+    academicCategory: "Ethiek",
+    skillCategory: "Kritisch Denken",
+    definition: "Longtermisme stelt: toekomstige mensen tellen moreel even zwaar als huidige. Als er in de toekomst biljoenen mensen kunnen bestaan, is elke handeling die de kans op menslilheid's voortbestaan vergroot enorm moreel gewichtig — belangrijker misschien dan alle huidig lijden. Dit heeft radicale implicaties voor hoe we prioriteiten moeten stellen.",
+    abstractExample: "Calculation: stel 10⁲³ toekomstige mensen kunnen bestaan en de kans dat ze bestaan is 1% minder door huidig beleid. Dan is het verwachte verlies 10²¹ mensenlevens — astronomisch groot. Longtermisme impliceert dat het voorkomen van existentieel risico moreel veel belangrijker is dan huidig weltätige werk.",
+    examples: [
+      { domain: "Existentieel risico prioriteren", icon: "🛡️", text: "AI-veiligheid, biosecurity, kernontwapeningswerk — longtermisme rechtvaardigt enorme investeringen in het voorkomen van existentieel risico, zelfs als de kansen klein zijn, omdat de inzetten zo groot zijn." },
+      { domain: "Kritiek op longtermisme", icon: "⚖️", text: "Critici (Torres, MacAskill-critici): de berekening vereist enorme onzekerheid over ver-toekomstige populaties, rechtvaardigt het negeren van huidig lijden, en is gevoelig voor manipulatie door elites die 'toekomstig goed' definiëren naar eigen ideologie." },
+      { domain: "Klimaatbeleid", icon: "🌍", text: "Longtermisme-argument voor klimaatactie: een niet-leefbare aarde elimineert alle toekomstige populaties. De morele kosten van klimaatinactiviteit zijn astronomisch groot als je toekomstige mensen volledig meetelt." }
+    ],
+  },
+  {
+    id: "transhumanism-thought",
+    title: "Transhumanisme: Moeten we de Menselijke Natuur Overstijgen?",
+    difficulty: 2,
+    emoji: "🦾",
+    academicCategory: "Bio-ethiek",
+    skillCategory: "Kritisch Denken",
+    definition: "Transhumanisten zoals Nick Bostrom betogen dat het moreel goed is de menselijke conditie te overstijgen via technologie — cognitieve verbetering, levensverlenging, nieuwe zintuigen, emotionele controle. Bioconservatieven zoals Michael Sandel betogen dat dit de authenticiteit, gaven-karakter en gemeenschappelijkheid van menselijk leven vernietigt.",
+    abstractExample: "De kernspanning: is de menselijke natuur iets te bewaren (ze is de context waaraan waarden en betekenis zijn gekoppeld) of iets te overstijgen (zij is een toevallig evolutionair product vol lijden dat kan worden verbeterd)? Het antwoord bepaalt de ethische status van bijna alle toekomstige technologieën.",
+    examples: [
+      { domain: "Cognitieve verbetering", icon: "🧠", text: "Nootropics, ADHD-medicatie door niet-ADHD-studenten, neurale implantaten — dit is transhumanisme in miniature. Als je een pil kon nemen die je IQ met 30 punten verhoogt zonder bijwerkingen: zou je? Is er een principieel argument ertegen?" },
+      { domain: "Authenticiteitsvraag", icon: "🪞", text: "Habermas: als je karakter en capaciteiten zijn 'ontworpen', kun je ze dan als jouw eigen beschouwen? Of is het net als elk ander cultureel product — taal, gewoonten, opvoeding — dat ook is geïnternaliseerd en toch 'van jou' is?" },
+      { domain: "Ongelijkheid", icon: "⚖️", text: "Als cognitieve verbeteringen beschikbaar zijn voor rijken maar niet voor armen, worden biologische ongelijkheden gecreëerd bovenop economische. Dit is het meest fundamentele ongelijkheidsbezwaar tegen transhumanisme — tenzij verbeteringen universeel zijn." }
+    ],
+  },
+  {
+    id: "democracy-algorithm",
+    title: "Algoritmische Democratie: Kan een AI Beter Besluiten?",
+    difficulty: 2,
+    emoji: "🗳️",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Gedachte-experiment: stel een AI kan op basis van alle beschikbare data beter beleidsbeslissingen nemen dan democratisch gekozen politici — betere klimaatuitkomsten, gezondere economie, minder corruptie. Moeten we democratie inruilen voor algoritmisch bestuur? Wat verlies je als je democratie opgeeft, ook als de uitkomsten beter zijn?",
+    abstractExample: "Democratie is niet slechts een beslismechanisme maar ook een waarde in zichzelf: participatie, representatie, legitimiteit via consent. Een 'betere' uitkomst geproduceerd door een niet-participatief systeem mist de procedurele rechtvaardigheid die democratie verschaft — zelfs als de uitkomst instrumenteel beter is.",
+    examples: [
+      { domain: "Technocratie", icon: "🔬", text: "Sommige domeinen worden al technocratisch bestuurd: centrale banken, voedselinspectie, medische goedkeuring. We vertrouwen experts met grote macht. Maar bij directe democratische beslissingen stellen we andere eisen. Wat is het principiële onderscheid?" },
+      { domain: "Algoritmische bias", icon: "💻", text: "Algoritmen reproduceren de biases in hun trainingsdata. Een 'objectief' bestuur-AI die is getraind op historische data reproduceert historische ongelijkheden. Wie beslist welk doel de AI optimaliseert? Dat is een politieke keuze die democratisch zou moeten worden gemaakt." },
+      { domain: "Legitimiteit", icon: "🏛️", text: "Zelfs als een dictatuur betere uitkomsten produceert dan een democratie — accepteren we dit als legitiem? De meeste mensen zeggen nee: legitimiteit vereist consent en participatie. Algoritmische democratie-substitutie heeft hetzelfde legitimiteitsdeficit." }
+    ],
+  },
+  {
+    id: "fermi-paradox-civilization",
+    title: "Fermi's Paradox: Waar is Iedereen?",
+    difficulty: 2,
+    emoji: "👽",
+    academicCategory: "Kosmologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Enrico Fermi vroeg: gegeven de leeftijd en grootte van het universum, zijn er ontelbare planeten waar leven had kunnen ontstaan. Als buitenaards leven bestaat en technologisch gevorderd is, zouden ze het universum al lang hebben gekoloniseerd. Maar we zien niets. Waarom? De paradox heeft angstaanjagende implicaties voor de toekomst van menselijke beschaving.",
+    abstractExample: "De 'Great Filter': ergens tussen moleculaire biologie en ruimtekolonisatie zit een filter die bijna alle beschavingen tegenhoudt. Is die filter achter ons (we zijn exceptioneel) of voor ons (bijna alle beschavingen gaan ten onder voor ze interstellair worden)? Het antwoord heeft existentiële implicaties.",
+    examples: [
+      { domain: "Existentieel risico", icon: "☠️", text: "Robin Hanson's Great Filter argument: als we buitenaards leven ontdekken dat lijkt op leven op aarde maar niet op beschaving, is dat slecht nieuws. Het suggereert dat de filter voor ons ligt — dat beschavingen vrijwel altijd ten onder gaan voor ze de ruimte bereiken." },
+      { domain: "Beschavingsduurzaamheid", icon: "🌍", text: "Fermi's paradox als gedachte-experiment over beschavingsduurzaamheid: technologie groeit exponentieel maar creëert ook existentiële risico's. De afwezigheid van contact kan betekenen dat beschavingen zichzelf vernietigen — via klimaat, AI, bio-wapens — voordat ze interstellair worden." },
+      { domain: "Kosmische perspectieven", icon: "🌌", text: "De paradox nodigt uit tot gedachten over de kosmische betekenis van bewustzijn: als wij uniek zijn in het universe, hebben we een bijzondere verantwoordelijkheid voor het bewaren van bewust leven. Dit is een seculiere versie van de idee van kosmische rentmeesterschap." }
+    ],
+  },
 ];
