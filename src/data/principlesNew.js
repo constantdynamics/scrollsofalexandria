@@ -6815,4 +6815,156 @@ export const principlesNew = [
       { domain: "Studiekeuze", icon: "📚", text: "Jongeren die direct na middelbare school studeren zonder zelfexploratie, hebben hogere kans op spijt en studiewisseling — een gap year kan identiteitsverkenning faciliteren." }
     ],
   },
+
+  // ── Batch A2: Gewoonten & Gedragsverandering ─────────────────────────────────
+  {
+    id: "habit-loop",
+    title: "De Gewoontelus",
+    difficulty: 1,
+    emoji: "🔁",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De gewoontelus (Duhigg) bestaat uit drie elementen: een signaal (cue) dat het gedrag triggert, de routine zelf, en de beloning die het gedrag versterkt. Gewoonten veranderen door de routine te vervangen terwijl signaal en beloning gelijk blijven.",
+    abstractExample: "Je eet elke middag een koek (routine) als je je verveelt op het werk (signaal) voor even afleiding en suikerboost (beloning). Vervang de koek door een korte wandeling — zelfde signaal, zelfde beloning, andere routine.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏃", text: "Een slechte gewoonte verwijder je niet — je overschrijft hem. Sigaretrokers die stoppen maar de rookpauze houden (signaal) en vervangen door diepe ademhaling (nieuwe routine) zijn succesvoller." },
+      { domain: "Productiviteit", icon: "💻", text: "De gewoonte om bij verveling social media te checken (routine) vervangen door een korte takenlijst te bekijken — hetzelfde verveling-signaal, maar een productievere uitweg." },
+      { domain: "Sporten", icon: "💪", text: "Sportskleding de avond voor uitleggen (signaal) maakt de volgende ochtend sporten gemakkelijker — het signaal verlaagt de activatiedrempel voor de gewenste routine." }
+    ],
+  },
+  {
+    id: "implementation-intentions",
+    title: "Implementatie-intenties",
+    difficulty: 1,
+    emoji: "📅",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Implementatie-intenties (Gollwitzer) zijn 'als-dan'-plannen die specifiek omschrijven wanneer, waar en hoe je een gedrag uitvoert: 'Als X gebeurt, doe ik Y.' Ze verhogen de kans van gedragsuitvoering significant.",
+    abstractExample: "In plaats van 'ik ga meer sporten' (intentie) zeg je 'als ik maandag thuiskom van werk, kleed ik me direct om en ga 30 minuten hardlopen' — het concrete plan activeert automatisch gedrag.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏃", text: "Mensen die exact plannen wanneer en waar ze gaan sporten, doen dit 2-3x vaker dan mensen met alleen een vaag voornemen — de specificiteit is de sleutel." },
+      { domain: "Leren", icon: "📚", text: "'Na het avondeten, elke dag om 20:00 aan de keukentafel, lees ik 20 pagina's' werkt veel beter dan 'ik ga meer lezen' — de routine verankert in een specifieke context." },
+      { domain: "Financiën", icon: "💰", text: "'Op de eerste van de maand, zodra mijn salaris binnenkomt, zet ik automatisch €200 over naar mijn spaarrekening' — automatisering via implementatie-intentie." }
+    ],
+  },
+  {
+    id: "temptation-bundling",
+    title: "Verleiding Koppelen",
+    difficulty: 1,
+    emoji: "🎁",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Verleiding koppelen (Milkman) is de strategie om iets wat je wilt doen te combineren met iets wat je moet doen — je traint alleen terwijl je je favoriete podcast luistert, waardoor beide activiteiten positief worden geladen.",
+    abstractExample: "Je uitgestelde belasting papierwerk koppel je aan je favoriete koffie en muziek. De aangenaamheid van koffie en muziek maakt het papierwerk minder aversief — je hebt een reden om te beginnen.",
+    examples: [
+      { domain: "Sport", icon: "🏃", text: "Alleen je favoriete Netflix-serie kijken tijdens het sporten op de loopband — je gaat erop verheugen te sporten omdat je de serie wilt zien." },
+      { domain: "Werk", icon: "💼", text: "Saaie administratieve taken koppelen aan een heerlijk drankje of aangenaam muziek — de beloning maakt de drempel lager en het vol te houden." },
+      { domain: "Huishouden", icon: "🏠", text: "Alleen je favoriete audioboek luisteren tijdens huishoudelijke taken — schoonmaken en strijken worden aangenamer terwijl je ook leert." }
+    ],
+  },
+  {
+    id: "two-minute-rule",
+    title: "De Twee-minutenregel",
+    difficulty: 1,
+    emoji: "⏱️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De twee-minutenregel (Allen/Clear) stelt: als een taak minder dan twee minuten kost, doe hem direct. Voor nieuwe gewoonten: maak de beginversie zo klein dat ze minder dan twee minuten kost — zo verlaag je de startdrempel tot nul.",
+    abstractExample: "De meeste grote gewoonten mislukken niet door gebrek aan wil, maar door een te hoge startdrempel. Maak beginnen zo makkelijk dat weigeren belachelijk voelt: één push-up, één pagina lezen, één minuut mediteren.",
+    examples: [
+      { domain: "Lezen", icon: "📚", text: "Begin met 'ik lees elke avond één pagina'. Na een week is het gewoonlijk al 10-20 pagina's — het starten is de barrière, niet het verdergaan." },
+      { domain: "Sporten", icon: "🏋️", text: "Zet je gymschoenen aan als gewoontestart. Soms ga je daarna vanzelf — de eerste micro-actie doorbreekt de inertie die meeste gewoonten saboteert." },
+      { domain: "Meditatie", icon: "🧘", text: "Begin met één minuut adem observeren. Het is bijna onmogelijk dit te weigeren — na een maand is het vanzelf 10-15 minuten." }
+    ],
+  },
+  {
+    id: "environment-design",
+    title: "Omgevingsontwerp",
+    difficulty: 2,
+    emoji: "🏗️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Omgevingsontwerp is het bewust inrichten van je fysieke en digitale omgeving zodat gewenst gedrag makkelijker is en ongewenst gedrag moeilijker — in plaats van te vertrouwen op wilskracht.",
+    abstractExample: "Wilskracht is eindig en onbetrouwbaar. Een gezondere omgeving die keuzes stuurt, werkt consistenter dan jezelf dwingen de goede keuze te maken in een omgeving vol verleidingen.",
+    examples: [
+      { domain: "Voeding", icon: "🥗", text: "Fruit op het aanrecht, ongezonde snacks achter in de kast — mensen eten gemiddeld 3x meer fruit als het zichtbaar staat. Zichtbaarheid stuurt keuze." },
+      { domain: "Focus", icon: "💻", text: "Telefoon in een andere kamer leggen tijdens werk verhoogt cognitieve prestatie — zelfs de aanwezigheid van een telefoon (ook uitgeschakeld) vermindert aandachtscapaciteit." },
+      { domain: "Lezen", icon: "📚", text: "Boek op het kussen leggen voor je gaat slapen, telefoon buiten de slaapkamer — je bent 4x eerder geneigd te lezen als het boek de standaardkeuze is op die plek." }
+    ],
+  },
+  {
+    id: "behavioral-substitution",
+    title: "Gedragsvervanging",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Gedragsvervanging is het systematisch vervangen van ongewenste gewoonten door functioneel equivalente alternatieven die dezelfde behoefte vervullen — in plaats van gedrag simpelweg te stoppen.",
+    abstractExample: "Stoppen met roken lukt beter als je het vervangt door iets wat dezelfde behoefte vervult (handgebaar, sociale pauze, nicotine via pleisters) dan als je het lege gat laat bestaan.",
+    examples: [
+      { domain: "Verslaving", icon: "🚭", text: "Alcoholvervanging door kombucha of alcoholvrij bier in sociale situaties vervult dezelfde sociale functie (iets vasthouden, meedoen) zonder de alcohol." },
+      { domain: "Stress", icon: "😤", text: "Stresseten vervangen door een wandeling of ademhalingsoefening — beide vervullen de behoefte aan stressregulatie, maar de ene is destructief, de andere opbouwend." },
+      { domain: "Schermen", icon: "📱", text: "Avondlijk scrollen vervangen door een boek of gesprek — dezelfde ontspanningsbehoefte, maar zonder de slaapverstorende blauwe licht en dopaminecyclus." }
+    ],
+  },
+  {
+    id: "habit-stacking",
+    title: "Gewoonten Stapelen",
+    difficulty: 1,
+    emoji: "📚",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Gewoonten stapelen (Clear) is het koppelen van een nieuwe gewoonte aan een bestaande: 'Na [huidige gewoonte] doe ik [nieuwe gewoonte].' De bestaande gewoonte wordt het signaal voor de nieuwe.",
+    abstractExample: "Je poetst al elke dag je tanden (bestaande gewoonte). Je koppelt eraan: 'Na het tandpoetstanden doe ik 2 minuten ademhalingsoefeningen.' Je hebt al een ankerpunt — gebruik het.",
+    examples: [
+      { domain: "Gezondheid", icon: "🧘", text: "'Na mijn ochtendkoffie doe ik 5 minuten stretching' — de koffie is het signaal. Na een maand is stretching zo automatisch als de koffie zelf." },
+      { domain: "Leren", icon: "📖", text: "'Na het avondeten lees ik 10 minuten in een educatief boek' — het eten ankert de leesgewoonte. Consistentie verankert zich snel in de avondroutine." },
+      { domain: "Dankbaarheid", icon: "🙏", text: "'Als ik 's ochtends douche, noem ik drie dingen waarvoor ik dankbaar ben' — de douche is het ankerpunt voor de mentale gewoonte." }
+    ],
+  },
+  {
+    id: "precommitment",
+    title: "Voorafbinding",
+    difficulty: 2,
+    emoji: "🔒",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Voorafbinding is het bewust beperken van toekomstige keuzes om je toekomstige zelf te beschermen tegen zwakke momenten — je bindt je nu aan gewenst gedrag, wetende dat je later in de verleiding zult komen.",
+    abstractExample: "Odysseus liet zichzelf vastbinden aan de mast zodat hij de sirenen kon horen maar er niet op in kon gaan. Je kunt dit toepassen door nu drempels op te werpen die toekomstige slechte keuzes moeilijker maken.",
+    examples: [
+      { domain: "Financiën", icon: "💰", text: "Automatisch sparen direct bij salarisbetaling ('betaal jezelf eerst') verwijdert de keuzemoment — het geld is al weg voor je het kunt uitgeven." },
+      { domain: "Voeding", icon: "🥗", text: "Geen ongezond eten in huis kopen — je voorafbinding is de supermarkt, niet de eigen keuken. De moeilijke beslissing is eenmalig, niet elke avond." },
+      { domain: "Productiviteit", icon: "💻", text: "Website-blockers instellen voor social media tijdens werktijden — je besluit 's ochtends in koud bloed, zodat je je ook aan houdt als de verleiding 's middags groot is." }
+    ],
+  },
+  {
+    id: "identity-based-habits",
+    title: "Identiteitsgebaseerde Gewoonten",
+    difficulty: 2,
+    emoji: "🪪",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Identiteitsgebaseerde gewoonten (Clear) werken van binnen naar buiten: in plaats van een uitkomst nastreven ('ik wil 10 kg afvallen'), verschuif je naar identiteitsbevestiging ('ik ben iemand die gezond leeft'). Elke actie is een stem op wie je wilt zijn.",
+    abstractExample: "Twee mensen weigeren een sigaret. De eerste: 'Ik probeer te stoppen.' De tweede: 'Ik rook niet.' De tweede heeft een identiteitsshift gemaakt — die is duurzamer dan een wilskrachtstrijd.",
+    examples: [
+      { domain: "Sport", icon: "🏃", text: "Jezelf een 'hardloper' noemen (niet 'iemand die hardloopt') verandert hoe je keuzes maakt — hardlopers hardlopen ook als ze moe zijn, het is wie ze zijn." },
+      { domain: "Schrijven", icon: "✍️", text: "'Ik ben een schrijver' in plaats van 'ik probeer elke dag te schrijven' — identiteit gaat vóór gedrag en zorgt voor consistentie ook zonder externe motivatie." },
+      { domain: "Financiën", icon: "💰", text: "'Ik ben iemand die niet impulsief koopt' is een krachtigere identiteitsframe dan een lijst budgetregels — bij elke aankoopdruk bevestig je of je verloochent wie je bent." }
+    ],
+  },
+  {
+    id: "fresh-start-effect",
+    title: "Frisse Start Effect",
+    difficulty: 1,
+    emoji: "🌅",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het frisse start effect (Milkman) toont dat mensen eerder nieuwe gewoonten beginnen na temporele markeringen — het nieuwe jaar, verjaardag, maandag, of begin van de maand — omdat ze het verleden mentaal afscheiden van de toekomst.",
+    abstractExample: "Een maandag is objectief hetzelfde als een dinsdag. Maar mentaal biedt een maandag een 'nieuw begin' waarbij je jezelf lossnijdt van de mislukkingen van vorige week — je reset de teller.",
+    examples: [
+      { domain: "Gewoonten", icon: "🔁", text: "Gebruik tijdmarkeerders strategisch: begin nieuwe gewoonten op maandag, de eerste van de maand, of je verjaardag — de mentale reset verhoogt de kans van slagen." },
+      { domain: "Herstel", icon: "💪", text: "Na een terugval in ongezond gedrag, wacht niet tot januari — creëer je eigen frisse start (volgende maandag, na dit weekend) om de herstelpoging te initiëren." },
+      { domain: "Werk", icon: "💼", text: "Grote projecten starten na een vakantie of bij een nieuw kwartaal werkt beter dan midden in een lopende periode — het frisse start gevoel geeft motivatieboost." }
+    ],
+  },
 ];
