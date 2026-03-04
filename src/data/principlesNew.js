@@ -4141,5 +4141,212 @@ export const principlesNew = [
     ],
     creativePrompt: "Doe nu een mini-evaluatie van de afgelopen week: Wat was je intentie? Wat heb je bereikt? Wat ging goed (schrijf minstens drie dingen)? Wat doe je volgende week anders?",
     aiHelperPrompts: ["Hoe doe ik een effectieve persoonlijke evaluatie na actie?", "Hoe regelmatig moet ik evalueren voor maximale groei?", "Hoe vermijd ik dat evaluaties te negatief worden?"]
+  },
+  {
+    id: "stoic-dichotomy",
+    title: "Stoïcijnse Dichotomie van Controle",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["stoïcisme", "controle", "acceptatie", "rust"],
+    definition: "De dichotomie van controle (Epictetus) is het fundamentele stoïcijnse principe dat alles in twee categorieën valt: wat in onze macht is (onze oordelen, intenties, reacties) en wat niet in onze macht is (de acties van anderen, ons lichaam, reputatie, bezittingen). Geluk vloeit uit acceptatie van dit onderscheid.",
+    abstractExample: "Je kunt niet kiezen of het regent — maar je kunt kiezen hoe je erop reageert, of je een jas pakt, en welke betekenis je eraan geeft. De stoïcijn richt energie uitsluitend op wat hij kan beïnvloeden.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een negatieve beoordeling ontvangen: de beoordeling zelf is niet in jouw macht (wat anderen oordelen), maar jouw reactie, je leerbereidheid en je volgende stap zijn dat wel. Stoïcijnse focus." },
+      { domain: "Sport", icon: "🏃", text: "Een atleet kan niet controleren of tegenstanders beter presteren, maar wel zijn training, mentale voorbereiding en inzet op de dag. Dit onderscheid vermindert angst en verhoogt focus." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "File staan: de file is niet in jouw macht. Jouw stemming, hoe je de tijd gebruikt (luisterboek, muziek) en hoe je aankomt (gefrustreerd of kalm) — dat is jouw keuze." }
+    ],
+    prerequisites: [],
+    unlocks: ["acceptance-commitment", "present-moment-focus"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het praktische gevolg van consequent de dichotomie van controle toepassen?", options: ["Je wordt passief en geeft op", "Je richt energie op wat je kunt beïnvloeden, wat stress vermindert en effectiviteit verhoogt", "Je raakt onverschillig voor de wereld", "Alleen filosofen kunnen dit toepassen"], correctIndex: 1, explanation: "Door energie te richten op de enige dingen die daadwerkelijk in je macht zijn, voorkom je de verspilling van energie aan zorgen over het oncontroleerbare. Dit leidt tot meer rust én meer effectief handelen tegelijk." }
+    ],
+    creativePrompt: "Schrijf je belangrijkste zorgen op. Categoriseer elke zorg: 'in mijn macht' of 'niet in mijn macht.' Wat kan je direct doen aan de eerste categorie? Hoe laat je de tweede categorie los?",
+    aiHelperPrompts: ["Hoe pas ik de dichotomie van controle toe bij gezondheidsangst?", "Hoe vermijd ik dat acceptatie in passiviteit verandert?", "Hoe combineer ik stoïcijnse acceptatie met ambitie?"]
+  },
+  {
+    id: "memento-mori",
+    title: "Memento Mori",
+    difficulty: 3,
+    emoji: "💀",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["sterfelijkheid", "prioriteiten", "stoïcisme", "urgentie"],
+    definition: "Memento mori (Latijn: 'bedenk dat je sterfelijk bent') is de stoïcijnse en humanistische praktijk van bewust nadenken over de eindigheid van het leven, als middel om te focussen op wat werkelijk belangrijk is, uitstelgedrag te overwinnen en het leven dieper te waarderen.",
+    abstractExample: "Stel je voor dat je een afteltimer ziet naast elk uur van je dag. Zou je anders omgaan met je tijd? Memento mori is niet macaber — het is urgent: je tijd is eindig, gebruik haar bewust.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "De vraag 'Als ik nog één jaar te leven had, zou ik dit doen?' is geen catastrofale gedachte maar een prioriteringsinstrument. Wat blijft? Wat valt weg? Dit is memento mori in praktijk." },
+      { domain: "Werk", icon: "💼", text: "Steve Jobs zei dat de herinnering aan zijn eigen sterfelijkheid de krachtigste tool was om grote keuzes te maken — het verwijdert de angst voor schaamte, falen en andermans mening." },
+      { domain: "Relaties", icon: "❤️", text: "Je beseffen dat dit gesprek met je ouder, kind of vriend eindig is — dat je niet weet hoeveel gesprekken er nog zijn — verdiept de aanwezigheid en waardering in het moment." }
+    ],
+    prerequisites: ["stoic-dichotomy"],
+    unlocks: ["legacy-thinking"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe werkt memento mori als motivatietool?", options: ["Het maakt mensen angstig en passief", "Bewustzijn van eindigheid verhoogt de waargenomen waarde van tijd en helpt onbelangrijke beslommeringen loslaten", "Het motiveert alleen mensen met een terminale ziekte", "Het leidt tot nihilisme"], correctIndex: 1, explanation: "Psychologisch onderzoek (Terror Management Theory) toont dat bewust omgaan met de eigen sterfelijkheid — in plaats van het te vermijden — leidt tot meer authenticiteit, diepere verbindingen en focus op zinvolle activiteiten." }
+    ],
+    creativePrompt: "Schrijf je eigen nekrologie — niet wat je hebt bereikt, maar wie je was voor de mensen om je heen. Wat staat erin? Wat ontbreekt dat je nog wil toevoegen? Hoe wil je leven zodat die tekst klopt?",
+    aiHelperPrompts: ["Hoe denk ik aan memento mori zonder depressief te worden?", "Hoe integreer ik bewustzijn van eindigheid in mijn dagelijks leven?", "Wat is het verschil tussen memento mori en doodsangst?"]
+  },
+  {
+    id: "amor-fati",
+    title: "Amor Fati",
+    difficulty: 3,
+    emoji: "🌊",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["acceptatie", "lot", "liefde", "nietzsche"],
+    definition: "Amor fati (Latijn: 'liefde voor het lot') is het filosofische begrip — benadrukt door Nietzsche en de stoïcijnen — van het niet slechts accepteren maar actief omarmen van alles wat je overkomt, inclusief tegenslagen en pijn, als onlosmakelijk onderdeel van je leven.",
+    abstractExample: "Acceptatie zegt: 'Ik draag de steen.' Amor fati zegt: 'Ik omarm de steen — hij heeft me gemaakt wie ik ben.' Niet stoïcijnse gelatenheid, maar actieve liefde voor alles wat is, ook het moeilijke.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💙", text: "Iemand die zegt 'zonder die moeilijke periode had ik nooit deze richting gevonden' oefent amor fati — niet het lijden wegdenken, maar de waarde ervan in het geheel omarmen." },
+      { domain: "Werk", icon: "💼", text: "Een mislukt project niet enkel 'leren accepteren' maar actief zeggen: 'Dit falen heeft me scherper, zorgvuldiger en bescheidener gemaakt — ik zou het niet willen missen.' Amor fati." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "Iemand die een ziekte verwerkt door te zeggen: 'Dit heeft me gedwongen te vertragen en te prioriteren wat ik anders had doorgejut' — de ziekte omarmen als leraar." }
+    ],
+    prerequisites: ["stoic-dichotomy", "memento-mori"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt amor fati van passieve resignatie?", options: ["Er is geen verschil — beide accepteren wat is", "Amor fati is actief omarmen en betekenis geven; resignatie is passief ondergaan", "Resignatie is gezonder", "Amor fati werkt alleen bij kleine tegenslagen"], correctIndex: 1, explanation: "Resignatie is 'het moet maar'. Amor fati is 'dit is precies wat er moest zijn voor wie ik wil worden'. Het is een actieve, creatieve houding die tegenslagen integreert als betekenisvolle onderdelen van het verhaal, niet als te tolereren pech." }
+    ],
+    creativePrompt: "Kies de moeilijkste periode of beslissing in je leven. Schrijf op hoe die periode — ondanks of dankzij de pijn — iets heeft gevormd of gegeven wat je anders niet zou hebben. Kun je het omarmen?",
+    aiHelperPrompts: ["Hoe oefen ik amor fati bij dingen die ik echt niet wil accepteren?", "Is amor fati een excuus om niet te proberen dingen te veranderen?", "Hoe combineer ik amor fati met de wil tot verbetering?"]
+  },
+  {
+    id: "values-clarification",
+    title: "Waardenverduidelijking",
+    difficulty: 2,
+    emoji: "🧭",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["waarden", "authenticiteit", "beslissingen", "identiteit"],
+    definition: "Waardenverduidelijking is het bewust identificeren van je kernwaarden — wat je diepst waardeert in het leven — zodat je beslissingen, prioriteiten en doelen hierop kunt afstemmen. Onduidelijke waarden leiden tot diffuus leven; heldere waarden geven richting en maken keuzes makkelijker.",
+    abstractExample: "Waarden zijn als een intern kompas. Zonder kompas dwaal je — elke richting lijkt even goed. Met een helder kompas weet je direct welke richting 'thuisvoelt', ook als de weg moeilijk is.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Iemand die pas ontdekt dat 'autonomie' zijn kernwaarde is, begrijpt waarom hij zich steeds ongelukkig voelde in hiërarchische omgevingen — en kan bewustere carrièrekeuzes maken." },
+      { domain: "Relaties", icon: "❤️", text: "Waardenverduidelijking helpt begrijpen waarom bepaalde conflicten steeds terugkeren: als jij 'eerlijkheid' hoog waardeert en je partner 'harmonie', zit daar een fundamentele spanning." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Bij moeilijke beslissingen (huis kopen, job wisselen, verhuizen) heb je minder nodig als je weet: 'Vrijheid en verbinding zijn mijn topwaarden.' Opties die die waarden dienen winnen." }
+    ],
+    prerequisites: ["ikigai"],
+    unlocks: ["philosophical-journaling"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe komen mensen er het meest achter wat hun diepste waarden zijn?", options: ["Door een lijst waarden te lezen en de mooiste te kiezen", "Door te observeren wanneer ze zich diep tevreden of diep ontevreden voelen, en dat patroon te analyseren", "Door anderen te vragen wat hun waarden zijn", "Waarden zijn aangeboren en hoeven niet ontdekt te worden"], correctIndex: 1, explanation: "Echte waarden blijken niet altijd uit wat mensen zeggen te waarderen, maar uit hoe ze reageren op ervaringen. Sterke emoties — vreugde, woede, schaamte — zijn signalen dat een waarde wordt geëerd of geschonden. Die patronen onthullen de echte waarden." }
+    ],
+    creativePrompt: "Schrijf drie momenten op waarop je je diep tevreden voelde. Drie momenten waarop je je diep verontwaardigd of ongelukkig voelde. Welke waarden werden in die momenten geëerd of geschonden? Dat zijn waarschijnlijk jouw kernwaarden.",
+    aiHelperPrompts: ["Hoe weet ik of iets een echte waarde is of alleen een 'zou moeten'?", "Wat doe ik als mijn waarden conflicteren?", "Hoe gebruik ik waarden bij moeilijke beslissingen?"]
+  },
+  {
+    id: "philosophical-journaling",
+    title: "Filosofisch Dagboek",
+    difficulty: 1,
+    emoji: "📓",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["reflectie", "schrijven", "filosofie", "zelfkennis"],
+    definition: "Filosofisch dagboek schrijven is de praktijk van regelmatig schriftelijk reflecteren op je ervaringen, overtuigingen, waarden en vragen — in de traditie van Marcus Aurelius' Meditaties. Het externaliseren van gedachten maakt ze concreet, analyseerbaar en transformeerbaar.",
+    abstractExample: "Gedachten in het hoofd zijn vluchtig en circulair. Op papier gezet worden ze concreet: je kunt ze observeren, bevragen en aanpassen. Het dagboek is een spiegel die terugkijkt met helderheid.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Marcus Aurelius schreef zijn Meditaties als persoonlijk dagboek — niet voor publicatie. Drie stoeages per dag: dankbaarheid, een filosofisch principe om te oefenen, en reflectie op de dag." },
+      { domain: "Werk", icon: "💼", text: "Na een moeilijke vergadering schrijven: 'Wat maakte me defensief? Welke waarde voelde ik bedreigd? Hoe wil ik de volgende keer reageren?' Dit verdiept zelfkennis sneller dan onbewerkte ervaring." },
+      { domain: "Persoonlijk", icon: "💙", text: "De 'morning pages' methode (drie pagina's stroom van bewustzijn elke ochtend) helpt gedachten leeg te maken, patronen te ontdekken en innerlijke helderheid te vinden." }
+    ],
+    prerequisites: ["values-clarification"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt schriftelijke reflectie effectiever dan alleen nadenken?", options: ["Schrijven duurt langer", "Externalisatie maakt gedachten concreet, zichtbaar en daarmee bespreekbaar en veranderbaar", "Schriftelijke reflectie is makkelijker", "Alleen professionele schrijvers profiteren ervan"], correctIndex: 1, explanation: "Gedachten in het hoofd zijn vaag, circulair en vluchtig. Ze opschrijven dwing je tot precisie, sluit cirkels af en maakt abstracte gevoelens concreet. Bovendien kun je teruglezen en patronen zien over tijd." }
+    ],
+    creativePrompt: "Schrijf tien minuten onafgebroken over de vraag: 'Wat is op dit moment het belangrijkst in mijn leven?' Stel geen regels, geen correct-incorrectoordeel. Wat ontdek je?",
+    aiHelperPrompts: ["Hoe begin ik met filosofisch dagboekschrijven?", "Welke vragen stel ik mezelf in mijn dagboek?", "Hoe lang moet mijn dagboekinschrijving zijn?"]
+  },
+  {
+    id: "examined-life",
+    title: "Het Onderzochte Leven",
+    difficulty: 3,
+    emoji: "🦉",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["filosofie", "Socrates", "zelfkennis", "reflectie"],
+    definition: "Socrates stelde dat 'een leven dat niet onderzocht wordt, niet waard is om geleefd te worden.' Het onderzochte leven is de praktijk van actieve, kritische zelfreflectie op je overtuigingen, waarden, keuzes en leven — niet als eenmalig project maar als voortdurende houding.",
+    abstractExample: "Veel mensen leven reactief — gevangen in routines, aannames en conventies die ze nooit hebben gekozen of bevraagd. Het onderzochte leven vraagt: 'Waarom doe ik dit? Is dit wat ik werkelijk wil? Klopt dit met wie ik wil zijn?'",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Iemand die na 15 jaar in dezelfde sector vraagt: 'Heb ik dit bewust gekozen, of ben ik hier gebleven door gemak en angst?' Dit is het onderzochte leven — niet automatisch maar bewust kiezen." },
+      { domain: "Overtuigingen", icon: "🧠", text: "Je politieke of religieuze overtuigingen bevragen: 'Heb ik dit zelf doorgedacht, of heb ik het overgenomen? Zou ik hetzelfde geloven als ik in andere omstandigheden was opgegroeid?'" },
+      { domain: "Relaties", icon: "❤️", text: "Vragen: 'Waarom hecht ik waarde aan deze vriendschap? Wat breng ik erin? Wat verwacht ik?' Dit maakt relaties bewuster en authentieker." }
+    ],
+    prerequisites: ["philosophical-journaling", "values-clarification"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat was Socrates' belangrijkste punt over het ononderzochte leven?", options: ["Mensen die niet nadenken zijn dom", "Zonder kritische reflectie leef je het leven van anderen — conventies, verwachtingen, angsten — niet jouw eigen gekozen leven", "Onderzoek maakt altijd ongelukkig", "Alleen filosofen hebben het onderzochte leven nodig"], correctIndex: 1, explanation: "Socrates' punt was dat een leven zonder reflectie geen authentiek eigen leven is — je bent dan een marionnet van culturele conditionering, andermans verwachtingen en onbevraagde impulsen. Onderzoek is de weg naar vrijheid." }
+    ],
+    creativePrompt: "Kies één fundamentele overtuiging in je leven (over succes, relaties, God, politiek, of een andere waarde). Onderzoek haar: Waar komt ze vandaan? Heb je haar bewust gekozen? Zou je haar nog steeds kiezen als je opnieuw kon beginnen?",
+    aiHelperPrompts: ["Hoe onderzoek ik mijn overtuigingen zonder alles te verliezen?", "Hoe ga ik om met de onzekerheid die het onderzochte leven brengt?", "Wat is het doel van het onderzochte leven?"]
+  },
+  {
+    id: "legacy-thinking",
+    title: "Nagedachtenisdenken",
+    difficulty: 2,
+    emoji: "🌳",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["erfenis", "bijdrage", "zingeving", "langetermijn"],
+    definition: "Nagedachtenisdenken is het bewust nadenken over welke bijdrage, invloed of waarden je wil achterlaten — hoe je herinnerd wilt worden en welk verschil je wil maken. Dit vergroot tijdshorizon, richt handelen en geeft persoonlijk en professioneel werk een diepere betekenis.",
+    abstractExample: "Een boom plant zijn wortels niet voor zichzelf — hij biedt schaduw aan mensen die hij nooit zal kennen. Nagedachtenisdenken is bewust handelen vanuit een horioznt die verder reikt dan je eigen leven.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een manager die zich afvraagt: 'Over twintig jaar, wat zullen mensen zeggen over wat ik hier heb opgebouwd? Welke mensen heb ik ontwikkeld?' Dit geeft dagelijkse handelingen meer gewicht en richting." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "Ouders die nadenken over welke waarden, gewoontes en levenslessen ze doorgeven — niet welke regels ze stellen — denken vanuit nagedachtenis." },
+      { domain: "Gemeenschap", icon: "🏘️", text: "Vrijwilligerswerk, mentorschap, bijdragen aan iets groters dan jezelf — dit zijn uitingen van nagedachtenisdenken in de dagelijkse praktijk." }
+    ],
+    prerequisites: ["memento-mori", "values-clarification"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe helpt nagedachtenisdenken bij dagelijkse beslissingen?", options: ["Het maakt beslissingen moeilijker door te veel perspectief", "Het schept een langetermijnkader dat helpt onderscheid te maken tussen wat urgent voelt en wat werkelijk belangrijk is", "Het werkt alleen voor beroemde mensen", "Nagedachtenis is pas relevant op het einde van een leven"], correctIndex: 1, explanation: "De meeste urgente dagelijkse stress lost op als je hem beoordeelt vanuit het perspectief van wat je over twintig jaar wil hebben gedaan. Nagedachtenisdenken fungeert als een filter: wat verdient werkelijk mijn energie?" }
+    ],
+    creativePrompt: "Schrijf de laatste alinea van je autobiografie — wat je over je leven en bijdrage wil zeggen. Bekijk dan je afgelopen week: sluit die week aan bij die alinea? Wat zou je anders doen?",
+    aiHelperPrompts: ["Hoe vind ik wat mijn nagedachtenis moet zijn?", "Hoe ga ik om met het gevoel dat ik niets bijzonders bijdraag?", "Hoe gebruik ik nagedachtenisdenken om dagelijkse keuzes te maken?"]
+  },
+  {
+    id: "eudaimonia",
+    title: "Eudaimonia",
+    difficulty: 3,
+    emoji: "🌟",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["geluk", "Aristoteles", "bloei", "deugd"],
+    definition: "Eudaimonia (Aristoteles) is het concept van menselijke bloei — een dieper, duurzamer geluk dan hedonistisch genot. Het gaat om een actief leven in overeenstemming met je beste vermogens en deugden. Eudaimonia is een activiteit, geen gevoel: je doet het, je ervaart het niet passief.",
+    abstractExample: "Hedonistisch geluk is lekker eten, mooie muziek, plezier. Eudaimonia is de voldoening van je beste zelf worden — uitdagingen aangaan, bijdragen, groeien. Het eerste is meer aangenaam; het tweede is meer vervullend.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "De voldoening van een moeilijk project dat je hart klopte — niet omdat het makkelijk was, maar juist omdat het je uitdaagde en het iets nieuws van je vroeg. Dat is eudaimonia, niet hedonia." },
+      { domain: "Sport", icon: "🏃", text: "De vreugde na een zware training is anders dan de vreugde van een lekker maaltijd. De eerste is eudaimonisch — resultaat van inzet; de tweede hedonistisch — directe zintuigelijkheid." },
+      { domain: "Relaties", icon: "❤️", text: "Diep investeren in vriendschappen die je uitdagen en groeien, niet alleen die comfortabel zijn. Eudaimonia in relaties gaat over diepe verbinding en wederzijdse groei." }
+    ],
+    prerequisites: ["examined-life", "values-clarification"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kernverschil tussen hedonistisch geluk en eudaimonia?", options: ["Hedonistisch geluk is dieper", "Hedonistisch geluk is passief genot; eudaimonia is de voldoening van actief leven in overeenstemming met je beste vermogens", "Eudaimonia is alleen voor filosofen", "Ze zijn synoniem voor geluk"], correctIndex: 1, explanation: "Aristoteles zag eudaimonia als superieur: het is niet hoe je je voelt, maar hoe je leeft. Actieve inzet van je vermogens in dienst van iets goeds — dit is waar mensen diepst tevreden over zijn aan het einde van hun leven." }
+    ],
+    creativePrompt: "Wanneer in je leven voelde je de diepe voldoening van eudaimonia — niet het plezier van genot maar de vervulling van je beste zelf? Wat kenmerkte die momenten?",
+    aiHelperPrompts: ["Hoe balanceer ik hedonistisch genot en eudaimonia?", "Hoe weet ik wat mijn 'beste vermogens' zijn?", "Is eudaimonia haalbaar in een gewoon dagelijks leven?"]
+  },
+  {
+    id: "present-moment-focus",
+    title: "Focus op het Huidige Moment",
+    difficulty: 2,
+    emoji: "🕐",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Zingeving",
+    tags: ["aanwezigheid", "mindfulness", "nu", "aandacht"],
+    definition: "Focus op het huidige moment is de praktijk van volledige aandacht geven aan wat nu is, in plaats van te piekeren over het verleden of te fantaseren over de toekomst. Onderzoek toont dat een 'wandering mind' — de geest die niet bij wat men doet is — gecorreleerd is met minder geluk.",
+    abstractExample: "Tachtig procent van onze geestelijke activiteit is niet gericht op het huidige moment. Het verleden is voorbij; de toekomst is nog niet. Het enige moment waarop je werkelijk leeft, is nu — toch besteden de meeste mensen het meeste mentale energie elders.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een maaltijd eten zonder telefoon, volledig aanwezig bij de smaak, textuur en gezelschap — dit klinkt simpel maar is voor de meeste mensen zeldzaam en waardevol." },
+      { domain: "Werk", icon: "💼", text: "Volledig aanwezig zijn in een vergadering — niet tegelijk e-mail checken of nadenken over de volgende taak — leidt tot betere bijdragen en minder vermoeidheid na afloop." },
+      { domain: "Natuur", icon: "🌿", text: "Een wandeling waarbij je echt kijkt, hoort en voelt — in plaats van plannen te maken of problemen te malen — herstelt de aandacht en geeft energie op een manier die alleen-lopend niet doet." }
+    ],
+    prerequisites: ["mindfulness-practice"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat toonde Harvard-onderzoek naar 'mind wandering' aan?", options: ["Een dwalende geest is creatiever", "Mensen zijn minder gelukkig als hun geest niet bij de huidige activiteit is, ongeacht welke activiteit ze doen", "Mind wandering is gezond en noodzakelijk", "Aanwezigheid maakt mensen minder productief"], correctIndex: 1, explanation: "Het Harvard-onderzoek (Killingsworth & Gilbert) mat duizenden mensen en vond dat een dwalende geest — zelfs bij aangename activiteiten — consistent lagere geluksniveaus gaf dan een aanwezige geest. 'Een geest die niet ronddwaalt, is een gelukkige geest.'" }
+    ],
+    creativePrompt: "Kies één dagelijkse activiteit die je normaal 'op de automatische piloot' doet. Doe het morgen volledig bewust — geef er al je zintuigen en aandacht aan. Wat merk je dat je anders normaal mist?",
+    aiHelperPrompts: ["Hoe train ik focus op het huidige moment in een druk leven?", "Wat doe ik als mijn geest steeds afdwaalt naar zorgen?", "Hoe verschilt focus op het nu van vermijding van de toekomst?"]
   }
 ];
