@@ -6967,4 +6967,156 @@ export const principlesNew = [
       { domain: "Werk", icon: "💼", text: "Grote projecten starten na een vakantie of bij een nieuw kwartaal werkt beter dan midden in een lopende periode — het frisse start gevoel geeft motivatieboost." }
     ],
   },
+
+  // ── Batch A3: Emotionele Intelligentie ──────────────────────────────────────
+  {
+    id: "emotional-granularity",
+    title: "Emotionele Granulariteit",
+    difficulty: 2,
+    emoji: "🎨",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Emotionele granulariteit (Barrett) is het vermogen om emoties precies te benoemen en te onderscheiden — niet alleen 'ik voel me slecht' maar 'ik voel me teleurgesteld én bezorgd én een beetje beledigd'. Precisie vergroot regulatievermogen.",
+    abstractExample: "Mensen die tientallen emotiewoorden kennen en gebruiken, reguleren hun emoties beter dan mensen die alles 'goed' of 'slecht' noemen — het woord creëert de emotionele categorie die je kunt hanteren.",
+    examples: [
+      { domain: "Zelfkennis", icon: "🪞", text: "Het onderscheid tussen 'moe' en 'uitgeput en zinloos' versus 'moe maar voldaan' leidt tot heel andere reacties — taal schept de emotionele werkelijkheid die actie stuurt." },
+      { domain: "Relaties", icon: "❤️", text: "Iemand die woede onderscheidt in 'gefrustreerd', 'verontwaardigd' en 'vernederd' kan gerichter communiceren over wat hij nodig heeft dan iemand die alles 'boos zijn' noemt." },
+      { domain: "Therapeutisch", icon: "🛋️", text: "Het bijhouden van een emotiedagboek met uitgebreid vocabulaire traint granulariteit — na weken merk je subtielere signalen vroeger, wat preventieve regulatie mogelijk maakt." }
+    ],
+  },
+  {
+    id: "emotion-regulation-strategies",
+    title: "Emotieregulatiestrategieën",
+    difficulty: 2,
+    emoji: "🎛️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Emotieregulatiestrategieën zijn technieken om de intensiteit, duur en uitdrukking van emoties te beïnvloeden. De meest effectieve zijn cognitieve herwaardering (de situatie anders interpreteren) en acceptatie — de minst effectieve is onderdrukking.",
+    abstractExample: "Je verliest een grote klant. Suppressie: doe alsof het niets is. Herwaardering: dit is een kans om betere klanten te vinden. Acceptatie: dit doet pijn, en dat is oké. De laatste twee werken; de eerste ondermijnt welzijn.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Herwaardering voor presentatieangst: 'Dit is opwinding, mijn lichaam bereidt zich voor op iets belangrijks' vermindert angst effectiever dan 'kalm blijven proberen'." },
+      { domain: "Relaties", icon: "❤️", text: "Bij irritatie over een partner: in plaats van suppressie ('ik mag niet boos zijn') of explosie, cognitief herkaderen: 'Hij is moe, niet gemeen' — de interpretatie verandert de emotie." },
+      { domain: "Tegenslag", icon: "💪", text: "Acceptatie via mindfulness: de pijnlijke emotie toelaten zonder haar te versterken of te vermijden. Paradoxaal genoeg lost de emotie sneller op dan bij verzet of suppressie." }
+    ],
+  },
+  {
+    id: "empathy-types",
+    title: "Soorten Empathie",
+    difficulty: 2,
+    emoji: "🫂",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Empathie kent drie vormen: cognitieve empathie (je kunt je andermans perspectief voorstellen), emotionele empathie (je voelt mee), en compassionele empathie (je voelt mee én wilt helpen). De drie zijn onafhankelijk en vereisen verschillende vaardigheden.",
+    abstractExample: "Een goede manipulator heeft hoge cognitieve empathie (begrijpt hoe anderen voelen) maar lage compassionele empathie (gebruikt dit voor eigen voordeel). Een burn-out helper heeft hoge emotionele empathie maar mist grens tussen zichzelf en ander.",
+    examples: [
+      { domain: "Hulpverlening", icon: "🏥", text: "Artsen met alleen emotionele empathie raken burn-out. De beste artsen combineren cognitieve empathie (begrijpen wat de patiënt ervaart) met compassie, maar blijven zichzelf." },
+      { domain: "Leiderschap", icon: "👥", text: "Leiders die cognitieve empathie trainen (actief vragen 'hoe ervaart mijn teamlid dit besluit?') creëren meer psychologische veiligheid dan leiders die alleen op rationele argumenten focussen." },
+      { domain: "Conflict", icon: "⚡", text: "In conflicten helpt eerst cognitieve empathie ('wat is zijn perspectief?') voor je reageert — het verlaagt defensiviteit en opent ruimte voor compassionele oplossingen." }
+    ],
+  },
+  {
+    id: "emotional-contagion",
+    title: "Emotionele Besmetting",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Emotionele besmetting is het onbewust overnemen van emoties van anderen via spiegelneuronen, micromimicry en fysiologische synchronisatie. Groepen en relaties hebben een emotioneel klimaat dat individuen beïnvloedt.",
+    abstractExample: "Je gaat energiek een vergadering in en voelt je na tien minuten uitgeput. De negatieve energie van het groep 'besmette' je onbewust via lichaamstaal, toon en gezichtsexpressies.",
+    examples: [
+      { domain: "Leiderschap", icon: "👥", text: "De emotie van een leider verspreidt zich het snelst door een team — een angstige of cynische leider creëert een angstcultuur ook zonder woorden. Emotionele regulatie is een leiderschapstaak." },
+      { domain: "Relaties", icon: "❤️", text: "Chronisch negatieve of angstige partners 'besmetten' elkaar — partners synchroniseren fysiologisch over tijd. Bewustzijn hiervan is de eerste stap naar bescherming." },
+      { domain: "Omgeving", icon: "🏠", text: "Bewust kiezen welke mensen je omringt is een van de krachtigste zelfzorgstrategieën — emotionele besmetting is reëel, consistent en onderschat in effect." }
+    ],
+  },
+  {
+    id: "alexithymia",
+    title: "Alexithymie",
+    difficulty: 2,
+    emoji: "😶",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Alexithymie is de moeite om eigen emoties te identificeren en te beschrijven. Mensen met hoge alexithymie ervaren emoties via lichamelijke sensaties (buikpijn bij angst, hoofdpijn bij stress) zonder ze als emoties te herkennen.",
+    abstractExample: "Iemand met alexithymie zegt 'ik weet niet wat ik voel' niet als sociaal masker maar letterlijk — de emotionele informatie is niet beschikbaar als duidelijk signaal, alleen als vage lichamelijke druk.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏥", text: "Chronische stress die niet als emotie wordt herkend maar als lichamelijke klacht (nek, rug, maag) — somatisering is klassiek bij alexithymie. Lichaamsgerichte therapie helpt meer dan gesprekstherapie." },
+      { domain: "Relaties", icon: "❤️", text: "Partners van alexithyme mensen voelen zich emotioneel niet gehoord — niet door gebrek aan zorg, maar door het letterlijk ontbreken van toegang tot emotionele taal." },
+      { domain: "Zelfbewustzijn", icon: "🪞", text: "Bewust lichaamssensaties koppelen aan emotionele labels ('spanning in borst = angst') traint emotioneel bewustzijn — dit is trainbaar via somatische bewustzijnspraktijken." }
+    ],
+  },
+  {
+    id: "emotional-flooding",
+    title: "Emotionele Overstroming",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Emotionele overstroming (Gottman) treedt op als de fysiologische activatie zo hoog is dat rationeel denken onmogelijk wordt — hartslag boven ~100 slagen/min maakt het neocortex onbereikbaar. Pauzes zijn dan het enige effectieve middel.",
+    abstractExample: "In een conflict zeg je dingen die je later betreurt. Dat is overstroming: het emotionele brein heeft de controle overgenomen van het rationele brein. Argumenteren in die staat is zinloos — wachten is de enige optie.",
+    examples: [
+      { domain: "Conflict", icon: "⚡", text: "Gottman: koppels die bij overstroming 20 minuten pauzeren en iets ontspannends doen (niet over het conflict nadenken), lossen conflicten productiever op dan koppels die doorgaan." },
+      { domain: "Werk", icon: "💼", text: "Directe e-mails schrijven in woede leidt tot schade die uren later niet kan worden hersteld — de 24-uurwacht-regel beschermt je van de overspoelde staat." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "Kinderen leren conflicten oplossen door ouders te zien pauzeren en terugkomen — 'ik ben nu te boos om hier goed over te praten, we praten er later over' is een model." }
+    ],
+  },
+  {
+    id: "affect-labeling",
+    title: "Affect Labelen",
+    difficulty: 1,
+    emoji: "🏷️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Affect labelen is het benoemen van emoties in woorden — 'ik voel angst' — wat neurobiologisch de amygdala-activatie vermindert en prefrontale regulatie verhoogt. Woorden maken emoties beheersbaarder.",
+    abstractExample: "Feit: je zegt hardop 'ik ben bang' en je hart klopt minder snel. Hersenscans tonen dat labelen de amygdalarespons direct dempt. Praten over emoties is geen verzwakking maar neurobiologische regulatie.",
+    examples: [
+      { domain: "Angst", icon: "😰", text: "Piloten die hun angst hardop benoemen tijdens turbulentie ('ik merk dat ik angstig ben') presteren beter dan piloten die de angst verdringen — labelen vrijt cognitieve capaciteit." },
+      { domain: "Kinderen", icon: "👧", text: "Kinderen leren emoties labelen via ouders die het voordoen: 'Ik zie dat je verdrietig bent omdat...' Later kunnen ze het zelf — en neuroregulatie volgt vanzelf." },
+      { domain: "Mindfulness", icon: "🧘", text: "In meditatie leer je gedachten en emoties observeren en benoemen ('er is angst', 'er is irritatie') — afstand creëren door labelen is een kerncompetentie van mindfulness." }
+    ],
+  },
+  {
+    id: "social-baseline-theory",
+    title: "Sociale Basislijntheorie",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Sociale basislijntheorie (Coan) stelt dat het menselijk brein sociale verbinding als standaard rekent in zijn energieberekeningen — alleen zijn kost extra energie, verbonden zijn is de rust-staat. Eenzaamheid is geen luxeprobleem maar een basale stressbron.",
+    abstractExample: "Het menselijk brein is evolutionair ingesteld op constant sociale verbinding. Alleen zijn vereist meer resources dan verbonden zijn. Eenzaamheid activeert dezelfde stressresponsen als fysieke bedreiging.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏥", text: "Eenzaamheid heeft een vergelijkbaar gezondheidsrisico als roken 15 sigaretten per dag — het is geen sentimenteel probleem maar een fysiologisch stressor met reële lichamelijke gevolgen." },
+      { domain: "Prestatie", icon: "🏆", text: "In een fMRI-studie ervaart iemand die pijn krijgt aanzienlijk minder activering als een vertrouwde hand vasthoudend — aanwezigheid van een vertrouwde persoon dempt letterlijk pijn." },
+      { domain: "Werk vanuit huis", icon: "🏠", text: "Thuiswerkers die sociale verbinding niet bewust onderhouden, rapporteren hogere vermoeidheid — het brein verbruikt meer energie bij gebrek aan de sociale basislijn." }
+    ],
+  },
+  {
+    id: "vulnerability-courage",
+    title: "Kwetsbaarheid als Moed",
+    difficulty: 2,
+    emoji: "🦁",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Kwetsbaarheid (Brown) is het tonen van onzekerheid, risico en emotionele blootstelling — het is niet zwakheid maar de bakermat van verbinding, innovatie en moed. Kwetsbaarheid vermijden kost meer dan het omarmen.",
+    abstractExample: "Als je nooit iets deelt waarvoor je je schaamt of onzeker over bent, kun je ook nooit werkelijk worden begrepen. Verbinding vereist kwetsbaarheid — je kunt alleen verbinden op de plekken die je toont.",
+    examples: [
+      { domain: "Leiderschap", icon: "👥", text: "Leiders die fouten toegeven en onzekerheid tonen, creëren psychologisch veilige teams waar mensen ook risico's durven nemen — perfecte façades creëren angst, niet vertrouwen." },
+      { domain: "Relaties", icon: "❤️", text: "Diepe vriendschappen en liefdesrelaties worden gebouwd op momenten van kwetsbaarheid — oppervlakkige relaties blijven oppervlakkig zolang kwetsbaarheid wordt vermeden." },
+      { domain: "Creativiteit", icon: "🎨", text: "Elke creatieve daad is kwetsbaarheid — iets maken en het tonen aan de wereld, wetende dat het kan worden afgewezen. Kwetsbaarheid en creativiteit zijn onlosmakelijk verbonden." }
+    ],
+  },
+  {
+    id: "emotional-agility",
+    title: "Emotionele Beweeglijkheid",
+    difficulty: 2,
+    emoji: "🤸",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Emotionele beweeglijkheid (David) is het vermogen om met emoties, gedachten en ervaringen om te gaan op een manier die interne waarden en intenties respecteert — niet het elimineren van negatieve emoties maar het soepel manoeuvreren ermee.",
+    abstractExample: "Emotionele beweeglijkheid is niet positief denken of negatieve emoties verdringen. Het is het verschil tussen 'ik ben boos' (fusie met emotie) en 'ik merk dat ik boosheid ervaar' (afstand nemen en bewust reageren).",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een werknemer die angst voor mislukking voelt maar toch het risicovolle project accepteert omdat het bij zijn waarden past — emotionele beweeglijkheid, geen emotionele afwezigheid." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "Een ouder die gefrustreerd is maar kiest te reageren vanuit liefde en geduld in plaats van vanuit de frustratie — de emotie is er, de reactie is bewust gekozen." },
+      { domain: "Tegenslag", icon: "💪", text: "Na een verlies toestaan te rouwen (beweeglijk meebewegen met pijn) in plaats van 'sterk zijn' te pretenderen — paradoxaal herstellen rouwers sneller die hun verdriet volledig toelaten." }
+    ],
+  },
 ];
