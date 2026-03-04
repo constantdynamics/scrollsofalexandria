@@ -6702,5 +6702,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Ontwerp een A/B-test voor iets in jouw leven: een manier van vragen stellen, een ochtendoefening, of een communicatiestijl. Wat test je, hoe randomiseer je en wat is je sucesmetriek?",
     aiHelperPrompts: ["Hoe bepaal ik de juiste steekproefgrootte voor een A/B-test?", "Welke fouten maak ik bij A/B-testen?", "Hoe voer ik A/B-tests uit zonder techniekafdeling?"]
+  },
+
+  // Batch U – Geschiedenis & Tijd
+  {
+    id: "historical-cycles",
+    title: "Historische Cycli",
+    difficulty: 3,
+    emoji: "🔄",
+    academicCategory: "Geschiedenis",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["geschiedenis", "patronen", "cycli", "herhaling"],
+    definition: "Historische cycli zijn terugkerende patronen in de menselijke geschiedenis — zoals Turchin's seculaire cycli van politieke instabiliteit — die suggereren dat geschiedenis geen rechte lijn is maar ritmische golven.",
+    abstractExample: "Net zoals golven op zee steeds terugkomen zonder precies hetzelfde te zijn, vertoont de geschiedenis cycli van opkomst, bloei, verval en hergeboorte in naties en beschavingen.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Grote rijken (Romeins, Mongools, Brits) vertonen vergelijkbare groeicycli van expansie, hoogtepunt en fragmentatie over 200-400 jaar." },
+      { domain: "Economie", icon: "💰", text: "Kondratieff-cycli beschrijven ~50-jarige economische golven van innovatie, groei, verzadiging en depressie die elke halve eeuw terugkeren." },
+      { domain: "Democratie", icon: "🗳️", text: "Democratieën vertonen cycli van liberalisering (burgerrechten uitbreiden) en conservatieve reactie die om de generaties lijken te slingeren." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste risico bij het gebruik van historische cycli als voorspelmodel?", options: ["Cycli zijn altijd exact", "Neiging tot te vereenvoudigen en historische overeenkomsten te overdrijven", "Cycli zijn wetenschappelijk bewezen", "Ze werken alleen voor economie"], correct: 1, explanation: "Historische cycli zijn patronen, geen wetten — de verleiding om te veel te extrapoleren leidt tot flauwe determinisme." }
+    ],
+    creativePrompt: "Welk historisch patroon zie je terugkomen in jouw eigen leven, familie of werkomgeving? Beschrijf de cyclus en wat je hieruit kunt leren voor de volgende fase.",
+    aiHelperPrompts: ["Hoe gebruik ik historische kennis voor toekomstvoorspellingen?", "Welke historische cycli zijn het meest bewezen?", "Hoe vermijd ik deterministisch denken over geschiedenis?"]
+  },
+  {
+    id: "path-dependency",
+    title: "Padafhankelijkheid",
+    difficulty: 2,
+    emoji: "🛤️",
+    academicCategory: "Economische Geschiedenis",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["geschiedenis", "keuzes", "lock-in", "institutie"],
+    definition: "Padafhankelijkheid beschrijft hoe vroegere keuzes en omstandigheden de huidige opties beperken — zelfs als de oorspronkelijke redenen voor die keuzes al lang niet meer relevant zijn.",
+    abstractExample: "De breedte van moderne treinsporen is gebaseerd op de breedte van Engelse wagens uit de 19e eeuw, die was gebaseerd op paardensporen uit de Middeleeuwen — antieke beslissingen bepalen moderne infrastructuur.",
+    examples: [
+      { domain: "Technologie", icon: "💻", text: "QWERTY-toetsenbord: ontworpen om typemachinestoring te voorkomen, maar nu onmogelijk te vervangen ondanks ergonomisch betere alternatieven bestaan." },
+      { domain: "Recht", icon: "⚖️", text: "Grondwetten zijn padafhankelijk: de Amerikaanse grondwet van 1787 beperkt en vormt hoe 21e-eeuwse wetgeving eruitziet." },
+      { domain: "Bedrijf", icon: "💼", text: "Veel bedrijven gebruiken verouderde software niet vanwege kwaliteit maar vanwege de enorme kosten van migratie — path lock-in." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom verandert padafhankelijkheid zo moeilijk?", options: ["Mensen zijn te dom om te veranderen", "De kosten van overgang overtreffen vaak de voordelen van een beter alternatief", "Padafhankelijkheid is altijd optimaal", "Verandering is onmogelijk"], correct: 1, explanation: "Switching costs — trainingskosten, infrastructuur, netwerk — maken het rationeel om een suboptimaal pad te blijven volgen." }
+    ],
+    creativePrompt: "Identificeer drie 'padafhankelijkheden' in jouw organisatie of persoonlijk leven. Voor elk: wat was de originele reden? Is die reden nog geldig? Wat zou het kosten om te veranderen?",
+    aiHelperPrompts: ["Hoe herken ik padafhankelijkheid in organisaties?", "Wanneer is het de moeite waard om een padafhankelijkheid te doorbreken?", "Welke grote technologische padafhankelijkheden bestaan er?"]
+  },
+  {
+    id: "great-man-vs-forces",
+    title: "Grote Mannen vs. Historische Krachten",
+    difficulty: 3,
+    emoji: "⚔️",
+    academicCategory: "Geschiedfilosofie",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["geschiedenis", "leiderschap", "structuur", "causaliteit"],
+    definition: "Het 'grote mannen'-debat vraagt of geschiedenis wordt gevormd door uitzonderlijke individuen of door diepere structurele krachten (economie, technologie, klimaat) — een spanning tussen agency en determinisme.",
+    abstractExample: "Had Hitler Duitsland geregeerd als de Grote Depressie niet had plaatsgevonden? Had Napoleon de Franse Revolutie kunnen vervangens als hij niet bestond? Kon het niet zonder de contextuele krachten?",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Napoleon was een buitengewoon leider — maar historici debatteren in hoeverre de Franse Revolutie iemand als Napoleon 'produceerde' ongeacht de persoon." },
+      { domain: "Wetenschap", icon: "🔬", text: "Darwin en Wallace kwamen onafhankelijk tot de evolutietheorie — suggererende dat de 'tijd rijp' was voor die ontdekking los van de persoon." },
+      { domain: "Technologie", icon: "💻", text: "Had een andere persoon dan Steve Jobs Apple kunnen leiden? Of zorgden de technologische en markttrends voor een succesvolle iPhone-variant hoe dan ook?" }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke benadering hanteert de 'materialistische' geschiedschrijving?", options: ["Individuen bepalen de loop van de geschiedenis", "Economische en sociale krachten bepalen de uitkomst", "Toeval is het meest bepalend", "Religie stuurt de geschiedenis"], correct: 1, explanation: "Materialistische historici zoals Marx stellen dat economische structuren en klassenverhoudingen de motor van de geschiedenis zijn, niet individuen." }
+    ],
+    creativePrompt: "Kies een historisch moment. Schrijf twee versies: één waar een individuele leider het resultaat volledig bepaalde en één waar structurele krachten het resultaat bepaalden ongeacht de leider. Welke vind je overtuigender?",
+    aiHelperPrompts: ["Hoe balanceer ik agency en structuur in historische verklaring?", "Wat zeggen contrafactuele geschiedenissen ons?", "Hoe denk ik over leiderschap via historische lenzen?"]
+  },
+  {
+    id: "long-term-thinking",
+    title: "Langtermijndenken",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Filosofie",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["toekomst", "strategie", "duurzaamheid", "planning"],
+    definition: "Langtermijndenken is het vermogen om beslissingen te nemen door de gevolgen op een tijdschaal van jaren, decennia of generaties te overwegen — niet alleen de directe kortetermijnvoordelen.",
+    abstractExample: "Langtermijndenken is als een boer die in de herfst zaait voor de volgende zomer: kortetermijnkosten (zaaigoed, arbeid) voor langetermijnwinst (oogst).",
+    examples: [
+      { domain: "Milieu", icon: "🌍", text: "Finland plant bomen die pas over 80 jaar gekapt worden — een langtermijninvestering die hedendaagse generaties niet zelf zullen oogsten." },
+      { domain: "Onderwijs", icon: "📚", text: "Investeren in kleuterschooleducatie levert de hoogste economische rendementen op — maar pas na 15-25 jaar, buiten de politieke cyclus van 4 jaar." },
+      { domain: "Bedrijf", icon: "💼", text: "Amazon verloor jarenlang geld om marktpositie op te bouwen — Bezos' 'long-term greed' strategie betaalde zich terug over decennia." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste structurele obstakel voor langtermijndenken in democratieën?", options: ["Gebrek aan kennis", "De korte politieke cyclus (4 jaar) vs. lange beleidshorizonten", "Burgers zijn te egoïstisch", "Economische modellen zijn incorrect"], correct: 1, explanation: "Politici worden beloond voor zichtbare kortetermijnresultaten, niet voor investeringen die pas na decennia renderen." }
+    ],
+    creativePrompt: "Schrijf een brief aan jezelf over 20 jaar. Welke beslissingen die je nu neemt zullen dan het meest bepalend zijn? Welke kortetermijnsatisfacties zijn het minst waard op lange termijn?",
+    aiHelperPrompts: ["Hoe train ik langtermijndenken in een wereld van instant gratification?", "Welke frameworks helpen bij strategische langetermijnplanning?", "Hoe overtuig ik anderen van langtermijninvesteringen?"]
+  },
+  {
+    id: "presentism-bias",
+    title: "Presentismebias",
+    difficulty: 2,
+    emoji: "⏰",
+    academicCategory: "Geschiedenis",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["bias", "geschiedenis", "oordeel", "anachronisme"],
+    definition: "Presentismebias is het beoordelen van historische mensen, acties of normen met hedendaagse morele maatstaven — zonder rekening te houden met de historische context en de kennis die toen beschikbaar was.",
+    abstractExample: "Aristoteles verdedigde slavernij — maar hem met dezelfde morele ernst veroordelen als een moderne slavenhouder negeert dat zijn gehele culturele context fundamenteel anders was.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "Medici die bloedlaten toepasten deden dit conform de beste beschikbare kennis — ze 'wisten' niet beter, en zijn daarin te onderscheiden van wie nu bloedlaten zou toepassen." },
+      { domain: "Politiek", icon: "🏛️", text: "Koloniale figuren uit de 18e eeuw oordelen naar 21e-eeuwse mensenrechtsstandaarden negeert dat die standaarden zelf een historisch product zijn." },
+      { domain: "Kunst", icon: "🎨", text: "Kunstwerken die vandaag als stereotyperend worden gezien, werden in hun tijd soms als progressief of neutraal beschouwd." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is presentismebias?", options: ["Geloven dat het heden beter is dan het verleden", "Historische situaties beoordelen met huidige normen", "Zich te veel met het heden bezighouden", "Toekomst negeren ten gunste van heden"], correct: 1, explanation: "Presentisme in de historiografie betekent het toepassen van hedendaagse waarden op historische contexten die fundamenteel anders waren." }
+    ],
+    creativePrompt: "Kies een historische figuur die vandaag sterk wordt bekritiseerd. Probeer zijn of haar acties te begrijpen vanuit de normen en kennis van hun eigen tijd. Wat verandert er in je oordeel?",
+    aiHelperPrompts: ["Hoe vermijd ik presentisme in historische analyse?", "Wanneer is het wél gepast om historische figuren te veroordelen?", "Hoe beïnvloedt presentisme hedendaagse debatten over standbeelden?"]
+  },
+  {
+    id: "generational-theory",
+    title: "Generatietheorie",
+    difficulty: 2,
+    emoji: "👥",
+    academicCategory: "Sociologie",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["generaties", "cultuur", "demografie", "verandering"],
+    definition: "Generatietheorie beschrijft hoe de omstandigheden tijdens de opgroeifase (economisch, cultureel, politiek) een generatie vormen met gedeelde waarden, attitudes en gedragspatronen die verschijnen van andere generaties.",
+    abstractExample: "Een generatie die als kind een economische depressie meemaakte, zal spaarzamer zijn dan een generatie die opgroeide in welvaart — ongeacht individuele persoonlijkheid.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Babyboomers valoriseren loyaliteit aan één werkgever; millennials prefereren flexibiliteit en purpose — verschil in opgroeicondities, niet karakter." },
+      { domain: "Politiek", icon: "🏛️", text: "Generaties die oorlog meemaakten steunen vaker internationale samenwerking; generaties die vrede kenden zijn sceptischer over haar kosten." },
+      { domain: "Technologie", icon: "💻", text: "Digital natives (geboren na 1995) hebben fundamenteel andere verwachtingen van privacynormen dan digital immigrants die voor het internet opgroeiden." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste gevaar van generatiegeneralisaties?", options: ["Ze zijn altijd onjuist", "Ze negeren enorme individuele variatie binnen generaties", "Ze zijn alleen nuttig voor marketing", "Ze zijn te wetenschappelijk voor algemeen gebruik"], correct: 1, explanation: "Generatiepatronen zijn statistische tendensen — enorme individuele variatie betekent dat elk individu niet per se past in het generatieprofiel." }
+    ],
+    creativePrompt: "Welke waarden uit jouw opgroeifase zijn zo fundamenteel voor jou dat je ze moeilijk kunt loslaten? Hoe kijkt een andere generatie naar dezelfde kwestie? Wat verklaart het verschil?",
+    aiHelperPrompts: ["Zijn generatieverschillen echt of overdreven door media?", "Hoe werk ik effectief met mensen van andere generaties?", "Welke generatieconflicten zijn er in de huidige arbeidsmarkt?"]
+  },
+  {
+    id: "primary-secondary-sources",
+    title: "Primaire en Secundaire Bronnen",
+    difficulty: 1,
+    emoji: "📜",
+    academicCategory: "Historiografie",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["bronnen", "onderzoek", "kritisch denken", "historiografie"],
+    definition: "Primaire bronnen zijn directe getuigenissen of artefacten uit de bestudeerde periode (dagboeken, wetten, foto's); secundaire bronnen zijn interpretaties en analyses van primaire bronnen door historici.",
+    abstractExample: "Een brief van Anne Frank is een primaire bron; een historisch boek over de Holocaust dat die brief analyseert is een secundaire bron — beide zijn waardevol maar op verschillende manieren.",
+    examples: [
+      { domain: "Geschiedenis", icon: "📚", text: "De dagboeken van Samuel Pepys zijn een primaire bron voor het dagelijks leven in 17e-eeuws Londen; een biografie over hem is secundair." },
+      { domain: "Recht", icon: "⚖️", text: "Een rechtbankuitspraak is primair; een rechtswetenschappelijk artikel dat de uitspraak bespreekt is secundair." },
+      { domain: "Wetenschap", icon: "🔬", text: "Een origineel wetenschappelijk artikel (paper) is primair; een review-artikel dat meerdere studies samenvat is secundair." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het voordeel van primaire bronnen boven secundaire bronnen?", options: ["Ze zijn altijd betrouwbaarder", "Ze geven directe toegang tot de oorspronkelijke bron zonder interpretatielagen", "Ze zijn eenvoudiger te begrijpen", "Ze zijn moderner"], correct: 1, explanation: "Primaire bronnen geven rechtstreeks toegang tot het origineel, zonder de interpretatielagen die elke intermediair toevoegt." }
+    ],
+    creativePrompt: "Kies een historisch onderwerp. Zoek één primaire en één secundaire bron erover. Vergelijk: wat vertelt de primaire bron dat de secundaire niet vertelt, en vice versa?",
+    aiHelperPrompts: ["Hoe vind ik primaire bronnen online?", "Hoe evalueer ik de betrouwbaarheid van een bron?", "Wanneer gebruik ik secundaire boven primaire bronnen?"]
+  },
+  {
+    id: "historiography",
+    title: "Historiografie",
+    difficulty: 3,
+    emoji: "📚",
+    academicCategory: "Geschiedenis",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["geschiedenis", "interpretatie", "methode", "perspectief"],
+    definition: "Historiografie is de studie van hoe geschiedenis wordt geschreven — welke vragen historici stellen, welke bronnen ze gebruiken, welke interpretaties ze bieden — en hoe deze veranderen over tijd en cultuur.",
+    abstractExample: "Dezelfde Eerste Wereldoorlog werd in de 1920s beschreven als 'de oorlog om oorlogen te beëindigen', in de 1960s als imperialistisch avontuur en in de 2010s als systeemfalen — de feiten veranderden niet, de vragen wel.",
+    examples: [
+      { domain: "Koloniaal verleden", icon: "🌍", text: "Kolonialisme werd door Europese historici lange tijd als 'beschavingsmissie' beschreven; postkoloniale historici beschrijven het als exploitatie en geweld." },
+      { domain: "Gendergeschiedenis", icon: "♀️", text: "Traditionele geschiedschrijving focuste op mannen en macht; feminist history bracht vrouwen, huishouden en dagelijks leven in beeld." },
+      { domain: "Lokale geschiedenis", icon: "🏘️", text: "Nationale geschiedenissen worden uitgedaagd door lokale en regionale perspectieven die andere ervaringen documenteren." }
+    ],
+    prerequisites: ["primary-secondary-sources"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat bestudeert historiografie?", options: ["De feiten van de geschiedenis", "Hoe historici geschiedenis schrijven en interpreteren", "Alleen de geschriften van beroemde historici", "Methodologische fouten in historisch onderzoek"], correct: 1, explanation: "Historiografie richt zich op de methoden, aannames en paradigma's van de geschiedbeoefening zelf — meta-geschiedenis." }
+    ],
+    creativePrompt: "Zoek twee beschrijvingen van hetzelfde historische evenement uit verschillende landen of periodes. Wat benadrukken ze anders? Welke vragen stellen ze? Wat laat elk weg?",
+    aiHelperPrompts: ["Hoe beïnvloedt nationalisme de geschiedschrijving?", "Wat zijn de grote paradigma's in de moderne historiografie?", "Hoe lees ik een historisch werk kritisch?"]
+  },
+  {
+    id: "black-swan-events",
+    title: "Zwarte Zwaan Gebeurtenissen",
+    difficulty: 2,
+    emoji: "🦢",
+    academicCategory: "Risicobeheer",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["risico", "onzekerheid", "kansen", "verrassing"],
+    definition: "Zwarte Zwanen (Nassim Taleb) zijn zeldzame, extreem impactvolle gebeurtenissen die achteraf als voorspelbaar worden verklaard maar vóóraf nauwelijks te voorzien waren — ze domineren de loop van de geschiedenis.",
+    abstractExample: "Vóór 1697 geloofde Europa dat alle zwanen wit waren — totdat Australische zwanen werden ontdekt. Eén observatie vernietigde eeuwen van aanname.",
+    examples: [
+      { domain: "Technologie", icon: "💻", text: "Het internet veranderde de mondiale samenleving fundamenteel — weinigen voorspelden in 1990 de impact die het in 2000 zou hebben." },
+      { domain: "Gezondheid", icon: "🏥", text: "COVID-19 was technisch voorspelbaar (pandemieexperts waarschuwden) maar werd toch een verrassing voor de wereldwijde economie en politiek." },
+      { domain: "Financieel", icon: "📈", text: "De financiële crisis van 2008 werd door risicomodellen niet voorzien omdat die gebaseerd waren op historische normale distributies." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt iets een 'Zwarte Zwaan' volgens Taleb?", options: ["Het is zeldzaam", "Het is zeldzaam, extreem impactvol, en achteraf verklaarbaar", "Het is onmogelijk te voorzien", "Het is altijd negatief"], correct: 1, explanation: "Taleb's drie kenmerken: outlier (zeldzaam), enorme impact, en ex-post rationaliseerbaarheid — achteraf zeggen we 'dat hadden we moeten zien'." }
+    ],
+    creativePrompt: "Welke 'Zwarte Zwaan' veranderde jouw persoonlijke leven het meest? Hoe robuster had je jezelf kunnen maken tegen die verrassing? Welke zwarte zwanen kunnen nog komen?",
+    aiHelperPrompts: ["Hoe maak ik mijn leven robuuster tegen Zwarte Zwanen?", "Wat is het verschil tussen risico en onzekerheid?", "Welke Zwarte Zwanen verwacht Taleb in de nabije toekomst?"]
+  },
+  {
+    id: "time-preference",
+    title: "Tijdpreferentie",
+    difficulty: 2,
+    emoji: "⏳",
+    academicCategory: "Economie",
+    skillCategory: "Geschiedenis & Tijd",
+    tags: ["tijd", "beloning", "geduld", "economie"],
+    definition: "Tijdpreferentie beschrijft de mate waarin mensen huidige beloningen boven toekomstige beloningen prefereren — hoge tijdpreferentie betekent 'nu genieten', lage tijdpreferentie betekent bereid zijn te wachten voor grotere toekomstige winst.",
+    abstractExample: "Het Stanford marshmallow-experiment: kinderen die één marshmallow konden nemen of wachten voor twee. Hoge tijdpreferentie: neem het nu. Lage tijdpreferentie: wacht en krijg meer.",
+    examples: [
+      { domain: "Financiën", icon: "💰", text: "Pensioensparen vereist lage tijdpreferentie: je geeft nu koopkracht op voor een beter leven over 30 jaar." },
+      { domain: "Onderwijs", icon: "📚", text: "Een opleiding kost nu jaren en geld — de beloning (hoger inkomen) materialiseert pas jaren later." },
+      { domain: "Maatschappij", icon: "🌍", text: "Samenlevingen met lage tijdpreferentie investeren meer in infrastructuur, onderwijs en onderzoek die generaties later renderen." }
+    ],
+    prerequisites: [],
+    unlocks: ["long-term-thinking"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat suggereert een hoge discontovoet in economisch model?", options: ["Toekomstige waarden zijn erg belangrijk", "Mensen hechten weinig waarde aan toekomstige uitkomsten", "Inflatie is hoog", "Rente is laag"], correct: 1, explanation: "Een hoge discontovoet geeft aan dat toekomstige waarden snel in waarde dalen — uitdrukking van hoge tijdpreferentie." }
+    ],
+    creativePrompt: "Analyseer jouw eigen tijdpreferentie in drie domeinen: geld, gezondheid en relaties. Ben je consistent? Waar wijkt jouw werkelijke gedrag af van wat je ideaal zou willen?",
+    aiHelperPrompts: ["Hoe verlaag ik mijn tijdpreferentie voor betere beslissingen?", "Wat bepaalt iemands tijdpreferentie?", "Hoe verschilden tijdpreferenties door de geschiedenis heen?"]
   }
 ];
