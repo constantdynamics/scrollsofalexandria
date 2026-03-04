@@ -9247,4 +9247,156 @@ export const principlesNew = [
       { domain: "Activiteiten", icon: "🌟", text: "Elke verplichting en activiteit toetsen aan de vraag: als ik eerlijk ben, geeft dit me energie of kost het energie? Als het structureel energie kost en niet bijdraagt aan iets essentieel — elimineren is een daad van zelfrespect." }
     ],
   },
+
+  // ========== BATCH B8: NIEUWSGIERIGHEID & LEVENSLANG LEREN ==========
+  {
+    id: "growth-vs-fixed-mindset",
+    title: "Groeimindset vs. Vaste Mindset",
+    difficulty: 1,
+    emoji: "🌱",
+    academicCategory: "Ontwikkelingspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Carol Dwecks onderzoek onderscheidt een vaste mindset (talenten en intelligentie zijn aangeboren en onveranderlijk) van een groeimindset (capaciteiten zijn te ontwikkelen door inspanning, strategie en hulp). De mindset waarmee je uitdagingen benadert bepaalt grotendeels je bereidheid te leren, te falen en te volharden.",
+    abstractExample: "Een vaste mindset leidt ertoe dat je moeilijke uitdagingen vermijdt (risico op mislukking bewijst gebrek aan talent). Een groeimindset leidt ertoe dat je moeilijke uitdagingen opzoekt (elke uitdaging is leergelegenheid). Het verschil zit niet in capaciteit maar in interpretatie van uitdaging en mislukking.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "In plaats van 'ik ben slecht in wiskunde' (vaste mindset) denken 'ik ben nog niet goed in wiskunde' (groeimindset). Het woordje 'nog' verschuift de interpretatie van aangeboren beperking naar een tijdelijke staat die veranderd kan worden." },
+      { domain: "Werk", icon: "💼", text: "Feedback op werk ontvangen als informatie over wat te verbeteren (groeimindset) in plaats van als beoordeling van wie je bent (vaste mindset). Het maakt feedback minder bedreigend en meer bruikbaar." },
+      { domain: "Falen", icon: "🔄", text: "Mislukking in een groeimindset is data: wat werkt niet en waarom? In een vaste mindset is het bewijs van tekortschieten. De kwaliteit van leren na mislukking verschilt fundamenteel op basis van welke mindset actief is." }
+    ],
+  },
+  {
+    id: "beginner-mind",
+    title: "Beginners Geest: Shoshin",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Zen-filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Shoshin (Zen-Boeddhisme) is de houding van een beginner — openheid, nieuwsgierigheid en gebrek aan vooroordelen — ook bij gevorderde kennis of vaardigheden. 'In de geest van de beginner zijn er veel mogelijkheden, maar in die van de expert zijn er weinig' (Suzuki Roshi). Expertkennis kan nieuwsgierigheid verdringen als je het niet bewust onderhoudt.",
+    abstractExample: "Een expert die alles al weet, ziet bevestiging van wat hij weet. Een beginner die niets weet, ziet alles als nieuw en interessant. De kunst is expert-kennis te combineren met beginners-openheid: diep weten en toch nieuwsgierig blijven.",
+    examples: [
+      { domain: "Leren", icon: "📚", text: "Een vakgebied in gaan als beginner — ook als je al expert bent in een aangrenzend domein — met de houding 'ik weet niets hierover, vertel me alles' levert rijkere leerervaring dan met het gevoel al het kader te weten." },
+      { domain: "Relaties", icon: "❤️", text: "Een partner of vriend die je lang kent benaderen alsof je ze voor het eerst ontmoet — niet aannemen dat je weet wat ze denken of voelen. Mensen groeien en veranderen; beginners geest houdt relaties fris." },
+      { domain: "Vergaderingen", icon: "💼", text: "In een vergadering over een bekend onderwerp: actief vragen stellen alsof je het voor het eerst hoort. Dit ontdekt vaak nieuwe perspectieven en toont betrokkenheid — experts die vragen stellen, leren meer dan experts die antwoorden geven." }
+    ],
+  },
+  {
+    id: "curiosity-cultivation",
+    title: "Nieuwsgierigheid Actief Cultiveren",
+    difficulty: 1,
+    emoji: "🔍",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Nieuwsgierigheid is niet alleen een aangeboren eigenschap maar een cultiveerbare vaardigheid — een houding die bewust kan worden versterkt of verzwakt. Mensen die actief nieuwsgierigheid oefenen, leren sneller, vinden meer plezier in dagelijkse ervaringen en zijn gemiddeld gelukkiger en creatiever.",
+    abstractExample: "Nieuwsgierigheid traint je door bewust 'hoe werkt dit?' of 'waarom is dit zo?' te vragen bij alledaagse dingen. Net als een spier: gebruik het of verlies het. Een mens kan zijn leven doorgaan zonder zich ooit af te vragen hoe een vliegtuig opstijgt — of er elke keer opnieuw over verbaasd zijn.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🌟", text: "De dagelijkse omgeving met nieuwe ogen bekijken: hoe werkt de lift? Wie heeft dit gebouw ontworpen? Hoe wordt dat product gemaakt? Gewoonheidsoefening van nieuwsgierigheid bij alledaagse objecten en processen." },
+      { domain: "Gesprekken", icon: "💬", text: "In gesprekken meer vragen stellen dan verklaringen geven. 'Vertel me meer over...' is een nieuwsgierigheids-move die zowel jou verrijkt als de ander laat voelen dat hij of zij interessant is." },
+      { domain: "Lezen", icon: "📚", text: "Bewust buiten je interessegebied lezen — een biografie, een vakblad voor een ander vak, een filosofisch essay — cross-pollinates nieuwsgierigheid en creëert onverwachte verbindingen met je eigen domein." }
+    ],
+  },
+  {
+    id: "reading-learning-habits",
+    title: "Lezen als Fundamentele Gewoonte",
+    difficulty: 1,
+    emoji: "📖",
+    academicCategory: "Onderwijswetenschappen",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Regelmatig lezen — boeken, niet alleen korte artikelen — is een van de krachtigste gewoonten voor langetermijnontwikkeling. Boeken comprimeren decennia van ervaring en onderzoek in uren. Mensen die veel lezen bouwen cumulatief een groter kennisrepertoire en vocabulaire op, wat overdraagt naar betere communicatie, probleemoplossing en empathie.",
+    abstractExample: "Een boek per week lezen gedurende 10 jaar is 520 boeken — het equivalent van honderden levens aan ervaring en kennis geabsorbeerd. De cumulatieve voordelen van lezen zijn niet lineair maar exponentieel, omdat kennis verbindt met kennis.",
+    examples: [
+      { domain: "Gewoontevorming", icon: "🔄", text: "20 minuten per dag lezen voor het slapen gaan is realistischer dan grote leessessies. In een jaar is dat ruim 120 uur lezen — genoeg voor 12-20 boeken. Consistentie versloeg intensiteit." },
+      { domain: "Non-fictie strategie", icon: "📚", text: "Actief lezen: onderstrepingen, marginale notities, sleutelideeën samenvatten na elk hoofdstuk. Passief lezen retent significant minder. De inspanning van actief lezen is de investering in begrip." },
+      { domain: "Keuze", icon: "🎯", text: "Boeken kiezen die je oprecht interesseren in plaats van 'verplichte' intellectuele lectuur — nieuwsgierigheid-gedreven lezen houdt vol. Toestemming geven een boek halverwege neer te leggen als het je niet meer pakt is ook een leesvaardigheid." }
+    ],
+  },
+  {
+    id: "learning-from-different-domains",
+    title: "Interdisciplinair Leren",
+    difficulty: 2,
+    emoji: "🌐",
+    academicCategory: "Onderwijswetenschappen",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Kennis opbouwen over meerdere disciplines vergroot de capaciteit voor innovatief denken door cross-domein verbindingen te leggen die specialisten missen. De meest waardevolle inzichten komen vaak van mensen die een probleem bekijken met de lens van een ander vakgebied — dit heet conceptuele blending of analogisch redeneren.",
+    abstractExample: "Darwin had geen biologieopleiding — hij combineerde geologie, maatschappijleer en observatie tot evolutietheorie. Steve Jobs combineerde technologie en esthetiek. De T-shaped persoon (diep in één domein, breed over meerdere) is waardevoller dan de I-shaped specialist of de vlakke generalist.",
+    examples: [
+      { domain: "Probleemoplossing", icon: "🔧", text: "Een HR-probleem bekijken met een economische lens (incentives), een psychologische lens (gedrag) en een systeemlens (feedbackloops) levert rijkere analyse dan puur HR-denken — elke discipline ziet andere dingen." },
+      { domain: "Innovatie", icon: "💡", text: "Uber combineerde mobiel internet, GPS-technologie en een inzicht uit de deeleconomie. Elk afzonderlijk bestond al — de combinatie was nieuw. Interdisciplinair denken creëert het meest vruchtbare terrein voor innovatie." },
+      { domain: "Persoonlijke groei", icon: "🌱", text: "Een marketeer die filosofie leest, een ingenieur die psychologie bestudeert, een leraar die bedrijfsliteratuur leest — de investering in buiten het eigen domein leren betaalt terug in rijker denken en onverwachte verbindingen." }
+    ],
+  },
+  {
+    id: "intellectual-humility",
+    title: "Intellectuele Bescheidenheid",
+    difficulty: 2,
+    emoji: "🙏",
+    academicCategory: "Epistemologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Intellectuele bescheidenheid is het bewustzijn dat je kennis altijd partieel en feilbaar is, gecombineerd met de bereidheid standpunten bij te stellen op basis van nieuwe informatie. Het is niet passiviteit maar een actieve, kritische houding tegenover de eigen overtuigingen en een opening voor leren.",
+    abstractExample: "Je weet wat je weet en je weet wat je niet weet — maar het gevaarlijkste is wat je niet weet dat je niet weet (unknown unknowns). Intellectuele bescheidenheid is de bewuste openheid voor dat derde kwadrant.",
+    examples: [
+      { domain: "Discussie", icon: "💬", text: "'Ik kan het mis hebben' of 'ik snap je punt, dat had ik niet overwogen' actief uitspreken in discussies — dit is geen zwakte maar een krachtig signaal van intellectueel vertrouwen en bereidheid tot leren." },
+      { domain: "Beslissingen", icon: "🎯", text: "Bij grote beslissingen actief zoeken naar informatie die jouw mening tegenspreekt (steel man in plaats van straw man). Als je er geen kunt vinden, heb je niet goed genoeg gezocht of zit je in een informatie-bubbel." },
+      { domain: "Opvoeding", icon: "👨‍👩‍👦", text: "Aan kinderen laten zien dat volwassenen ook fouten maken, van mening veranderen en iets nieuws leren — dit modelleert intellectuele bescheidenheid. 'Ik weet het niet, laten we het opzoeken' is een rijke pedagogische zin." }
+    ],
+  },
+  {
+    id: "learning-from-failure",
+    title: "Systematisch Leren van Mislukkingen",
+    difficulty: 2,
+    emoji: "🔬",
+    academicCategory: "Organisatieleer",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Mislukkingen bevatten rijke informatie over blinde vlekken, verkeerde aannames en verbetermogelijkheden — maar alleen als ze systematisch worden geanalyseerd in plaats van vermeden of vergeten. Het verschil tussen mensen die snel leren en mensen die dezelfde fouten blijven herhalen, zit in hoe ze mislukking verwerken.",
+    abstractExample: "Na elke mislukking twee vragen: Wat dacht ik dat zou werken en waarom? Wat werkte er niet en waarom? De analyse van het gat tussen verwachting en werkelijkheid is de leerstof. Mislukking zonder analyse is pijn zonder opbrengst.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Na een mislukt project een formele 'post-mortem' houden: wat ging goed, wat ging mis, wat zouden we anders doen? Dit structureert leren in plaats van snel door te gaan naar het volgende project." },
+      { domain: "Persoonlijke doelen", icon: "🌱", text: "Dieet mislukt, sportschema gestopt, nieuwe gewoonte niet bijgehouden — in plaats van teleurstelling, analyseren: welke omstandigheid leidde tot het doorbreken van de gewoonte? Wat maakt het volgend keer anders?" },
+      { domain: "Relaties", icon: "❤️", text: "Na een conflict dat je niet bevredigend hebt aangepakt reflecteren: wat had ik kunnen zeggen? Waarom reageerde ik zo? Wat triggerde me? Dit zijn schatten voor toekomstige gesprekken." }
+    ],
+  },
+  {
+    id: "mental-flexibility",
+    title: "Mentale Flexibiliteit en Cognitieve Reserve",
+    difficulty: 2,
+    emoji: "🧩",
+    academicCategory: "Neurowetenschappen",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Cognitieve flexibiliteit — het vermogen om van perspectief te wisselen, van aanpak te veranderen en nieuwe informatie te integreren — is een trainbare neurocognitieve vaardigheid. Mensen met hoge cognitieve flexibiliteit passen zich beter aan verandering aan, lossen problemen creatiever op en zijn veerkrachtiger onder stress.",
+    abstractExample: "Een rigide denker heeft één manier om een probleem te benaderen. Een flexibel denker heeft meerdere frames beschikbaar en weet wanneer welk frame van toepassing is. Flexibiliteit is niet wispelturigheid maar het bewust kunnen wisselen van cognitieve gereedschappen.",
+    examples: [
+      { domain: "Verandering", icon: "🔄", text: "Bij een onverwachte verandering bewust de vraag stellen: 'Wat zijn de mogelijkheden hier die ik nog niet zie?' in plaats van 'Hoe herstel ik de oorspronkelijke situatie?' — dit activeert het flexibele denken in plaats van het rigide herstelreflex." },
+      { domain: "Conflict", icon: "⚡", text: "Bij een meningsverschil bewust het standpunt van de ander zo sterk mogelijk formuleren (steel man) voordat je je eigen standpunt verdedigt. Dit traint mentale flexibiliteit en leidt vaak tot genuanceerdere conclusies." },
+      { domain: "Leren", icon: "📚", text: "Bewust spelen met tegengestelde hypothesen — 'wat als het tegenovergestelde waar is?' — traint cognitieve flexibiliteit. De vraag 'waarom denk ik dat dit zo is?' ondervraagt vastgeroeste overtuigingen." }
+    ],
+  },
+  {
+    id: "transfer-of-learning",
+    title: "Leeroverdracht: Kennis Toepassen in Nieuwe Contexten",
+    difficulty: 2,
+    emoji: "🔗",
+    academicCategory: "Onderwijswetenschappen",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Leeroverdracht is het vermogen om kennis en vaardigheden die in één context zijn geleerd toe te passen in een nieuwe, andere context. Dit is de ultieme test van begrip versus memorisatie. Mensen die diep begrijpen waarom iets werkt, kunnen het toepassen in situaties die ze nooit eerder hebben gezien.",
+    abstractExample: "Weten dat antibiotica niet werkt voor virusinfecties is een feit. Begrijpen waarom — antibiotic werkt op bacteriële celwanden die virussen niet hebben — laat je zelf redeneren over nieuwe infecties die je nog nooit hebt gehoord. Begrip generaliseert; feiten niet.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Actief zoeken naar toepassingen van nieuwe kennis in bekende situaties verankert begrip en bouwt leeroverdracht: 'Waar herken ik dit principe in mijn eigen leven?' is een krachtige oefenvraag na elk nieuw concept." },
+      { domain: "Werk", icon: "💼", text: "Principes die je in één project hebt geleerd bewust toepassen in een ander project in een ander domein — de vraag 'welke principes van mijn vorige project zijn hier relevant?' activeert transferleren." },
+      { domain: "Persoonlijke groei", icon: "🌱", text: "Een les uit een sportieve uitdaging (omgaan met verlies, volharden bij moeite) bewust toepassen in een professionele uitdaging. Transferleren overstijgt domeinbegrenzingen wanneer je bewust de principes extraheert." }
+    ],
+  },
+  {
+    id: "journaling-for-learning",
+    title: "Journaling als Leermiddel",
+    difficulty: 1,
+    emoji: "📓",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Reflectief schrijven (journaling) is een krachtig leer- en verwerkingsinstrument: het externaliseert gedachten, dwingt coherentie, helpt patronen herkennen en consolideert ervaringen tot inzichten. Zowel dagelijkse reflectie als gerichte vragen-journaling hebben aangetoonde positieve effecten op welzijn en leersnelheid.",
+    abstractExample: "Gedachten in het hoofd zijn vloeibaar en ongeordend. Op papier worden ze vast en confronteerbaar. Schrijven over een ervaring activeert andere verwerkingsprocessen dan erover denken — het stimuleert integratie van emotionele en analytische kennis.",
+    examples: [
+      { domain: "Dagelijkse reflectie", icon: "🌙", text: "Drie minuten journaling voor het slapen: wat ging goed vandaag, wat had ik anders kunnen doen, en wat leer ik hieruit? Dit ritueel consolideert dagelijkse leerervaringen die anders verloren gaan." },
+      { domain: "Grote beslissingen", icon: "🎯", text: "Vóór een grote beslissing uitschrijven: wat weet ik, wat weet ik niet, welke waarden spelen mee, wat zijn mijn opties? Schrijven trekt kennis naar buiten en maakt het analyseerbaar." },
+      { domain: "Emotionele verwerking", icon: "💭", text: "Schrijven over moeilijke ervaringen heeft aangetoonde therapeutische effecten (Pennebaker's onderzoek) — het helpt emotionele verwerking, geeft gevoel van controle en reduceert ruminatie." }
+    ],
+  },
 ];
