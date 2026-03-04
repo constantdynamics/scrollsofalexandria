@@ -7862,5 +7862,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Welke kostbare signalen stuur jij in je leven (in werk, relaties, sociale context)? Zijn er goedkopere manieren om hetzelfde te communiceren, of ondermijnt dat de geloofwaardigheid?",
     aiHelperPrompts: ["Hoe herken ik kostbare vs. goedkope signalen in dagelijks leven?", "Hoe verhoudt kostbare signalering zich tot performatief altruïsme?", "Wat zijn voorbeelden van digitale kostbare signalering?"]
+  },
+
+  // Batch Z1 – Psychologie van Groepen
+  {
+    id: "groupthink",
+    title: "Groepsdenken",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["groep", "besluitvorming", "consensus", "conformiteit"],
+    definition: "Groepsdenken treedt op wanneer de wens naar harmonie en conformiteit in een groep het kritisch evalueren van alternatieven overheerst — resulterend in slechte beslissingen die niemand individueel zou nemen.",
+    abstractExample: "Een groep vrienden plant een wandeltocht bij slecht weer: niemand wil de stemming bederven dus zegt niemand 'dit is een slecht idee' — de groep gaat en raakt in de problemen.",
+    examples: [
+      { domain: "Bedrijf", icon: "💼", text: "NASA's Challenger-ramp: ingenieurs hadden zorgen over de O-ringen maar de groepsdynamiek onderdrukte kritische stemmen voor de lancering." },
+      { domain: "Politiek", icon: "🏛️", text: "De Bay of Pigs-invasie: Kennedy's team was intern zo eensgezind dat alternatieve scenario's niet serieus werden overwogen." },
+      { domain: "Investeren", icon: "📈", text: "Investeringscommissies die positief enthousiasme beloningen boven kritisch denken raken regelmatig in groupthink-valkuilen." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke maatregel vermindert groepsdenken het meest effectief?", options: ["Grotere groepen", "Een aangewezen duivelsadvocaat die systematisch tegenargumenten brengt", "Meer vergaderingen", "Sterkere leider"], correct: 1, explanation: "Een formele duivelsadvocaat-rol geeft toestemming voor kritisch denken zonder de groepssfeer te schaden — een bewezen effectieve interventie." }
+    ],
+    creativePrompt: "Identificeer een beslissing in jouw leven of werk waarbij groepsdenken mogelijk een rol speelde. Welke signalen waren er? Wat zou een effectieve duivelsadvocaat hebben gezegd?",
+    aiHelperPrompts: ["Hoe herken ik groepsdenken in vergaderingen?", "Welke teamstructuren verminderen groepsdenken?", "Hoe kan ik als leider groepsdenken voorkomen?"]
+  },
+  {
+    id: "social-loafing",
+    title: "Sociaal Lummelen",
+    difficulty: 1,
+    emoji: "😴",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["groep", "inspanning", "verantwoordelijkheid", "samenwerking"],
+    definition: "Sociaal lummelen (social loafing) is de neiging van individuen om minder inspanning te leveren wanneer ze in een groep werken dan wanneer ze alleen werken — verantwoordelijkheid en bijdrage worden diffuser.",
+    abstractExample: "Wanneer acht mensen een touw trekken, trekt elk gemiddeld minder hard dan wanneer ze het alleen trekken — het individu 'verbergt zich' in de groep.",
+    examples: [
+      { domain: "Schoolproject", icon: "📚", text: "In een groepsproject van vijf doen twee mensen 80% van het werk terwijl de anderen wachten — diffuse verantwoordelijkheid verlaagt individuele inspanning." },
+      { domain: "Vergadering", icon: "💼", text: "In grote vergaderingen zeggen minder mensen iets dan in kleine groepen — het individu voelt minder verantwoordelijk om bij te dragen." },
+      { domain: "Vrijwilligerswerk", icon: "❤️", text: "Anonieme online-petitietekenaar: de bijdrage voelt klein en onzichtbaar, wat de motivatie om actief bij te dragen vermindert." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke omstandigheid vermindert sociaal lummelen het meest?", options: ["Grotere groepen", "Individuele bijdragen meetbaar en zichtbaar maken", "Meer vrije tijd geven", "Minder regels stellen"], correct: 1, explanation: "Wanneer individuele bijdragen zichtbaar en evalueerbaar zijn, neemt social loafing sterk af — anonimiteit is de voedingsbodem voor lummelen." }
+    ],
+    creativePrompt: "Ontwerp een systeem voor een groepsproject dat sociaal lummelen minimaliseert zonder het wantrouwen te verhogen. Welke concrete mechanismen gebruik je?",
+    aiHelperPrompts: ["Hoe verschilt sociaal lummelen van trollen?", "Welke culturen vertonen minder social loafing?", "Hoe motiveer ik stille teamleden zonder hen te dwingen?"]
+  },
+  {
+    id: "bystander-effect",
+    title: "Toeschouwerseffect",
+    difficulty: 2,
+    emoji: "👁️",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["verantwoordelijkheid", "hulp", "groep", "diffusie"],
+    definition: "Het toeschouwerseffect is het fenomeen dat individuen minder geneigd zijn hulp te bieden bij een noodsituatie wanneer er meer anderen aanwezig zijn — door diffusie van verantwoordelijkheid en pluralistische onwetendheid.",
+    abstractExample: "Kitty Genovese-geval: 38 buren hoorden een aanval maar niemand belde de politie — elke buur dacht 'een ander doet het al'. Meer getuigen betekende minder actie.",
+    examples: [
+      { domain: "Openbaar", icon: "🚌", text: "Iemand die flauwvalt in een drukke trein krijgt soms minder snel hulp dan op een stille straat — meer toeschouwers, minder individuele actie." },
+      { domain: "Online", icon: "💻", text: "Cyberpesten wordt vaak gezien door velen maar weinig mensen grijpen in — de groepsgrootte vergroot de passiviteit." },
+      { domain: "Werkplek", icon: "💼", text: "Ongepast gedrag op kantoor wordt soms genegeerd door meerdere collega's — elk wacht af of iemand anders ingrijpt." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe doorbreek je het toeschouwerseffect als je zelf hulp nodig hebt?", options: ["Schreeuwen naar iedereen", "Één specifieke persoon aanspreken en om hulp vragen", "Wachten tot iemand vrijwillig helpt", "Een ander mensen vragen te helpen"], correct: 1, explanation: "Door één specifieke persoon direct aan te spreken, verwijder je de diffusie van verantwoordelijkheid — die persoon weet nu dat hij specifiek aangesproken is." }
+    ],
+    creativePrompt: "Beschrijf een situatie waarbij jij het toeschouwerseffect ervaarde (als toeschouwer of als iemand die hulp nodig had). Wat had je moeten doen? Wat hield je tegen?",
+    aiHelperPrompts: ["Hoe conditioneer ik mezelf om het toeschouwerseffect te overwinnen?", "Zijn er situaties waarbij het toeschouwerseffect positief kan zijn?", "Hoe ontwerp ik noodhulpsystemen die het toeschouwerseffect verminderen?"]
+  },
+  {
+    id: "conformity-asch",
+    title: "Conformiteitsdruk",
+    difficulty: 2,
+    emoji: "🐑",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["conformiteit", "groepsdruk", "onafhankelijk denken", "sociaal"],
+    definition: "Conformiteitsdruk is de neiging om de meningen en gedragingen van anderen over te nemen — zelfs wanneer de groepsmening duidelijk onjuist is — zoals aangetoond in Asch's lijnexperimenten.",
+    abstractExample: "In Asch's experiment ontkenden mensen hun eigen ogen: ze zeiden dat een kortere lijn even lang was als een langere, gewoon omdat zeven acteurs dat zeiden. De groepsmening overwon de sensorische realiteit.",
+    examples: [
+      { domain: "Mode", icon: "👗", text: "Trends in kleding worden gevolgd zelfs als individuen ze persoonlijk niet mooi vinden — sociale norm-conformiteit." },
+      { domain: "Vergadering", icon: "💼", text: "Een medewerker die een anders mening heeft, houdt zijn mond als de baas en alle collega's het er al mee eens lijken." },
+      { domain: "Consumentisme", icon: "🛍️", text: "Mensen kopen producten die ze niet nodig hebben omdat 'iedereen het heeft' — sociale vergelijkingsconformiteit." }
+    ],
+    prerequisites: [],
+    unlocks: ["groupthink"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat verminderde conformiteitsdruk in Asch's experimenten?", options: ["Meer acteurs", "Eén bondgenoot die de correcte mening deelde", "Grotere beloningen", "Hogere opleiding"], correct: 1, explanation: "Één enkele bondgenoot die de correcte mening deelde, reduceerde conformiteit drastisch — je hoeft niet alleen te staan om onafhankelijk te denken." }
+    ],
+    creativePrompt: "Beschrijf een moment waarbij jij meeging met de groep terwijl je eigenlijk een andere mening had. Wat hield je tegen om jouw werkelijke mening te uiten? Was de sociale druk bewust of onbewust?",
+    aiHelperPrompts: ["Hoe weerstand ik conformiteitsdruk zonder confronterend te zijn?", "Wanneer is conformiteit nuttig en wanneer schadelijk?", "Hoe creëer ik een omgeving die onafhankelijk denken beloont?"]
+  },
+  {
+    id: "social-identity-theory",
+    title: "Sociale Identiteitstheorie",
+    difficulty: 2,
+    emoji: "🪪",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["identiteit", "groep", "zelfconcept", "status"],
+    definition: "Sociale identiteitstheorie (Tajfel & Turner) stelt dat een deel van iemands zelfconcept wordt afgeleid uit het lidmaatschap van sociale groepen — en dat mensen hun groepen positief willen evalueren om een positief zelfconcept te behouden.",
+    abstractExample: "Je voelt trots wanneer jouw voetbalteam wint, ook al heb jij niet gespeeld — de prestatie van de groep beïnvloedt jouw persoonlijk gevoel van eigenwaarde.",
+    examples: [
+      { domain: "Sport", icon: "⚽", text: "Fans identificeren sterk met hun club: overwinning verhoogt eigenwaarde ('wij wonnen'), verlies roept defensieve reacties op ('het was de scheidsrechter')." },
+      { domain: "Nationalisme", icon: "🌍", text: "Nationale trots — trots op wetenschappers, sporters of kunstenaars die 'jouw land' vertegenwoordigen — is sociale identiteitstheorie in actie." },
+      { domain: "Werkplek", icon: "💼", text: "Werknemers bij prestigieuze bedrijven ontlenen status aan het bedrijfsmerk — zelfs bij taken die niets met dat prestige te maken hebben." }
+    ],
+    prerequisites: ["in-group-out-group"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk mechanisme gebruiken mensen om een positief sociaal zelfconcept te behouden?", options: ["Sociale vergelijking naar boven", "Vergelijken met minder succesvolle uitgroepen", "Isoleren van de groep", "Persoonlijke prestaties verhogen"], correct: 1, explanation: "Downward comparison — de eigen groep vergelijken met minder succesvolle groepen — verhoogt het groepsgevoel van superioriteit en daarmee eigenwaarde." }
+    ],
+    creativePrompt: "Lijst vijf sociale groepen waarmee jij je identificeert (religie, nationaliteit, beroep, team, etc.). Hoe beïnvloedt elk van die identiteiten jouw gedrag, oordelen en emoties?",
+    aiHelperPrompts: ["Hoe beïnvloedt sociale identiteit vooroordelen?", "Kunnen mensen meerdere sociale identiteiten tegelijk hebben?", "Hoe gebruik ik sociale identiteitstheorie voor teambuilding?"]
+  },
+  {
+    id: "deindividuation",
+    title: "Deïndividuatie",
+    difficulty: 2,
+    emoji: "🎭",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["anonimiteit", "groep", "gedrag", "verantwoordelijkheid"],
+    definition: "Deïndividuatie is het verlies van zelfbewustzijn en individuele identiteit in groepen of anonieme situaties — waardoor mensen gedrag vertonen dat ze individueel nooit zouden stellen, van positief (zelfloze reddingsacties) tot negatief (riotvandalism).",
+    abstractExample: "Een carnavalsmaskerganger doet dingen die hij nuchter en herkenbaar nooit zou doen — de anonimiteit verlaagt de zelfcensuur en verhoogt de groepsdynamiek.",
+    examples: [
+      { domain: "Online", icon: "💻", text: "Anonieme internetcommentators schrijven beledigingen die ze face-to-face nooit zouden uitspreken — deïndividuatie via online anonimiteit." },
+      { domain: "Protestgeweld", icon: "✊", text: "Rellen beginnen zelden met individuen maar escaleren wanneer groepsidentiteit en anonimiteit persoonlijke verantwoordelijkheid overschrijven." },
+      { domain: "Helpend gedrag", icon: "❤️", text: "Bij calamiteiten kunnen mensen ook positieve deïndividuatie vertonen: ze doen spontaan heldendaden die ze individueel niet hadden overwogen." }
+    ],
+    prerequisites: ["bystander-effect"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke factor verhoogt deïndividuatie het meest?", options: ["Groepsgrootte", "Anonimiteit gecombineerd met groepsidentiteit", "Hoge emotionele intensiteit", "Aanwezigheid van autoriteit"], correct: 1, explanation: "Anonimiteit verlaagt zelfevaluatie en gecombineerd met een sterke groepsidentiteit leiden beide tot de sterkste deïndividuatie." }
+    ],
+    creativePrompt: "Analyseer een online gemeenschap (forum, sociale media) waarbij je deïndividuatie-effecten herkent. Welke gedragingen worden gestimuleerd? Welk ontwerpelement draagt het meest bij?",
+    aiHelperPrompts: ["Hoe kunnen platforms deïndividuatie verminderen?", "Is deïndividuatie altijd negatief?", "Hoe houdt ik mijn individuele verantwoordelijkheid in groepen?"]
+  },
+  {
+    id: "risky-shift",
+    title: "Groepspolarisatie",
+    difficulty: 2,
+    emoji: "📊",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["groep", "beslissing", "risico", "polarisatie"],
+    definition: "Groepspolarisatie is het fenomeen dat groepsdiscussies de initiële tendens van de leden versterken — groepen nemen risicovollere beslissingen dan individuen als de leden al risicobereid zijn, en conservatievere als de leden al voorzichtig zijn.",
+    abstractExample: "Als vijf licht-positieve mensen over een voorstel discussiëren, eindigt de groep uitbundiger positief dan elk individu begon — overleggen versterkt de starttendens.",
+    examples: [
+      { domain: "Online echo-kamer", icon: "💻", text: "Sociale mediaalgoritmen die gelijkgestemden clusteren versterken groepspolarisatie — gematigde standpunten worden extremer door herhaalde blootstelling aan gelijkgezinden." },
+      { domain: "Jury", icon: "⚖️", text: "Een jury die aanvankelijk licht neigt naar schuld, kan na deliberatie extremer worden in die richting door groepspolarisatie." },
+      { domain: "Investering", icon: "📈", text: "Investeringscomités kunnen risicovollere beslissingen nemen dan individuele leden — het 'risky shift'-effect in de originele onderzoeken." }
+    ],
+    prerequisites: ["conformity-asch"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk mechanisme verklaart groepspolarisatie?", options: ["Groepen zijn altijd extremer", "Overtuigende argumenten die al aanwezig waren, worden versterkt door het horen van gelijkgezinden", "Groepsdruk forceert extremen", "Individuen verbergen matige standpunten"], correct: 1, explanation: "Twee processen: (1) persuasive arguments — je hoort overtuigende argumenten die jouw richting versterken en (2) sociale vergelijking — je wil niet de meest gematigde van de groep lijken." }
+    ],
+    creativePrompt: "Beschrijf een groepsgesprek waarbij de conclusie extremer was dan de individuele startpunten. Wat waren de mechanismen? Hoe had een facilitator dit kunnen temperen?",
+    aiHelperPrompts: ["Hoe design ik besluitvormingsprocessen die polarisatie verminderen?", "Hoe beïnvloedt sociale media groepspolarisatie?", "Wanneer is groepspolarisatie nuttig?"]
+  },
+  {
+    id: "leadership-styles",
+    title: "Leiderschapsstijlen",
+    difficulty: 2,
+    emoji: "👔",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["leiderschap", "stijl", "groep", "management"],
+    definition: "Verschillende leiderschapsstijlen (autocratisch, democratisch, laissez-faire, transformationeel, dienend) zijn meer of minder effectief afhankelijk van de situatie — er is geen universeel beste stijl.",
+    abstractExample: "Een brandweercommandant tijdens een brand heeft een autocratische stijl nodig; dezelfde persoon die een creatief team leidt, heeft een dienende stijl nodig — de situatie bepaalt de stijl.",
+    examples: [
+      { domain: "Crises", icon: "🚒", text: "Autocratisch leiderschap is effectief in crisissituaties die snelle, duidelijke beslissingen vereisen zonder ruimte voor discussie." },
+      { domain: "Innovatie", icon: "💡", text: "Transformationeel leiderschap (visie, inspiratie, individuele aandacht) is het meest effectief voor creatieve en kenniswerkers." },
+      { domain: "Zelfsturende teams", icon: "🤝", text: "Laissez-faire werkt bij experts met hoge autonomiebehoefte — maar faalt bij medewerkers die richting en structuur nodig hebben." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke leiderschapsstijl is het meest geassocieerd met hogere medewerkerstevredenheid en innovatie?", options: ["Autocratisch", "Laissez-faire", "Transformationeel", "Transactioneel"], correct: 2, explanation: "Transformationeel leiderschap — via inspiratie, individuele ontwikkeling en collectieve visie — correleert consistent sterk met tevredenheid en innovatie." }
+    ],
+    creativePrompt: "Wat is jouw dominante leiderschapsstijl? In welke situaties werkt die stijl goed en in welke situaties moet je bewust een andere stijl inzetten? Beschrijf een concreet voorbeeld van elke situatie.",
+    aiHelperPrompts: ["Hoe ontwikkel ik situationeel leiderschap?", "Wat is het verschil tussen transactioneel en transformationeel leiderschap?", "Hoe meet ik de effectiviteit van mijn leiderschapsstijl?"]
+  },
+  {
+    id: "team-dynamics-tuckman",
+    title: "Teamontwikkelingsfasen",
+    difficulty: 1,
+    emoji: "🚀",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["team", "groep", "ontwikkeling", "samenwerking"],
+    definition: "Tuckman's model beschrijft vier fasen van teamontwikkeling: Forming (verkennen), Storming (conflict), Norming (normen stellen) en Performing (presteren) — elk team doorloopt deze fasen, ook na terugval.",
+    abstractExample: "Een nieuw team is als een nieuwe band: eerst kennismaken (forming), dan ruzies over muziekstijl (storming), dan afspraken over repertoire (norming), dan geweldig optreden (performing).",
+    examples: [
+      { domain: "Startup", icon: "🚀", text: "Een nieuw startupteam begint enthousiast (forming), botst dan over richting (storming), vindt een werkwijze (norming) en presteert dan samen (performing)." },
+      { domain: "Sport", icon: "⚽", text: "Nieuwe teams presteren eerst slechter dan veteranenteams — de teamontwikkelingsfasen kosten tijd en kunnen niet worden overgeslagen." },
+      { domain: "Fusie", icon: "🏢", text: "Na een bedrijfsfusie doorlopen gecombineerde teams opnieuw alle fasen — zelfs ervaren professionals beginnen opnieuw met forming." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "In welke fase van Tuckman is de kans op teambreuk het grootst?", options: ["Forming", "Storming", "Norming", "Performing"], correct: 1, explanation: "In de storming-fase komen conflicten over richting, rollen en werkwijze aan de oppervlakte — teams die hier niet doorheen komen, stagneren." }
+    ],
+    creativePrompt: "Identificeer in welke fase een team waarvan jij deel uitmaakt (of uitmaakt) zich bevindt. Welke signalen herken je? Wat heeft het team nodig om naar de volgende fase te bewegen?",
+    aiHelperPrompts: ["Hoe begeleid ik een team door de stormingfase?", "Wat doe ik als een team steeds terugvalt naar storming?", "Hoe versnelt een goede facilitator teamontwikkeling?"]
+  },
+  {
+    id: "psychological-safety",
+    title: "Psychologische Veiligheid",
+    difficulty: 2,
+    emoji: "🛡️",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Psychologie van Groepen",
+    tags: ["veiligheid", "vertrouwen", "team", "innovatie"],
+    definition: "Psychologische veiligheid (Amy Edmondson) is het teamklimaat waarin individuen zich veilig voelen om interpersoonlijke risico's te nemen — ideeën delen, fouten toegeven en kritiek uiten zonder angst voor bestraffing of vernedering.",
+    abstractExample: "Een chirurgisch team met psychologische veiligheid meldt een bijna-fout aan de rest van het team — een team zonder die veiligheid zwijgt, en de volgende fout is echte schade.",
+    examples: [
+      { domain: "Google", icon: "💻", text: "Google's Project Aristotle ontdekte dat psychologische veiligheid de sterkste voorspeller was van teamprestaties — sterker dan talenten of ervaring." },
+      { domain: "Zorg", icon: "🏥", text: "Ziekenhuisafdelingen met hoge psychologische veiligheid rapporteren meer medische fouten — niet omdat ze meer fouten maken, maar omdat ze veiliger worden gemeld." },
+      { domain: "Innovatie", icon: "💡", text: "Teams met psychologische veiligheid genereren meer creatieve ideeën — leden durven half-uitgewerkte concepten te delen zonder angst voor afwijzing." }
+    ],
+    prerequisites: ["groupthink"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat toonde Google's Project Aristotle aan over teamprestaties?", options: ["Individuele talenten zijn doorslaggevend", "Psychologische veiligheid is de sterkste teampredictor", "Teamgrootte is het meest bepalend", "Taakverdeling is de sleutel"], correct: 1, explanation: "Ondanks verwachtingen bleek psychologische veiligheid — meer dan individueel talent, diversiteit of structuur — de beste voorspeller van teameffectiviteit." }
+    ],
+    creativePrompt: "Beoordeel de psychologische veiligheid in een groep waarvan jij deel uitmaakt op een schaal van 1-10. Wat is het concreetste ding dat zou veranderen als de veiligheid met 2 punten steeg?",
+    aiHelperPrompts: ["Hoe bouw ik psychologische veiligheid als teamleider?", "Hoe meet ik psychologische veiligheid?", "Hoe herstel ik psychologische veiligheid na een conflict?"]
   }
 ];
