@@ -4969,5 +4969,189 @@ export const principlesNew = [
     ],
     creativePrompt: "Schrijf vijf overtuigingen op die je over geld hebt ('geld is moeilijk te verdienen', 'rijke mensen zijn hebzuchtig', etc.). Waar komen ze vandaan? Helpen ze je of houden ze je tegen?",
     aiHelperPrompts: ["Hoe verbeter ik mijn financieel gedrag als ik de theorie al ken?", "Hoe herken ik mijn persoonlijke geldpsychologie?", "Hoe ga ik om met de emotionele component van beleggen?"]
+  },
+  {
+    id: "attention-economy",
+    title: "Aandachtseconomie",
+    difficulty: 2,
+    emoji: "📱",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Technologie & Digitaal Leven",
+    tags: ["aandacht", "technologie", "sociale media", "focus"],
+    definition: "De aandachtseconomie is het economisch model waarbij platforms concurreren om de schaarse aandacht van gebruikers als commercieel product — jouw aandacht wordt verkocht aan adverteerders. Apps zijn ontworpen door addictie-experts om maximale aandacht te vergrendelen, niet voor jouw welzijn.",
+    abstractExample: "Als je niet betaalt voor een product, ben jij het product. Social media platforms verdienen geld door jouw aandacht te verkopen. Elke notificatie, auto-play video en infinite scroll is een bewuste ontwerpkeuze om meer van je aandacht te vangen.",
+    examples: [
+      { domain: "Technologie", icon: "💻", text: "Tristan Harris (ex-Google ethicus): sociale media zijn ontworpen als gokkasten — variabele beloningsschema's (likes, reacties) activeren hetzelfde dopaminesysteem als gokken. Dit is geen bijwerking maar een ontwerpdoelstelling." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "De gemiddelde smartphone gebruiker checkt zijn telefoon 150+ keer per dag. Elke check is een fractie van zijn aandacht die wordt gecapteerd — geaggregeerd over een jaar zijn dit letterlijk weken aan aandacht." },
+      { domain: "Studie", icon: "📚", text: "Diep lezen en studeren vereist aanhoudende aandacht — precies het cognitieve vermogen dat de aandachtseconomie systematisch afbreekt. Dit heeft meetbare effecten op concentratievermogen." }
+    ],
+    prerequisites: [],
+    unlocks: ["digital-minimalism", "deep-work-concept"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom zijn sociale media platforms zo ontworpen dat ze verslavend zijn?", options: ["Toeval — goede apps zijn gewoon leuk", "Variabele beloningsschema's maximaliseren engagement en aandachtstijd, wat direct correleert met advertentie-inkomsten", "Bedrijven willen hun gebruikers helpen verbonden te blijven", "Algoritmen zijn neutraal en zonder intentie"], correctIndex: 1, explanation: "Platforms optimaliseren voor 'engagement' (tijd in de app) omdat dit direct advertentie-inkomsten bepaalt. Variabele beloningen (soms een like, soms niet) zijn bewezen het meest verslavende schema — identiek aan gokautomaten." }
+    ],
+    creativePrompt: "Controleer je schermtijd van de afgelopen week. Hoeveel uur? Hoe verhoudt dit zich tot wat je ermee hebt 'gewonnen'? Welk ander gebruik van die tijd zou meer waarde hebben gebracht?",
+    aiHelperPrompts: ["Hoe bevecht ik de aandachtseconomie praktisch?", "Welke apps zijn het meest verslavend ontworpen?", "Hoe help ik mijn kinderen bewust omgaan met de aandachtseconomie?"]
+  },
+  {
+    id: "digital-minimalism",
+    title: "Digitaal Minimalisme",
+    difficulty: 2,
+    emoji: "🧘",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Technologie & Digitaal Leven",
+    tags: ["minimalisme", "technologie", "focus", "intentionaliteit"],
+    definition: "Digitaal minimalisme (Cal Newport) is de filosofie van bewust en selectief technologiegebruik: uitsluitend tools gebruiken die wezenlijk bijdragen aan je waarden, en de rest elimineren — ongeacht de potentiële voordelen. Kwaliteit van technologiegebruik boven kwantiteit.",
+    abstractExample: "Minimalisme voor bezittingen: minder spullen, meer ruimte. Digitaal minimalisme: minder digitale tools, meer aandacht en energie voor wat echt telt. Het gaat niet om technologiehaat maar om intentioneel ontwerpen van hoe technologie jouw leven dient.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een digitale detox van 30 dagen: alle optionele apps verwijderen, dan alleen teruginstalleren wat na 30 dagen duidelijk gemist werd. Wat je niet mist, had je niet nodig." },
+      { domain: "Werk", icon: "💼", text: "E-mail twee keer per dag controleren (geen notificaties) in plaats van constant reageren. Minder responsiviteit, maar significant meer diep werk en minder stressniveau." },
+      { domain: "Studie", icon: "📚", text: "Studeren in een app-vrije omgeving met een 'dumb phone' naast je of telefoon in een andere kamer — elimineert de cognitieve belasting van potentiële afleiding, ook als je de telefoon niet actief bekijkt." }
+    ],
+    prerequisites: ["attention-economy"],
+    unlocks: ["deep-work-concept"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kernprincipe van digitaal minimalisme?", options: ["Zo min mogelijk technologie gebruiken", "Uitsluitend technologie gebruiken die wezenlijk bijdraagt aan je waarden, al het overige elimineren", "Technologie volledig vermijden", "Zo efficiënt mogelijk technologie gebruiken"], correctIndex: 1, explanation: "Digitaal minimalisme is niet anti-technologie — het is pro-intentionaliteit. De vraag is niet 'Heeft dit voordelen?' maar 'Zijn de voordelen significant genoeg om de kosten in aandacht, tijd en afleiding te rechtvaardigen?'" }
+    ],
+    creativePrompt: "Maak een lijst van alle digitale tools die je dagelijks gebruikt. Welke zijn essentieel voor je waarden? Welke zijn gewoonten? Welke brengen netto negatief? Welke drie zou je komende maand kunnen elimineren als test?",
+    aiHelperPrompts: ["Hoe begin ik een digitale detox?", "Hoe ga ik om met sociale druk om constant bereikbaar te zijn?", "Hoe ontwerp ik mijn telefoon als gereedschap in plaats van vermaak?"]
+  },
+  {
+    id: "deep-work-concept",
+    title: "Diepgaand Werken",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Technologie & Digitaal Leven",
+    tags: ["focus", "diep werk", "cognitie", "prestatie"],
+    definition: "Diepgaand werken (Cal Newport) is de staat van gefocuste, ononderbroken concentratie op cognitief veeleisende taken — waarbij maximale waarde wordt gecreëerd in minimale tijd. Het is zeldzamer en waardevoller geworden naarmate de aandachtseconomie oppervlakkig werk normaliseert.",
+    abstractExample: "De meeste kenniswerkers spenderen het merendeel van hun dag in 'shallow work': e-mail, vergaderingen, berichten, lopende taken. Diepgaand werk — echte intellectuele inspanning op moeilijke problemen — is wat werkelijk waarde creëert maar steeds zeldzamer is.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een programmeur die 4 uur ononderbroken codeert (diep werk) produceert meer dan iemand die dezelfde 4 uur verspreid werkt over de dag met constante e-mail- en Slack-onderbrekingen." },
+      { domain: "Studie", icon: "📚", text: "Studeren in blokken van 90 minuten zonder onderbrekingen (diep werk) leidt tot significant beter begrip en retentie dan hetzelfde aantal uren verspreid met afleiding." },
+      { domain: "Schrijven", icon: "✍️", text: "J.K. Rowling huurde een hotelkamer om te schrijven. Charles Darwin had dagelijkse ononderbroken uren. De patronen van productief schrijvers en denkers tonen diep werk als gemeenschappelijk kenmerk." }
+    ],
+    prerequisites: ["digital-minimalism", "single-tasking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt diepgaand werken moeilijk in moderne werkomgevingen?", options: ["Werk is te complex geworden", "Constante verbondenheid, open kantoorruimten en 'beschikbaar zijn' worden als productiviteitsmetrics behandeld, terwijl ze diep werk systematisch ondermijnen", "Mensen hebben te weinig motivatie", "Diep werk is niet nodig in de meeste beroepen"], correctIndex: 1, explanation: "De moderne werkplek optimaliseert voor zichtbare activiteit (snel reageren op e-mail, meetings bijwonen) in plaats van voor waardecreatie. Dit is deels economisch (resultaten zijn moeilijk te meten) en deels sociaal (beschikbaar zijn is een status signaal)." }
+    ],
+    creativePrompt: "Plan één blok van 90 minuten diep werk voor komende week: volledig offline, één taak, geen onderbrekingen. Wat wil je bereiken? Vergelijk de output met een normale werkdag.",
+    aiHelperPrompts: ["Hoe bescherm ik diep werktijd in een omgeving met veel verwachte beschikbaarheid?", "Hoe lang duurt het om in de 'flow state' van diep werk te komen?", "Welke omstandigheden zijn optimaal voor diep werk?"]
+  },
+  {
+    id: "filter-bubble",
+    title: "Filterbubbel",
+    difficulty: 2,
+    emoji: "🫧",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Technologie & Digitaal Leven",
+    tags: ["algoritme", "bias", "media", "informatie"],
+    definition: "Een filterbubbel (Eli Pariser) is het fenomeen waarbij personalisatie-algoritmen mensen toenemend isoleren in informatiekamers die hun bestaande overtuigingen bevestigen, andere perspectieven filteren en zo polarisatie en epistemic closure versterken.",
+    abstractExample: "Het algoritme leert dat je graag content X ziet, toont meer van X, je raakt nog meer op X gefixeerd, het algoritme toont alleen nog maar X. Je informatiediet wordt een echo — versterking zonder correctie. Dit is de filterbubbel.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Facebook- en YouTube-algoritmen tonen je steeds extremere versies van politieke content die je al aansprak. Mensen in dezelfde samenleving zien compleet verschillende 'waarheden' van dezelfde werkelijkheid." },
+      { domain: "Studie", icon: "📚", text: "Uitsluitend bronnen lezen die jouw academische theorie bevestigen, door algoritmen en zoekmachines verder gefaciliteerd — leidt tot selectieve literatuurbestudering en zwakkere onderzoeksposities." },
+      { domain: "Werk", icon: "💼", text: "LinkedIn-algoritmen tonen je mensen en ideeën uit je eigen sector en netwerk — wat informatiehomogeniteit versterkt terwijl cross-sectorale innovatie vrijwel altijd uit perspectief-diversiteit komt." }
+    ],
+    prerequisites: ["attention-economy"],
+    unlocks: ["epistemic-closure"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het gevaar van filterbubbels voor democratisch discours?", options: ["Ze maken mensen te slim", "Ze creëren parallelle informatierealiteiten die gemeenschappelijk gesprek en begrip tussen groepen ondermijnen", "Ze zijn een neutrale weerspiegeling van voorkeuren", "Ze bevorderen diversiteit in denken"], correctIndex: 1, explanation: "Wanneer verschillende groepen letterlijk verschillende feitenbases zien, wordt gemeenschappelijk debat onmogelijk. Filterbubbels creëren niet alleen perspectievenverschillen maar feitenverschillen — wat de grond voor dialoog wegneemt." }
+    ],
+    creativePrompt: "Zoek actief één bron op die een perspectief vertegenwoordigt dat je normaal nooit leest — een ander politiek spectrum, een andere cultuur, een andere industrie. Wat leer je over je eigen bubbel?",
+    aiHelperPrompts: ["Hoe doorbreek ik mijn filterbubbel actief?", "Welke bronnen helpen diverse perspectieven te bieden?", "Hoe herken ik wanneer ik in een filterbubbel zit?"]
+  },
+  {
+    id: "algorithmic-influence",
+    title: "Algoritmische Beïnvloeding",
+    difficulty: 3,
+    emoji: "🤖",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Technologie & Digitaal Leven",
+    tags: ["algoritme", "AI", "gedrag", "autonomie"],
+    definition: "Algoritmische beïnvloeding is de manier waarop computationele systemen het gedrag, de keuzes en overtuigingen van mensen sturen — vaak zonder bewustzijn van de beïnvloede persoon. Van Netflix-aanbevelingen tot politieke targeting: algoritmen vormen steeds meer de realiteit die mensen ervaren.",
+    abstractExample: "Een algoritme dat beslist wat je ziet, bepaalt mede wat je gelooft, wat je koopt, voor wie je stemt, en wat je voelt. Het is niet neutraal — het optimaliseert voor metrics (engagement, conversie) die niet hoeven te correleren met jouw belang.",
+    examples: [
+      { domain: "Consumentgedrag", icon: "🛒", text: "Amazon's aanbevelingsalgoritme verhoogt gemiddeld 35% van de omzet. Elke 'anderen kochten ook' is een zorgvuldig ontworpen beïnvloedingsinterventie — geen onpartijdige suggestie." },
+      { domain: "Politiek", icon: "🏛️", text: "Micro-targeting in politieke campagnes: algoritmen identificeren twijfelende kiezers en tonen gepersonaliseerde berichten die precies inspelen op hun psychografisch profiel — elke kiezer ziet een andere boodschap." },
+      { domain: "Relaties", icon: "❤️", text: "Dating-apps optimaliseren voor engagement (mensen op het platform houden), niet voor het vinden van een partner. Dit kan leiden tot FOMO-gedrag en onrealistische verwachtingen." }
+    ],
+    prerequisites: ["filter-bubble"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe kun je algoritmische beïnvloeding bewuster tegengaan?", options: ["Door geen technologie te gebruiken", "Door bewust te zijn van de doelstelling van algoritmen en actief diversiteit in informatie en ervaring te zoeken", "Door alleen betrouwbare platforms te gebruiken", "Algoritmische beïnvloeding is onontkoombaar en dus irrelevant"], correctIndex: 1, explanation: "Bewustzijn is de eerste stap: begrijpen dat algoritmen optimaliseren voor hun doelen (niet de jouwe) maakt je een kritischer consument. Actief diversifiëren van bronnen, doelbewust zoeken in plaats van passief ontvangen, en digitale hygiëne vergroten autonomie." }
+    ],
+    creativePrompt: "Kies één platform dat je dagelijks gebruikt. Vraag je af: welk gedrag probeert het algoritme van mij te maximaliseren? Wat zijn de gevolgen voor mijn overtuigingen, koopgedrag of stemming? Dient dit mijn belang?",
+    aiHelperPrompts: ["Hoe herken ik algoritmische beïnvloeding in mijn dagelijkse leven?", "Is alle algoritmische beïnvloeding manipulatie?", "Hoe behoud ik digitale autonomie in een geautomatiseerde wereld?"]
+  },
+  {
+    id: "digital-identity",
+    title: "Digitale Identiteit",
+    difficulty: 2,
+    emoji: "👤",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Technologie & Digitaal Leven",
+    tags: ["identiteit", "privacy", "online", "authenticiteit"],
+    definition: "Digitale identiteit is het geheel van data, gedrag, representaties en aanwezigheid waarmee een persoon online wordt gedefinieerd — door zichzelf en door anderen. Het omvat bewuste zelfpresentatie, onbewuste datasporen en algoritmische profielen die anderen over jou bouwen.",
+    abstractExample: "Je digitale identiteit is als een schaduw: ze volgt je, ze is jouw contouren maar vergroot, vervormd en permanent zichtbaar. En anders dan je schaduw, wordt ze opgeslagen, geanalyseerd en verkocht.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "89% van de recruiters googelt kandidaten. Je LinkedIn-profiel, tweets, GitHub of publicaties vormen je professionele digitale identiteit — en die werkt voor of tegen je ongeacht je cv." },
+      { domain: "Relaties", icon: "❤️", text: "Wat je online deelt, bepaalt hoe je wordt gezien door mensen die je nog niet kennen. De zorgvuldig gecureerde Instagram feed creëert een identiteit die vaak verschilt van de werkelijkheid — met gevolgen voor verwachtingen en verbinding." },
+      { domain: "Privacy", icon: "🔒", text: "Elke zoekopdracht, aankoop, locatiecheckin en klik bouwt een dataprofiel dat bedrijven en overheden over jou hebben — dikwijls uitgebreider en nauwkeuriger dan jij je eigen leven in kaart hebt." }
+    ],
+    prerequisites: ["algorithmic-influence"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het risico van een grote kloof tussen fysieke en digitale identiteit?", options: ["Er is geen risico — online is niet echt", "Digitale identiteiten worden beoordeeld als representatief voor de echte persoon, wat bij discrepantie leidt tot verwachtingsbreuken en authenticiteitsschade", "Online identiteit is onbelangrijk voor professioneel succes", "Een curatieve online aanwezigheid is altijd positief"], correctIndex: 1, explanation: "De meeste mensen presenteren online een ideale versie van zichzelf. Wanneer de realiteit niet overeenkomt — bij een sollicitatiegesprek, eerste date of zakelijk contact — leidt de discrepantie tot vertrouwensbreuk. Authenticiteit in digitale identiteit is een strategisch voordeel." }
+    ],
+    creativePrompt: "Google jezelf. Wat vind je? Wat vinden anderen als ze jou googlen? Welk beeld geeft dit? Klopt dat met wie je werkelijk bent en wie je wil zijn? Wat wil je aanpassen?",
+    aiHelperPrompts: ["Hoe bouw ik een authentieke digitale identiteit?", "Hoe bescherm ik mijn privacy online?", "Hoe ga ik om met negatieve online aanwezigheid?"]
+  },
+  {
+    id: "information-overload",
+    title: "Informatie-overbelasting",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Technologie & Digitaal Leven",
+    tags: ["informatie", "cognitie", "overvloed", "filteren"],
+    definition: "Informatie-overbelasting treedt op wanneer de hoeveelheid beschikbare informatie het vermogen van een persoon om deze te verwerken en te gebruiken voor goede beslissingen overschrijdt. In de informatierijke omgeving van de 21e eeuw is het filteren van informatie een kernvaardigheid geworden.",
+    abstractExample: "Meer informatie leidt paradoxaal genoeg tot slechtere beslissingen voorbij een bepaald punt — omdat het mentale bandbreedte, aandacht en beslissingsvermogen uitput. De menselijke geest is geoptimaliseerd voor een wereld met informatielschaarste, niet -overvloed.",
+    examples: [
+      { domain: "Nieuws", icon: "📰", text: "Continu nieuws consumeren creëert een gevoel van informatiegelijke urgentie — alles lijkt even belangrijk. In werkelijkheid is 95% van het nieuws irrelevant voor jouw dagelijks handelen en welzijn." },
+      { domain: "Werk", icon: "💼", text: "Te veel data in een vergadering leidt tot slechte beslissingen — 'paralysis by analysis'. Betere beslissingen vereisen soms bewust minder informatie en meer vertrouwen op principes en intuïtie." },
+      { domain: "Studie", icon: "📚", text: "Een student die tien boeken tegelijk begint en eindeloos research doet voor zijn scriptie, lijdt aan informatie-overbelasting. Curatieve selectie en diepte over breedte is de remedie." }
+    ],
+    prerequisites: ["attention-economy"],
+    unlocks: ["digital-minimalism"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de meest effectieve strategie tegen informatie-overbelasting?", options: ["Sneller lezen en verwerken", "Curatieve selectie: bewust kiezen welke informatiebronnen je toelaat en welke je weert", "Meer informatie consumeren om het te kunnen vergelijken", "Technologie gebruiken om alle informatie te filteren"], correctIndex: 1, explanation: "De oplossing voor informatie-overbelasting is niet betere verwerking maar minder input. Door bewust te curatoren welke bronnen, welke frequentie en welke typen informatie je toelaat, behoud je cognitieve capaciteit voor wat werkelijk telt." }
+    ],
+    creativePrompt: "Tel vandaag hoeveel informatiebronnen je raadpleegt (apps, websites, podcasts, kranten). Welke zijn essentieel voor jouw doelen en waarden? Welke zijn gewoonte? Welke drie zou je kunnen elimineren?",
+    aiHelperPrompts: ["Hoe ontwerp ik een gezond informatiedieet?", "Hoe leer ik snel relevante van irrelevante informatie te onderscheiden?", "Hoeveel nieuws is genoeg voor een goed geïnformeerd burger?"]
+  },
+  {
+    id: "tech-ethics",
+    title: "Technologie-ethiek",
+    difficulty: 3,
+    emoji: "⚖️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Technologie & Digitaal Leven",
+    tags: ["ethiek", "AI", "technologie", "verantwoordelijkheid"],
+    definition: "Technologie-ethiek onderzoekt de morele implicaties van technologische systemen — wie profiteert, wie wordt geschaad, wie beslist, en welke waarden worden ingebakken in code. Naarmate technologie meer invloed heeft, wordt de ethische dimensie ervan urgenter.",
+    abstractExample: "Een algoritme dat sollicitanten selecteert, is niet neutraal — het belichaamt de waarden en biases van zijn makers en trainingsdata. Technologie is een morele keuze vermomd als een neutraal gereedschap. De vraag is altijd: voor wie, door wie, en ten koste van wie?",
+    examples: [
+      { domain: "AI", icon: "🤖", text: "Gezichtsherkenningssoftware heeft aantoonbaar hogere foutpercentages voor donkere huidskleur — een ethisch probleem met reële consequenties als het wordt gebruikt voor politiële identificatie." },
+      { domain: "Data", icon: "📊", text: "Cambridge Analytica gebruikte persoonlijke Facebook-data van miljoenen mensen zonder toestemming voor politieke micro-targeting — een schandaal dat de politieke discussie over dataprivacy heeft getransformeerd." },
+      { domain: "Automatisering", icon: "⚙️", text: "Automatisering creëert welvaart maar verdringt banen — de ethische vraag is hoe de winst wordt verdeeld en hoe werknemers worden ondersteund die door automatisering worden verdrongen." }
+    ],
+    prerequisites: ["algorithmic-influence"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is technologie nooit moreel neutraal?", options: ["Technologie heeft geen mening", "Technologische systemen belichamen de waarden, prioriteiten en biases van hun makers en de context waarin ze zijn ontwikkeld", "Ethiek is een menselijke kwestie, niet technologisch", "Alleen slecht gebruikte technologie is ethisch problematisch"], correctIndex: 1, explanation: "Elke technologische keuze — welke data te verzamelen, welke metric te optimaliseren, wie te betrekken in ontwerp — is een waardeoordeel. Code is geen neutrale wiskunde maar belichaamd beleid dat bepaalt wie wint en wie verliest." }
+    ],
+    creativePrompt: "Denk aan een technologie die je dagelijks gebruikt. Wie heeft die gemaakt en voor wie? Welke biases of waarden zijn erin ingebakken? Wie wordt erdoor benadeel die je misschien over het hoofd ziet?",
+    aiHelperPrompts: ["Hoe word ik een meer ethisch bewuste tech-gebruiker?", "Welke principes zijn richtinggevend voor technologie-ethiek?", "Hoe kunnen gewone gebruikers technologie-ethiek beïnvloeden?"]
   }
 ];
