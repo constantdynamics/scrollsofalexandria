@@ -7575,4 +7575,156 @@ export const principlesNew = [
       { domain: "Tegenslag", icon: "💪", text: "Een tegenslag herkaderen als feedback in plaats van als mislukking: 'Dit toont me precies waar ik moet groeien' — niet positief denken maar genuanceerder interpreteren." }
     ],
   },
+
+  // ── Batch A7: Doelen & Motivatie ─────────────────────────────────────────────
+  {
+    id: "self-determination-theory",
+    title: "Zelfdeterminatietheorie",
+    difficulty: 2,
+    emoji: "🌱",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Zelfdeterminatietheorie (Deci & Ryan) stelt dat mensen drie basale psychologische behoeften hebben: autonomie (eigen keuzes maken), competentie (effectief zijn), en verbondenheid (betekenisvolle relaties). Vervulling van deze behoeften voorspelt intrinsieke motivatie en welzijn.",
+    abstractExample: "Externe beloningen (geld, erkenning) kunnen intrinsieke motivatie ondermijnen — het 'overjustification effect'. Als je iets doet voor de beloning, vergeet je de intrinsieke waarde ervan.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Werknemers die autonomie hebben over hoe ze hun werk uitvoeren, zijn productiever en tevredener dan werknemers die gedetailleerde instructies krijgen — zelfs bij gelijke competentie." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "Kinderen die worden betaald voor goed rapportcijfers, verliezen intrinsieke interesse in leren — de externe beloning ondermijnt de interne. Autonomie en competentieontwikkeling werken beter." },
+      { domain: "Sport", icon: "🏃", text: "Mensen die sporten omdat ze het leuk vinden (intrinsiek) blijven gemiddeld 8x langer vol dan degenen die sporten voor een extern doel (zomer, bruiloft) — het doel verdwijnt, de gewoonte ook." }
+    ],
+  },
+  {
+    id: "goal-gradient-effect",
+    title: "Doelgradient Effect",
+    difficulty: 2,
+    emoji: "📈",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het doelgradient effect toont dat motivatie en inspanning toenemen naarmate het doel dichter bij is. Mensen werken harder als ze voelen dat ze bijna klaar zijn — dit kan worden benut door deeldoelen te creëren.",
+    abstractExample: "Een koffiezegelsysteem met 10 stempel-vakken dat start met 2 al ingestempeld (nog 8 te gaan) wordt sneller volgestempeld dan een systeem dat start van 0 (ook 8 te gaan). Voortgang motiveert.",
+    examples: [
+      { domain: "Productiviteit", icon: "💼", text: "Grote projecten opdelen in zichtbare mijlpalen benut het doelgradient — je bent gemotiveerder als je 80% compleet bent dan als je nog 20% moet voltooien van een abstract geheel." },
+      { domain: "Sport", icon: "🏃", text: "Hardlopers versnellen automatisch in de laatste kilometers van een marathon. Trainers benoemen bewust 'je bent bijna' om dit effect te activeren, ook als dat nog 5 km is." },
+      { domain: "Spaardoelen", icon: "💰", text: "Een spaarrekening met een zichtbare voortgangsbalk motiveert meer dan een getal — de visuele nabijheid van het doel stuurt gedrag sterker dan de abstracte kennis van de afstand." }
+    ],
+  },
+  {
+    id: "intrinsic-extrinsic-motivation",
+    title: "Intrinsieke vs. Extrinsieke Motivatie",
+    difficulty: 1,
+    emoji: "🔥",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Intrinsieke motivatie komt van binnenuit — plezier, interesse, nieuwsgierigheid, groei. Extrinsieke motivatie komt van buiten — beloning, vermijding van straf, sociale erkenning. Intrinsieke motivatie is duurzamer en leidt tot hogere kwaliteit.",
+    abstractExample: "De schrijver die schrijft omdat hij ideeën wil verkennen (intrinsiek) schrijft andere en rijkere boeken dan de schrijver die schrijft voor bestsellerstatus (extrinsiek). Beiden schrijven, maar vanuit heel andere kracht.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Kenniswerkers die intrinsiek gemotiveerd zijn, produceren meer innovatief en kwalitatief werk. Pink: voor routinetaken werken externe beloningen, voor creatieve taken ondermijnen ze kwaliteit." },
+      { domain: "Fitness", icon: "🏋️", text: "De sporters die 10 jaar later nog sporten, doen het omwille van hoe het voelt, de gemeenschap, of de uitdaging — niet voor het lichaam dat ze in jaar 1 wilden hebben." },
+      { domain: "Leren", icon: "📚", text: "Studenten die studeren omdat het onderwerp hen fascineert, onthouden de stof jaren later. Studenten die voor het cijfer studeren, vergeten het een week na het examen." }
+    ],
+  },
+  {
+    id: "values-based-goals",
+    title: "Waarden-gebaseerde Doelen",
+    difficulty: 2,
+    emoji: "🧭",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Waarden-gebaseerde doelen zijn gericht op wie je wilt zijn en wat je wilt uitdrukken, niet op wat je wilt bereiken. Ze zijn gebaseerd op intrinsieke waarden, niet op externe validatie — en zijn daardoor intrinsiek motiverend en bestand tegen tegenslag.",
+    abstractExample: "Doel: '10 kg afvallen' (uitkomstgericht, extern). Waarde-gebaseerd: 'Ik wil iemand zijn die zijn lichaam respecteert door goed te slapen, te bewegen en te eten.' Het tweede stuurt gedrag ook als de weegschaal tegenvalt.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏃", text: "Waardedoel: 'Ik wil fit en energiek zijn zodat ik aanwezig kan zijn voor mijn kinderen.' Dit motiveert ook op moeilijke dagen — uitkomstdoel '10 kg afvallen' niet." },
+      { domain: "Carrière", icon: "💼", text: "'Ik wil werk doen dat bijdraagt aan iets dat er voor mij toe doet' is een waardedoel. Het stuurt carrièrekeuzes anders dan 'ik wil een hoog salaris' — en leidt tot duurzamere tevredenheid." },
+      { domain: "Relaties", icon: "❤️", text: "'Ik wil een partner zijn die aanwezig, eerlijk en liefdevol is' stuurt dagelijkse keuzes anders dan 'ik wil een goede relatie hebben' — het eerste is actieerbaar, het tweede passief." }
+    ],
+  },
+  {
+    id: "progress-principle",
+    title: "Voortgangsbeginsel",
+    difficulty: 1,
+    emoji: "📊",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het voortgangsbeginsel (Amabile & Kramer) toont dat de grootste dagelijkse motivator voor kenniswerkers kleine, betekenisvolle voortgang in zinvol werk is — meer dan erkenning, prikkels of inspirerende speeches.",
+    abstractExample: "De dag dat je één goed zinnetje schreef, één bug oploste of één klantprobleem hielp, voelt beter dan de dag dat je je manager enthousiast hoorde spreken. Voortgang in betekenisvol werk is de sleutel.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Managers die dagelijkse voortgang zichtbaar maken voor hun team ('we hebben vandaag X bereikt') creëren hogere motivatie dan managers die grote visiestories vertellen maar geen kleine successen benoemen." },
+      { domain: "Schrijven", icon: "✍️", text: "Schrijvers die elke dag de woordtelling bijhouden zien directe voortgang — 200 woorden per dag voelt als weinig maar is 73.000 woorden per jaar, een volledig boek." },
+      { domain: "Leren", icon: "📚", text: "Een taalapp die elke dag de streek-reeks toont, benut het voortgangsbeginsel — de visuele voortgang motiveert om de reeks niet te verbreken, meer dan het leren zelf." }
+    ],
+  },
+  {
+    id: "approach-avoidance-motivation",
+    title: "Nader- vs. Vermijdingsmotivatie",
+    difficulty: 2,
+    emoji: "🏹",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Naderingsmotivatie is bewegen naar iets positiefs (plezier, groei, beloning). Vermijdingsmotivatie is bewegen weg van iets negatiefs (pijn, verlies, schaamte). Beiden kunnen gedrag sturen, maar leiden tot verschillende kwaliteiten van ervaring en prestatie.",
+    abstractExample: "Studeren om te slagen (nadering) versus studeren om niet te zakken (vermijding). Beide leiden tot studeren, maar nadering gaat gepaard met hogere betrokkenheid, beter onthouden en positieve emoties.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏃", text: "Sporten om gezond te zijn en energie te hebben (nadering) is duurzamer dan sporten om niet dik te worden (vermijding). Vermijdingsmotivatie verdwijnt zodra de bedreiging minder voelbaar wordt." },
+      { domain: "Werk", icon: "💼", text: "Naderingsgerichte medewerkers innoveren meer en nemen meer initiatief. Vermijdingsgerichte medewerkers maken minder fouten maar ook minder doorbraken — ze spelen op safe." },
+      { domain: "Relaties", icon: "❤️", text: "Relaties die overleven op angst voor eenzaamheid (vermijding) zijn anders dan relaties die bloeien op verlangen naar verbinding (nadering) — de motivatiebasis bepaalt de relatieskwaliteit." }
+    ],
+  },
+  {
+    id: "mental-contrasting",
+    title: "Mentaal Contrasteren",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Mentaal contrasteren (WOOP: Wish, Outcome, Obstacle, Plan) is een bewezen techniek waarbij je eerst het gewenste resultaat visualiseert, daarna de obstakels die in de weg staan, en vervolgens een concreet als-dan-plan maakt. Dit is effectiever dan alleen positief visualiseren.",
+    abstractExample: "Alleen positief visualiseren werkt niet — het brein denkt dat het doel al bereikt is en verlaagt motivatie. Door ook obstakels te visualiseren en een plan te maken, activeer je gerichte actie.",
+    examples: [
+      { domain: "Doelen", icon: "🎯", text: "WOOP-methode: Wish (ik wil fitter zijn) → Outcome (ik heb meer energie, voel me beter) → Obstacle (ik ben 's avonds moe en Netflix is aantrekkelijk) → Plan (als ik thuiskom, trek ik direct sportkleren aan)." },
+      { domain: "Studie", icon: "📚", text: "Studenten die WOOP toepasten op studiedoelen, studeerden meer uren en haalden hogere cijfers dan studenten die alleen positief visualiseerden of geen mentaal contrasteringstechniek gebruikten." },
+      { domain: "Gezondheid", icon: "🏃", text: "Mensen die WOOP toepasten op beweegdoelen, bewogen significant meer dan controles. Het obstakelidentificatie-element is cruciaal — zonder het plan voor het obstakel vervalt het doel bij het eerste obstakel." }
+    ],
+  },
+  {
+    id: "commitment-devices-goals",
+    title: "Commitment-apparaten voor Doelen",
+    difficulty: 2,
+    emoji: "🔐",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Commitment-apparaten zijn structuren die je nu opzet om toekomstig gedrag in lijn te brengen met je huidige intenties — je maakt het moeilijker om van je plan af te wijken als de verleiding groot is.",
+    abstractExample: "Je weet dat je morgen 's ochtends niet wilt sporten maar weet ook dat je dat zou moeten. Je regelt een sportmaatje die op je rekent — de sociale verplichting is je commitment-apparaat.",
+    examples: [
+      { domain: "Financiën", icon: "💰", text: "Salarissplitsing naar spaarrekening direct bij salarisontvangst — het geld is nooit zichtbaar beschikbaar. Je toekomstige zelf wordt beschermd door het huidige commitment-apparaat." },
+      { domain: "Gezondheid", icon: "🏃", text: "Een sportmaatje, prepaid sportlessen of een weddenschap met een vriend — sociale verplichtingen als commitment-apparaten verhogen opkomst bij sport significant versus alleen intentie." },
+      { domain: "Schrijven", icon: "✍️", text: "Publiek aankondigen dat je een boek schrijft, een schrijfgroep deelnemen, of een deadline afspreken met een uitgever — externe commitments beschermen het doel tegen de interne weerstand." }
+    ],
+  },
+  {
+    id: "expectancy-theory",
+    title: "Verwachtingstheorie",
+    difficulty: 2,
+    emoji: "🎲",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De verwachtingstheorie (Vroom) stelt dat motivatie het product is van drie factoren: de verwachting dat inspanning tot prestatie leidt, de verwachting dat prestatie tot beloning leidt, en de waarde die je aan de beloning toekent. Motivatie = E × I × V.",
+    abstractExample: "Als je gelooft dat harder werken niets oplevert (lage E), dat goede prestaties niet worden beloond (lage I), of dat de beloning je niets interesseert (lage V), is de motivatie nul — ongeacht de andere factoren.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Medewerkers die geloven dat hun inspanning niet leidt tot betere prestaties (lage eigen effectiviteit) of dat prestatie niet wordt beloond (lage instrumentaliteit), zijn chronisch laag gemotiveerd." },
+      { domain: "Studie", icon: "📚", text: "Een student die niet gelooft dat studeren helpt (lage E) of die het diploma niet waardevol vindt (lage V), studeert niet — rationele motivatieanalyse helpt het obstakel te identificeren." },
+      { domain: "Fitness", icon: "🏋️", text: "Iemand die heeft geprobeerd te sporten maar nooit resultaat zag (lage E), mist de motivatie opnieuw te starten. Zichtbaar resultaat in de vroege fase is cruciaal voor het opbouwen van verwachting." }
+    ],
+  },
+  {
+    id: "stretch-goals",
+    title: "Uitrekdoelen",
+    difficulty: 2,
+    emoji: "🚀",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Uitrekdoelen (stretch goals) zijn ambitieuze doelen die buiten bereik lijken met huidige middelen en methoden — ze dwingen creatief denken en radicale aanpakken. Ze zijn effectief voor innovatie maar risicovol als ze te ver van het haalbare liggen.",
+    abstractExample: "Een doel dat 10x verbetering vraagt dwingt anders denken dan een doel dat 10% vraagt. Voor 10% optimaliseer je het bestaande. Voor 10x moet je het systeem zelf heroverwegen — dat is waar innovatie begint.",
+    examples: [
+      { domain: "Business", icon: "💼", text: "Google's OKR-systeem gebruikt stretch goals (ambitieuze 70% gehaald = goed resultaat). Elon Musk's '10x' denken dwingt SpaceX om raketlanding te heroverwegen in plaats van bestaande systemen te verbeteren." },
+      { domain: "Persoonlijk", icon: "🎯", text: "Een marathon lopen als je nooit hebt gesport is een stretch goal — het dwingt je een volledig nieuw systeem (trainingsplan, voeding, herstel) te bouwen in plaats van dagelijkse gewoonten te tweaken." },
+      { domain: "Leren", icon: "📚", text: "Een vreemde taal in 3 maanden leren dwingt je tot dagelijks intensief contact in plaats van wekelijks een lesje — de ambitie stuurt radicaal andere methodes dan een bescheiden doel." }
+    ],
+  },
 ];
