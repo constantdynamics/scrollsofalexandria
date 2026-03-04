@@ -7398,5 +7398,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Identificeer drie dingen die je op school hebt geleerd die je nooit hebt kunnen toepassen. Waarom transfereerde die kennis niet? Hoe had het onderwijs de transfer beter kunnen faciliteren?",
     aiHelperPrompts: ["Hoe ontwerp ik lessen die transfer bevorderen?", "Wat is het verschil tussen near transfer en far transfer?", "Waarom is transfer zo moeilijk bij abstracte vakken?"]
+  },
+
+  // Batch X – Ecologie & Duurzaamheid
+  {
+    id: "planetary-boundaries",
+    title: "Planetaire Grenzen",
+    difficulty: 2,
+    emoji: "🌍",
+    academicCategory: "Aardwetenschappen",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["klimaat", "grenzen", "duurzaamheid", "aarde"],
+    definition: "Het planetaire grenzen-framework (Rockström e.a.) identificeert negen aardse systeemgrenzen waarbinnen de mensheid veilig kan opereren — het overschrijden ervan riskeert onomkeerbare veranderingen.",
+    abstractExample: "Planetaire grenzen zijn als de veiligheidsmarges van een vliegtuig: je kunt een beetje te snel vliegen en nog veilig landen, maar voorbij bepaalde grenzen verlies je controle onomkeerbaar.",
+    examples: [
+      { domain: "Klimaat", icon: "🌡️", text: "De klimaatgrens (1,5-2°C opwarming) is al onder druk — overschrijding riskeert cascade-effecten als smeltende permafrost en zeespiegelstijging." },
+      { domain: "Biodiversiteit", icon: "🦋", text: "De biodiversiteitsgrens (soortenverlies) is al overschreden — ecosystemen worden minder veerkrachtig bij verlies van soortendiversiteit." },
+      { domain: "Stikstof", icon: "🌿", text: "Intensieve landbouw heeft de stikstofcyclus overschreden — met gevolgen voor waterkwaliteit, biodiversiteit en klimaat." }
+    ],
+    prerequisites: [],
+    unlocks: ["tipping-points-ecology"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoeveel planetaire grenzen zijn er in het Rockström-framework?", options: ["5", "7", "9", "12"], correct: 2, explanation: "Het framework identificeert negen grenzen: klimaatverandering, biodiversiteit, biogeochemische cycli, oceaanverzuring, zoetwatergebruik, landgebruik, ozonlaag, atmosferische aerosolen en nieuwe entiteiten." }
+    ],
+    creativePrompt: "Kies één planetaire grens en onderzoek hoe jouw dagelijks leven bijdraagt aan het overschrijden ervan. Welke concrete verandering zou de grootste impact hebben?",
+    aiHelperPrompts: ["Welke planetaire grenzen zijn al overschreden?", "Hoe verhouden planetaire grenzen zich tot de SDGs?", "Wat zijn de meest urgente planetaire grenzen om aan te pakken?"]
+  },
+  {
+    id: "tipping-points-ecology",
+    title: "Kantelingspunten in Ecologie",
+    difficulty: 3,
+    emoji: "🌊",
+    academicCategory: "Ecologie",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["systeem", "klimaat", "onomkeerbaar", "cascade"],
+    definition: "Ecologische kantelingspunten (tipping points) zijn drempelwaarden waarna een systeem snel en onomkeerbaar overschakelt naar een nieuwe toestand — kleine extra druk kan grote, irreversibele veranderingen veroorzaken.",
+    abstractExample: "Een kantelingspunt is als een wiebelige steen op een helling: je kunt er lang aan porren zonder gevolg, totdat één laatste por hem definitief doet kantelen — en dan is er geen weg terug.",
+    examples: [
+      { domain: "Klimaat", icon: "🌡️", text: "Het smelten van het Groenlandse ijskapsel kan een zichzelf versterkend proces worden dat niet stopt ook als we de uitstoot terugbrengen." },
+      { domain: "Ecosysteem", icon: "🌳", text: "Het Amazoneregenwoud heeft een drempelwaarde: bij ~20-25% ontbossing kantelt het van regenwoud naar savanne, met mondiale klimaatgevolgen." },
+      { domain: "Koraalrif", icon: "🐠", text: "Boven ~2°C opwarming kantelen koraalriffen massaal naar algendominantie — een staat die zichzelf in standhoud." }
+    ],
+    prerequisites: ["planetary-boundaries"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt kantelingspunten bijzonder gevaarlijk?", options: ["Ze zijn moeilijk te meten", "Ze zijn onomkeerbaar en treden plotseling op", "Ze zijn alleen lokaal relevant", "Ze zijn theoretisch niet bewezen"], correct: 1, explanation: "De combinatie van plotselinge overgang én onomkeerbaarheid maakt kantelingspunten extra zorgwekkend voor beleidsmakers." }
+    ],
+    creativePrompt: "Beschrijf een persoonlijk of sociaal 'kantelingspunt' dat je hebt meegemaakt: een situatie die langzaam escaleerde totdat een onherstelbare verandering optrad. Wat had je eerder kunnen doen?",
+    aiHelperPrompts: ["Hoe dichtbij zijn de klimaatkantelingspunten?", "Zijn er positieve kantelingspunten voor duurzaamheid?", "Hoe houd ik rekening met kantelingspunten in beleid?"]
+  },
+  {
+    id: "circular-economy",
+    title: "Circulaire Economie",
+    difficulty: 2,
+    emoji: "♻️",
+    academicCategory: "Duurzaamheidswetenschap",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["circulair", "afval", "economie", "duurzaamheid"],
+    definition: "De circulaire economie is een economisch model dat afval minimaliseert door grondstoffen zo lang mogelijk in gebruik te houden via hergebruik, reparatie, recycling en regeneratie — in contrast met het lineaire 'maak-gebruik-gooi weg'-model.",
+    abstractExample: "Een circulaire economie is als een goed huishouden: je gooit niets weg maar vindt voor elk bijproduct een nieuwe bestemming, zodat de kringloop gesloten blijft.",
+    examples: [
+      { domain: "Mode", icon: "👗", text: "Patagonia repareert kleding kosteloos en koopt oude Patagonia-kleding terug om te herverkopen — sluit de kringloop in fast fashion." },
+      { domain: "Technologie", icon: "💻", text: "Fairphone ontwerpt modulaire telefoons waarbij elk onderdeel vervangbaar is, waardoor de levensduur wordt verlengd." },
+      { domain: "Bouw", icon: "🏗️", text: "Cradle-to-cradle bouw gebruikt materialen die aan het einde van de levensduur van een gebouw volledig kunnen worden hergebruikt." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het fundamentele verschil tussen lineaire en circulaire economie?", options: ["Circulair is duurder", "Lineair eindigt in afval; circulair sluit de grondstoffenkringloop", "Circulair werkt alleen voor grote bedrijven", "Lineair is sneller"], correct: 1, explanation: "Het lineaire model is 'take-make-waste'; het circulaire model ontwerpt afval uit het systeem en houdt waarde zo lang mogelijk in de keten." }
+    ],
+    creativePrompt: "Kies een product dat je regelmatig weggooit (verpakking, kledingstuk, apparaat). Ontwerp een circulair alternatief: hoe wordt het gemaakt, gebruikt, hersteld en uiteindelijk hergebruikt?",
+    aiHelperPrompts: ["Hoe verschilt recyclen van echt circulair denken?", "Welke bedrijven zijn koplopers in circulaire economie?", "Hoe pas ik circulaire principes toe in mijn eigen leven?"]
+  },
+  {
+    id: "ecosystem-services",
+    title: "Ecosysteemdiensten",
+    difficulty: 2,
+    emoji: "🌳",
+    academicCategory: "Ecologie",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["natuur", "waarde", "ecosysteem", "diensten"],
+    definition: "Ecosysteemdiensten zijn de voordelen die mensen gratis ontvangen van gezonde ecosystemen: schone lucht, zuiver water, bestuiving, klimaatregulering, voedsel en recreatie — waarvan de economische waarde zelden wordt meegerekend.",
+    abstractExample: "Een bos is gratis bewolking en waterfilter, een gratis CO2-opslagplaats en een gratis recreatieplek — als je die waarden in geld uitdrukt, is beschermen goedkoper dan kappen.",
+    examples: [
+      { domain: "Bestuiving", icon: "🐝", text: "Bijen bestuiven gewassen ter waarde van honderden miljarden euros per jaar wereldwijd — een dienst die bij bijensterfte vervangen moet worden door menselijke arbeid." },
+      { domain: "Waterfiltering", icon: "💧", text: "New York City investeerde in bescherming van Catskill Mountains-wetlands in plaats van een waterfilterinstallatie — de natuur doet het goedkoper." },
+      { domain: "Klimaat", icon: "🌡️", text: "Oceanen absorberen ~25% van al het CO2-uitstoot — een ecosysteemdienst die de opwarming aanzienlijk vertraagt zonder menselijke ingreep." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom worden ecosysteemdiensten zelden meegewogen in economische beslissingen?", options: ["Ze zijn onmeetbaar", "Ze hebben geen marktprijs en worden daardoor als 'gratis' beschouwd", "Economen kennen ze niet", "Ze zijn te klein om relevant te zijn"], correct: 1, explanation: "Zonder marktprijs worden ecosysteemdiensten als extern beschouwd in economische analyses — hun verlies wordt niet zichtbaar totdat het te laat is." }
+    ],
+    creativePrompt: "Schat de jaarlijkse economische waarde van een natuur nabij jouw woonplaats (park, bos, rivier). Welke diensten levert het? Hoe zou je die waarde kunnen berekenen?",
+    aiHelperPrompts: ["Hoe worden ecosysteemdiensten gemeten?", "Zijn er succesvolle voorbeelden van betalen voor ecosysteemdiensten?", "Hoe verhoudt biodiversiteit zich tot ecosysteemdiensten?"]
+  },
+  {
+    id: "tragedy-of-commons",
+    title: "De Tragedie van de Meent",
+    difficulty: 2,
+    emoji: "🐄",
+    academicCategory: "Ecologie",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["collectief", "overgebruik", "duurzaamheid", "regulering"],
+    definition: "De tragedie van de meent (Hardin) beschrijft hoe een gedeelde hulpbron wordt uitgeput wanneer individuen rationeel hun eigen voordeel maximaliseren ten koste van het collectief — elk individu profiteert van overgebruik maar deelt de kosten.",
+    abstractExample: "Als alle boeren één extra koe op de gemeenschappelijke weide zetten, profiteert elke individuele boer volledig terwijl de kosten (uitputting van gras) worden gedeeld door allen — rationeel individueel, rampzalig collectief.",
+    examples: [
+      { domain: "Vissen", icon: "🐟", text: "Internationale vissers hebben belang bij het wegvangen van zoveel mogelijk vis — maar als iedereen dit doet, raken visbestanden uitgeput." },
+      { domain: "Lucht", icon: "💨", text: "Elk bedrijf wil zo goedkoop mogelijk produceren door emissies in de lucht te lozen — schone lucht is een gemeenschappelijke bron die wordt uitgeput." },
+      { domain: "Internet", icon: "💻", text: "Bandbreedte, aandacht en vertrouwen online zijn gemeenschappelijke bronnen die door spam, desinformatie en clickbait worden uitgeput." }
+    ],
+    prerequisites: ["public-goods-problem"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke drie oplossingen voor de tragedie van de meent beschreef Ostrom?", options: ["Privatisering, regulering of geweld", "Coöperatieve zelfregulering door gebruikers, privatisering of staatscontrole", "Technologie, belasting of boycot", "Educatie, subsidie of verbod"], correct: 1, explanation: "Elinor Ostrom won de Nobelprijs door aan te tonen dat gemeenschappen (zonder markt of staat) gemeenschappelijke goederen duurzaam kunnen beheren via eigen regels." }
+    ],
+    creativePrompt: "Welke digitale 'meent' zie jij uitgeput worden? Beschrijf wat er wordt overgebruikt, wie er van profiteert en welk mechanisme de uitputting zou kunnen stoppen.",
+    aiHelperPrompts: ["Wat zijn Ostrom's principes voor duurzaam gemeenschappelijk beheer?", "Hoe verschilt de tragedie van de meent van het vrijbuiterprobleem?", "Zijn er succesvolle moderne meent-commons?"]
+  },
+  {
+    id: "environmental-justice",
+    title: "Milieugerechtigheld",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Milieuwetenschap",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["rechtvaardigheid", "milieu", "ongelijkheid", "klimaat"],
+    definition: "Milieugerechtigheld erkent dat milieuschade en klimaatrisico's ongelijk zijn verdeeld — kwetsbare en arme gemeenschappen worden disproportioneel getroffen door vervuiling en klimaatverandering terwijl ze er het minst aan bijdragen.",
+    abstractExample: "Mensen die vlak bij een chemische fabriek wonen inademen de meeste vervuiling maar profiteren het minst van de economische activiteit — een disproportionele verdeling van lasten en lusten.",
+    examples: [
+      { domain: "Klimaat", icon: "🌡️", text: "Kleine eilandstaten zoals Tuvalu dreigen te verdrinken door zeespiegelstijging terwijl ze vrijwel geen CO2 uitstoten." },
+      { domain: "Stedelijk", icon: "🏙️", text: "Achterstandswijken in steden hebben minder groen, meer luchtvervuiling en minder klimaatbestendige woningen dan rijkere wijken." },
+      { domain: "Internationaal", icon: "🌍", text: "Lage-inkomenslanden dragen het meest bij aan goedkope productie maar lijden het meest onder de milieugevolgen van het westerse consumptiepatroon." }
+    ],
+    prerequisites: ["planetary-boundaries"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kernprobleem van milieugerechtigheld?", options: ["Arme mensen maken meer vervuiling", "De lasten van milieuschade zijn disproportioneel bij kwetsbare groepen", "Rijke landen investeren meer in milieu", "Milieuproblemen zijn gelijk verdeeld"], correct: 1, explanation: "Milieuongerechtigheld bestaat wanneer degenen die het minst bijdragen aan een probleem het meest de gevolgen dragen." }
+    ],
+    creativePrompt: "Analyseer een milieukwestie in jouw eigen omgeving. Wie draagt de lasten (geluid, vervuiling, risico) en wie profiteert van de economische activiteit? Is de verdeling rechtvaardig?",
+    aiHelperPrompts: ["Hoe is milieugerechtigheld verbonden met klimaatbeleid?", "Welke bewegingen zetten zich in voor milieugerechtigheld?", "Hoe integreer ik milieurechtvaardigheid in bedrijfsbeslissingen?"]
+  },
+  {
+    id: "biodiversity-loss",
+    title: "Biodiversiteitsverlies",
+    difficulty: 2,
+    emoji: "🦋",
+    academicCategory: "Ecologie",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["biodiversiteit", "soorten", "ecosysteem", "uitsterven"],
+    definition: "Biodiversiteitsverlies is de versnelling van soortuitsterving door menselijke activiteiten — met een huidig tempo 100-1000 maal hoger dan de natuurlijke achtergrondsnelheid — wat ecosystemen minder veerkrachtig maakt.",
+    abstractExample: "Een ecosysteem is als een vliegtuig met honderden bouten: het verliezen van één bout is misschien ok, maar naarmate je meer bouten verliest neemt het risico op catastrofaal falen exponentieel toe.",
+    examples: [
+      { domain: "Insecten", icon: "🐛", text: "Insectenpopulaties zijn in Europa met 75% gedaald in 40 jaar — met directe gevolgen voor bestuiving, vogelvoedsel en bodemgezondheid." },
+      { domain: "Vissen", icon: "🐟", text: "Meer dan een derde van de zoetwatervissoorten is bedreigd — gevolgen voor voedselzekerheid van miljarden mensen." },
+      { domain: "Plantensoorten", icon: "🌺", text: "40% van de plantensoorten is met uitsterven bedreigd — verlies van potentiële medicijnen, voedselgewassen en ecosysteemdiensten." }
+    ],
+    prerequisites: ["ecosystem-services"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke menselijke activiteit draagt het meest bij aan biodiversiteitsverlies?", options: ["Klimaatverandering", "Habitatverlies door landgebruiksverandering", "Invasieve soorten", "Overexploitatie"], correct: 1, explanation: "Habitatverlies door landbouw, stedelijke uitbreiding en ontbossing is de grootste directe oorzaak van biodiversiteitsverlies wereldwijd." }
+    ],
+    creativePrompt: "Kies één diersoort die in jouw regio bedreigd is. Onderzoek de oorzaken van achteruitgang en ontwerp een concrete actie die jij persoonlijk kunt ondernemen om te helpen.",
+    aiHelperPrompts: ["Hoe verhoudt biodiversiteitsverlies zich tot klimaatverandering?", "Wat is de '30x30'-doelstelling?", "Hoe kan ik bijdragen aan biodiversiteit in mijn eigen tuin?"]
+  },
+  {
+    id: "regenerative-agriculture",
+    title: "Regeneratieve Landbouw",
+    difficulty: 2,
+    emoji: "🌾",
+    academicCategory: "Landbouwwetenschappen",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["landbouw", "bodem", "koolstof", "regeneratie"],
+    definition: "Regeneratieve landbouw is een set praktijken die bodems actief herstelt en verbetert, koolstof vastlegt, biodiversiteit vergroot en watersystemen verbetert — in contrast met conventionele landbouw die bodems uitput.",
+    abstractExample: "Regeneratieve landbouw is als interesse op interesse verdienen: je investeert in bodemgezondheid en die investering groeit elk jaar, terwijl conventionele landbouw kapitaal verbruikt.",
+    examples: [
+      { domain: "Veehouderij", icon: "🐄", text: "Managed grazing roteert vee door weilanden zodat grassen volledig herstellen — verbetert bodemkoolstof en voorkomt overbegrazing." },
+      { domain: "Akkerbouw", icon: "🌽", text: "No-till farming laat bodems intact, vermindert erosie en verhoogt het organisch materiaal — met als gevolg gezondere bodems en hoger waterretentie." },
+      { domain: "Agroforestry", icon: "🌳", text: "Combineren van bomen met landbouwgewassen verbetert bodems, biedt schaduw en habitat, en vergroot de biodiversiteit op het erf." }
+    ],
+    prerequisites: ["ecosystem-services"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het centrale doel van regeneratieve landbouw versus duurzame landbouw?", options: ["Ze zijn identiek", "Regeneratief streeft naar actief herstel, duurzaam naar minder schade", "Duurzaam is ambitieuzer", "Regeneratief focust op productiviteit"], correct: 1, explanation: "Duurzaam landbouwen wil de schade beperken; regeneratief wil systemen actief verbeteren en herstellen — een fundamenteel ambitieverschil." }
+    ],
+    creativePrompt: "Stel je hebt een stuk grond van 1 hectare. Ontwerp een regeneratief landbouwsysteem dat voedsel produceert, koolstof vastlegt én biodiversiteit vergroot. Welke keuzes maak je?",
+    aiHelperPrompts: ["Is regeneratieve landbouw bewezen effectief?", "Hoe past regeneratieve landbouw in het voedselbeleid?", "Wat kan ik zelf doen in een moestuin?"]
+  },
+  {
+    id: "life-cycle-assessment",
+    title: "Levenscyclusanalyse",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Milieuwetenschap",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["product", "impact", "analyse", "levenscyclus"],
+    definition: "Levenscyclusanalyse (LCA) is een methode die de milieuimpact van een product of dienst beoordeelt over de gehele levensduur: van grondstofwinning via productie, gebruik en transport tot afdanking.",
+    abstractExample: "Een elektrische auto heeft geen directe uitstoot, maar de levenscyclusanalyse omvat ook de batterijproductie, elektriciteitsopwekking en recycling — pas dan is de totale impact duidelijk.",
+    examples: [
+      { domain: "Elektrische auto", icon: "🚗", text: "LCA toont dat een elektrische auto over 150.000 km ~60% minder CO2 uitstoot dan een benzineauto, ondanks de energie-intensieve batterijproductie." },
+      { domain: "Katoenen vs. plastic zak", icon: "🛍️", text: "Een katoenen tas moet ~131 keer worden gebruikt voor een lagere klimaatimpact dan één plastic zak — katoenteelt is water- en pesticideintensief." },
+      { domain: "Voedsel", icon: "🍖", text: "Rundvlees heeft de hoogste levenscyclusimpact van alle voedingsmiddelen; peulvruchten hebben een fractie van die impact." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de scope van een levenscyclusanalyse?", options: ["Alleen de productie", "Van grondstofwinning tot afdanking ('cradle to grave')", "Alleen het gebruik van het product", "De impact op de eindgebruiker"], correct: 1, explanation: "LCA analyseert alle levensfasen: grondstofwinning, productie, transport, gebruik en afdanking — ook wel 'van wieg tot graf' genoemd." }
+    ],
+    creativePrompt: "Doe een informele LCA van je favoriete kledingstuk. Welke grondstoffen, welke productieprocessen, hoeveel water en energie? Hoe verandert dit jouw perspectief op het kledingstuk?",
+    aiHelperPrompts: ["Hoe voer ik een eenvoudige LCA uit?", "Wat zijn de beperkingen van LCA?", "Hoe gebruik ik LCA-data voor duurzame inkoop?"]
+  },
+  {
+    id: "energy-transition",
+    title: "Energietransitie",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Energiewetenschappen",
+    skillCategory: "Ecologie & Duurzaamheid",
+    tags: ["energie", "duurzaam", "transitie", "klimaat"],
+    definition: "De energietransitie is de systemische verschuiving van fossiele brandstoffen naar hernieuwbare energiebronnen — een multidecadaal transformatieproces dat technologie, economie, gedrag en politiek omvat.",
+    abstractExample: "De energietransitie is als een grote locomotief van richting veranderen: enorm veel energie nodig om de draai te maken, maar eenmaal op de nieuwe baan gaat het vanzelf.",
+    examples: [
+      { domain: "Zonne-energie", icon: "☀️", text: "Zonnepanelen zijn in 10 jaar met 90% goedkoper geworden — technologische S-curve-dynamiek maakt hernieuwbare energie nu goedkoper dan kolen." },
+      { domain: "Netbeheer", icon: "🔌", text: "De integratie van variabele zon en wind vereist slimme netwerken, batterijopslag en vraagrespons — een systeemtransformatie." },
+      { domain: "Industrie", icon: "🏭", text: "Groene waterstof is essentieel voor de decarbonisatie van staalindustrie en scheepvaart — sectoren die niet direct op stroom kunnen draaien." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste uitdaging van een hogere penetratie hernieuwbare energie?", options: ["Te duur", "Variabiliteit en opslagcapaciteit", "Gebrek aan technologie", "Politieke weerstand"], correct: 1, explanation: "Zon en wind produceren variabel — de integratie in een stabiel elektriciteitsnet vereist opslag, flexibele back-up en vraagrespons." }
+    ],
+    creativePrompt: "Stel je bent energieminister in 2030. Welke drie prioriteiten stel je om Nederland in 2050 klimaatneutraal te maken? Welke compromissen moet je sluiten?",
+    aiHelperPrompts: ["Hoe snel verloopt de energietransitie wereldwijd?", "Welke rol speelt kernenergie in de energietransitie?", "Hoe beïnvloedt de energietransitie mijn eigen energierekening?"]
   }
 ];
