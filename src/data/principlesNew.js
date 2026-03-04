@@ -8487,4 +8487,156 @@ export const principlesNew = [
       { domain: "Zelfcompassie", icon: "🌱", text: "GC ook intern toepassen: in plaats van 'Ik ben zo stom' (zelf-oordeel): 'Ik maakte een fout (observatie), ik voel me beschaamd (gevoel), omdat ik competent wil zijn (behoefte). Wat kan ik hiervan leren? (verzoek aan jezelf)'." }
     ],
   },
+
+  // ========== BATCH B3: LICHAAM & BREIN ==========
+  {
+    id: "exercise-brain-performance",
+    title: "Beweging als Breinbooster",
+    difficulty: 1,
+    emoji: "🏃",
+    academicCategory: "Neurowetenschappen",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Lichaamsbeweging heeft directe positieve effecten op cognitieve functies: het stimuleert de aanmaak van BDNF (hersengroeifactor), verbetert geheugen, concentratie en stemming, en vermindert stress en angst. Regelmatige beweging is een van de krachtigste, goedkoopste interventies voor mentale prestaties.",
+    abstractExample: "Je brein is geen computer die onafhankelijk van je lichaam werkt. Beweging is directe input voor hersenfunctie — 20 minuten stevig wandelen verbetert aantoonbaar cognitieve prestaties gedurende 2-4 uur daarna.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Een korte wandeling van 20-30 minuten voor een moeilijke studiesessie verhoogt concentratie en informatieverwerkingssnelheid meer dan extra cafeïne — het effect is direct meetbaar in tests." },
+      { domain: "Werk", icon: "💼", text: "Vergaderingen terwijl je loopt (walking meetings) verhogen creativiteit met gemiddeld 81% (Stanford-onderzoek) — beweging activeren divergent denken, stilzitten convergent denken." },
+      { domain: "Mentale gezondheid", icon: "🧠", text: "Regelmatige aerobe beweging (3x per week, 30 minuten) heeft vergelijkbare effecten als antidepressiva bij milde tot matige depressie — beweging is geen vervanging maar een krachtig aanvullend middel." }
+    ],
+  },
+  {
+    id: "sleep-cognitive-function",
+    title: "Slaap als Cognitieve Reset",
+    difficulty: 1,
+    emoji: "😴",
+    academicCategory: "Slaapwetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Slaap is geen passieve rust maar een actief fysiologisch proces waarin geheugen wordt geconsolideerd, giftige afvalstoffen uit het brein worden gefilterd (glymfatisch systeem), emoties worden verwerkt en het immuunsysteem wordt hersteld. Chronisch slaaptekort heeft cumulatieve, ernstige effecten op alle cognitieve en fysieke functies.",
+    abstractExample: "Na 17-19 uur wakker zijn, presteren mensen cognitief vergelijkbaar met iemand met een BAC van 0,05%. Na 24 uur wakker zijn is dat vergelijkbaar met 0,10%. Slaaptekort schaadt objectief aantoonbaar, maar mensen schatten zelf hun eigen prestaties als beter dan ze zijn.",
+    examples: [
+      { domain: "Leren", icon: "📚", text: "Leer- of probleemoplossingsvaardigheden na een goede nacht slaap significant beter dan zonder slaap — REM-slaap integreert nieuwe kennis met bestaande patronen en creëert 'aha-momenten'." },
+      { domain: "Beslissingen", icon: "🎯", text: "'Slaap er een nacht over' is geen cliché maar neurowetenschappelijk advies — het brein verwerkt complexe problemen 's nachts onbewust en presenteert 's ochtends vaak helderder perspectief." },
+      { domain: "Sport & Prestaties", icon: "🏋️", text: "Atleten die 9-10 uur slapen (vs. gemiddeld 8) presteren meetbaar beter op reactietijd, precisie en uithoudingsvermogen — slaap is de meest onderschatte performance-variabele in sport." }
+    ],
+  },
+  {
+    id: "nutrition-mental-performance",
+    title: "Voeding en Mentale Prestaties",
+    difficulty: 2,
+    emoji: "🥗",
+    academicCategory: "Neurowetenschappen",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De kwaliteit van voeding heeft directe invloed op hersenfunctie, stemming en cognitieve prestaties. Het darmmicrobioom produceert neurotransmitters en communiceert via de darm-hersen-as. Bloedsuikerschommelingen, nutriënttekorten en ontstekingsbevorderende voeding ondermijnen concentratie en emotionele regulatie.",
+    abstractExample: "Het brein is 2% van het lichaamsgewicht maar verbruikt 20% van de energie. De kwaliteit van die energie — stabiele glucoselevels vs. pieken en dalen — bepaalt mede de kwaliteit van denken en beslissingen gedurende de dag.",
+    examples: [
+      { domain: "Productiviteit", icon: "⚡", text: "Een ontbijt met eiwitten en vezels (eieren, noten, groenten) geeft stabielere energie dan een suikerrijke start — het vermijden van bloedsuikerpieken in de ochtend verbetert concentratie gedurende de rest van de dag." },
+      { domain: "Stemming", icon: "😊", text: "Circa 95% van serotonine wordt aangemaakt in de darmen, niet het brein. Een gezond microbioom (vezelrijke, gevarieerde voeding) correleert met betere stemming en minder angst — de darm is letterlijk een 'tweede brein'." },
+      { domain: "Cognitie", icon: "🧠", text: "Mediterraan voedingspatroon (olijfolie, noten, vis, groenten, peulvruchten) is geassocieerd met lager risico op cognitieve achteruitgang op oudere leeftijd en betere prestaties op geheugen- en aandachttests." }
+    ],
+  },
+  {
+    id: "breath-regulation",
+    title: "Ademhaling als Zelfregulatiemiddel",
+    difficulty: 1,
+    emoji: "🌬️",
+    academicCategory: "Fysiologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De ademhaling is de enige autonome lichaamsfunctie die je ook bewust kunt aansturen — en daarmee direct het autonome zenuwstelsel beïnvloeden. Langzame, diepe ademhaling activeert het parasympathische systeem (rust), terwijl snelle ademhaling het sympathische systeem (stress) activeert. Dit biedt een directe fysiologische ingang voor emotieregulatie.",
+    abstractExample: "Angst versnelt de ademhaling. Versnelde ademhaling versterkt angst. De uitweg: bewust de ademhaling vertragen doorbreekt de feedbacklus. Uitademen langer dan inademen activeert de rem van het zenuwstelsel.",
+    examples: [
+      { domain: "Stressmanagement", icon: "🧘", text: "De 4-7-8 ademhaling: 4 seconden inademen, 7 seconden vasthouden, 8 seconden uitademen. Dit activeert het parasympathische zenuwstelsel en dempt de stressrespons meetbaar binnen enkele minuten." },
+      { domain: "Prestaties", icon: "🎯", text: "Fysiologische zucht (twee snelle inademingen door de neus gevolgd door lange uitademing door de mond) is het snelste bewezen middel om akuut stress te verlagen — gebruikt door operaties en topsportcoaches." },
+      { domain: "Slaap", icon: "😴", text: "Boxbreathing (4-4-4-4: in, vasthouden, uit, vasthouden) wordt gebruikt door Navy SEALs en slaapspecialisten om het zenuwstelsel te kalmeren voor het slapen gaan — regelmatiger dan het tellen van schapen." }
+    ],
+  },
+  {
+    id: "body-scan-awareness",
+    title: "Lichaamssignalen Lezen",
+    difficulty: 1,
+    emoji: "🔍",
+    academicCategory: "Somatische Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Lichaamsbewustzijn (interoceptie) is het vermogen om interne lichamelijke signalen te herkennen en interpreteren — spanning, onrust, vermoeidheid, honger, opwinding. Het lichaam verwerkt emotionele informatie eerder dan het bewuste denken en geeft voortdurend signalen die cognitieve besluitvorming kunnen informeren.",
+    abstractExample: "Buikgevoel is niet magisch maar biologisch: het lichaam integreert enorme hoeveelheden informatie sneller dan het bewuste brein. Mensen met hogere interoceptieve bewustzijn nemen betere beslissingen onder onzekerheid en herkennen emoties sneller.",
+    examples: [
+      { domain: "Emotieherkenning", icon: "💭", text: "Spanning in de schouders bij bepaalde gesprekken herkennen als signaal van stress of weerstand — het lichaam reageert op emotionele input soms eerder dan je het bewust ervaart." },
+      { domain: "Beslissingen", icon: "🎯", text: "Bij een beslissing bewust scannen: voelt je buik gespannen of open bij optie A vs. B? Somatische markers (Damasio) zijn gecomprimeerde evaluaties van eerdere ervaringen en zijn relevante informatie naast rationele analyse." },
+      { domain: "Energie management", icon: "⚡", text: "Vroege tekenen van vermoeidheid herkennen voordat ze uitputting worden — kleine pauzes nemen op basis van lichaamsignalen is effectiever dan doorwerken tot je uitgeput bent en dan lang moet herstellen." }
+    ],
+  },
+  {
+    id: "cold-exposure-resilience",
+    title: "Koude Blootstelling en Stressbestendigheid",
+    difficulty: 2,
+    emoji: "🧊",
+    academicCategory: "Fysiologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Gecontroleerde blootstelling aan kou (koud douchen, koud water zwemmen) activeert het sympathische zenuwstelsel en verhoogt norepinefrine- en dopamineniveaus significant. Dit heeft effecten op waakzaamheid, stemming en het trainen van de wil om ongemak te weerstaan en de stressrespons te reguleren.",
+    abstractExample: "Kou is een gecontroleerde stressor. De vaardigheid die je traint bij koud douchen — de weerstand voelen maar toch instappen — is dezelfde mentale vaardigheid die je gebruikt bij andere moeilijke situaties. Het hersenpatroon van 'doe het toch' wordt geoefend.",
+    examples: [
+      { domain: "Mentale veerkracht", icon: "💪", text: "Elke ochtend 1-3 minuten koud afdouchen traint de capaciteit om ongemak te tolereren — niet omdat kou op zichzelf waardevoller is, maar omdat het dagelijks een kleine test is van wilskracht die generaliseert naar andere domeinen." },
+      { domain: "Stemming", icon: "😊", text: "Koud water activeert norepinefrine en dopamine sterk (tot 300% en 250% boven baseline). Voor mensen met depressieve klachten kan dit een directe, tijdelijke stemmingsverbetering geven — gebruikt als aanvulling op behandeling." },
+      { domain: "Herstel", icon: "🏊", text: "Koude wateronderdompeling na intensieve training versnelt spierherstel door ontstekingsreductie — atleten gebruiken ijsbaden als standaard herstelprotocol." }
+    ],
+  },
+  {
+    id: "posture-mood-link",
+    title: "Houding en Emotionele Toestand",
+    difficulty: 1,
+    emoji: "🏛️",
+    academicCategory: "Embodied Cognition",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De verbinding tussen lichaamhouding en emotionele toestand is bidirectioneel: emoties beïnvloeden houding (droefheid → inzakken, vreugde → openen), maar houding beïnvloedt ook emoties. Rechtop zitten en staan vergroot zelfvertrouwen, vermindert negatieve denken en verhoogt energieniveaus.",
+    abstractExample: "Het brein interpreteert lichaamssignalen als informatie over de huidige toestand. Een rechtopstaande houding signaleert aan het brein 'ik ben competent en klaar', terwijl inzakken 'ik ben moe en verslagen' signaleert. De interpretatie kan de toestand versterken.",
+    examples: [
+      { domain: "Zelfvertrouwen", icon: "💪", text: "Vóór een moeilijk gesprek of presentatie 2 minuten rechtop staan met een open houding (Power Pose) verhoogt zelfgerapporteerd vertrouwen — het lichaam 'acteert' vertrouwen voordat het gevoel er volledig is." },
+      { domain: "Productiviteit", icon: "⚡", text: "Staand werken of rechtop zitten i.p.v. onderuitgezakt verhoogt focus en alertheid — de houding activeert het sympathische zenuwstelsel licht, wat resulteert in meer wakkere staat." },
+      { domain: "Stemming", icon: "😊", text: "Bij neerslachtigheid bewust oprijzen, schouders naar achteren en hoofd omhoog heffen — dit doorbreekt de lichamelijke feedbacklus van droefheid en creëert ruimte voor een andere emotionele staat." }
+    ],
+  },
+  {
+    id: "attention-restoration",
+    title: "Aandachtherstel en Mentale Vermoeidheid",
+    difficulty: 1,
+    emoji: "🌿",
+    academicCategory: "Omgevingspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Aandachthersteltheorie (Kaplan) stelt dat gerichte aandacht uitput en bijgevuld moet worden. Natuur en omgevingen met 'zachte fascinatie' (natuurgeluiden, water, planten) herstellen aandachtcapaciteit effectiever dan rust in stedelijke omgevingen. Regelmatige mentale pauzes zijn essentieel voor productiviteit.",
+    abstractExample: "Aandacht is een beperkte hulpbron. Intensief focuswerk put de prefrontale cortex uit. Net als een spier heeft die rust nodig — maar de juiste soort rust. Passieve natuur-exposure herstelt beter dan actief ontspannen op sociale media.",
+    examples: [
+      { domain: "Productiviteit", icon: "⚡", text: "Na 90-120 minuten intensief focuswerk een pauze van 10-20 minuten buiten wandelen of in een park herstelt aandacht significant beter dan een pauze achter het scherm — terugkeer na natuur-pauze is merkbaar scherper." },
+      { domain: "Creativiteit", icon: "💡", text: "Problemen 'laten zitten' en een wandeling maken leidt regelmatig tot doorbraken — de default mode network in het brein verwerkt problemen onbewust, en natuur-exposure faciliteert dit proces." },
+      { domain: "Burnout preventie", icon: "🌱", text: "Werknemers die regelmatig korte wandelpauzes buiten nemen rapporteren lagere stress, hogere tevredenheid en maken minder fouten dan collega's die doorwerken of schermvrije pauzes nemen." }
+    ],
+  },
+  {
+    id: "pain-discomfort-distinction",
+    title: "Pijn vs. Ongemak Onderscheiden",
+    difficulty: 2,
+    emoji: "🔥",
+    academicCategory: "Sportpsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het vermogen om onderscheid te maken tussen gevaarlijke pijn (stop-signaal) en productief ongemak (groei-signaal) is essentieel voor persoonlijke ontwikkeling. Veel groei vindt plaats in de zone van ongemak — spierpijn bij training, sociale angst bij nieuwe uitdagingen, mentale moeite bij moeilijk leren — maar echte pijnsignalen negeren leidt tot schade.",
+    abstractExample: "Ongemak zegt 'dit is ongewoon en moeilijk'. Pijn zegt 'dit schaadt je'. Groei vereist de bereidheid ongemak te ervaren zonder het weg te rennen, maar ook de wijsheid echte pijnsignalen te respecteren en niet weg te krachten.",
+    examples: [
+      { domain: "Sport & Training", icon: "🏋️", text: "Spierpijn na training (DOMS) is ongemak dat groei signaleert — het is veilig om erdoorheen te trainen. Scherpe pijn in een gewricht tijdens training is een stopbevel — het negeren leidt tot blessures." },
+      { domain: "Persoonlijke groei", icon: "🌱", text: "Sociale angst bij het spreken voor een groep is ongemak, niet gevaar. Jezelf blootstellen aan dit ongemak is het pad naar groei. De neiging weg te vluchten verwarren met 'veiligheid' houdt mensen vast." },
+      { domain: "Leren", icon: "📚", text: "Het gevoel van 'ik snap het niet' bij moeilijke stof is ongemak, geen signaal om te stoppen. Worstelend leren (desirable difficulty) leidt tot dieper begrip dan te makkelijke stof die vlekkeloos gaat." }
+    ],
+  },
+  {
+    id: "chronotype-optimization",
+    title: "Chronotype en Energiemanagement",
+    difficulty: 1,
+    emoji: "⏰",
+    academicCategory: "Chronobiologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Een chronotype is het biologisch bepaalde patroon van slaap-waak voorkeur: ochtend-, avond- of middagtype. Werken in lijn met je chronotype — plannen van moeilijk cognitief werk in je piekperiode — levert significant betere prestaties dan tegen je biologische klok inwerken.",
+    abstractExample: "Er is geen universeel beste tijd om moeilijk werk te doen. Een avondmens die om 6 uur 's ochtends focuswerk probeert te doen is vergelijkbaar met een ochtendmens die om middernacht zijn beste werk doet. Chronotype is genetisch bepaald en kan niet worden 'getraind' weg.",
+    examples: [
+      { domain: "Planning", icon: "📅", text: "Je eigen energieverloop twee weken bijhouden: wanneer voel je je het scherpst? Plan je moeilijkste cognitieve taken in die piektijden en administratie, emails en routinetaken in de daltijden." },
+      { domain: "Creativiteit", icon: "💡", text: "Creatief denken is voor ochtendmensen beter 's middags (iets buiten de piek), wanneer inhibitie lager is en associatief denken makkelijker stroomt. Analytisch denken is beter in de piek." },
+      { domain: "Samenwerking", icon: "🤝", text: "In teamverband rekening houden met elkaars chronotypes voor vergaderplanning — moeilijke beslissingen niet plannen op tijden die voor een deel van het team buiten hun cognitieve piek vallen." }
+    ],
+  },
 ];
