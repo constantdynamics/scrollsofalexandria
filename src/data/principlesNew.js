@@ -6238,5 +6238,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Beschrijf een situatie uit het nieuws waarbij rechtsstatelijkheid werd uitgedaagd. Wat was er op het spel? Wat had er moeten gebeuren om de rechtsstaat te versterken?",
     aiHelperPrompts: ["Hoe verschilt een rechtsstaat van een politiestaat?", "Welke bedreigingen voor rechtsstatelijkheid bestaan in Europa?", "Hoe bescherm ik mijn rechten als burger?"]
+  },
+
+  // Batch S – Retorica & Taal
+  {
+    id: "ethos-pathos-logos",
+    title: "Ethos, Pathos en Logos",
+    difficulty: 2,
+    emoji: "🎭",
+    academicCategory: "Retorica",
+    skillCategory: "Retorica & Taal",
+    tags: ["overtuiging", "spreken", "argumentatie", "aristoteles"],
+    definition: "Aristoteles' drie overtuigingsmiddelen: ethos (geloofwaardigheid van de spreker), pathos (emotionele appeal) en logos (logische argumentatie) — een effectieve speech combineert alle drie.",
+    abstractExample: "Een goede dokter overtuigt patiënten door zijn expertise te tonen (ethos), de emotionele impact van de ziekte te benoemen (pathos) en de statistische kansen te presenteren (logos).",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Martin Luther King gebruikte zijn predicantsautoriteit (ethos), emotionele beelden van onderdrukking (pathos) en constitutionele argumenten (logos) in 'I Have a Dream'." },
+      { domain: "Reclame", icon: "📺", text: "Een autoreclame met een beroemde autocoureur (ethos), opwindende beelden (pathos) en MPG-cijfers (logos) trekt drie soorten kopers aan." },
+      { domain: "Sollicitatie", icon: "💼", text: "Een goede sollicitatiebrief toont relevante ervaring (ethos), passie voor het werk (pathos) en meetbare resultaten (logos)." }
+    ],
+    prerequisites: [],
+    unlocks: ["rhetorical-devices"],
+    exercises: [
+      { type: "multipleChoice", question: "Een spreker zegt: 'Als vader van drie kinderen weet ik hoe belangrijk goede scholen zijn.' Welk overtuigingsmiddel gebruikt hij?", options: ["Logos", "Pathos", "Ethos", "Ironie"], correct: 2, explanation: "Door zijn persoonlijke situatie te benoemen bouwt hij geloofwaardigheid (ethos) op als betrokken ouder." }
+    ],
+    creativePrompt: "Schrijf een korte speech (150 woorden) over een onderwerp dat jou bezighoudt, waarbij je bewust ethos, pathos én logos incorporeert. Markeer welke zin welk element is.",
+    aiHelperPrompts: ["Hoe versterk ik mijn ethos als jonge spreker?", "Wanneer is pathos te veel en wordt het manipulatie?", "Hoe structureer ik een logos-argument logisch?"]
+  },
+  {
+    id: "rhetorical-devices",
+    title: "Retorische Stijlfiguren",
+    difficulty: 2,
+    emoji: "✍️",
+    academicCategory: "Retorica",
+    skillCategory: "Retorica & Taal",
+    tags: ["stijl", "taal", "schrijven", "metafoor"],
+    definition: "Retorische stijlfiguren zijn taalkundige technieken die tekst krachtig, memorabel of overtuigend maken — van metafoor en analogie tot anafoor, chiasme en hyperbool.",
+    abstractExample: "Stijlfiguren zijn als kruiden in de keuken: de maaltijd (je boodschap) is al aanwezig, maar de kruiden maken het smakelijk en onderscheidend.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Anafoor: Churchill's 'We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields' — herhaling bouwt ritme en kracht." },
+      { domain: "Literatuur", icon: "📖", text: "Metafoor: 'Het leven is een reis' herstructureert hoe we over tijd, doelen en obstakels denken." },
+      { domain: "Wetenschap", icon: "🔬", text: "Analogie: DNA uitleggen als een 'blauwdruk' of 'receptenboek' maakt abstracte biologie begrijpelijk voor leken." }
+    ],
+    prerequisites: ["ethos-pathos-logos"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke retorische figuur is dit: 'Vragen staat vrij, antwoord ook'?", options: ["Metafoor", "Anafoor", "Chiasme", "Hyperbool"], correct: 2, explanation: "Een chiasme keert de volgorde van woorden in twee parallelle zinsdelen om." }
+    ],
+    creativePrompt: "Kies één retorische stijlfiguur (metafoor, anafoor, chiasme, hyperbool of litotes). Schrijf drie originele zinnen die het gebruiken voor een toespraak over klimaatverandering.",
+    aiHelperPrompts: ["Wat zijn de krachtigste retorische stijlfiguren?", "Hoe gebruik ik stijlfiguren zonder overdreven te klinken?", "Welke stijlfiguren werken het beste in schriftelijke versus gesproken taal?"]
+  },
+  {
+    id: "framing-language",
+    title: "Framing via Taal",
+    difficulty: 2,
+    emoji: "🖼️",
+    academicCategory: "Taalkunde",
+    skillCategory: "Retorica & Taal",
+    tags: ["frame", "taal", "perceptie", "beïnvloeding"],
+    definition: "Framing via taal betekent dat de keuze van woorden, metaforen en categorisering de manier waarop mensen een situatie begrijpen en beoordelen fundamenteel beïnvloedt — dezelfde feiten kunnen heel anders overkomen.",
+    abstractExample: "Een operatie met 90% overlevingskans klinkt anders dan dezelfde operatie met 10% sterftekans — de feiten zijn identiek, maar de framing verandert de beslissing.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "'Belastingverlichting' frame suggerreert dat belasting een last is die verlicht moet worden; 'belastinghervorming' is neutraler." },
+      { domain: "Milieu", icon: "🌿", text: "'Global warming' werd door sommigen vervangen door 'climate change' omdat het minder alarmerend klinkt." },
+      { domain: "Marketing", icon: "🛍️", text: "'95% vetvrij' yoghurt verkoopt beter dan '5% vet' yoghurt — dezelfde voedingswaarde, ander frame." }
+    ],
+    prerequisites: ["priming-effect"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat beschrijft het beste waarom 'belastingverlichting' een krachtig politiek frame is?", options: ["Het is feitelijk accurater", "Het impliceert dat belasting inherent slecht is", "Het is eenvoudiger te begrijpen", "Het is neutraler dan alternatieven"], correct: 1, explanation: "Het woord 'verlichting' impliceert dat belasting een pijn of last is — wat al een politiek oordeel inbrengt." }
+    ],
+    creativePrompt: "Herschrijf hetzelfde nieuws twee keer: één keer met een progressief frame, één keer met een conservatief frame. Gebruik precies dezelfde feiten maar kies zorgvuldig je woorden.",
+    aiHelperPrompts: ["Hoe herken ik framing in nieuws?", "Hoe frame ik mijn eigen boodschappen effectiever?", "Wat is het verschil tussen framing en liegen?"]
+  },
+  {
+    id: "active-listening",
+    title: "Actief Luisteren",
+    difficulty: 1,
+    emoji: "👂",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Retorica & Taal",
+    tags: ["luisteren", "communicatie", "empathie", "begrip"],
+    definition: "Actief luisteren is volledig aanwezig zijn bij wat iemand zegt — zonder mentaal alvast je antwoord te formuleren — en begrip tonen door samen te vatten, vragen te stellen en non-verbaal te reageren.",
+    abstractExample: "Actief luisteren is als een spiegel die niet alleen reflecteert wat je zegt, maar ook de emotie achter je woorden teruggeeft.",
+    examples: [
+      { domain: "Therapie", icon: "🧠", text: "Een therapeut herhaalt: 'Dus als ik je goed begrijp, voel je je buitengesloten door je collega's ondanks je inspanningen?' — samenvatting en verificatie." },
+      { domain: "Leiderschap", icon: "👔", text: "Een manager legt zijn telefoon weg, maakt oogcontact en vraagt door bij een medewerker die feedback geeft over werkdruk." },
+      { domain: "Relaties", icon: "💑", text: "In een conflict wacht een partner tot de ander volledig uitgesproken is voordat hij reageert, en parafraseert dan het bezwaar." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen horen en actief luisteren?", options: ["Er is geen verschil", "Actief luisteren vereist gerichte aandacht en verificatie van begrip", "Horen is bewuster dan luisteren", "Actief luisteren is alleen voor professionals"], correct: 1, explanation: "Horen is passief (geluid verwerken); actief luisteren is bewust aandacht geven en begrip controleren." }
+    ],
+    creativePrompt: "Doe vandaag een experiment: kies één gesprek waar je uitsluitend luistert, nooit meer dan één vraag per minuut stelt, en aan het eind samenvat wat je hoorde. Wat viel je op?",
+    aiHelperPrompts: ["Welke concrete technieken zijn er voor actief luisteren?", "Hoe luister ik actief in een moeilijk gesprek?", "Hoe herken ik wanneer iemand niet actief luistert?"]
+  },
+  {
+    id: "storytelling-structure",
+    title: "Verhalenstructuur",
+    difficulty: 1,
+    emoji: "📖",
+    academicCategory: "Narratologie",
+    skillCategory: "Retorica & Taal",
+    tags: ["verhaal", "structuur", "narrative", "communicatie"],
+    definition: "Effectieve verhalen volgen structuren zoals de drieaktsstructuur (begin-midden-einde) of de heldenreis: een protagonist staat voor een uitdaging, doorloopt transformatie en keert terug met inzicht.",
+    abstractExample: "Een verhaal zonder structuur is als een reis zonder kaart: je kunt interessante dingen beleven, maar je publiek weet niet waar jullie naartoe gaan of wanneer jullie aankomen.",
+    examples: [
+      { domain: "Marketing", icon: "🛍️", text: "Airbnb-advertenties volgen de heldenreis: de reiziger (held) verlaat het gewone leven, ervaart avontuur via Airbnb, keert veranderd terug." },
+      { domain: "Presentaties", icon: "🎤", text: "TED-talks beginnen met een provocerende vraag (conflict), bouwen naar een inzicht (transformatie) en sluiten met een call to action (resolutie)." },
+      { domain: "Leiderschap", icon: "👔", text: "Een CEO vertelt de oorsprong van het bedrijf als heldenreis: de founders zagen een probleem, worstelden, vonden een oplossing — nu zijn jullie samen in dat avontuur." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het centrale element van de heldenreis?", options: ["Een bijzondere setting", "De transformatie van de protagonist", "Veel conflict en actie", "Een happy ending"], correct: 1, explanation: "De heldenreis draait om de innerlijke verandering van de held — niet de externe avonturen." }
+    ],
+    creativePrompt: "Vertel jouw eigen heldenreis: wanneer stond je voor een grote uitdaging, wie of wat hielp je, wat leerde je en hoe ben je veranderd? Schrijf het als een verhaal van 200 woorden.",
+    aiHelperPrompts: ["Hoe gebruik ik verhalenstructuur in een zakelijke presentatie?", "Wat maakt een verhaal emotioneel resonant?", "Hoe vertel ik data als een verhaal?"]
+  },
+  {
+    id: "socratic-method",
+    title: "Socratische Methode",
+    difficulty: 2,
+    emoji: "❓",
+    academicCategory: "Filosofie",
+    skillCategory: "Retorica & Taal",
+    tags: ["vragen", "dialoog", "kritisch denken", "filosofie"],
+    definition: "De Socratische methode is een vorm van samenwerking via vragen en antwoorden die aannames blootlegt, tegenstellingen ontdekt en tot dieper begrip leidt — zonder de antwoorden direct te geven.",
+    abstractExample: "De Socratische methode is als een GPS die je niet vertelt waar je naartoe moet, maar vragen stelt die je helpen te ontdekken dat je al de weg weet.",
+    examples: [
+      { domain: "Onderwijs", icon: "📚", text: "Een leraar vraagt niet 'wat is democratie?' maar: 'Als je een beslissing moet nemen die iedereen raakt, wie mag er dan meebeslissen? En waarom?'" },
+      { domain: "Coaching", icon: "🎯", text: "In plaats van 'je moet meer delegeren' vraagt een coach: 'Wat zou er gebeuren als je dit aan je team overliet? Wat houdt je tegen?'" },
+      { domain: "Recht", icon: "⚖️", text: "Een advocaat gebruikt kruisvragen om inconsistenties in een getuigenverklaring bloot te leggen via een reeks gerichte vragen." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het primaire doel van de Socratische methode?", options: ["De ander overtuigen van jouw standpunt", "Aannames blootleggen en dieper begrip bereiken", "Snel een antwoord vinden", "De ander verwarren"], correct: 1, explanation: "Socrates geloofde dat waarheid wordt gevonden door samen kritisch te onderzoeken, niet door antwoorden op te leggen." }
+    ],
+    creativePrompt: "Voer een 10-minuten Socratisch gesprek met jezelf over een overtuiging die je sterk aanhangt. Schrijf de vragen op die je aannames uitdagen. Wat ontdek je?",
+    aiHelperPrompts: ["Hoe gebruik ik de Socratische methode in een vergadering?", "Welke soorten Socratische vragen zijn er?", "Hoe voorkom ik dat Socratisch vragen aanvoelt als verhoor?"]
+  },
+  {
+    id: "euphemism-doublespeak",
+    title: "Eufemisme en Dubbelspeak",
+    difficulty: 2,
+    emoji: "🎭",
+    academicCategory: "Taalkunde",
+    skillCategory: "Retorica & Taal",
+    tags: ["taal", "manipulatie", "framing", "politiek"],
+    definition: "Eufemismen zijn zachte woorden voor harde realiteiten; dubbelspeak is taal die bewust verhult, misleidt of de realiteit vervormt — beide kunnen taal gebruiken om waarheid te verbergen.",
+    abstractExample: "Een eufemisme is zoals 'hij is heengegaan' voor 'hij is dood': begrijpelijk en humaan. Dubbelspeak is zoals 'collateral damage' voor burgerslachtoffers: bewust verhullend.",
+    examples: [
+      { domain: "Militair", icon: "⚔️", text: "'Enhanced interrogation techniques' is dubbelspeak voor foltering — het klinkt technisch en bureaucratisch om de werkelijkheid te verhullen." },
+      { domain: "Bedrijfsleven", icon: "💼", text: "'Right-sizing' of 'workforce optimization' zijn eufemismen voor ontslag — bedrijven vermijden het harde woord." },
+      { domain: "Politiek", icon: "🏛️", text: "'Revenue enhancement' (belastingverhoging) en 'investment' (overheidsuitgaven) zijn politieke eufemismen om publieke weerstand te verminderen." }
+    ],
+    prerequisites: ["framing-language"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt dubbelspeak van een normaal eufemisme?", options: ["Dubbelspeak is altijd fout", "Dubbelspeak heeft de bewuste intentie om de realiteit te verhullen", "Eufemismen zijn vriendelijker", "Er is geen verschil"], correct: 1, explanation: "De intentie om te misleiden is het kritische verschil — dubbelspeak probeert waarheid te verbergen, niet alleen te verzachten." }
+    ],
+    creativePrompt: "Zoek drie voorbeelden van dubbelspeak in recent nieuws of bedrijfscommunicatie. Herformuleer ze in directe, eerlijke taal. Wat verandert er in de boodschap?",
+    aiHelperPrompts: ["Hoe herken ik dubbelspeak in politieke taal?", "Wanneer is een eufemisme acceptabel?", "Hoe schrijf ik zelf duidelijk en direct?"]
+  },
+  {
+    id: "debate-argumentation",
+    title: "Debatteren en Argumenteren",
+    difficulty: 2,
+    emoji: "⚔️",
+    academicCategory: "Retorica",
+    skillCategory: "Retorica & Taal",
+    tags: ["debat", "argument", "logica", "weerlegging"],
+    definition: "Effectief debatteren vereist het opbouwen van sterke argumenten (stelling + bewijs + redenering), het anticiperen op tegenargumenten en het weerleggen ervan zonder de ander persoonlijk aan te vallen.",
+    abstractExample: "Een goed debat is als een schaakpartij: je speelt je eigen stukken (argumenten) maar moet ook de zetten van je tegenstander (tegenargumenten) voorzien en weerleggen.",
+    examples: [
+      { domain: "Academisch", icon: "🎓", text: "In een academisch paper presenteer je bewust de sterkste tegenargumenten (steelmanning) voordat je ze weerleg — dit verhoogt je geloofwaardigheid." },
+      { domain: "Rechtbank", icon: "⚖️", text: "Een advocaat structureert zijn pleidooi: stelling (mijn cliënt is onschuldig), bewijs (alibi), redenering (dus dit sluit schuld uit)." },
+      { domain: "Bedrijf", icon: "💼", text: "In een boardroom-presentatie presenteer je de risico's van je voorstel zelf (voor anderen ze noemen) en leg je uit hoe je ze mitigeert." }
+    ],
+    prerequisites: ["ethos-pathos-logos"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is 'steelmanning' in een debat?", options: ["Het gebruiken van feiten als wapen", "Het presenteren van het sterkst mogelijke tegenargument", "Het versterken van je eigen positie", "Het overtuigen via emotie"], correct: 1, explanation: "Steelmanning is het eerlijk weergeven van het beste tegenargument — het tegenovergestelde van een strawman." }
+    ],
+    creativePrompt: "Kies een standpunt dat je NIET aanhangt. Schrijf de best mogelijke verdediging ervan (steelman). Wat leer je over de krachten van de andere kant?",
+    aiHelperPrompts: ["Hoe win ik een debat zonder de relatie te schaden?", "Wat zijn veelgemaakte redeneerfouten?", "Hoe weerleg ik een emotioneel argument logisch?"]
+  },
+  {
+    id: "written-communication",
+    title: "Effectief Schrijven",
+    difficulty: 1,
+    emoji: "✏️",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Retorica & Taal",
+    tags: ["schrijven", "duidelijkheid", "structuur", "communicatie"],
+    definition: "Effectief schrijven vereist helderheid (eenvoudige taal), structuur (logische volgorde), correctheid (juiste feiten) en aanpassing aan je doelgroep — het doel is dat de lezer precies begrijpt wat jij bedoelt.",
+    abstractExample: "Goed schrijven is als een goede wegwijzer: hij vertelt niet alles over de reis, maar precies genoeg om je naar de juiste bestemming te leiden.",
+    examples: [
+      { domain: "Bedrijf", icon: "💼", text: "Een effectief rapport begint met de conclusie (niet de methode), gebruikt bullet points voor scanbaarheid en vermijdt jargon voor niet-experts." },
+      { domain: "Email", icon: "📧", text: "Een goede zakelijke email heeft één duidelijk doel per bericht, een actie in de subject line en houdt de tekst onder 150 woorden." },
+      { domain: "Academisch", icon: "🎓", text: "Een sterke academische essay begint met een stellige these, onderbouwt die met bewijs en erkent tegenargumenten." }
+    ],
+    prerequisites: [],
+    unlocks: ["storytelling-structure"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de meest kritische eigenschap van effectief schrijven?", options: ["Uitgebreid vocabulaire", "Lange, complexe zinnen", "Helderheid en aanpassing aan de lezer", "Gebruik van citaten"], correct: 2, explanation: "De boodschap moet overkomen bij de doelgroep — alle andere elementen zijn dienend aan dat doel." }
+    ],
+    creativePrompt: "Schrijf hetzelfde nieuwtje ('bedrijf lanceert nieuw product') vier keer: voor een kind van 10, een journalist, een investeerder en een expert in de sector. Wat verandert er?",
+    aiHelperPrompts: ["Hoe maak ik mijn schrijfstijl beknopter?", "Hoe structureer ik een overtuigend essay?", "Welke fouten maak ik als niet-native schrijver?"]
+  },
+  {
+    id: "metaphor-cognition",
+    title: "Metaforen en Cognitie",
+    difficulty: 3,
+    emoji: "🧠",
+    academicCategory: "Cognitieve Taalkunde",
+    skillCategory: "Retorica & Taal",
+    tags: ["metafoor", "denken", "taal", "concepten"],
+    definition: "Metaforen zijn niet alleen stijlfiguren maar fundamentele cognitieve structuren die bepalen hoe we abstracte concepten begrijpen — de metaforen die we gebruiken bepalen letterlijk hoe we denken.",
+    abstractExample: "Als we 'een argument winnen' zeggen, denken we over argumenteren als oorlogsvoering. Als we 'samen bouwen aan een idee' zeggen, denken we als constructeurs samen werken — volkomen andere aanpak.",
+    examples: [
+      { domain: "Economie", icon: "💰", text: "De metafoor 'tijd is geld' structureert hoe we over vrije tijd denken (verspilling), vakantie (kostbaar) en efficiëntie (rendement)." },
+      { domain: "Onderwijs", icon: "📚", text: "Studenten als 'lege containers' die gevuld worden versus studenten als 'planten die groeien' leiden tot compleet verschillende didactische aanpakken." },
+      { domain: "Gezondheid", icon: "🏥", text: "'Kanker bestrijden' (militaire metafoor) versus 'omgaan met kanker' (acceptance-metafoor) beïnvloeden hoe patiënten hun ziekte ervaren." }
+    ],
+    prerequisites: ["framing-language"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat ontdekten Lakoff en Johnson over metaforen?", options: ["Metaforen zijn slechts decoratieve taal", "Metaforen structureren fundamenteel hoe we denken", "Metaforen moeten vermeden worden in academisch schrijven", "Metaforen zijn cultuurgebonden maar niet cognitief"], correct: 1, explanation: "Lakoff & Johnson's 'Metaphors We Live By' toonde aan dat metaforen ons conceptuele systeem structureren, niet alleen onze taal." }
+    ],
+    creativePrompt: "Welke metafoor gebruik jij voor 'leven'? Is het een reis, een gevecht, een spel, een film? Schrijf hoe die metafoor jouw keuzes en houding beïnvloedt — en kies dan een andere metafoor en bekijk wat er verandert.",
+    aiHelperPrompts: ["Welke metaforen zijn het meest invloedrijk in het Nederlands?", "Hoe kies ik bewust mijn metaforen?", "Hoe beïnvloeden metaforen politieke ideologie?"]
   }
 ];
