@@ -7119,4 +7119,156 @@ export const principlesNew = [
       { domain: "Tegenslag", icon: "💪", text: "Na een verlies toestaan te rouwen (beweeglijk meebewegen met pijn) in plaats van 'sterk zijn' te pretenderen — paradoxaal herstellen rouwers sneller die hun verdriet volledig toelaten." }
     ],
   },
+
+  // ── Batch A4: Communicatie & Relaties ────────────────────────────────────────
+  {
+    id: "nonviolent-communication",
+    title: "Geweldloze Communicatie",
+    difficulty: 2,
+    emoji: "🕊️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Geweldloze communicatie (Rosenberg) is een communicatiestructuur van vier stappen: observeer zonder te oordelen, benoem je gevoel, verbind het aan een behoefte, en doe een concreet verzoek. Het onderscheidt feiten van interpretaties.",
+    abstractExample: "In plaats van 'jij luistert nooit naar me' (oordeel): 'Als je op je telefoon kijkt terwijl ik praat (observatie), voel ik me niet gezien (gevoel), omdat verbinding voor mij belangrijk is (behoefte). Kun je je telefoon wegleggen? (verzoek)'",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "'Je bent altijd te laat' → 'Toen je gisteren 30 minuten later was dan afgesproken (observatie), voelde ik me niet belangrijk (gevoel). Kan ik erop rekenen dat je de volgende keer belt? (verzoek)'" },
+      { domain: "Werk", icon: "💼", text: "Teamconflicten escaleren door interpretaties als feiten te framen. GVK traint medewerkers feiten te scheiden van verhalen — de vergadering duurde 2 uur is feit; 'zinloze vergadering' is oordeel." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "'Je bent onverantwoordelijk' → 'Ik zie dat je huiswerk er nog niet uit is (observatie). Ik maak me zorgen (gevoel). Morgenochtend vroeg, kun je dan beginnen? (verzoek)'" }
+    ],
+  },
+  {
+    id: "deep-listening",
+    title: "Diep Luisteren",
+    difficulty: 2,
+    emoji: "👂",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Diep luisteren is volledig aanwezig zijn bij wat de ander zegt — niet alleen de woorden, maar ook toon, lichaamstaal en wat niet wordt gezegd — zonder te plannen wat je gaat antwoorden. Het is zeldzaam en buitengewoon krachtig.",
+    abstractExample: "De meeste mensen luisteren om te antwoorden. Diep luisteren is luisteren om te begrijpen. Het vereist het tijdelijk parkeren van je eigen oordelen, aannames en responsen — volledig de ruimte van de ander betreden.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Partners die zich gehoord voelen (niet alleen begrepen maar echt gehoord) rapporteren significant hogere relatiestevredenheid — het gevoel van 'jij ziet mij' is een basale menselijke behoefte." },
+      { domain: "Leiderschap", icon: "👥", text: "Medewerkers die het gevoel hebben dat hun manager echt luistert, zijn productiever en loyaler. De manager die aan het woord is, leert niets — de luisterende manager leert alles." },
+      { domain: "Verkoop", icon: "📣", text: "De beste verkopers luisteren 70% van de tijd. Ze ontdekken daardoor pijnpunten die de klant niet bewust kan articuleren — en bieden dan precies de juiste oplossing." }
+    ],
+  },
+  {
+    id: "attachment-styles-adult",
+    title: "Hechtingsstijlen bij Volwassenen",
+    difficulty: 2,
+    emoji: "🔗",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Hechtingsstijlen (Bowlby/Ainsworth) uit de vroege kindertijd zetten zich voort in volwassen relaties: veilig (verbinding zonder angst), angstig-preoccupeerd (angst voor verlating), vermijdend-afwijzend (angst voor intimiteit), gedesorganiseerd (beide tegelijk).",
+    abstractExample: "Iemand met angstige hechting ervaart in relaties chronische onzekerheid en zoekt voortdurend bevestiging. Iemand met vermijdende hechting trekt zich terug bij intimiteit. Beide zijn aangeleerde beschermingsstrategieën.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Angstig gehechte partner + vermijdend gehechte partner = prototype conflictpatroon: één trekt aan, de ander trekt zich terug, wat de angst versterkt en meer terugtrekking veroorzaakt." },
+      { domain: "Werk", icon: "💼", text: "Vermijdend gehechte managers houden emotionele afstand van hun team — niet door arrogantie maar door geleerde zelfstandigheid die samenwerking ondermijnt." },
+      { domain: "Zelfontwikkeling", icon: "🪞", text: "Hechting is geen lot — 'earned security' is mogelijk. Mensen met onveilige hechtingsstijl die bewust werken aan zichzelf, kunnen veilige relatiepatronen ontwikkelen via therapie en positieve relaties." }
+    ],
+  },
+  {
+    id: "repair-attempts",
+    title: "Herstelgebaren",
+    difficulty: 2,
+    emoji: "🩹",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Herstelgebaren (Gottman) zijn pogingen om een conflict te de-escaleren tijdens een gesprek — een grapje, een aanraking, 'ik moet even pauzeren', 'ik hou van je ook al vinden we het hier niet over eens'. Ze voorspellen relatiegeluk sterker dan het conflict zelf.",
+    abstractExample: "Het gaat er niet om of koppels ruziemaken — alle koppels doen dat. Het gaat erom of ze kunnen herstellen. Koppels die herstelgebaren doen en ontvangen, overleven conflicten. Koppels die dat niet kunnen, niet.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Midden in een verhit gesprek zegt één partner: 'Wacht even, ik vergeet dat ik echt van je hou.' Dat is een herstelaanbieding — de ander die dat accepteert, redt het gesprek." },
+      { domain: "Vriendschappen", icon: "👫", text: "Na een conflict de eerste stap zetten — ook als je 'gelijk hebt' — is een herstelaanbod. Wie altijd wacht op de ander, laat vriendschappen langzaam sterven." },
+      { domain: "Werk", icon: "💼", text: "In een teamconflict zegt iemand: 'Even pauzeren — wat eten we vandaag to lunch?' De luchtige zijstap ontspant de sfeer, waarna hervatting productiever verloopt." }
+    ],
+  },
+  {
+    id: "bids-for-connection",
+    title: "Verbindingsbiedingen",
+    difficulty: 2,
+    emoji: "🤲",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Verbindingsbiedingen (Gottman) zijn kleine momenten waarop mensen om aandacht, respons of verbinding vragen — een opmerking over het nieuws, een gedeelde foto, een zucht. De reactie (naar toe draaien, weg draaien, of negeren) bepaalt de relatiebasis.",
+    abstractExample: "Je partner zegt 'kijk eens wat een mooie vogel'. Dit is een verbindingsbod. Je reageert met 'ja hé, mooi!' (naar toe draaien) of je zegt niets (weg draaien). De som van kleine momenten bepaalt de relatie.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Gottman onderzoek: gelukkige koppels draaien 87% van de tijd naar verbindingsbiedingen toe. Koppels die later scheiden: 33%. De kleine dagelijkse momenten zijn het fundament." },
+      { domain: "Vriendschappen", icon: "👫", text: "Een vriend die nooit reageert op je berichtjes over dagelijkse dingen, verbreekt langzaam de verbindingslaag — niet door grote ruzies maar door chronisch genegeerde kleine biedingen." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "Een kind dat de ouder iets laat zien wat het interesseert — een tekening, een spel, een idee — dat verdient volle aanwezigheid. Weg draaien leert het kind dat zijn innerlijk leven niet interessant is." }
+    ],
+  },
+  {
+    id: "conflict-resolution-styles",
+    title: "Conflictstijlen",
+    difficulty: 2,
+    emoji: "⚔️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Thomas-Kilmann conflictmodel beschrijft vijf stijlen: vermijden, aanpassen, concurreren, compromis zoeken, en samenwerken. Elke stijl heeft hoge of lage assertiviteit en coöperativiteit — de context bepaalt welke stijl optimaal is.",
+    abstractExample: "Samenwerken (hoog assertief + hoog coöperatief) is ideaal maar tijdrovend. Compromis is snel maar geeft niemand volledig wat ze willen. Vermijden werkt voor niet-essentiële conflicten maar niet voor fundamentele issues.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een manager die altijd aanpast (lage assertiviteit), verliest zijn geloofwaardigheid. Eentje die altijd concurreert, vernietigt teamdynamiek. Bewuste stijlkeuze afhankelijk van inzet is de vaardigheid." },
+      { domain: "Relaties", icon: "❤️", text: "Koppels die structureel vermijden (geen conflict = harmonie) accumuleren onopgelost ressentiment — het gebrek aan conflict is de brandstof voor een later grote uitbarsting." },
+      { domain: "Onderhandelen", icon: "🤝", text: "Bij een loononderhandeling: samenwerken ('wat zijn jouw beperkingen, wat zijn mijn behoeften, kunnen we creatief denken?') levert vaak betere resultaten dan concurreren of compromis." }
+    ],
+  },
+  {
+    id: "trust-anatomy",
+    title: "Anatomie van Vertrouwen",
+    difficulty: 2,
+    emoji: "🏛️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Vertrouwen (Brown/BRAVING) wordt opgebouwd door zeven elementen: grenzen, betrouwbaarheid, verantwoordelijkheid, kluis (vertrouwelijkheid), integriteit, niet-oordelen, en vrijgevigheid. Vertrouwen is niet een moment maar een patroon van kleine acties over tijd.",
+    abstractExample: "Vertrouwen is als een marmerpot: elke positieve interactie is een marmer erin, elke vertrouwensbreuk haalt er marmers uit. Grote vertrouwensbreuken legen de pot in één keer. Opbouwen gaat langzaam.",
+    examples: [
+      { domain: "Leiderschap", icon: "👥", text: "De manager die zegt 'ik houd het vertrouwelijk' maar later geruchten verspreidt, verliest de kluis-component. Herstel vergt maanden van consistent gedrag, niet één verontschuldiging." },
+      { domain: "Relaties", icon: "❤️", text: "Betrouwbaarheid betekent niet grote beloften houden maar kleine: op tijd komen, terugbellen als je zei het te doen, aanwezig zijn wanneer afgesproken. Kleine consistenties bouwen vertrouwen." },
+      { domain: "Teams", icon: "👥", text: "Hoge vertrouwensteams (Lencioni) debatteren fel over ideeën maar niet over mensen — vertrouwen maakt kwetsbaarheid veilig, en kwetsbaarheid maakt eerlijk debat mogelijk." }
+    ],
+  },
+  {
+    id: "assertiveness",
+    title: "Assertiviteit",
+    difficulty: 2,
+    emoji: "💬",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Assertiviteit is het rechtstreeks, eerlijk en respectvol communiceren van eigen behoeften, meningen en grenzen — zonder agressie (andermans rechten schenden) of passiviteit (eigen rechten verwaarlozen). Het is een geleerde vaardigheid, geen persoonlijkheidskenmerk.",
+    abstractExample: "Assertiviteit staat op een spectrum: passief (alles accepteren, behoeften verzwijgen) → assertief (helder communiceren met respect voor beide) → agressief (eigen wil doorzetten ten koste van ander).",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Wanneer een collega je werk als zijn eigen presenteert: passief = niets zeggen, agressief = publiekelijk beschuldigen, assertief = privé zeggen: 'Ik merkte dat je mijn bijdrage niet noemde — dat is belangrijk voor mij.'" },
+      { domain: "Relaties", icon: "❤️", text: "Nee zeggen zonder uitgebreide excuses is assertiviteit: 'Ik kan dit weekend niet, ik heb al plannen' — geen verontschuldigingen die de weigering ondermijnen of de ander overvragen." },
+      { domain: "Onderhandeling", icon: "🤝", text: "Salarisonderhandeling: assertief = specifiek bedrag noemen met onderbouwing. Passief = wachten op aanbod. Agressief = ultimatum stellen. Assertieven verdienen gemiddeld significant meer." }
+    ],
+  },
+  {
+    id: "digital-communication-pitfalls",
+    title: "Valkuilen van Digitale Communicatie",
+    difficulty: 1,
+    emoji: "📱",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Digitale communicatie mist non-verbale signalen (toon, gezichtsuitdrukking, lichaamshouding) die 70-93% van betekenis dragen. Dit leidt tot systematische misinterpretaties, escalatie en misverstand, versterkt door snelheid van respons en context-armoede.",
+    abstractExample: "Een punt aan het einde van een WhatsApp-bericht wordt ervaren als koud of boos, ook als afzender alleen grammaticaal correct was. Toon is onzichtbaar in tekst — de ontvanger vult in, en vult negatief in bij twijfel.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Gevoelige feedback of conflicten via e-mail lossen zelden goed op — de kans op misinterpretatie is te groot. De vuistregel: als het meer dan 3 berichten kost, bel dan of spreek af." },
+      { domain: "Relaties", icon: "❤️", text: "Koppels die conflicten via WhatsApp uitvechten, escaleren sneller dan degenen die wachten tot ze face-to-face zijn — de afwezigheid van herstelgebaren en toon maakt tekst gevaarlijk." },
+      { domain: "Leiderschap", icon: "👥", text: "Kritiek via e-mail voelt altijd harder aan dan bedoeld — schrijf drie concepten voordat je verstuurt, of bel in plaats daarvan. Positieve feedback via tekst werkt juist wel." }
+    ],
+  },
+  {
+    id: "relationship-maintenance",
+    title: "Relatiebeheer",
+    difficulty: 1,
+    emoji: "🌱",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Sterke relaties — zakelijk en persoonlijk — vergen actief onderhoud: regelmatig initiatief nemen, oprechte interesse tonen, iets geven zonder te verwachten. Relaties die alleen worden geactiveerd als je iets nodig hebt, verzwakken snel.",
+    abstractExample: "Het netwerk dat je opbouwt als het goed gaat is het netwerk dat helpt als het moeilijk wordt. Mensen die alleen contact opnemen bij een gunst, worden ervaren als transactioneel — wat ze zijn.",
+    examples: [
+      { domain: "Netwerk", icon: "🌐", text: "De 'keep in touch'-strategie: elke week één oud contact bereiken met een interessant artikel of oprechte vraag — zonder agenda. Na een jaar is je netwerk significanter geactiveerd." },
+      { domain: "Vriendschappen", icon: "👫", text: "Vriendschappen die na een verhuizing 'vanzelf' verdwijnen, verdwenen omdat niemand het initiatief nam. Het initiatief hoeft niet groot te zijn — een bericht van 20 seconden telt." },
+      { domain: "Familie", icon: "👨‍👩‍👧", text: "Regelmatig oprechte aandacht geven aan familieleden zonder speciale aanleiding bouwt de relationele buffer die nodig is als zich echte crises voordoen." }
+    ],
+  },
 ];
