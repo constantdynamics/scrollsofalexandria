@@ -6934,5 +6934,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Analyseer jouw eigen tijdpreferentie in drie domeinen: geld, gezondheid en relaties. Ben je consistent? Waar wijkt jouw werkelijke gedrag af van wat je ideaal zou willen?",
     aiHelperPrompts: ["Hoe verlaag ik mijn tijdpreferentie voor betere beslissingen?", "Wat bepaalt iemands tijdpreferentie?", "Hoe verschilden tijdpreferenties door de geschiedenis heen?"]
+  },
+
+  // Batch V – Recht & Rechtvaardigheid
+  {
+    id: "presumption-of-innocence",
+    title: "Onschuldpresumptie",
+    difficulty: 1,
+    emoji: "⚖️",
+    academicCategory: "Rechtswetenschappen",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["recht", "bewijs", "strafrecht", "eerlijk proces"],
+    definition: "De onschuldpresumptie houdt in dat iemand onschuldig wordt geacht totdat zijn schuld buiten redelijke twijfel is bewezen — de bewijslast ligt bij de aanklager, niet bij de verdachte.",
+    abstractExample: "Een onbekende vliegtuigtekening veronderstelt dat een vliegtuig vliegt totdat bewijs van een defect overtuigend aantoont dat het gevaarlijk is — veiligheid vereist de omgekeerde last.",
+    examples: [
+      { domain: "Strafrecht", icon: "⚖️", text: "In een strafproces hoeft een verdachte niet te bewijzen dat hij onschuldig is; de aanklager moet schuld aantonen." },
+      { domain: "Arbeidsrecht", icon: "💼", text: "Een werknemer die van diefstal wordt beschuldigd heeft recht op een eerlijk onderzoek voordat disciplinaire maatregelen worden genomen." },
+      { domain: "Social media", icon: "📱", text: "Online beschuldigingen zonder bewijs die reputaties vernietigen schenden de geest van de onschuldpresumptie buiten de rechtszaal." }
+    ],
+    prerequisites: [],
+    unlocks: ["burden-of-proof"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom ligt de bewijslast bij de aanklager en niet bij de verdachte?", options: ["Omdat verdachten liegen", "Om te voorkomen dat onschuldigen worden veroordeeld door onmogelijke negatieve bewijzen", "Omdat aanklagers beter opgeleid zijn", "Om het proces sneller te maken"], correct: 1, explanation: "Het is onmogelijk om te bewijzen dat je iets níét hebt gedaan — de aanklager die de positieve bewering maakt, draagt logischerwijs de bewijslast." }
+    ],
+    creativePrompt: "Beschrijf een situatie buiten de rechtszaal (werk, school, sociaal) waarbij de onschuldpresumptie werd geschonden. Wat was de impact? Hoe had het anders moeten gaan?",
+    aiHelperPrompts: ["Hoe werkt de onschuldpresumptie in de praktijk?", "Wanneer kan een rechter de onschuldpresumptie beperken?", "Hoe verhoudt sociale veroordeling zich tot juridische onschuld?"]
+  },
+  {
+    id: "burden-of-proof",
+    title: "Bewijslast",
+    difficulty: 2,
+    emoji: "🔍",
+    academicCategory: "Rechtswetenschappen",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["bewijs", "argumentatie", "recht", "logica"],
+    definition: "De bewijslast is de verplichting van degene die een bewering doet om die bewering te onderbouwen met bewijs — 'wie stelt, bewijst'. Het niveau van vereist bewijs verschilt per context (strafrecht vs. civiel recht).",
+    abstractExample: "Als iemand beweert dat eenhoorns bestaan, is het niet aan sceptici om te bewijzen dat ze niet bestaan — de bewering vereist bewijs van degene die hem doet.",
+    examples: [
+      { domain: "Strafrecht", icon: "⚖️", text: "'Beyond reasonable doubt' (buiten redelijke twijfel) is de hoge standaard voor schuldigverklaring in strafzaken — ~95%+ zekerheid." },
+      { domain: "Civiel recht", icon: "📋", text: "'Preponderance of evidence' (overwicht van bewijs) is de lagere standaard in civiele zaken — meer dan 50% aannemelijk." },
+      { domain: "Wetenschap", icon: "🔬", text: "In wetenschap draagt degene die een nieuwe claim maakt de bewijslast — anderen hoeven niets te doen totdat positief bewijs wordt geleverd." }
+    ],
+    prerequisites: ["presumption-of-innocence"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil in bewijsstandaard tussen strafrecht en civiel recht?", options: ["Er is geen verschil", "Strafrecht vereist hogere zekerheid dan civiel recht", "Civiel recht is strenger", "Alleen strafrecht heeft bewijsstandaarden"], correct: 1, explanation: "Strafrecht heeft de hoogste standaard ('buiten redelijke twijfel') omdat de gevolgen — vrijheidsstraf — zo ernstig zijn." }
+    ],
+    creativePrompt: "Analyseer drie alledaagse discussies (in het nieuws, met vrienden, online). Wie draagt de bewijslast in elk geval? Wordt die last correct gedragen of wordt de logica omgekeerd?",
+    aiHelperPrompts: ["Hoe verschilt de bewijslast in verschillende rechtssystemen?", "Wat is 'burden shifting' in juridische argumentatie?", "Hoe pas ik de bewijslastlogica toe in dagelijkse discussies?"]
+  },
+  {
+    id: "restorative-justice",
+    title: "Herstelrecht",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Criminologie",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["recht", "herstel", "slachtoffer", "dader"],
+    definition: "Herstelrecht is een benadering van gerechtigheid die focust op het herstel van schade aan slachtoffers, gemeenschappen en daders — in plaats van uitsluitend op straf en vergelding.",
+    abstractExample: "Herstelrecht is als een gebroken vaas herstellen: in plaats van de persoon die hem brak te straffen, zoek je samen naar hoe de vaas gerepareerd en de relatie hersteld kan worden.",
+    examples: [
+      { domain: "School", icon: "📚", text: "Na pesten op school praten dader en slachtoffer onder begeleiding over de impact, zoeken herstel en maken gezamenlijke afspraken." },
+      { domain: "Criminologie", icon: "⚖️", text: "Maori-geïnspireerde Family Group Conferencing in Nieuw-Zeeland laat daders, slachtoffers en gemeenschap samen herstelplannen maken." },
+      { domain: "Werkplek", icon: "💼", text: "Na een conflict op de werkvloer mediatie waarbij beide partijen hun impact benoemen en samen naar oplossingen zoeken." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het primaire doel van herstelrecht?", options: ["De dader maximaal straffen", "Schade herstellen en relaties verbeteren", "Recidive voorkomen via angst", "De samenleving te beschermen"], correct: 1, explanation: "Herstelrecht plaatst het herstel van alle betrokkenen centraal — niet de straf van de dader." }
+    ],
+    creativePrompt: "Beschrijf een conflict waarbij herstelrecht beter had gewerkt dan een punitieve aanpak. Hoe zou het herstelproces eruitzien? Wie zouden deelnemen en wat zouden ze bereiken?",
+    aiHelperPrompts: ["Wanneer werkt herstelrecht beter dan traditionele straf?", "Hoe verhoudt herstelrecht zich tot vergiffenis?", "Welke landen gebruiken herstelrecht het meest?"]
+  },
+  {
+    id: "proportionality-principle",
+    title: "Proportionaliteitsbeginsel",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Rechtswetenschappen",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["straf", "evenredigheid", "recht", "beleid"],
+    definition: "Het proportionaliteitsbeginsel vereist dat straffen, maatregelen of ingrepen evenredig zijn aan de ernst van het vergrijp of het doel dat nagestreefd wordt — overreactie is ongerechtvaardigd.",
+    abstractExample: "Een verkeersboete voor 5 km/u te hard rijden is proportioneel; rijbewijs intrekken voor dezelfde overtreding is dat niet — de straf moet overeenstemmen met de ernst.",
+    examples: [
+      { domain: "Strafrecht", icon: "⚖️", text: "Minimumstraffen die geen rekening houden met verzachtende omstandigheden worden bekritiseerd als disproportioneel." },
+      { domain: "Internationaal recht", icon: "🌍", text: "Militaire vergeldingsacties moeten proportioneel zijn aan de aanval — massabombardementen als reactie op één aanval schenden dit beginsel." },
+      { domain: "Arbeidsrecht", icon: "💼", text: "Ontslag wegens kleine administratieve fout is disproportioneel als een waarschuwing voldoende was geweest." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "In welk rechtsterrein speelt proportionaliteit een cruciale rol?", options: ["Alleen in strafrecht", "In strafrecht, internationaal recht en bestuursrecht", "Alleen in internationaal recht", "Uitsluitend in civiel recht"], correct: 1, explanation: "Proportionaliteit is een fundamenteel rechtsbeginsel dat in meerdere rechtsgebieden geldt: strafrecht, bestuursrecht en internationaal humanitair recht." }
+    ],
+    creativePrompt: "Beschrijf een situatie waarbij jij (of iemand die je kent) disproportioneel werd behandeld. Wat was de straf, wat was het vergrijp en wat zou proportioneel zijn geweest?",
+    aiHelperPrompts: ["Hoe bepaal ik of een straf proportioneel is?", "Hoe wordt proportionaliteit getoetst door rechters?", "Wat zijn voorbeelden van disproportioneel beleid?"]
+  },
+  {
+    id: "natural-law",
+    title: "Natuurrecht",
+    difficulty: 3,
+    emoji: "🌿",
+    academicCategory: "Rechtsfilosofie",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["filosofie", "recht", "moraal", "universeel"],
+    definition: "Natuurrecht is de theorie dat er universele morele principes bestaan die onafhankelijk zijn van menselijke wetgeving — wetten die deze schenden zijn onrechtvaardig, zelfs als ze legaal zijn.",
+    abstractExample: "Als een wet voorschrijft dat je onschuldige mensen moet doden, is het volgen van die wet moreel onjuist — er bestaat een hogere morele wet boven de positieve wet.",
+    examples: [
+      { domain: "Mensenrechten", icon: "🌍", text: "De Universele Verklaring van de Rechten van de Mens berust op de idee dat sommige rechten universeel en onvervreemdbaar zijn — onafhankelijk van nationale wetgeving." },
+      { domain: "Neurenberg", icon: "⚖️", text: "Nazi-officieren konden 'ik volgde orders' niet als verdediging gebruiken — het tribunaal erkende een hogere wet boven nationale wetgeving." },
+      { domain: "Burgerrechten", icon: "✊", text: "Martin Luther King rechtvaardigde civiele ongehoorzaamheid via natuurrecht: onrechtvaardige wetten zijn geen ware wetten." }
+    ],
+    prerequisites: ["social-contract"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt natuurrecht van positief recht?", options: ["Natuurrecht is ouder", "Natuurrecht claimt universele morele geldigheid onafhankelijk van wet", "Positief recht is moreler", "Natuurrecht is alleen religieus"], correct: 1, explanation: "Positief recht is door mensen gemaakt en kan veranderen; natuurrecht claimt dat sommige morele principes universeel en onveranderlijk zijn." }
+    ],
+    creativePrompt: "Beschrijf een wet die legaal is maar die jij moreel onjuist vindt. Vanuit welk principe is ze onjuist? Hoe zou je dat principe articuleren als een universeel beginsel?",
+    aiHelperPrompts: ["Hoe verschilt natuurrecht van religieus recht?", "Wat zijn moderne toepassingen van de natuurrechttraditie?", "Hoe verdedigt men mensenrechten zonder religieuze grondslag?"]
+  },
+  {
+    id: "due-process",
+    title: "Zorgvuldige Rechtsprocedure",
+    difficulty: 2,
+    emoji: "📋",
+    academicCategory: "Rechtswetenschappen",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["procedure", "recht", "eerlijk", "bescherming"],
+    definition: "Zorgvuldige rechtsprocedure (due process) is het principe dat de overheid bij ingrijpen in rechten van burgers vastgestelde, eerlijke procedures moet volgen — bescherming tegen willekeurig overheidsoptreden.",
+    abstractExample: "Due process is als de spelregels van een bordspel: zelfs als je verliest, moet het spel eerlijk zijn gespeeld — de uitkomst is minder belangrijk dan de rechtmatigheid van het proces.",
+    examples: [
+      { domain: "Strafrecht", icon: "⚖️", text: "Een verdachte heeft recht op een advocaat, het recht om getuigen te horen en het recht op een onpartijdige rechter — voor en tijdens het proces." },
+      { domain: "Bestuursrecht", icon: "🏛️", text: "Een ambtenaar die wordt ontslagen heeft recht op informatie over de redenen en de mogelijkheid om zich te verdedigen voordat het besluit definitief is." },
+      { domain: "Onderwijs", icon: "📚", text: "Een student die van plagiaat wordt beschuldigd heeft recht op een eerlijk disciplinair onderzoek met mogelijkheid tot verweer." }
+    ],
+    prerequisites: ["presumption-of-innocence"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kernprincipe van due process?", options: ["Dat de sterkste altijd wint", "Dat overheidsoptreden eerlijke, vastgestelde procedures volgt", "Dat procedures zo snel mogelijk verlopen", "Dat iedereen een advocaat kan betalen"], correct: 1, explanation: "Due process beschermt burgers door te vereisen dat de overheid consistente en transparante procedures volgt bij elk ingrijpen." }
+    ],
+    creativePrompt: "Ontwerp de minimale due-process-vereisten voor een disciplinaire procedure op een school of werkplek. Welke stappen zijn absoluut noodzakelijk voor een eerlijk proces?",
+    aiHelperPrompts: ["Hoe verschilt procedurele van substantiële due process?", "Wanneer kan due process worden beperkt?", "Hoe bescherm ik mijn due-process-rechten in de praktijk?"]
+  },
+  {
+    id: "intellectual-property",
+    title: "Intellectueel Eigendom",
+    difficulty: 2,
+    emoji: "©️",
+    academicCategory: "Rechtswetenschappen",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["auteursrecht", "patent", "innovatie", "eigendom"],
+    definition: "Intellectueel eigendom (IE) zijn juridische rechten die creaties van de geest beschermen: auteursrecht (kunstwerken), patent (uitvindingen), handelsmerk (merknamen) en handelsgeheimen — een balans tussen incentive en publieke toegang.",
+    abstractExample: "IE-rechten zijn als een tijdelijke monopolie: de samenleving geeft de uitvinder exclusieve rechten voor een beperkte tijd in ruil voor openbaarmaking van de uitvinding.",
+    examples: [
+      { domain: "Muziek", icon: "🎵", text: "Componisten ontvangen auteursrecht: niemand mag hun muziek commercieel gebruiken zonder toestemming gedurende 70 jaar na hun dood." },
+      { domain: "Farmaceutisch", icon: "💊", text: "Patenten op medicijnen geven 20 jaar exclusiviteit aan uitvinders om R&D-kosten te recupereren, waarna generische versies legaal zijn." },
+      { domain: "Tech", icon: "💻", text: "Apple's patentenportefeuille beschermt iPhone-designs — maar critici stellen dat patent-trolls innovatie eerder remmen dan stimuleren." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het maatschappelijke doel van intellectueel eigendom?", options: ["Rijke creators rijker maken", "Innovatie stimuleren door tijdelijke exclusiviteit te bieden", "Kennisverspreiding beletten", "Nationale trots bevorderen"], correct: 1, explanation: "IE biedt een tijdelijk monopolie als incentive voor innovatie, waarna kennis publiek domein wordt — een maatschappelijke deal." }
+    ],
+    creativePrompt: "Stel dat je morgen een revolutionaire uitvinding doet. Welke IE-bescherming vraag je aan, hoelang wil je die exclusiviteit en wanneer vind je het rechtvaardig dat anderen het gratis mogen gebruiken?",
+    aiHelperPrompts: ["Wat is het verschil tussen copyright, patent en handelsmerk?", "Wanneer vervalt intellectueel eigendom?", "Hoe bescherm ik mijn eigen creatieve werk?"]
+  },
+  {
+    id: "distributive-justice",
+    title: "Distributieve Rechtvaardigheid",
+    difficulty: 3,
+    emoji: "🏛️",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["rechtvaardigheid", "verdeling", "ongelijkheid", "filosofie"],
+    definition: "Distributieve rechtvaardigheid gaat over de eerlijke verdeling van voordelen en lasten in een samenleving — verschillende theorieën (Rawls, Nozick, utilitarisme) geven fundamenteel verschillende antwoorden op wat 'eerlijk' is.",
+    abstractExample: "Drie kinderen krijgen één taart: gelijke stukken (egalitarisme), de grootste voor wie het hardst werkte (meritocratisme), of de grootste voor wie het meest honger heeft (prioritarisme) — elk principe is intern consistent.",
+    examples: [
+      { domain: "Belastingen", icon: "💰", text: "Progressieve belasting (rijken betalen proportioneel meer) reflecteert prioritaristische principes; vlaktaks reflecteert meer gelijkheidsdenken." },
+      { domain: "Gezondheidszorg", icon: "🏥", text: "Universele zorg (Rawls: gun de slechtste positie zo goed mogelijk) vs. marktzorg (Nozick: rechten op wat je verdiende zijn heilig)." },
+      { domain: "Onderwijs", icon: "📚", text: "Gelijke middelen voor alle scholen vs. extra middelen voor achterstandsscholen — twee distributieve benaderingen van onderwijsgelijkheid." }
+    ],
+    prerequisites: ["social-contract"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Rawls' 'sluier van onwetendheid' is een gedachtenexperiment waarbij je niet weet welke positie je in de samenleving zult innemen. Wat volgt hieruit?", options: ["Je kiest de meest ongelijke samenleving", "Je kiest de samenleving die de slechtste positie zo goed mogelijk maakt", "Je kiest willekeurig", "Je kiest voor maximale vrijheid ongeacht uitkomst"], correct: 1, explanation: "Achter de sluier is het rationeel om een samenleving te kiezen die zelfs de slechtste positie acceptabel maakt — je weet immers niet waar je belandt." }
+    ],
+    creativePrompt: "Stel je bent de wetgever achter Rawls' sluier: je weet niet of je arm of rijk, gezond of ziek, man of vrouw bent in de samenleving die je ontwerpt. Schrijf drie concrete wetten die je zou invoeren.",
+    aiHelperPrompts: ["Wat zijn de grootste geschilpunten tussen Rawls en Nozick?", "Hoe verhoudt distributieve rechtvaardigheid zich tot procedurele?", "Welk land benadert distributieve rechtvaardigheid het beste?"]
+  },
+  {
+    id: "international-law",
+    title: "Internationaal Recht",
+    difficulty: 3,
+    emoji: "🌍",
+    academicCategory: "Rechtswetenschappen",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["internationaal", "soevereiniteit", "verdragen", "vn"],
+    definition: "Internationaal recht is het geheel van regels en verdragen dat de betrekkingen tussen staten regelt — van diplomatieke normen tot oorlogsrecht — maar het handhavingsmechanisme is zwak vergeleken met nationaal recht.",
+    abstractExample: "Internationaal recht is als huisregels in een appartementencomplex zonder huisbaas: bewoners hebben regels afgesproken, maar niemand kan ze afdwingen als een buur ze schendt.",
+    examples: [
+      { domain: "Oorlog", icon: "⚔️", text: "De Geneefse Conventies beschermen gewonde soldaten en burgers in oorlogstijd — staten die ze schenden begaan oorlogsmisdaden." },
+      { domain: "Handel", icon: "🛒", text: "WTO-regels regelen internationale handel; geschillen worden beslecht via een arbitrageprocedure." },
+      { domain: "Milieu", icon: "🌿", text: "Het Parijs-akkoord is een internationaalrechtelijk klimaatverdrag — maar zonder afdwingingsmechanisme blijft naleving vrijwillig." }
+    ],
+    prerequisites: ["rule-of-law"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt internationaal recht minder effectief dan nationaal recht?", options: ["Slechte kwaliteit van verdragen", "Gebrek aan centrale handhaving — staten zijn soeverein", "Te weinig landen participeren", "Internationaal recht is niet bindend"], correct: 1, explanation: "Er is geen mondiale politiemacht die internationaal recht kan afdwingen — staten moeten vrijwillig naleven of diplomatieke/economische druk accepteren." }
+    ],
+    creativePrompt: "Stel je ontwerpt een mondiaal handhavingsmechanisme voor internationaal milieurecht. Welke bevoegdheden geef je het, wie controleert het en hoe voorkom je misbruik?",
+    aiHelperPrompts: ["Hoe wordt internationaal recht gehandhaafd?", "Wat is het verschil tussen hard law en soft law?", "Welke internationale rechtsinstellingen zijn het meest effectief?"]
+  },
+  {
+    id: "legal-pluralism",
+    title: "Rechtspluralisme",
+    difficulty: 3,
+    emoji: "🌐",
+    academicCategory: "Rechtswetenschappen",
+    skillCategory: "Recht & Rechtvaardigheid",
+    tags: ["recht", "cultuur", "diversiteit", "normen"],
+    definition: "Rechtspluralisme erkent dat in veel samenlevingen meerdere rechtssystemen naast elkaar bestaan — nationaal recht, religieus recht, gewoonterecht — die soms met elkaar in conflict zijn.",
+    abstractExample: "In een familie kunnen familienormen (je deelt alles), religieuze normen (het sabbat-gebod) en nationaal recht (eigendomsrecht) tegelijkertijd gelden en soms conflicteren.",
+    examples: [
+      { domain: "Familierecht", icon: "👨‍👩‍👧", text: "In sommige landen erkennen rechtbanken zowel nationaal familierecht als religieuze huwelijkswetten — soms met conflicterende bepalingen over echtscheiding." },
+      { domain: "Inheems recht", icon: "🌿", text: "Veel Canadese First Nations hanteren eigen stamrechtssystemen naast Canadees federaal recht — beide gelden tegelijkertijd." },
+      { domain: "Internationaal bedrijf", icon: "💼", text: "Een multinational in meerdere landen navigeert tegelijkertijd lokale wetten, internationale verdragen en sectorregulering." }
+    ],
+    prerequisites: ["international-law"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke uitdaging brengt rechtspluralisme mee?", options: ["Te veel wetten bestaan", "Conflicten tussen systemen zijn moeilijk op te lossen zonder hiërarchie", "Culturele rechten zijn altijd superieur", "Nationaal recht is altijd ondergeschikt"], correct: 1, explanation: "Wanneer twee rechtssystemen tegenstrijdige eisen stellen, is er geen vanzelfsprekende autoriteit om te beslissen welk systeem prevaleert." }
+    ],
+    creativePrompt: "In welke situaties ervaar jij meerdere 'rechtssystemen' tegelijkertijd (familie-etiquette, professionele normen, culturele verwachtingen, nationale wet)? Hoe navigeer je conflicten tussen die systemen?",
+    aiHelperPrompts: ["Hoe gaan rechters om met conflicterende rechtssystemen?", "Wat zijn bekende voorbeelden van rechtspluralisme?", "Hoe verhoudt religieus recht zich tot nationaal recht in Nederland?"]
   }
 ];
