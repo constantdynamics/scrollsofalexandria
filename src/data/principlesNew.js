@@ -6470,5 +6470,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Welke metafoor gebruik jij voor 'leven'? Is het een reis, een gevecht, een spel, een film? Schrijf hoe die metafoor jouw keuzes en houding beïnvloedt — en kies dan een andere metafoor en bekijk wat er verandert.",
     aiHelperPrompts: ["Welke metaforen zijn het meest invloedrijk in het Nederlands?", "Hoe kies ik bewust mijn metaforen?", "Hoe beïnvloeden metaforen politieke ideologie?"]
+  },
+
+  // Batch T – Statistiek & Dataredeneren
+  {
+    id: "correlation-causation",
+    title: "Correlatie vs. Causaliteit",
+    difficulty: 2,
+    emoji: "🔗",
+    academicCategory: "Statistiek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["statistiek", "oorzaak", "onderzoek", "redeneren"],
+    definition: "Correlatie betekent dat twee variabelen samen variëren; causaliteit betekent dat de ene de andere veroorzaakt. Correlatie bewijst geen causaliteit — er kan een derde variabele zijn of de relatie kan toevallig zijn.",
+    abstractExample: "IJsconsumptie en verdrinkingen correleren sterk — niet omdat ijs gevaarlijk is, maar omdat beide oplopen bij warm weer. De derde variabele (temperatuur) verklaart alles.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏥", text: "Mensen die meer ziekenhuisbezoeken hebben, sterven vaker — maar dat betekent niet dat ziekenhuizen dodelijk zijn; ziekte is de gemeenschappelijke oorzaak." },
+      { domain: "Economie", icon: "💰", text: "Landen met meer chocoladeconsumptie hebben meer Nobelprijswinnaars (echte data) — maar rijkdom (de derde variabele) verklaart beide." },
+      { domain: "Onderwijs", icon: "📚", text: "Kinderen met meer boeken thuis presteren beter op school — maar rijkere ouders kopen meer boeken én zorgen ook voor betere educatie op andere manieren." }
+    ],
+    prerequisites: [],
+    unlocks: ["regression-to-mean"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke methode bewijst het best causaliteit?", options: ["Correlatie-analyse", "Groot steekproefonderzoek", "Gerandomiseerd gecontroleerd experiment", "Historische data"], correct: 2, explanation: "Alleen in een gerandomiseerd experiment worden verstorende variabelen uitgemiddeld, waardoor je echte causaliteit kunt vaststellen." }
+    ],
+    creativePrompt: "Zoek een opmerkelijke correlatie in het nieuws. Bedenk drie alternatieve verklaringen: een omgekeerde causaliteit, een derde variabele en puur toeval. Welke is het meest plausibel?",
+    aiHelperPrompts: ["Hoe test ik of een correlatie causaal is?", "Wat zijn bekende voorbeelden van spurieuze correlaties?", "Hoe gebruik ik correlatie-inzichten zonder causale conclusies te trekken?"]
+  },
+  {
+    id: "regression-to-mean",
+    title: "Regressie naar het Gemiddelde",
+    difficulty: 2,
+    emoji: "📉",
+    academicCategory: "Statistiek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["statistiek", "gemiddelde", "meting", "bias"],
+    definition: "Regressie naar het gemiddelde is het statistische verschijnsel dat extreme uitkomsten bij herhaalde meting tenderen naar het gemiddelde — mensen die uitzonderlijk goed of slecht scoren, presteren meestal gemiddeld bij de volgende meting.",
+    abstractExample: "Een kind dat de slechtste toets scoort in de klas zal bij de volgende toets waarschijnlijk iets beter scoren — niet door interventie, maar puur door statistiek.",
+    examples: [
+      { domain: "Sport", icon: "⚽", text: "De 'Sports Illustrated vloek': topsporters op de cover presteren daarna vaak slechter — maar dit is regressie naar het gemiddelde, geen vloek." },
+      { domain: "Management", icon: "👔", text: "Managers die medewerkers belonen voor excellente prestaties en straffen voor slechte, concluderen dat straf werkt beter — maar regressie verklaart de verbetering." },
+      { domain: "Medisch", icon: "🏥", text: "Mensen zoeken medische hulp wanneer ze het ergst ziek zijn — na behandeling voelen ze zich beter, maar deels door regressie naar het gemiddelde, niet alleen de behandeling." }
+    ],
+    prerequisites: ["correlation-causation"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is regressie naar het gemiddelde een probleem bij het evalueren van interventies?", options: ["Het maakt statistieken inaccuraat", "Het kan doen lijken dat een interventie werkt terwijl de verbetering statistisch is", "Het geldt alleen voor sportprestaties", "Het is een rekenfout"], correct: 1, explanation: "Als je een interventie doet na een extreme score, zal de volgende meting statistisch gezien beter zijn — ongeacht de interventie." }
+    ],
+    creativePrompt: "Bedenk een situatie in je eigen leven of werk waar je regressie naar het gemiddelde zou kunnen verwarren met een echte oorzaak. Hoe zou je het onderscheid kunnen maken?",
+    aiHelperPrompts: ["Hoe herken ik regressie naar het gemiddelde in data?", "Hoe ontwerp ik onderzoek dat regressie naar het gemiddelde corrigeert?", "Waarom is de 'Sports Illustrated vloek' statistisch verklaarbaar?"]
+  },
+  {
+    id: "base-rate-fallacy",
+    title: "De Basispercentagefout",
+    difficulty: 3,
+    emoji: "📊",
+    academicCategory: "Statistiek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["statistiek", "kansen", "redeneren", "bias"],
+    definition: "De basispercentagefout treedt op wanneer mensen specifieke informatie zwaarder wegen dan statistische basispercentages — waardoor ze de kans op een gebeurtenis systematisch overschatten of onderschatten.",
+    abstractExample: "Een medische test met 99% nauwkeurigheid voor een ziekte die 1 op 10.000 mensen treft, geeft bij een positieve uitslag slechts ~1% kans dat je echt ziek bent — maar dit voelt contra-intuïtief.",
+    examples: [
+      { domain: "Medisch", icon: "🏥", text: "Een mammografie detecteert 80% van borstkankers maar geeft ook 10% vals-positieven. Bij zeldzame kanker (1 op 100) is een positieve uitslag vaker vals dan echt positief." },
+      { domain: "Recht", icon: "⚖️", text: "DNA-bewijs met 1 op een miljoen kans op vals match klinkt overweldigend, maar als er een miljoen verdachten zijn, zijn er gemiddeld ook vals-matches." },
+      { domain: "Vliegen", icon: "✈️", text: "Mensen vrezen vliegtuigongelukken meer dan auto-ongelukken ondanks dat vliegen veel veiliger is — het spectaculaire nieuws van een crash overschaduwt het basispercentage." }
+    ],
+    prerequisites: ["correlation-causation"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de oplossing voor de basispercentagefout?", options: ["Meer data verzamelen", "De basispercentages (prior probability) meewegen in de berekening", "Intuïtie vertrouwen", "Specifieke gevallen negeren"], correct: 1, explanation: "Bayes' stelling formaliseert hoe je basispercentages correct combineert met specifieke bewijs." }
+    ],
+    creativePrompt: "Je hoort dat iemand een Lamborghini rijdt. Hoe groot is de kans dat hij rijk is? Bedenk welke basispercentages (hoe veel mensen zijn 'rijk', hoe veel rijke mensen rijden Lamborghini) je nodig hebt voor een eerlijk antwoord.",
+    aiHelperPrompts: ["Hoe gebruik ik Bayes' stelling in de praktijk?", "Welke beslissingen worden het meest beïnvloed door de basispercentagefout?", "Hoe leg ik statistische kansen uit aan niet-statistici?"]
+  },
+  {
+    id: "p-value-significance",
+    title: "P-waarden en Statistische Significantie",
+    difficulty: 3,
+    emoji: "🔬",
+    academicCategory: "Statistiek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["statistiek", "onderzoek", "significantie", "data"],
+    definition: "Een p-waarde geeft de kans dat de waargenomen resultaten toevallig zijn als de nulhypothese klopt. P < 0.05 wordt conventioneel 'significant' genoemd, maar dit is een drempelwaarde, geen bewijs van werkelijk belang.",
+    abstractExample: "Een p-waarde van 0.05 betekent: als er geen effect is, zou je dit resultaat in 1 op 20 experimenten toevallig zien. Dat is bewijs — maar geen zekerheid.",
+    examples: [
+      { domain: "Medisch", icon: "🏥", text: "Een medicijn heeft p = 0.04: bij toeval zou dit resultaat in 4% van de gevallen optreden als het medicijn niet werkt — geen bewijs van klinisch belang." },
+      { domain: "Marketing", icon: "🛍️", text: "A/B-test toont p = 0.03 voor een nieuwe knopkleur — statistisch significant, maar het effect (0.01% meer clicks) is praktisch onbeduidend." },
+      { domain: "Wetenschap", icon: "🔬", text: "De replicatiecrisis in psychologie toont dat veel 'significante' resultaten (p < 0.05) niet reproduceerbaar zijn door publicatiebias en p-hacking." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat betekent een p-waarde van 0.05 NIET?", options: ["De kans dat de nulhypothese waar is", "De kans op het resultaat als de nulhypothese klopt", "Een drempelwaarde voor 'significantie'", "Een maat voor toevallig optreden"], correct: 0, explanation: "P-waarde is NIET de kans dat de nulhypothese klopt — dit is een veelgemaakte misvatting. Het is de kans op de data gegeven de nulhypothese." }
+    ],
+    creativePrompt: "Lees een wetenschappelijk nieuwsartikel. Zoek op of de originele studie p-waarden rapporteert. Wat was de steekproefgrootte? Beschrijf of je het resultaat betrouwbaar vindt.",
+    aiHelperPrompts: ["Wat is het verschil tussen statistische en praktische significantie?", "Wat is p-hacking en hoe herken ik het?", "Hoe interpreteer ik statistisch bewijs in nieuws?"]
+  },
+  {
+    id: "survivorship-bias-data",
+    title: "Overlevingsbias in Data",
+    difficulty: 2,
+    emoji: "🏆",
+    academicCategory: "Statistiek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["bias", "data", "steekproef", "statistiek"],
+    definition: "Overlevingsbias treedt op wanneer analyses alleen de 'overlevers' (succesgevallen) bevatten en de mislukkingen negeert — waardoor succespatronen worden overschat en faalpatronen worden gemist.",
+    abstractExample: "We bestuderen succesvolle bedrijven om te leren wat ze gemeen hebben — maar we vergeten te vragen: deden mislukte bedrijven hetzelfde maar hadden ze pech?",
+    examples: [
+      { domain: "Muziek", icon: "🎵", text: "Bekende muzikanten vertellen dat ze 10.000 uur oefenden en succesvol werden — maar talloze musici oefenden even hard en werden niet beroemd." },
+      { domain: "Militair", icon: "✈️", text: "WWII: legerleiding wilde pantsering toevoegen aan beschadigde vliegtuigen — statisticus Abraham Wald wees erop dat je ook de neergestorte vliegtuigen moest analyseren die niet terugkwamen." },
+      { domain: "Beleggen", icon: "📈", text: "Beursindexen bevatten alleen de bedrijven die overleven — bedrijven die failliet gaan verdwijnen uit de index, waardoor historische rendementen er rooskleuriger uitzien." }
+    ],
+    prerequisites: ["correlation-causation"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe voorkom je overlevingsbias in onderzoek?", options: ["Meer succesgevallen bestuderen", "Actief zoeken naar en includeren van mislukkingen in de analyse", "Alleen recente data gebruiken", "Grotere steekproeven nemen"], correct: 1, explanation: "Overlevingsbias voorkom je door bewust te zoeken naar de 'mislukkingen' die normaal niet in je data zitten." }
+    ],
+    creativePrompt: "In welk domein van jouw leven of werk ben je geneigd om alleen successen te bestuderen? Zoek actief naar drie mislukkingen en analyseer wat er écht misging.",
+    aiHelperPrompts: ["Hoe herken ik overlevingsbias in mijn eigen redenering?", "Hoe verzamel ik ook data over mislukkingen?", "Welke sectoren zijn het meest gevoelig voor overlevingsbias?"]
+  },
+  {
+    id: "data-visualization",
+    title: "Datavisualisatie",
+    difficulty: 1,
+    emoji: "📊",
+    academicCategory: "Statistiek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["data", "visualisatie", "grafiek", "communicatie"],
+    definition: "Datavisualisatie is het omzetten van numerieke informatie in visuele representaties die patronen, trends en relaties direct zichtbaar maken — maar kunnen ook misleiden als de schaal of context onjuist is.",
+    abstractExample: "Een grafiek is als een kaart: het maakt de complexe werkelijkheid begrijpelijk, maar de kaartenmaker kiest wat te tonen en hoe — die keuzes beïnvloeden de interpretatie.",
+    examples: [
+      { domain: "Media", icon: "📺", text: "Een staafdiagram dat niet bij nul begint maakt kleine verschillen dramatisch groot lijken — een veelgebruikte misleidingstechniek in nieuwsgraphics." },
+      { domain: "Wetenschap", icon: "🔬", text: "Edward Tufte's 'sparklines' comprimeren complexe tijdreeksen tot miniatuurgrafieken die direct in tekst leesbaar zijn." },
+      { domain: "Beleid", icon: "🏛️", text: "Een warmtekaart van coronabesmettingen per regio maakt in één oogopslag zichtbaar welke gebieden het hardst geraakt zijn." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke grafiek is het meest geschikt voor het tonen van een trend over tijd?", options: ["Cirkeldiagram", "Staafdiagram", "Lijndiagram", "Scatterplot"], correct: 2, explanation: "Lijndiagrammen verbinden datapunten in tijd en maken trends en veranderingen direct zichtbaar." }
+    ],
+    creativePrompt: "Vind een misleidende grafiek in een krant of op sociale media. Beschrijf wat misleidend is (schaal, assenstart, weglaten van data) en maak een schets van hoe een eerlijke versie eruit ziet.",
+    aiHelperPrompts: ["Welke soorten grafieken gebruik ik voor welke data?", "Hoe herken ik misleidende visualisaties?", "Welke tools gebruik ik voor professionele datavisualisaties?"]
+  },
+  {
+    id: "sampling-bias",
+    title: "Steekproefbias",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Statistiek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["steekproef", "bias", "onderzoek", "representativiteit"],
+    definition: "Steekproefbias treedt op wanneer de groep die je onderzoekt systematisch afwijkt van de populatie die je wil begrijpen — waardoor conclusies niet generaliseerbaar zijn.",
+    abstractExample: "Als je vraagt aan mensen op een sportschool of ze genoeg bewegen, zal je antwoord heel anders zijn dan als je willekeurige voorbijgangers vraagt — je steekproef is al geselecteerd.",
+    examples: [
+      { domain: "Politiek", icon: "🗳️", text: "Telefonische peilingen bereiken geen jongeren zonder vaste lijn — waardoor peilingen de mening van ouderen oververtegenwoordigen." },
+      { domain: "Medisch", icon: "🏥", text: "Klinische trials met voornamelijk witte mannen als deelnemers leveren behandelingen op die minder goed werken voor vrouwen en andere groepen." },
+      { domain: "Tech", icon: "💻", text: "Gezichtsherkenningssystemen getraind op voornamelijk lichte gezichten functioneren slechter bij donkerdere huidtinten." }
+    ],
+    prerequisites: [],
+    unlocks: ["p-value-significance"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de beste manier om steekproefbias te verminderen?", options: ["Grotere steekproef nemen", "Willekeurige steekproef uit de volledige doelpopulatie", "Alleen deskundigen bevragen", "Meer gedetailleerde vragen stellen"], correct: 1, explanation: "Alleen willekeurige steekproef garandeert dat elk lid van de populatie gelijke kans heeft om gekozen te worden." }
+    ],
+    creativePrompt: "Ontwerp een enquête over gelukkige relaties. Beschrijf hoe je je steekproef zou selecteren en identificeer drie manieren waarop je steekproef systematisch vertekend kan zijn.",
+    aiHelperPrompts: ["Hoe minimaliseer ik steekproefbias in mijn onderzoek?", "Welke soorten steekproefbias bestaan er?", "Hoe beoordeel ik de representativiteit van een studie?"]
+  },
+  {
+    id: "effect-size",
+    title: "Effect Grootte",
+    difficulty: 2,
+    emoji: "📏",
+    academicCategory: "Statistiek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["statistiek", "onderzoek", "praktisch", "meting"],
+    definition: "Effect grootte meet hoe groot of praktisch belangrijk een statistisch gevonden verschil is — los van statistische significantie. Een klein p-waarde garandeert niet dat het effect groot genoeg is om praktisch relevant te zijn.",
+    abstractExample: "Een nieuwe leesmethode verhoogt gemiddelde scores met 0.3 punten (p = 0.001): statistisch significant, maar is 0.3 punt verbetering de kosten van een heel nieuwe methode waard?",
+    examples: [
+      { domain: "Medisch", icon: "🏥", text: "Een medicijn vermindert bloeddruk met 2 mmHg (statistisch significant bij grote groepen) — maar dit heeft nauwelijks klinische betekenis voor individuele patiënten." },
+      { domain: "Onderwijs", icon: "📚", text: "Meta-analyses meten Cohen's d om te vergelijken welke interventies werkelijk grote leereffecten hebben vs. statistisch significante maar kleine verbeteringen." },
+      { domain: "Marketing", icon: "🛍️", text: "A/B-test toont 0.1% hogere conversie (p < 0.001) bij miljoen bezoekers — statistisch significant, maar is de aanpassing de ontwikkelkosten waard?" }
+    ],
+    prerequisites: ["p-value-significance"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke maat voor effect grootte is het meest gebruikt in psychologisch onderzoek?", options: ["P-waarde", "Cohen's d", "R-kwadraat", "Standaarddeviatie"], correct: 1, explanation: "Cohen's d meet het verschil in gemiddelden uitgedrukt in standaarddeviaties — een gestandaardiseerde maat voor effect grootte." }
+    ],
+    creativePrompt: "Zoek een wetenschappelijk onderzoeksresultaat dat jou verraste. Bedenk vragen die je zou stellen om te bepalen of het effect groot genoeg is om je gedrag te veranderen.",
+    aiHelperPrompts: ["Wat is het verschil tussen statistisch en praktisch significant?", "Hoe interpreteer ik Cohen's d?", "Wanneer moet ik effect grootte meewegen bij beleidsbeslissingen?"]
+  },
+  {
+    id: "anecdote-vs-data",
+    title: "Anekdote versus Data",
+    difficulty: 1,
+    emoji: "📝",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["bewijs", "redeneren", "data", "anekdote"],
+    definition: "Een anekdote is een persoonlijk verhaal of individueel geval; data is systematisch verzamelde informatie over een groep. Anekdotes zijn krachtig voor illustratie maar kunnen geen statistische patronen vervangen als bewijs.",
+    abstractExample: "Mijn oma rookte elke dag en werd 95 — dit anekdote weerlegt niet de statistische realiteit dat roken de levensverwachting gemiddeld met tien jaar verkort.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏥", text: "Een vriend die genas van kanker na een dieet bewijst niet dat het dieet kanker geneest — individuele gevallen zijn geen statistische studies." },
+      { domain: "Economie", icon: "💰", text: "'Ik ken een immigrant die succesvol is' en 'de meeste immigranten integreren goed' zijn beide valide observaties op verschillende niveaus." },
+      { domain: "Beleid", icon: "🏛️", text: "Politici gebruiken hartverscheurende individuele gevallen om beleid te bepleiten — wetgeving moet echter gegrond zijn op hoe de wet de brede bevolking beïnvloedt." }
+    ],
+    prerequisites: [],
+    unlocks: ["base-rate-fallacy"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is een anekdote wél wetenschappelijk relevant?", options: ["Nooit", "Als het een hypothesis genereert voor verder onderzoek", "Als het van een expert komt", "Als er meerdere anekdotes zijn"], correct: 1, explanation: "Anekdotes zijn waardevol als startpunt voor hypotheses, maar moeten worden gevolgd door systematisch onderzoek." }
+    ],
+    creativePrompt: "Zoek een mening die je sterk aanhangt die voornamelijk is gebaseerd op persoonlijke ervaringen. Wat zou de data zeggen? Zoek een studie op en vergelijk het met jouw anekdote.",
+    aiHelperPrompts: ["Hoe gebruik ik anekdotes effectief zonder te misleiden?", "Wanneer is kwalitatief onderzoek even goed als kwantitatief?", "Hoe weeg ik persoonlijke ervaringen af tegen statistische data?"]
+  },
+  {
+    id: "a-b-testing",
+    title: "A/B-testen",
+    difficulty: 2,
+    emoji: "🧪",
+    academicCategory: "Experimenteel Onderzoek",
+    skillCategory: "Statistiek & Dataredeneren",
+    tags: ["experiment", "testen", "data", "beslissing"],
+    definition: "A/B-testen is het vergelijken van twee varianten (A en B) door ze tegelijkertijd aan willekeurig geselecteerde groepen aan te bieden, om te meten welke variant beter presteert op een gedefinieerde metriek.",
+    abstractExample: "A/B-testen is als twee versies van een recept serveren aan twee willekeurige tafels in een restaurant en meten welke gasten meer opeten.",
+    examples: [
+      { domain: "Website", icon: "💻", text: "Amazon test constant knopkleuren, teksten en layouts op willekeurige bezoekers — kleine verbeteringen bij miljarden bezoekers zijn enorme omzetverhogingen." },
+      { domain: "Email", icon: "📧", text: "Een nieuwsbrief test twee onderwerpregels bij 10% van de lijst, stuurt de winnaar naar de rest — data bepaalt de beste formulering." },
+      { domain: "Beleid", icon: "🏛️", text: "Gedragseconomen testen via gerandomiseerde trials welke formulering van belastingherinneringen de hoogste betalingsratio oplevert." }
+    ],
+    prerequisites: ["p-value-significance"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de meest kritische voorwaarde voor een valide A/B-test?", options: ["Grote steekproef", "Willekeurige toewijzing van deelnemers", "Lange testduur", "Professionele tools"], correct: 1, explanation: "Willekeurige toewijzing garandeert dat de twee groepen vergelijkbaar zijn — anders vergelijk je appels met peren." }
+    ],
+    creativePrompt: "Ontwerp een A/B-test voor iets in jouw leven: een manier van vragen stellen, een ochtendoefening, of een communicatiestijl. Wat test je, hoe randomiseer je en wat is je sucesmetriek?",
+    aiHelperPrompts: ["Hoe bepaal ik de juiste steekproefgrootte voor een A/B-test?", "Welke fouten maak ik bij A/B-testen?", "Hoe voer ik A/B-tests uit zonder techniekafdeling?"]
   }
 ];
