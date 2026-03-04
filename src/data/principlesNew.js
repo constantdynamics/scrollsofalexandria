@@ -6206,5 +6206,157 @@ export const principlesNew = [
       { domain: "Sparen", icon: "💰", text: "Automatische inschrijving voor pensioensparen (opt-out) verhoogt spaarparticipatiecijfers dramatisch versus opt-in systemen." },
       { domain: "Energie", icon: "⚡", text: "Bericht op energierekening dat jouw verbruik vergelijkt met buren reduceert energiegebruik — sociale norm-nudge." }
     ],
-  }
+  },
+
+  // ── Batch Z8: Communicatie & Media ──────────────────────────────────────────
+  {
+    id: "framing-effect-media",
+    title: "Framing in Media",
+    difficulty: 2,
+    emoji: "🖼️",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "Hoe een bericht wordt geframed — welke aspecten worden belicht, welke worden weggelaten — bepaalt sterk hoe de ontvanger de werkelijkheid begrijpt en beoordeelt, los van de feitelijke inhoud.",
+    abstractExample: "Hetzelfde glas water kan worden beschreven als 'halfvol' of 'halfleeg'. De feiten zijn identiek, maar de frame stuurt de emotionele reactie en conclusie.",
+    examples: [
+      { domain: "Nieuws", icon: "📰", text: "Een protest van 10.000 mensen kan worden geframed als 'massale betoging' of als 'slechts 10.000 van de 17 miljoen Nederlanders'. Beide zijn feitelijk correct, maar sturen perceptie anders." },
+      { domain: "Politiek", icon: "🏛️", text: "Belastingverlaging framen als 'meer geld voor burgers' of 'minder geld voor publieke voorzieningen' — afhankelijk van politieke agenda." },
+      { domain: "Gezondheid", icon: "🏥", text: "'95% overlevingskans' versus '5% sterftekans' zijn statistisch identiek maar leiden tot andere patiëntbeslissingen over behandelingen." }
+    ],
+  },
+  {
+    id: "agenda-setting",
+    title: "Agenda-Setting",
+    difficulty: 2,
+    emoji: "📋",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "Media bepalen niet wat mensen denken, maar waarover ze nadenken. Door aandacht te geven aan bepaalde onderwerpen boven andere, bepalen media welke kwesties als belangrijk worden ervaren.",
+    abstractExample: "Als kranten drie weken lang over criminaliteit schrijven, gaan burgers criminaliteit als belangrijkste probleem zien — ook als de statistieken niet zijn veranderd.",
+    examples: [
+      { domain: "Journalistiek", icon: "📡", text: "Wanneer media intensief over immigratie berichten, stijgt dit onderwerp in peilingen als 'grootste zorg van burgers', ongeacht objectieve trends." },
+      { domain: "Verkiezingen", icon: "🗳️", text: "De thema's die domineren in media-agenda bepalen sterk welke kwesties kandidaten moeten beantwoorden in campagnes." },
+      { domain: "Bedrijfsleven", icon: "💼", text: "Negatieve media-aandacht voor een bedrijf schaadt reputatie en aandelenkoers, zelfs als de berichtgeving feitelijk onjuist of overdreven is." }
+    ],
+  },
+  {
+    id: "echo-chamber",
+    title: "Echokamer",
+    difficulty: 2,
+    emoji: "🔊",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "Een echokamer is een omgeving — online of offline — waarin mensen alleen informatie tegenkomen die hun bestaande overtuigingen bevestigt, waardoor polarisatie en blinde vlekken toenemen.",
+    abstractExample: "Als je alleen vrienden volgt die jouw mening delen en algoritmen content filteren op engagement, hoor je nooit tegengestelde argumenten — je eigen stem weerkaatst terug.",
+    examples: [
+      { domain: "Sociale media", icon: "📱", text: "Algoritmen van Facebook en Twitter tonen content waar je op klikt — als je op politieke content van één kant klikt, verdwijnt de andere kant uit je feed." },
+      { domain: "Nieuws", icon: "📰", text: "Mensen die alleen hun 'eigen' nieuwsbron volgen, ontwikkelen een vertekend beeld van hoe groot het draagvlak voor tegenstanders werkelijk is." },
+      { domain: "Bedrijf", icon: "🏢", text: "Teams die intern nooit kritiek ontvangen van buiten, maken vaker slechte beslissingen door groepsdenken en gebrek aan externe perspectieven." }
+    ],
+  },
+  {
+    id: "gatekeeping",
+    title: "Gatekeeping",
+    difficulty: 2,
+    emoji: "🚪",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "Gatekeeping is het proces waarbij redacteuren, platforms of algoritmen bepalen welke informatie doorgaat naar een publiek en welke wordt gefilterd — ze zijn de 'poortwachters' van informatie.",
+    abstractExample: "Van de duizenden nieuwsgebeurtenissen per dag, selecteert een hoofdredacteur er twintig voor de voorpagina. Die selectie bepaalt wat 'nieuws' is.",
+    examples: [
+      { domain: "Journalistiek", icon: "📡", text: "Een hoofdredacteur beslist welke verhalen worden gepubliceerd, welke bronnen worden geciteerd en welke invalshoek wordt gekozen." },
+      { domain: "Sociale media", icon: "📱", text: "Platforms als YouTube en Instagram bepalen via algoritmen welke content wordt aanbevolen — ze zijn de nieuwe gatekeepers, maar zonder transparantie." },
+      { domain: "Wetenschap", icon: "🔬", text: "Peer-review tijdschriften selecteren welk onderzoek wordt gepubliceerd — positieve bevindingen hebben hogere kans dan nullresultaten (publicatiebias)." }
+    ],
+  },
+  {
+    id: "parasocial-relationship",
+    title: "Parasociale Relatie",
+    difficulty: 2,
+    emoji: "👤",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "Een parasociale relatie is een eenzijdige, emotionele band die een publiek opbouwt met een mediapersona — een presentator, influencer of filmfiguur — die geen weet heeft van het individu.",
+    abstractExample: "Je voelt je verdrietig als een YouTuber stopt, terwijl die persoon je niet kent. Die gevoelsband is reëel voor jou, maar bestaat niet wederzijds.",
+    examples: [
+      { domain: "Social media", icon: "📱", text: "Miljoenen volgers voelen een persoonlijke band met influencers die dagelijks hun leven delen, waardoor zij hun productaanbevelingen meer vertrouwen dan reclame." },
+      { domain: "TV", icon: "📺", text: "Nieuwslezers die jarenlang in de huiskamer komen, worden ervaren als 'bekende gezichten' met een vertrouwensrelatie die de kijker beïnvloedt." },
+      { domain: "Podcasts", icon: "🎙️", text: "Luisteraars die dagelijks een uur naar dezelfde presentator luisteren, ervaren een intieme band die koopgedrag en politieke opvattingen kan sturen." }
+    ],
+  },
+  {
+    id: "disinformation-vs-misinformation",
+    title: "Desinformatie vs. Misinformatie",
+    difficulty: 2,
+    emoji: "🔍",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "Misinformatie is onjuiste informatie die onbewust wordt verspreid. Desinformatie is bewust gecreëerde en verspreide onjuiste informatie met de intentie te misleiden. Het onderscheid zit in de intentie.",
+    abstractExample: "Een vriend die een onjuist gerucht doorstuur omdat hij het gelooft: misinformatie. Een staatsmedia die bewust valse verhalen verspreidt om de publieke opinie te manipuleren: desinformatie.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Nepnieuws dat bewust door actoren wordt gecreëerd en verspreid voor electorale beïnvloeding is desinformatie. Journalisten die fouten maken zijn misinformatie." },
+      { domain: "Gezondheid", icon: "🏥", text: "Patiënten die onjuiste volkswijsheden over medicijnen doorgeven zijn misinformatie. Farmaceutische fraude met bewust vervalste studies is desinformatie." },
+      { domain: "Bedrijf", icon: "💼", text: "Een werknemer die verkeerde verkoopscijfers doorgeeft bij vergissing verschilt fundamenteel van een concurrent die bewust valse geruchten verspreidt over jouw product." }
+    ],
+  },
+  {
+    id: "media-literacy",
+    title: "Mediawijsheid",
+    difficulty: 1,
+    emoji: "🧭",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "Mediawijsheid is het vermogen om media-inhoud kritisch te analyseren, te evalueren en te creëren — inclusief het herkennen van bias, framing, bronkwaliteit en manipulatietechnieken.",
+    abstractExample: "Een mediawijs persoon vraagt bij elk bericht: Wie maakt dit? Wat willen ze bereiken? Welk perspectief ontbreekt? Welk bewijs onderbouwt dit? Hoe wordt taal gebruikt om te overtuigen?",
+    examples: [
+      { domain: "Nieuws", icon: "📰", text: "Controleren of een nieuwsbericht meerdere bronnen heeft, of citaten in context staan en of de foto bij het artikel is of van een andere situatie." },
+      { domain: "Social media", icon: "📱", text: "Herkennen dat een viraal bericht dat sterke emoties oproept extra verificatie verdient — emotionele inhoud wordt bewust gebruikt om verificatiereflex uit te schakelen." },
+      { domain: "Onderwijs", icon: "📚", text: "Leerlingen leren om onderscheid te maken tussen opinie en feit, primaire en secundaire bronnen, en advertentie-inhoud versus redactionele inhoud." }
+    ],
+  },
+  {
+    id: "spiral-of-silence",
+    title: "Spiraal van Zwijgen",
+    difficulty: 2,
+    emoji: "🌀",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "De spiraal van zwijgen (Noelle-Neumann) beschrijft hoe mensen met minderheidsstandpunten geneigd zijn te zwijgen uit angst voor sociale isolatie, waardoor de dominante mening nog dominanter lijkt.",
+    abstractExample: "Als je denkt dat je mening over een controversieel onderwerp niet populair is, zwijg je. Daardoor horen anderen alleen de dominante mening en denken zij ook dat iedereen het eens is.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Kiezers die op een onpopulair geachte partij stemmen, zeggen dit niet openlijk. In de stemhokjes wijkt de uitslag dan af van peilingen (het 'shy voter'-effect)." },
+      { domain: "Werkplek", icon: "💼", text: "Als een teamlid denkt dat zijn kritiek op een besluit niet wordt gewaardeerd, zwijgt hij — waardoor de manager denkt dat iedereen akkoord gaat." },
+      { domain: "Onderwijs", icon: "📚", text: "Studenten die niet begrijpen wat de docent uitlegt, zwijgen als ze denken de enige zijn die het niet snapt. De docent concludeert ten onrechte dat de stof duidelijk is." }
+    ],
+  },
+  {
+    id: "two-step-flow",
+    title: "Tweestapsmodel van Communicatie",
+    difficulty: 2,
+    emoji: "↔️",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "Het tweestapsmodel (Lazarsfeld) stelt dat media-invloed verloopt via opinieleiders: media beïnvloeden eerst opinieleiders, die vervolgens hun directe sociale omgeving beïnvloeden — persoonlijke invloed is krachtiger dan directe media-invloed.",
+    abstractExample: "Je wijzigt je mening over een politieke kwestie niet na het tv-nieuws, maar na een gesprek met een vriend die het nieuws geloofwaardig interpreteerde. Die vriend is de opinieleider.",
+    examples: [
+      { domain: "Marketing", icon: "📣", text: "Influencer-marketing benut het tweestapsmodel: merken bereiken via influencers (opinieleiders) hun volgers effectiever dan via directe advertenties." },
+      { domain: "Politiek", icon: "🏛️", text: "Politieke partijen investeren in activering van actieve leden (opinieleiders) die vervolgens hun netwerk overtuigen — directe reclame is minder effectief." },
+      { domain: "Gezondheid", icon: "🏥", text: "Vaccinatiecampagnes zijn succesvoller als ze eerst huisartsen en dorpsoudsten overtuigen, die vervolgens hun gemeenschap bereiken dan massamedia alleen." }
+    ],
+  },
+  {
+    id: "uses-gratifications",
+    title: "Gebruiks- en Gratificatietheorie",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Communicatiewetenschappen",
+    skillCategory: "Communicatie & Media",
+    definition: "De gebruiks- en gratificatietheorie stelt dat mensen actief media kiezen om specifieke behoeften te vervullen: informatie, vermaak, identiteitsvorming of sociale integratie. Mensen gebruiken media, media gebruiken niet mensen.",
+    abstractExample: "Jij kiest bewust het nieuws om geïnformeerd te blijven, een serie om te ontspannen en sociale media om contact te houden — elk medium vervult een andere behoefte.",
+    examples: [
+      { domain: "Televisie", icon: "📺", text: "Mensen kijken naar realityshows niet passief maar actief — voor sociale vergelijking, gespreksstof of vicarisch avontuur. Begrip van de behoefte verklaart kijkgedrag." },
+      { domain: "Social media", icon: "📱", text: "Jongeren gebruiken Instagram voor identiteitsvorming en sociale validatie, TikTok voor vermaak en YouTube voor leren — dezelfde persoon, drie verschillende behoeften." },
+      { domain: "Marketing", icon: "📣", text: "Effectieve content sluit aan bij de behoefte die een medium vervult: LinkedIn-posts voor professionele identiteit werken anders dan Instagram-posts voor lifestyle." }
+    ],
+  },
 ];
