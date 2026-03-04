@@ -7166,5 +7166,237 @@ export const principlesNew = [
     ],
     creativePrompt: "In welke situaties ervaar jij meerdere 'rechtssystemen' tegelijkertijd (familie-etiquette, professionele normen, culturele verwachtingen, nationale wet)? Hoe navigeer je conflicten tussen die systemen?",
     aiHelperPrompts: ["Hoe gaan rechters om met conflicterende rechtssystemen?", "Wat zijn bekende voorbeelden van rechtspluralisme?", "Hoe verhoudt religieus recht zich tot nationaal recht in Nederland?"]
+  },
+
+  // Batch W – Onderwijs & Pedagogie
+  {
+    id: "zone-of-proximal-development",
+    title: "Zone van Naaste Ontwikkeling",
+    difficulty: 2,
+    emoji: "📈",
+    academicCategory: "Pedagogie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["leren", "vygotsky", "scaffolding", "ontwikkeling"],
+    definition: "Vygotsky's Zone van Naaste Ontwikkeling (ZPD) is het gebied tussen wat een leerling zelfstandig kan en wat hij met begeleiding kan bereiken — effectief onderwijs vindt in deze zone plaats.",
+    abstractExample: "Als een kind net kan fietsen met zijwieltjes, is fietsen zonder hulp in de ZPD — met de juiste steun (even vasthouden) kan het kind de sprong maken die het zelfstandig nog niet kon.",
+    examples: [
+      { domain: "Onderwijs", icon: "📚", text: "Een leraar geeft een wiskundesom die net iets moeilijker is dan wat een leerling zelfstandig kan — met hints en begeleiding slaagt de leerling." },
+      { domain: "Sport", icon: "⚽", text: "Een trainer laat een sporter oefeningen doen die net buiten zijn comfortzone liggen, met technische ondersteuning om de techniek te verbeteren." },
+      { domain: "Werk", icon: "💼", text: "Een mentor geeft een junior een project dat net boven zijn huidige niveau ligt, met beschikbaarheid voor begeleiding bij obstakels." }
+    ],
+    prerequisites: [],
+    unlocks: ["scaffolding-learning"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is 'scaffolding' in onderwijscontext?", options: ["Bouw van scholen", "Tijdelijke steun die geleidelijk wordt afgebouwd terwijl de leerling zelfstandiger wordt", "Het beoordelen van leerlingen", "Het structureren van leerdoelen"], correct: 1, explanation: "Scaffolding is de pedagogische steiger: tijdelijke ondersteuning die precies genoeg helpt en geleidelijk wordt weggenomen als de leerling het zelf kan." }
+    ],
+    creativePrompt: "Identificeer jouw eigen huidige ZPD in een vaardigheid die je wil leren. Wat kun je al? Wat lukt nog niet zelfstandig? Welke 'scaffolding' heb je nodig om de volgende stap te zetten?",
+    aiHelperPrompts: ["Hoe pas ik de ZPD toe als docent of mentor?", "Hoe weet ik wanneer een taak in de ZPD van een leerling ligt?", "Wat is het verschil tussen ZPD en differentiatie?"]
+  },
+  {
+    id: "scaffolding-learning",
+    title: "Scaffolding in Leren",
+    difficulty: 1,
+    emoji: "🏗️",
+    academicCategory: "Pedagogie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["scaffolding", "leren", "steun", "instructie"],
+    definition: "Scaffolding is het bieden van tijdelijke, gerichte ondersteuning die geleidelijk wordt afgebouwd naarmate de leerling bekwamer wordt — zodat uiteindelijk zelfstandig functioneren mogelijk is.",
+    abstractExample: "Scaffolding werkt als een bouwsteiger: essentieel tijdens de bouw, maar pas nuttig als hij uiteindelijk wordt verwijderd — het gebouw (de vaardigheid) staat dan op zichzelf.",
+    examples: [
+      { domain: "Schrijven", icon: "✏️", text: "Leerlingen krijgen eerst een sjabloon voor een betoog (stelling, argument, tegenargument, conclusie) en schrijven later zonder die structuur." },
+      { domain: "Wiskunde", icon: "🔢", text: "Rekenmachine toestaan bij moeilijke sommen terwijl de conceptuele stap wordt geleerd; later de rekenmachine weghalen." },
+      { domain: "Programmeren", icon: "💻", text: "Beginners krijgen een kant-en-klare codestructuur met TODO-opmerkingen; gevorderden starten vanaf nul." }
+    ],
+    prerequisites: ["zone-of-proximal-development"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is scaffolding het meest effectief?", options: ["Als het permanent beschikbaar blijft", "Als het tijdelijk is en geleidelijk wordt afgebouwd", "Als het door peers wordt gegeven", "Als het digitaal is"], correct: 1, explanation: "Scaffolding werkt alleen als leerinstrument als het uiteindelijk wordt verwijderd — anders creëert het afhankelijkheid in plaats van competentie." }
+    ],
+    creativePrompt: "Ontwerp scaffolding voor iemand die van nul wil leren koken. Welke steun geef je in week 1, week 4 en week 12? Wanneer en hoe bouw je die steun af?",
+    aiHelperPrompts: ["Welke soorten scaffolding zijn er?", "Hoe vermijd ik dat leerlingen te afhankelijk worden van scaffolding?", "Hoe gebruik ik digitale tools als scaffolding?"]
+  },
+  {
+    id: "formative-vs-summative",
+    title: "Formatief vs. Summatief Beoordelen",
+    difficulty: 1,
+    emoji: "📊",
+    academicCategory: "Pedagogie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["beoordeling", "toets", "feedback", "leren"],
+    definition: "Formatief beoordelen geeft tussentijdse feedback om het leerproces te sturen ('leren van toetsen'); summatief beoordelen meet prestaties aan het einde om te classificeren ('toetsen van leren').",
+    abstractExample: "Formatief beoordelen is als de scheidsrechter die tijdens het spel corrigeert; summatief beoordelen is de eindstand die bepaalt wie wint.",
+    examples: [
+      { domain: "Onderwijs", icon: "📚", text: "Een wekelijkse exit-ticket (formatief) helpt de docent te zien welke concepten nog niet begrepen zijn voor de volgende les." },
+      { domain: "Werk", icon: "💼", text: "Tussentijdse functioneringsgesprekken (formatief) zijn waardevoller voor ontwikkeling dan alleen een jaarlijkse beoordeling (summatief)." },
+      { domain: "Sport", icon: "⚽", text: "Trainerscoaching tijdens training (formatief) vs. wedstrijdresultaten als maat voor seizoensprestaties (summatief)." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk type beoordeling is het meest waardevol voor het verbeteren van leerprocessen?", options: ["Summatief, want dit bepaalt de cijfers", "Formatief, want dit geeft tijdige feedback om bij te sturen", "Diagnostisch, want dit meet startkennis", "Portfoliobeoordeling"], correct: 1, explanation: "Formatief beoordelen vindt plaats tijdens het leerproces en geeft zowel leerling als docent informatie om direct bij te sturen." }
+    ],
+    creativePrompt: "Ontwerp een formatief beoordelingssysteem voor een vaardigheid die jij anderen zou willen leren. Welke tussentijdse checkpoints gebruik je en welke feedback geef je?",
+    aiHelperPrompts: ["Welke formatieve beoordelingstechnieken zijn het meest effectief?", "Hoe zorg ik dat cijfers (summatief) ook formatieve waarde hebben?", "Hoe geef ik effectieve schriftelijke feedback?"]
+  },
+  {
+    id: "growth-mindset-education",
+    title: "Groeimindset in Onderwijs",
+    difficulty: 1,
+    emoji: "🌱",
+    academicCategory: "Pedagogie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["mindset", "inspanning", "intelligentie", "groei"],
+    definition: "Carol Dweck's groeimindset is de overtuiging dat intelligentie en vaardigheden ontwikkelbaar zijn door inspanning — in tegenstelling tot de fixed mindset die aangeboren talent als onveranderlijk ziet.",
+    abstractExample: "Een groeimindset ziet een toetsfout als een uitnodiging om beter te begrijpen; een fixed mindset ziet dezelfde fout als bewijs van beperkte intelligentie.",
+    examples: [
+      { domain: "Onderwijs", icon: "📚", text: "Leerlingen loven om hun inspanning ('je hebt hard gewerkt') in plaats van talent ('je bent slim') stimuleert groeimindset." },
+      { domain: "Sport", icon: "⚽", text: "Een atleet die verlies ziet als data voor verbetering bereikt op lange termijn meer dan iemand die verlies als persoonlijk falen ervaart." },
+      { domain: "Werk", icon: "💼", text: "Teams die fouten behandelen als leerkansen innoveren meer dan teams die falen afstraffen." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke lof stimuleert een groeimindset?", options: ["'Je bent zo slim!'", "'Je hebt echt hard gewerkt aan dit probleem'", "'Je hebt het makkelijk gevonden'", "'Je bent een natuurtalent'"], correct: 1, explanation: "Lof voor inspanning benadrukt dat prestatie voortkomt uit werk — iets dat de leerling kan beïnvloeden — wat een groeimindset versterkt." }
+    ],
+    creativePrompt: "In welk domein heb jij een fixed mindset? Welke specifieke overtuiging houdt je tegen? Herschrijf die overtuiging als een groeimindset-statement en beschrijf wat jij concreet kunt doen om te groeien.",
+    aiHelperPrompts: ["Hoe stimuleer ik een groeimindset bij kinderen?", "Is groeimindset werkelijk bewezen effectief?", "Hoe herken ik fixed mindset-patronen in mijn eigen denken?"]
+  },
+  {
+    id: "differentiated-instruction",
+    title: "Gedifferentieerd Onderwijs",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Pedagogie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["differentiatie", "individueel", "aanpassing", "leerstijl"],
+    definition: "Gedifferentieerd onderwijs past inhoud, proces en product aan op basis van de individuele behoeften, interesses en leerstijlen van leerlingen — in plaats van één aanpak voor iedereen.",
+    abstractExample: "Een uitstekende kok past hetzelfde recept aan voor vegetariërs, allergici en voorkeursmaken — hetzelfde gerecht, aangepast voor wie er aan tafel zit.",
+    examples: [
+      { domain: "Lezen", icon: "📖", text: "Leerlingen lezen over hetzelfde onderwerp maar op verschillende niveaus — sommigen de basisversie, anderen de verdiepende tekst." },
+      { domain: "Wiskunde", icon: "🔢", text: "Snelle leerlingen krijgen uitdagingsopgaven; leerlingen die de stof nog verwerken krijgen meer oefening met basisconcepten." },
+      { domain: "Project", icon: "🎨", text: "Leerlingen tonen hun begrip op hun eigen manier: sommigen schrijven een essay, anderen maken een poster, anderen geven een presentatie." }
+    ],
+    prerequisites: ["zone-of-proximal-development"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Op welke drie dimensies kan gedifferentieerd worden in onderwijs?", options: ["Moeilijkheid, snelheid en locatie", "Inhoud, proces en product", "Groepsgrootte, tijd en materialen", "Leerkracht, leerling en ouder"], correct: 1, explanation: "Tomlinson's model differentieert op inhoud (wat geleerd wordt), proces (hoe geleerd wordt) en product (hoe begrip wordt aangetoond)." }
+    ],
+    creativePrompt: "Ontwerp een les over een onderwerp naar keuze voor drie niveaus: beginnend, gemiddeld en gevorderd. Hoe pas je inhoud, activiteiten en eindproduct aan voor elk niveau?",
+    aiHelperPrompts: ["Hoe differentieer ik in een klas van 30 leerlingen?", "Is differentiatie evidence-based?", "Hoe combineer ik differentiatie met klassenmanagement?"]
+  },
+  {
+    id: "inquiry-based-learning",
+    title: "Onderzoekend Leren",
+    difficulty: 2,
+    emoji: "🔬",
+    academicCategory: "Pedagogie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["onderzoek", "vragen", "ontdekking", "leren"],
+    definition: "Onderzoekend leren is een aanpak waarbij leerlingen zelf vragen stellen, hypothesen formuleren, informatie verzamelen en conclusies trekken — actief leren door te ontdekken in plaats van passief ontvangen.",
+    abstractExample: "In plaats van docent die uitlegt waarom planten groeien, laten leerlingen zelf planten groeien onder verschillende condities en concluderen waarom sommige beter gedijen.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "Leerlingen ontwerpen een eigen experiment om te testen of suiker of zout beter oplost in warm water — ze formuleren de vraag, het experiment en de conclusie." },
+      { domain: "Maatschappijleer", icon: "🌍", text: "Leerlingen onderzoeken zelf de oorzaken van een lokaal probleem (files, ongelijkheid) via interviews, data en rapportage." },
+      { domain: "Taal", icon: "📖", text: "In plaats van grammaticaregels uit het hoofd leren, ontdekken leerlingen zelf patronen in taalgebruik via voorbeeldzinnen." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk risico heeft onderzoekend leren?", options: ["Leerlingen leren te veel", "Leerlingen kunnen verkeerde conclusies trekken zonder voldoende begeleiding", "Het is te snel", "Docenten verliezen controle"], correct: 1, explanation: "Zonder goede begeleiding kunnen leerlingen misconcepties ontwikkelen die moeilijk te corrigeren zijn — begeleide ontdekking is effectiever dan puur vrije ontdekking." }
+    ],
+    creativePrompt: "Ontwerp een onderzoekende leeractiviteit voor iets dat jij goed begrijpt. Welke vraag stel je, hoe ontdekken leerlingen het antwoord zelf en hoe begeleidt je zonder de antwoorden te geven?",
+    aiHelperPrompts: ["Wat zijn de vier fasen van onderzoekend leren?", "Hoe combineer ik directe instructie met onderzoekend leren?", "Welke leeftijd is het meest geschikt voor onderzoekend leren?"]
+  },
+  {
+    id: "cognitive-load-teaching",
+    title: "Cognitieve Belasting in Onderwijs",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["cognitie", "werkgeheugen", "instructie", "leren"],
+    definition: "Cognitive Load Theory (Sweller) stelt dat het werkgeheugen beperkt is — effectief onderwijs minimaliseert onnodige cognitieve belasting en maximaliseert de beschikbare capaciteit voor daadwerkelijk leren.",
+    abstractExample: "Proberen tegelijkertijd te lezen, aantekeningen te maken én een moeilijke uitleg te volgen overbelast het werkgeheugen — net als drie programma's tegelijk draaien op een trage computer.",
+    examples: [
+      { domain: "Onderwijs", icon: "📚", text: "Instructies worden stap voor stap gegeven in plaats van alle stappen tegelijk — vermindert extraneous load." },
+      { domain: "Interface", icon: "💻", text: "Een goed ontworpen leerapp toont één concept per scherm zonder afleidende animaties — vermindert cognitieve overbelasting." },
+      { domain: "Presentaties", icon: "🎤", text: "Volgeladen PowerPoint-slides met veel tekst worden vervangen door één kernboodschap per slide — voorkomt split-attention effect." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke drie soorten cognitieve belasting onderscheidt de theorie?", options: ["Intrinsiek, extrinsiek en gemotiveerd", "Intrinsiek (moeilijkheid inhoud), extraneous (onnodige belasting) en germane (leerbelasting)", "Kortetermijn, langetermijn en werkgeheugen", "Visueel, auditief en tactiel"], correct: 1, explanation: "Intrinsieke load hangt af van de moeilijkheid; extraneous load is onnodige belasting door slechte instructie; germane load is de 'goede' belasting van daadwerkelijk leren." }
+    ],
+    creativePrompt: "Analyseer een uitleg of instructie die jij recentelijk ontving. Welke elementen verhoogden de cognitieve belasting onnodig? Hoe zou je de instructie herontwerpen om de belasting te verminderen?",
+    aiHelperPrompts: ["Hoe ontwerp ik instructie met minimale cognitieve belasting?", "Welk effect heeft multitasken op leren?", "Hoe pas ik cognitive load theory toe in digitale leeromgevingen?"]
+  },
+  {
+    id: "mastery-learning",
+    title: "Beheersend Leren",
+    difficulty: 2,
+    emoji: "🎓",
+    academicCategory: "Pedagogie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["beheersing", "leren", "competentie", "tempo"],
+    definition: "Beheersend leren (mastery learning) is een aanpak waarbij leerlingen nieuwe stof pas aangeboden krijgen als ze de voorgaande stof volledig beheersen — elk kind leert op zijn eigen tempo maar bereikt hetzelfde eindniveau.",
+    abstractExample: "Mastery learning is als een videospel: je gaat pas naar het volgende level als je het huidige hebt voltooid — de tijdsduur verschilt, de beheersing is gelijk.",
+    examples: [
+      { domain: "Wiskunde", icon: "🔢", text: "Khan Academy past mastery learning toe: leerlingen oefenen vermenigvuldigen totdat ze 5 van 5 correct hebben, daarna pas staartdeling." },
+      { domain: "Muziek", icon: "🎵", text: "Een muziekleraar laat een student één compositie pas loslaten als ze haar foutloos kan spelen — tempo verschilt per student." },
+      { domain: "Pilotenopleiding", icon: "✈️", text: "Piloten mogen pas solovliegen als ze alle procedures feilloos beheersen — geen tijdslimiet, wel beheersingseis." }
+    ],
+    prerequisites: ["formative-vs-summative"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kernverschil tussen mastery learning en traditioneel onderwijs?", options: ["Mastery learning is duurder", "Mastery learning gaat pas verder als stof wordt beheerst, ongeacht tijd", "Mastery learning heeft geen toetsen", "Mastery learning werkt alleen voor exacte vakken"], correct: 1, explanation: "Traditioneel onderwijs beweegt op een vaste kalender; mastery learning beweegt op tempo van beheersing — fundamenteel andere logica." }
+    ],
+    creativePrompt: "Ontwerp een mastery learning-pad voor het leren van een taal. Welke bouwblokken moet je beheersen voordat je naar de volgende fase gaat? Hoe toets je beheersing?",
+    aiHelperPrompts: ["Hoe implementeer ik mastery learning in een groepsonderwijs setting?", "Wat zijn de bewezen effecten van mastery learning?", "Hoe combineer ik mastery learning met beoordelingssystemen?"]
+  },
+  {
+    id: "hidden-curriculum",
+    title: "Verborgen Curriculum",
+    difficulty: 2,
+    emoji: "🔍",
+    academicCategory: "Onderwijssociologie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["socialisatie", "normen", "school", "cultuur"],
+    definition: "Het verborgen curriculum zijn de impliciete lessen die scholen overbrengen buiten de officiële vakken: normen, waarden, autoriteitsrelaties en sociale verwachtingen die leerlingen onbewust internaliseren.",
+    abstractExample: "Leerlingen leren niet alleen rekenen; ze leren ook dat ze stil moeten zijn als een volwassene spreekt, dat succes wordt gemeten door cijfers en dat regels worden gemaakt door anderen dan zijzelf.",
+    examples: [
+      { domain: "Discipline", icon: "📋", text: "Schoolregels over stiptheid, uniformen en gedrag socialiseren leerlingen in arbeidsdiscipline die economisch nuttig is voor werkgevers." },
+      { domain: "Gender", icon: "♀️", text: "Impliciete verwachtingen dat meisjes stiller zijn en jongens actiever beïnvloeden genderrollen via alledaagse schoolinteracties." },
+      { domain: "Autoriteit", icon: "🏫", text: "De structuur van school (docent als autoriteit, leerling als volger) leert een bepaalde relatie tot gezag die overdraagbaar is naar de werkplek." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wie beschreef het verborgen curriculum als instrument van sociale reproductie?", options: ["Vygotsky", "Bourdieu en Bowles & Gintis", "Dewey", "Freire"], correct: 1, explanation: "Bourdieu (cultureel kapitaal) en Bowles & Gintis (correspondentieprincipe) toonden aan hoe scholen sociale ongelijkheid reproduceren via impliciete normen." }
+    ],
+    creativePrompt: "Welke verborgen lessen leerde jij op school die niets te maken hadden met vakinhoud? Hoe beïnvloeden die lessen jou nu als volwassene?",
+    aiHelperPrompts: ["Hoe maak ik het verborgen curriculum bewust zichtbaar?", "Hoe verschilt het verborgen curriculum per school of land?", "Hoe kan onderwijs bewust het verborgen curriculum bijsturen?"]
+  },
+  {
+    id: "transfer-of-learning",
+    title: "Transfer van Leren",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Leerpsychologie",
+    skillCategory: "Onderwijs & Pedagogie",
+    tags: ["transfer", "toepassing", "generalisatie", "leren"],
+    definition: "Transfer is het vermogen om geleerde kennis of vaardigheden toe te passen in nieuwe, andere contexten — het ultieme doel van onderwijs, maar moeilijker te bereiken dan het lijkt.",
+    abstractExample: "Wiskunde op school leren is waardevol als je het kan toepassen bij het berekenen van kortingen in een winkel — anders is het geïsoleerde kennis zonder transfer.",
+    examples: [
+      { domain: "Taal", icon: "📖", text: "Een student die kritisch schrijven op school leert, past diezelfde argumentatiestructuur toe in een zakelijk rapport — positieve transfer." },
+      { domain: "Sport", icon: "⚽", text: "Coördinatie geleerd bij turnen transfereert naar betere beheersing bij dansen — transfereerbare motorische vaardigheden." },
+      { domain: "Programmeren", icon: "💻", text: "Conceptueel begrip van datastructuren in Python helpt snel te leren programmeren in JavaScript — transfer van abstracte concepten." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke onderwijspraktijk bevordert transfer het meest?", options: ["Veel memorisatie", "Leren in gevarieerde contexten en expliciete verbanden leggen", "Herhaling in dezelfde context", "Focus op één onderwerp tegelijk"], correct: 1, explanation: "Transfer wordt gestimuleerd door variatie in oefencontexten en door leerlingen expliciet te laten nadenken over hoe concepten in nieuwe situaties toepasbaar zijn." }
+    ],
+    creativePrompt: "Identificeer drie dingen die je op school hebt geleerd die je nooit hebt kunnen toepassen. Waarom transfereerde die kennis niet? Hoe had het onderwijs de transfer beter kunnen faciliteren?",
+    aiHelperPrompts: ["Hoe ontwerp ik lessen die transfer bevorderen?", "Wat is het verschil tussen near transfer en far transfer?", "Waarom is transfer zo moeilijk bij abstracte vakken?"]
   }
 ];
