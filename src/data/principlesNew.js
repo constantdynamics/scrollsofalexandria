@@ -6006,5 +6006,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Welke sector zou jij graag 'verstoren'? Beschrijf welk marktsegment nu wordt verwaarloosd en hoe een eenvoudiger, goedkoper alternatief eruit zou zien.",
     aiHelperPrompts: ["Hoe onderscheid ik disruptieve van gewone innovatie?", "Hoe bescherm ik mijn bedrijf tegen disruptie?", "Welke sectoren zijn het meest kwetsbaar voor disruptie?"]
+  },
+
+  // Batch R – Politiek & Bestuur
+  {
+    id: "separation-of-powers",
+    title: "Machtenscheiding",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Politicologie",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["democratie", "macht", "wetgeving", "controle"],
+    definition: "Machtenscheiding is het principe dat staatsmacht wordt verdeeld over drie onafhankelijke organen — wetgevende, uitvoerende en rechtsprekende macht — om machtsmisbruik te voorkomen.",
+    abstractExample: "Net zoals een bedrijf drie onafhankelijke afdelingen heeft (directie, HR, juridisch) die elkaars beslissingen kunnen aanvechten, verdeelt een democratie macht om willekeur te voorkomen.",
+    examples: [
+      { domain: "Nederland", icon: "🇳🇱", text: "Het parlement maakt wetten, de minister-president voert ze uit, en de rechter toetst of ze in overeenstemming zijn met de grondwet." },
+      { domain: "VS", icon: "🇺🇸", text: "Het Congres keurt wetten goed, de president tekent ze (of veto's ze), het Hooggerechtshof kan ze ongrondwettelijk verklaren." },
+      { domain: "Bedrijfsleven", icon: "🏢", text: "Een goed bestuur heeft scheiding tussen directie (uitvoerend), raad van commissarissen (toezichthoudend) en externe accountant (controlerend)." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het primaire doel van machtenscheiding?", options: ["Efficiëntere besluitvorming", "Voorkomen van machtsmisbruik", "Snellere wetgeving", "Grotere representativiteit"], correct: 1, explanation: "Machtenscheiding is bedoeld om te voorkomen dat één persoon of groep te veel macht accumuleert." }
+    ],
+    creativePrompt: "Ontwerp een fictief bestuur voor een stad van 10.000 mensen. Welke drie machten creëer je, wie krijgen ze en hoe controleren ze elkaar?",
+    aiHelperPrompts: ["Wat zijn moderne bedreigingen voor machtenscheiding?", "Hoe verschilt machtenscheiding per land?", "Wanneer kan machtenscheiding falen?"]
+  },
+  {
+    id: "public-goods-problem",
+    title: "Het Publieke Goederen Probleem",
+    difficulty: 2,
+    emoji: "🌉",
+    academicCategory: "Economie",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["collectief", "vrijbuiter", "marktfalen", "overheid"],
+    definition: "Publieke goederen zijn niet-uitsluitbaar (je kunt niemand buitensluiten) en niet-rivaliserend (gebruik door de één vermindert het niet voor anderen) — waardoor de markt ze onderprovideert en overheidsinterventie nodig is.",
+    abstractExample: "Een vuurtoren helpt alle schepen maar geen enkel schip kan worden buitengesloten van het licht; geen reder zal dus vrijwillig betalen, waarna niemand bouwt tenzij de overheid ingrijpt.",
+    examples: [
+      { domain: "Infrastructuur", icon: "🏗️", text: "Dijken in Nederland beschermen iedereen in een regio — je kunt niet alleen de betalers beschermen, dus de overheid organiseert en financiert het." },
+      { domain: "Defensie", icon: "🛡️", text: "Militaire bescherming geldt voor alle burgers tegelijk; een privé-leger van één burger zou alle anderen gratis beschermen." },
+      { domain: "Kennis", icon: "📖", text: "Basiswetenschappelijk onderzoek levert kennis op die iedereen kan gebruiken, waardoor overheden universiteiten subsidiëren." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt een goed 'publiek' in economische zin?", options: ["Het is eigendom van de staat", "Het is niet-uitsluitbaar én niet-rivaliserend", "Het is gratis voor iedereen", "Het wordt gefinancierd door belastingen"], correct: 1, explanation: "De combinatie van niet-uitsluitbaarheid en niet-rivaliteit definieert een puur publiek goed." }
+    ],
+    creativePrompt: "Bedenk drie dingen in jouw stad die publieke goederen zijn en drie die dat bijna zijn maar toch privaat worden geleverd. Waarom werkt dat onderscheid?",
+    aiHelperPrompts: ["Wat is het vrijbuiterprobleem?", "Hoe kunnen publieke goederen privaat worden geleverd?", "Welke nieuwe publieke goederen ontstaan in het digitale tijdperk?"]
+  },
+  {
+    id: "social-contract",
+    title: "Sociaal Contract",
+    difficulty: 3,
+    emoji: "📜",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["legitimiteit", "overheid", "vrijheid", "filosofie"],
+    definition: "Het sociaal contract is de impliciete overeenkomst waarbij individuen bepaalde vrijheden opgeven aan een overheid in ruil voor bescherming, orde en collectieve diensten — de basis van politieke legitimiteit.",
+    abstractExample: "Het sociaal contract is als een huisreglement: je geeft wat persoonlijke vrijheid op (geen lawaai na 22:00) in ruil voor een prettige leefomgeving voor iedereen.",
+    examples: [
+      { domain: "Belasting", icon: "💰", text: "Burgers betalen belasting (opgave van eigendom) in ruil voor wegen, onderwijs en veiligheid die de overheid levert." },
+      { domain: "Wetgeving", icon: "⚖️", text: "Je geeft het recht op eigenrichting op in ruil voor een rechtssysteem dat conflicten oplost." },
+      { domain: "Grondwet", icon: "📋", text: "Een grondwet legt het sociaal contract vast: wat de overheid mag, wat ze moet bieden en welke rechten onvervreemdbaar zijn." }
+    ],
+    prerequisites: [],
+    unlocks: ["separation-of-powers"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke filosoof beschreef het sociaal contract als een 'oorlog van allen tegen allen' zonder overheid?", options: ["John Locke", "Jean-Jacques Rousseau", "Thomas Hobbes", "Immanuel Kant"], correct: 2, explanation: "Hobbes beschreef de 'state of nature' als chaotisch en gevaarlijk, waardoor mensen een Leviathan (sterke overheid) nodig zouden hebben." }
+    ],
+    creativePrompt: "Als je jouw eigen sociaal contract zou schrijven met de overheid: welke drie vrijheden geef je op en welke drie dingen verwacht je er absoluut voor terug?",
+    aiHelperPrompts: ["Hoe verschilt Hobbes van Locke over het sociaal contract?", "Is het sociaal contract vandaag nog relevant?", "Hoe onderbouwen revoluties zich met het sociaal contract?"]
+  },
+  {
+    id: "bureaucracy-theory",
+    title: "Bureaucratie",
+    difficulty: 2,
+    emoji: "🗂️",
+    academicCategory: "Bestuurskunde",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["organisatie", "regels", "efficiency", "hiërarchie"],
+    definition: "Bureaucratie is een systeem van bestuur via vaste regels, hiërarchische structuren en gespecialiseerde ambtenaren — bedoeld voor consistentie en eerlijkheid, maar berucht om zijn inflexibiliteit.",
+    abstractExample: "Een bureaucratie is als een strak geprogrammeerde robot: hij voert precies uit wat geprogrammeerd is, ook als de situatie vraagt om een andere aanpak.",
+    examples: [
+      { domain: "Overheid", icon: "🏛️", text: "Een belastingdienst past dezelfde regels toe op miljoen aangifte om eerlijkheid te garanderen, ook als individuele gevallen uniek zijn." },
+      { domain: "Zorg", icon: "🏥", text: "Ziekenhuisbureaucratie zorgt dat elke patiënt dezelfde veiligheidsprotocollen doorloopt, ook al vertraagt dit soms urgente zorg." },
+      { domain: "Onderwijs", icon: "📚", text: "Diploma-eisen zijn bureaucratisch gestandaardiseerd zodat een MBO-diploma overal in Nederland hetzelfde betekent." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de primaire functie van bureaucratie?", options: ["Innovatie stimuleren", "Consistentie en gelijkheid in besluitvorming", "Kosten minimaliseren", "Democratische participatie vergroten"], correct: 1, explanation: "Bureaucratie zorgt voor gelijke behandeling door vaste regels te volgen, ongeacht wie de ambtenaar is." }
+    ],
+    creativePrompt: "Beschrijf een moment waarop bureaucratie jou frustreerde. Schrijf daarna de bureaucratische 'gedachtegang' op: welk legitiem doel probeerde die regel te bereiken?",
+    aiHelperPrompts: ["Hoe onderscheid ik goede bureaucratie van onnodige bureaucratie?", "Wat zijn alternatieven voor bureaucratisch bestuur?", "Hoe hervormt men een trage bureaucratie?"]
+  },
+  {
+    id: "electoral-systems",
+    title: "Kiesstelsels",
+    difficulty: 2,
+    emoji: "🗳️",
+    academicCategory: "Politicologie",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["democratie", "verkiezingen", "representatie", "stemmen"],
+    definition: "Kiesstelsels zijn de regels die bepalen hoe stemmen worden omgezet in politieke vertegenwoordiging — waarbij proportionele stelsels diversiteit bevorderen en meerderheidsstelsels stabiliteit.",
+    abstractExample: "Een kiestelsel is als de spelregels van een wedstrijd: dezelfde uitslag (stemmen) kan leiden tot heel andere winnaars afhankelijk van hoe de punten worden geteld.",
+    examples: [
+      { domain: "Nederland", icon: "🇳🇱", text: "Proportionele vertegenwoordiging: 10% van de stemmen levert ~10% van de zetels op, wat leidt tot coalitieregeringen." },
+      { domain: "UK", icon: "🇬🇧", text: "First-past-the-post: wie de meeste stemmen haalt in een district wint alles, wat vaak tweepartijenstelsels creëert." },
+      { domain: "Duitsland", icon: "🇩🇪", text: "Gemengd stelsel: helft via directe districten, helft via lijsten — combineert lokale vertegenwoordiging met proportionaliteit." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk kiesstelsel leidt het meest tot tweepartijenpolitiek?", options: ["Proportioneel", "First-past-the-post", "Gemengd", "Preferentieel"], correct: 1, explanation: "First-past-the-post beloont grote partijen onevenredig, waardoor kleine partijen geen kans maken en het systeem convergeert naar twee partijen." }
+    ],
+    creativePrompt: "Ontwerp jouw ideale kiesstelsel voor een land van vijf miljoen mensen. Welke waarden wil je bereiken (representativiteit, stabiliteit, lokale binding) en hoe weeg je die af?",
+    aiHelperPrompts: ["Hoe beïnvloedt een kiesstelsel de politieke cultuur?", "Wat zijn voor- en nadelen van referenda?", "Hoe werkt het Nederlandse proportionele stelsel precies?"]
+  },
+  {
+    id: "lobbying-interest-groups",
+    title: "Lobbyisme",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Politicologie",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["invloed", "belangen", "democratie", "transparantie"],
+    definition: "Lobbyisme is het systematisch beïnvloeden van politieke beslissingen door georganiseerde belangengroepen — een legitiem onderdeel van democratie maar met risico's voor gelijke vertegenwoordiging.",
+    abstractExample: "Lobbyen is als een pleitbezorger in de rechtbank: je presenteert de sterkste argumenten voor jouw kant, maar de rechter (politicus) moet ook alle andere partijen horen.",
+    examples: [
+      { domain: "Farmacie", icon: "💊", text: "Farmaceutische bedrijven lobbyen voor lagere geneesmiddelenprijzen bij inkooponderhandelingen met overheden." },
+      { domain: "Milieu", icon: "🌿", text: "Milieuorganisaties zoals Greenpeace lobbyen voor strengere klimaatregels door politici te informeren en campagne te voeren." },
+      { domain: "Vakbonden", icon: "✊", text: "Vakbonden lobbyen voor hogere minimumlonen door onderhandelingen, stakingsacties en politieke druk." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste democratische risico van lobbyisme?", options: ["Het vertraagt besluitvorming", "Rijke belangen krijgen meer invloed dan gewone burgers", "Het is illegaal in de meeste landen", "Het leidt altijd tot corruptie"], correct: 1, explanation: "Het gevaar is dat georganiseerde geldkrachtige belangen meer politieke toegang krijgen dan burgers zonder middelen." }
+    ],
+    creativePrompt: "Kies een maatschappelijk probleem dat jou bezighoudt. Schrijf een lobbybrief aan een fictieve minister: welke argumenten gebruik je, welke cijfers, welke emotionele appeals?",
+    aiHelperPrompts: ["Hoe verschilt lobbyen van corruptie?", "Hoe werkt het lobbyregister in Nederland?", "Hoe kunnen burgers lobbyen zonder grote budgetten?"]
+  },
+  {
+    id: "federalism",
+    title: "Federalisme",
+    difficulty: 2,
+    emoji: "🗺️",
+    academicCategory: "Politicologie",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["decentralisatie", "regio", "autonomie", "bestuur"],
+    definition: "Federalisme is een staatsinrichtingsprincipe waarbij macht wordt verdeeld tussen een centrale overheid en decentrale eenheden (staten, provincies) die elk eigen bevoegdheden hebben.",
+    abstractExample: "Federalisme is als een appartementencomplex: de VvE beslist over het dak en de lift, maar elke bewoner bepaalt zelf hoe zijn appartement is ingericht.",
+    examples: [
+      { domain: "Duitsland", icon: "🇩🇪", text: "De 16 Bundesländer hebben eigen parlementen en bepalen zelf onderwijs- en politiebeleid, terwijl federale wetten buitenlands beleid regelen." },
+      { domain: "VS", icon: "🇺🇸", text: "Staten stellen eigen wetten vast over belastingen, abortus en drugs — vandaar grote verschillen tussen California en Texas." },
+      { domain: "EU", icon: "🇪🇺", text: "De EU is een quasi-federale unie: lidstaten zijn soeverein maar hebben bevoegdheden overgedragen op gebieden als handel en mededinging." }
+    ],
+    prerequisites: ["separation-of-powers"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk land is een voorbeeld van een federale staat?", options: ["Nederland", "Frankrijk", "Duitsland", "Denemarken"], correct: 2, explanation: "Duitsland is een federale republiek met 16 Bundesländer die substantiële eigen bevoegdheden hebben." }
+    ],
+    creativePrompt: "Stel dat Nederland morgen federaal wordt met drie regio's (Noord, Midden, Zuid). Welke drie beleidsgebieden geef je aan de regio's en welke drie houd je centraal? Waarom?",
+    aiHelperPrompts: ["Wat zijn voor- en nadelen van federalisme?", "Hoe verschilt federalisme van decentralisatie?", "Welke spanningen bestaan in federale staten?"]
+  },
+  {
+    id: "propaganda-techniques",
+    title: "Propagandatechnieken",
+    difficulty: 2,
+    emoji: "📢",
+    academicCategory: "Politicologie",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["media", "manipulatie", "framing", "overtuiging"],
+    definition: "Propagandatechnieken zijn methoden die worden gebruikt om publieke opinie te vormen via emotionele appeals, selectieve informatie en herhaling — vaak ten dienste van politieke of ideologische doelen.",
+    abstractExample: "Propaganda is als een fotograaf die alleen de flattering angles van zijn onderwerp fotografeert: technisch accuraat maar misleidend in het totaalbeeld.",
+    examples: [
+      { domain: "Politiek", icon: "🗳️", text: "Het herhalen van 'de elite versus het volk' creëert een wij-zij-dynamiek die complexe politieke realiteit versimpelt tot vijanden." },
+      { domain: "Reclame", icon: "📺", text: "Associatie van producten met gelukkige gezinnen en zonnige dagen gebruikt emotionele beelden om rationele aankopen te beïnvloeden." },
+      { domain: "Oorlog", icon: "⚔️", text: "Vijandelijke soldaten worden als 'monsters' of 'onmensen' afgeschilderd om morele remmingen tegen geweld te verlagen." }
+    ],
+    prerequisites: ["priming-effect"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke propagandatechniek gebruikt het principe 'iedereen doet het'?", options: ["Ad hominem", "Bandwagon", "Strawman", "Cherry-picking"], correct: 1, explanation: "De bandwagon-techniek suggereert dat je de grote meerderheid moet volgen, wat groepsdruk als argument gebruikt." }
+    ],
+    creativePrompt: "Analyseer een recente politieke campagne of nieuwsitem. Welke van de klassieke propagandatechnieken herken je? Hoe zou je het opnieuw formuleren op een neutrale manier?",
+    aiHelperPrompts: ["Hoe herken ik propaganda in de media?", "Wat is het verschil tussen overtuiging en manipulatie?", "Hoe bescherm ik mezelf tegen propagandainvloeden?"]
+  },
+  {
+    id: "collective-action-problem",
+    title: "Collectief Actieprobleem",
+    difficulty: 3,
+    emoji: "🚧",
+    academicCategory: "Politieke Economie",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["samenwerking", "coördinatie", "vrijbuiter", "collectief"],
+    definition: "Het collectief actieprobleem treedt op wanneer individuele rationele keuzes leiden tot een collectief slechte uitkomst — iedereen profiteert liever van andermans inzet zonder zelf bij te dragen.",
+    abstractExample: "Als niemand zijn flat poetst omdat iedereen op de ander wacht, is de flat vies voor iedereen — terwijl iedereen een schone flat prefereert boven een vuile.",
+    examples: [
+      { domain: "Klimaat", icon: "🌍", text: "Elk land wil de voordelen van klimaatactie, maar prefereert dat andere landen de kosten dragen — waardoor collectief te weinig actie volgt." },
+      { domain: "Vakbonden", icon: "✊", text: "Arbeiders profiteren van vakbondsonderhandelingen zonder lid te worden — als te velen dit doen, verzwakt de vakbond." },
+      { domain: "Stemmen", icon: "🗳️", text: "Individueel heeft één stem nauwelijks invloed, waardoor sommigen rationeel kiezen om niet te stemmen, wat democratie ondermijnt." }
+    ],
+    prerequisites: ["public-goods-problem"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke mechanismen helpen collectieve actieproblemen op te lossen?", options: ["Meer competitie", "Externe regulering of sociale normen", "Betere technologie", "Minder communicatie"], correct: 1, explanation: "Regelgeving (bijv. verplichte belasting) of sterke sociale normen (schaamte voor vrij rijden) dwingen collectieve bijdragen af." }
+    ],
+    creativePrompt: "Beschrijf een collectief actieprobleem in jouw eigen leven of gemeenschap. Welk slim mechanisme zou het kunnen oplossen?",
+    aiHelperPrompts: ["Hoe lost de gevangenendilemma het collectief actieprobleem uit?", "Wat zijn voorbeelden van succesvolle oplossingen?", "Hoe verschilt het van het tragische-van-de-gemeenschap?"]
+  },
+  {
+    id: "rule-of-law",
+    title: "Rechtsstatelijkheid",
+    difficulty: 2,
+    emoji: "🏛️",
+    academicCategory: "Rechtswetenschappen",
+    skillCategory: "Politiek & Bestuur",
+    tags: ["rechtsstaat", "wet", "gelijkheid", "bescherming"],
+    definition: "Rechtsstatelijkheid is het principe dat iedereen — inclusief de overheid — gebonden is aan de wet; wetten worden transparant gemaakt, gelijkelijk toegepast en onafhankelijk gehandhaafd.",
+    abstractExample: "Rechtsstatelijkheid is als een scheidsrechter bij voetbal die ook gele kaarten uitdeelt aan de thuisploeg: de regels gelden voor iedereen, ook de machtigen.",
+    examples: [
+      { domain: "Overheid", icon: "🏛️", text: "Ook een minister kan worden vervolgd als hij de wet overtreedt — zoals blijkt uit vervolgingen van politici in meerdere democratieën." },
+      { domain: "Bedrijfsleven", icon: "💼", text: "Grote multinationals kunnen niet boven de wet staan: mededingingsautoriteiten bestraffen marktmisbruik ongeacht de bedrijfsgrootte." },
+      { domain: "Burger", icon: "👤", text: "Elk individu heeft het recht op een eerlijk proces en kan de overheid aanvechten bij de rechter." }
+    ],
+    prerequisites: ["social-contract"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is een kernkenmerk van rechtsstatelijkheid?", options: ["Wetten worden gemaakt door de sterkste partij", "Iedereen is gelijk voor de wet", "De overheid beslist welke rechten burgers hebben", "Wetten worden geheim gehouden"], correct: 1, explanation: "Gelijkheid voor de wet — ongeacht macht, rijkdom of status — is de kern van rechtsstatelijkheid." }
+    ],
+    creativePrompt: "Beschrijf een situatie uit het nieuws waarbij rechtsstatelijkheid werd uitgedaagd. Wat was er op het spel? Wat had er moeten gebeuren om de rechtsstaat te versterken?",
+    aiHelperPrompts: ["Hoe verschilt een rechtsstaat van een politiestaat?", "Welke bedreigingen voor rechtsstatelijkheid bestaan in Europa?", "Hoe bescherm ik mijn rechten als burger?"]
   }
 ];
