@@ -9399,4 +9399,156 @@ export const principlesNew = [
       { domain: "Emotionele verwerking", icon: "💭", text: "Schrijven over moeilijke ervaringen heeft aangetoonde therapeutische effecten (Pennebaker's onderzoek) — het helpt emotionele verwerking, geeft gevoel van controle en reduceert ruminatie." }
     ],
   },
+
+  // ========== BATCH B9: ZELFEXPRESSIE & CREATIVITEIT ==========
+  {
+    id: "creative-constraints",
+    title: "Creativiteit door Beperkingen",
+    difficulty: 2,
+    emoji: "📦",
+    academicCategory: "Creativiteitswetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Paradoxaal genoeg stimuleren beperkingen creativiteit eerder dan ze remmen. Volledige vrijheid leidt tot verlamming (writer's block, blank canvas problem). Beperkingen — een deadline, een beperkt budget, een strak format, een specifieke constraint — forceren creatieve probleemoplossing en leiden vaak tot meer originele uitkomsten.",
+    abstractExample: "Twitter's 280 tekens dwong schrijvers tot precisie en leidde tot een nieuw literair genre. Dr. Seuss schreef 'The Cat in the Hat' als uitdaging: schrijf een kinderverhaal met maximaal 225 woorden. Beperkingen worden generatief als ze bewust worden omarmd.",
+    examples: [
+      { domain: "Schrijven", icon: "✍️", text: "Jezelf een tijdslimiet stellen (30 minuten schrijven) of een formatbeperking (maximaal 500 woorden) forceert keuzes die een open einde niet afdwingt. De resulterende scherpte is vaak beter dan het onbegrensde equivalent." },
+      { domain: "Probleemoplossing", icon: "🔧", text: "Bij een creatieve blokkade bewust beperkingen toevoegen: 'Hoe zou ik dit oplossen met nul budget?' of 'Hoe zou ik dit uitleggen aan een 10-jarige?' — de constraint opent een ander denkspoor." },
+      { domain: "Kunst en hobby's", icon: "🎨", text: "Een schilder die zichzelf beperkt tot drie kleuren, een muzikant die één instrument gebruikt of een fotograaf die alleen zwart-wit schiet — beperkingen dwingen diepgang en stijlontwikkeling die vrijheid niet geeft." }
+    ],
+  },
+  {
+    id: "imposter-syndrome",
+    title: "Imposter Syndroom Herkennen en Overstijgen",
+    difficulty: 2,
+    emoji: "🎭",
+    academicCategory: "Klinische Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het imposter-syndroom is de persistente overtuiging dat je succes niet verdiend is maar aan geluk of misleiding te danken is, gecombineerd met de angst ontmaskerd te worden als oplichter. Het treft disproportioneel hoog-presterende, consciëntieuze mensen en correleert niet met daadwerkelijke capaciteit.",
+    abstractExample: "Albert Einstein schreef dat hij zich een 'onbewuste bedrieger' voelde. Maya Angelou beschreef angst dat haar volgende boek haar zou 'ontmaskeren'. Het imposter-syndroom is niet een teken van incompetentie maar vaak een teken van kwaliteitsbewustzijn en zelfreflectie.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Externaliseer bewijs: een lijst bijhouden van concrete prestaties, positieve feedback en opgeloste problemen. Het imposter-syndroom leeft van abstractie en vaagheid — specifiek bewijs is het tegenwicht." },
+      { domain: "Normalisereing", icon: "🤝", text: "Praten met peers over het gevoel van niet goed genoeg zijn onthult dat de meeste hoogpresteerders het kennen — het syndroom gedijt in stilte en schaamt voor zijn eigen aanwezigheid. Openheid doorbreekt het." },
+      { domain: "Reframen", icon: "🔄", text: "Het gevoel 'ik hoor hier niet' herinterpreteren als 'ik ben in een groeisituatie' — impostor feelings zijn het sterkst in nieuwe contexten, wat ook precies de momenten zijn waarop groei plaatsvindt." }
+    ],
+  },
+  {
+    id: "vulnerability-strength",
+    title: "Kwetsbaarheid als Kracht",
+    difficulty: 2,
+    emoji: "🫀",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Brené Browns onderzoek toont dat kwetsbaarheid — het tonen van onzekerheid, het nemen van emotionele risico's, het eerlijk zijn over angst en twijfel — de basis is van verbinding, creativiteit en moed. Mensen die kwetsbaarheid als zwakte vermijden, vermijden ook de ervaringen die het meeste betekenis geven.",
+    abstractExample: "Kwetsbaarheid vereist moed — het is het bereid zijn in de arena te staan en gezien te worden, ook als er geen garantie is op succes of acceptatie. Wie nooit zijn nek uitsteekt, speelt veilig maar leeft arm.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Eerlijk zijn over angst, twijfel of behoefte — ook als de reactie onzeker is — creëert authenticiteit en verdiept verbinding meer dan imago-management. Kwetsbaarheid nodigt de ander uit hetzelfde te doen." },
+      { domain: "Werk", icon: "💼", text: "'Ik weet het niet' zeggen in plaats van onzekerheid verbergen of een overtuigend klinkend antwoord fabriceren. Dit bouwt meer vertrouwen dan schijnbare alwetendheid — kwetsbaarheid is aanstekelijk en disarming." },
+      { domain: "Creatief werk", icon: "🎨", text: "Een persoonlijk project delen dat je echt raakt — schilderij, tekst, muziek — is een kwetsbaarheidsact. Het creatieve risico is het risico van gezien worden. Mensen die nooit iets delen, vermijden ook de verbinding die het kan opleveren." }
+    ],
+  },
+  {
+    id: "creative-process-stages",
+    title: "Fases van het Creatieve Proces",
+    difficulty: 2,
+    emoji: "🎨",
+    academicCategory: "Creativiteitswetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het creatieve proces verloopt typisch in vier herkenbare fases: voorbereiding (immersie in het onderwerp), incubatie (onbewuste verwerking, schijnbare stilte), illuminatie (het 'aha'-moment) en verificatie (uitwerking en toetsing). Begrip van deze fases helpt creatieve blokkades als normale fasen te zien in plaats van tekenen van mislukking.",
+    abstractExample: "De 'douche-gedachte' of het halfslaapinzicht is niet magie maar de incubatiefase die afrondt. Bewust incubatietijd inplannen — na een intensieve voorbereidingsfase even weg van het probleem — is het cultiveren van de creativiteitsomstandigheiden.",
+    examples: [
+      { domain: "Schrijven", icon: "✍️", text: "Na een dag intensief research doen over een onderwerp (voorbereiding), de volgende dag heel iets anders doen (incubatie) en dan terug naar het schrijven — de inzichten die dan komen zijn rijker dan direct doorschrijven." },
+      { domain: "Probleemoplossing", icon: "🔧", text: "Bij een hardnekkig probleem bewust stoppen met erover nadenken na diepgaande analyse en slapen, sporten of wandelen — incubatie geeft het onbewuste brein ruimte. De oplossing verschijnt wanneer je er niet actief op gefocust bent." },
+      { domain: "Kunst", icon: "🎭", text: "De 'creative block' herkennen als de overgang tussen fases, niet als tekenen van talent-afwezigheid. Blokken komen vaak voor tussen voorbereiding en incubatie, of tussen incubatie en illuminatie — dit zijn normale creatieve landschappen." }
+    ],
+  },
+  {
+    id: "authentic-expression",
+    title: "Authentieke Zelfexpressie",
+    difficulty: 2,
+    emoji: "🎤",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Authentieke zelfexpressie is het congruent uitdrukken van innerlijke waarden, gevoelens en perspectieven, ook als dat afwijkt van wat sociaal verwacht wordt. Het vereist zelfkennis (weten wat je werkelijk voelt en denkt) en moed (het uiten ook als het risico op afkeuring bestaat).",
+    abstractExample: "Authenticiteit is niet 'alles uitspreken wat je denkt' maar het niet verbergen van wie je bent. Het verschil tussen de persona die je opzet voor anderen en wie je werkelijk bent — hoe kleiner dat gat, hoe meer energie je hebt en hoe echte verbindingen je maakt.",
+    examples: [
+      { domain: "Zelfexpressie", icon: "🌟", text: "Een mening innemen die afwijkt van de groep en die toch uitspreken op een respectvolle manier — dit is authentiek zijn ook als het sociaal ongemakkelijk is. Chronisch meegaan met de groepsopvatting is verlies van de eigen stem." },
+      { domain: "Creatief werk", icon: "🎨", text: "Kunst, schrijven of muziek maken dat aansluit bij wat jij werkelijk interessant of mooi vindt, in plaats van wat je denkt dat anderen goed vinden — dit levert authenticiteit en dikwijls ook het interessantste werk." },
+      { domain: "Werk", icon: "💼", text: "In professionele contexten je eerlijke mening geven over plannen of ideeën — ook kritisch — in plaats van alleen te valideren wat de meerderheid of leidinggevende al denkt. Authentieke input is waardevoller dan koor-gedrag." }
+    ],
+  },
+  {
+    id: "play-creativity-adult",
+    title: "Spel als Volwassen Creativiteitsmotor",
+    difficulty: 1,
+    emoji: "🎮",
+    academicCategory: "Ontwikkelingspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Spel — activiteiten zonder direct doel, puur voor het plezier — is niet alleen voor kinderen maar een fundamentele menselijke behoefte en een krachtige creativiteitsmotor. Volwassenen die spelen (in de brede zin: experimenteren, fantaseren, exploreren zonder agenda) zijn creatiever, veerkrachtiger en meer plezierig om mee te werken.",
+    abstractExample: "De vrolijkste en meest creatieve organisaties hebben een cultuur van speelsheid — IDEO, Google, Pixar. Niet omdat ze cosmetisch fun zijn, maar omdat een speel-houding risico nemen normaliseert, combinaties uitlokt en angst voor mislukking dempt.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Bewust tijd inplannen voor exploratieve projecten zonder verwacht resultaat — 20% free time bij Google leidde tot Gmail en Google News. Speel-ruimte is R&D voor persoonlijke en organisationele innovatie." },
+      { domain: "Hobby's", icon: "🎨", text: "Een hobby opnemen puur voor het plezier, zonder prestatiedoelen — tekenen als je niet goed kunt tekenen, een taal leren zonder examen. Spelen zonder resultaatdruk herstelt de intrinsieke motivatie die serieuze prestaties ondermijnen." },
+      { domain: "Probleemoplossing", icon: "🔧", text: "Brainstormsessies bewust speelser inrichten — absurde ideeën toestaan, humor omarmen, de meest onzinnige oplossingen benoemen — dit verlaagt zelfcensuur en brengt creatieve mogelijkheden boven die serieuse omgevingen blokkeren." }
+    ],
+  },
+  {
+    id: "artistic-sensibility",
+    title: "Esthetische Sensibiliteit Ontwikkelen",
+    difficulty: 2,
+    emoji: "🖼️",
+    academicCategory: "Esthetiek",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Esthetische sensibiliteit is het vermogen om schoonheid, harmonie en betekenis te ervaren en te creëren in vorm, klank, woord en ruimte. Het is niet voorbehouden aan kunstenaars maar een cultiveerbare perceptuele vaardigheid die bredere creativiteit, communicatie en kwaliteitsoordeel verrijkt.",
+    abstractExample: "Mensen met ontwikkelde esthetische sensibiliteit zien meer dan anderen: de compositie van een foto, de ritme van een zin, de balans in een ruimte. Dit is geen aangeboren talent maar een getrainde perceptie — zoals een sommelier smaken onderscheidt die anderen proeven als 'wijn'.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🌟", text: "Bewust aandacht geven aan de esthetische dimensie van alledaagse dingen — hoe het licht valt, hoe een ruimte aanvoelt, hoe een zin klinkt — traint perceptie. Schoonheid is overal als je kijkt." },
+      { domain: "Werk", icon: "💼", text: "Aandacht voor de esthetische kwaliteit van presentaties, rapporten en communicatie — niet als decoratie maar als respect voor de lezer/kijker. Heldere lay-out, goede typografie en zorgvuldige formulering zijn esthetiek in dienst van communicatie." },
+      { domain: "Kunstcontact", icon: "🎭", text: "Regelmatig kunst — tentoonstellingen, concerten, theater, goede literatuur — consumeren niet als verplichte cultuurparticipatie maar als training van esthetische perceptie. Exposure aan uitmuntendheid kalibreert het kwaliteitsoordeel." }
+    ],
+  },
+  {
+    id: "storytelling-self",
+    title: "Verhalen Vertellen over Jezelf",
+    difficulty: 2,
+    emoji: "📖",
+    academicCategory: "Narratieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het verhaal dat je over jezelf vertelt — je narratieve identiteit — bepaalt mede hoe je ervaringen interpreteert, welke keuzes je maakt en hoe veerkrachtig je bent. Bewust je levensverhaal herinterpreteren, niet als slachtoffer of onveranderd product van omstandigheid maar als protagonist met agency, heeft aantoonbare positieve effecten op welzijn.",
+    abstractExample: "Twee mensen met identieke moeilijke jeugd: de een vertelt het verhaal als 'dat heeft mij gebroken', de ander als 'dat heeft mij gemaakt wie ik ben'. Dezelfde feiten, andere narratief — met fundamenteel andere implicaties voor present identiteit en toekomstige actie.",
+    examples: [
+      { domain: "Moeilijke ervaringen", icon: "💪", text: "Tegenslagen herinterpreteren als het deel van het verhaal dat je karakter vormt en vaardigheden geeft die je nooit zou hebben zonder die ervaring — niet als minimalisering van pijn maar als agency in de betekenisgeving." },
+      { domain: "Introductie", icon: "🤝", text: "Hoe je jezelf introduceert aan nieuwe mensen is een keuze — welke verhaallijnen kies je? Welke rol geef je jezelf? Bewust nadenken over je 'bio' als narratief gereedschap in plaats van willekeurige feiten opnoemen." },
+      { domain: "Loopbaanverhaal", icon: "💼", text: "Een 'onlogische' carrièrepad — omwegen, veranderingen, mislukte projecten — vertellen als een coherent verhaal van groei en aanpassing in plaats van als een reeks toevallige gebeurtenissen. Narratieve coherentie geeft eigenaarschap en richting." }
+    ],
+  },
+  {
+    id: "creative-confidence",
+    title: "Creatief Vertrouwen Opbouwen",
+    difficulty: 2,
+    emoji: "🌟",
+    academicCategory: "Creativiteitswetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Creatief vertrouwen (David en Tom Kelley, IDEO) is de overtuiging dat je creatieve ideeën hebt die de moeite waard zijn, gecombineerd met de bereidheid om ze te uiten en te toetsen. Het groeit door kleine creatieve risico's te nemen en positieve resultaten te registreren — het krimpt door angst voor oordeel en perfectionisme.",
+    abstractExample: "De meeste mensen geloven op jonge leeftijd dat ze creatief zijn; op volwassen leeftijd geloven velen van niet meer. Dit is niet het verlies van capaciteit maar het verlies van creatief vertrouwen — geconditioneerd door oordeel, school en faalangst. Het kan worden teruggewonnen.",
+    examples: [
+      { domain: "Klein beginnen", icon: "🌱", text: "Creatief vertrouwen groeit door kleine, veilige creatieve experimenten: iets tekenen voor je eigen plezier, een korte tekst schrijven, iets nieuws koken. De positieve ervaring bouwt het vertrouwen op om grotere risico's te nemen." },
+      { domain: "Feedback verwerken", icon: "📡", text: "Feedback op creatief werk niet gelijkstellen aan beoordeling van je persoon. Werk verbeteren op basis van feedback is normaal onderdeel van het creatieve proces, niet bewijs van onvoldoende talent." },
+      { domain: "Prototype-mentaliteit", icon: "🔧", text: "In eerste instantie kwantiteit boven kwaliteit stellen — zoveel mogelijk ideeën genereren zonder ze direct te beoordelen. Creativiteit is een statistisch spel: meer ideeën vergroot de kans op goede ideeën." }
+    ],
+  },
+  {
+    id: "solitude-creativity",
+    title: "Eenzaamheid als Creatieve Ruimte",
+    difficulty: 2,
+    emoji: "🌙",
+    academicCategory: "Creativiteitswetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Eenzaamheid — bewust alleen zijn, zonder externe input of sociale stimulatie — is voor veel mensen een voorwaarde voor diep creatief werk. De meeste historische creatievelingen (denkers, schrijvers, componisten) hadden uitgebreide periodes van eenzaamheid in hun proces. In een hyper-verbonden wereld is eenzaamheid een te cultiveren resource.",
+    abstractExample: "Susan Cain (Quiet) beschrijft hoe de extraverte bias van de moderne werkplek creatieve bijdragen van introverten belemmert. Maar ook extraverten hebben eenzaamheid nodig voor diep werk — de behoefte verschilt in intensiteit, niet in aanwezigheid.",
+    examples: [
+      { domain: "Diep werk", icon: "🎯", text: "Bewust solo-werkperiodes inplannen zonder vergaderingen, sociale media of gesprekken — 2-4 uur van volledige afzondering zijn de meest productieve uren voor schrijvers, denkers en complexe probleemoplossers." },
+      { domain: "Zelfkennis", icon: "🪞", text: "Regelmatig tijd alleen doorbrengen zonder afleiding — wandelen, stilzitten, rijden zonder muziek — geeft ruimte voor zelfkennis. Wie altijd omgeven is door input, hoort zijn eigen stem niet meer." },
+      { domain: "Creatieve projecten", icon: "🎨", text: "Een solo-dag of solo-weekend inplannen voor een creatief project dat vastgelopen is — de lossere mentale staat van eenzame exploratie zonder sociale verwachting kan doorbraken opleveren die groepswerk niet geeft." }
+    ],
+  },
 ];
