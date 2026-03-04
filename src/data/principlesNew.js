@@ -8335,4 +8335,156 @@ export const principlesNew = [
       { domain: "Feynman-techniek", icon: "🔬", text: "Stap 1: kies een concept. Stap 2: leg het uit alsof je een kind onderwijst. Stap 3: identificeer waar je vastloopt. Stap 4: terug naar de bron en probeer opnieuw. Hiaten worden zichtbaar." }
     ],
   },
+
+  // ========== BATCH B2: SOCIALE VAARDIGHEDEN & NETWERKEN ==========
+  {
+    id: "active-listening-social",
+    title: "Actief Luisteren",
+    difficulty: 1,
+    emoji: "👂",
+    academicCategory: "Communicatiewetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Actief luisteren is een bewuste communicatievaardigheid waarbij je volledig aanwezig bent voor de spreker, niet alleen de woorden hoort maar ook de emoties en betekenis erachter begrijpt, en dit reflecteert door samenvattingen, doorvragen en non-verbale signalen.",
+    abstractExample: "De meeste mensen luisteren om te antwoorden; actief luisteren betekent luisteren om te begrijpen. Het verschil zit in waar je aandacht ligt: bij je eigen respons of bij de boodschap van de ander.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Partner laten uitpraten zonder te onderbreken, vervolgens samenvatten wat je hebt gehoord ('Dus je voelt je...') en pas dan reageren — dit voorkomt misverstanden en laat de ander zich gehoord voelen." },
+      { domain: "Werk", icon: "💼", text: "Tijdens een vergadering notities maken van kernpunten, doorvragen op onduidelijkheden en aan het einde samenvatten wat je hebt begrepen — dit verhoogt zowel begrip als de waardering van collega's." },
+      { domain: "Conflictoplossing", icon: "🤝", text: "Bij een conflict als eerste de ander volledig laten vertellen zonder verweer, hun perspectief herhalen tot zij bevestigen dat je het goed begrepen hebt — dit ontspant de situatie en opent ruimte voor oplossingen." }
+    ],
+  },
+  {
+    id: "social-proof-personal",
+    title: "Sociale Bewijskracht Begrijpen",
+    difficulty: 2,
+    emoji: "👥",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Sociale bewijskracht is de tendens om het gedrag en de meningen van anderen te gebruiken als leidraad voor eigen keuzes, vooral in onzekere situaties. Bewustzijn hiervan helpt onderscheid maken tussen echte consensus en kuddegedrag.",
+    abstractExample: "Als niemand in een restaurant zit, lijkt het onbetrouwbaar. Als het vol is, lijkt het goed. Dit oordeel is soms correct (populariteit als kwaliteitssignaal) maar kan ook misleidend zijn — populariteit en kwaliteit zijn niet hetzelfde.",
+    examples: [
+      { domain: "Consumentenkeuzes", icon: "🛒", text: "Bewust vragen: 'Koop ik dit product omdat het mij past, of omdat anderen het kochten?' Bestseller-lijsten en reviews weerspiegelen gemiddelde voorkeuren, niet jouw specifieke situatie." },
+      { domain: "Carrière", icon: "💼", text: "De populairste carrièrepaden (geneeskunde, rechten, consulting) zijn dat geworden door sociale feedback — niet per se omdat ze het beste passen. Bewust nadenken over wat jij wil, los van wat 'iedereen' doet." },
+      { domain: "Sociale situaties", icon: "🎭", text: "Lachen als anderen lachen, stilte als anderen stil zijn — sociale bewijskracht stuurt gedrag in groepen. Herkennen wanneer je meegaat uit conformiteitsdruk versus wanneer je authentiek reageert." }
+    ],
+  },
+  {
+    id: "weak-ties-networking",
+    title: "De Kracht van Zwakke Banden",
+    difficulty: 2,
+    emoji: "🕸️",
+    academicCategory: "Sociologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Socioloog Mark Granovetter ontdekte dat zwakke banden — oppervlakkige kennissen in plaats van hechte vrienden — disproportioneel waardevol zijn voor nieuwe kansen en informatie, omdat ze toegang geven tot sociale kringen buiten je eigen netwerk.",
+    abstractExample: "Sterke banden (beste vrienden, directe familie) weten ongeveer wat jij weet en kennen dezelfde mensen. Zwakke banden (oud-collega's, studiegenoten van vroeger) leven in andere werelden — zij hebben informatie die jij niet hebt.",
+    examples: [
+      { domain: "Jobsearch", icon: "💼", text: "Studies tonen dat mensen hun baan vaker vinden via oppervlakkige kennissen dan via hechte vrienden — een LinkedIn-contact dat je eens hebt ontmoet heeft contacten die jij niet hebt, en is vaak bereid te helpen." },
+      { domain: "Netwerken", icon: "🌐", text: "Op congressen bewust gesprekken voeren met onbekenden in plaats van alleen bij bekenden blijven — elke nieuwe connectie opent potentieel een compleet nieuw netwerk van mogelijkheden." },
+      { domain: "Ideeën", icon: "💡", text: "De meest innovatieve ideeën komen vaak uit kruisbestuiving tussen vakgebieden — contact met mensen buiten je domein levert perspectieven op die mensen in je eigen bubbel niet hebben." }
+    ],
+  },
+  {
+    id: "reciprocity-social",
+    title: "Wederkerigheid als Sociale Kracht",
+    difficulty: 1,
+    emoji: "🔄",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Wederkerigheid is een van de krachtigste sociale normen: wanneer iemand iets geeft — aandacht, hulp, een cadeau — voelt de ontvanger een sterke drang terug te geven. Bewust en oprecht toepassen bouwt sterke relaties; manipulatief gebruik ondermijnt vertrouwen.",
+    abstractExample: "Gratis samples in supermarkten werken niet omdat het product goed is, maar omdat de sociale norm van wederkerigheid een koopdruk creëert. Datzelfde mechanisme werkt ook positief: oprechte hulp creëert loyaliteit.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Als eerste moeite doen in een relatie — een bericht sturen, initiatief nemen, een kleine attentie geven — zet wederkerigheid in werking. Relaties groeien als beide partijen dit doen." },
+      { domain: "Werk", icon: "💼", text: "Collega's proactief helpen zonder bijbedoelingen bouwt sociaal kapitaal op — mensen willen vanzelf terughelpen wanneer jij iets nodig hebt. Dit is geen manipulatie maar de basis van samenwerking." },
+      { domain: "Netwerken", icon: "🌐", text: "Nieuwe contacten waarde geven vóórdat je iets vraagt — een interessant artikel delen, iemand introduceren bij een ander — creëert een sterkere band dan cold requests." }
+    ],
+  },
+  {
+    id: "conflict-resolution-styles",
+    title: "Conflictstijlen: Thomas-Kilmann Model",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het Thomas-Kilmann model beschrijft vijf manieren om met conflicten om te gaan op basis van twee dimensies: assertiviteit (opkomen voor eigen belangen) en samenwerking (rekening houden met andermans belangen). Bewustzijn van je eigen stijl en die van anderen maakt effectievere conflicthantering mogelijk.",
+    abstractExample: "De vijf stijlen: vermijden (laag-laag), aanpassen (laag-hoog), concurreren (hoog-laag), compromis (midden-midden), samenwerken (hoog-hoog). Elke stijl heeft situaties waarin hij geschikt is — de kunst is de juiste stijl kiezen.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Bij een meningsverschil over een belangrijk besluit is samenwerken (beide belangen volledig adresseren) ideaal maar tijdrovend. Bij een triviale discussie is aanpassen of compromis efficiënter — niet elk conflict verdient maximale energie." },
+      { domain: "Relaties", icon: "❤️", text: "Iemand die altijd vermijdt, bouwt frustratie op. Iemand die altijd concurreert, beschadigt relaties. De gezondste relaties wisselen flexibel tussen stijlen afhankelijk van de situatie en het belang." },
+      { domain: "Zelfkennis", icon: "🪞", text: "Je eigen default conflictstijl herkennen (wat doe jij als er spanning is?) onthult patronen — iemand die altijd aanpast, verliest de eigen stem; iemand die altijd concurreert, verliest verbinding." }
+    ],
+  },
+  {
+    id: "mirroring-rapport",
+    title: "Spiegelen en Rapport Opbouwen",
+    difficulty: 1,
+    emoji: "🪞",
+    academicCategory: "Communicatiewetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Spiegelen — het subtiel nadoen van iemands lichaamstaal, spreektempo, woordkeuze en stemvolume — is een krachtig mechanisme voor het opbouwen van rapport. Het signaleert afstemming en gelijkwaardigheid, wat instinctief vertrouwen en sympathie opwekt.",
+    abstractExample: "Mensen die goed met elkaar klikken, spiegelen automatisch elkaars houding, tempo en energie. Bewust spiegelen vergroot sympathie en maakt communicatie vlotter — het is geen manipulatie maar afstemming.",
+    examples: [
+      { domain: "Gesprekken", icon: "💬", text: "Als iemand langzaam en rustig spreekt, zelf ook vertragen. Als iemand enthousiast is, iets van die energie spiegelen. Mensen voelen zich het meest op gemak met mensen die op henzelf lijken." },
+      { domain: "Onderhandelen", icon: "🤝", text: "De laatste 2-3 woorden van iemands zin herhalen als vraag ('...niet tevreden met de prijs?' 'Niet tevreden met de prijs?') nodigt de ander uit verder te praten en laat hen zich begrepen voelen." },
+      { domain: "Werk", icon: "💼", text: "Iemand die formeel communiceert, formeel benaderen. Iemand die informeel is, informeler zijn. De afstemming van communicatiestijl verlaagt weerstand en maakt samenwerken natuurlijker." }
+    ],
+  },
+  {
+    id: "assertiveness-training",
+    title: "Assertiviteit: Grenzen Stellen en Behoeften Uitdrukken",
+    difficulty: 2,
+    emoji: "🦁",
+    academicCategory: "Klinische Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Assertiviteit is het vermogen om eigen behoeften, meningen en grenzen duidelijk en respectvol te communiceren zonder agressief (anderen overrompelen) of passief (eigen behoeften negeren) te zijn. Het is de gulden middenweg tussen verdrukking en overheersing.",
+    abstractExample: "Passief: anderen altijd hun zin geven ten koste van jezelf. Agressief: eigen wil doordrukken ten koste van anderen. Assertief: 'Ik heb er moeite mee als X gebeurt, omdat Y. Ik zou het fijn vinden als Z.' — eigen belang + respect voor de ander.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "'Nee' zeggen op een extra taak: 'Ik begrijp dat dit dringend is, maar mijn huidige prioriteiten laten dit niet toe. Laten we samen kijken wat er kan worden verschoven.' — een grens stellen met uitleg en een oplossing." },
+      { domain: "Relaties", icon: "❤️", text: "Kritiek ontvangen zonder in te storten of direct in de aanval te gaan: 'Ik hoor wat je zegt. Geef me even tijd om erover na te denken.' — assertief reageren betekent ook ruimte nemen voordat je reageert." },
+      { domain: "Dagelijks leven", icon: "🌟", text: "In een restaurant een gerecht terugsturen dat niet klopt: direct maar vriendelijk zeggen wat het probleem is, zonder te verontschuldigen voor het hebben van een mening." }
+    ],
+  },
+  {
+    id: "empathy-vs-sympathy",
+    title: "Empathie vs. Sympathie",
+    difficulty: 1,
+    emoji: "🫂",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Empathie is het zich inleven in iemands emotie en dat erkennen zonder oordeel. Sympathie is medelijden hebben vanuit een externe positie. Empathie versterkt verbinding; sympathie kan onbedoeld afstand creëren door het perspectief van de ander te minimaliseren.",
+    abstractExample: "Als iemand zegt 'ik heb een miskraam gehad' is sympathie: 'Wat erg, maar je kunt altijd nog een kind krijgen.' Empathie: 'Dat klinkt vreselijk pijnlijk. Vertel, hoe voel je je nu?' — aanwezig zijn in het gevoel, niet het oplossen.",
+    examples: [
+      { domain: "Vriendschap", icon: "👫", text: "Een vriend die zich eenzaam voelt niet direct proberen op te vrolijken met oplossingen, maar eerst erkennen: 'Dat klinkt echt zwaar. Ik ben blij dat je het me vertelt.' — aanwezig zijn is meer waard dan adviezen." },
+      { domain: "Werk", icon: "💼", text: "Een collega die gefrustreerd is over een project niet direct de fout aanwijzen, maar eerst: 'Ik zie dat je er last van hebt — wat maakt het zo frustrerend?' — begrip vóór oplossing maakt samenwerken makkelijker." },
+      { domain: "Leiderschap", icon: "🎯", text: "Managers die empathisch reageren op zorgen van medewerkers (erkennen vóór oplossen) scoren hoger op vertrouwen en medewerkerstevredenheid dan managers die direct in oplossingmodus schieten." }
+    ],
+  },
+  {
+    id: "social-capital",
+    title: "Sociaal Kapitaal Opbouwen",
+    difficulty: 2,
+    emoji: "🏦",
+    academicCategory: "Sociologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Sociaal kapitaal is de optelsom van vertrouwen, normen en netwerken in relaties die samenwerking mogelijk maken en collectieve actie vergemakkelijken. Op individueel niveau: de waarde die ligt opgeslagen in je relaties en reputatie, die je kunt 'opnemen' wanneer je het nodig hebt.",
+    abstractExample: "Sociaal kapitaal is niet wie je kent, maar hoe sterk die relaties zijn en hoeveel vertrouwen er in ligt. Het groeit door consistent te geven zonder directe wederkerigheid te verwachten — en krimpt bij onbetrouwbaar gedrag.",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Jaren lang waardevolle informatie delen, anderen introduceren en beloften nakomen bouwt een reputatie op. Als je dan een grote gunst nodig hebt (aanbeveling, introductie), staat er genoeg 'saldo' op de rekening." },
+      { domain: "Community", icon: "🌐", text: "Actief bijdragen in een online community (zinvolle antwoorden geven, vragen stellen, anderen helpen) bouwt sociaal kapitaal op dat later terugkomt in steun, kansen en connecties." },
+      { domain: "Buurt", icon: "🏘️", text: "Buren kennen, kleine gunsten doen (pakketje aannemen, helpen verhuizen) bouwt vertrouwen op dat bij calamiteiten het verschil maakt — gemeenschappen met hoog sociaal kapitaal zijn veerkrachtiger." }
+    ],
+  },
+  {
+    id: "nonviolent-communication",
+    title: "Geweldloze Communicatie (GC)",
+    difficulty: 2,
+    emoji: "🕊️",
+    academicCategory: "Communicatiewetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Geweldloze Communicatie (Marshall Rosenberg) is een communicatiemethode gebaseerd op vier elementen: observatie (wat je ziet zonder oordeel), gevoel (hoe je je daarbij voelt), behoefte (welke onderliggende behoefte speelt) en verzoek (een concreet, uitvoerbaar verzoek). Het doel is verbinding en begrip in plaats van oordeel en strijd.",
+    abstractExample: "Geweld in communicatie is niet fysiek maar verbaal: beschuldigingen, oordelen, vergelijkingen, eisen. GC vervangt 'Jij doet altijd...' met 'Als ik zie dat X, voel ik me Y, omdat ik Z nodig heb. Kun jij W doen?'",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "In plaats van 'Je luistert nooit naar me!' (oordeel): 'Als ik aan het praten ben en je op je telefoon kijkt (observatie), voel ik me niet gezien (gevoel), omdat verbinding voor mij belangrijk is (behoefte). Zou je je telefoon kunnen wegleggen als we praten? (verzoek)'." },
+      { domain: "Werk", icon: "💼", text: "Feedback geven zonder aanval: 'Ik merkte dat het rapport later dan afgesproken binnenkwam (observatie). Ik voel me onzeker over de planning (gevoel), omdat ik de klant op tijd wil informeren (behoefte). Kunnen we voor de volgende keer een herinnering inplannen? (verzoek)'." },
+      { domain: "Zelfcompassie", icon: "🌱", text: "GC ook intern toepassen: in plaats van 'Ik ben zo stom' (zelf-oordeel): 'Ik maakte een fout (observatie), ik voel me beschaamd (gevoel), omdat ik competent wil zijn (behoefte). Wat kan ik hiervan leren? (verzoek aan jezelf)'." }
+    ],
+  },
 ];
