@@ -10615,4 +10615,141 @@ export const principlesNew = [
       { domain: "Kosmisch perspectief", icon: "🌌", text: "Als het universum over miljarden jaren leeg en donker is — heeft dat een universum meer waarde gehad dan geen? Heeft het bestaan van schoonheid, complexiteit en bewustzijn waarde gehad ongeacht dat er geen eeuwige waarnemer is?" }
     ],
   },
+
+  // ========== BATCH C7: GEDACHTE-EXPERIMENTEN — TAAL & BETEKENIS ==========
+  {
+    id: "private-language-argument",
+    title: "Het Private Taal Argument (Wittgenstein)",
+    difficulty: 3,
+    emoji: "🔏",
+    academicCategory: "Taalfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Wittgenstein betoogde dat een volledig private taal — taal die slechts één persoon kan begrijpen, verwijzend naar puur subjectieve ervaringen — logisch onmogelijk is. Taal vereist publieke criteria voor correcte toepassing. Zonder die criteria is er geen onderscheid tussen correct en incorrect gebruik — en dus geen echte taal, slechts de illusie.",
+    abstractExample: "Stel je noemt een innerlijk gevoel 'S' en besluit dit teken altijd te gebruiken als dat gevoel zich voordoet. Maar hoe weet je dat je 'S' later correct toepast? Je hebt geen externe standaard. Wittgenstein: dit is geen regel volgen maar slechts het gevoel dat je een regel volgt.",
+    examples: [
+      { domain: "Pijnbeleving", icon: "💢", text: "Pijn is paradigmatisch privaat — alleen jij ervaart jouw pijn. Maar het woord 'pijn' is publiek: je hebt het geleerd in publieke contexten (huilen, onttrekking aan pijnprikkel). Wittgenstein: pijntaal is publiek, ook al is de ervaring privaat." },
+      { domain: "Kunstmatige intelligentie", icon: "🤖", text: "Als een AI intern 'concepten' heeft die niet publiek leerbaar zijn, kan ze er dan over communiceren? Wittgenstein zou zeggen: communicatieve taal is per definitie publiek — een AI die private mentale states heeft maar ze niet publiek kan uitdrukken, kan er niet over praten." },
+      { domain: "Mystieke ervaringen", icon: "✨", text: "Mystici beschrijven ervaringen als 'onuitsprekelijk' — buiten taal. Wittgenstein's argument kan verklaren waarom: als de ervaring volledig privaat en zonder publieke criteria is, is taal inderdaad niet toereikend. Waarover men niet spreken kan, moet men zwijgen." }
+    ],
+  },
+  {
+    id: "language-games",
+    title: "Taalspelen (Wittgenstein)",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Taalfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Wittgenstein stelde dat woorden betekenis ontlenen aan hun gebruik binnen specifieke 'taalspelen' — activiteiten met eigen regels en context. Er is geen éne betekenis van een woord; betekenis varieert per taalspel. 'Goed' in morele context, wiskundige context en tenniscontext zijn radicaal verschillende taalspelen.",
+    abstractExample: "De bouwer-assistent taalspel: een bouwer roept 'steen!' en de assistent reikt hem een steen aan. Is dit taal? Wittgenstein: ja — het gebruik van het woord in deze praktijk constitueert zijn betekenis. Betekenis is geen mentale representatie maar een sociale praktijk.",
+    examples: [
+      { domain: "Interdisciplinaire communicatie", icon: "🔬", text: "Wetenschappers en beleidsmakers gebruiken dezelfde woorden ('risico', 'onzekerheid', 'veilig') in verschillende taalspelen met verschillende regels. Misverstanden ontstaan niet door domheid maar door niet te erkennen dat de spelen verschillen." },
+      { domain: "Filosofisch debat", icon: "💬", text: "Veel filosofische 'problemen' zijn voor Wittgenstein verwarringen door het mengen van taalspelen. 'Wat is tijd?' is een zinvolle vraag in het alledaagse spel maar een verwarring als je vraagt naar de definitieve metafysische essentie buiten elk spel." },
+      { domain: "Communicatie in relaties", icon: "❤️", text: "Partners die over 'liefde' of 'eerlijkheid' praten spelen soms verschillende taalspelen — elk heeft geleerd het woord in een ander familiesysteem, met andere regels. Conflicten oplossen vereist soms het taalspel te expliciteren, niet alleen het onderwerp." }
+    ],
+  },
+  {
+    id: "grue-problem",
+    title: "Het Grue-Probleem (Goodman)",
+    difficulty: 3,
+    emoji: "💚",
+    academicCategory: "Taalfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Nelson Goodman definieerde 'grue': een ding is grue als het vóór tijdstip T groen is en daarna blauw. Alle smaragden die we hebben gezien zijn groen — maar ze zijn ook grue (we hebben ze allemaal vóór T gezien). Waarom rechtvaardigt inductie 'alle smaragden zijn groen' meer dan 'alle smaragden zijn grue'? Het experiment toont dat niet alle predicaten even projecteerbaar zijn.",
+    abstractExample: "Het probleem van het nieuwe inductieprobleem: gegeven alle inductieve evidentie die 'groen' ondersteunt, ondersteunt diezelfde evidentie ook 'grue'. Wetenschappelijke projectie vereist criteria voor welke predicaten geldig zijn om te generaliseren — maar die criteria zijn zelf niet empirisch.",
+    examples: [
+      { domain: "Wetenschappelijke inductie", icon: "🔬", text: "Wetenschap projecteert sommige eigenschappen ('zwaar', 'geladen', 'giftig') maar niet andere ('grue-achtige' tijdgebonden eigenschappen). Waarom? Onze keuze van welke eigenschappen projecteerbaar zijn, is een diep theoretisch engagement, niet slechts empirisch." },
+      { domain: "Machine learning", icon: "💻", text: "Een AI getraind op groene smaragden voorspelt correct 'groen'. Maar het heeft impliciet ook 'grue' geleerd als dat consistent is met de trainingsdata. Hoe weten we dat het het 'juiste' patroon heeft geleerd en niet een grue-achtige variant?" },
+      { domain: "Categorisering", icon: "📋", text: "Elke categorisering is een keuze welke gelijkenissen en verschillen relevant zijn. 'Alle zwanen zijn wit' was een projecteerbare claim voor het ontdekken van zwarte zwanen in Australië. Goodman's probleem vraagt: welke categorieën zijn stabiel genoeg voor generalisatie?" }
+    ],
+  },
+  {
+    id: "reference-and-description",
+    title: "Directe Referentie vs. Beschrijvingstheorie",
+    difficulty: 2,
+    emoji: "☄️",
+    academicCategory: "Taalfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Frege stelde: een naam heeft zowel een referent (waar het naar verwijst) als een betekenis (de beschrijving). 'De ochtendster' en 'de avondster' verwijzen naar hetzelfde (Venus) maar hebben andere betekenis. Kripke betoogde: namen zijn 'stijve desigaatoren' — ze verwijzen direct naar het object in alle mogelijke werelden, ongeacht welke beschrijvingen we eraan koppelen.",
+    abstractExample: "Aristoteles was de leerling van Plato en de leraar van Alexander de Grote. Stel dat Aristoteles nooit onderwijs heeft gegeven — dan falen die beschrijvingen. Maar 'Aristoteles' verwijst nog steeds naar Aristoteles, ongeacht welke beschrijvingen wij eraan koppelen. Namen werken anders dan beschrijvingen.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "In 1800 beschreef 'water' een vloeistof met bepaalde macroscopische eigenschappen. Nu weten we: water = H₂O. De naam verwees altijd naar H₂O — ook toen niemand dat wist. Kripke: wetenschappelijke ontdekkingen zijn ontdekkingen over wat namen altijd al verwezen." },
+      { domain: "Historische personen", icon: "📚", text: "Onze beschrijvingen van Napoleon kunnen allemaal fout zijn en toch verwijzen we met 'Napoleon' naar een specifieke historische persoon. De keten van benoeming — van eerste gebruik tot huidig gebruik — bepaalt de referentie, niet de beschrijvingen." },
+      { domain: "Politieke taal", icon: "🏛️", text: "Als de beschrijving van 'democratie' radikaal varieert tussen landen en culturen, verwijzen ze allemaal naar hetzelfde? Of zijn het verschillende concepten met hetzelfde woord? Kripke's theorie en beschrijvingstheorie geven verschillende antwoorden." }
+    ],
+  },
+  {
+    id: "sapir-whorf-hypothesis",
+    title: "De Sapir-Whorf Hypothese: Bepaalt Taal het Denken?",
+    difficulty: 2,
+    emoji: "🗣️",
+    academicCategory: "Taalkunde",
+    skillCategory: "Kritisch Denken",
+    definition: "De Sapir-Whorf hypothese (linguïstisch relativisme) stelt dat de taal die je spreekt bepaalt of begrenst hoe je denkt. Sterke variant: taal zonder kleurterm voor blauw = geen concept van blauw. Zwakke variant: taal beïnvloedt de gemakkelijkheid van bepaald denken. Empirisch bewijs ondersteunt de zwakke variant.",
+    abstractExample: "Russisch heeft aparte basiswoorden voor lichtblauw (goluboy) en donkerblauw (siniy). Russischtaligen onderscheiden deze kleuren sneller in experimenten dan Engelstaligen die één woord 'blue' hebben. Taal vergemakkelijkt of bemoeilijkt bepaalde cognitieve operaties — het maakt ze niet onmogelijk.",
+    examples: [
+      { domain: "Professioneel jargon", icon: "💼", text: "Een dokter die medische terminologie kent, denkt anders over ziektebeelden dan een leek. Juridisch jargon maakt juristen gevoeliger voor bepaalde onderscheidingen. Specifiek vocabulaire maakt bepaald denken gemakkelijker — Whorf in actie." },
+      { domain: "Politiek taalgebruik", icon: "🏛️", text: "Orwell's Newspeak in 1984 was een taalontwerp om bepaald denken onmogelijk te maken. Als het woord voor vrijheid ontbreekt, is het concept moeilijker te mobiliseren. Taalbeleid (censuur, eufemismes, herbenoemen) werkt op Whorf-mechanismen." },
+      { domain: "Leren van talen", icon: "🌍", text: "Een tweede taal leren opent nieuwe manieren van categoriseren en onderscheiden. Japans heeft een woord (ma) voor betekenisvolle leegte — een concept dat moeilijk in één Nederlands woord te vatten is. Taalrijkdom is conceptuele rijkdom." }
+    ],
+  },
+  {
+    id: "meaning-use-theory",
+    title: "Betekenis als Gebruik: Wittgensteins Omwenteling",
+    difficulty: 2,
+    emoji: "🔧",
+    academicCategory: "Taalfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "De vroege Wittgenstein (Tractatus) stelde dat taal de werkelijkheid afbeeldt — woorden zijn namen voor dingen en feiten. De late Wittgenstein (Filosofische Onderzoekingen) draaide dit om: 'de betekenis van een woord is zijn gebruik in de taal'. Woorden beschrijven niet primair maar doen dingen — in een praktijk, met een doel.",
+    abstractExample: "Het woord 'pijn' beschrijft niet slechts een innerlijke toestand — het vervult een rol in sociale praktijken van troost geven, dokter bellen, excuses aanvaarden. Betekenis is functioneel-sociaal, niet privaat-referentieel. Dit transformeert filosofie van bewustzijn en taal.",
+    examples: [
+      { domain: "Communicatie", icon: "💬", text: "Als iemand 'dat is interessant' zegt in een gesprek, beschrijft hij/zij niet primair een mentale toestand maar doet een conversationele zet — afhankelijk van context: instemming, beleefdheidsformule, afleidingsmanoeuvre. Betekenis is gebruik." },
+      { domain: "Ethiek", icon: "⚖️", text: "Morele termen ('goed', 'rechtvaardig') beschrijven niet feiten over de wereld maar spelen rollen in sociale praktijken van prijzen, berispen, motiveren, coördineren. Dit is de basis van expressivisme in metaethiek." },
+      { domain: "Wetenschappelijke taal", icon: "🔬", text: "Wetenschappelijke begrippen als 'elektron' of 'gen' verwijzen niet naar een onveranderlijk ding maar krijgen betekenis via gebruik in theorieën, experimenten en praktijken die veranderen als de wetenschap vordert." }
+    ],
+  },
+  {
+    id: "speech-acts",
+    title: "Taalhandelingen: Meer Doen dan Zeggen (Austin / Searle)",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Taalfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "J.L. Austin ontdekte dat taal niet alleen beschrijft maar ook handelingen verricht: 'Ik beloof het' is geen beschrijving maar een belofte. 'Ik verklaar u man en vrouw' is een handeling die een huwelijk constitueert. Taalhandelingen (speech acts) hebben drie niveaus: de uitdrukking zelf (locuties), de handelingskracht (illocuties), en het effect (perlocuties).",
+    abstractExample: "Illocuties zijn de handelingskracht achter woorden: beloven, bevelen, vragen, waarschuwen, verklaren. Ze variëren per context, toon en positie van de spreker. 'Sluit de deur' gezegd door een vriend is een verzoek; door een leidinggevende is het een bevel; als theatertekst is het niet-ernstig.",
+    examples: [
+      { domain: "Juridisch taalgebruik", icon: "⚖️", text: "Juridische taal is doordrenkt van speech acts: vonnissen, contracten, testamenten, constitutionele verklaringen. Ze veranderen de sociale werkelijkheid door de uitdrukking zelf — performatieve kracht. 'Ik verklaar u schuldig' doet iets; het beschrijft niet slechts." },
+      { domain: "Leiderschap", icon: "🎯", text: "Een leider die een visie articuleert, doet meer dan beschrijven — hij/zij probeert de werkelijkheid te constitueren via de verklaring. 'We gaan naar de maan' is een illocutie die commitment schept, niet slechts een beschrijving van toekomstige feiten." },
+      { domain: "Dagelijkse communicatie", icon: "💬", text: "Bewust worden van speech acts in eigen communicatie: 'ik maak me zorgen' is een ander speech act dan 'jij maakt altijd fouten'. Het eerste beschrijft een gevoel; het tweede beschuldigt. Hetzelfde onderwerp, radicaal verschillende handelingskracht." }
+    ],
+  },
+  {
+    id: "indeterminacy-translation",
+    title: "Onbepaaldheid van Vertaling (Quine)",
+    difficulty: 3,
+    emoji: "🔄",
+    academicCategory: "Taalfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "W.V.O. Quine betoogde: stel je probeert een volledig onbekende taal te leren door gedragsbewijzen. Een inboorling zegt 'gavagai!' bij het zien van een konijn. Betekent dat 'konijn', 'konijnendeel', 'onafgescheiden konijnendeel', 'konijnenhood'? Alle vertalingen zijn consistent met alle gedragsbewijzen — er is geen feit van de zaak die vertaling correct is.",
+    abstractExample: "Quine's conclusie: er is geen objectieve waarheid over welke vertaling de juiste is. Dit ondermijnt de idee van determinate betekenis ook binnen één taal — als vertaling onbepaald is, is ook interpretatie binnen taal dat.",
+    examples: [
+      { domain: "Vertalen", icon: "🌐", text: "Elke vertaling is een interpretatiebeslissing, niet een neutrale overdracht. 'Spirit' (Engels), 'Geist' (Duits), 'esprit' (Frans) overlappen maar zijn niet identiek. De vertaler constitueert deels de betekenis — er is geen 'de' betekenis die perfect overgedragen wordt." },
+      { domain: "Historische interpretatie", icon: "📚", text: "Wat bedoelde Aristoteles met 'eudaimonia'? Geluk? Welzijn? Bloei? Elk vertaalchoice is een interpretatiebeslissing die de tekst deels constitueert. Quine's punt: er is geen feit van de zaak dat de 'correcte' interpretatie is." },
+      { domain: "Interculturele communicatie", icon: "🤝", text: "Bij cross-culturele communicatie is onbepaaldheid van interpretatie praktisch aanwezig: hetzelfde woord in cultuur A heeft andere connotaties, regels en praktijken dan de 'vertaling' in cultuur B. Communicatie is meer samenwerking in betekenisconstructie dan overdracht." }
+    ],
+  },
+  {
+    id: "meaning-of-life-question",
+    title: "De Zin van het Leven als Vraag",
+    difficulty: 2,
+    emoji: "❓",
+    academicCategory: "Levensfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Wanneer iemand vraagt 'wat is de zin van het leven?', is die vraag ambigue: (1) wat is het doel van het menselijk bestaan? (2) Welke activiteiten geven een gevoel van betekenis? (3) Heeft het universum intrinsiek betekenis? (4) Welk leven is het leven waard? Elk is een andere vraag, met andere antwoorden. De vraag verwarren leidt tot verwarring in de antwoorden.",
+    abstractExample: "Douglas Adams' antwoord '42' maakt impliciet dit punt: de vraag is slecht geformuleerd. Als je weet wat de vraag precies is (welke soort betekenis wordt gevraagd), is het antwoord minder mysterieus. Filosofie van de zinvraag begint met het onderscheiden van deze niveaus.",
+    examples: [
+      { domain: "Persoonlijke zingeving", icon: "🌟", text: "De vraag 'wat geeft mijn leven zin?' is anders dan 'heeft het universum een doel'. De eerste is empirisch beantwoordbaar via introspectie en observatie; de tweede is metafysisch en misschien onbeantwoordbaar. Verwarren van de twee leidt tot existentieel nihilisme als antwoord op de eerste." },
+      { domain: "Therapeutische gesprekken", icon: "💬", text: "Mensen die zeggen 'mijn leven heeft geen zin' stellen soms de kosmische vraag maar bedoelen de persoonlijke. Therapeutisch antwoord: kosmische zin is inderdaad niet gevonden; maar persoonlijke zin — verbinding, groei, bijdrage — is te cultiveren." },
+      { domain: "Filosofische praktijk", icon: "📚", text: "Wittgenstein: de oplossing van filosofische problemen is het ontwarren van taalverwarringen. De zinvraag is paradigmatisch: niet één mysterieuze vraag maar meerdere verwarde vragen die elk hun eigen soort antwoord verlangen." }
+    ],
+  },
 ];
