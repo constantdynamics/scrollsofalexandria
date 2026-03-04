@@ -10007,4 +10007,156 @@ export const principlesNew = [
       { domain: "Mens-machine-grens", icon: "🔬", text: "Als de grens tussen mensen en machines in de toekomst vervaagt — cyborgs, neurale implantaten, digitale bewustzijnsextensies — verliest de Turing-test zijn betekenis als scheidslijn. Wat is dan het criterium voor morele status?" }
     ],
   },
+
+  // ========== BATCH C3: GEDACHTE-EXPERIMENTEN — POLITIEKE FILOSOFIE & RECHTVAARDIGHEID ==========
+  {
+    id: "social-contract-state-of-nature",
+    title: "De Oerstaat en het Sociaal Contract",
+    difficulty: 2,
+    emoji: "📜",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Hobbes, Locke en Rousseau vroegen: hoe zou het menselijk leven eruitzien zonder staat of wetten — in de 'staat van nature'? Hobbes: een 'oorlog van allen tegen allen' — leven kort, brutaal en eenzaam. Locke: redelijk maar onzeker. Rousseau: idyllisch, verdorven door beschaving. Elk antwoord leidt tot een andere theorie van wat de staat mag en moet doen.",
+    abstractExample: "Het gedachte-experiment is hypothetisch maar functioneel: het vraagt welke rechten en vrijheden mensen zouden opgeven voor de voordelen van samenleving. Hobbes' oerstaat rechtvaardigt een sterke staat (Leviathan); Locke's rechtvaardig een liberale staat met beperkte macht; Rousseau's een directe democratie.",
+    examples: [
+      { domain: "Staatsmacht", icon: "🏛️", text: "Hoeveel macht mag de staat hebben om veiligheid te garanderen? Hobbes zou veel zeggen; Locke: alleen wat nodig is voor veiligheid en eigendom; Rousseau: de staat is legitiem alleen als ze de algemene wil uitdrukt." },
+      { domain: "Mensenrechten", icon: "⚖️", text: "Locke's oerstaat-redenering ligt aan de basis van de moderne mensenrechten: rechten zijn pre-politiek en de staat mag ze niet schenden. De VN-verklaring is een Lockiaans document." },
+      { domain: "Anarchisme", icon: "🌐", text: "Anarchisten verwerpen de premisse dat de oerstaat zonder staat ondraaglijk is. Kropotkin en anderen betoogden dat mensen van nature coöperatief zijn — Rousseau-varianten zonder de nostalgische natuur-mythe." }
+    ],
+  },
+  {
+    id: "original-position-redistribution",
+    title: "Verdelen achter de Sluier: Herverdelingsvraagstuk",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel je kunt de economische ongelijkheid in een samenleving zelf instellen — maar je weet niet welke positie je zelf zult innemen. Hoeveel ongelijkheid is rechtvaardig? Rawls stelt: je kiest een systeem dat de armste positie zo aantrekkelijk mogelijk maakt (maximin-principe), want je wilt niet aan de onderkant belanden. Dit is zijn argument voor herverdelende rechtvaardigheid.",
+    abstractExample: "Het experiment maakt eigenbelang onmogelijk en genereert zo een neutraler oordeel over rechtvaardigheid. Het verschilprincipe: ongelijkheid is alleen gerechtvaardigd als het de minst bevoordeelden ten goede komt — de positie van de dokter versus de verpleger is gerechtvaardigd als het mensen aanmoedigt dokter te worden en zo gezondheidszorg te verbeteren.",
+    examples: [
+      { domain: "Belastingbeleid", icon: "💰", text: "Hoe progressief moet de inkomstenbelasting zijn? Rawls' antwoord: zo progressief als nodig om de positie van de armste groepen te maximaliseren. Als sterk progressief beleid innovatie zo zwaar remt dat ook armen slechter af zijn, is minder progressief gerechtvaardigd." },
+      { domain: "Onderwijsinvesteringen", icon: "📚", text: "Moeten extra onderwijsmiddelen naar de beste leerlingen (maximaliseer gemiddeld potentieel) of naar de zwakste (maximaliseer de bodem)? Rawls pleit voor het tweede: investeer waar het de minst bevoordeelden het meest helpt." },
+      { domain: "Gezondheidszorg", icon: "🏥", text: "Een samenleving zonder basisgezondheidszorg maar met uitstekende zorg voor wie het kan betalen — of een samenleving met basisgezondheidszorg voor iedereen maar minder topzorg? Rawls kiest het tweede: de slechtste positie telt het zwaarst." }
+    ],
+  },
+  {
+    id: "libertarian-self-ownership",
+    title: "Zelfbeschikking en de Libertaire Uitdaging (Nozick)",
+    difficulty: 3,
+    emoji: "🗽",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Robert Nozick stelde tegenover Rawls: mensen bezitten zichzelf volledig. Dat betekent dat hun talenten, arbeid en eerlijk verkregen bezittingen van henzelf zijn. Verplichte herverdeling via belasting is dan een schending van zelfbeschikking — gelijkwaardig aan gedeeltelijke slavernij. Alleen vrije uitwisseling genereert rechtvaardige eigendomsverhoudingen.",
+    abstractExample: "Nozick's Wilt Chamberlain-argument: stel iedereen is tevreden met de verdeling. Chamberlain speelt basketball en iedereen geeft hem een kwartje extra. Na duizend wedstrijden is Chamberlain rijker. Is dit onrechtvaardig? Elke transactie was vrijwillig. Als de uitkomst onrechtvaardig is, is het niet duidelijk welke stap verkeerd was.",
+    examples: [
+      { domain: "Belastingen", icon: "💸", text: "Nozick's vraag: als je talent en arbeid van jou zijn, waarom heeft de staat dan recht op een deel van je inkomen? Progressieve belasting houdt in dat de staat je dwingen meer uren voor anderen dan voor jezelf te werken — een vorm van gedwongen arbeid?" },
+      { domain: "Erfrecht", icon: "🏠", text: "Als je rijkdom eerlijk verkregen is, mag je die dan nalaten aan je kinderen? Rawlsianen zeggen: nee, dat versterkt onrechtvaardige startposities. Nozick zegt: ja, eigendomsrecht impliceert het recht van overdracht." },
+      { domain: "Orgaanmarkt", icon: "🫀", text: "Als je jouw lichaam volledig bezit, mag je je organen verkopen? De libertaire logica zegt ja. De meeste landen verbieden het. Wat zijn de morele argumenten aan beide kanten van dit lichaamsautonomie-dilemma?" }
+    ],
+  },
+  {
+    id: "perfect-democracy-paradox",
+    title: "De Paradox van de Perfecte Democratie",
+    difficulty: 2,
+    emoji: "🗳️",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel een democratie stemt met een grote meerderheid voor een wet die de rechten van een minderheid ernstig schendt. Is dit democratisch legitiem? Het experiment onthult de spanning tussen democratie (meerderheid beslist) en liberalisme (rechten zijn onvervreemdbaar, ook voor minderheden). Een perfecte democratie kan liberale rechten vernietigen.",
+    abstractExample: "De paradox: democratie vereist dat de meerderheid beslist, maar als de meerderheid beslist de rechten van de minderheid af te schaffen, is de uitkomst ondemocratisch (in de liberale zin). Constitutionele beperkingen op democratische beslissingen zijn de reactie — maar zij zelf zijn niet democratisch gekozen.",
+    examples: [
+      { domain: "Grondrechten", icon: "⚖️", text: "Een grondwettelijk hof dat democratisch genomen besluiten vernietigt als strijdig met grondrechten — is dit democratisch? Het is democratisch in de constitutionele zin maar niet in de meerderheidszin. Welk democratiebegrip telt?" },
+      { domain: "Minderheidsrechten", icon: "🌈", text: "In landen waar LGBTQ+-rechten via referendum worden beperkt: is dat democratisch legitiem? De spanning tussen volkssoevereiniteit en universele mensenrechten is exact de paradox van de perfecte democratie." },
+      { domain: "Brexit", icon: "🇬🇧", text: "Een smalle meerderheid stemde voor Brexit, met verstrekkende gevolgen voor minderheden (EU-burgers in het VK, Ieren aan de grens). Was het democratisch? Formeel ja. Maar loste de democratische procedure alle legitimiteitsvragen op?" }
+    ],
+  },
+  {
+    id: "just-war-theory",
+    title: "Rechtvaardige Oorlog: Wanneer is Geweld Gerechtvaardigd?",
+    difficulty: 2,
+    emoji: "⚔️",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "De rechtvaardige-oorlog-theorie (jus ad bellum) vraagt: onder welke condities is het beginnen van oorlog moreel gerechtvaardigd? Klassieke criteria: rechtvaardige oorzaak, juiste intentie, legitiem gezag, laatste redmiddel, proportionaliteit, redelijke kans op succes. Het gedachte-experiment vraagt al deze criteria te toetsen op concrete gevallen.",
+    abstractExample: "Preventieve oorlog: mag een land aanvallen voordat het aangevallen wordt, als er een duidelijke dreiging is? Humanitaire interventie: mag een land een ander aanvallen om genocide te stoppen? Elke toepassing van de criteria geeft conflicterende antwoorden — de theorie structureert de discussie maar lost haar niet op.",
+    examples: [
+      { domain: "Humanitaire interventie", icon: "🌍", text: "Kosovo 1999: de NAVO bombardeerde zonder VN-mandaat om genocide te stoppen. Rechtvaardige oorzaak aanwezig — maar was het legitiem gezag aanwezig zonder VN-goedkeuring? Het geval split experts in rechtvaardige-oorlog-theorie tot op vandaag." },
+      { domain: "Zelfverdediging", icon: "🛡️", text: "Israël's preventieve aanval in 1967 (Zesdaagse Oorlog) op Egypte dat mobiliseerde aan de grens: zelfverdediging of agressie? Het preventieve-oorlog-criterium is het meest betwiste element van de rechtvaardige-oorlog-theorie." },
+      { domain: "Drone-aanvallen", icon: "🚁", text: "Gerichte drone-aanvallen op terroristenleiders in landen waarmee geen oorlog is gevoerd — voldoet dit aan de rechtvaardige-oorlog-criteria? Proportionaliteit, onderscheid tussen combattanten en burgers, legitiem gezag — elk criterium stelt vragen." }
+    ],
+  },
+  {
+    id: "punishment-retribution-rehabilitation",
+    title: "Straf: Vergelding of Rehabilitatie?",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Strafrechtsfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel iemand begaat een ernstig misdrijf door een combinatie van traumatische jeugd, neurobiologische factoren en sociale omstandigheden die zijn vrije wil aanzienlijk beperken. Verdient hij straf? Als hij strafreden verdient, is dat ter vergelding (hij verdient leed omdat hij leed veroorzaakte) of ter rehabilitatie en afschrikking. Kan vergelding gerechtvaardigd zijn als vrije wil beperkt is?",
+    abstractExample: "Retributivisme: straf is moreel verschuldigd ongeacht de gevolgen — kwaad verdient kwaad. Consequentialisme: straf is gerechtvaardigd alleen door toekomstige goede gevolgen (afschrikking, bescherming, rehabilitatie). De eerste vereist vrije wil; de tweede niet.",
+    examples: [
+      { domain: "Gevangeniswezen", icon: "🏛️", text: "Nederland investeert zwaar in rehabilitatie-gerichte detentie; de VS in afschrikking en retributie. Recidivecijfers zijn significant lager in Nederland. Wat zegt dit over de effectiviteit en rechtvaardigheid van de twee benaderingen?" },
+      { domain: "Neurobiologie en aansprakelijkheid", icon: "🧠", text: "Als een hersentumor aantoonbaar bijdraagt aan agressief gedrag — vermindert dit de strafrechtelijke aansprakelijkheid? Als ja: wat als alle gedrag neurobiologisch te verklaren is? Verdwijnt vrije wil en daarmee vergelding?" },
+      { domain: "Jeugdcriminaliteit", icon: "👦", text: "Moeten minderjarigen anders worden bestraft dan volwassenen? De meeste rechtsstelsels zeggen ja — maar op welke grond? Als het om ontwikkelingsgraad van de prefrontale cortex gaat: waar is de grens en wie trekt die?" }
+    ],
+  },
+  {
+    id: "ideal-theory-vs-nonideal",
+    title: "Ideale vs. Niet-Ideale Theorie",
+    difficulty: 3,
+    emoji: "🗺️",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Politiek filosofen debatteren: moet filosofie beschrijven hoe de perfecte samenleving eruitziet (ideale theorie) of hoe we vanuit de huidige imperfecte wereld stap voor stap verbetering kunnen bewerkstelligen (niet-ideale theorie)? Rawls koos voor ideale theorie; Amartya Sen en Martha Nussbaum bekritiseerden dit als te ver van de praktijk.",
+    abstractExample: "Ideale theorie geeft een kompas maar zegt weinig over welke stap nu te zetten. Niet-ideale theorie vraagt: gegeven dat we hier zijn, welke richting is beter? Sen's vergelijkende rechtvaardigheid: je hoeft niet te weten wat perfect is om te weten dat slavernij slechter is dan vrijheid.",
+    examples: [
+      { domain: "Klimaatbeleid", icon: "🌍", text: "Het ideale klimaatbeleid is duidelijk (nul-emissie, wereldwijde coördinatie). Maar de wereld is niet ideaal. Niet-ideale theorie vraagt: gegeven politieke weerstand, economische belangen en internationale anarchie — welke haalbare stap verbetert het meest?" },
+      { domain: "Armoedebestrijding", icon: "💸", text: "Het ideale: geen armoede, gelijke kansen. De werkelijkheid: diepe structurele ongelijkheid. Sen's capabilities approach vraagt niet wat de perfecte verdeling is maar welke interventies mensen nu het meest in staat stellen hun leven te leiden." },
+      { domain: "Democratiehervormingen", icon: "🗳️", text: "Het ideale democratisch systeem is theoretisch helder. Maar hoe hervormen we bestaande systemen die gevestigde belangen verdedigen? Niet-ideale theorie geeft prioriteit aan het uitvoerbare verbetering boven het perfect onhaalbare." }
+    ],
+  },
+  {
+    id: "global-justice-borders",
+    title: "Globale Rechtvaardigheid en de Morele Willekeur van Geboorte",
+    difficulty: 2,
+    emoji: "🌐",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Je geboorteland is, zoals geslacht en ras, een morele willekeur — je hebt het niet verdiend en niet gekozen. Toch bepaalt het radicaal je levenskansen. Als morele willekeur geen basis kan zijn voor discriminatie (ras, geslacht), waarom dan wel voor nationaliteit? Filosofen als Thomas Pogge stellen dat rijke landen actief bijdragen aan wereldarmoede via internationale instellingen.",
+    abstractExample: "Rawls paste zijn sluier-van-onwetendheid-argument niet toe op mondiale rechtvaardigheid (hij stopte bij de natiestaat). Pogge, Beitz en anderen betogen dat dit inconsistent is: als de sluier ons tot herverdeling binnen landen verplicht, verplicht ze ons ook tot herverdeling tussen landen.",
+    examples: [
+      { domain: "Immigratie", icon: "✈️", text: "Als geboorteland morele willekeur is, is het beperken van immigratie gelijkwaardig aan het beperken van mobiliteit op basis van geboorteplaats binnen een land — wat we als discriminatie zouden beschouwen. Hoe ver gaat dit argument?" },
+      { domain: "Handelsbeleid", icon: "💱", text: "Rijke landen subsidiëren hun landbouwsector, waardoor arme landen niet kunnen concurreren. Pogge: dit is actieve schade, niet slechts nalatigheid. Als dit klopt, zijn rijke landen niet slechts onverschillig maar medeplichtig aan armoede." },
+      { domain: "Mondiale instellingen", icon: "🌍", text: "Het IMF en Wereldbank stellen voorwaarden (structurele aanpassingsprogramma's) die arme landen treffen. Zijn mondiale instellingen rechtvaardig als ze zijn gestructureerd naar de belangen van rijke landen die ze domineren?" }
+    ],
+  },
+  {
+    id: "civil-disobedience-justification",
+    title: "Wanneer is Burgerlijke Ongehoorzaamheid Gerechtvaardigd?",
+    difficulty: 2,
+    emoji: "✊",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Burgerlijke ongehoorzaamheid is het bewust en openbaar overtreden van wetten om een moreel of politiek punt te maken, met aanvaarding van de juridische consequenties. Rawls stelde criteria: de onrechtvaardigheid moet ernstig zijn, legale middelen uitgeput zijn, de actie moet openbaar en geweldloos zijn en de activist moet bereid zijn straf te accepteren.",
+    abstractExample: "De kernspanning: in een democratie vertegenwoordigt de wet de wil van de meerderheid. Burgerlijke ongehoorzaamheid plaatst het persoonlijk moreel oordeel boven democratisch besluit. Wanneer is dat gerechtvaardigd? Rawls: alleen als fundamentele rechten worden geschonden en het systeem niet voldoende respondeert.",
+    examples: [
+      { domain: "Klimaatactivisme", icon: "🌱", text: "Klimaatactivisten die snelwegen blokkeren of musea binnendringen — voldoen zij aan Rawls' criteria? Ernstige onrechtvaardigheid (klimaatcrisis): ja. Legale middelen uitgeput: debatabel. Aanvaarding van straf: vaak ja. Geweldloos: ja." },
+      { domain: "Historisch", icon: "📜", text: "Rosa Parks weigerde haar bus-stoel in een gesegregeerd Amerika — klassieke burgerlijke ongehoorzaamheid die breed als gerechtvaardigd wordt beschouwd. Wat maakt dit geval anders dan discutabelere hedendaagse gevallen?" },
+      { domain: "Digitale wereld", icon: "💻", text: "Hacktivisme — hacken voor politieke doelen — als digitale burgerlijke ongehoorzaamheid. Voldoet het aan de criteria? De geweldloosheid is minder duidelijk als het infrastructuur schaadt. Maar schaadt een fysieke blokkade ook niet?" }
+    ],
+  },
+  {
+    id: "collective-responsibility",
+    title: "Collectieve Verantwoordelijkheid",
+    difficulty: 3,
+    emoji: "👥",
+    academicCategory: "Politieke Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Kunnen groepen moreel verantwoordelijk zijn — niet alleen individuele leden? Is Duitsland als natie verantwoordelijk voor de Holocaust, ook voor Duitsers die na 1945 zijn geboren? Is de VS verantwoordelijk voor slavernij, ook voor mensen die daarna immigreerden? Het experiment vraagt of collectieve identiteit collectieve aansprakelijkheid impliceert.",
+    abstractExample: "Individualistisch antwoord: alleen individuen handelen en zijn verantwoordelijk; collectieven zijn metaforen. Collectivistisch antwoord: naties en instituties zijn echte actoren die over tijd continuïteit hebben — schuld en herstelplicht kunnen reëel zijn ook voor latere generaties, via erfenis van voordelen die door het historisch onrecht zijn verkregen.",
+    examples: [
+      { domain: "Herstelsbetalingen", icon: "💸", text: "Moeten hedendaagse Duitsers bijdragen aan herstelbetalingen voor de Holocaust? Moeten hedendaagse Amerikanen reparations betalen voor slavernij? De antwoorden hangen af van welke theorie van collectieve verantwoordelijkheid je hanteert." },
+      { domain: "Kolonialisme", icon: "🌍", text: "Nederland profiteerde van kolonialisme. Huidige Nederlanders — ook nakomers van migranten — leven in een samenleving die door dat kolonialisme is gevormd. Impliceert dat een herstelplicht? En hoe wordt die gecalculeerd?" },
+      { domain: "Corporate accountability", icon: "🏢", text: "Bedrijven die decennia lang fossiele brandstoffen verkochten terwijl ze de gevaren kenden — zijn ze collectief verantwoordelijk voor klimaatschade? En zijn aandeelhouders die toen niet bestonden mede-aansprakelijk via hun eigendom?" }
+    ],
+  },
 ];
