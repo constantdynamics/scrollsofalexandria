@@ -6511,4 +6511,156 @@ export const principlesNew = [
       { domain: "Organisatie", icon: "🏢", text: "Een nieuwe CEO zegt 'we gaan focussen op kwaliteit' zonder te specificeren wat dat betekent — alle afdelingen horen wat ze willen horen en beginnen constructief mee te bewegen." }
     ],
   },
+
+  // ── Batch Z10: Wetenschap & Epistemologie ───────────────────────────────────
+  {
+    id: "falsificationism",
+    title: "Falsificationisme",
+    difficulty: 2,
+    emoji: "🔬",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Falsificationisme (Popper) stelt dat een theorie alleen wetenschappelijk is als ze in principe weerlegbaar is door een observatie. Wetenschap groeit door het verwerpen van onjuiste theorieën, niet door bevestiging.",
+    abstractExample: "De claim 'alle zwanen zijn wit' is wetenschappelijk omdat één zwarte zwaan hem weerlegt. 'God is onzichtbaar en ongrijpbaar' is niet wetenschappelijk want geen observatie kan hem weerleggen.",
+    examples: [
+      { domain: "Biologie", icon: "🧬", text: "Darwins evolutietheorie is falsifieerbaar: een konijnenfossiel uit het precambrium zou haar vernietigen. Ze is wetenschappelijk juist omdat ze risico neemt." },
+      { domain: "Psychologie", icon: "🧠", text: "Freudiaanse psychoanalyse was lang bekritiseerd als niet-falsifieerbaar: elke tegenwerping kon worden geïnterpreteerd als bewijs (weerstand = bevestiging)." },
+      { domain: "Ondernemerschap", icon: "🚀", text: "Een goede bedrijfshypothese specificeert van tevoren wat bewijs zou zijn dat ze fout is — 'als minder dan 10% koopt na proef, dan klopt de aanname niet'." }
+    ],
+  },
+  {
+    id: "paradigm-shift",
+    title: "Paradigmaverschuiving",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Paradigmaverschuivingen (Kuhn) zijn revolutionaire momenten waarop de fundamentele aannames van een vakgebied worden vervangen door een nieuw kader — normaal wetenschap accumuleert kennis, paradigmaverschuivingen herstructureren haar.",
+    abstractExample: "Wetenschap werkt niet lineair. Lange periodes van puzzeloplossen binnen een paradigma worden afgewisseld door crises en revoluties die het hele raamwerk transformeren.",
+    examples: [
+      { domain: "Astronomie", icon: "🌍", text: "De Copernicaanse revolutie verschoof het geocentrisch naar het heliocentrischer paradigma — niet door meer data, maar door een radicaal nieuw interpretatiekader." },
+      { domain: "Geneeskunde", icon: "🏥", text: "De ontdekking dat bacteriën ziektes veroorzaken (Pasteur, Koch) was een paradigmaverschuiving die de miasmatheorie (kwade lucht) verving — alles moest worden herdacht." },
+      { domain: "Business", icon: "💼", text: "Internet was een paradigmaverschuiving voor media, retail en communicatie — bedrijven die het als incrementele technologie behandelden verloren van pure-play concurrenten." }
+    ],
+  },
+  {
+    id: "replication-crisis",
+    title: "Replicatiecrisis",
+    difficulty: 2,
+    emoji: "📊",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "De replicatiecrisis is de ontdekking dat een groot deel van gepubliceerd wetenschappelijk onderzoek niet kan worden gerepliceerd — met name in psychologie, voedingswetenschappen en biomedisch onderzoek.",
+    abstractExample: "Als een studie aantoont dat X Y veroorzaakt, maar tien onafhankelijke pogingen het resultaat niet kunnen reproduceren, dan was de oorspronkelijke bevinding waarschijnlijk vals positief of toevallig.",
+    examples: [
+      { domain: "Psychologie", icon: "🧠", text: "De Reproducibility Project (2015) kon slechts 39% van 100 gepubliceerde psychologieonderzoeken reproduceren — veel 'bewezen' effecten blijken statistisch artefacten." },
+      { domain: "Voeding", icon: "🥗", text: "Tientallen dieetstudies die koffie, rode wijn of superfoods aanprijzen, konden niet worden gerepliceerd — kleine steekproeven en publicatiebias verklaren de valse bevindingen." },
+      { domain: "Beleid", icon: "🏛️", text: "Beleidsmakers die onderwijsinterventies implementeren gebaseerd op niet-gerepliceerde studies verspillen budgetten — replicatie is vereist voor evidence-based beleid." }
+    ],
+  },
+  {
+    id: "induction-problem",
+    title: "Probleem van Inductie",
+    difficulty: 3,
+    emoji: "🔄",
+    academicCategory: "Epistemologie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Het inductieprobleem (Hume) stelt dat we uit eindige observaties nooit met zekerheid universele conclusies kunnen trekken — hoe vaak je ook een witte zwaan ziet, je kunt niet bewijzen dat alle zwanen wit zijn.",
+    abstractExample: "Duizend waarnemingen dat de zon opstijgt, bewijzen niet dat ze morgen ook opstijgt. Inductie is logisch ongeldig maar praktisch onmisbaar — we leven van inductieve aannames.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "Alle wetenschappelijke wetten zijn inductief — we nemen aan dat de zwaartekracht morgen nog werkt omdat ze altijd heeft gewerkt, niet door logisch bewijs." },
+      { domain: "Finance", icon: "📈", text: "Financiële modellen die gebaseerd zijn op historische data gaan ervan uit dat patronen zich herhalen — maar het inductieprobleem garandeert niets over de toekomst." },
+      { domain: "AI", icon: "🤖", text: "Machine learning is radicale inductie: een model leert patronen uit trainingsdata en extrapoleer naar nieuwe gevallen — het inductieprobleem verklaart generalisatiefouten." }
+    ],
+  },
+  {
+    id: "occams-razor",
+    title: "Occams Scheermes",
+    difficulty: 1,
+    emoji: "✂️",
+    academicCategory: "Epistemologie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Occams scheermes is het principe dat bij twee verklaringen met gelijke verklarende kracht, de eenvoudigste de voorkeur verdient. Vermenigvuldig geen entiteiten zonder noodzaak.",
+    abstractExample: "Als je 's ochtends lege koekjes vindt, is de eenvoudigste verklaring 'iemand van het gezin heeft ze gegeten' te prefereren boven een ingewikkeld verhaal over inbrekers die toevallig alleen koekjes wilden.",
+    examples: [
+      { domain: "Geneeskunde", icon: "🏥", text: "Medisch principe: 'Als je hoefgetrappel hoort, denk dan aan paarden, niet aan zebra's' — de meest voor de hand liggende diagnose is statistisch meest waarschijnlijk." },
+      { domain: "Wetenschap", icon: "🔬", text: "Newton's gravitatiewet is eenvoudiger dan rivaliserende theorieën en verklaard evenveel — Occams scheermes geeft haar de voorkeur totdat Einstein meer precisie vereiste." },
+      { domain: "Debugging", icon: "💻", text: "Bij een softwarebug: begin met de eenvoudigste verklaring (typefout, verkeerde variabele) voor je complexe oorzaken onderzoekt — Occams scheermes bespaart debugtijd." }
+    ],
+  },
+  {
+    id: "thought-experiment",
+    title: "Gedachte-experiment",
+    difficulty: 2,
+    emoji: "💭",
+    academicCategory: "Epistemologie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Gedachte-experimenten zijn mentale simulaties van hypothetische scenario's die worden gebruikt om intuïties te testen, theorieën te verkennen of grenzen van begrip te identificeren — zonder fysieke uitvoering.",
+    abstractExample: "Door je voor te stellen wat zou gebeuren als licht snelheid 0 had, of als je een kat in een gesloten doos met gifgas stopt, kun je theoretische consequenties verkennen die empirisch onmogelijk zijn.",
+    examples: [
+      { domain: "Fysica", icon: "⚛️", text: "Einsteins trein-gedachte-experiment leidde tot relativiteitstheorie: hij stelde zich voor met een lichtstraal mee te rijden. Geen experiment nodig — pure redenering." },
+      { domain: "Ethiek", icon: "⚖️", text: "De trolleyprobleem stelt: mag je één schakelaar omzetten zodat een tram vijf mensen mist maar één doodt? Dit verkennt intuïties over actieve versus passieve schade." },
+      { domain: "Recht", icon: "📜", text: "Rawls' 'sluier van onwetendheid' — welke regels zou je kiezen als je niet weet welke positie je in de samenleving krijgt? Dit denkexperiment genereert rechtvaardigheidstheorie." }
+    ],
+  },
+  {
+    id: "epistemic-justification",
+    title: "Epistemische Rechtvaardiging",
+    difficulty: 3,
+    emoji: "📚",
+    academicCategory: "Epistemologie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Epistemische rechtvaardiging onderzoekt wat maakt dat een overtuiging 'gerechtvaardigd' is — niet alleen waar, maar op goede gronden aangehouden. Kennis = gerechtvaardigd ware overtuiging (met Gettier-voorbehoud).",
+    abstractExample: "Ik geloof dat het 12:00 is omdat mijn stopgezet horloge dat toont, en toevallig is het precies 12:00. Mijn overtuiging is waar maar niet gerechtvaardigd — dit is geen kennis.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "Wetenschappelijke kennis vereist rechtvaardiging via methode, peer review en replicatie — niet elke ware claim is kennis als ze toevallig waar is." },
+      { domain: "Recht", icon: "📜", text: "Getuigenverklaringen zijn bewijs maar niet altijd gerechtvaardigd: menselijk geheugen is reconstruerend en beïnvloedbaar. Rechtvaardiging vereist corroborerend bewijs." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Je gelooft dat een product werkt omdat een vriend het aanbeval. Dat is een overtuiging maar nauwelijks gerechtvaardigd — anekdotisch bewijs is zwakke rechtvaardiging." }
+    ],
+  },
+  {
+    id: "scientific-consensus",
+    title: "Wetenschappelijke Consensus",
+    difficulty: 2,
+    emoji: "🌡️",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Wetenschappelijke consensus is het collectieve oordeel van experts na kritische toetsing van het beschikbare bewijs. Het is niet de mening van één wetenschapper, maar het geaccumuleerde gewicht van gerepliceerd onderzoek.",
+    abstractExample: "Eén studie bewijst niets. Honderd goed uitgevoerde studies die consistent hetzelfde concluderen, gecombineerd met een mechanistische verklaring, vormen consensus — het sterkste kennistype dat we hebben.",
+    examples: [
+      { domain: "Klimaat", icon: "🌍", text: "97% van klimaatonderzoekers is het eens over menselijk veroorzaakte klimaatverandering — dit is geen 'mening' maar geaccumuleerd wetenschappelijk oordeel na decennia onderzoek." },
+      { domain: "Geneeskunde", icon: "🏥", text: "Vaccinveiligheid heeft de sterkste wetenschappelijke consensus in de geneeskunde — duizenden studies, elk met tegenstrijdig incentive, bevestigen consistent dezelfde conclusies." },
+      { domain: "Voeding", icon: "🥗", text: "Onderscheid maken tussen consensus (verzadigde vetten en hartaandoeningen) en controversieel gebied (optimale eiwitinname) helpt om mediaberichten te kalibreren." }
+    ],
+  },
+  {
+    id: "abductive-reasoning",
+    title: "Abductief Redeneren",
+    difficulty: 2,
+    emoji: "🕵️",
+    academicCategory: "Epistemologie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Abductief redeneren (inferentie naar de beste verklaring) start bij een waarneming en zoekt de meest aannemelijke verklaring — niet de enig mogelijke, maar de beste gegeven beschikbaar bewijs.",
+    abstractExample: "Je ziet natte straten en concludeert dat het heeft geregend. Dat is abductie: je kiest de meest plausibele verklaring (regen) boven alternatieven (een waterleiding brak, sproeiers staan aan).",
+    examples: [
+      { domain: "Diagnostiek", icon: "🏥", text: "Een arts ziet symptomen (koorts, hoest, ademhalingsproblemen) en concludeert 'meest waarschijnlijk pneumonie' — abductieve gevolgtrekking, niet logisch bewijs." },
+      { domain: "Wetenschappelijk onderzoek", icon: "🔬", text: "Darwin redeneerde abductief: hij zag fossiele records, eilandenspeciatie en homologe structuren, en concludeerde dat evolutie via selectie de beste verklaring was." },
+      { domain: "Business", icon: "💼", text: "Een CEO ziet dalende verkopen, stijgende retourpercentages en negatieve reviews en concludeert abductief dat kwaliteitsproblemen de meest plausibele oorzaak zijn." }
+    ],
+  },
+  {
+    id: "social-epistemology",
+    title: "Sociale Epistemologie",
+    difficulty: 3,
+    emoji: "👥",
+    academicCategory: "Epistemologie",
+    skillCategory: "Wetenschap & Epistemologie",
+    definition: "Sociale epistemologie onderzoekt hoe kennis sociaal wordt gecreëerd, verspreid en gevalideerd. Individuele kennis is beperkt; de meeste kennis die we bezitten is gebaseerd op vertrouwen in anderen.",
+    abstractExample: "Je weet niet zelf dat de aarde rond is — je vertrouwt een keten van wetenschappers, leraren en bronnen. Vrijwel alle kennis is gesocialiseerd en vraagt om epistemisch vertrouwen.",
+    examples: [
+      { domain: "Vertrouwen", icon: "🤝", text: "We vertrouwen op expertise van artsen, ingenieurs en rechters voor levensbelangrijke beslissingen — sociale epistemologie onderzoekt wanneer dat vertrouwen gerechtvaardigd is." },
+      { domain: "Wetenschap", icon: "🔬", text: "Peer review is een sociaal kennisvalidatieproces — wetenschappers valideren elkaars werk, want individuele wetenschappers zijn feilbaar en beïnvloedbaar." },
+      { domain: "Desinformatie", icon: "📱", text: "Als sociale kennisstructuren worden aangetast door desinformatie, verdwijnt het fundament van gesocialiseerde kennis — epistemic crisis is ook een sociale crisis." }
+    ],
+  },
 ];
