@@ -7879,4 +7879,156 @@ export const principlesNew = [
       { domain: "Leiderschap", icon: "👥", text: "Inversie op teamleiderschap: wat zeker een team vernietigt? (micromanagement, politiek, gebrek aan doel, geen feedback). Systematisch vermijden hiervan is een betere strategie dan de perfecte leiderschapsstijl zoeken." }
     ],
   },
+
+  // ── Batch A9: Financiële Zelfredzaamheid ─────────────────────────────────────
+  {
+    id: "pay-yourself-first",
+    title: "Betaal Jezelf Eerst",
+    difficulty: 1,
+    emoji: "💰",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Betaal jezelf eerst is het principe om direct bij salarisbetaling een vast deel naar spaargeld of investeringen over te boeken, voor je welke rekening dan ook betaalt. Wat je niet ziet, geef je niet uit.",
+    abstractExample: "De meeste mensen sparen wat overblijft na uitgaven. Dit is het omgekeerde van wat werkt. Betaal jezelf eerst: spaar voor alles, geef de rest uit. Het gevoel van tekort werkt als automatische beperking.",
+    examples: [
+      { domain: "Sparen", icon: "🏦", text: "Automatische overboeking van 20% salaris naar spaarrekening op de dag van uitbetaling — voor het bewuste brein het geld ziet. Na drie maanden merk je het nauwelijks in je levensstijl." },
+      { domain: "Pensioen", icon: "📊", text: "Pensioendeelname via werkgever met automatische inhouding is 'betaal jezelf eerst' in institutionele vorm — de reden dat werkgeverspensioen effectiever is dan zelfstandig sparen voor de meeste mensen." },
+      { domain: "Freelance", icon: "💼", text: "Freelancers die direct bij ontvangst van betalingen 30% apart zetten (belasting + sparen), leven financieel stabiel. Degenen die wachten tot het einde van het jaar, vinden niets over." }
+    ],
+  },
+  {
+    id: "compound-interest-personal",
+    title: "Samengestelde Rente in Persoonlijke Financiën",
+    difficulty: 1,
+    emoji: "📈",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Samengestelde rente is rente op rente — je rendement wordt herbelegd en genereert zelf rendement. Over lange periodes leidt dit tot exponentiële groei. Einstein noemde het het achtste wereldwonder.",
+    abstractExample: "€10.000 bij 7% per jaar: na 10 jaar €19.700, na 20 jaar €38.700, na 30 jaar €76.100 — zonder ooit meer te storten. De tijd is de machtigste variabele, niet het bedrag.",
+    examples: [
+      { domain: "Beleggen", icon: "📊", text: "Iemand die op 22 jaar €5.000 belegt bij 7%, heeft op 65 jaar €105.000. Iemand die wacht tot 32 jaar heeft op 65 jaar €52.000 — 10 jaar verschil, half het vermogen." },
+      { domain: "Schuld", icon: "💳", text: "Samengestelde rente werkt ook negatief: creditcardschuld van €2.000 bij 20% rente groeit naar €12.380 na 10 jaar als je alleen minimumbedragen betaalt — hetzelfde mechanisme in omgekeerde richting." },
+      { domain: "Vaardigheden", icon: "🧠", text: "Samengestelde interesse geldt ook voor kennis en vaardigheden: kleine dagelijkse verbetering (1% per dag) leidt in een jaar tot 37x beter worden. De wet van samengesteld leren." }
+    ],
+  },
+  {
+    id: "loss-aversion-finance",
+    title: "Verliesaversie in Financiën",
+    difficulty: 2,
+    emoji: "😨",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Verliesaversie in financiën is de tendens om verlies circa 2x zwaarder te wegen dan equivalent winst. Dit leidt tot irrationele financiële beslissingen: vasthouden aan dalende aandelen, te vroeg winst nemen, geen risico nemen bij logische kansen.",
+    abstractExample: "Je verliest €100 en wint daarna €100 — je bent rationeel op nul maar psychologisch negatief. De pijn van het verlies overtreft het plezier van de winst. Dit misvormt financieel gedrag stelselmatig.",
+    examples: [
+      { domain: "Beleggen", icon: "📊", text: "Beleggers verkopen winnende aandelen te vroeg (winst pakken) en houden verliezers te lang (vasthouden in hoop op herstel). Beide zijn verliesaversie-gedrag dat rendement verlaagt." },
+      { domain: "Huizen", icon: "🏠", text: "Huizeneigenaren verkopen hun huis niet onder de aanschafprijs, zelfs als rationeel gezien verkopen en huren beter is — verliesaversie fixeert op het aanschafbedrag als referentiepunt." },
+      { domain: "Onderhandelen", icon: "🤝", text: "Wanneer je een korting framen als 'vermijden van €200 verlies' werkt beter dan '€200 besparen' — beide zijn identiek maar het verliesvermijding-frame motiveert sterker." }
+    ],
+  },
+  {
+    id: "emergency-fund",
+    title: "Noodfonds",
+    difficulty: 1,
+    emoji: "🛡️",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Een noodfonds is een liquide reserve van 3-6 maanden vaste lasten die uitsluitend is bestemd voor echte noodgevallen — baanverlies, medische kosten, autoschade. Het is de financiële basis die alle andere financiële doelen mogelijk maakt.",
+    abstractExample: "Zonder noodfonds zijn alle tegenslagen een financiële crisis. Met een noodfonds zijn tegenslagen ongemakkelijk maar beheersbaar. De psychologische rust van een noodfonds heeft ook directe waarde.",
+    examples: [
+      { domain: "Financiën", icon: "💰", text: "Mensen zonder noodfonds lopen meer schulden op, nemen impulsieve beslissingen onder druk, en stoppen eerder met beleggen bij tegenslag. Het noodfonds is de financiële 'bodem'." },
+      { domain: "Werk", icon: "💼", text: "Een noodfonds van 6 maanden geeft onderhandelingsmacht bij werkgeverssituaties — je hoeft niet elke baan te accepteren uit financiële nood. Het geeft ook de vrijheid om te stoppen met een toxische baan." },
+      { domain: "Ondernemerschap", icon: "🚀", text: "Startende ondernemers met een noodfonds kunnen meer risico nemen in hun bedrijf omdat hun basisbehoeften zijn gedekt — financiële veiligheid is een voorwaarde voor zakelijk risicogedrag." }
+    ],
+  },
+  {
+    id: "opportunity-cost-personal",
+    title: "Opportuniteitskosten in Dagelijks Leven",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Opportuniteitskosten zijn de waarde van de beste alternatieve besteding van je geld, tijd of energie. Elke keuze heeft een verborgen prijs — wat je opgeeft door die keuze te maken.",
+    abstractExample: "€30.000 auto kopen kost je niet alleen €30.000 — het kost je wat die €30.000 in 20 jaar zou zijn gegroeid bij 7% rendement (€116.000). Bewustzijn van opportuniteitskosten verandert financieel gedrag.",
+    examples: [
+      { domain: "Grote aankopen", icon: "🛒", text: "Denk bij elke grote aankoop: 'Wat geef ik op in termen van toekomstige waarde en andere opties?' Een boot van €50.000 kost inclusief opportuniteitskosten en onderhoud vaak €250.000+ over 10 jaar." },
+      { domain: "Tijd", icon: "⏰", text: "Een uur besteden aan laagwaardige taken kost je het beste alternatieve gebruik van dat uur. De uurwaarde van je tijd berekenen helpt bij beslissingen over uitbesteden versus zelf doen." },
+      { domain: "Carrière", icon: "💼", text: "Een veilige maar slechte baan aanhouden heeft opportuniteitskosten: de groei, het netwerk en het salaris van een betere baan. Zichtbaar maken van deze kosten helpt de beslissing te herkaderen." }
+    ],
+  },
+  {
+    id: "lifestyle-inflation",
+    title: "Levensstijlinflatie",
+    difficulty: 2,
+    emoji: "📈",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Levensstijlinflatie is de tendens om uitgaven te verhogen naarmate het inkomen stijgt — elk salarisverhogingen verdwijnt in een duurdere auto, groter huis en meer abonnementen. Het verhindert vermogensopbouw ongeacht hoe hoog het inkomen wordt.",
+    abstractExample: "De persoon die €30.000 verdient en 20% spaart, bouwt vermogen. Als hij €60.000 verdient en zijn levensstijl verdubbelt (nog steeds 0% spaart), bouwt hij niets. Inkomen ≠ rijkdom.",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Na een promotie bewust de levensstandaard niet direct verhogen — de eerste 3 maanden het extra salaris naar sparen/beleggen sturen. Na het wennen aan minder, pas daarna overwegen of aanpassing wenselijk is." },
+      { domain: "Consumptie", icon: "🛒", text: "Hedonic adaptation maakt dat duurder bezit snel normaal voelt — de luxe auto geeft na 3 maanden hetzelfde plezier als de oude auto. Levensstijlinflatie koopt tijdelijk geluk voor permanente kosten." },
+      { domain: "Financiën", icon: "💰", text: "De rijkste mensen die Millionaire Next Door interviewde, dreven middenklasse auto's en woonden in bescheiden huizen — ze bestreden levensstijlinflatie bewust als kernstrategie voor vermogensopbouw." }
+    ],
+  },
+  {
+    id: "insurance-risk-management",
+    title: "Verzekering als Risicobeheer",
+    difficulty: 2,
+    emoji: "🛡️",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Verzekering is economisch zinvol voor risico's die je niet kunt dragen (groot verlies, lage kans) maar irrationeel voor risico's die je kunt dragen (klein verlies, hoge kans). De vuistregel: verzeker wat je financieel zou vernietigen, niet wat je kunt absorberen.",
+    abstractExample: "Ziektekostenverzekering en arbeidsongeschiktheid zijn essentieel — een grote ziekte of letsel kan levenslang gevolg hebben. Een telefoonverzekering voor een €600 telefoon is een slechte deal — de premie plus eigen risico overtreft op termijn de vervanging.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💰", text: "Eigen risico bij autoverzekering verhogen en het verschil sparen — je eigen fondsbuffer (noodfonds) dekt kleine schades goedkoper dan lage eigen risico's die hoge premies kosten." },
+      { domain: "Gezondheid", icon: "🏥", text: "Arbeidsongeschiktheidsverzekering voor zelfstandigen is cruciaal en wordt vaak vergeten — inkomensverlies door ziekte is een catastrofaal risico dat een noodfonds niet kan dekken." },
+      { domain: "Levensverzekering", icon: "👨‍👩‍👧", text: "Levensverzekering is zinvol als anderen financieel van je afhankelijk zijn — niet als spaarvehikel (duur) maar als risicodekking. Vaste termijnverzekering + zelf beleggen overtreft gemengde producten." }
+    ],
+  },
+  {
+    id: "financial-independence",
+    title: "Financiële Onafhankelijkheid",
+    difficulty: 2,
+    emoji: "🗝️",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Financiële onafhankelijkheid (FI) is het punt waarop passief inkomen (rente, dividenden, verhuur) je levenskosten dekt — je hoeft niet meer te werken voor geld. Het geeft keuzevrijheid over hoe je je tijd besteedt.",
+    abstractExample: "De FIRE-beweging (Financial Independence, Retire Early) stelt: als je 25x je jaarlijkse uitgaven hebt gespaard/belegd, kun je 4% per jaar opnemen zonder het vermogen uit te putten (4%-regel).",
+    examples: [
+      { domain: "Strategie", icon: "📊", text: "FI berekening: als je €30.000 per jaar uitgeeft, heb je €750.000 nodig (25×). Als je €20.000 uitgeeft, heb je €500.000 nodig. Levensstijl bepaalt je FI-getal meer dan inkomen." },
+      { domain: "Werken", icon: "💼", text: "FI hoeft niet 'stoppen met werken' te betekenen — het betekent dat je werk kiest omdat je het wilt, niet omdat je het moet. Dit verandert fundamenteel hoe je carrièrekeuzes maakt." },
+      { domain: "Jong beginnen", icon: "📈", text: "€500 per maand bij 7% rendement: na 30 jaar €567.000, na 35 jaar €813.000, na 40 jaar €1.198.000. FI is een mathematisch probleem van tijd en spaartarief — geen inkomensdrempel." }
+    ],
+  },
+  {
+    id: "mental-accounting-personal",
+    title: "Mentale Boekhoudingsfouten",
+    difficulty: 2,
+    emoji: "🧮",
+    academicCategory: "Economie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Mentale boekhouding is de tendens om geld anders te behandelen afhankelijk van de bron of het label — 'belastingteruggave-geld' wordt anders uitgegeven dan 'salarisgeld', terwijl ze economisch identiek zijn. Dit leidt tot irrationele financiële beslissingen.",
+    abstractExample: "Je geeft een belastingteruggave van €1.000 makkelijker uit dan €1.000 dat je normaal verdiende. Maar €1.000 is €1.000, ongeacht de bron. Mentale boekhouding creëert kunstmatige categorieën die slecht financieel gedrag stimuleren.",
+    examples: [
+      { domain: "Bonussen", icon: "💼", text: "Bonusgeld wordt 3x vaker uitgegeven aan luxe dan regulier salaris — mensen mentaal labelen het als 'extra' geld. Rationeel is het identiek. Bewust zijn van dit patroon helpt het te corrigeren." },
+      { domain: "Gokken", icon: "🎲", text: "'Speelgeld' bij gokken — winst wordt als 'huisgeld' gezien en gemakkelijker teruggespeeld dan het geld waarmee je begon. Casinodisposities gebruiken dit systematisch in hun voordeel." },
+      { domain: "Schuld", icon: "💳", text: "Mensen met creditcardschuld (20% rente) die tegelijkertijd spaargeld aanhouden (2% rente) — dit is irrationeel maar een klassiek mentale boekhouding-fenomeen: schuld en spaargeld worden als gescheiden accounts ervaren." }
+    ],
+  },
+  {
+    id: "delayed-gratification",
+    title: "Uitgestelde Bevrediging",
+    difficulty: 2,
+    emoji: "⏳",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Uitgestelde bevrediging is het vermogen om een directe beloning op te geven voor een grotere beloning in de toekomst. Het voorspelt schoolprestaties, gezondheid, relatiestabiliteit en financieel succes beter dan IQ.",
+    abstractExample: "Het marshmallow-experiment: kinderen die konden wachten (één marshmallow nu, twee later) hadden decennia later hogere SAT-scores, lager BMI, betere relaties en hogere inkomens. Zelfcontrole is de sleutelvaardigheid.",
+    examples: [
+      { domain: "Financiën", icon: "💰", text: "Investeren is uitgestelde bevrediging: je geeft vandaag koopkracht op voor meer koopkracht in de toekomst. Mensen die dit principe internaliseren, bouwen structureel meer vermogen dan gelijkwaardige inkomens." },
+      { domain: "Gezondheid", icon: "🏃", text: "Dagelijks sporten voor gezondheid op lange termijn is uitgestelde bevrediging — de beloning is jaren verwijderd, de kosten zijn onmiddellijk. Koppeling aan directe intrinsieke beloning (gevoel van voldoening) overbrugt de kloof." },
+      { domain: "Carrière", icon: "💼", text: "Jaren investeren in moeilijke vaardigheden, studie of een baan met lager salaris maar meer leerwaarde — uitgestelde bevrediging in carrièreontwikkeling die op lange termijn meer oplevert." }
+    ],
+  },
 ];
