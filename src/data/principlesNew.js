@@ -10889,4 +10889,141 @@ export const principlesNew = [
       { domain: "Ethisch redeneren", icon: "⚖️", text: "Gedachte-experimenten creëren gecontroleerde situaties die variabelen isoleren die in de werkelijkheid verweven zijn. Een ethisch gedachte-experiment isoleert het relevante principe door alles niet-essentieel te elimineren — zoals een laboratoriumconditie voor moreel redeneren." }
     ],
   },
+
+  // ========== BATCH C9: GEDACHTE-EXPERIMENTEN — SOCIALE FILOSOFIE & MAATSCHAPPIJ ==========
+  {
+    id: "prisoners-dilemma-social",
+    title: "Het Gevangenendilemma",
+    difficulty: 1,
+    emoji: "🔒",
+    academicCategory: "Speltheorie",
+    skillCategory: "Kritisch Denken",
+    definition: "Twee gevangenen worden apart verhoord. Als beide zwijgen: elk 1 jaar. Als A verraadt en B zwijgt: A vrij, B 10 jaar. Als beide verraden: elk 5 jaar. Elke gevangene heeft een dominate strategie (verraden) ongeacht wat de ander doet — maar het collectief optimum (beide zwijgen) wordt niet bereikt via individuele rationaliteit. Dit is de kern van sociale dilemma's.",
+    abstractExample: "Het gevangenendilemma modelleert elk situatie waar individueel rationeel gedrag leidt tot collectief irrationele uitkomst. Wapenwedlopen, klimaatafspraken, belastingontwijking, doping in sport — dezelfde structuur. Samenwerking vereist vertrouwen, instituties of herhaald spel.",
+    examples: [
+      { domain: "Klimaatbeleid", icon: "🌍", text: "Elk land heeft een dominante strategie om niet te reduceren (wacht op anderen; geniet van hun reductie terwijl je zelf goedkoop blijft produceren). Maar als alle landen dit doen, is iedereen slechter af. Klimaatakkoorden zijn pogingen het gevangenendilemma te doorbreken via bindende afspraken." },
+      { domain: "Doping in sport", icon: "🏋️", text: "Als iedereen dopt, is het een gelijkspel maar alle atleten lopen gezondheidsrisico's. Als jij niet dopt en anderen wel, verlies je. Dominante strategie: doppen. Collectief optimum: niemand dopt. Dit vereist externe handhaving." },
+      { domain: "Vertrouwen in relaties", icon: "❤️", text: "Twee partners die elkáár volledig vertrouwen maar dit nooit uiten, bevinden zich in een vertrouwensdilemma. Kwetsbaarheid tonen is risicovol (partner kan het misbruiken) maar wederzijds niet tonen is suboptimaal voor beiden. Samenwerking vereist het nemen van het eerste kwetsbare risico." }
+    ],
+  },
+  {
+    id: "public-goods-problem",
+    title: "Het Probleem van Collectieve Goederen (Free Rider)",
+    difficulty: 2,
+    emoji: "🚌",
+    academicCategory: "Politieke Economie",
+    skillCategory: "Kritisch Denken",
+    definition: "Collectieve goederen zijn niet-uitsluitbaar (niemand kan worden geweerd) en niet-rivaliserend (gebruik door één vermindert gebruik door ander niet). Dit creëert de free rider-prikkel: iedereen profiteert, niemand wil betalen. Overheidsingrijp is de klassieke oplossing — maar is dwang (belasting) gerechtvaardigd om collectieve goederen te produceren?",
+    abstractExample: "Openbare veiligheid, clean air, kennis, basiswetenschap — allemaal collectieve goederen die de markt onderprodueert omdat individuen de kosten vermijden maar de baten niet kunnen worden geweigerd. De vraag is niet alleen economisch maar ook politiek-filosofisch: wie betaalt en wie beslist?",
+    examples: [
+      { domain: "Belastingen", icon: "💸", text: "Belastingen zijn de institutionele oplossing voor het free rider-probleem: dwingende collectieve bijdragen aan goederen die niemand vrijwillig voldoende financiert. Dit rechtvaardigt het belastingstelsel ook voor libertariërs die publieke goederen willen." },
+      { domain: "Klimaatmaatregelen", icon: "🌱", text: "Een stabiel klimaat is een collectief goed. Free rider-prikkel: elk land wil dat anderen reduceren terwijl zelf goedkoop doorproduceert. De collectief-goed-structuur verklaart waarom vrijwillige klimaatafspraken structureel tekortschieten." },
+      { domain: "Open source software", icon: "💻", text: "Open source is een collectief goed: iedereen gebruikt het, weinigen dragen bij. Sommige projecten degenereren door free rider-gedrag. Anderen bloeihen door sociale normen, reputatie en community-druk als substituut voor dwang." }
+    ],
+  },
+  {
+    id: "tragedy-of-the-commons",
+    title: "De Tragedie van de Meent (Hardin)",
+    difficulty: 1,
+    emoji: "🐄",
+    academicCategory: "Politieke Economie",
+    skillCategory: "Kritisch Denken",
+    definition: "Garrett Hardin beschreef: stel een gemeenschappelijk weiland (meent) dat door iedereen vrij gebruikt mag worden. Elke boer heeft een prikkel extra vee te plaatsen — de individuele opbrengst is volledig zijn; de schade van overbegrazing wordt gedeeld. Collectief resulteert dit in uitputting van het weiland. Privé-eigendom of regulering zijn de klassieke oplossingen.",
+    abstractExample: "Elinor Ostrom (Nobelprijswinnaar) toonde dat gemeenschappen dit probleem vaak zelf oplossen via lokale instituties, sociale normen en wederzijds toezicht — zonder privatisering of staatsdwang. Hardin's 'tragedie' is niet onvermijdelijk; het vereist goede governance.",
+    examples: [
+      { domain: "Visserijgronden", icon: "🐟", text: "Oceaanvisserij is de meent: elk land/bedrijf heeft een prikkel zo veel mogelijk te vissen; de schade is gedeeld. Zonder internationale afspraken en handhaving leidt dit tot uitputting — precies wat in de 20ste eeuw met veel visgronden is gebeurd." },
+      { domain: "Internet en bandbreedte", icon: "🌐", text: "Gedeeld netwerk is een meent: als iedereen maximale bandbreedte gebruikt, degradeert de service voor allen. Verkeersmanagement en netwerkneutraliteitsdebat zijn pogingen de meent-tragedie te managen." },
+      { domain: "Antibiotica", icon: "💊", text: "Overmatig antibioticagebruik is een meent-tragedie: elk individu heeft een prikkel antibiotica te gebruiken bij elke infectie; collectief leidt dit tot resistentie die de effectiviteit voor iedereen ondermijnt — inclusief toekomstige generaties." }
+    ],
+  },
+  {
+    id: "panopticon",
+    title: "Het Panopticon: Toezicht en Gedragsverandering",
+    difficulty: 2,
+    emoji: "👁️",
+    academicCategory: "Sociologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Jeremy Bentham ontwierp een gevangenis (panopticon) waarbij één bewaker alle gevangenen kon observeren zonder dat de gevangenen weten of ze worden bekeken. Michel Foucault gebruikte dit als metafoor voor disciplinerende macht in moderne samenlevingen: mensen internaliseren de mogelijkheid van toezicht en disciplineren zichzelf.",
+    abstractExample: "Als je denkt dat je wordt geobserveerd, gedraag je je anders — ook als je niets verkeerd doet. Panoptische macht werkt niet via directe dwang maar via het internaliseren van de toezichtnorm. Surveillance creëert conformiteit zonder directe interventie.",
+    examples: [
+      { domain: "Digitale surveillance", icon: "📱", text: "Overheden en bedrijven monitoren digitaal gedrag. Zelfs zonder directe consequenties verandert het weten dat je gemonitord wordt het gedrag — self-censorship, conformiteitsdruk. Panopticon-effecten zijn empirisch aantoonbaar in digitale contexten." },
+      { domain: "Werkomgeving", icon: "💼", text: "Keystroke-monitoring, activity-tracking en GPS in bedrijfsauto's zijn werkplek-panopticons. Ze verhogen compliance maar verlagen intrinsieke motivatie en creativiteit — toezicht vervangt vertrouwen en heeft negatieve bijeffecten." },
+      { domain: "Sociale media", icon: "📸", text: "Mensen presenteren een gecureerd zelfbeeld op sociale media wetende dat anderen kijken. Dit is zelfopgelegd panopticon — je bent tegelijk de bewaker en de gevangene van je eigen publieke imago. Hoe vrij ben je nog?" }
+    ],
+  },
+  {
+    id: "milgram-authority",
+    title: "Het Milgram-Experiment: Gehoorzaamheid aan Autoriteit",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stanley Milgram liet proefpersonen elektrische schokken geven aan een 'leerling' op bevel van een autoriteit — de schokken waren nep maar de proefpersonen wisten dit niet. 65% gaf de maximale schok van 450V, ondanks kreten van de 'leerling'. Het experiment toonde de macht van autoriteit en situationele gehoorzaamheid over persoonlijke morele oordelen.",
+    abstractExample: "Het experiment was ontworpen na de Eichmann-rechtszaak (Hannah Arendt's 'banaliteit van het kwaad'): gewone mensen kunnen gruweldaden begaan niet uit kwaadaardigheid maar uit gehoorzaamheid aan autoriteit en situationele druk. Moreel gedrag is meer situationeel bepaald dan karakter-gebaseerd.",
+    examples: [
+      { domain: "Organisatiecultuur", icon: "🏢", text: "Medewerkers die bevolen worden onethisch te handelen (misleidende marketing, onnodige kosten doorberekenen) gehoorzamen vaker dan we zouden verwachten. Milgram's bevindingen zijn herhaaldelijk bevestigd in corporate contexten." },
+      { domain: "Historische atrociteiten", icon: "📜", text: "Milgram's experiment biedt een psychologisch kader voor hoe gewone mensen deelnemen aan collectieve gruweldaden — niet door sadisme maar door gehoorzaamheid, conformiteitsdruk en diffusie van verantwoordelijkheid." },
+      { domain: "Ethisch leiderschap", icon: "🎯", text: "Als autoriteit zo'n krachtige driver van gedrag is, impliceert dit dat ethisch leiderschap kritisch is — leiders die grenzen stellen aan gehoorzaamheid en moreel moed modelleren, veranderen de situationele kracht die gedrag drijft." }
+    ],
+  },
+  {
+    id: "bystander-effect-experiment",
+    title: "Het Bystander-Effect",
+    difficulty: 1,
+    emoji: "👀",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Latané en Darley ontdekten: hoe meer mensen een noodsituatie waarnemen, hoe minder waarschijnlijk dat één persoon helpt. Twee mechanismen: diffusie van verantwoordelijkheid (iemand anders helpt wel) en pluralistische onwetendheid (niemand reageert, dus het zal wel niet ernstig zijn). Kitty Genovese werd vermoord terwijl tientallen omstanders niets deden.",
+    abstractExample: "In een noodsituatie alleen: 85% helpt. In een noodsituatie met 5 omstanders: 31% helpt. De aanwezigheid van anderen verlaagt de kans op hulp. Dit is niet onverschilligheid maar een psychologisch mechanisme van verantwoordelijkheidsdiffusie.",
+    examples: [
+      { domain: "Online pesterijen", icon: "💻", text: "Online bulling wordt massaal meegemaakt door 'bystanders' — volgers die het zien maar niet reageren. Diffusie van verantwoordelijkheid op schaal: duizenden zien het, niemand voelt individuele plicht te handelen. Het bystander-effect is digitaal versterkt." },
+      { domain: "Organisaties", icon: "🏢", text: "Misstanden in organisaties worden vaak gezien door velen maar gemeld door niemand. Ieder denkt: iemand anders doet het wel; of: het is niet zo ernstig want anderen zwijgen ook. Bystander-effect structureert klokkenluiden." },
+      { domain: "Persoonlijke tegenmaatregel", icon: "🌟", text: "Weten van het bystander-effect maakt je weerbaarder: als je in een groep bent en een noodsituatie ziet, actief verantwoordelijkheid claimen — bij naam iemand aanspreken ('jij met de blauwe jas, bel 112!') doorbreekt diffusie." }
+    ],
+  },
+  {
+    id: "conformity-asch-experiment",
+    title: "Het Asch-Conformiteitsexperiment",
+    difficulty: 1,
+    emoji: "📏",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Solomon Asch liet proefpersonen een simpele visuele taak doen (welke lijn is even lang als de standaard?) in een groep van acteurs die bewust het verkeerde antwoord gaven. 75% van de echte proefpersonen gaf minstens één keer het duidelijk verkeerde antwoord mee — om niet af te wijken van de groep, ook als ze zelf het goede antwoord zagen.",
+    abstractExample: "De conformiteitsdruk is zo krachtig dat mensen aantoonbaar feitelijk onjuiste antwoorden geven om de groepsnorm niet te schenden. Dit is normative conformity: meedoen om acceptatie, niet omdat men de waarheid niet kent. Het experiment toont dat sociale druk perceptie en uitdrukking van kennis verstoort.",
+    examples: [
+      { domain: "Vergaderingen", icon: "💼", text: "Iedereen stemt in met een plan dat niemand goed vindt — groepsdenken via Asch-mechanisme. De eerste persoon die zijn handen opsteekt activeert conformiteit; de eerste die dissent toont, verlaagt de drempel voor anderen aanzienlijk." },
+      { domain: "Wetenschappelijke consensus", icon: "🔬", text: "Peer review en wetenschappelijke consensus zijn normatieve systemen die conformiteitsdruk uitoefenen. Dit heeft voordelen (beschermt tegen fringe-theorieen) maar kosten (remt paradigmaverschuivingen). Asch toont de kracht van sociale normen zelfs op objectief toetsbare vragen." },
+      { domain: "Modieuze overtuigingen", icon: "🌐", text: "Politieke en culturele overtuigingen die 'iedereen heeft' worden deels door conformiteit in stand gehouden. Weten van het Asch-effect maakt bewuster van wanneer je een overtuiging hebt omdat je het werkelijk gelooft versus omdat de groep het gelooft." }
+    ],
+  },
+  {
+    id: "stanford-prison-experiment",
+    title: "Het Stanford-Gevangenisexperiment",
+    difficulty: 2,
+    emoji: "🔐",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Philip Zimbardo verdeelde studenten willekeurig in bewakers en gevangenen in een nagebootste gevangenis. Na zes dagen moest het experiment worden gestopt: bewakers vertoonden sadistische gedragingen; gevangenen toonden tekenen van ernstig psychologisch leed. Het experiment suggereerde dat situatie en rol machtiger zijn dan karakter.",
+    abstractExample: "Zimbardo's conclusie: goede mensen kunnen snel slecht gedrag vertonen als de situatie dat faciliteert. De dispositieattributie-fout ('slechte mensen doen slechte dingen') wordt onderschat ten opzichte van situationele krachten. Later zijn methodologische problemen ontdekt — de bevindingen zijn omstreden maar conceptueel invloedrijk.",
+    examples: [
+      { domain: "Institutioneel gedrag", icon: "🏢", text: "Correctionele instellingen die bewakers de rol geven van 'bewaker' in een dehumaniserende omgeving produceren systematisch misbruik — niet door het selecteren van slechte mensen maar door het creëren van een slechte situatie. Abu Ghraib is een reëel geval." },
+      { domain: "Leiderschap", icon: "🎯", text: "Roles shape behavior: mensen die een leiderschapsrol aannemen gedragen zich fundamenteel anders dan dezelfden als volger. Organisaties die mensen in toxische rollen plaatsen, produceren toxisch gedrag ongeacht individueel karakter." },
+      { domain: "Zelfkennis", icon: "🪞", text: "Zimbardo's experiment nodigt uit tot radicale bescheidenheid: zou jij anders hebben gehandeld? Situationeel bewustzijn — weten welke omstandigheden jou kunnen aanzetten tot gedrag dat je later zou betreuren — is de morele les." }
+    ],
+  },
+  {
+    id: "invisible-hand-market",
+    title: "De Onzichtbare Hand (Smith) en haar Grenzen",
+    difficulty: 2,
+    emoji: "🤲",
+    academicCategory: "Economische Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Adam Smith's onzichtbare hand: individueel eigenbelang in de markt leidt via prijssignalen tot collectief welzijn, alsof een onzichtbare hand de boel stuurt. Dit is het centrale argument voor de vrije markt. Het gedachte-experiment vraagt: wanneer werkt de onzichtbare hand wél en wanneer faalt ze?",
+    abstractExample: "De onzichtbare hand werkt als: (1) competitieve markten aanwezig zijn; (2) externe effecten ontbreken; (3) publieke goederen niet relevant zijn; (4) informatie symmetrisch is; (5) macht niet geconcentreerd is. Elk van deze condities kan falen — en dan faalt de hand.",
+    examples: [
+      { domain: "Marktfalen", icon: "📉", text: "Financiële markten 2008: individuele banken maximaliseerden winst via risicovolle producten. Onzichtbare hand had moeten leiden tot discipline via faillissement. Te-groot-om-te-mislukken bedrijven doorbraken die mechanisme: private winst, gesocialiseerd verlies." },
+      { domain: "Klimaat", icon: "🌍", text: "CO₂-uitstoot heeft een externe kost (klimaatschade) die niet in de marktprijs zit. Onzichtbare hand faalt: te veel uitstoot is individueel rationeel maar collectief irrationeel. Correctie vereist internalisering van externe kosten via belasting of cap-and-trade." },
+      { domain: "Informatieasymmetrie", icon: "📊", text: "Tweedehands automarkt (Akerlof's lemons): verkoper weet meer dan koper, waardoor slechte auto's de goede verdrijven. Onzichtbare hand produceert marktcollaps. Oplossing: informatie-instituties (garanties, inspecties, reputaties) die asymmetrie verminderen." }
+    ],
+  },
 ];
