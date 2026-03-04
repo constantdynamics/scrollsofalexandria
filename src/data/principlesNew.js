@@ -9551,4 +9551,156 @@ export const principlesNew = [
       { domain: "Creatieve projecten", icon: "🎨", text: "Een solo-dag of solo-weekend inplannen voor een creatief project dat vastgelopen is — de lossere mentale staat van eenzame exploratie zonder sociale verwachting kan doorbraken opleveren die groepswerk niet geeft." }
     ],
   },
+
+  // ========== BATCH B10: WIJSHEID & VOLWASSENHEID ==========
+  {
+    id: "delayed-gratification-mastery",
+    title: "Uitgestelde Beloning Beheersen",
+    difficulty: 2,
+    emoji: "⌛",
+    academicCategory: "Ontwikkelingspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het vermogen om directe bevrediging uit te stellen ten gunste van grotere toekomstige voordelen is een van de krachtigste voorspellers van levenstevredenheid, academisch succes en sociaal functioneren (Mischels marshmallow-onderzoek en vervolgstudies). Het is niet alleen wilskracht maar ook geloof in de toekomst en planningcapaciteit.",
+    abstractExample: "Twee uur sporten levert vandaag ongemak maar over een jaar een gezonder lichaam. Een jaar spaargeld opzij leggen kost nu, maar geeft later opties. Uitgestelde beloning is de kunst van tijdsperspectief — de toekomst reëel genoeg maken om voor te handelen.",
+    examples: [
+      { domain: "Financiën", icon: "💰", text: "Compound interest werkt voor wie bereid is vroeg te investeren en lang te wachten. De kracht van uitgestelde beloning is dat kleine vroege offers exponentieel worden — de meest concrete manifestatie van de kracht van tijdsperspectief." },
+      { domain: "Carrière", icon: "💼", text: "Jaren investeren in moeilijke vaardigheden (programmeren, schrijven, spreken) die pas later van waarde worden zichtbaar — uitgestelde beloning op carrière-schaal. De verleiding tot directe bevrediging (makkelijker werk) is de tegenkracht." },
+      { domain: "Relaties", icon: "❤️", text: "Investeren in relaties in goede tijden — regelmatige moeite, oprechte gesprekken, herinneringen maken — bouwt veerkracht voor moeilijkere tijden. Relatie-investering is uitgestelde beloning op het diepste menselijke niveau." }
+    ],
+  },
+  {
+    id: "aging-wisdom-framework",
+    title: "Ouder Worden als Groei",
+    difficulty: 2,
+    emoji: "🌳",
+    academicCategory: "Ontwikkelingspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Ouder worden gaat niet alleen over verlies maar ook over groei in specifieke capaciteiten: emotionele regulatie verbetert met leeftijd, sociale netwerken worden selectiever maar dieper, waardenprioritering wordt helderder. Een kader dat ouder worden als ontwikkeling beschouwt — niet alleen als aftakeling — creëert een healthier trajectory.",
+    abstractExample: "Sociaal-emotionele selectiviteitstheorie (Carstensen) toont dat oudere mensen niet per se meer eenzaam zijn maar bewuster selectieven in sociale contacten — kwaliteit boven kwantiteit als resultaat van tijdsperspectief. Dit is niet verlies maar volwassenheid.",
+    examples: [
+      { domain: "Identiteit", icon: "🪞", text: "In elke levensfase nieuwe aspecten van identiteit te cultiveren in plaats van vast te houden aan wie je op 25 was — de 50-jarige die openstaat voor wie hij nu kan zijn heeft een rijker leven dan de 50-jarige die nostalgie voor zijn jongere zelf cultiveert." },
+      { domain: "Wijsheid", icon: "🌟", text: "Wijsheid is niet hetzelfde als intelligentie — het is geïntegreerd inzicht geboren uit ervaring, falen en reflectie. Bewust nadenken over wat je hebt geleerd en hoe je het integreert in je leven is de weg naar wijsheid." },
+      { domain: "Relaties", icon: "❤️", text: "Op oudere leeftijd diepere vriendschappen te cultiveren in plaats van brede oppervlakkige netwerken — dit past bij de evolutie van het brein naar selectieve kwaliteit. Loslaten van obligate relaties maakt ruimte." }
+    ],
+  },
+  {
+    id: "mortality-salience",
+    title: "Bewustzijn van Eindigheid als Motivator",
+    difficulty: 3,
+    emoji: "⌛",
+    academicCategory: "Existentiële Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Bewuste reflectie op de eindigheid van het leven — memento mori (bedenk dat je sterfelijk bent) — is in de Stoïcijnse en boeddhistische traditie een motivator voor bewust, volledig leven. Het scherpt prioriteiten aan, vermindert het gewicht van kleine problemen en vergroot waardering voor het huidige moment.",
+    abstractExample: "Steve Jobs' dagelijkse vraag: 'Als dit de laatste dag van mijn leven was, zou ik dan doen wat ik vandaag doe?' Niet als morbiditeit maar als kalibratie: eindigheid geeft urgentie en betekenis aan keuzes die anders uitgesteld of als vanzelfsprekend worden beschouwd.",
+    examples: [
+      { domain: "Prioriteiten", icon: "🎯", text: "De vraag: 'Als ik slechts vijf jaar te leven had, wat zou ik dan nog willen doen?' scherpt prioriteiten aan op een manier die dagelijkse druk niet lukt. Eindigheid is een heldermakend perspectief op wat echt telt." },
+      { domain: "Kleine zorgen", icon: "🌊", text: "Perspectief op kleine frustraties en conflicten door ze te plaatsen in de context van het grotere geheel — over tien jaar maakt dit deel hiervan niet uit. Eindigheid geeft proporties terug." },
+      { domain: "Waardering", icon: "🌸", text: "Bewust waarderen van het huidige moment — mensen, ervaringen, gezondheid — wordt gemakkelijker als je zich realiseert dat alles tijdelijk is. Dankbaarheid en eindigheidsbesef versterken elkaar." }
+    ],
+  },
+  {
+    id: "equanimity-practice",
+    title: "Gelijkmoedigheid Cultiveren",
+    difficulty: 3,
+    emoji: "⚖️",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Gelijkmoedigheid (Stoïcijns: equanimitas) is de vermogen om een stabiele innerlijke toestand te handhaven te midden van externe wisselingen — noch meegezogen worden door succes en vreugde noch verlamd worden door tegenspoed en pijn. Het is het midden tussen gevoelloosheid en overgevoeligheid.",
+    abstractExample: "Gelijkmoedigheid is niet apathie maar emotionele kracht: volledig aanwezig zijn voor vreugde en pijn, zonder door het ene overweldigd te worden of het andere te vluchten. Zoals het oog van een storm: rustig te midden van beweging.",
+    examples: [
+      { domain: "Tegenspoed", icon: "🌊", text: "Bij een tegenslag de eerste reactie (pijn, teleurstelling, boosheid) erkennen en toelaten zonder er mee samen te vallen. Gelijkmoedigheid is niet het wegjagen van de emotie maar het niet volledig door haar geleid worden." },
+      { domain: "Succes", icon: "🏆", text: "Succes vieren zonder ervan afhankelijk te worden voor eigenwaarde. Gelijkmoedigheid in succes is even waardevol als in tegenspoed — de Stoïcijnen waarschuwden evenzeer voor de verslaving aan succes als aan het vluchten van lijden." },
+      { domain: "Dagelijks leven", icon: "🌟", text: "Kleine irritaties (file, onbeleefdheid, mislukte planning) met proportionele respons ontvangen — niet negatief wegdrukken maar ook niet als catastrofe behandelen. Oefening in kleine gelijkmoedigheid bouwt de vaardigheid voor grotere." }
+    ],
+  },
+  {
+    id: "contribution-meaning",
+    title: "Bijdragen als Bron van Betekenis",
+    difficulty: 2,
+    emoji: "🎁",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Bijdragen aan iets groter dan jezelf — gemeenschap, family, werk, maatschappij — is een van de meest robuuste bronnen van betekenis en welzijn. Viktor Frankl's logotherapie en Seligman's PERMA-model plaatsen bijdrage centraal. Mensen die een doel buiten zichzelf hebben, zijn veerkrachtiger en tevredener.",
+    abstractExample: "Zingeving is niet gevonden in passief consumeren maar in actief geven. De vraag verschuift van 'wat kan het leven mij geven?' naar 'wat kan ik het leven geven?' — dit frame geeft agency en richting, ook in moeilijke omstandigheden.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Bewust verbinding maken tussen dagelijkse taken en hun grotere impact — hoe draagt mijn werk bij aan iets dat groter is dan ik? Zelfs routinewerk kan betekenis krijgen als de bredere bijdrage zichtbaar is." },
+      { domain: "Community", icon: "🌍", text: "Vrijwilligerswerk, mentorschap of lokale betrokkenheid zijn niet alleen altruïstisch maar ook zelf-vervullend — bijdragen geeft betekenis die consumptie en prestatie niet volledig kunnen bieden." },
+      { domain: "Relaties", icon: "❤️", text: "Ouderschap, vriendschap en zorgen voor anderen zijn de meest directe vormen van bijdragen — ze zijn ook de meest consistente voorspellers van langetermijntevredenheid, ook al brengen ze kortetermijn-offers." }
+    ],
+  },
+  {
+    id: "acceptance-what-is",
+    title: "Acceptatie van Wat Is",
+    difficulty: 3,
+    emoji: "🌊",
+    academicCategory: "Klinische Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Acceptatie is niet passieve berusting maar het actief erkennen van de werkelijkheid zoals die is — inclusief pijnlijke aspecten — zonder weerstand of ontkenning. Acceptatie is de voorwaarde voor effectief handelen: je kunt een probleem alleen aanpakken als je het eerst volledig erkent. Weerstand tegen de werkelijkheid kost energie zonder de situatie te veranderen.",
+    abstractExample: "Pijn is onontkoombaar; lijden is optioneel. Lijden ontstaat grotendeels door weerstand aan pijn — het willen dat de pijn er niet is, het geloven dat het anders zou moeten zijn. Acceptatie vermindert lijden zonder de pijn weg te nemen.",
+    examples: [
+      { domain: "Verlies", icon: "💔", text: "Rouwen om verlies — relatie, baan, gezondheid, dierbare — begint met acceptatie van het verlies. Niet 'dit had niet mogen gebeuren' maar 'dit is wat er is'. Acceptatie opent het pad naar verwerking en verder leven." },
+      { domain: "Eigen grenzen", icon: "🪞", text: "Accepteren wat je niet kunt veranderen aan jezelf — aangeboren eigenschappen, verleden ervaringen, biologische beperkingen — stopt de energie-verspilling van strijd met de realiteit. Dit is niet zelfopgave maar zelfrespect." },
+      { domain: "Anderen", icon: "🤝", text: "Mensen accepteren zoals ze zijn in plaats van continue energie te steken in het veranderen van wie ze zijn — je kunt je gedrag aanpassen tegenover hen, maar hun karakter veranderen is buiten je cirkel. Acceptatie van anderen vermindert frustratie." }
+    ],
+  },
+  {
+    id: "gratitude-practice",
+    title: "Dankbaarheid als Praktijk",
+    difficulty: 1,
+    emoji: "🙏",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Dankbaarheid is de bewuste erkenning van positieve aspecten in het leven, ook de kleine en vanzelfsprekende. Structurele dankbaarheidspraktijk (dagelijks schrijven of benoemen van drie dingen waarvoor je dankbaar bent) heeft aantoonbaar positieve effecten op welzijn, slaap, empathie en zelfs de immuunfunctie.",
+    abstractExample: "Het brein heeft een negativiteitsvoorkeur — bedreigingen registreren zwaarder dan voordelen. Dankbaarheidspraktijk is een bewuste tegenkracht die de negatieve aandachtsfilter herkalibreert naar het positieve dat er ook is — zonder de negatieve te negeren.",
+    examples: [
+      { domain: "Dagelijkse routine", icon: "🌅", text: "Drie dingen opschrijven waarvoor je dankbaar bent bij het begin of einde van de dag — concreet en specifiek (niet 'ik ben dankbaar voor mijn gezondheid' maar 'ik ben dankbaar dat ik vanmorgen de energie had om te sporten'). Specificiteit verdiept het effect." },
+      { domain: "Relaties", icon: "❤️", text: "Mensen in je leven actief bedanken — niet alleen in gedachten maar concreet uitspreken of schrijven. Research toont dat het uitdrukken van dankbaarheid zowel voor de gever als ontvanger welzijn verhoogt significant." },
+      { domain: "Moeilijke tijden", icon: "🌊", text: "In moeilijke periodes bewust zoeken naar wat er ondanks alles goed gaat — dit is niet toxic positivity maar mentale balans. Dankbaarheid naast pijn, niet in plaats ervan, is de meest duurzame variant." }
+    ],
+  },
+  {
+    id: "long-game-thinking",
+    title: "Het Lange Spel Spelen",
+    difficulty: 2,
+    emoji: "♟️",
+    academicCategory: "Besliskunde",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het lange spel spelen is consistent handelen op basis van langetermijndoelen en waarden, ook als dat kortetermijnoffers vereist. Mensen die het lange spel beheersen, bouwen reputaties, relaties en vaardigheden op die compound renten opleveren. In een wereld gericht op directe resultaten is langetermijndenken een competitief voordeel.",
+    abstractExample: "Reputatie is het resultaat van duizenden kleine beslissingen over jaren — niemand bouwt het in een dag. Een expertise is het resultaat van jaren deliberate practice. Een hechte relatie is het resultaat van consistent investeren. Elk van deze groeit langzaam maar geeft exponentieel terug.",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Baan accepteren die minder betaalt maar meer groei biedt — het lange spel betaalt over vijf jaar beter dan de korte winstoptimalisatie. Mensen die het lange spel spelen optimaliseren op leertrajectorie, niet op huidige vergoeding." },
+      { domain: "Relaties", icon: "❤️", text: "Investeren in vriendschappen en relaties ook als er geen direct voordeel is — het lange spel in relaties is een leven met mensen die er zijn in goede en slechte tijden, gebouwd op jaren van wederkerige investering." },
+      { domain: "Gezondheid", icon: "🏃", text: "Dagelijkse bewegingsgewoonten opbouwen voor de gezondheid op 70, niet alleen de fitheid van nu. Elke dag bewegen als investering in een toekomstige versie van jezelf — het langste spel van persoonlijke ontwikkeling." }
+    ],
+  },
+  {
+    id: "intergenerational-wisdom",
+    title: "Intergenerationele Wijsheid Ontvangen en Doorgeven",
+    difficulty: 2,
+    emoji: "🌳",
+    academicCategory: "Culturele Antropologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Wijsheid stroomt tussen generaties — van ouder naar jonger en omgekeerd. Actief luisteren naar de ervaringen van ouderen en bewust overdragen van inzichten aan jongere generaties is een vorm van cultureel leren die boeken niet volledig kunnen vervangen. Elke generatie heeft unieke kennis die verloren gaat als het niet wordt doorgegeven.",
+    abstractExample: "Een 80-jarige heeft een encyclopedia van levenservaring die nergens anders te vinden is. Een 20-jarige heeft kennis van nieuwe werelden die de 80-jarige niet kan bevatten. Intergenerationele uitwisseling verrijkt beide.",
+    examples: [
+      { domain: "Familie", icon: "👨‍👩‍👦", text: "Grootouders actief bevragen over hun leven — beslissingen, spijt, trots, lessen — is een onvervangbare bron van wijsheid. Veel mensen realiseren dit pas als de drager van die kennis er niet meer is." },
+      { domain: "Mentorschap", icon: "🎓", text: "Zowel mentor zijn (inzichten en ervaring doorgeven) als mentee (leren van iemand met meer ervaring) als intergenerationele verbinding zoeken — de cirkel van kennis doorgeven is een van de meest betekenisvolle relaties." },
+      { domain: "Organisaties", icon: "💼", text: "In bedrijven: bewust gelegenheden creëren voor ervaren medewerkers om ongecodificeerde kennis over te dragen (tacit knowledge) aan nieuwe medewerkers — dit vermindert de gigantische kennislekkage bij pensioen en verloop." }
+    ],
+  },
+  {
+    id: "integration-self",
+    title: "Psychologische Integratie: Het Hele Zelf",
+    difficulty: 3,
+    emoji: "🕊️",
+    academicCategory: "Klinische Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Psychologische integratie is het proces van het erkennen en integreren van alle aspecten van het zelf — zowel de kwaliteiten die je accepteert als de schaduwkanten die je liever verbergt. Jung's schaduwwerk stelt dat ongeïntegreerde delen van het zelf energie kosten en gedrag onbewust sturen totdat ze erkend en geïntegreerd worden.",
+    abstractExample: "Wat je in anderen het meest irriteert, is dikwijls een projectie van een deel van jezelf dat je niet accepteert. Wat je het meest bewondert in anderen, is soms een deel van jezelf dat je niet durft te uiten. Integratie maakt beide zichtbaar en terugvorderbaar.",
+    examples: [
+      { domain: "Schaduwwerk", icon: "🌑", text: "De vraag: welk gedrag in anderen maakt me het meest boos of verachtelijk? Is er een versie van dat gedrag die ik zelf ook vertoon maar niet erkent? Eerlijk antwoorden is de start van schaduwwerk." },
+      { domain: "Zelfacceptatie", icon: "🌸", text: "Aspecten van jezelf accepteren die niet passen bij je zelfverhaal — impulsiviteit, jaloezie, behoefte aan erkenning — is integratie. Niet actief uitdrukken, maar erkennen dat ze bestaan. Wat je erkent kun je managen; wat je ontkent, stuurt je." },
+      { domain: "Groei", icon: "🌱", text: "De meest transformatieve persoonlijke groei vindt niet plaats in het versterken van sterke punten maar in het integreren van blinde vlekken en schaduwkanten — dit is het moeilijkste en meest vruchtbare terrein van zelfkennis." }
+    ],
+  },
 ];
