@@ -4762,5 +4762,212 @@ export const principlesNew = [
     ],
     creativePrompt: "Hoe kun je bewust positieve verwachtingen benutten in je dagelijks leven — voor sport, herstel of leren? Wat is het verschil tussen het gebruik van het placebo-effect en zelfbedrog?",
     aiHelperPrompts: ["Hoe gebruik ik de kracht van verwachting constructief?", "Is het placebo-effect ethisch als het werkt?", "Hoe herken ik pseudowetenschap die ten onrechte naar het placebo-effect verwijst?"]
+  },
+  {
+    id: "compound-interest-life",
+    title: "Samengestelde Groei",
+    difficulty: 2,
+    emoji: "📈",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["compounding", "groei", "tijd", "investeren"],
+    definition: "Samengestelde groei is het fenomeen waarbij groei zichzelf herberekent over de gecumuleerde basis — niet alleen de oorspronkelijke inzet. Dit geldt voor geld (rente op rente), maar ook voor vaardigheden, kennis en relaties: kleine dagelijkse verbeteringen cumuleren exponentieel over tijd.",
+    abstractExample: "Een investering van €1000 met 7% jaarlijks rendement groeit in 30 jaar tot ~€7600 — meer dan zevenmaal het startbedrag, zonder extra inleg. De tijd doet het werk. Omgekeerd: een dagelijkse verbetering van 1% levert na een jaar een 37-voudige verbetering op.",
+    examples: [
+      { domain: "Financieel", icon: "💰", text: "Iemand die op 25 begint met €200/maand te investeren met 7% rendement heeft op 65 ~€525.000. Iemand die op 35 begint met €400/maand heeft slechts ~€490.000. Tien jaar eerder beginnen is sterker dan het dubbele inleggen." },
+      { domain: "Studie", icon: "📚", text: "Elke dag 30 minuten lezen geeft 18 boeken per jaar. Na tien jaar: 180 boeken. Na twintig jaar: 360 boeken — en de inzichten bouwen op elkaar voort." },
+      { domain: "Werk", icon: "💼", text: "Elke dag 1% beter worden in een vaardigheid levert na een jaar bijna een 38-voudige verbetering op (1,01^365 = 37,8). Dit is samengestelde groei in competentie." }
+    ],
+    prerequisites: [],
+    unlocks: ["time-value-money", "long-term-thinking"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is vroeg beginnen met sparen of investeren zo krachtig?", options: ["Vroege investeringen hebben hogere rentes", "Meer jaren van samengestelde groei vermenigvuldigt het effect exponentieel — tijd is de meest waardevolle variabele", "Vroege investeringen zijn risicovrij", "Financiële producten zijn goedkoper voor jongeren"], correctIndex: 1, explanation: "Bij samengestelde groei is tijd de exponentiële factor. Elke extra jaar compounding verdubbelt de krachtontwikkeling op termijn. Dit is waarom Warren Buffett stelt dat zijn rijkdom bijna volledig verklaard wordt door het vroeg beginnen en geduld hebben." }
+    ],
+    creativePrompt: "Bereken wat €100/maand investering met 6% jaarlijks rendement na 10, 20 en 30 jaar oplevert (gebruik een online calculator). Wat vertelt dit je over het belang van vroeg beginnen?",
+    aiHelperPrompts: ["Hoe pas ik samengestelde groei toe op vaardigheidsontwikkeling?", "Wat is een realistisch rendement om op te rekenen?", "Hoe begin ik met beleggen als beginner?"]
+  },
+  {
+    id: "time-value-money",
+    title: "Tijdswaarde van Geld",
+    difficulty: 2,
+    emoji: "⏳",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["geld", "inflatie", "opportuniteitskosten", "financiën"],
+    definition: "De tijdswaarde van geld is het principe dat geld nu meer waard is dan hetzelfde bedrag in de toekomst, omdat huidig geld geïnvesteerd kan worden voor groei, terwijl inflatie toekomstig geld in koopkracht uitholt. Dit is de basis van vrijwel alle financiële beslissingen.",
+    abstractExample: "€1000 nu is meer waard dan €1000 over tien jaar. Bij 3% inflatie is €1000 over tien jaar nog slechts ~€744 waard in huidige koopkracht. Tegelijkertijd: €1000 nu geïnvesteerd is over tien jaar bij 7% rendement ~€1967. Het verschil: €1223.",
+    examples: [
+      { domain: "Financieel", icon: "💰", text: "Pensioensystemen zijn gebaseerd op tijdswaarde: bijdragen nu worden geïnvesteerd en groeien over decennia tot bedragen die de inleg veelvoudig overtreffen." },
+      { domain: "Werk", icon: "💼", text: "Een loonsverhoging nu is meer waard dan dezelfde verhoging in twee jaar — niet alleen door inflatie maar ook door het extra groeipotentieel van het hogere salaris over de tussenliggende periode." },
+      { domain: "Keuzes", icon: "🔄", text: "Uitgesteld betalingen: is het beter om nu €1000 te betalen of €1100 over een jaar? Hangt af van wat je met die €1000 in tussentijd kunt doen — dit is tijdswaarde." }
+    ],
+    prerequisites: ["compound-interest-life"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat betekent inflatie voor spaargeld dat niet rendeert?", options: ["Het spaargeld wordt meer waard", "De koopkracht van het spaargeld daalt elk jaar met het inflatiepercentage", "Inflatie heeft geen effect op spaargeld", "Spaargeld groeit altijd sneller dan inflatie"], correctIndex: 1, explanation: "Bij 3% inflatie is €10.000 na tien jaar in koopkracht geslonken tot ~€7441 — zonder dat je ook maar één cent hebt uitgegeven. Spaargeld dat minder rendement heeft dan inflatie, verliest reële waarde elk jaar." }
+    ],
+    creativePrompt: "Bereken wat €10.000 spaargeld bij 0,1% rente over 20 jaar waard is in huidige koopkracht (bij 2,5% inflatie). Vergelijk dit met investeren met 6% rendement. Wat zie je?",
+    aiHelperPrompts: ["Hoe bescherm ik mijn vermogen tegen inflatie?", "Wanneer is sparen beter dan investeren?", "Wat is de wiskundige formule voor tijdswaarde?"]
+  },
+  {
+    id: "opportunity-cost",
+    title: "Opportuniteitskosten",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["kosten", "alternatieven", "beslissingen", "economie"],
+    definition: "Opportuniteitskosten zijn de waarde van het beste alternatief dat je opgeeft als je een keuze maakt. Elke beslissing heeft verborgen kosten — niet alleen wat je betaalt maar wat je had kunnen krijgen met dezelfde middelen in de beste alternatieve besteding.",
+    abstractExample: "Een huis kopen voor €300.000 kost niet alleen €300.000 — het kost ook de potentiële rendement van €300.000 geïnvesteerd over 30 jaar (~€2,4 miljoen bij 7%). Dit is de ware kostenrekening. Elke keuze mist iets anders.",
+    examples: [
+      { domain: "Financieel", icon: "💰", text: "Een leaseauto van €600/maand kost na 5 jaar €36.000 + gemiste investering. Diezelfde €600/maand geïnvesteerd geeft na 5 jaar ~€43.000 — de opportuniteitskosten van de lease zijn reëel en groot." },
+      { domain: "Tijd", icon: "⏰", text: "Een uur tv kijken kost een uur studie, sport, een project of een gesprek. Tijd heeft de hoogste opportuniteitskosten omdat het de enige niet-herwinbare hulpbron is." },
+      { domain: "Werk", icon: "💼", text: "Een werknemer die uren besteedt aan taken die hij kan delegeren aan €20/uur, betaalt opportuniteitskosten van zijn eigen uurloon minus €20 — als hij €80/uur waard is, verliest hij per gedelegeerde uur €60." }
+    ],
+    prerequisites: ["time-value-money"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom zijn opportuniteitskosten onzichtbare maar reële kosten?", options: ["Ze zijn niet echt, alleen theoretisch", "Ze zijn wat je opgeeft — wat niet zichtbaar is maar wél de totale kosten van een keuze bepaalt", "Ze gelden alleen bij grote financiële beslissingen", "Alleen economen hoeven hier rekening mee te houden"], correctIndex: 1, explanation: "Mensen evalueren keuzes bijna altijd op directe kosten, niet op wat ze opgeven. Maar de waarde van het beste alternatief is net zo reëel als de directe kosten. Het negeren ervan leidt systematisch tot suboptimale beslissingen." }
+    ],
+    creativePrompt: "Kies drie grote tijdsbestedingen in je week. Wat zijn de opportuniteitskosten? Wat geef je op door dit te doen in plaats van iets anders? Is de keuze nog steeds de beste?",
+    aiHelperPrompts: ["Hoe bereken ik opportuniteitskosten bij grote beslissingen?", "Hoe gebruik ik opportuniteitskostendenken bij tijdmanagement?", "Waarom negeren mensen opportuniteitskosten zo gemakkelijk?"]
+  },
+  {
+    id: "mental-accounting",
+    title: "Mentale Boekhouding",
+    difficulty: 2,
+    emoji: "🧮",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["geld", "cognitieve bias", "beslissingen", "gedragseconomie"],
+    definition: "Mentale boekhouding (Richard Thaler) is de neiging van mensen om geld in mentale 'potjes' te verdelen en anders te behandelen afhankelijk van de herkomst of bestemming, ook al is geld in werkelijkheid fungibel (uitwisselbaar). Dit leidt tot systematisch irrationele financiële beslissingen.",
+    abstractExample: "Je vindt €100 op straat (meevaller) en geeft het makkelijker uit dan €100 uit je salaris. Maar het is hetzelfde geld. Of: je zet apart geld op een spaarrekening terwijl je een creditcard-schuld hebt tegen 20% rente — irrationeel maar psychologisch begrijpelijk.",
+    examples: [
+      { domain: "Financieel", icon: "💰", text: "Vakantiegeld voelt anders dan regulier salaris — mensen geven het vrijgeviger uit. Maar €1000 vakantiegeld en €1000 salaris zijn identiek en zouden identieke beslissingen moeten leiden." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een cadeaubon van €50 uitgeven aan luxe die je nooit zou kopen voor 'echt geld' — terwijl €50 cadeaubon en €50 cash identiek zijn. Mentale boekhouding in actie." },
+      { domain: "Investeren", icon: "📈", text: "Dividenden (inkomsten) herfinvesteren voelt anders dan aandelenkoers-winst verkopen. Maar beide zijn vermogensopbouw — de mentale scheiding is economisch irrelevant maar psychologisch krachtig." }
+    ],
+    prerequisites: ["opportunity-cost"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe schaadt mentale boekhouding financiële beslissingen?", options: ["Het helpt mensen geld te organiseren", "Het leidt tot inconsistente beslissingen waarbij geld uit verschillende 'potjes' anders wordt behandeld ondanks gelijke waarde", "Het heeft geen effect op rijkdom", "Alleen arme mensen doen aan mentale boekhouding"], correctIndex: 1, explanation: "Economisch rationeel gezien is geld fungibel — €1 is €1, ongeacht herkomst. Mentale boekhouding creëert kunstmatige scheidslijnen die leiden tot gedrag zoals te veel sparen terwijl schuld bestaat, of te weinig investeren terwijl 'luxegeld' wordt verspild." }
+    ],
+    creativePrompt: "Kijk naar hoe jij geld behandelt uit verschillende bronnen (salaris, bonus, meevaller, erfenis). Behandel je het anders? Is dat rationeel? Welke 'potjes' in jouw hoofd leiden tot irrationeel gedrag?",
+    aiHelperPrompts: ["Hoe overwin ik mentale boekhouding voor betere financiële beslissingen?", "Is mentale boekhouding ooit nuttig?", "Hoe gebruik ik mentale boekhouding bewust om spaargedrag te verbeteren?"]
+  },
+  {
+    id: "loss-aversion-finance",
+    title: "Verliesaversie in Financiën",
+    difficulty: 2,
+    emoji: "📉",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["verliesaversie", "investeren", "risico", "gedragseconomie"],
+    definition: "Verliesaversie in financiële context is de disproportionele pijn van financiële verliezen vergeleken met de vreugde van gelijke winsten (Kahneman & Tversky: verlies voelt ~2x zo erg als equivalente winst). Dit leidt tot suboptimale beleggingsbeslissingen als irrationeel risicovermijding.",
+    abstractExample: "€1000 verliezen voelt psychologisch even erg als €2000 winnen. Dit leidt ertoe dat beleggers te snel verliezende posities vasthouden ('het herstelt nog'), te vroeg winnende posities verkopen, en risicovolle maar waardevolle investeringen vermijden.",
+    examples: [
+      { domain: "Investeren", icon: "📈", text: "Een belegger die een aandeel koopt voor €100 dat daalt naar €70 verkoopt het niet — want dan is het verlies 'echt'. Hij houdt vast en hoopt op herstel, ook als rationele analyse zegt verkopen. Dit is verliesaversie." },
+      { domain: "Werk", icon: "💼", text: "Een mislukt project doorzetten 'omdat we al zoveel geïnvesteerd hebben' (sunk cost fallacy gekoppeld aan verliesaversie) — de investering is verloren ongeacht wat je doet." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Iemand weigert een redelijk goed huis te verkopen met €20.000 verlies ten opzichte van aankoopprijs, ook als dat de rationeel beste beslissing is. De pijn van het 'officiële verlies' blokkeert." }
+    ],
+    prerequisites: ["mental-accounting"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke beleggingsstrategie helpt het meest om verliesaversie te overwinnen?", options: ["Dagelijks je portfolio controleren", "Automatisch en regelmatig investeren zonder dagelijkse koersmonitoring", "Alleen winnen investeren en verliezers direct verkopen", "Geen enkel risico nemen"], correctIndex: 1, explanation: "Dagelijkse monitoring versterkt verliesaversie door frequente confrontatie met dalingen. Automatisch periodiek investeren (dollar cost averaging) vermindert emotionele beslissingen door het koopgedrag los te koppelen van dagelijkse marktemotie." }
+    ],
+    creativePrompt: "Herken je verliesaversie in je eigen financiële of andere beslissingen? Welke keuze heb je uitgesteld of vermeden vanwege de pijn van potentieel verlies? Was dat rationeel?",
+    aiHelperPrompts: ["Hoe vermijd ik verliesaversie bij beleggingsbeslissingen?", "Hoe bereken ik of vasthouden of verkopen rationeel is?", "Is verliesaversie ooit nuttig als beschermingsmechanisme?"]
+  },
+  {
+    id: "long-term-thinking",
+    title: "Langetermijndenken",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["langetermijn", "vertraging", "strategie", "toekomst"],
+    definition: "Langetermijndenken is het vermogen om beslissingen te nemen met een horioznt van jaren of decennia in plaats van weken of maanden — en daarvoor directe beloningen op te geven. Het is een trainbare cognitieve vaardigheid die systematisch gecorreleerd is met betere gezondheids-, financiële en relationele uitkomsten.",
+    abstractExample: "Het marshmallow-experiment (Stanford) toonde dat kinderen die een beloning konden uitstellen later betere uitkomsten hadden op vrijwel alle levensgebieden. Vertraagde bevrediging is een voorspeller van succes — en het is trainbaar.",
+    examples: [
+      { domain: "Financieel", icon: "💰", text: "In 2009 aandelen kopen tijdens de crisis vereiste langetermijndenken — op korte termijn leken ze risicovolle verliezen, op lange termijn waren het de beste aankopen in een generatie." },
+      { domain: "Werk", icon: "💼", text: "Jaren investeren in een vaardigheid (programmeren, schrijven, spreken) die nu weinig oplevert maar over tien jaar enorm waardevol is — dit is langetermijndenken over carrière." },
+      { domain: "Relaties", icon: "❤️", text: "Een moeilijk gesprek voeren dat op korte termijn ongemak geeft maar de relatie op lange termijn versterkt — dit is langetermijndenken in relaties." }
+    ],
+    prerequisites: ["compound-interest-life"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom worden kortetermijnbeslissingen zo dominant in menselijk gedrag?", options: ["Mensen zijn van nature lui", "Het brein is evolutionair geoptimaliseerd voor directe beloningen en bedreigingen — een drang die bewust moet worden tegengegaan voor langetermijndenken", "Kortetermijndenken is altijd rationeel", "Langetermijn is niet te voorspellen"], correctIndex: 1, explanation: "De prefrontale cortex (langetermijnplanning) is evolutionair jonger dan het limbisch systeem (directe beloning). In een wereld van onmiddellijke bedreigingen was kortetermijnrespons overlevingsvoordeel. Moderne omgevingen vereisen bewuste overschrijving van dit systeem." }
+    ],
+    creativePrompt: "Welke beslissing weet je dat je op lange termijn moet nemen maar stel je uit vanwege kortetermijnpijn of genot? Schrijf op: wat kost uitstellen je over vijf jaar?",
+    aiHelperPrompts: ["Hoe train ik langetermijndenken als ik sterk gericht ben op nu?", "Hoe balanceer ik genieten van het nu met investeren in de toekomst?", "Welke langetermijninvesteringen zijn het meest waardevol voor een 25-jarige?"]
+  },
+  {
+    id: "financial-independence",
+    title: "Financiële Onafhankelijkheid",
+    difficulty: 3,
+    emoji: "🏝️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["vrijheid", "vermogen", "FIRE", "leven"],
+    definition: "Financiële onafhankelijkheid is de toestand waarbij passief inkomen (rente, dividenden, huur) de levensstijlkosten dekt — waardoor werk een keuze wordt, niet een noodzaak. Het FIRE-concept (Financial Independence, Retire Early) heeft dit gepopulariseerd als haalbaar doel.",
+    abstractExample: "Financiële onafhankelijkheid is niet rijkdom hebben — het is genoeg hebben. De 4%-regel: als je vermogen 25x je jaaruitgaven bedraagt, kun je 4% per jaar opnemen zonder het ooit te lege trekken (historisch bewezen bij gespreide beleggingsportefeuille).",
+    examples: [
+      { domain: "Financieel", icon: "💰", text: "Bij €30.000 jaaruitgaven is het doel €750.000 belegd vermogen (25x). Bij 7% rendement, 4% opname, groeit het resterende 3% mee met inflatie — eeuwigdurend inkomen theoretisch." },
+      { domain: "Werk", icon: "💼", text: "Iemand met financiële onafhankelijkheid kiest werk op basis van zingeving en bijdrage — niet op basis van salaris. Dit verandert fundamenteel de arbeidsmarktpositie en levenskwaliteit." },
+      { domain: "Leven", icon: "🌅", text: "FIRE betekent niet noodzakelijk 'stoppen met werken' — het betekent dat je dat kunt kiezen. Mensen die het bereiken, werken vaak door — maar anders en met meer voldoening." }
+    ],
+    prerequisites: ["compound-interest-life", "long-term-thinking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de '4%-regel' voor financiële onafhankelijkheid?", options: ["Je mag nooit meer dan 4% rente betalen", "Een goed gespreide portefeuille kan historisch 4% per jaar opnemen zonder uitgeput te raken", "Je moet 4% van je salaris sparen", "Na 4% rendement ben je financieel onafhankelijk"], correctIndex: 1, explanation: "De 4%-regel (Trinity Study) toont dat een gediversifieerde portefeuille van aandelen en obligaties historisch 4% per jaar kan worden onttrokken over 30+ jaar zonder uitgeput te raken. Dit geeft een praktische richtlijn: 25x jaaruitgaven = financiële onafhankelijkheid." }
+    ],
+    creativePrompt: "Bereken jouw FI-getal: hoeveel zijn je jaarlijkse uitgaven? Vermenigvuldig met 25. Hoe ver ben je? Wat is één concrete stap om de kloof te verkleinen?",
+    aiHelperPrompts: ["Hoe bereik ik financiële onafhankelijkheid op mijn inkomen?", "Is de 4%-regel nog steeds geldig?", "Hoe denk ik over werk en betekenis als geld geen drijfveer meer is?"]
+  },
+  {
+    id: "frugality-vs-cheapness",
+    title: "Zuinigheid vs. Gierigheid",
+    difficulty: 1,
+    emoji: "💡",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["zuinigheid", "waarde", "beslissingen", "levenstijl"],
+    definition: "Zuinigheid is het bewust maximaliseren van waarde voor elke uitgegeven euro — niet minder uitgeven maar slimmer. Gierigheid is uitgaven vermijden ten koste van kwaliteit van leven, relaties of langetermijnbelangen. Het onderscheid zit in het doel: waarde versus onthouding.",
+    abstractExample: "Een zuinig persoon koopt een kwaliteitsjas van €200 die 10 jaar meegaat (€20/jaar). Een gierig persoon koopt elk jaar een goedkopere jas van €40 (€400 over 10 jaar). Zuinigheid is soms meer uitgeven voor minder totaalkosten — het gaat om waarde per euro, niet om euro's besparen.",
+    examples: [
+      { domain: "Financieel", icon: "💰", text: "Abonnementen die je niet gebruikt annuleren (zuinig). Maar nooit naar een restaurant gaan met vrienden 'om geld te sparen' terwijl je prima kunt betalen (gierig) — sociale schade overstijgt de besparing." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "Besparen op goede schoenen tot je knieproblemen krijgt, is niet zuinigheid — het is gierigheid. Investeren in kwalitatief schoeisel is zuinigheid: minder toekomstige medische kosten." },
+      { domain: "Werk", icon: "💼", text: "Een ondernemer die goedkope software koopt die hem 5 uur per week extra kost, is gierig. Betalen voor betere tools die tijd besparen is zuinig: de ROI is positief." }
+    ],
+    prerequisites: ["opportunity-cost"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe onderscheid je een zuinige van een gierige beslissing?", options: ["Zuinigheid is altijd minder geld uitgeven", "Zuinigheid maximaliseert waarde per euro; gierigheid vermijdt uitgaven ook als de kosten-batenanalyse positief is", "Gierigheid is een deugd", "Ze zijn hetzelfde, enkel een kwestie van perspectief"], correctIndex: 1, explanation: "Zuinigheid is strategisch: investeer waar het waarde creëert, bespaar waar het geen waarde toevoegt. Gierigheid is irrationeel: vermijdt uitgaven ook als de opbrengst groter is dan de kosten — wat leidt tot hogere totaalkosten, schade aan relaties of gezondheid." }
+    ],
+    creativePrompt: "Kijk naar je laatste vijf grotere aankopen. Welke waren zuinig (maximale waarde voor de prijs) en welke waren gierig (besparen leidde tot meer kosten)? Welke waren verspilling? Wat leert dit patroon je?",
+    aiHelperPrompts: ["Hoe leer ik goed onderscheid maken tussen zuinigheid en gierigheid?", "Hoe beslis ik of iets 'de prijs waard is'?", "Hoe stop ik met verspilling zonder gierig te worden?"]
+  },
+  {
+    id: "financial-psychology",
+    title: "Psychologie van Geld",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Financieel Bewustzijn",
+    tags: ["geld", "psychologie", "gedrag", "overtuigingen"],
+    definition: "De psychologie van geld (Morgan Housel) onderzoekt hoe emoties, overtuigingen, ervaringen en biases financiële beslissingen bepalen — meer dan kennis of rationele berekeningen. Rijkdom is minder een kwestie van intellect en meer van gedrag, geduld en zelfkennis.",
+    abstractExample: "Twee mensen weten beide dat indexfondsen langetermijn het beste presteren. Eén doet het; de ander schiet tijdens een crash in paniek de posities uit. Het verschil is niet kennis maar emotionele regulatie, geduld en gedrag. Dat is de psychologie van geld.",
+    examples: [
+      { domain: "Financieel", icon: "💰", text: "Iemand die opgroeide in armoede heeft andere geldovertuigingen dan iemand die opgroeide in welvaart — en dat beïnvloedt risicobereidheid, spaarneiging en financieel gedrag voor de rest van het leven." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Veel mensen met hoge inkomens zijn niet vermogend — omdat inkomen en vermogen niet hetzelfde zijn. Rijkdom is wat je niet uitgeeft. Dit is gedragspsychologie, geen economie." },
+      { domain: "Investeren", icon: "📈", text: "Iedereen weet 'koop laag, verkoop hoog'. Vrijwel niemand doet het consequent — omdat angst en hebzucht op de verkeerde momenten winnen van kennis." }
+    ],
+    prerequisites: ["loss-aversion-finance"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het centrale argument in Morgan Housel's 'The Psychology of Money'?", options: ["Geld is het belangrijkste in het leven", "Financieel gedrag wordt meer bepaald door psychologie dan door kennis of intelligentie", "Rijke mensen zijn slimmer", "Financiën zijn te complex voor gewone mensen"], correctIndex: 1, explanation: "Housel's centrale punt: iemand met gemiddeld inkomen die consequent spaart, bescheiden leeft en geduldige investeringen aanhoudt, bouwt meer vermogen dan een hoogverdienende die zijn lifestyle-inflatie en emotionele beslissingen niet controleert." }
+    ],
+    creativePrompt: "Schrijf vijf overtuigingen op die je over geld hebt ('geld is moeilijk te verdienen', 'rijke mensen zijn hebzuchtig', etc.). Waar komen ze vandaan? Helpen ze je of houden ze je tegen?",
+    aiHelperPrompts: ["Hoe verbeter ik mijn financieel gedrag als ik de theorie al ken?", "Hoe herken ik mijn persoonlijke geldpsychologie?", "Hoe ga ik om met de emotionele component van beleggen?"]
   }
 ];
