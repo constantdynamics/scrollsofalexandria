@@ -8943,4 +8943,156 @@ export const principlesNew = [
       { domain: "Relaties", icon: "❤️", text: "Niet wachten tot een relatie onder druk staat om er energie in te steken. Proactief investeren in relaties — check-ins, verrassingen, kwalitatieve tijd — houdt ze sterk voordat reparatie nodig is." }
     ],
   },
+
+  // ========== BATCH B6: SLAAP & HERSTEL ==========
+  {
+    id: "sleep-hygiene",
+    title: "Slaaphygiëne: Omgeving en Rituelen",
+    difficulty: 1,
+    emoji: "🛏️",
+    academicCategory: "Slaapwetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Slaaphygiëne is de verzameling van omgevingsfactoren en gedragspatronen die slaapkwaliteit bevorderen. Consistente slaaptijden, donkere en koele slaapkamer, beperking van schermgebruik voor slapengaan en afbouwrituelen zijn de meest effectieve niet-farmacologische interventies voor betere slaap.",
+    abstractExample: "Slaap is geen schakelaar maar een geleidelijk proces. Het brein heeft signalen nodig dat slaap nadert: dalende lichtintensiteit, temperatuurverlaging, afnemende activiteit. Slaaphygiëne is het bewust creëren van die signalen.",
+    examples: [
+      { domain: "Avondroutine", icon: "🌙", text: "Een vast afbouwritueel van 30-60 minuten voor het slapen (geen schermen, rustige activiteit, eventueel warm bad of douche) traint het brein om slaap te associëren met die signalen — inslaaptijd verkort significant." },
+      { domain: "Slaapkamer", icon: "🏠", text: "Slaapkamer ideaal: 16-19°C, volledig verduisterd, geen schermen. De lichaamstemperatuur moet dalen om in slaap te vallen — een koude kamer faciliteert dit. Elk graan van blauw licht vertraagt melatonineaanmaak." },
+      { domain: "Consistentie", icon: "⏰", text: "Elke dag op hetzelfde tijdstip opstaan — ook weekends — is de meest effectieve slaapinterventie. Het circadiane ritme is een biologische klok die consistentie beloont met betere slaapkwaliteit." }
+    ],
+  },
+  {
+    id: "nap-science",
+    title: "De Wetenschappelijke Powernap",
+    difficulty: 1,
+    emoji: "😪",
+    academicCategory: "Slaapwetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Een powernap van 10-20 minuten verbetert alertheid, cognitieve prestaties en stemming significant. Langer slapen overdag kan leiden tot slaapinertie (grogginess) en verstoort nachtslaap. Het juiste timing (vroege middag) en duur zijn cruciale parameters voor effectief gebruik van dagdutjes.",
+    abstractExample: "Veel culturen met traditionele middagpauze (Spanje, Griekenland, Aziatische landen) zijn niet toevallig — de post-lunch dip is een biologisch programmeerd circadiaan dal. Een strategische nap van precies 10-20 minuten surft op dit golfdal.",
+    examples: [
+      { domain: "Productiviteit", icon: "⚡", text: "NASA-onderzoek bij piloten: een dutje van 26 minuten verhoogde prestaties met 34% en alertheid met 100%. Inplannen van een korte nap na de lunch is wetenschappelijk onderbouwde prestatieverbetering." },
+      { domain: "Creativiteit", icon: "💡", text: "Hypnagogische toestand (inslaapdrempel) bevordert creatieve inzichten — Edison en Dalí hielden een balletje vast terwijl ze induttten, zodat het vallende balletje hen wakker maakte in de hypnagogische staat voor creativiteitsoogst." },
+      { domain: "Nap timing", icon: "☕", text: "De 'nappuccino': koffie drinken, direct 20 minuten nappen. Cafeïne werkt na 20-30 minuten — je wordt wakker net als de cafeïne begint te werken, met het voordeel van zowel slaapherstel als cafeïne-effect." }
+    ],
+  },
+  {
+    id: "recovery-active-passive",
+    title: "Actief vs. Passief Herstel",
+    difficulty: 1,
+    emoji: "🔋",
+    academicCategory: "Sportpsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Herstel na inspanning kent twee vormen: passief herstel (rust, slaap, stilzitten) en actief herstel (lichte beweging, stretching, wandelen). Voor fysieke belasting is actief herstel vaak effectiever dan passief — lichte beweging verhoogt doorbloeding en versnelt afvalstofverwijdering. Voor mentale belasting geldt dat passieve rest in natuur effectiever is dan actieve ontspanning op schermen.",
+    abstractExample: "Na een zware loopsessie is een rustige wandeling beter voor herstel dan stilliggen. Na een intensieve werkdag is een wandeling in de natuur beter voor mentaal herstel dan Netflix. De aard van de belasting bepaalt de optimale herstelvorm.",
+    examples: [
+      { domain: "Sport", icon: "🏋️", text: "Actief herstel na intensieve training: 15-20 minuten licht fietsen of wandelen verhoogt bloedsomloop, vermindert spierpijn en versnelt herstel door lactaatafvoer — effectiever dan volledig rust." },
+      { domain: "Werk", icon: "💼", text: "Na een intensieve vergadering of concentratieblok een korte wandeling buiten maken (actief herstel) geeft meer mentale reset dan op de bank zitten scrollen (passief, maar stimulant) of koffiehalen (passief)." },
+      { domain: "Weekend", icon: "🌿", text: "Een 'actief rustweekend' — wandelen, lichte sport, sociale activiteiten buiten — herstelt beter dan een volledig passief weekend voor mensen met mentaal veeleisend werk. Het brein heeft beweging nodig voor echte reset." }
+    ],
+  },
+  {
+    id: "stress-recovery-cycle",
+    title: "De Stress-Herstel Cyclus",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Fysiologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Groei en aanpassing vinden niet tijdens de stressfase maar tijdens de herstelfase plaats — dit geldt voor spiergroei, leren, emotionele veerkracht en mentale prestaties. Chronische stress zonder voldoende herstel leidt tot uitputting. De juiste cyclus van belasting en herstel is het fundament van duurzame prestaties.",
+    abstractExample: "Een atleet die elke dag maximaal traint zonder rustdagen overtraint — de spieren groeien tijdens de rust, niet tijdens de training. Hetzelfde principe geldt voor mentale en emotionele belasting: een drukke week zonder herstelmomenten is overtraining van het brein.",
+    examples: [
+      { domain: "Werkplanning", icon: "📅", text: "Intens focuswerk in blokken van 90 minuten afwisselen met herstelblokken van 15-20 minuten is effectiever dan doorwerken — de herstelblokken zijn geen verspilde tijd maar noodzakelijke consolidatiefases." },
+      { domain: "Levensritme", icon: "🌊", text: "Intense periodes (projecten, deadlines, drukke seizoenen) bewust plannen naast herstelperiodes (vakantie, rustige weken). Mensen die altijd op maximale output draaien zonder herstel raken sneller opgebrand dan mensen die cyclisch werken." },
+      { domain: "Emotionele belasting", icon: "💭", text: "Na emotioneel zware periodes (verlies, conflict, grote veranderingen) bewust meer tijd inplannen voor herstel — slaap, sociale verbinding, natuur, beweging. Emotioneel herstel is een fysiologisch proces dat tijd vraagt." }
+    ],
+  },
+  {
+    id: "digital-detox",
+    title: "Digitale Detox en Schermbalans",
+    difficulty: 1,
+    emoji: "📵",
+    academicCategory: "Mediawetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Constante digitale connectiviteit — push-notificaties, social media, email — houdt het zenuwstelsel in een staat van chronische laag-niveau alertheid die diepe ontspanning en focus verhindert. Bewuste periodes zonder schermen geven het brein de rust om te herstellen, aandacht te consolideren en diepere cognitieve staten te bereiken.",
+    abstractExample: "Het brein kan niet ontspannen als het verwacht altijd te worden onderbroken. Notificaties creëren een Pavloviaanse alertheidsreactie die actief blijft ook als er geen notificatie is. Verwijderen van notificaties is een van de eenvoudigste, meest impactvolle interventies voor aandacht en rust.",
+    examples: [
+      { domain: "Ochtendroutine", icon: "🌅", text: "De eerste 60-90 minuten van de dag zonder smartphone is een van de meest besproken habits van hoogpresteerders — de dag beginnen met eigen prioriteiten in plaats van andermans urgentie zet het frame voor de dag." },
+      { domain: "Avondroutine", icon: "🌙", text: "Telefoon buiten de slaapkamer: verwijdert de impuls om het 's nachts te checken, verbetert slaapkwaliteit (minder blauw licht) en verhoogt kwaliteit van ochtendmoment (geen reflexmatig checken bij wakker worden)." },
+      { domain: "Focustijd", icon: "🎯", text: "Notificaties van alle niet-kritieke apps uitschakelen. Gemiddeld kost het 23 minuten om na een onderbreking terug in diepe focus te komen — elke notificatie kost in effect veel meer dan de seconde dat je ernaar kijkt." }
+    ],
+  },
+  {
+    id: "leisure-quality",
+    title: "Kwaliteit van Vrije Tijd",
+    difficulty: 2,
+    emoji: "🎭",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Niet alle vormen van ontspanning zijn gelijkwaardig in herstelwaarde. Passieve entertainment (Netflix, scrollen) is weinig herstellend ondanks dat het ontspannend voelt. Actieve vrije tijd (hobby's, sport, sociale activiteiten, creatieve expressie) levert meer voldoening, herstel en levensstevredenheid — ook al kost het meer energie om te starten.",
+    abstractExample: "Scrollen op sociale media voelt als ontspanning maar laat je leeg. Een goed boek lezen, een muziekinstrument bespelen of met vrienden optrekken kost meer cognitieve moeite om te starten, maar geeft meer herstelwaarde en voldoening achteraf.",
+    examples: [
+      { domain: "Hobby's", icon: "🎨", text: "Flow-activiteiten (schilderen, muziek, koken, sporten) waarbij vaardigheid en uitdaging in balans zijn, geven de meeste mentale herstelling en voldoening. De initiële drempel is de enige barrière — daarna geeft het energie." },
+      { domain: "Sociale tijd", icon: "👫", text: "Face-to-face sociale interactie is een van de krachtigste herstelactiviteiten — it literally down-regulates the stress response. Digitaal sociaal contact heeft dit effect in veel mindere mate." },
+      { domain: "Natuur", icon: "🌿", text: "Tijd in de natuur (ook park, bos, strand) heeft aantoonbaar een lagere cortisolspiegel, lagere hartslag en betere stemming tot gevolg na 20 minuten. Het is niet romantisch maar fysiologisch — natuur kalmeert het zenuwstelsel." }
+    ],
+  },
+  {
+    id: "transition-rituals",
+    title: "Overgangsrituelen Tussen Rollen",
+    difficulty: 1,
+    emoji: "🚪",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Overgangsrituelen zijn korte, bewuste handelingen die de overgang markeren tussen verschillende contexten of rollen (werk naar thuis, thuis naar werkplek, intensief naar ontspannen). Ze helpen het brein mentaal te schakelen en voorkomen dat stressoren uit één context meelekken naar de andere.",
+    abstractExample: "Thuiswerken heeft de overgang van werk naar privé vervaagd — het laptop openen is beginnen, dichtklappen kan het einde zijn. Maar het brein heeft een bewust signaal nodig om te schakelen. Rituelen bieden dat signaal.",
+    examples: [
+      { domain: "Thuiswerken", icon: "🏠", text: "Een 'nep-woon-werkritme' creëren: na werktijd een korte wandeling maken (zoals vroeger het traject naar huis) als ritueel om werk mentaal af te sluiten. Dit is een van de meest aangedragen technieken door thuiswerkers." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👦", text: "Thuis aankomen en bewust 5 minuten de werkdag mentaal afsluiten voor je de deur opendoet — even stilstaan, ademhalen, de rollen schakelen — geeft betere aanwezigheid als ouder/partner daarna." },
+      { domain: "Sport", icon: "🏃", text: "Een vast warming-up ritueel dat altijd hetzelfde is (specifieke oefeningen, muziek, mentale voorbereiding) traint het brein om de sportmodus snel te activeren — de overgang van dagelijks leven naar prestatiemodus wordt vlotter." }
+    ],
+  },
+  {
+    id: "restorative-sleep-debt",
+    title: "Slaapschuld en Herstelslaap",
+    difficulty: 2,
+    emoji: "💤",
+    academicCategory: "Slaapwetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Slaapschuld is het cumulatieve tekort aan slaap dat opgebouwd wordt bij chronisch te kort slapen. Gedeeltelijk kan dit worden ingehaald met extra slaap (recovery sleep), maar chronische slaaptekorten hebben langetermijneffecten die niet volledig worden gecompenseerd. Bewustzijn van slaapschuld helpt strategisch herstelperiodes in te plannen.",
+    abstractExample: "Een week van 6 uur slaap per nacht terwijl 8 uur nodig is, geeft 14 uur slaapschuld. Het weekend uitslapen herstelt een deel, maar niet alles — cognitieve schade na een week slaaptekort verdwijnt niet volledig na één goede nacht.",
+    examples: [
+      { domain: "Werkweek planning", icon: "📅", text: "In drukke weken met te weinig slaap na afloop bewust een herstelperiode inplannen — niet alleen het weekend maar eventueel langere perioden — in plaats van direct door te gaan op dezelfde intensiteit." },
+      { domain: "Vakantieplanning", icon: "✈️", text: "De eerste dagen van een vakantie besteden velen aan 'bijslapen' — dit is fysiologisch herstellen van chronische slaapschuld. Vakantie als officieel herstelmechanisme beschouwen in plaats van als bonus." },
+      { domain: "Performancemonitoring", icon: "📊", text: "Bijhouden van slaaptijd en -kwaliteit (slaaptracker of dagboek) maakt slaapschuld zichtbaar. Mensen onderschatten hun slaaptekort consequent — data geeft een realistischer beeld dan gevoel." }
+    ],
+  },
+  {
+    id: "mindful-rest",
+    title: "Bewuste Rust: Niets Doen als Vaardigheid",
+    difficulty: 2,
+    emoji: "🌸",
+    academicCategory: "Mindfulness",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Bewust niets doen — Italiaans: 'dolce far niente' — is een vaardigheid die in de westerse productiviteitscultuur verloren gaat. Het default mode network van het brein, actief tijdens rust, is verantwoordelijk voor creativiteit, zelfreflectie en betekenisgeving. Constante bezigheid onderdrukt dit netwerk en verarmt geestelijk leven.",
+    abstractExample: "Mensen zijn bang voor verveling omdat het discomfort creëert. Maar verveling is de poort naar creativiteit en zelfreflectie. Als alle stille momenten worden opgevuld met podcasts, muziek of scrollen, raakt het brein de capaciteit kwijt voor ongestuurde verwerking.",
+    examples: [
+      { domain: "Creativiteit", icon: "💡", text: "De meest creatieve inzichten — de douche-gedachte, het slapengaan-idee — komen in toestand van rust. Dit is geen toeval maar neurobiologie: de default mode network is creatief actief als gerichte aandacht wordt losgelaten." },
+      { domain: "Dagelijkse momenten", icon: "☕", text: "Wachtrijen, koffiepauzes, treinritten niet automatisch vullen met telefoon maar bewust leeg laten. Dit oefent de capaciteit voor rust en ongestuurde gedachte — een vaardigheid die atrofieert zonder oefening." },
+      { domain: "Meditatie", icon: "🧘", text: "Meditatie is geformaliseerde bewuste rust — bewust niet-doen, gedachten observeren zonder erin meegesleurd te worden. De vaardigheid generaliseert naar dagelijkse rust-momenten." }
+    ],
+  },
+  {
+    id: "nature-exposure-wellbeing",
+    title: "Natuur en Welzijn",
+    difficulty: 1,
+    emoji: "🌳",
+    academicCategory: "Omgevingspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Blootstelling aan natuur heeft meetbare fysiologische en psychologische effecten: lagere cortisol, lagere bloeddruk, verbeterde stemming, lagere agressie en verbeterde cognitie. Zelfs indirecte natuur-exposure (kamerplanten, uitzicht op groen) heeft aantoonbare effecten. Shinrin-yoku (Japans bosbaden) is één van de meest onderzochte interventies.",
+    abstractExample: "Stadsomgevingen activeren de amygdala (stressreactie); natuuromgevingen deactiveren die. Het is geen romantisch gevoel maar een evolutionair-biologische respons: mensen zijn geëvolueerd in natuur, niet in beton.",
+    examples: [
+      { domain: "Stress reductie", icon: "🧘", text: "20 minuten wandelen in een park of bos verlaagt cortisol significant meer dan 20 minuten wandelen door een stedelijke omgeving — het effect is meetbaar in speeksel en bloedmonsters." },
+      { domain: "Werkplek", icon: "💼", text: "Kamerplanten op de werkplek verhogen zelfgerapporteerde productiviteit en welzijn in kantooronderzoeken. Uitzicht op groen vanuit een kantoorraam is geassocieerd met lagere stress en hogere tevredenheid." },
+      { domain: "Mentale gezondheid", icon: "🧠", text: "Mensen die in steden wonen nabij parken of water scoren consistent beter op mentale gezondheidsmetingen dan mensen in buurten zonder groen — natuur-nabijheid is een onderschat factor in stedelijk welzijn." }
+    ],
+  },
 ];
