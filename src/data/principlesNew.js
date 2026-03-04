@@ -6359,4 +6359,156 @@ export const principlesNew = [
       { domain: "Marketing", icon: "📣", text: "Effectieve content sluit aan bij de behoefte die een medium vervult: LinkedIn-posts voor professionele identiteit werken anders dan Instagram-posts voor lifestyle." }
     ],
   },
+
+  // ── Batch Z9: Leiderschap & Organisatie ─────────────────────────────────────
+  {
+    id: "servant-leadership",
+    title: "Dienend Leiderschap",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Dienend leiderschap (Greenleaf) stelt dat de primaire taak van een leider niet is macht uit te oefenen, maar anderen te dienen — medewerkers te empoweren, hindernissen weg te nemen en hun groei te faciliteren.",
+    abstractExample: "In plaats van 'hoe kan ik bereiken wat ik wil via mijn team', vraagt de dienend leider 'wat hebben mijn teamleden nodig om te floreren en hun beste werk te leveren'.",
+    examples: [
+      { domain: "Bedrijf", icon: "💼", text: "Een manager vraagt in één-op-één gesprekken wat hij kan doen om het werk makkelijker te maken voor zijn medewerkers, in plaats van alleen prestaties te controleren." },
+      { domain: "Onderwijs", icon: "📚", text: "Een rector investeert zijn tijd in het wegnemen van administratieve lasten voor docenten, zodat zij maximaal energie kunnen steken in lesgeven." },
+      { domain: "Sport", icon: "⚽", text: "Een coach stelt het welzijn en de ontwikkeling van spelers centraal boven persoonlijke successen — zijn missie is de potentie van elk individu te ontgrendelen." }
+    ],
+  },
+  {
+    id: "distributed-leadership",
+    title: "Gedistribueerd Leiderschap",
+    difficulty: 2,
+    emoji: "🕸️",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Gedistribueerd leiderschap spreidt leiderschapsfuncties over meerdere personen in een organisatie, in plaats van alles te concentreren bij één persoon. Iedereen neemt leiderschap op basis van expertise en context.",
+    abstractExample: "In een crisis neemt de persoon met de meeste relevante expertise de leiding over, niet de hiërarchisch hoogste. Leiderschap is situationeel en vloeit naar competentie.",
+    examples: [
+      { domain: "Chirurgie", icon: "🏥", text: "In een operatiezaal leidt de anesthesist tijdens risicovolle anesthesiemomenten, ook als de chirurg hoger in rang is — expertise bepaalt wie leidt." },
+      { domain: "Software", icon: "💻", text: "In agile teams zijn er geen vaste leiders; technische beslissingen worden genomen door de persoon met meeste kennis van het specifieke probleem." },
+      { domain: "Rampenbestrijding", icon: "🚨", text: "Bij een complex incident heeft de brandweercommandant operationele leiding, terwijl een medisch expert leidt bij triage — meerdere leiders, elk in hun domein." }
+    ],
+  },
+  {
+    id: "organizational-culture",
+    title: "Organisatiecultuur",
+    difficulty: 2,
+    emoji: "🏛️",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Organisatiecultuur zijn de gedeelde waarden, normen, overtuigingen en gedragspatronen die bepalen 'hoe we hier de dingen doen' — het onzichtbare besturingssysteem van een organisatie.",
+    abstractExample: "Strategie is wat een organisatie zegt te willen doen. Cultuur is wat mensen werkelijk doen als niemand kijkt. Cultuur eet strategie als ontbijt.",
+    examples: [
+      { domain: "Tech", icon: "💻", text: "Google's cultuur van psychologische veiligheid en experimenteren maakt innovatie mogelijk die bij een meer hiërarchische cultuur wordt onderdrukt." },
+      { domain: "Zorg", icon: "🏥", text: "Ziekenhuizen met een cultuur van openheid over fouten hebben betere patiëntveiligheid dan ziekenhuizen met een cultuur van schuld en bestraffing." },
+      { domain: "Fusie", icon: "🤝", text: "De meeste fusies mislukken niet door financiële of strategische incompatibiliteit, maar door culturele clash — twee organisaties met onverenigbare waarden en gedragspatronen." }
+    ],
+  },
+  {
+    id: "power-dynamics",
+    title: "Machtsdynamieken",
+    difficulty: 3,
+    emoji: "⚡",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Machtsdynamieken beschrijven hoe macht wordt verworven, behouden en uitgeoefend in sociale en organisatorische systemen. Macht heeft meerdere bronnen: positie, expertise, relaties, informatie en persoonlijkheid.",
+    abstractExample: "Iemand zonder formele titel kan meer macht hebben dan zijn manager, als hij de informatiestroom controleert, sterke relaties heeft met beslissers of onmisbare expertise bezit.",
+    examples: [
+      { domain: "Kantoor", icon: "🏢", text: "De assistent die de agenda van de directeur beheert, heeft informationele en toegangsmacht die ver uitstijgt boven zijn formele positie in de hiërarchie." },
+      { domain: "Politiek", icon: "🏛️", text: "Lobbyisten hebben geen formele democratische macht, maar oefenen via informatieverstrekking, financiering en relaties enorme invloed uit op beleid." },
+      { domain: "Wetenschap", icon: "🔬", text: "Gepresteerde onderzoekers met reputatie en netwerk kunnen de onderzoeksagenda van hun vakgebied sturen, los van hun officiële positie." }
+    ],
+  },
+  {
+    id: "change-management-kotter",
+    title: "Verandermanagement (Kotter)",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Kotters 8-stappenmodel voor organisatieverandering begint met urgentie creëren en een coalitie bouwen, vervolgens een visie communiceren, medewerkers empoweren, kortetermijnwinsten boeken en verandering verankeren.",
+    abstractExample: "Verandering mislukt niet door gebrek aan goede ideeën, maar door gebrek aan urgentiegevoel, politieke coalitie of verankering. De technische kant is makkelijker dan de menselijke kant.",
+    examples: [
+      { domain: "Bedrijf", icon: "💼", text: "Een CEO die digitaliseringstransformatie wil doorvoeren, begint met zichtbaar maken van de crisis als ze niet transformeren — zonder urgentie geen beweging." },
+      { domain: "Overheid", icon: "🏛️", text: "Overheidsreformen die niet slagen: goed ontworpen maar geen brede coalitie gebouwd en geen vroege successen gecommuniceerd om weerstand te overwinnen." },
+      { domain: "Zorg", icon: "🏥", text: "Invoering van elektronische patiëntendossiers vereist niet alleen software maar ook cultuurverandering — Kotters stappen structureren het mensenwerk." }
+    ],
+  },
+  {
+    id: "span-of-control",
+    title: "Spanwijdte van Controle",
+    difficulty: 2,
+    emoji: "📐",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Spanwijdte van controle is het aantal medewerkers dat een manager effectief kan aansturen. Te breed (20+ mensen) leidt tot oppervlakkige aansturing; te smal (2-3 mensen) tot micromanagement en hoge overhead.",
+    abstractExample: "Een organisatie met 1000 medewerkers en een spanwijdte van 10 heeft drie managementlagen. Met een spanwijdte van 5 heeft ze vijf lagen — meer lagen is trager en duurder.",
+    examples: [
+      { domain: "Leger", icon: "⚔️", text: "Militaire structuren gebruiken de 'rule of three': een officier leidt drie eenheden. Dit is empirisch geoptimaliseerd voor commandosnelheid en controle." },
+      { domain: "Consultancy", icon: "💼", text: "Seniorpartners in consultancies managen doorgaans 6-8 consultants — genoeg voor mentoring en kwaliteitscontrole zonder verlies van diepgang." },
+      { domain: "Technologie", icon: "💻", text: "Flat tech-bedrijven als Spotify werken met brede spans en kleine squads — minder hiërarchie, snellere beslissingen, maar hogere eisen aan zelforganisatie." }
+    ],
+  },
+  {
+    id: "mission-command",
+    title: "Opdrachtgerichte Leiding",
+    difficulty: 3,
+    emoji: "🎯",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Opdrachtgerichte leiding (Auftragstaktik) geeft medewerkers het 'wat' en 'waarom', maar niet het 'hoe'. Ze krijgen ruimte om zelf te beslissen hoe ze de missie bereiken, passend bij veranderende omstandigheden.",
+    abstractExample: "In plaats van 'doe stap A, B dan C', geef je 'we willen X bereiken omdat Y. Jij bepaalt hoe.' Dit werkt in complexe, veranderende omgevingen waar gedetailleerde instructies snel verouderen.",
+    examples: [
+      { domain: "Militair", icon: "⚔️", text: "Duits Auftragstaktik: officieren kregen de missie en vrijheid van handelen — superieur aan het Britse befehlstaktik (gedetailleerde orders) in het hitte van het gevecht." },
+      { domain: "Software", icon: "💻", text: "Spotify's squad-model: teams krijgen een doel ('verbeter retentie') maar bepalen zelf welke features ze bouwen — meer eigenaarschap en betere oplossingen." },
+      { domain: "Noodhulp", icon: "🚨", text: "Rode Kruis-teams in rampengebieden krijgen een missie maar handelen zelfstandig — contacten met hoofdkwartier zijn onmogelijk in crisisomstandigheden." }
+    ],
+  },
+  {
+    id: "organizational-learning",
+    title: "Organisatorisch Leren",
+    difficulty: 2,
+    emoji: "📖",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Organisatorisch leren is het proces waarbij een organisatie kennis genereert, deelt en institutionaliseert, zodat collectieve intelligentie groeit en fouten niet keer op keer worden herhaald.",
+    abstractExample: "Als alleen individuen leren maar de organisatie niet, verdwijnt kennis als mensen vertrekken. Als de organisatie leert, zit de kennis in systemen, processen en cultuur — onafhankelijk van individuen.",
+    examples: [
+      { domain: "Luchtvaart", icon: "✈️", text: "Na elke vliegtuigincident wordt de analyse institutioneel verankerd in procedures en training — de sector leert collectief, wat de veiligste industrie ter wereld heeft gecreëerd." },
+      { domain: "Ziekenhuis", icon: "🏥", text: "Morbidititeits- en mortaliteitsconferenties (M&M) zijn een structureel leerproces: incidenten worden besproken en verbeteringen worden in protocollen verankerd." },
+      { domain: "Technologie", icon: "💻", text: "Postmortems na systeemstoringen bij Google of Amazon zijn niet schuldoefeningen maar leerdocumenten die breed worden gedeeld om herhaling te voorkomen." }
+    ],
+  },
+  {
+    id: "stakeholder-theory",
+    title: "Stakeholdertheorie",
+    difficulty: 2,
+    emoji: "🌐",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Stakeholdertheorie (Freeman) stelt dat organisaties verantwoording verschuldigd zijn aan alle groepen die worden beïnvloed door hun activiteiten — niet alleen aandeelhouders, maar ook medewerkers, klanten, leveranciers, gemeenschap en milieu.",
+    abstractExample: "Het maximaliseren van aandeelhouderswaarde ten koste van medewerkers of gemeenschap is op lange termijn zelfdestructief. Duurzame waarde vereist balanceren van belangen van alle stakeholders.",
+    examples: [
+      { domain: "Bedrijf", icon: "💼", text: "Johnson & Johnson's Tylenol-crisis (1982): ze trokken alle producten terug en beschermden klanten boven kortetermijnwinst — hun reputatie en waarde herstelden sneller dan concurrenten verwacht hadden." },
+      { domain: "Overheid", icon: "🏛️", text: "Stadsplanners die alleen met projectontwikkelaars praten en omwonenden negeren, creëren projecten met juridische en sociale weerstand die meer kosten dan stakeholderconsultatie." },
+      { domain: "Investering", icon: "📊", text: "ESG-beleggers (Environmental, Social, Governance) passen stakeholderdenken toe: bedrijven die alle stakeholders goed behandelen presteren op lange termijn beter." }
+    ],
+  },
+  {
+    id: "strategic-ambiguity",
+    title: "Strategische Ambiguïteit",
+    difficulty: 3,
+    emoji: "🌫️",
+    academicCategory: "Organisatiekunde",
+    skillCategory: "Leiderschap & Organisatie",
+    definition: "Strategische ambiguïteit is het bewust vaag houden van communicatie zodat verschillende groepen hun eigen interpretatie kunnen projecteren, waardoor consensus en samenwerking worden gefaciliteerd die bij precisie onmogelijk zou zijn.",
+    abstractExample: "Een vage organisatiemissie als 'de beste zijn voor onze klanten' laat ruimte voor marketing, techniek en service om hun eigen invulling te geven — een precieze definitie zou conflict creëren.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Politieke slogans als 'verandering' of 'veiligheid' zijn bewust vaag — iedereen projecteert zijn eigen wensen op de term, waardoor een brede coalitie wordt aangetrokken." },
+      { domain: "Diplomatie", icon: "🌐", text: "Internationale verdragen bevatten bewust vage formuleringen over soevereiniteit die tegengestelde partijen beide als winst kunnen presenteren aan hun achterban." },
+      { domain: "Organisatie", icon: "🏢", text: "Een nieuwe CEO zegt 'we gaan focussen op kwaliteit' zonder te specificeren wat dat betekent — alle afdelingen horen wat ze willen horen en beginnen constructief mee te bewegen." }
+    ],
+  },
 ];
