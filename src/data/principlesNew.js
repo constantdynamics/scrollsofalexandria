@@ -8791,4 +8791,156 @@ export const principlesNew = [
       { domain: "Projecten", icon: "📋", text: "Een imperfect product lanceren en itereren op basis van feedback levert sneller echte inzichten dan eindeloos intern optimaliseren — 80% goed en gelanceerd klopt meer dan 100% goed maar te laat." }
     ],
   },
+
+  // ========== BATCH B5: PERSOONLIJK LEIDERSCHAP & INVLOED ==========
+  {
+    id: "lead-by-example",
+    title: "Leiden door Voorbeeld",
+    difficulty: 1,
+    emoji: "🌟",
+    academicCategory: "Leiderschapswetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De krachtigste manier om anderen te beïnvloeden is consistent gedrag dat de gewenste waarden en standaarden belichaamt. Mensen volgen wat je doet, niet alleen wat je zegt — inconsistentie tussen woorden en daden ondermijnt vertrouwen en invloed sneller dan bijna elke andere factor.",
+    abstractExample: "Zeggen dat kwaliteit belangrijk is, terwijl je zelf slordig werk aflevert, werkt averechts. Zeggen dat gezondheid prioriteit heeft, terwijl je nooit beweegt, spreekt boekdelen. Invloed begint met integriteit: afstemming van waarden, woorden en gedrag.",
+    examples: [
+      { domain: "Ouderschap", icon: "👨‍👩‍👦", text: "Kinderen kopiëren gedrag meer dan ze luisteren naar regels. Ouders die zelf lezen, sporten en kalm blijven onder druk geven hun kinderen dit mee — meer dan elk pedagogisch principe." },
+      { domain: "Leiderschap", icon: "🎯", text: "Een manager die verwacht dat anderen op tijd zijn maar zelf regelmatig te laat is, verliest autoriteit. Een manager die de moeilijkste taken zelf niet mijdt, wint respect — gedrag communiceert prioriteiten." },
+      { domain: "Vriendschappen", icon: "👫", text: "De vriend zijn die je wilt hebben — betrouwbaar, eerlijk, aanwezig — trekt die mensen aan. Mensen gravieren naar consistentie en integriteit; gedrag is een krachtigere signaal dan woorden." }
+    ],
+  },
+  {
+    id: "personal-accountability",
+    title: "Radicale Eigen Verantwoordelijkheid",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Radicale eigen verantwoordelijkheid is het principe dat je voor alles in je leven — inclusief externe omstandigheden die je niet hebt gekozen — verantwoordelijkheid neemt voor jouw respons. Het is niet het ontkennen van onrecht of pech, maar het weigeren om te wachten op externe verandering als voorwaarde voor actie.",
+    abstractExample: "Extreme Ownership (Jocko Willink): als iets misgaat in je team, is de leider verantwoordelijk — altijd. Dit klinkt oneerlijk, maar het is emanciperend: als jij verantwoordelijk bent, kun jij het ook veranderen. Slachtofferschap geeft de oorzaak macht; eigenaarschap geeft jou macht.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Als een project mislukt door een slechte briefing van de klant, is de reactie: 'Hoe had ik betere vragen kunnen stellen? Hoe had ik verwachtingen kunnen managen?' — niet 'de klant had duidelijker moeten zijn'." },
+      { domain: "Relaties", icon: "❤️", text: "In een conflict niet wachten tot de ander verandert. Vragen: wat is mijn aandeel? Wat kan ik anders doen? Dit is niet zelfkritiek maar het herwinnen van agency in een situatie die anders uitzichtloos voelt." },
+      { domain: "Gezondheid", icon: "🏃", text: "Genetische aanleg voor gewichtstoename of laag energieniveau niet als excuus maar als context: ik heb meer weerstand te overwinnen dan iemand anders. Wat is mijn strategie daarvoor?" }
+    ],
+  },
+  {
+    id: "circle-of-influence",
+    title: "Cirkel van Invloed vs. Cirkel van Zorgen",
+    difficulty: 1,
+    emoji: "⭕",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Stephen Covey onderscheidt de cirkel van zorgen (alles wat je bezighoudt) van de cirkel van invloed (wat je daadwerkelijk kunt beïnvloeden). Proactieve mensen richten hun energie op de cirkel van invloed en zien die groeien; reactieve mensen richten zich op zorgen buiten hun controle en putten zichzelf uit.",
+    abstractExample: "Zorgen over het weer, de politiek, andermans mening of economische conjunctuur is energie besteed buiten de cirkel van invloed. Werken aan eigen vaardigheden, relaties en reacties is energie in de cirkel van invloed. De eerste slinkt je energie; de tweede groeit hem.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een reorganisatie wordt aangekondigd. Buiten invloed: de beslissing zelf. Binnen invloed: hoe je je voorbereidt, welke relaties je versterkt, hoe je communiceert, welke waarde je toevoegt. Focus op de tweede cirkel geeft handvat." },
+      { domain: "Maatschappij", icon: "🌍", text: "Zorgen over klimaatverandering put uit als je alleen nieuwsconsumptie doet. Dezelfde energie steken in wat je zelf kunt doen (consumptie, stem, lokale actie) is meer bevredigend en effectief." },
+      { domain: "Relaties", icon: "❤️", text: "Je kunt anderen niet dwingen te veranderen — dat is buiten je cirkel. Je kunt wel je eigen gedrag, communicatie en grenzen managen. Focus op de cirkel van invloed geeft richting in moeilijke relaties." }
+    ],
+  },
+  {
+    id: "feedback-seeking",
+    title: "Actief Feedback Zoeken",
+    difficulty: 2,
+    emoji: "📡",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Actief feedback zoeken — proactief om eerlijke input vragen in plaats van wachten tot die gegeven wordt — is een onderscheidende eigenschap van mensen die snel groeien. Het vereist ego-flexibiliteit (het kunnen horen van kritiek zonder afweer) en het creëren van psychologische veiligheid voor eerlijke feedback.",
+    abstractExample: "De meeste mensen krijgen te weinig eerlijke feedback omdat omgeving bang is voor conflict. Door expliciet te vragen 'wat doe ik fout?' of 'wat zou jij anders doen?' verlaag je de drempel voor anderen om eerlijk te zijn. Feedback is gratis informatie die groei versnelt.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Na een presentatie vragen: 'Wat was het minst effectieve deel van mijn presentatie?' in plaats van 'Hoe vond je het?' — specifieke, op verbetering gerichte vragen leveren bruikbaardere antwoorden dan vage complimentenuitnodigingen." },
+      { domain: "Persoonlijke groei", icon: "🌱", text: "Een vertrouwde vriend vragen: 'Noem drie dingen die ik doe die je irriteren of die je denkt dat mij tegenhouden.' Moeilijk om te horen, maar de informatie is goud waard voor wie wil groeien." },
+      { domain: "Leiderschap", icon: "🎯", text: "Leiders die regelmatig vragen 'Wat zou je anders doen als jij in mijn positie zat?' creëren culturen van openheid en leren — en krijgen betere informatie dan leiders die wachten op vrijwillige feedback." }
+    ],
+  },
+  {
+    id: "influence-without-authority",
+    title: "Invloed Zonder Formele Autoriteit",
+    difficulty: 2,
+    emoji: "🧲",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Invloed zonder formele autoriteit is het vermogen om mensen in beweging te brengen zonder dat je hiërarchische macht hebt — door expertise, vertrouwen, netwerk, communicatieve kracht en het raken van iemands behoeften en waarden. In platte organisaties en netwerksamenlevingen is dit vaker relevant dan formele macht.",
+    abstractExample: "Positiemacht zegt 'doe het omdat ik het zeg'. Invloed zonder autoriteit zegt 'doe het omdat jij er voordeel bij hebt en ik heb aangetoond betrouwbaar te zijn'. De tweede soort is duurzamer en werkt over hiërarchische grenzen heen.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Als junior medewerker een senior collega overtuigen van een idee: niet via hiërarchie maar door expertise aan te tonen, het idee te framen in hun belangen en de relatie te hebben opgebouwd. Invloed is verdiend, niet gegeven." },
+      { domain: "Community", icon: "🌐", text: "In een vrijwilligersorganisatie zonder formele rol toch richting geven door ideeën te genereren, anderen samen te brengen en consistent te leveren — invloed bouwt op reputatie en relaties, niet op titels." },
+      { domain: "Familie", icon: "👨‍👩‍👦", text: "Ouder een andere gewoonten laten aannemen werkt niet via directe instructie. Werkt via: zelf het voorbeeld geven, informatie subtiel inbrengen, hun waarden aanspreken, kleine stappen suggereren." }
+    ],
+  },
+  {
+    id: "personal-brand-clarity",
+    title: "Persoonlijk Merk: Reputatie Bewust Vormgeven",
+    difficulty: 2,
+    emoji: "🏷️",
+    academicCategory: "Marketingpsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Persoonlijk merk is de associaties die anderen met jou verbinden — wat ze zeggen als je niet in de kamer bent. Dit is niet inauthenticiteit of zelfpromotie maar bewustzijn: je reputatie wordt toch gevormd, de vraag is of je er bewust aan werkt of het aan het toeval overlaat.",
+    abstractExample: "Als je consistent op tijd bent, delivert en meeleeft met collega's, is dat je merk — ook al heb je er nooit over nagedacht. Bewust nadenken over: welke drie woorden wil ik dat mensen associëren met mij? En: gedraag ik me consistent daarmee?",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Bewust kiezen waar je om bekendstaat: expert in X, de persoon die moeilijke gesprekken kan voeren, of de verbinder die mensen samenbrengt. Dit stuurt hoe je energie investeert en welke kansen je opzoekt." },
+      { domain: "Online aanwezigheid", icon: "🌐", text: "Wat verschijnt er als iemand jouw naam googelt? Wat post je? Welke content deel je? Dit is deel van je merk — bewust cureren is niet nep maar verantwoordelijkheid voor je reputatie nemen." },
+      { domain: "Netwerken", icon: "🤝", text: "Na een introductie: wat onthouden mensen van je? Als je niet kunt antwoorden, is het merk niet duidelijk. Een heldere, authentieke 'elevator pitch' van wie je bent en wat je doet helpt anderen je te plaatsen en onthouden." }
+    ],
+  },
+  {
+    id: "difficult-conversations",
+    title: "Moeilijke Gesprekken Voeren",
+    difficulty: 2,
+    emoji: "💬",
+    academicCategory: "Communicatiewetenschap",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Moeilijke gesprekken — over conflicten, teleurstellingen, grenzen, ontslag, breuk — worden door de meeste mensen vermeden, wat problemen laat escaleren. Het raamwerk van Stone, Patton en Heen (Difficult Conversations) onderscheidt drie lagen in elk moeilijk gesprek: wat er is gebeurd, de emotionele laag en de identiteitslaag.",
+    abstractExample: "Elk moeilijk gesprek heeft drie niveaus tegelijkertijd: de feiten (wat is er objectief gebeurd?), de gevoelens (hoe raak ik emotioneel betrokken?) en de identiteit (wat zegt dit over wie ik ben?). Effectieve gesprekken erkennen alle drie.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Feedback geven aan een collega die slecht presteert: feiten benoemen zonder oordeel, eigen gevoel benoemen ('ik maak me zorgen'), en ruimte laten voor hun perspectief. Monoloog vermijden — een gesprek is bidirectioneel." },
+      { domain: "Relaties", icon: "❤️", text: "De meeste relatieproblemen blijven bestaan omdat het échte gesprek nooit gevoerd wordt — men praat om de kern heen. Directheid gecombineerd met nieuwsgierigheid ('help me begrijpen waarom...') opent de juiste gesprekken." },
+      { domain: "Grenzen stellen", icon: "🦁", text: "Nee zeggen op een verzoek dat je energy kost: snel, duidelijk en vriendelijk. Uitstellen maakt het moeilijker en bouwt wrok op. Moeilijke gesprekken snel voeren is een kwaliteitsvaardigheid die te leren is." }
+    ],
+  },
+  {
+    id: "self-discipline-willpower",
+    title: "Zelfdiscipline en Wilskracht Trainen",
+    difficulty: 2,
+    emoji: "💪",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Zelfdiscipline is het vermogen om op korte termijn ongemak te verdragen ten gunste van langetermijndoelen. Neurowetenschappelijk gezien is wilskracht geen vaste eigenschap maar een trainingbare vaardigheid die groeit door regelmatige oefening van kleine zelfoplegging en verzwakt bij uitputting, slaaptekort en hoge stress.",
+    abstractExample: "Wilskracht is als een spier: het groeit door gebruik, raakt vermoeid bij overbelasting en herstelt met rust. De slimste zelfdiscipline-strategie is niet maximale wilskracht inzetten, maar omgevingen ontwerpen die wilskracht minder nodig maken.",
+    examples: [
+      { domain: "Gewoonten", icon: "🔄", text: "Dagelijks een kleine, onaangename taak uitvoeren (de weerstand voelen en het toch doen) — koud douchen, vroeg opstaan, 5 minuten meditatie — traint de neurobiologische circuïten van zelfregulatie." },
+      { domain: "Omgevingsdesign", icon: "🏠", text: "In plaats van wilskracht inzetten om ongezond eten te weerstaan: geen ongezond eten in huis hebben. In plaats van wilskracht voor sport: sportkleding 's avonds klaarleggen. Omgeving doet het werk, niet wilskracht." },
+      { domain: "Studie", icon: "📚", text: "Zelfdiscipline voor studeren wordt eenvoudiger door: vaste studietijd (automatisme), afleiding verwijderen (omgevingsdesign) en kleine startdrempel (ik ga 5 minuten studeren, niet 3 uur). Momentum overneemt na start." }
+    ],
+  },
+  {
+    id: "personal-mission-statement",
+    title: "Persoonlijke Missie en Kernwaarden",
+    difficulty: 2,
+    emoji: "🧭",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Een persoonlijke missieverklaring is een korte, heldere articulatie van wie je wil zijn, wat je wil bereiken en welke waarden je daarin sturen. Het fungeert als intern kompas bij moeilijke beslissingen en helpt prioriteiten stellen wanneer alles urgent lijkt. Waarden die je niet bewust hebt gearticuleerd zijn minder krachtig als leidraad.",
+    abstractExample: "Zonder helder gearticuleerde waarden worden beslissingen gestuurd door de urgentie van het moment, sociale druk of gewoonten. Met een missieverklaring kun je toetsen: past dit bij wie ik wil zijn? Dit verhoogt de consistentie tussen waarden en gedrag.",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Als je waarden eerlijkheid, groei en impact zijn, kun je een carrièrebeslissing toetsen: vraagt deze baan eerlijkheid, biedt het groeiruimte, maak ik impact? Dit maakt keuzes minder willekeurig." },
+      { domain: "Dagelijkse keuzes", icon: "⚡", text: "Bij tijdsdruk en conflicterende verzoeken teruggrijpen op kernwaarden: is dit in lijn met wat ik werkelijk belangrijk vind? Dit vermindert spijt en verhoogt gevoel van authenticiteit." },
+      { domain: "Relaties", icon: "❤️", text: "Mensen die helder zijn over hun waarden trekken mensen aan die die waarden delen — waarden zijn een filter voor relaties die energie geven vs. kosten. Helderheid maakt authentieke verbinding makkelijker." }
+    ],
+  },
+  {
+    id: "proactive-vs-reactive",
+    title: "Proactief vs. Reactief Leven",
+    difficulty: 1,
+    emoji: "🚀",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Proactiviteit is het bewuste initiatief nemen om situaties te creëren en te sturen in plaats van te reageren op wat er op je afkomt. Covey stelt dat de fundamentele menselijke vrijheid de ruimte is tussen stimulus en respons — proactieve mensen vullen die ruimte met bewuste keuze; reactieve mensen worden gestuurd door omstandigheid.",
+    abstractExample: "Reactief leven: de dag begint met emails en taken van anderen en eindigt met het gevoel nooit vooruit te komen. Proactief leven: de dag begint met wat jij belangrijk vindt en de rest past daarin. Het verschil zit in wie de agenda bepaalt.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Elke ochtend de drie belangrijkste taken bepalen vóór email openen — emails zijn andermans agenda, de drie taken zijn de jouwe. Dit kleine ritueel verschuift van reactief naar proactief werken." },
+      { domain: "Carrière", icon: "🌟", text: "Proactief vaardigheden ontwikkelen vóórdat ze verplicht zijn, contacten leggen vóórdat je ze nodig hebt, kansen zoeken vóórdat het noodzaak is — proactief zijn bouwt opties op; reactief zijn vernauwt ze." },
+      { domain: "Relaties", icon: "❤️", text: "Niet wachten tot een relatie onder druk staat om er energie in te steken. Proactief investeren in relaties — check-ins, verrassingen, kwalitatieve tijd — houdt ze sterk voordat reparatie nodig is." }
+    ],
+  },
 ];
