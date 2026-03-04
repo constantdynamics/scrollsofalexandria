@@ -5153,5 +5153,189 @@ export const principlesNew = [
     ],
     creativePrompt: "Denk aan een technologie die je dagelijks gebruikt. Wie heeft die gemaakt en voor wie? Welke biases of waarden zijn erin ingebakken? Wie wordt erdoor benadeel die je misschien over het hoofd ziet?",
     aiHelperPrompts: ["Hoe word ik een meer ethisch bewuste tech-gebruiker?", "Welke principes zijn richtinggevend voor technologie-ethiek?", "Hoe kunnen gewone gebruikers technologie-ethiek beïnvloeden?"]
+  },
+  {
+    id: "scientific-method",
+    title: "Wetenschappelijke Methode",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["wetenschap", "methode", "falsificatie", "kennis"],
+    definition: "De wetenschappelijke methode is het systematische proces van kennisverwerving via observatie, hypothesevorming, experimenteren, falsificatie en peer review. Het onderscheidt wetenschappelijke kennis van mening, dogma en pseudowetenschap door haar zelfcorrigerende mechanismes.",
+    abstractExample: "Wetenschap is de enige kennissysteem die zichzelf actief probeert te ontkrachten. Een goede wetenschapper zoekt niet naar bevestiging maar naar falsificatie: 'Hoe kan ik bewijzen dat ik het mis heb?' Deze anticonfirmatie-instelling is de kern van wetenschappelijke integriteit.",
+    examples: [
+      { domain: "Geneeskunde", icon: "🏥", text: "Dubbelblinde gerandomiseerde gecontroleerde trials (RCT's) zijn de goudstandaard in medisch onderzoek: ze controleren voor placebo, bias en toeval — exact wat anekdotisch bewijs mist." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Jezelf afvragen: 'Welk bewijs zou mij doen twijfelen aan deze overtuiging?' als je iets leest of hoort. Als je het antwoord niet kunt geven, geloofje het dogmatisch in plaats van empirisch." },
+      { domain: "Werk", icon: "💼", text: "A/B testen van marketingstrategieën, productfuncties of processen is toegepaste wetenschappelijke methode: hypothese (X werkt beter), test, meet, concludeer, herhaal." }
+    ],
+    prerequisites: [],
+    unlocks: ["epistemic-humility"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt de wetenschappelijke methode uniek vergeleken met andere kennissystemen?", options: ["Ze is altijd juist", "Ze is actief zelfcorrigerend — ontworpen om fouten te detecteren en te elimineren via falsificatie en peer review", "Ze is de enige manier om kennis te verwerven", "Ze is onpartijdig en objectief"], correctIndex: 1, explanation: "Het unieke van wetenschap is niet dat ze nooit fout is, maar dat ze een systematisch mechanisme heeft om fouten te ontdekken en te corrigeren. Dit maakt wetenschappelijke kennis cumulatief en betrouwbaarder dan andere systemen over tijd." }
+    ],
+    creativePrompt: "Kies een overtuiging die je sterk aanhangt. Formuleer een duidelijk falsifieerbare hypothese ervan. Welk experiment of welke observatie zou bewijzen dat je het mis hebt? Is die test ooit gedaan?",
+    aiHelperPrompts: ["Hoe gebruik ik wetenschappelijk denken in dagelijkse beslissingen?", "Hoe herken ik pseudowetenschap?", "Wat is het verschil tussen correlatie en causaliteit?"]
+  },
+  {
+    id: "evolution-thinking",
+    title: "Evolutionair Denken",
+    difficulty: 2,
+    emoji: "🦎",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["evolutie", "aanpassing", "biologie", "gedrag"],
+    definition: "Evolutionair denken is het toepassen van evolutionaire principes (variatie, selectie, adaptatie, erfelijkheid) als verklarend kader voor biologisch en gedragsmatig verschijnselen. Het biedt inzicht in waarom mensen voelen, denken en handelen zoals ze doen — en welke aanpassingen in de moderne wereld niet meer passen.",
+    abstractExample: "Mensen zijn gemaakt door evolutie voor een wereld die er 10.000 jaar geleden uitzag. Veel van onze driften, angsten en verlangens zijn adaptief voor die wereld maar maladaptief voor de onze. Begrip hiervan is begrip van de kloof tussen evolutie en moderniteit.",
+    examples: [
+      { domain: "Gedrag", icon: "🧠", text: "Zucht naar suiker en vet is evolutionair adaptief (kalorieënarme omgeving) maar maladaptief in een omgeving met onbeperkte calorieën. Begrip hiervan helpt bij gericht omgaan met eetgedrag." },
+      { domain: "Sociale psychologie", icon: "👥", text: "In-group/out-group denken (wij vs. zij) is een evolutionaire aanpassing voor stammenleven maar leidt in moderne samenlevingen tot tribalism en discriminatie." },
+      { domain: "Angst", icon: "😨", text: "Angst voor spinnen is evolutionair begrijpelijk (giftige bedreigingen). Angst voor publiek spreken is evolutionair minder begrijpelijk — tenzij sociaal uitgestoten worden door de groep letterlijk dodelijk was." }
+    ],
+    prerequisites: ["scientific-method"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe helpt evolutionair denken bij het begrijpen van menselijke irrationele gedragingen?", options: ["Het maakt gedrag excuseerbaar", "Het toont dat 'irrationeel' gedrag vaak rationeel was voor een vroegere omgeving — inzicht dat corrigerende strategieën begeleidt", "Evolutie verklaart alleen lichaam, niet gedrag", "Alle menselijk gedrag is rationeel als je het goed begrijpt"], correctIndex: 1, explanation: "Gedrag dat irrationeel lijkt in moderne context is vaak begrijpelijk als evolutionaire aanpassing. Dit inzicht verlegt de vraag van 'waarom ben je zo dom?' naar 'hoe overtreed ik de evolutionaire druk die dit gedrag stuurt?' — een constructiever startpunt." }
+    ],
+    creativePrompt: "Kies een gewoonte of drang die je moeilijk te beheersen vindt. Welke evolutionaire functie had dit gedrag in een vroegere omgeving? Hoe verschilt die omgeving van nu? Wat helpt bij het omgaan met die mismatch?",
+    aiHelperPrompts: ["Welke moderne problemen worden verklaard door evolutionaire mismatch?", "Hoe gebruik ik evolutionair denken bij gedragsverandering?", "Wat is evolutionaire psychologie en hoe betrouwbaar is het?"]
+  },
+  {
+    id: "complexity-theory",
+    title: "Complexiteitstheorie",
+    difficulty: 3,
+    emoji: "🌀",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Systeemdenken",
+    tags: ["complexiteit", "systemen", "voorspelling", "emergentie"],
+    definition: "Complexiteitstheorie bestudeert systemen met veel onderling afhankelijke delen die niet-lineair, onvoorspelbaar gedrag vertonen — waarbij het geheel fundamenteel anders is dan de som der delen. Complexe systemen zijn niet gecompliceerd (oplosbaar met genoeg expertise) maar onherleidbaar complex.",
+    abstractExample: "Het weer is complex: duizenden variabelen interacteren niet-lineair. Je kunt niet het weer volgende maand voorspellen door het van vandaag te kennen. Een machine is gecompliceerd: veel onderdelen, maar elk voorspelbaar. Het verschil is cruciaal voor hoe je met systemen omgaat.",
+    examples: [
+      { domain: "Economie", icon: "💰", text: "Markten zijn complex systemen — niemand kan ze consequent voorspellen, omdat elk actie feedback loops creëert die het systeem veranderen. Dit is waarom economen zo vaak fout zitten bij voorspellingen." },
+      { domain: "Organisaties", icon: "🏢", text: "Een grote organisatie is een complex systeem: gedetailleerde managementplannen falen vaak omdat ze aannames maken over lineaire causaliteit in een niet-lineair systeem." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "Het menselijk lichaam is een complex systeem — medicijnen die één variabele 'repareren' hebben onvoorziene effecten op andere variabelen. Complexiteit verklaart de moeilijkheid van gepersonaliseerde geneeskunde." }
+    ],
+    prerequisites: ["scientific-method"],
+    unlocks: ["emergence"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt een complex systeem van een gecompliceerd systeem?", options: ["Complexe systemen zijn moeilijker te begrijpen", "Gecompliceerde systemen zijn beheersbaar via expertise; complexe systemen vertonen niet-lineair, emergent gedrag dat niet volledig te beheersen of voorspellen is", "Complexe systemen hebben meer onderdelen", "Ze zijn hetzelfde, enkel een terminologieverschil"], correctIndex: 1, explanation: "Een vliegtuig is gecompliceerd: veel onderdelen maar elk voorspelbaar gedrag. Een ecosysteem is complex: onderdelen interacteren op manieren die onvoorziene eigenschappen produceren (emergentie) en niet-lineaire feedback loops creëren. Berbenadering vereist een fundamenteel andere aanpak." }
+    ],
+    creativePrompt: "Identificeer een complex systeem in je leven (een relatie, een organisatie, je gezondheid). Welke aanpak past echt bij de complexiteit (iteratief, adaptief, experimenteel) versus een gecompliceerde aanpak (expertoplossing, masterplan)?",
+    aiHelperPrompts: ["Hoe ga ik om met complexiteit die ik niet kan beheersen?", "Welke strategieën werken in complexe omgevingen?", "Wat zijn voorbeelden van complexe systemen in het dagelijks leven?"]
+  },
+  {
+    id: "nature-exposure",
+    title: "Blootstelling aan Natuur",
+    difficulty: 1,
+    emoji: "🌿",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Gezondheid",
+    tags: ["natuur", "welzijn", "stress", "herstel"],
+    definition: "Blootstelling aan natuur heeft bewezen positieve effecten op mentale gezondheid, stressherstel, cognitieve vermoeidheid en aandacht. 'Shinrin-yoku' (bosbaden in Japan) en Attention Restoration Theory tonen dat natuur een uniek hersteleffect heeft dat stedelijke omgevingen niet bieden.",
+    abstractExample: "Het brein heeft twee aandachtssystemen: direct (actief, uitputtend) en involuntair (passief, herstelend). Natuur activeert het involuntaire systeem via zachte fascinatie — ruisend water, bewegende bladeren, vogels. Dit herstelt de capaciteit voor gerichte aandacht.",
+    examples: [
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "20-30 minuten in een park of bos significant verlaagt cortisol (stresshormoon), bloeddruk en hartslag — meetbaar en reproduceerbaar in tientallen studies." },
+      { domain: "Werk", icon: "💼", text: "Werknemers met uitzicht op natuur rapporteren minder ziekteverzuim, minder stress en meer tevredenheid dan werknemers zonder — zelfs planten in kantoren hebben meetbaar effect." },
+      { domain: "Studie", icon: "📚", text: "Studeren in of na een wandeling in de natuur verbetert cognitieve prestatie op geheugentests. Zelfs afbeeldingen van natuur hebben aantoonbaar effect op cognitieve herstel." }
+    ],
+    prerequisites: [],
+    unlocks: ["mindfulness-practice"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de Attention Restoration Theory?", options: ["Natuur traint aandacht via stimulering", "Natuur herstelt uitgeputte gerichte aandacht door involuntaire zachte fascinatie te activeren", "Aandacht is een onuitputtelijke hulpbron", "Natuur is alleen ontspannend, niet herstellend"], correctIndex: 1, explanation: "ART (Kaplan & Kaplan) stelt dat gerichte aandacht uitput en herstel nodig heeft. Natuur biedt dit herstel via 'soft fascination' — het trekt aandacht zonder cognitieve inspanning te vereisen, waardoor uitgeputte aandachtssystemen zich kunnen herstellen." }
+    ],
+    creativePrompt: "Plan twee keer deze week een 20-minuten-buitensessie in een groene omgeving. Registreer hoe je je voelt voor en na. Noteer ook de kwaliteit van je concentratie nadien.",
+    aiHelperPrompts: ["Hoe integreer ik natuurblootstelling in een stedelijk leven?", "Werkt virtuele natuur ook herstelend?", "Hoeveel natuurblootstelling is optimaal per week?"]
+  },
+  {
+    id: "systems-thinking-basics",
+    title: "Systeemdenken Basis",
+    difficulty: 2,
+    emoji: "⚙️",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Systeemdenken",
+    tags: ["systemen", "feedback", "oorzaak", "holisme"],
+    definition: "Systeemdenken is een analytisch kader dat gericht is op het begrijpen van hoe elementen van een systeem elkaar beïnvloeden, via feedback loops, vertraging en emergente eigenschappen. Het contrasteert met lineair denken (A veroorzaakt B) en erkent circulaire causaliteit (A beïnvloedt B, B beïnvloedt A).",
+    abstractExample: "Lineair denken: 'We hebben te weinig politieagenten, daarom stijgt de criminaliteit. Meer politie = minder criminaliteit.' Systeemdenken vraagt: Welke feedback loops bestaan er? Wat zijn de vertragingen? Welke onbedoelde gevolgen heeft meer politie? Wat zijn de achterliggende oorzaken van criminaliteit?",
+    examples: [
+      { domain: "Organisaties", icon: "🏢", text: "Een bedrijf verhoogt productiviteitsdruk (meer output eisen). Op korte termijn stijgt output. Maar op lange termijn stijgt burn-out, daalt de kwaliteit en vertrekken goede medewerkers — een negatieve feedback loop die het systeem schade doet." },
+      { domain: "Economie", icon: "💰", text: "Systeemdenken in economie: verhoog de minimumloon (A), meer koopkracht consumenten (B), meer vraag naar producten (C), meer productie nodig (D), meer arbeiders in dienst (E) — een positieve feedback loop die het model compliceert." },
+      { domain: "Persoonlijk", icon: "💙", text: "Slaaptekort → vermoeidheid → slechte beslissingen → stress → slaaptekort. Dit is een reinforcing feedback loop (vicieuze cirkel). Systeemdenken identificeert de hefboom: niet 'meer discipline' maar de ene interruptie die de loop doorbreekt." }
+    ],
+    prerequisites: ["complexity-theory"],
+    unlocks: ["leverage-points"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen een versterkende en een balancerende feedback loop?", options: ["Ze zijn hetzelfde", "Versterkende loops versterken verandering (spiralen op of neer); balancerende loops streven naar een doel of evenwicht", "Balancerende loops zijn altijd positief", "Versterkende loops zijn altijd negatief"], correctIndex: 1, explanation: "Versterkende (reinforcing) loops versterken elke verandering — ze leiden tot exponentiële groei of ineenstorting. Balancerende (balancing) loops corrigeren afwijkingen van een doel. Beide zijn fundamenteel in het begrijpen van hoe systemen zich gedragen." }
+    ],
+    creativePrompt: "Kies een terugkerend probleem in je leven of werk. Teken een eenvoudige systeemkaart: welke variabelen spelen mee? Hoe beïnvloeden ze elkaar? Zijn er feedback loops? Wat zijn de hefboompunten?",
+    aiHelperPrompts: ["Hoe herken ik systeemdynamieken in mijn dagelijks leven?", "Hoe gebruik ik systeemdenken voor probleemoplossing?", "Wat zijn de meest voorkomende systemische valkuilen in organisaties?"]
+  },
+  {
+    id: "probability-thinking",
+    title: "Probabilistisch Denken",
+    difficulty: 2,
+    emoji: "🎲",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["kansen", "onzekerheid", "beslissingen", "statistiek"],
+    definition: "Probabilistisch denken is het redeneren in kansen en waarschijnlijkheden in plaats van zekerheden, en het updaten van overtuigingen op basis van nieuw bewijs (Bayesiaans denken). Het erkent inherente onzekerheid en maakt betere beslissingen mogelijk onder onzekerheid.",
+    abstractExample: "Binair denken: 'Zal het slagen of falen?' Probabilistisch denken: 'Welke kans schat ik op succes, gegeven beschikbare informatie? Hoe verandert die kans als X of Y optreedt?' Dit maakt beslissingen genuanceerder en beter gekalibreerd.",
+    examples: [
+      { domain: "Investeren", icon: "📈", text: "Een goede belegger denkt niet 'Zal dit aandeel stijgen?' maar 'Gegeven alle informatie, is de kans op winst groter dan de prijs van het risico?' Probabilistisch denken over portefeuille-risico." },
+      { domain: "Medisch", icon: "🏥", text: "Een positieve test op een zeldzame ziekte (1% prevalentie) met 99% nauwkeurigheid geeft slechts ~50% kans op de ziekte — door Bayes' wet. Probabilistisch denken voorkomt onnodige angst of overbehandeling." },
+      { domain: "Beslissingen", icon: "🔄", text: "In plaats van te vragen 'Moet ik dit project starten?', vragen: 'Wat is mijn beste schatting van succeskans? Wat zijn de kosten van falen? Wat zijn de baten van succes?' — een probabilistische kosten-batenanalyse." }
+    ],
+    prerequisites: ["scientific-method"],
+    unlocks: ["epistemic-humility"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat betekent goed 'gekalibreerd' zijn bij probabilistisch denken?", options: ["Altijd 50/50 inschatten om neutraal te blijven", "Dat je kansschattingen over een periode van tijd kloppen: dingen waarvan je zegt 70% kans te hebben, gebeuren inderdaad ~70% van de tijd", "Nooit zeker zijn over iets", "Statistiek kennen"], correctIndex: 1, explanation: "Kalibratie is de correlatie tussen je uitgesproken kansen en de werkelijkheid. Goed gekalibreerd zijn betekent dat je zelfvertrouwen overeenkomt met je nauwkeurigheid — niet te zeker (overconfident) of te onzeker (underconfident)." }
+    ],
+    creativePrompt: "Maak een lijst van vijf toekomstige gebeurtenissen en schat de kans in dat elk optreedt. Na een maand: kijk terug. Hoe goed gekalibreerd was je? Systematisch te optimistisch of pesismistisch?",
+    aiHelperPrompts: ["Hoe verbeter ik mijn Bayesiaans redeneren?", "Hoe ga ik om met beslissingen waarbij de kansen onbekend zijn?", "Wat zijn veelgemaakte fouten in probabilistisch denken?"]
+  },
+  {
+    id: "scientific-literacy",
+    title: "Wetenschappelijke Geletterdheid",
+    difficulty: 2,
+    emoji: "📊",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    tags: ["wetenschap", "media", "bewijs", "geletterdheid"],
+    definition: "Wetenschappelijke geletterdheid is het vermogen om wetenschappelijke claims te begrijpen, te evalueren en kritisch te beoordelen — inclusief het herkennen van methodologische kwaliteit, statistische valkuilen en hoe media wetenschappelijk onderzoek vaak vertekenen.",
+    abstractExample: "Een krant schrijft: 'Studie bewijst dat koffie kanker veroorzaakt.' Een wetenschappelijk geletterdie leest: 'Welke studie? Hoe groot? Correlatie of causaliteit? Observationeel of gecontroleerd? Welke confounders? Is het gerepliceerd?' De meeste mensen kunnen dit niet — en worden misleid.",
+    examples: [
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "'Superfoods' worden vaak gepromoot op basis van kleine, niet-gerepliceerde studies. Een wetenschappelijk geletterdie kijkt naar effectgrootte, studie-kwaliteit, replicatie en of er publiek bewijs is — niet naar één studie of anekdote." },
+      { domain: "Media", icon: "📰", text: "Media rapporteren graag: 'Studie toont verband tussen X en Y.' Wetenschappelijke geletterdheid: correlatie ≠ causaliteit, relatief risico ≠ absoluut risico, 'statistisch significant' ≠ 'praktisch relevant'." },
+      { domain: "Beleid", icon: "🏛️", text: "COVID-vaccindebat: mensen met wetenschappelijke geletterdheid konden de kwaliteit van bewijs evalueren, begrijpen wat RCT's zeggen en wat niet, en onderscheid maken tussen politiek en wetenschap." }
+    ],
+    prerequisites: ["scientific-method", "probability-thinking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het meest gemeenschappelijke misverstand in nieuwsberichtgeving over wetenschappelijk onderzoek?", options: ["Resultaten worden te technisch weergegeven", "Correlatie wordt gepresenteerd als causaliteit, en een enkele studie als bewijs", "Studies worden te kritisch benaderd", "Wetenschappers worden niet geciteerd"], correctIndex: 1, explanation: "Media simplificeren systematisch: één studie wordt bewijs, correlatie wordt causaliteit, statistisch significantie wordt praktische relevantie. Wetenschappelijke geletterdheid herkent deze vertekeningen en vereist: gerepliceerd? Gecontroleerde studie? Effectgrootte? Consensus?" }
+    ],
+    creativePrompt: "Zoek een recent nieuwsartikel over een wetenschappelijk onderzoek. Zoek de originele studie op. Kloppen de claims in het artikel? Wat zijn de methodologische beperkingen van de studie die het artikel niet noemt?",
+    aiHelperPrompts: ["Hoe lees ik een wetenschappelijk artikel kritisch?", "Hoe herken ik slechte wetenschap versus goede wetenschap?", "Welke vragen stel ik bij een nieuwe gezondheidsclaim?"]
+  },
+  {
+    id: "naturalistic-fallacy",
+    title: "Naturalistisch Drogargument",
+    difficulty: 2,
+    emoji: "🌱",
+    academicCategory: "Filosofie & Ethiek",
+    skillCategory: "Kritisch Denken",
+    tags: ["logica", "natuur", "ethiek", "drogreden"],
+    definition: "Het naturalistisch drogargument is de fout van afleiden dat iets goed of wenselijk is omdat het 'natuurlijk' is. Maar 'natuurlijk' en 'moreel goed' zijn niet synoniem: gif, ziekte en dood zijn ook natuurlijk. De term 'natuurlijk' heeft in marketing en ethiek vaak geen inhoudelijke betekenis.",
+    abstractExample: "Argument: 'X is natuurlijk, dus X is goed/veilig.' Dit is een drogreden: natuur produceert zowel antibiotica als botulinum-toxine (het dodelijkste gif dat bestaat). Kunstmatig en schadelijk zijn niet synoniem, net zoals natuurlijk en veilig dat niet zijn.",
+    examples: [
+      { domain: "Marketing", icon: "📢", text: "'100% natuurlijk!' op voedselverpakkingen suggereert dat het gezond of beter is. Maar arseen, hemlockvergif en salmonella zijn ook 100% natuurlijk. De claim betekent zonder context niets." },
+      { domain: "Ethiek", icon: "⚖️", text: "'Homo-zijn is niet natuurlijk' als argument dat het immoreel is — dit is een naturalistisch drogargument: ook als het onnatuurlijk was (wat empirisch onjuist is), zou dat niets zeggen over de moraliteit." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "'Kruiden zijn veilig want ze zijn van nature.' Sint-Janskruid (een kruid) interacteert gevaarlijk met antidepressiva. Digitaline (hartmedicijn) is uit foxglove — een 'natuurlijk' gif dat in hoge dosis dodelijk is." }
+    ],
+    prerequisites: [],
+    unlocks: ["moral-realism"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is 'het is natuurlijk' geen geldig argument voor veiligheid of moraliteit?", options: ["Natuur is altijd beter dan kunst", "'Natuurlijk' beschrijft herkomst, niet eigenschap — natuur produceert zowel geneesmiddelen als dodelijke giffen", "Alleen kunstmatige dingen zijn schadelijk", "De natuur is altijd in balans en daardoor veilig"], correctIndex: 1, explanation: "De kern van het naturalistische drogargument: het verward een descriptief feit (X is van nature) met een normatieve conclusie (X is goed). Feiten over wat is zeggen op zichzelf niets over wat moet of wenselijk is." }
+    ],
+    creativePrompt: "Zoek drie recente advertenties of uitspraken die 'natuurlijk' als argument voor veiligheid of kwaliteit gebruiken. Is de claim inhoudelijk onderbouwd of is het een naturalistisch drogargument?",
+    aiHelperPrompts: ["Hoe onderscheid ik het naturalistisch drogargument van terechte claims over natuur?", "Zijn er andere 'descriptief naar normatief'-drogredenen?", "Hoe reageer ik constructief als iemand dit argument gebruikt?"]
   }
 ];
