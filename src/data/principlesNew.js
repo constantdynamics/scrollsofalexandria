@@ -10463,4 +10463,156 @@ export const principlesNew = [
       { domain: "Risicobeoordeling", icon: "⚖️", text: "Verzekeringsmodellen zijn inductief: ze voorspellen toekomstige schade op basis van historische patronen. Maar historische patronen garanderen niets — Nassim Taleb's 'black swans' zijn precies de events die inductief niet te voorspellen zijn." }
     ],
   },
+
+  // ========== BATCH C6: GEDACHTE-EXPERIMENTEN — TIJDFILOSOFIE & TEMPORALITEIT ==========
+  {
+    id: "time-travel-grandfather-paradox",
+    title: "Het Grootvaderparadox",
+    difficulty: 2,
+    emoji: "⌚",
+    academicCategory: "Tijdfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Je reist terug in de tijd en doodt je grootvader voordat je vader is geboren. Dan bestaat jij nooit — maar dan ben je er ook niet om je grootvader te doden — maar dan besta je wel — enzovoort. Dit is de grootvaderparadox: tijdreizen naar het verleden lijken logische tegenspraken te genereren.",
+    abstractExample: "Drie oplossingen: (1) tijdreizen naar het verleden is logisch onmogelijk; (2) je kunt het verleden niet veranderen — als je reist, was je reis al deel van de geschiedenis (consistente tijdlijnen); (3) elke tijdreis splitst een nieuwe tijdlijn (de vele-werelden-oplossing). Elk heeft radicale implicaties voor causaliteit.",
+    examples: [
+      { domain: "Causaliteit", icon: "🔗", text: "Het paradox toont dat tijdreizen naar het verleden de standaard causale orde (oorzaak gaat vooraf aan gevolg) ondermijnt. Sommige fysici geloven dat de natuur zulke paradoxen automatisch voorkomt — de Novikov-consistentieconjectuur." },
+      { domain: "Kwantummechanica", icon: "⚛️", text: "Bepaalde kwantumfenomenen (retrokausaliteit, gesloten tijdachtige krommen in de relativiteitstheorie) laten toe dat informatie door de tijd reist. Fysici debatteren of dit werkelijk tijdreizen impliceert of alleen verwarring over de richting van causaliteit." },
+      { domain: "Vrije wil en noodzaak", icon: "🎲", text: "Als consistent tijdreizen vereist dat alles al vaststaat (je was al in het verleden toen je reisde), impliceert dat dan fataal determinisme? De tijdreis-mogelijkheid en de grootvaderparadox snijden diep in free will-debatten." }
+    ],
+  },
+  {
+    id: "eternalism-presentism",
+    title: "Eeuwigheidstheorie vs. Presentisme: Bestaat het Verleden?",
+    difficulty: 3,
+    emoji: "📅",
+    academicCategory: "Tijdfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Presentisme stelt: alleen het huidige moment bestaat — verleden en toekomst zijn niet reëel. Eternalism (blokheelal) stelt: verleden, heden en toekomst bestaan allemaal even reëel — de tijdas is een vierde dimensie en alle momenten zijn er tegelijk. Einsteins relativiteitstheorie ondersteunt eternalism: verschillende waarnemers hebben verschillende 'nu'-momenten.",
+    abstractExample: "In het blokheelal is de dood van Julius Caesar even reëel als dit moment — het bestaat alleen in 44 v.Chr. op de tijdas. Mensen in 44 v.Chr. ervaren dat als 'nu', mensen in 2026 ervaren dit als 'nu'. Beide zijn even reëel. Maar als de toekomst ook bestaat, is vrije wil dan mogelijk?",
+    examples: [
+      { domain: "Relativiteitstheorie", icon: "⚛️", text: "Twee waarnemers die relatief bewegen, zijn het niet eens over wat 'gelijktijdig' is. Dit maakt presentisme problematisch: welk 'nu' is het echte nu als verschillende waarnemers verschillende nows hebben?" },
+      { domain: "Rouw", icon: "💔", text: "Als eternalism klopt, 'bestaat' een overledene nog steeds — op zijn plek in de tijdas. Dit is troost voor sommige mensen; voor anderen ongemakkelijk. Hoe verandert de tijdfilosofie hoe we over verlies en dood denken?" },
+      { domain: "Vrije wil", icon: "🎲", text: "Als de toekomst al bestaat in het blokheelal — ook al ervaren we hem nog niet — ligt alles dan al vast? Of is 'vastliggen' een categoriefout voor een blokheelal waar tijd gewoon een dimensie is zonder inherente richting?" }
+    ],
+  },
+  {
+    id: "arrow-of-time",
+    title: "De Tijdpijl: Waarom Gaat Tijd Maar Één Kant Op?",
+    difficulty: 2,
+    emoji: "➡️",
+    academicCategory: "Tijdfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "De fundamentele wetten van de natuur zijn tijdsymmetrisch — ze werken even goed vooruit als achteruit. Maar de ervaren tijdpijl is eenduidig: verleden is onherroepelijk, toekomst open. Waarom? De meest gangbare antwoord: de tweede wet van de thermodynamica (entropie stijgt). Maar waarom was de entropie ooit laag genoeg om te kunnen stijgen?",
+    abstractExample: "Als je een film van eieren die stukgaan terugafspeelt, herken je dat als 'verkeerd'. Maar de onderliggende moleculaire wetmatigheden zijn tijdsymmetrisch — er is geen fysische wet die verhindert dat eieren zichzelf herstellen. De tijdpijl is statistisch, niet absoluut.",
+    examples: [
+      { domain: "Herinneringen en identiteit", icon: "🧠", text: "We herinneren het verleden maar niet de toekomst — want herinneringen zijn sporen die oorzaken achterlaten, en causaliteit volgt de entropische tijdpijl. Zouden we in een omgekeerd universum de 'toekomst' herinneren en de 'verleden' niet?" },
+      { domain: "Kosmologie", icon: "🌌", text: "Waarom begon het universum met lage entropie (geordend)? Dit is de 'initiële singulariteit' als een laag-entropie begintoestand — het ultieme mysterie achter de tijdpijl. Sean Carroll: de tijdpijl is een kosmologisch feit, niet een thermodynamisch." },
+      { domain: "Rouw en acceptatie", icon: "💔", text: "De tijdpijl maakt verlies permanent: het verleden kan niet worden teruggedraaid. De filosofische acceptatie van de onveranderlijkheid van het verleden — amor fati (Nietzsche), Stoïcijnse acceptatie — is een reactie op de tijdpijl als existentieel feit." }
+    ],
+  },
+  {
+    id: "time-perception-subjective",
+    title: "Subjectieve Tijd: Waarom Versnelt de Tijd Naarmate je Ouder Wordt?",
+    difficulty: 1,
+    emoji: "⏱️",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Kinderen ervaren een zomer als eindeloos lang; volwassenen als een flits. Hypotheses: (1) elk jaar is een kleinere fractie van de totale geleefde tijd; (2) nieuwe ervaringen vormen meer geheugensporen en voelen langer; (3) routines worden automatisch verwerkt en laten nauwelijks sporen. Bewust nieuwe ervaringen zoeken vertaagt subjectieve tijd.",
+    abstractExample: "Als je een bekende route rijdt, arriveer je zonder het te merken. Eerste keer dezelfde route: elk detail valt op. Subjectieve tijdsduur correleert met de intensiteit van geheugenregistratie — nieuwe, intense ervaringen genereren meer geheugen en voelen langer. Dit is een model voor een rijker leven.",
+    examples: [
+      { domain: "Reizen", icon: "✈️", text: "Een vakantie naar een onbekend land voelt langer dan een vakantie thuis — nieuwe omgeving genereert meer geheugensporen. Na terugkomst lijkt een week weg langer te hebben geduurd dan een week routine thuis." },
+      { domain: "Leren", icon: "📚", text: "De eerste maand in een nieuwe baan voelt als jaren; na twee jaar lijkt alles voorbij te vliegen. Routinisering vermindert geheugenvorming en verkort subjectieve tijd. Bewust nieuwe vaardigheden blijven leren vertraagt subjectieve tijdversnelling." },
+      { domain: "Mindfulness", icon: "🧘", text: "Meditatie vergroot moment-tot-moment bewustzijn en geheugenregistratie — dit verkort de subjectieve tijdversnelling van ouder worden. Het is een cognitieve interventie op de tijdperceptie, met effecten die onderzoek hebben bevestigd." }
+    ],
+  },
+  {
+    id: "specious-present",
+    title: "Het Schijnbare Heden: Hoe Lang Duurt 'Nu'?",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Tijdfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "William James introduceerde het 'specious present': het gevoel dat 'nu' een tijdsduur heeft — niet een puntloze flits maar een venster van enkele seconden. We ervaren muziek als melodie, niet als losse noten, omdat opeenvolgende momenten worden geïntegreerd in één beleving. Maar hoe lang is dit venster, en is er een 'echt' nu?",
+    abstractExample: "Het schijnbare heden duurt gemiddeld 2-3 seconden voor mensen. Dit is de tijdsschaal van bewuste integratie — de duur van een melodisch motief, de lengte van een handdruk, de grens van direct geheugen. Buiten dit venster is alles al verleden of nog toekomst.",
+    examples: [
+      { domain: "Muziek", icon: "🎵", text: "We horen een melodie als samenhangende eenheid, niet als losse noten — dit is het schijnbare heden als integratiemechanisme. Een melodie van 2 seconden past in één bewustzijnsvenster; een symfonie is een reeks van zulke vensters aaneengeregen via geheugen." },
+      { domain: "Communicatie", icon: "💬", text: "Spreektempo en ritme zijn afgestemd op het schijnbare heden: zinnen van gemiddeld 2-3 seconden zijn 'one thought' die als eenheid wordt begrepen. Sprekers die te snel gaan, breken de integratie; te langzaam vervaagt de samenhang." },
+      { domain: "Sport en reactietijd", icon: "🎾", text: "Een tennisballer heeft 0,3 seconden om te reageren op een service. Dit is ruim binnen het schijnbare heden — maar motorische reactie vereist een nog kortere beslissingscyclus. Topsport existeert aan de grenzen van bewuste tijdsintegratie." }
+    ],
+  },
+  {
+    id: "eternal-return",
+    title: "De Eeuwige Terugkeer (Nietzsche)",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Tijdfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Nietzsche's gedachte-experiment: stel dit leven, met elk detail, zou oneindig vaak terugkeren — eeuwig dezelfde keuzes, dezelfde vreugden, hetzelfde lijden. Hoe zou je leven als je dat wist? Dit was voor Nietzsche geen kosmologische theorie maar een ethisch experiment: leef zo dat je je leven zou willen herhalen.",
+    abstractExample: "De eeuwige terugkeer als ethische toetssteen: zou je blij zijn met de eeuwige herhaling van dit moment? Van deze keuze? Als nee, verander dan hoe je leeft. Het is een radicale vorm van amor fati — liefde voor het lot, inclusief al het lijden.",
+    examples: [
+      { domain: "Beslissingen", icon: "🎯", text: "Vraag jezelf bij een keuze: zou ik blij zijn als dit keer op keer voor eeuwig zou terugkeren? Dit is een strengere test dan 'hoe voel ik me hier over?' — het vraagt naar de meest fundamentele authenticiteit van de keuze." },
+      { domain: "Dagelijks leven", icon: "☀️", text: "Nietzsche's criterium maakt het leven van significantie duurzamer: niet 'was het leuk?' maar 'zou ik het willen herhalen?' Dit verschuift prioriteit van hedonistisch genot naar diepere consistentie met wat je werkelijk waardevol vindt." },
+      { domain: "Spijt minimaliseren", icon: "🌟", text: "Wie het leven zo leeft dat eeuwige herhaling aanvaardbaar is, leeft zonder spijt van fundamentele keuzes. Nietzsche's experiment is een extreme versie van Bezos' spijt-minimalisatie: leef zo dat je het zou willen herhalen." }
+    ],
+  },
+  {
+    id: "time-capsule-future-self",
+    title: "Brief aan je Toekomstige Zelf",
+    difficulty: 1,
+    emoji: "📬",
+    academicCategory: "Tijdfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel je schrijft een brief aan je zelf over 10 jaar. Wat zou je willen dat die persoon weet, gelooft, heeft gedaan? En: schrijf een brief van die toekomstige zelf terug aan je huidige zelf. Wat zou die zeggen? Dit gedachte-experiment maakt de discontinuïteit van identiteit over tijd concreet en genereert inzichten over huidige prioriteiten.",
+    abstractExample: "De brief-naar-toekomst activeert langetermijndenken. De brief-van-toekomst activeert retrospectief perspectief op huidig gedrag. Beide doorbreken present bias en laten toe dat een 'externe' stem — de toekomstige jij — huidige keuzes beoordeelt vanuit een wijzer tijdsperspectief.",
+    examples: [
+      { domain: "Carrièreplanning", icon: "💼", text: "Wat wil je over 10 jaar op je CV hebben? Welke vaardigheden, ervaringen, relaties? De brief maakt concreet wat nu abstract is — en genereert een ruggengraat voor huidige prioriteiten die anders diffuus blijven." },
+      { domain: "Relaties", icon: "❤️", text: "De brief van je 70-jarige zelf: 'Heb je genoeg tijd besteed aan de mensen die je liefhebt? Heb je dingen gezegd die je had moeten zeggen?' Dit perspectief verkort de afstand tot eeuwig uitgestelde gesprekken." },
+      { domain: "Persoonlijke waarden", icon: "🧭", text: "Brief van de toekomstige zelf die terugkijkt: 'Ik wou dat ik eerder had gestopt met X.' of 'Ik ben blij dat ik Y heb doorgezet.' Het experiment maakt regret-informatie beschikbaar vóórdat de spijt is ingekomen." }
+    ],
+  },
+  {
+    id: "temporal-discounting",
+    title: "Tijdspreferentie: Waarom Telt de Toekomst Minder?",
+    difficulty: 2,
+    emoji: "📉",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Kritisch Denken",
+    definition: "Mensen waarderen hetzelfde goed lager naarmate het verder in de toekomst ligt — €100 nu is meer waard dan €100 over een jaar. Dit is tijdsdiscontering. Maar is het rationeel de toekomst te disconteren? Filosofisch debat: sommigen (Sidgwick) stellen dat de toekomst gelijke morele waarde heeft; anderen (de meeste economen) accepteren discontering als rationele voorkeur.",
+    abstractExample: "Hyperbolische discontering: mensen prefereren €50 nu boven €100 over een jaar, maar prefereren €100 over twee jaar boven €50 over een jaar. Dit is inconsistent: dezelfde afruil wordt anders beoordeeld afhankelijk van timing. Dit onthult irrationele tijdsvoorkeur.",
+    examples: [
+      { domain: "Klimaatbeleid", icon: "🌍", text: "Economen die toekomstige klimaatschade disconteren concluderen dat minder actie nu gerechtvaardigd is. Economen die geen discontering toepassen (Stern), concluderen tot drastische actie. Het debat over klimaatbeleid is deels een debat over disconteringsvoeten." },
+      { domain: "Pensionering", icon: "💰", text: "Mensen spaart chronisch te weinig voor pensioen — tijdsdiscontering maakt de toekomstige zelf abstract en onbelangrijk. Interventies die de toekomstige zelf concreter maken (getoonde verouderde versie van je gezicht) verhogen spaarbijdragen." },
+      { domain: "Gezondheidsgedrag", icon: "🏃", text: "Roken, ongezond eten, weinig slapen — allemaal gedragingen waarbij directe voordelen (plezier nu) worden verkozen boven toekomstige kosten (gezondheidsschade). Tijdsdiscontering verklaart veel chronisch ongezond gedrag." }
+    ],
+  },
+  {
+    id: "change-over-time-paradox",
+    title: "Het Veranderingsparadox: Hoe Kan Iets Veranderen en Toch Hetzelfde Zijn?",
+    difficulty: 2,
+    emoji: "🦋",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Heraclitus: je kunt niet twee keer in dezelfde rivier stappen — de rivier verandert voortdurend. Toch spreken we van 'de Rijn' als één entiteit door de tijd. Hoe kan iets veranderen en toch hetzelfde ding zijn? Dit is het probleem van persistentie door verandering — de metafysische vraag achter identiteit over tijd.",
+    abstractExample: "Twee theorieën: endurantisme (een ding bestaat volledig op elk moment, maar sommige eigenschappen zijn tijdelijk) versus perdurantisme (een ding heeft temporele delen, zoals het ruimtelijk delen heeft — 'de Rijn van 1800' is een ander deel dan 'de Rijn van 2026'). Elk heeft implicaties voor identiteit en verandering.",
+    examples: [
+      { domain: "Persoonlijke identiteit", icon: "🪞", text: "Ben jij dezelfde persoon als de baby met dezelfde naam? Als alle cellen zijn vervangen, als je overtuigingen, waarden en herinneringen zijn veranderd — wat is dan de thread van identiteit door die verandering?" },
+      { domain: "Organisaties", icon: "🏢", text: "Is het bedrijf van 2000 hetzelfde als het bedrijf van 2026 als alle medewerkers en strategie zijn veranderd? Perdurantisten zeggen: het bedrijf van 2000 is een eerder temporeel deel; endurantisten: het is hetzelfde ding met andere eigenschappen." },
+      { domain: "Morele verantwoordelijkheid", icon: "⚖️", text: "Als iemand decennia geleden een misdaad beging en radicaal van karakter is veranderd — moet de huidige persoon dan nog worden gestraft? Het veranderingsparadox snijdt in aansprakelijkheidsvragen in het recht." }
+    ],
+  },
+  {
+    id: "last-man-thought",
+    title: "Het Laatste Mens Experiment",
+    difficulty: 2,
+    emoji: "🧍",
+    academicCategory: "Ethiek",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel je bent de laatste mens op aarde. Je gaat sterven. Vlak voor je dood kun je alle prachtige kunst, architectuur en natuur vernietigen — of laten. Er zijn geen andere mensen om het ooit te zien of ervan te genieten. Is er reden om het niet te vernietigen? Dit experiment test of waarde afhankelijk is van waardering door waarnemers.",
+    abstractExample: "Als waarde volledig subjectief is (relatiever: waarde bestaat alleen voor ervarende wezens), is er geen reden het te bewaren als er geen ervarende wezens meer zijn. Als waarde objectief is (realisme: mooie dingen hebben waarde onafhankelijk van wie ze ziet), is er reden het te bewaren.",
+    examples: [
+      { domain: "Milieuethiek", icon: "🌿", text: "Heeft de natuur waarde onafhankelijk van mensen? Als ja: milieubescherming is gerechtvaardigd ongeacht menselijk nut. Als nee: alleen instrumentele waarde voor mensen of dieren telt. Het laatste-mens-experiment maakt dit onderscheid scherp." },
+      { domain: "Cultureel erfgoed", icon: "🏛️", text: "Moeten we cultureel erfgoed bewaren ook als niemand het ooit meer bezoekt? De sluiting van een museum voor een niet-bezochte collectie stelt dezelfde vraag: heeft de collectie waarde ongeacht of iemand haar waardeert?" },
+      { domain: "Kosmisch perspectief", icon: "🌌", text: "Als het universum over miljarden jaren leeg en donker is — heeft dat een universum meer waarde gehad dan geen? Heeft het bestaan van schoonheid, complexiteit en bewustzijn waarde gehad ongeacht dat er geen eeuwige waarnemer is?" }
+    ],
+  },
 ];
