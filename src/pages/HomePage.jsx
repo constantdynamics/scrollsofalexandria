@@ -33,7 +33,6 @@ const HomePage = () => {
       const matchesSearch =
         p.title.toLowerCase().includes(q) ||
         p.definition.toLowerCase().includes(q) ||
-        p.tags.some(tag => tag.toLowerCase().includes(q)) ||
         p.academicCategory.toLowerCase().includes(q) ||
         p.skillCategory.toLowerCase().includes(q);
       return matchesDifficulty && matchesSearch;
@@ -378,15 +377,8 @@ const PrincipleCard = ({ principle, principleProgress, onClick, compact, index =
             )}
           </div>
           {!compact && (
-            <p className="text-xs text-text-secondary mb-2 line-clamp-2">{principle.definition.substring(0, 80)}...</p>
+            <p className="text-xs text-text-secondary line-clamp-2">{principle.definition.substring(0, 80)}...</p>
           )}
-          <div className="flex flex-wrap gap-1">
-            {principle.tags.slice(0, 2).map(tag => (
-              <span key={tag} className="text-xs bg-bg-alt text-text-muted px-2 py-0.5 rounded-md">
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </motion.div>

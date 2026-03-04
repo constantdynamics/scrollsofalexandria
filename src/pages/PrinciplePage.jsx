@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useUser } from '../context/UserContext';
 import { getPrincipleById } from '../data/principles';
-import MultipleChoiceExercise from '../components/MultipleChoiceExercise';
-import CreativeExercise from '../components/CreativeExercise';
-import UnlockNotification from '../components/UnlockNotification';
 
 const PrinciplePage = () => {
   const { principleId } = useParams();
@@ -18,8 +15,6 @@ const PrinciplePage = () => {
   } = useUser();
 
   const [learningStyle, setLearningStyle] = useState('');
-  const [showExercises, setShowExercises] = useState(false);
-  const [newlyUnlockedPrinciples, setNewlyUnlockedPrinciples] = useState([]);
   const [hasMarkedAsRead, setHasMarkedAsRead] = useState(false);
 
   const principle = getPrincipleById(principleId);
@@ -30,7 +25,6 @@ const PrinciplePage = () => {
       navigate('/home');
       return;
     }
-
     const recommended = getRecommendedLearningStyle();
     setLearningStyle(recommended);
   }, [principle, navigate, getRecommendedLearningStyle]);
@@ -45,34 +39,24 @@ const PrinciplePage = () => {
           window.removeEventListener('scroll', handleScroll);
         }
       };
-
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }
   }, [hasMarkedAsRead, progress, principleId, markPrincipleAsRead]);
 
-  if (!principle) {
-    return null;
-  }
+  if (!principle) return null;
 
   const handleLearningStyleToggle = (style) => {
     setLearningStyle(style);
     trackLearningStyleChoice(style);
   };
 
-  const handleUnderstand = () => {
-    if (!progress.activities.read) {
-      markPrincipleAsRead(principleId);
-    }
-    setShowExercises(true);
-    setTimeout(() => {
-      document.getElementById('exercises')?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+  const handleMarkRead = () => {
+    markPrincipleAsRead(principleId);
+    setHasMarkedAsRead(true);
   };
 
-  const handleUnlock = (unlockedIds) => {
-    setNewlyUnlockedPrinciples(unlockedIds);
-  };
+  const isRead = progress.activities.read || hasMarkedAsRead;
 
   return (
     <div className="min-h-screen bg-bg">
@@ -149,7 +133,6 @@ const PrinciplePage = () => {
 
           <div className="h-px bg-border my-6"></div>
 
-          {/* Content based on learning style */}
           {learningStyle === 'definition-first' ? (
             <DefinitionFirstContent principle={principle} />
           ) : (
@@ -158,69 +141,32 @@ const PrinciplePage = () => {
 
           <div className="h-px bg-border my-6"></div>
 
-          {/* Tags */}
-          <div className="mb-6">
-            <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">Tags</h3>
-            <div className="flex flex-wrap gap-2">
-              {principle.tags.map(tag => (
-                <span key={tag} className="tag-pill">{tag}</span>
-              ))}
-            </div>
-          </div>
-
-          {/* Understand Button */}
-          {!showExercises && (
+          {/* Mark as read button */}
+          {!isRead ? (
             <motion.button
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
-              onClick={handleUnderstand}
+              onClick={handleMarkRead}
               className="btn-primary w-full text-base py-3.5 flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-              Ik begrijp het - Ga naar oefening
+              Ik begrijp het (+10 pts)
             </motion.button>
-          )}
-        </motion.div>
-
-        {/* Exercises Section */}
-        <AnimatePresence>
-          {showExercises && (
+          ) : (
             <motion.div
-              id="exercises"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-success-light border border-success/20 rounded-xl p-4 flex items-center gap-3"
             >
-              {principle.exercises?.[0] && (
-                <MultipleChoiceExercise
-                  principle={principle}
-                  exercise={principle.exercises[0]}
-                  onComplete={handleUnlock}
-                />
-              )}
-
-              <CreativeExercise
-                principle={principle}
-                onComplete={handleUnlock}
-              />
+              <svg className="w-6 h-6 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <div className="font-semibold text-text text-sm">Gelezen!</div>
+                <div className="text-xs text-text-secondary">Je hebt dit principe bestudeerd</div>
+              </div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </motion.div>
       </div>
-
-      {/* Unlock Notifications */}
-      <AnimatePresence>
-        {newlyUnlockedPrinciples.map((id, index) => (
-          <UnlockNotification
-            key={id}
-            principleId={id}
-            delay={index * 1.5}
-            onClose={() => setNewlyUnlockedPrinciples(prev => prev.filter(pid => pid !== id))}
-          />
-        ))}
-      </AnimatePresence>
     </div>
   );
 };
@@ -257,29 +203,31 @@ const DefinitionFirstContent = ({ principle }) => {
         </div>
       )}
 
-      <div>
-        <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center"><span className="text-base">💡</span></div>
-          Concrete Voorbeelden
-        </h2>
-        <div className="space-y-3">
-          {principle.examples.map((example, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.08 }}
-              className="card p-4"
-            >
-              <h3 className="font-semibold text-text text-sm mb-1.5 flex items-center gap-2">
-                <span>{example.icon}</span>
-                {getDomainName(example.domain)}
-              </h3>
-              <p className="text-sm text-text-secondary leading-relaxed">{example.text}</p>
-            </motion.div>
-          ))}
+      {principle.examples && principle.examples.length > 0 && (
+        <div>
+          <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center"><span className="text-base">💡</span></div>
+            Concrete Voorbeelden
+          </h2>
+          <div className="space-y-3">
+            {principle.examples.map((example, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.08 }}
+                className="card p-4"
+              >
+                <h3 className="font-semibold text-text text-sm mb-1.5 flex items-center gap-2">
+                  <span>{example.icon}</span>
+                  {getDomainName(example.domain)}
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{example.text}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -287,29 +235,31 @@ const DefinitionFirstContent = ({ principle }) => {
 const ExampleFirstContent = ({ principle }) => {
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center"><span className="text-base">💡</span></div>
-          Voorbeelden
-        </h2>
-        <div className="space-y-3">
-          {principle.examples.map((example, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.08 }}
-              className="card p-4"
-            >
-              <h3 className="font-semibold text-text text-sm mb-1.5 flex items-center gap-2">
-                <span>{example.icon}</span>
-                {getDomainName(example.domain)}
-              </h3>
-              <p className="text-sm text-text-secondary leading-relaxed">{example.text}</p>
-            </motion.div>
-          ))}
+      {principle.examples && principle.examples.length > 0 && (
+        <div>
+          <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center"><span className="text-base">💡</span></div>
+            Voorbeelden
+          </h2>
+          <div className="space-y-3">
+            {principle.examples.map((example, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.08 }}
+                className="card p-4"
+              >
+                <h3 className="font-semibold text-text text-sm mb-1.5 flex items-center gap-2">
+                  <span>{example.icon}</span>
+                  {getDomainName(example.domain)}
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{example.text}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="bg-primary-50 border border-primary-100 p-6 rounded-xl">
         <h2 className="text-xl font-bold text-text mb-3 flex items-center gap-2">

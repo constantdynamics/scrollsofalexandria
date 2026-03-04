@@ -1,5 +1,4 @@
 // LocalStorage utility functions for persisting user data
-import { getPrincipleById } from '../data/principles';
 
 const STORAGE_KEY = 'scrolls_of_wisdom_user_data';
 
@@ -15,8 +14,7 @@ const defaultUserData = {
     reminderTime: '08:00',
     theme: 'classic'
   },
-  unlockedPrinciples: getInitialUnlockedPrinciples(),
-  learningStyleHistory: [], // Track user choices to learn preference
+  learningStyleHistory: [],
   completedOnboarding: false,
   streak: {
     currentStreak: 0,
@@ -29,34 +27,12 @@ function generateUserId() {
   return `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 }
 
-// Get initial unlocked principles (first 20 basic ones)
-function getInitialUnlockedPrinciples() {
-  return [
-    'modus-ponens',
-    'set-theory-basics',
-    'correlation-causation',
-    'confirmation-bias',
-    'sunk-cost-fallacy',
-    'opportunity-cost',
-    'straw-man-fallacy',
-    'ad-hominem',
-    'false-dilemma',
-    'anchoring',
-    'affirming-consequent',
-    'deduction-induction',
-    'availability-heuristic',
-    'post-hoc-ergo',
-    'prisoners-dilemma'
-  ];
-}
-
 // Load user data from localStorage
 export const loadUserData = () => {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const data = JSON.parse(stored);
-      // Deep merge with defaults to ensure all fields exist (including nested)
       return {
         ...defaultUserData,
         ...data,
@@ -108,10 +84,7 @@ export const getPrincipleProgress = (principleId) => {
     masteryPercentage: 0,
     completed: false,
     activities: {
-      read: false,
-      multipleChoiceCorrect: false,
-      ownExample: false,
-      aiAssistedExample: false
+      read: false
     },
     lastVisited: null,
     timesReviewed: 0
@@ -133,80 +106,21 @@ export const updatePrincipleProgress = (principleId, updates) => {
   return userData.principleProgress[principleId];
 };
 
-// Calculate mastery percentage based on activities
+// Calculate mastery percentage — reading = 100%
 export const calculateMastery = (activities) => {
-  let mastery = 0;
-
-  if (activities.read) mastery += 20;
-  if (activities.multipleChoiceCorrect) mastery += 20;
-  if (activities.ownExample) mastery += 30;
-  if (activities.aiAssistedExample) mastery += 30;
-
-  return Math.min(mastery, 100);
+  return activities.read ? 100 : 0;
 };
 
 // Mark principle as read
 export const markPrincipleAsRead = (principleId) => {
   const progress = getPrincipleProgress(principleId);
   progress.activities.read = true;
-  progress.masteryPercentage = calculateMastery(progress.activities);
+  progress.masteryPercentage = 100;
 
   const userData = updatePrincipleProgress(principleId, progress);
 
-  // Add points
   const points = 10;
   addPoints(points);
-
-  return { progress: userData, points };
-};
-
-// Mark multiple choice as correct
-export const markMultipleChoiceCorrect = (principleId) => {
-  const progress = getPrincipleProgress(principleId);
-  progress.activities.multipleChoiceCorrect = true;
-  progress.masteryPercentage = calculateMastery(progress.activities);
-
-  const userData = updatePrincipleProgress(principleId, progress);
-
-  // Add points
-  const points = 15;
-  addPoints(points);
-
-  return { progress: userData, points };
-};
-
-// Mark own example as complete
-export const markOwnExample = (principleId) => {
-  const progress = getPrincipleProgress(principleId);
-  progress.activities.ownExample = true;
-  progress.masteryPercentage = calculateMastery(progress.activities);
-
-  const userData = updatePrincipleProgress(principleId, progress);
-
-  // Add points
-  const points = 25;
-  addPoints(points);
-
-  // Check for unlocks
-  checkAndUnlockPrinciples(principleId);
-
-  return { progress: userData, points };
-};
-
-// Mark AI assisted example as complete
-export const markAiAssistedExample = (principleId) => {
-  const progress = getPrincipleProgress(principleId);
-  progress.activities.aiAssistedExample = true;
-  progress.masteryPercentage = calculateMastery(progress.activities);
-
-  const userData = updatePrincipleProgress(principleId, progress);
-
-  // Add points
-  const points = 20;
-  addPoints(points);
-
-  // Check for unlocks
-  checkAndUnlockPrinciples(principleId);
 
   return { progress: userData, points };
 };
@@ -218,7 +132,7 @@ export const updateStreak = () => {
   const lastActive = userData.streak?.lastActiveDate;
 
   if (lastActive === today) {
-    return userData.streak; // Already active today
+    return userData.streak;
   }
 
   const yesterday = new Date();
@@ -227,9 +141,9 @@ export const updateStreak = () => {
 
   let currentStreak = userData.streak?.currentStreak || 0;
   if (lastActive === yesterdayStr) {
-    currentStreak += 1; // Consecutive day
+    currentStreak += 1;
   } else {
-    currentStreak = 1; // Reset streak
+    currentStreak = 1;
   }
 
   const longestStreak = Math.max(currentStreak, userData.streak?.longestStreak || 0);
@@ -246,44 +160,6 @@ export const addPoints = (points) => {
   return userData.points;
 };
 
-// Check if principle is unlocked
-export const isPrincipleUnlocked = (principleId) => {
-  const userData = loadUserData();
-  return userData.unlockedPrinciples.includes(principleId);
-};
-
-// Unlock principle
-export const unlockPrinciple = (principleId) => {
-  const userData = loadUserData();
-  if (!userData.unlockedPrinciples.includes(principleId)) {
-    userData.unlockedPrinciples.push(principleId);
-    saveUserData(userData);
-    return true; // Newly unlocked
-  }
-  return false; // Already unlocked
-};
-
-// Check and unlock related principles based on current principle completion
-export const checkAndUnlockPrinciples = (principleId) => {
-  const principle = getPrincipleById(principleId);
-
-  if (!principle) return [];
-
-  const newlyUnlocked = [];
-
-  // Unlock principles that this one unlocks
-  if (principle.unlocks && principle.unlocks.length > 0) {
-    principle.unlocks.forEach(unlockedId => {
-      const wasNewlyUnlocked = unlockPrinciple(unlockedId);
-      if (wasNewlyUnlocked) {
-        newlyUnlocked.push(unlockedId);
-      }
-    });
-  }
-
-  return newlyUnlocked;
-};
-
 // Track learning style choice
 export const trackLearningStyleChoice = (choice) => {
   const userData = loadUserData();
@@ -292,12 +168,10 @@ export const trackLearningStyleChoice = (choice) => {
     timestamp: new Date().toISOString()
   });
 
-  // Only keep last 10 choices
   if (userData.learningStyleHistory.length > 10) {
     userData.learningStyleHistory = userData.learningStyleHistory.slice(-10);
   }
 
-  // After 3 choices, determine preference
   if (userData.learningStyleHistory.length >= 3 && userData.preferences.defaultLearningStyle === 'auto') {
     const recentChoices = userData.learningStyleHistory.slice(-5);
     const definitionFirst = recentChoices.filter(c => c.choice === 'definition-first').length;
@@ -322,7 +196,6 @@ export const getRecommendedLearningStyle = () => {
     return userData.preferences.defaultLearningStyle;
   }
 
-  // If auto and we have enough history, recommend based on history
   if (userData.learningStyleHistory.length >= 3) {
     const recent = userData.learningStyleHistory.slice(-5);
     const definitionFirst = recent.filter(c => c.choice === 'definition-first').length;
@@ -331,7 +204,6 @@ export const getRecommendedLearningStyle = () => {
     return exampleFirst > definitionFirst ? 'example-first' : 'definition-first';
   }
 
-  // Default to example first (more intuitive for beginners)
   return 'example-first';
 };
 
@@ -356,7 +228,6 @@ export const getUserStats = () => {
     totalPrinciples,
     completedPrinciples,
     averageMastery: Math.round(averageMastery),
-    unlockedCount: userData.unlockedPrinciples.length
   };
 };
 
@@ -369,13 +240,7 @@ export default {
   updatePrincipleProgress,
   calculateMastery,
   markPrincipleAsRead,
-  markMultipleChoiceCorrect,
-  markOwnExample,
-  markAiAssistedExample,
   addPoints,
-  isPrincipleUnlocked,
-  unlockPrinciple,
-  checkAndUnlockPrinciples,
   trackLearningStyleChoice,
   getRecommendedLearningStyle,
   completeOnboarding,
