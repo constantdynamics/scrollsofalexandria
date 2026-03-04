@@ -10311,4 +10311,156 @@ export const principlesNew = [
       { domain: "Procesfilosofie", icon: "🌊", text: "Zeno's paradoxen zijn ook een uitdaging voor hoe we over verandering en worden nadenken. Whitehead's procesfilosofie ziet werkelijkheid als reeks gebeurtenissen (processen) in plaats van vaste objecten — wat sommige Zeno-problemen oplost." }
     ],
   },
+
+  // ========== BATCH C5: GEDACHTE-EXPERIMENTEN — WETENSCHAP & CAUSALITEIT ==========
+  {
+    id: "schrodingers-cat",
+    title: "Schrödingers Kat",
+    difficulty: 2,
+    emoji: "🐱",
+    academicCategory: "Kwantummechanica",
+    skillCategory: "Kritisch Denken",
+    definition: "Erwin Schrödinger plaatste een kat (denkbeeldig) in een gesloten doos met een kwantumsysteem dat met 50% kans een gifmechanisme activeert. Kwantummechanica stelt dat het systeem in superpositie is totdat het wordt gemeten. Is de kat dan ook in superpositie — tegelijk levend en dood — totdat de doos wordt geopend? Schrödinger bedoelde dit als reductio: dit kan niet kloppen.",
+    abstractExample: "Het experiment onthult het meetprobleem in kwantummechanica: wanneer collapseert een superpositie naar een bepaalde toestand? Alleen bij meting? Wat telt als meting? Is bewuste observatie vereist? De kat was Schrödingers aanval op de Kopenhagen-interpretatie — en is een van de bekendste gedachte-experimenten in de wetenschapsgeschiedenis.",
+    examples: [
+      { domain: "Kwantuminterpretaties", icon: "⚛️", text: "Kopenhagen: superpositie bestaat tot meting — de kat is onbepaald. Vele werelden: beide uitkomsten realiseren in parallelle takken — de kat is in één tak levend, in een andere dood. Decoherentie: omgevingsinteracties collapsen de superpositie al snel, niet bewuste observatie." },
+      { domain: "Onzekerheid en beslissingen", icon: "🎯", text: "In het dagelijks leven bestaat 'Schrödingers kat'-logica ook: totdat je de brief opent, is het zowel goed als slecht nieuws. Superposities van emotionele toestand bestaan in menselijke psychologie — onzekerheid is niet slechts een metafoor." },
+      { domain: "Macroschaal vs. microschaal", icon: "🔬", text: "Kwantumeffecten zijn aantoonbaar op atoomniveau maar niet op kattenniveau. Waarom? Decoherentie: grote systemen interageren zo snel met hun omgeving dat superpositie vrijwel onmiddellijk collapseert. De grens tussen kwantum en klassiek is gradueel, niet scherp." }
+    ],
+  },
+  {
+    id: "maxwells-demon",
+    title: "Maxwells Demon",
+    difficulty: 2,
+    emoji: "😈",
+    academicCategory: "Thermodynamica",
+    skillCategory: "Kritisch Denken",
+    definition: "James Clerk Maxwell bedacht een microscopisch wezentje dat een deurtje beheert tussen twee gaskamers. Het laat snelle moleculen (heet) door naar de ene kant en langzame (koud) naar de andere. Zonder energie te verbruiken sorteert het gas — wat de entropie verlaagt en de tweede wet van de thermodynamica schendt. Maar bestaat zo'n demon echt?",
+    abstractExample: "De paradox: de demon lijkt gratis energie te creëren. De oplossing (Landauer, 1961): om te sorteren moet de demon informatie meten en opslaan. Het wissen van die informatie kost energie (Landauer's principe) — precies genoeg om de tweede wet te redden. Informatie heeft fysische kosten.",
+    examples: [
+      { domain: "Informatie en fysica", icon: "💻", text: "Landauer's principe verbindt informatica en thermodynamica: elke berekening die informatie wist, produceert warmte. Dit heeft implicaties voor de theoretische grenzen van computerefficiëntie — computers kunnen nooit compleet efficiënt zijn." },
+      { domain: "Levende systemen", icon: "🌱", text: "Biologische cellen zijn in zekere zin Maxwell-demonen: ze sorteren moleculen (hoge kalium binnen, hoge natrium buiten) en verlagen lokaal entropie. Ze doen dit niet gratis — ze verbranden ATP. Leven is een thermodynamisch proces dat de demon realiseert." },
+      { domain: "Financiën", icon: "💹", text: "Een handelaar die altijd weet wanneer prijzen stijgen of dalen, is een Maxwell-demon van de markt. De efficiënte-markthypothese zegt dit is onmogelijk zonder informatie — en informatieverwerving kost energie (tijd, aandacht, geld)." }
+    ],
+  },
+  {
+    id: "laplace-demon",
+    title: "Laplace's Demon",
+    difficulty: 2,
+    emoji: "🔮",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Pierre-Simon Laplace redeneerde: stel een superintelligentie kent de positie en impuls van elk deeltje in het universum op een moment, plus alle natuurwetten. Dan kan ze de volledige toestand van het universum op elk toekomstig en verleden tijdstip berekenen. Niets zou onzeker zijn voor deze demon. Is het universum volledig deterministisch voorspelbaar?",
+    abstractExample: "Laplace's demon is de ultieme uitdrukking van klassiek deterministisch wereldbeeld. Kwantummechanica ondermijnde het: fundamentele onzekerheid (Heisenberg) en het meten verandert de toestand. Maar kwantumrandomheid is ook niet vrije wil — het is slechts ongedetermineerde toeval, geen gerichte keuzevrijheid.",
+    examples: [
+      { domain: "Voorspelbaarheid", icon: "📊", text: "Chaostheorie: kleine meetfouten groeien exponentieel (vlindereffect). Zelfs een bijna-Laplace-demon kan het weer niet lang voorspellen. Praktische onvoorspelbaarheid is niet hetzelfde als fundamenteel indeterminisme." },
+      { domain: "Vrije wil", icon: "🎲", text: "Als Laplace's demon het universum volledig kan voorspellen, inclusief jouw keuzes morgen, zijn jouw keuzes dan vrij? Kwantumrandomheid geeft soms onbepaaldheid maar geen vrijheid — vrijheid vereist iets anders dan louter onbepaaldheid." },
+      { domain: "Big data en voorspelling", icon: "💻", text: "Moderne algoritmen voorspellen mensengedrag steeds beter — koopgedrag, stemmingen, gezondheid. Dit is een zwakke versie van Laplace's demon. Hoe ver kunnen zulke voorspellingen gaan? En wat zijn de ethische implicaties?" }
+    ],
+  },
+  {
+    id: "einstein-light-beam",
+    title: "Einstein op de Lichtstraal",
+    difficulty: 2,
+    emoji: "💡",
+    academicCategory: "Natuurkunde",
+    skillCategory: "Kritisch Denken",
+    definition: "Als tiener vroeg Einstein zich af: hoe zou het eruitzien als ik naast een lichtstraal kon rijden met dezelfde snelheid? Maxwell's theorie voorspelt elektromagnetische golven die oscilleren. Maar als je met lichtsnelheid meerijdt, zie je dan een bevroren golf? Dat leek onmogelijk — en dit gedachte-experiment leidde tien jaar later tot de speciale relativiteitstheorie.",
+    abstractExample: "Het gedachte-experiment onthult een inconsistentie: klassieke mechanica zegt dat je de lichtsnelheid kunt 'inlopen', maar elektrodynamica verbiedt stilstaande elektromagnetische golven. Einstein's oplossing: de lichtsnelheid is constant voor alle waarnemers — en daarmee moet tijd en ruimte relatief zijn.",
+    examples: [
+      { domain: "Wetenschappelijke revoluties", icon: "🔬", text: "Einsteins gedachte-experiment illustreert hoe grote doorbraken soms beginnen bij 'wat als'-vragen die inconsistenties in bestaande theorie onthullen. Het is geen empirische observatie maar conceptuele analyse die de revolutie aanzette." },
+      { domain: "Tijddilatatie", icon: "⏰", text: "Een gevolg van Einsteins relativiteitstheorie: GPS-satellieten lopen sneller dan klokken op aarde. Zonder correctie voor relativistische tijddilatatie zou GPS dagelijks kilometers fout gaan. Het gedachte-experiment heeft praktische consequenties." },
+      { domain: "Grenzen van intuïtie", icon: "🧠", text: "Relativiteitstheorie en kwantummechanica gaan in tegen menselijke intuïtie — maar zijn experimenteel waterdicht bewezen. Dit toont dat de werkelijkheid niet verplicht is onze intuïties te respecteren. Gedachte-experimenten helpen intuïtie te doorbreken." }
+    ],
+  },
+  {
+    id: "twin-earth",
+    title: "De Tweeling-Aarde (Putnam)",
+    difficulty: 3,
+    emoji: "🌍",
+    academicCategory: "Taailfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel er is een exacte kopie van de Aarde — Tweeling-Aarde — waar alles identiek is, behalve dat wat wij 'water' noemen er niet H₂O is maar XYZ, dat er identiek uitziet en aanvoelt. De bewoners noemen het ook 'water'. Betekent hun woord 'water' hetzelfde als ons woord 'water'? Putnam zei nee — en daarmee bewees hij dat betekenis niet alleen in het hoofd zit.",
+    abstractExample: "Voor Putnam geldt: betekenis hangt af van de werkelijke structuur van de wereld, niet alleen van mentale representaties. De aardse bewoner en zijn tweeling hebben identieke mentale toestanden maar verwijzen naar verschillende stoffen met 'water'. Conclusie: 'betekenis is niet in het hoofd'.",
+    examples: [
+      { domain: "Wetenschappelijke terminologie", icon: "🔬", text: "Vóór ontdekking van de moleculaire structuur van water meenden mensen met 'water' iets dat ze nader konden omschrijven. Na ontdekking van H₂O bleek wat ze altijd bedoeld hadden — en wat uitsluit dat XYZ water is. Termen verwijzen naar de werkelijke aard van dingen." },
+      { domain: "Communicatie en begrip", icon: "💬", text: "Twee mensen gebruiken hetzelfde woord ('vrijheid', 'democratie', 'liefde') maar kunnen volledig verschillende concepten bedoelen. Putnams experiment stelt de vraag: wanneer spreken we echt over hetzelfde en wanneer slechts over vergelijkbare mentale representaties?" },
+      { domain: "Culturele verschillen", icon: "🌐", text: "Woorden in verschillende talen die vertaald worden als equivalent (Japans 'amae', Duits 'Weltschmerz', Portugees 'saudade') verwijzen naar subtiel verschillende ervaringen. Zijn ze echt hetzelfde begrip of Tweeling-Aarde-varianten?" }
+    ],
+  },
+  {
+    id: "galileo-falling-bodies",
+    title: "Galileo's Vallende Lichamen",
+    difficulty: 1,
+    emoji: "⚖️",
+    academicCategory: "Wetenschapsgeschiedenis",
+    skillCategory: "Kritisch Denken",
+    definition: "Aristoteles leerde dat zware objecten sneller vallen dan lichte. Galileo weerlegde dit met een gedachte-experiment: stel je bindt een zwaar en licht object samen. Aristoteles' theorie impliceert dat het zware het lichte vertraagt én dat het gecombineerde object zwaarder is en dus sneller valt. Dat is een tegenspraak — dus de theorie klopt niet.",
+    abstractExample: "Galileo's experiment toont hoe een gedachte-experiment een theorie kan weerleggen zonder empirische test — puur via logische deductie uit de premissen van de theorie zelf. Het is een reductio ad absurdum van Aristoteles' valtheorie.",
+    examples: [
+      { domain: "Wetenschapsmethode", icon: "🔬", text: "Gedachte-experimenten zijn legitieme wetenschappelijke instrumenten: ze testen theorieën op interne consistentie. Galileo's experiment was zo krachtig dat de theorie al vóór empirische test was weergelegd — empirische test op de Toren van Pisa was extra bewijs, geen initieel bewijs." },
+      { domain: "Autoriteitsdenken", icon: "📚", text: "Aristoteles' valtheorie stond duizend jaar onbetwist omdat zijn autoriteit empirische toetsing verving. Galileo's gedachte-experiment doorbreekt autoriteitsgeloof met logica — een patroon in wetenschappelijke revoluties." },
+      { domain: "Dagelijkse intuïtie", icon: "🌟", text: "Onze intuïtie zegt dat zware objecten sneller vallen — wat ook lijkt te kloppen (een veer valt langzamer dan een steen). De fout zit in luchtweerstand, niet in massa. Gedachte-experimenten helpen intuïtie van experimentele condities te scheiden." }
+    ],
+  },
+  {
+    id: "maxwell-equations-thought",
+    title: "De Eenheid van Elektriciteit en Magnetisme",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Wetenschapsgeschiedenis",
+    skillCategory: "Kritisch Denken",
+    definition: "James Clerk Maxwell ontdekte via wiskundige analyse — een theoretisch gedachte-experiment — dat elektriciteit en magnetisme twee aspecten zijn van één fenomeen (elektromagnetisme), en dat licht een elektromagnetische golf is. Hij berekende de lichtsnelheid uit elektrische en magnetische constanten — en trof exact overeen. Dit was een van de grootste theoretische syntheses in de fysica.",
+    abstractExample: "Maxwell had geen experiment nodig om te bewijzen dat licht een elektromagnetische golf is — de wiskunde deed het. Dit is een paradigmatisch voorbeeld van hoe theoretische redenering (mathematisch gedachte-experiment) empirische ontdekkingen kan voorafgaan en aansturen.",
+    examples: [
+      { domain: "Theorie als ontdekking", icon: "📐", text: "Maxwell's werk — en later Einsteins relativiteitstheorie en Diracs voorspelling van het positron — tonen dat wiskunde de werkelijkheid kan ontdekken vóór empirische observatie. Waarom werkt de wiskunde zo goed voor de natuur?" },
+      { domain: "Unificatie", icon: "🔗", text: "Grote doorbraken in de fysica zijn vaak unificaties: elektriciteit + magnetisme (Maxwell), ruimte + tijd (Einstein), elektromagnetisme + zwakke kernkracht (Weinberg-Salam). Gedachte-experimenten die vragen 'zijn dit echt twee dingen of één?' zijn generatief." },
+      { domain: "Technologische gevolgen", icon: "📡", text: "Maxwell's theorie voorspelde radiogolven vóór Hertz ze empirisch ontdekte. Uit een gedachte-experiment (wiskundige analyse) volgde een technologie (radio, tv, wifi) die de wereld transformeerde — zonder directe empirische aanleiding." }
+    ],
+  },
+  {
+    id: "counterfactual-causation",
+    title: "Contrafeitelijke Causaliteit",
+    difficulty: 2,
+    emoji: "🔀",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Wat betekent het dat A de oorzaak is van B? Een populaire analyse: A is de oorzaak van B als: als A niet had plaatsgevonden, had B ook niet plaatsgevonden. Dit is de contrafeitelijke analyse van causaliteit. Maar ze stuit op problemen: overdetermination (twee onafhankelijke oorzaken), preemption (A verhindert B maar C doet hetzelfde als A er niet was).",
+    abstractExample: "Preemption-voorbeeld: soldaat A vuurt op gevangene en doodt hem. Soldaat B had ook gevuurd als A dat niet had gedaan. Is A de oorzaak van de dood? Contrafeitelijk nee (zonder A had B gevuurd). Maar causaal-intuïtief ja. De eenvoudige contrafeitelijke analyse faalt hier — er zijn complexere versies nodig.",
+    examples: [
+      { domain: "Recht", icon: "⚖️", text: "Aansprakelijkheid in het recht vereist causaliteit: 'maar voor jouw handeling was de schade niet opgetreden'. Dit contrafeitelijke criterium faalt bij gedeelde causaliteit: twee chauffeurs rijden door rood, raken een voetganger. Elk is contrafeitelijk niet noodzakelijk." },
+      { domain: "Epidemiologie", icon: "🦠", text: "Roken veroorzaakt longkanker — maar niet elke roker krijgt longkanker en niet elke longkankerpatiënt rookt. Probabilistische causaliteit: roken verhoogt de kans. Hoe vertalen we dit naar individuen? 'Had hij niet gerookt, dan had hij geen kanker gekregen' is onverifieerbaar." },
+      { domain: "Historische causaliteit", icon: "📚", text: "'Was Hitler niet aan de macht gekomen, was er geen Tweede Wereldoorlog geweest.' Contrafeitelijke geschiedschrijving — wat als-vragen — zijn legitieme analytische tools maar onverifieerbaar. Ze onthullen welke factoren historici als causaal cruciaal beschouwen." }
+    ],
+  },
+  {
+    id: "underdetermination-theory",
+    title: "Onderbepaling van Theorie door Feiten (Duhem-Quine)",
+    difficulty: 3,
+    emoji: "🔭",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Pierre Duhem en W.V.O. Quine betoogden: elke theorie kan in stand worden gehouden, wat empirische feiten er ook tegenin komen, door aanpassingen elders in het theoriestelsel te maken (hulphypothesen). Er is altijd meer dan één theorie die consistent is met alle beschikbare feiten — feiten onderbepalen de theorie.",
+    abstractExample: "Als een experiment de theorie weerlegt, kan men zeggen: het experiment klopte niet, de instrumenten faalden, of een achtergrondaanname was fout — ipv de kerntheorie verwerpen. Wetenschappers doen dit constant. Wanneer is dit legitiem aanpassen en wanneer is het dogmatisme?",
+    examples: [
+      { domain: "Wetenschappelijke revoluties", icon: "🔬", text: "Het Ptolemaeïsche model werd eeuwenlang overeind gehouden door steeds complexere epicykels toe te voegen — onderbepaling in actie. Copernicus' model was niet empirisch beter maar eenvoudiger. Wanneer is eenvoud (Occam) een reden om van theorie te wisselen?" },
+      { domain: "Aanpassingsgedrag", icon: "🧠", text: "Mensen handhaven overtuigingen ondanks tegenbewijzen door hulphypothesen: 'het experiment klopte niet', 'dat geval is een uitzondering'. Dit is psychologisch normaal maar epistemisch riskant — wanneer is het rationeel en wanneer dogmatisch?" },
+      { domain: "Klimaatontkenning", icon: "🌡️", text: "Onderbepaling wordt misbruikt om wetenschappelijke consensus te ondermijnen: elke bevinding wordt weerlegd met hulphypothesen (meet-fout, bias, alternatieve verklaring). Hoe onderscheiden we legitiem wetenschappelijk scepticisme van strategisch gebruik van onderbepaling?" }
+    ],
+  },
+  {
+    id: "induction-problem-hume",
+    title: "Hume's Inductieprobleem",
+    difficulty: 2,
+    emoji: "🌅",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "David Hume vroeg: waarom rechtvaardigt het verleden de toekomst? De zon is elke dag opgekomen — waarom zal ze morgen ook opgaan? We gebruiken inductie (van observaties naar universele wet) maar kunnen inductie zelf niet inductief rechtvaardigen zonder circulair te redeneren. Inductie kan niet worden gefundeerd.",
+    abstractExample: "Hume's antwoord: we geloven in inductie door gewoonte en psychologische neiging, niet door rationele rechtvaardiging. Popper's antwoord: wetenschap gaat niet via inductie maar via falsificatie — je hoeft inductie niet te rechtvaardigen als je theorieën uitsluit via tegenbewijzen.",
+    examples: [
+      { domain: "Wetenschappelijk vertrouwen", icon: "🔬", text: "Elke wetenschappelijke wet is gebaseerd op inductie van beperkte observaties naar universele claims. Hume toont dat dit logisch onverdedigbaar is — maar wetenschappelijk werkt het. Dit is de 'praktische wending': inductie werkt, ook al is het niet gefundeerd." },
+      { domain: "Dagelijks vertrouwen", icon: "🌟", text: "Elke dag ga je ervan uit dat de wereld morgen net zo werkt als vandaag. Je verwacht dat de stoel je houdt, dat water nat is, dat mensen relatief voorspelbaar zijn. Dit vertrouwen is inductief — en Hume heeft gelijk dat het niet logisch fundeerbaar is." },
+      { domain: "Risicobeoordeling", icon: "⚖️", text: "Verzekeringsmodellen zijn inductief: ze voorspellen toekomstige schade op basis van historische patronen. Maar historische patronen garanderen niets — Nassim Taleb's 'black swans' zijn precies de events die inductief niet te voorspellen zijn." }
+    ],
+  },
 ];
