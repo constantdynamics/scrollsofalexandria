@@ -8183,4 +8183,156 @@ export const principlesNew = [
       { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "De vraag 'wat wil ik dat mijn kinderen later over mijn ouderschap zeggen?' is een krachtige dagelijkse spiegel — ze herschikt prioriteiten van urgentie naar belang." }
     ],
   },
+
+  // ── Batch B1: Leren & Geheugen ───────────────────────────────────────────────
+  {
+    id: "spaced-repetition-personal",
+    title: "Gespreide Herhaling",
+    difficulty: 1,
+    emoji: "📆",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Gespreide herhaling is het herhalen van leerstof op toenemende intervallen — kort na het leren, dan na een dag, dan een week, dan een maand. Het benut de vergeetcurve van Ebbinghaus om langetermijnretentie te maximaliseren met minimale inspanning.",
+    abstractExample: "Eén uur studeren verspreid over vier sessies van 15 minuten levert significant betere retentie op dan één blok van een uur — de tussenliggende vergeetperiodes versterken het geheugenspoor.",
+    examples: [
+      { domain: "Talen leren", icon: "🗣️", text: "Anki-flashcards gebruiken gespreide herhaling automatisch: woorden die je goed kent komen minder vaak terug. Woorden die je vergeet, vaker. Dit optimaliseert elke studieminuut." },
+      { domain: "Studie", icon: "📚", text: "Studenten die verspreid herhalen in plaats van crammen scoren 20-30% hoger op eindtoetsen een maand later — zelfs bij minder totale studietijd. De spreiding is het mechanisme." },
+      { domain: "Professioneel", icon: "💼", text: "Nieuwe werkprocedures herhalen op dag 1, dag 7, dag 30 en dag 90 verankert ze in langetermijngeheugen — effectiever dan één training en daarna niets." }
+    ],
+  },
+  {
+    id: "retrieval-practice-personal",
+    title: "Actieve Terughaaloefening",
+    difficulty: 1,
+    emoji: "🎣",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Actieve terughaaloefening is het ophalen van informatie uit het geheugen zonder ondersteuning — jezelf testen, niet herlezen. Het terughaalpogingsproces zelf versterkt het geheugenspoor sterker dan elke passieve studietechniek.",
+    abstractExample: "Na het lezen van een hoofdstuk: sluit het boek en schrijf op wat je weet. Dit is moeilijker dan herlezen, maar leidt tot 2-3x betere retentie. De moeite van het ophalen is de leeractiviteit.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Studenten die zichzelf testen na het lezen, presteren beter dan studenten die dezelfde tijd besteden aan herlezen — ook al voelt herlezen productiever. De toetstechniek leert beter dan herbeleving." },
+      { domain: "Lezingen", icon: "🎓", text: "Na een lezing: 5 minuten opschrijven wat je herinnert voor je aantekeningen raadpleegt. De actieve poging om te herinneren is de leeractiviteit, niet het passief luisteren." },
+      { domain: "Taalonderwijs", icon: "🗣️", text: "Woorden produceren (vanuit moedertaal naar doeltaal) is effectiever dan herkennen — actieve productie versterkt het geheugenspoor dieper dan passieve herkenning." }
+    ],
+  },
+  {
+    id: "elaborative-interrogation-personal",
+    title: "Uitbreidende Bevraging",
+    difficulty: 2,
+    emoji: "❓",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Uitbreidende bevraging is de leerstrategie waarbij je voortdurend vraagt 'waarom is dit waar?' en 'hoe past dit bij wat ik al weet?' — in plaats van feiten te memoriseren. Begrijpen via verbindingen is dieper en duurzamer dan oppervlakkige memorisatie.",
+    abstractExample: "In plaats van een feit te memoriseren, vraag je: 'Hoe weten we dat? Welke verbanden heeft dit met andere kennis? Wat impliceert dit?' Begrip vervangt geheugendruk.",
+    examples: [
+      { domain: "Leren", icon: "📖", text: "Studenten die 'waarom'-vragen stellen bij elk nieuw concept onthouden 50-70% meer na twee weken dan studenten die samenvatten — de zelfbevraging genereert diepere verwerking." },
+      { domain: "Werk", icon: "💼", text: "Bij het leren van een nieuwe werkprocedure: vraag 'waarom werkt dit zo?' in plaats van 'wat zijn de stappen?' Het begrip van de reden maakt aanpassing bij uitzonderingen mogelijk." },
+      { domain: "Kinderen", icon: "👧", text: "Kinderen die 'waarom?' vragen zijn epistemisch actief. Goede leraren beantwoorden niet gewoon maar stellen een tegenvraag: 'Wat denk jij dat de reden is?'" }
+    ],
+  },
+  {
+    id: "interleaving-personal",
+    title: "Verwevenheid in Leren",
+    difficulty: 2,
+    emoji: "🔀",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Verwevenheid is het afwisselen van verschillende onderwerpen of vaardigheden binnen een studiesessie in plaats van geblokt per onderwerp te studeren. Het voelt minder effectief maar leidt tot significant betere langetermijnretentie en transfervermogen.",
+    abstractExample: "Geblokt studeren (AAABBBCCC) voelt efficiënter maar schept valse vertrouwdheid. Verweven studeren (ABCABCABC) dwingt continu het onderscheid te maken — en dat is precies wat je bij toetsen moet doen.",
+    examples: [
+      { domain: "Wiskunde", icon: "🔢", text: "Studenten die gemengde oefeningen deden scoorden 43% hoger op toetsen dan studenten die geblokt per type hadden geoefend — ondanks dat geblokt beter voelde tijdens het studeren." },
+      { domain: "Sport", icon: "🏋️", text: "Tennissers met variabele oefensessies (wisselende slagen) presteerden beter in wedstrijden dan zij die elk slag geblokt oefenden — interleaving traint adaptiviteit." },
+      { domain: "Talen", icon: "🗣️", text: "Vocabulaire, grammatica en luisteren afwisselen in één studiesessie werkt beter dan drie aparte sessies per vaardigheid — de verbanden tussen niveaus worden actief gelegd." }
+    ],
+  },
+  {
+    id: "desirable-difficulty-personal",
+    title: "Wenselijke Moeilijkheid",
+    difficulty: 2,
+    emoji: "💪",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Wenselijke moeilijkheid beschrijft hoe bepaalde leermoeilijkheden — die het leren vertragen en zwaarder maken — leiden tot betere langetermijnretentie en transfer. Makkelijk leren ≠ goed leren.",
+    abstractExample: "Leren dat moeiteloos gaat, verankert oppervlakkig. Leren dat cognitieve inspanning vraagt — zelftest, verwevenheid, gespreide herhaling — verankert diep. Het ongemak is het signaal van echte leeractiviteit.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Studenten die moeilijkere, langzamere leermethodes gebruikten presteerden consequent beter op eindtoetsen dan studenten die makkelijkere methodes gebruikten die productiever aanvoelden." },
+      { domain: "Training", icon: "🏋️", text: "Variabele trainingscondities zijn moeilijker maar trainen transfervermogen beter dan consistente, geoptimaliseerde condities — het ongemak is de versterking." },
+      { domain: "Feedback", icon: "🎯", text: "Uitgestelde feedback leidt tot betere leerresultaten dan onmiddellijke feedback per poging — de worsteling met onzekerheid is de leerkracht." }
+    ],
+  },
+  {
+    id: "chunking-personal",
+    title: "Chunking",
+    difficulty: 1,
+    emoji: "🧩",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Chunking is het groeperen van losse informatie-eenheden tot betekenisvolle clusters, waardoor het werkgeheugen efficiënter werkt. Experts denken in chunks; beginners in losse elementen — dit is een centrale verklaring voor expertverschillen.",
+    abstractExample: "Een schaakexpert ziet geen 32 stukken op een bord maar 5-6 betekenisvolle patronen. Het verschil is niet geheugenomvang maar organisatieniveau. Chunking is de vaardigheidsverdichting.",
+    examples: [
+      { domain: "Muziek", icon: "🎵", text: "Een pianistbeginner leest noot voor noot. Een gevorderde pianist ziet akkoordpatronen en muzikale zinnen — de chunks zijn groter. Expertise is grootschalig chunken, niet sneller noten lezen." },
+      { domain: "Programmeren", icon: "💻", text: "Beginners zien regels code; experts zien patronen (loop, recursie, factory pattern). Onderwijs dat expliciet patronen leert in plaats van alleen syntax, bouwt chunks sneller op." },
+      { domain: "Leren", icon: "📖", text: "Nieuwe kennis organiseren in verbanden met bestaande kennis (conceptkaarten, hiërarchieën) bouwt chunks — losse feiten zijn kwetsbaar voor vergeten; georganiseerde structuren zijn robuust." }
+    ],
+  },
+  {
+    id: "generation-effect",
+    title: "Generatie-effect",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het generatie-effect toont dat informatie die je zelf genereert (invult, aanmaakt, formuleert) beter wordt onthouden dan informatie die je passief ontvangt. Zelf produceren versterkt het geheugenspoor sterker dan consumeren.",
+    abstractExample: "Een woordenboekdefinitie lezen behoudt je minder goed dan zelf een definitie formuleren en dan vergelijken. Het genereringsproces is de leeractiviteit — de vergelijking is de feedback.",
+    examples: [
+      { domain: "Aantekeningen", icon: "📝", text: "Aantekeningen in eigen woorden maken (niet kopiëren) leidt tot significant betere retentie dan woordelijk overschrijven — de vertaling naar eigen taal activeert het generatie-effect." },
+      { domain: "Onderwijs", icon: "📚", text: "Studenten vragen om eerst een antwoord te construeren voor de correcte informatie wordt getoond, leidt tot dieper leren — ook als de initiële gok fout was." },
+      { domain: "Training", icon: "💼", text: "Werknemers vragen om zelf oplossingen te bedenken voor casestudies voor de standaardoplossing te tonen, leidt tot betere kennisoverdracht dan direct presenteren van de oplossing." }
+    ],
+  },
+  {
+    id: "contextual-learning",
+    title: "Contextueel Leren",
+    difficulty: 2,
+    emoji: "🌍",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Contextueel leren benut het feit dat geheugen context-afhankelijk is — je herinnert het beste in de context waarin je leerde. Leren in diverse contexten, of leren in de context van toepassing, verbetert retrieval en transfer.",
+    abstractExample: "Abstracte kennis die nooit wordt verbonden aan concrete context, verdampt snel. Leer concepten in de situaties waar je ze gaat gebruiken.",
+    examples: [
+      { domain: "Talen", icon: "🗣️", text: "Woorden leren in context (zinnen, verhalen, gesprekken) wordt beter onthouden dan geïsoleerde woordenlijsten — de context biedt meerdere geheugenankers die retrieval faciliteren." },
+      { domain: "Werk", icon: "💼", text: "Training direct op de werkplek, in de situaties waar de kennis nodig is, levert meer transfer dan klassikale training — de leercontext matcht de gebruikscontext." },
+      { domain: "Studie", icon: "📚", text: "Studeren in wisselende omgevingen (niet altijd dezelfde kamer) leidt tot betere retrieval in nieuwe omgevingen — de kennis is niet aan één context vastgeknoopt." }
+    ],
+  },
+  {
+    id: "metacognition-learning",
+    title: "Metacognitie",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Metacognitie is denken over je eigen denk- en leerprocessen — weten wat je weet, weten hoe je leert, bewaken of je begrijpt wat je denkt te begrijpen. Het is de metataardigheid die alle andere leervaardigheden coördineert.",
+    abstractExample: "De meeste mensen overschatten wat ze hebben geleerd na passief lezen (illusion of knowing). Metacognitie is het vermogen om je eigen begrip accuraat in te schatten — en bij te sturen als je minder weet dan je dacht.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Studenten die zichzelf testen na het lezen (in plaats van het gevoel van herkenning als begrip te accepteren), ontdekken wat ze niet weten — metacognitie beschermt tegen de illusie van leren." },
+      { domain: "Werk", icon: "💼", text: "Experts die hun eigen blindspots kennen, zoeken gerichter feedback dan experts die hun kennis overschatten — metacognitief bewustzijn stuurt leergedrag." },
+      { domain: "Probleemoplossing", icon: "🧩", text: "De vraag 'begrijp ik dit werkelijk of heb ik alleen de woorden?' onderscheidt diep begrip van oppervlakkige vertrouwdheid. Metacognitie stelt deze vraag automatisch bij hoge performers." }
+    ],
+  },
+  {
+    id: "teaching-effect",
+    title: "Leren door Uitleggen",
+    difficulty: 1,
+    emoji: "🎓",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De Feynman-techniek en het protégé-effect tonen dat het uitleggen van een concept aan anderen — of aan jezelf alsof je het uitlegt aan een beginner — leidt tot significant dieper begrip dan alleen studeren voor jezelf.",
+    abstractExample: "Als je iets kunt uitleggen aan een 12-jarige zonder jargon, begrijp je het echt. Als je dat niet kunt, heb je de illusie van begrip — je herkent de woorden maar hebt het concept niet geïnternaliseerd.",
+    examples: [
+      { domain: "Studie", icon: "📚", text: "Studenten die anderen tutorden in een vak, presteerden beter op toetsen voor dat vak dan studenten die alleen voor zichzelf studeerden — uitleggen dwingt lacunes in het begrip bloot te leggen." },
+      { domain: "Werk", icon: "💼", text: "Nieuwe kennis verwerken door het in een presentatie of gesprek uit te leggen verankert het dieper dan notities bijhouden — de productie van uitleg dwingt actieve kennisorganisatie." },
+      { domain: "Feynman-techniek", icon: "🔬", text: "Stap 1: kies een concept. Stap 2: leg het uit alsof je een kind onderwijst. Stap 3: identificeer waar je vastloopt. Stap 4: terug naar de bron en probeer opnieuw. Hiaten worden zichtbaar." }
+    ],
+  },
 ];
