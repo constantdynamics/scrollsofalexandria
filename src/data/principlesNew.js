@@ -9703,4 +9703,156 @@ export const principlesNew = [
       { domain: "Groei", icon: "🌱", text: "De meest transformatieve persoonlijke groei vindt niet plaats in het versterken van sterke punten maar in het integreren van blinde vlekken en schaduwkanten — dit is het moeilijkste en meest vruchtbare terrein van zelfkennis." }
     ],
   },
+
+  // ========== BATCH C1: GEDACHTE-EXPERIMENTEN — ETHIEK & MORAALFILOSOFIE ==========
+  {
+    id: "trolley-problem",
+    title: "Het Trolleyprobleem",
+    difficulty: 2,
+    emoji: "🚃",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Een onbestuurbare trolley rijdt op vijf mensen toe. Je staat bij een wissel: je kunt hem omzetten en de trolley naar een ander spoor sturen, waar één persoon staat. Doe je niets, sterven vijf mensen. Zet je de wissel om, sterft er één. Wat doe je? En verandert het antwoord als je diezelfde ene persoon fysiek van een brug moet duwen om de vijf te redden?",
+    abstractExample: "De wisselvariант voelt voor de meeste mensen acceptabel; de brugvariant niet — ook al is de wiskundige uitkomst identiek. Dit onthult de spanning tussen utilisme (maximaliseer het totale welzijn) en deontologie (sommige handelingen zijn intrinsiek verkeerd, ook bij goede uitkomst). Het verschil zit in actief versus instrumenteel doden.",
+    examples: [
+      { domain: "Medische ethiek", icon: "🏥", text: "Een arts met vijf stervende patiënten en één gezonde persoon wiens organen allen vijf kan redden: mag de arts de gezonde opereren? Bijna iedereen zegt nee — ook al is de rekensom identiek aan de wissel. Waarom voelt dit anders?" },
+      { domain: "Militaire ethiek", icon: "⚔️", text: "Een dronepiloot kan een aanslag op honderd burgers voorkomen door nu een verdacht doelwit te bombarderen waarbij twintig mensen sterven. Is dat gerechtvaardigd? En wie draagt de morele last van die keuze?" },
+      { domain: "Beleid", icon: "🏛️", text: "Herd immunity via vaccinaties accepteert dat een kleine groep ernstige bijwerkingen krijgt om de grote groep te beschermen. Een collectieve trolley-afruil die democratisch wordt genomen — maar wie beslist en wie draagt de gevolgen?" }
+    ],
+  },
+  {
+    id: "experience-machine",
+    title: "De Ervaringsmachine (Nozick)",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel je hebt de keuze om een machine in te stappen die je hersens zo stimuleert dat je elke gewenste ervaring hebt — de perfecte relatie, de beste carrière, oneindig geluk — terwijl je lichaam in een bad drijft. Je zou nooit weten dat het niet echt is. Stap je in? De meeste mensen zeggen nee — maar waarom, als geluk alleen om subjectieve ervaring draait?",
+    abstractExample: "Dat mensen de machine weigeren, suggereert dat we meer willen dan goede gevoelens: we willen werkelijk iets doen, werkelijk iemand zijn, werkelijk in contact staan met de wereld. De machine-afwijzing is Nozick's argument tegen puur hedonisme: geluk is niet hetzelfde als geluksgevoel.",
+    examples: [
+      { domain: "Sociale media", icon: "📱", text: "Dopamine-geoptimaliseerde platformen geven continue positieve feedback — likes, engagement — zonder echte verbinding. Is dat een zwakke versie van de ervaringsmachine? Wanneer wordt de gesimuleerde ervaring een probleem?" },
+      { domain: "Virtuele realiteit", icon: "🥽", text: "Als VR ooit volledig ononderscheidbaar is van fysieke realiteit en je levenspartner een perfect afgestemde VR-figuur is — is dat een authentiek leven? Maakt het uit dat het niet 'echt' is als de beleving identiek is?" },
+      { domain: "Medicatie", icon: "💊", text: "Een pil die chronische depressie volledig wegneemt maar ook subtiel de persoonlijkheid verandert. Je bent gelukkiger maar 'anders'. Wie is je authentieke zelf: de lijdende of de gelukkige-maar-veranderde versie?" }
+    ],
+  },
+  {
+    id: "veil-of-ignorance",
+    title: "De Sluier van Onwetendheid (Rawls)",
+    difficulty: 2,
+    emoji: "😶‍🌫️",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "John Rawls vroeg: stel je moet een rechtvaardige samenleving ontwerpen, maar je weet niet welke positie je daarin zult innemen — rijk of arm, gezond of ziek, meerderheid of minderheid. Vanachter deze 'sluier van onwetendheid' — welke spelregels zou je kiezen? Rawls' antwoord: je kiest regels die de slechtste positie zo goed mogelijk maken.",
+    abstractExample: "Achter de sluier kiest een rationeel persoon niet voor grote ongelijkheid, want hij kan aan de onderkant belanden. Hij kiest voor het verschilprincipe: ongelijkheid is alleen gerechtvaardigd als het de minst bevoordeelden ten goede komt. Het experiment maakt eigenbelang onmogelijk en genereert zo een rechtvaardigheidstheorie.",
+    examples: [
+      { domain: "Belastingbeleid", icon: "💰", text: "Als je niet wist of je tot de rijkste of armste 1% zou behoren — welk belastingstelsel zou je kiezen? Rawls stelt dat mensen dan een progressief stelsel kiezen dat de minst bevoordeelden beschermt." },
+      { domain: "Onderwijs", icon: "📚", text: "Als je niet wist welke school je kind zou krijgen — rijke of arme wijk — welk onderwijssysteem zou je ontwerpen? De sluier maakt de morele urgentie van onderwijsongelijkheid direct voelbaar." },
+      { domain: "Immigratiebeleid", icon: "🌍", text: "Als je niet wist of je als Nederlander of als vluchteling geboren zou worden — welk asielbeleid zou je rechtvaardig vinden? De sluier verschuift het perspectief van eigenbelang naar onpartijdige rechtvaardigheid." }
+    ],
+  },
+  {
+    id: "violinist-thomson",
+    title: "De Onbewuste Violist (Thomson)",
+    difficulty: 3,
+    emoji: "🎻",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Je wordt 's nachts ontvoerd en wakker naast een beroemde violist wiens nieren falen. Artsen hebben jou aan hem gekoppeld: alleen jouw bloed houdt hem in leven. Na negen maanden kan hij leven zonder jou. Mag je jezelf loskoppelen — ook al sterft hij dan? Judith Jarvis Thomson gebruikte dit om te laten zien dat het recht op leven niet automatisch het recht op gebruik van andermans lichaam impliceert.",
+    abstractExample: "Zelfs als we aannemen dat de violist volledig moreel persoon is met recht op leven, heeft hij niet het recht jouw lichaam te gebruiken zonder jouw toestemming. Het experiment scheidt het debat over de morele status van een foetus van het debat over lichaamsautonomie — twee vragen die vaak worden samengenomen.",
+    examples: [
+      { domain: "Lichaamsautonomie", icon: "⚖️", text: "Het experiment toont dat zelfs iemand die de volledige morele status van een foetus accepteert, toch logisch kan concluderen dat abortus gerechtvaardigd kan zijn. De vraag van morele status en de vraag van autonomie zijn los van elkaar te beantwoorden." },
+      { domain: "Verplichte orgaandonatie", icon: "🫀", text: "Als een stervende patiënt alleen overleeft met jouw nier en jij weigert — heb je moreel iets verkeerds gedaan? Thomson's argument impliceert dat het recht op leven niet het recht inhoudt om andermans lichaam te gebruiken." },
+      { domain: "Positieve plichten", icon: "🆘", text: "Mag de staat je verplichten risico te nemen om een ander te redden? De violist-casus markeert de grens tussen negatieve rechten (anderen mogen je niets aandoen) en positieve plichten (jij bent verplicht iets te doen voor anderen)." }
+    ],
+  },
+  {
+    id: "utility-monster",
+    title: "Het Nuttigheidsmonster (Nozick)",
+    difficulty: 3,
+    emoji: "👹",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel er bestaat een wezen dat enorm veel meer geluk ervaart dan mensen: elk brood dat het eet geeft het meer plezier dan tien mensen samen. Als moreel goed = maximaal totaal geluk (utilisme), moeten we alles aan het monster geven en niets aan onszelf. Nozick gebruikte dit als reductio ad absurdum van puur utilisme.",
+    abstractExample: "Het argument toont aan dat als totaal-geluk-maximalisatie het enige morele criterium is, we tot monsterly absurde conclusies komen. Dat we dit als onaanvaardbaar ervaren, impliceert dat gelijkheid, rechten of verdienste zelfstandige morele waarden zijn naast utiliteit.",
+    examples: [
+      { domain: "Algoritmische systemen", icon: "💻", text: "Een platform dat maximaliseert op totale engagement kan eindigen met alles geven aan de hyperbetrokken minderheid (nuttigheidsmonsters van aandacht) ten koste van een brede, evenwichtige gebruikerservaring." },
+      { domain: "Vermogensverdeling", icon: "⚖️", text: "Als rijkere mensen meer geluk halen uit extra geld dan armen (omgekeerde marginaliteit), zou puur utilisme pleiten voor meer geven aan rijken. De intuïtieve afwijzing van die conclusie suggereert dat gelijkheid een eigenstandige morele waarde is." },
+      { domain: "AI-doeloptimalisatie", icon: "🤖", text: "Een AI getraind om menselijke tevredenheid te maximaliseren zou kunnen concluderen dat het beter is één extreem tevreden persoon te bedienen dan vele gemiddeld tevreden mensen — de AI-versie van het nuttigheidsmonster." }
+    ],
+  },
+  {
+    id: "drowning-child",
+    title: "Het Verdringende Kind (Singer)",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Je loopt langs een ondiepe vijver en ziet een kind verdrinken. Je kunt het redden, maar je dure kleding wordt beschadigd. Ben je moreel verplicht het kind te redden? De meeste mensen zeggen ja. Singer's vervolgvraag: als geografische afstand moreel irrelevant is, ben je dan net zo verplicht om met hetzelfde geld een kind aan de andere kant van de wereld te redden van een vermijdbare ziekte?",
+    abstractExample: "Singer's argument: (1) lijden en dood zijn slecht; (2) als je iets kunt doen om dat te voorkomen zonder iets van vergelijkbaar moreel belang op te offeren, ben je moreel verplicht het te doen; (3) afstand is niet moreel relevant. Conclusie: je bent verplicht te doneren tot het punt waarop meer geven jezelf evenveel schaadt.",
+    examples: [
+      { domain: "Effective altruism", icon: "💸", text: "Als €100 een malariamuggennet financiert dat een kind redt, en je hebt de keuze tussen dat en een concertticket — is de morele druk om het net te kopen even groot als de druk om het verdringende kind te redden?" },
+      { domain: "Luxeconsumptie", icon: "🛒", text: "Elke luxe-aankoop heeft een alternatieve bestemming die levens kan redden. Singer's logica impliceert dat niet-doneren niet slechts onverschilligheid is maar actieve morele nalatigheid. Hoe ver gaat deze redenering voor jou?" },
+      { domain: "Internationale hulp", icon: "🌍", text: "Als Singer gelijk heeft, transformeert internationale hulp van vrijwillige generositeit naar morele schuld. Dit heeft consequenties voor hoe we buitenlandse hulp institutioneel en politiek moeten inrichten." }
+    ],
+  },
+  {
+    id: "repugnant-conclusion",
+    title: "De Weerzinwekkende Conclusie (Parfit)",
+    difficulty: 3,
+    emoji: "😱",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Derek Parfit toonde aan dat totaal-utilisme een weerzinwekkende conclusie genereert: een wereld met honderd miljard mensen die een leven leiden nét boven het minimum is moreel beter dan een wereld met tien miljard extreem gelukkige mensen — want het totale geluk is groter. Vrijwel iedereen voelt intuïtief dat dit onjuist is.",
+    abstractExample: "Als moreel goed = maximale som van geluk, en je genoeg mensen kunt toevoegen met een tikje meer geluk dan nul, overtreft het totaal elke beperkte maar rijke populatie. Het dilemma: de logica klopt, maar de conclusie weerstaat onze intuïtie — wat zegt dit over de logica of over onze intuïtie?",
+    examples: [
+      { domain: "Bevolkingsbeleid", icon: "🌍", text: "Totaal-utilisme pleit voor maximale bevolkingsgroei zolang het gemiddelde geluk positief blijft. Gemiddeld-utilisme pleit voor een kleinere, gelukkigere populatie. Welk principe zou demografisch beleid moeten sturen?" },
+      { domain: "Toekomstige generaties", icon: "🔮", text: "Als er in de toekomst biljoenen mensen kunnen bestaan, is elke handeling die die toekomst verbetert enorm moreel gewichtig. Dit is het longtermisme-argument: de verre toekomst telt zwaarder dan de nabije door haar omvang." },
+      { domain: "Levenskwaliteit vs. kwantiteit", icon: "❤️", text: "Moeten we streven naar meer mensen met gemiddeld geluk of naar minder mensen met veel geluk? Parfits puzzel raakt medische beslissingen, gezinsplanning en welzijnsbeleid op fundamenteel niveau." }
+    ],
+  },
+  {
+    id: "heinz-dilemma",
+    title: "Het Heinz-Dilemma (Kohlberg)",
+    difficulty: 1,
+    emoji: "💊",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Heinz' vrouw is stervend aan een ziekte. Een apotheker heeft het medicijn maar vraagt een prijs die Heinz onmogelijk kan betalen. Na smeken en betaaloffer weigert de apotheker. Moet Heinz het medicijn stelen? Lawrence Kohlberg gebruikte dit dilemma niet om het juiste antwoord te achterhalen, maar om het niveau van iemands morele redeneerproces te onderzoeken.",
+    abstractExample: "Hoe iemand redeneert is informatief, niet alleen welk antwoord ze geven. Pre-conventioneel redeneren: straf vermijden. Conventioneel: sociale regels respecteren. Post-conventioneel: universele principes boven regels stellen. Het dilemma maakt zichtbaar welk niveau iemand hanteert.",
+    examples: [
+      { domain: "Burgerzin", icon: "🏛️", text: "Wanneer is burgerlijke ongehoorzaamheid moreel gerechtvaardigd? Heinz' dilemma vraagt naar de grens tussen wettelijke en morele verplichting — wanneer weegt een hoger principe zwaarder dan de wet?" },
+      { domain: "Klokkenluiden", icon: "📢", text: "Een medewerker die intern misstanden aankaart, wordt genegeerd. Moet hij naar buiten treden en bedrijfsgeheimen schenden? De Heinz-structuur: regel breken voor een hoger principe. Wanneer is dat gerechtvaardigd?" },
+      { domain: "Medicijntoegang", icon: "💉", text: "Farmaceutische patenten maken levensreddende medicijnen onbereikbaar voor arme landen. Op nationaal niveau dezelfde Heinz-structuur: mogen landen patenten schenden voor de volksgezondheid? Moraal en recht geven hier conflicterende antwoorden." }
+    ],
+  },
+  {
+    id: "good-samaritan-experiment",
+    title: "De Barmhartige Samaritaan — Het Princeton-experiment",
+    difficulty: 2,
+    emoji: "🚶",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Darley en Batson vroegen theologiestudenten een preek te geven over de Barmhartige Samaritaan. Op weg naar de preekzaal passeerden ze een acteur die gewond op de grond lag. Studenten met haast liepen er bijna allemaal voorbij — ook degenen die nét een preek over naastenliefde hadden voorbereid. Situatiefactoren overstemden morele overtuigingen.",
+    abstractExample: "Het experiment toont dat moreel gedrag sterker bepaald wordt door situatie (ik heb haast) dan door morele overtuigingen (ik geloof in naastenliefde). De kloof tussen morele kennis en moreel handelen is groot en structureel situationeel te overbruggen.",
+    examples: [
+      { domain: "Alledaagse ethiek", icon: "🌟", text: "Hoeveel van je 'goede gedrag' is het resultaat van gunstige omstandigheden — tijd, energie, genoeg — in plaats van deugd? En hoe zou je je gedragen onder tijdsdruk of schaarste? Het experiment nodigt uit tot eerlijkheid." },
+      { domain: "Organisatiecultuur", icon: "🏢", text: "Mensen in integere organisatieculturen vertonen integerder gedrag — niet omdat ze betere mensen zijn maar omdat de situatie ander gedrag faciliteert. Cultuur als morele infrastructuur is krachtiger dan individuele intenties." },
+      { domain: "Bystander-effect", icon: "🚨", text: "Hoe meer mensen een noodsituatie zien, hoe minder waarschijnlijk dat iemand helpt — verantwoordelijkheid diffundeert in groepen. Weten dit maakt je bewuster van wanneer je actief verantwoordelijkheid moet claimen in plaats van wachten." }
+    ],
+  },
+  {
+    id: "famine-affluence-obligation",
+    title: "Rijkdom, Honger en Morele Plicht (Singer)",
+    difficulty: 2,
+    emoji: "🌾",
+    academicCategory: "Filosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Peter Singer stelde in 1972: als het in onze macht is iets ergs te voorkomen zonder iets van vergelijkbaar moreel belang op te geven, zijn we moreel verplicht dit te doen. Rijkdom en ernstige armoede bestaan gelijktijdig. Als je met geringe persoonlijke kosten hongersnood kunt helpen voorkomen, ben je moreel verplicht dat te doen.",
+    abstractExample: "Singer's artikel transformeerde liefdadigheid van deugd naar plicht. Als de redenering klopt, is niet-doneren niet slechts onverschilligheid maar actieve immoraliteit — net zoals het laten verdrinken van het kind immoreel is. De logica is sterk; de praktijk-implicaties zijn radicaal.",
+    examples: [
+      { domain: "Ethisch consumeren", icon: "🛒", text: "Elke luxe-uitgave heeft een alternatieve bestemming. Singer's logica maakt luxe-consumptie moreel problematisch zolang er mensen sterven aan vermijdbare oorzaken. Hoe ver gaat deze redenering voordat ze te veeleisend wordt?" },
+      { domain: "Internationale hulp", icon: "✈️", text: "Singer's argument impliceert dat buitenlandse hulp een morele minimumverplichting is, geen vrijwillige generositeit. Hoe zou politiek eruitzien als internationale steun als schuld in plaats van als gunst werd gezien?" },
+      { domain: "Persoonlijke ethiek", icon: "🌟", text: "Hoeveel moet je geven? Singers antwoord: tot het punt waarop meer geven jou iets kost van vergelijkbaar moreel belang. Dat is radicaler dan bijna iemand in de praktijk brengt — maar de logica is moeilijk te weerleggen." }
+    ],
+  },
 ];
