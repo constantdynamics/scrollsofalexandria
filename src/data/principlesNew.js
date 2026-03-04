@@ -8094,5 +8094,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Beoordeel de psychologische veiligheid in een groep waarvan jij deel uitmaakt op een schaal van 1-10. Wat is het concreetste ding dat zou veranderen als de veiligheid met 2 punten steeg?",
     aiHelperPrompts: ["Hoe bouw ik psychologische veiligheid als teamleider?", "Hoe meet ik psychologische veiligheid?", "Hoe herstel ik psychologische veiligheid na een conflict?"]
+  },
+
+  // Batch Z2 – Filosofie van de Geest
+  {
+    id: "hard-problem-consciousness",
+    title: "Het Harde Probleem van Bewustzijn",
+    difficulty: 3,
+    emoji: "🧠",
+    academicCategory: "Filosofie",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["bewustzijn", "geest", "qualia", "filosofie"],
+    definition: "Het harde probleem van bewustzijn (Chalmers) is de vraag waarom fysische hersenprocessen gepaard gaan met subjectieve ervaring — waarom is er überhaupt 'iets dat het is' om iets te ervaren?",
+    abstractExample: "We kunnen volledig begrijpen hoe het brein rood licht verwerkt — maar waarom ervaart het rood als rood? De kloof tussen fysisch proces en subjectieve beleving is het harde probleem.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "Neurowetenschappers kunnen de hersenactiviteit bij pijn volledig mappen — maar waarom voelt pijn zo verschrikkelijk? Dat is het harde probleem." },
+      { domain: "AI", icon: "🤖", text: "Een computer kan 'pijn' rapporteren als output, maar ervaart hij pijn? Het harde probleem maakt dit onmogelijk van buiten te bepalen." },
+      { domain: "Filosofie", icon: "📚", text: "De filosoof Thomas Nagel vroeg: 'What is it like to be a bat?' — subjectieve ervaring is niet reduceerbaar tot objectieve beschrijving." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het 'makkelijke probleem' van bewustzijn (in contrast met het harde)?", options: ["Waarom bewustzijn bestaat", "Hoe hersenen informatie verwerken en gedrag sturen", "Waarom subjectieve ervaring aanwezig is", "Of dieren bewustzijn hebben"], correct: 1, explanation: "De 'makkelijke' problemen zijn functioneel: hoe verwerkt het brein informatie, hoe stuurt het gedrag? Deze zijn moeilijk maar in principe oplosbaar via wetenschap." }
+    ],
+    creativePrompt: "Probeer jouw eigen bewustzijn te beschrijven zonder woorden die verwijzen naar subjectiviteit (voelen, beleven, ervaren). Wat blijft er over? Wat gaat er verloren?",
+    aiHelperPrompts: ["Welke oplossingen bestaan er voor het harde probleem?", "Heeft AI bewustzijn?", "Wat zijn de praktische implicaties van het harde probleem?"]
+  },
+  {
+    id: "free-will-debate",
+    title: "Vrije Wil",
+    difficulty: 3,
+    emoji: "🎲",
+    academicCategory: "Filosofie",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["vrije wil", "determinisme", "verantwoordelijkheid", "filosofie"],
+    definition: "Het vrije-wil-debat vraagt of onze keuzes werkelijk vrij zijn of worden bepaald door eerdere oorzaken (genetica, hersenen, omgeving) — en wat dit betekent voor morele verantwoordelijkheid en straf.",
+    abstractExample: "Als jouw brein de beslissing neemt 0.5 seconde vóórdat jij je bewust 'beslist' (Libet-experiment) — wie besliste dan eigenlijk?",
+    examples: [
+      { domain: "Recht", icon: "⚖️", text: "Als hersenletsel aantoonbaar leidt tot crimineel gedrag, in hoeverre is de dader dan moreel verantwoordelijk? Rechtsstelsels worstelen hiermee." },
+      { domain: "Verslaving", icon: "💊", text: "Is een verslaafde vrij om te stoppen? Als zijn hersenen fysiologisch zijn veranderd, is zijn 'keuze' dan vrij?" },
+      { domain: "Neurowetenschappen", icon: "🔬", text: "Libet's experimenten toonden dat hersenen al beslissingen nemen vóór bewuste intentie — wat de illusie van vrije wil suggereert." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk standpunt stelt dat vrije wil en determinisme beide waar kunnen zijn?", options: ["Hard determinisme", "Libertarianisme", "Compatibilisme", "Indeterminisme"], correct: 2, explanation: "Compatibilisme (Hume, Frankfurt) stelt dat 'vrije wil' betekent handelen conform je eigen wensen zonder externe dwang — wat compatibel is met determinisme." }
+    ],
+    creativePrompt: "Beschrijf een keuze die je recent maakte. Analyseer alle factoren die die keuze 'bepaalden' (genetica, opvoeding, omstandigheid, emotie). Was er een moment van echte vrijheid? Wat betekent dat voor jouw verantwoordelijkheid?",
+    aiHelperPrompts: ["Wat zijn de praktische implicaties als vrije wil niet bestaat?", "Hoe verhoudt compatibilisme zich tot morele verantwoordelijkheid?", "Wat zeggen neurowetenschappers over vrije wil?"]
+  },
+  {
+    id: "personal-identity",
+    title: "Persoonlijke Identiteit",
+    difficulty: 3,
+    emoji: "👤",
+    academicCategory: "Filosofie",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["identiteit", "continuïteit", "zelf", "filosofie"],
+    definition: "Persoonlijke identiteit is de vraag wat maakt dat jij over de tijd heen dezelfde persoon bent — ondanks dat je cellen, herinneringen, overtuigingen en lichaam voortdurend veranderen.",
+    abstractExample: "Het schip van Theseus: als je elk plank geleidelijk vervangt, is het nog hetzelfde schip? Zo ook: als al jouw cellen en herinneringen veranderen, ben jij nog dezelfde persoon?",
+    examples: [
+      { domain: "Medisch", icon: "🏥", text: "Iemand met ernstige amnesie verliest persoonlijke herinneringen — is hij nog 'dezelfde persoon' in morele, juridische en persoonlijke zin?" },
+      { domain: "Bewustzijn", icon: "🧠", text: "Als jouw hersenen stap voor stap worden vervangen door siliconen chips, verdwijnt dan jouw bewustzijn abrupt of geleidelijk?" },
+      { domain: "Groei", icon: "🌱", text: "Je 10-jarige zelf en je huidige zelf delen weinig overtuigingen, relaties of interesses — wat maakt jullie toch 'dezelfde' persoon?" }
+    ],
+    prerequisites: ["hard-problem-consciousness"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke theorie van persoonlijke identiteit benadrukt psychologische continuïteit?", options: ["Lichamelijke continuïteitstheorie", "Locke's geheugentheorie", "Parfit's reductionisme", "Substantieel dualisme"], correct: 1, explanation: "Locke stelde dat persoonlijke identiteit afhangt van continuïteit van bewustzijn en geheugen — niet van het lichaam." }
+    ],
+    creativePrompt: "Stel dat je morgen wakker wordt met de herinneringen van een andere persoon maar jouw lichaam. Ben jij dat nog? En stel dat jouw lichaam wakker wordt maar met andere herinneringen — wie ben jij dan?",
+    aiHelperPrompts: ["Hoe beïnvloedt persoonlijke identiteit morele verantwoordelijkheid?", "Wat betekent persoonlijke identiteit voor reïncarnatie-overtuigingen?", "Hoe denkt Parfit over persoonlijke identiteit?"]
+  },
+  {
+    id: "dualism-vs-monism",
+    title: "Dualisme vs. Monisme",
+    difficulty: 3,
+    emoji: "⚖️",
+    academicCategory: "Metafysica",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["geest", "lichaam", "dualisme", "bewustzijn"],
+    definition: "Dualisme (Descartes) stelt dat geest en lichaam fundamenteel verschillende substanties zijn; monisme stelt dat alles één substantie is — ofwel alleen materie (materialisme) of alleen geest (idealisme) of neutraal.",
+    abstractExample: "Dualisme: software en hardware zijn fundamenteel verschillende dingen. Monisme: er is alleen hardware, software is slechts een beschrijving van hoe hardware functioneert.",
+    examples: [
+      { domain: "Religie", icon: "🕌", text: "Veel religieuze tradities zijn dualistisch: de ziel is onsterfelijk en verschilt fundamenteel van het sterfelijke lichaam." },
+      { domain: "Neurowetenschappen", icon: "🔬", text: "Moderne neurowetenschappen zijn methodologisch monistisch: al het mentale wordt verklaard via hersenen — maar dit lost het harde probleem niet op." },
+      { domain: "Dagelijks denken", icon: "💭", text: "Mensen denken intuïtief dualistisch: 'mijn lichaam deed het maar ík wist beter' impliceert een scheiding tussen zelf en lichaam." }
+    ],
+    prerequisites: ["hard-problem-consciousness"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste probleem met Cartesiaans dualisme?", options: ["Het is te eenvoudig", "Het interactieprobleem: hoe beïnvloeden immateriële geest en materieel lichaam elkaar?", "Het is wetenschappelijk weerlegd", "Het heeft geen aanhangers"], correct: 1, explanation: "Als geest en lichaam fundamenteel verschillend zijn (niet-materieel vs. materieel), hoe veroorzaken gedachten dan fysieke bewegingen? Dit interactieprobleem is het klassieke probleem voor dualisme." }
+    ],
+    creativePrompt: "Ben jij intuïtief een dualist of monist? Beschrijf een dagelijkse ervaring (pijn, verliefdheid, creatief inzicht) en analyseer of je die beter kunt begrijpen via dualisme of monisme.",
+    aiHelperPrompts: ["Zijn er moderne vormen van dualisme?", "Hoe verhoudt panpsychisme zich tot dualisme en monisme?", "Waarom gelooft de moderne wetenschap in monisme?"]
+  },
+  {
+    id: "embodied-cognition",
+    title: "Belichaamd Cognitie",
+    difficulty: 2,
+    emoji: "🧘",
+    academicCategory: "Cognitieve Wetenschap",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["lichaam", "cognitie", "denken", "ervaring"],
+    definition: "Belichaamd cognitie (embodied cognition) stelt dat denken niet alleen in de hersenen plaatsvindt maar fundamenteel is verweven met het lichaam en de omgeving — lichamelijke ervaringen vormen onze concepten en emoties.",
+    abstractExample: "We denken over 'toekomst' als 'voor ons' en 'verleden' als 'achter ons' — een ruimtelijke metafoor die voortkomt uit lichamelijke oriëntatie, niet abstracte logica.",
+    examples: [
+      { domain: "Taal", icon: "📖", text: "Houd een warme kop koffie vast en je beoordeelt een vreemde als warmer (vriendelijker) — lichamelijke warmte beïnvloedt sociale oordelen." },
+      { domain: "Sport", icon: "⚽", text: "Sporters die 'feel' praten over hun spel beschrijven cognitieve processen die zijn ingebed in lichamelijke gewoonten, niet bewuste redenering." },
+      { domain: "Onderwijs", icon: "📚", text: "Kinderen leren rekenen beter via lichamelijke manipulaties (blokken tellen) dan abstracte symbolen — het lichaam verankert concepten." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke bevinding ondersteunt belichaamd cognitie?", options: ["Hersenen werken als een computer", "Lichamelijke houding beïnvloedt gedachten en gevoelens", "Cognitie is puur neuraal", "Taal bepaalt volledig hoe we denken"], correct: 1, explanation: "Onderzoek toont dat lichamelijke toestanden (warmte, zwaarte, hardheid) direct conceptuele oordelen beïnvloeden — lichaam en geest zijn verweven." }
+    ],
+    creativePrompt: "Doe een experiment: verander bewust je lichaamshouding naar 'krachtig' (rechtop, open borst) voor 2 minuten. Hoe beïnvloedt dit hoe je denkt en voelt? Wat zegt dit over cognitie?",
+    aiHelperPrompts: ["Hoe beïnvloedt belichaamd cognitie onderwijs?", "Is er bewijs voor embodied cognition?", "Hoe verhoudt het zich tot traditionele informatieverwerkingstheorie?"]
+  },
+  {
+    id: "philosophy-of-language",
+    title: "Taalfilosofie",
+    difficulty: 3,
+    emoji: "🗣️",
+    academicCategory: "Filosofie",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["taal", "betekenis", "referentie", "filosofie"],
+    definition: "Taalfilosofie onderzoekt hoe woorden betekenis hebben, hoe taal de werkelijkheid beschrijft en of taal ons denken bepaalt (Sapir-Whorf) of enkel uitdrukt — fundamentele vragen over de relatie tussen taal, geest en realiteit.",
+    abstractExample: "Beschrijft de zin 'de berg is groen' een feit dat bestaat onafhankelijk van de zin? Of bepaalt de taal mede hoe we de wereld organiseren?",
+    examples: [
+      { domain: "Kleuren", icon: "🌈", text: "Sommige talen hebben meer kleurcategorieën dan andere — sprekers van die talen onderscheiden kleurnuances sneller, wat suggereert dat taal perceptie beïnvloedt." },
+      { domain: "Recht", icon: "⚖️", text: "Wat 'moord' en 'doodslag' betekenen heeft juridische consequenties — taalkundige categorisering heeft reële gevolgen." },
+      { domain: "Politiek", icon: "🏛️", text: "Woorden als 'vrijheidsstrijder' vs. 'terrorist' beschrijven dezelfde persoon maar impliceren fundamenteel verschillende morele oordelen." }
+    ],
+    prerequisites: ["metaphor-cognition"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat stelt de sterke versie van de Sapir-Whorf-hypothese?", options: ["Taal beïnvloedt licht hoe we denken", "Taal bepaalt wat we kunnen denken", "Alle talen zijn gelijkwaardig", "Denken is onafhankelijk van taal"], correct: 1, explanation: "De sterke hypothese (linguïstisch determinisme) stelt dat de structuur van een taal bepaalt wat sprekers überhaupt kunnen denken — een controversieel maar invloedrijk idee." }
+    ],
+    creativePrompt: "Kies een concept uit een andere taal waarvoor Nederlands geen enkel woord heeft. Beschrijf welke nuance verloren gaat bij vertaling. Hoe beïnvloedt het ontbreken van dat woord jouw ervaring?",
+    aiHelperPrompts: ["Wat is de wetenschappelijke status van de Sapir-Whorf-hypothese?", "Hoe verhoudt taalfilosofie zich tot cognitieve wetenschap?", "Wat zijn de grote stromingen in de taalfilosofie?"]
+  },
+  {
+    id: "extended-mind",
+    title: "Uitgebreide Geest",
+    difficulty: 3,
+    emoji: "📱",
+    academicCategory: "Cognitieve Filosofie",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["geest", "tools", "cognitie", "technologie"],
+    definition: "De uitgebreide geest-hypothese (Clark & Chalmers) stelt dat cognitie niet stopt bij de schedel — notitieboeken, smartphones en andere tools zijn functioneel deel van het cognitieve systeem, niet slechts hulpmiddelen erbuiten.",
+    abstractExample: "Als een alzheimerpatiënt een notitieboek gebruikt als extern geheugen, is dat notitieboek dan functioneel equivalent aan hersenengeheugen? Clark & Chalmers zeggen: ja.",
+    examples: [
+      { domain: "Technologie", icon: "📱", text: "Jouw smartphone slaat contacten, afspraken en kennis op — verwijder het en een groot deel van jouw 'functionele geheugen' is weg." },
+      { domain: "Schrijven", icon: "✏️", text: "Filosofen die denken door te schrijven gebruiken papier als cognitief verlengstuk — denken vindt deels buiten de schedel plaats." },
+      { domain: "Architectuur", icon: "🏛️", text: "Steden en gebouwen zijn cognitieve scaffolding — ze structureren hoe we ons gedragen en denken." }
+    ],
+    prerequisites: ["embodied-cognition"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk criterium stellen Clark en Chalmers voor een 'uitgebreide' cognitieve component?", options: ["Het moet digitaal zijn", "Het moet functioneel causaal bijdragen op dezelfde manier als interne cognitie", "Het moet altijd beschikbaar zijn", "Het moet door mensen zijn gemaakt"], correct: 1, explanation: "Als een extern systeem de juiste functionele rol speelt (opslaan, ophalen, verwerken van informatie), is er geen reden het te excluderen van het cognitieve systeem." }
+    ],
+    creativePrompt: "Maak een lijst van externe tools en systemen die deel zijn van jouw 'uitgebreide geest'. Wat zou je verliezen (cognitief) als elk ervan verdween? Hoe verandert dit je visie op privacy en data-eigendom?",
+    aiHelperPrompts: ["Wat zijn de ethische implicaties van de uitgebreide geest?", "Hoe verhoudt de uitgebreide geest zich tot AI-assistenten?", "Kritiek op Clark en Chalmers?"]
+  },
+  {
+    id: "phenomenology",
+    title: "Fenomenologie",
+    difficulty: 3,
+    emoji: "🌅",
+    academicCategory: "Filosofie",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["ervaring", "bewustzijn", "fenomeen", "filosofie"],
+    definition: "Fenomenologie is de filosofische studie van de structuur van directe bewuste ervaring — hoe verschijnen dingen aan ons, los van objectieve beschrijvingen — gesticht door Husserl en uitgewerkt door Heidegger en Merleau-Ponty.",
+    abstractExample: "Fenomenologie onderzoekt niet de stoel als fysiek object, maar hoe de stoel verschijnt aan jou als iets om op te zitten — de betekenisvolle structuur van jouw ervaring.",
+    examples: [
+      { domain: "Zorg", icon: "🏥", text: "Fenomenologische verplegingskunde vraagt niet 'wat zijn de symptomen?' maar 'hoe ervaart de patiënt zijn ziekte?' — voor betere zorg." },
+      { domain: "Ontwerp", icon: "🎨", text: "Fenomenologisch geïnspireerd UX-design vraagt hoe gebruikers hun interactie met een product écht ervaren, niet alleen meten wat ze klikken." },
+      { domain: "Psychologie", icon: "🧠", text: "Existentiële psychologie (Frankl, May) gebruikt fenomenologie om de unieke ervaring van individuen centraal te stellen in therapie." }
+    ],
+    prerequisites: ["hard-problem-consciousness"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat bedoelt Husserl met 'intentionaliteit'?", options: ["Bewuste intenties en plannen", "Bewustzijn is altijd bewustzijn VAN iets — het is altijd gericht", "De bedoeling achter acties", "De structuur van de hersenen"], correct: 1, explanation: "Intentionaliteit in fenomenologie betekent dat bewustzijn altijd gericht is op een object — er is geen bewustzijn zonder dat het iets bewust is." }
+    ],
+    creativePrompt: "Doe een fenomenologische beschrijving van een alledaagse handeling (koffie zetten, wandelen). Beschrijf niet de objectieve feiten maar hoe de ervaring aan jou verschijnt: kleuren, texturen, emoties, verwachtingen.",
+    aiHelperPrompts: ["Hoe verschilt fenomenologie van psychologie?", "Hoe beïnvloedde Heidegger Husserls fenomenologie?", "Welke impact heeft fenomenologie op de hedendaagse wetenschap?"]
+  },
+  {
+    id: "epistemic-humility-mind",
+    title: "Epistemische Bescheidenheid",
+    difficulty: 2,
+    emoji: "🤔",
+    academicCategory: "Epistemologie",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["kennis", "onzekerheid", "filosofie", "bescheidenheid"],
+    definition: "Epistemische bescheidenheid is de erkenning van de grenzen van onze kennis — dat onze overtuigingen feilbaar zijn, dat we belangrijke blinde vlekken hebben en dat zekerheid zelden gerechtvaardigd is.",
+    abstractExample: "Een epistemisch bescheiden persoon zegt 'ik denk dat dit klopt en hier zijn mijn redenen' in plaats van 'dit is gewoon zo' — hij houdt altijd ruimte voor nieuwe informatie.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "Wetenschappelijke methode is gebaseerd op epistemische bescheidenheid: theorieën zijn nooit bewezen, alleen (voorlopig) bevestigd of weerlegd." },
+      { domain: "Politiek", icon: "🏛️", text: "Politici die toegeven dat ze ongelijk hadden of situaties verkeerd inschatten, tonen zeldzame epistemische bescheidenheid." },
+      { domain: "Persoonlijk", icon: "👤", text: "Iemand die zegt 'ik begrijp pas achteraf dat ik hier volledig naast zat' beoefent epistemische bescheidenheid over zijn eigen denkprocessen." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is epistemische arrogantie?", options: ["Te veel twijfelen aan jezelf", "Overtuigingen vasthouden met meer zekerheid dan gerechtvaardigd is", "Te veel weten", "Kennis voor jezelf houden"], correct: 1, explanation: "Epistemische arrogantie is het omgekeerde: zekerheid claimen die niet wordt ondersteund door de beschikbare informatie of de complexiteit van het onderwerp." }
+    ],
+    creativePrompt: "Lijst vijf overtuigingen die jij sterk aanhangt. Beoordeel elke overtuiging: hoe zeker ben je (0-100%)? Welk bewijs zou je overtuiging kunnen falsificeren? Hoe bescheiden zijn jouw zekerheidsschattingen?",
+    aiHelperPrompts: ["Hoe balanceer ik epistemische bescheidenheid met daadkracht?", "Wanneer is epistemische bescheidenheid ongepast?", "Hoe beïnvloedt epistemische bescheidenheid besluitvorming?"]
+  },
+  {
+    id: "philosophy-of-perception",
+    title: "Perceptiefilosofie",
+    difficulty: 2,
+    emoji: "👁️",
+    academicCategory: "Filosofie",
+    skillCategory: "Filosofie van de Geest",
+    tags: ["perceptie", "werkelijkheid", "zintuig", "filosofie"],
+    definition: "Perceptiefilosofie onderzoekt de relatie tussen onze zintuigelijke ervaringen en de buitenwereld — zien we de wereld direct zoals ze is, of construeert de geest een representatie die kan afwijken van de werkelijkheid?",
+    abstractExample: "Een stok die half in water steekt ziet eruit alsof hij geknikt is — zintuiglijke informatie klopt, maar de conclusie ('geknikt') is onjuist. Wat zien we dan echt?",
+    examples: [
+      { domain: "Illusies", icon: "🌈", text: "Optische illusies tonen dat perceptie een constructie is van de geest, niet een directe registratie van de werkelijkheid." },
+      { domain: "Kleur", icon: "🎨", text: "Kleuren bestaan niet in de buitenwereld — objecten hebben golflengte, maar 'rood' is een mentale constructie van het visuele systeem." },
+      { domain: "VR", icon: "🥽", text: "Virtual reality bewijst dat de geest overtuigd kan worden van een werkelijkheid die puur geconstrueerd is — wat zegt dit over 'echte' perceptie?" }
+    ],
+    prerequisites: ["hard-problem-consciousness"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk filosofisch standpunt stelt dat we de buitenwereld direct waarnemen, zonder tussenkomst van mentale representaties?", options: ["Representationalisme", "Direct realisme", "Idealisme", "Scepticisme"], correct: 1, explanation: "Direct realisme (naïef realisme) stelt dat we de buitenwereld direct en rechtstreeks waarnemen — contrasteer dit met representationalisme dat een mentale tussenlaag aanneemt." }
+    ],
+    creativePrompt: "Zoek drie optische illusies. Beschrijf wat je ziet versus wat er objectief is. Wat leert dit over de betrouwbaarheid van jouw perceptie in alledaagse situaties?",
+    aiHelperPrompts: ["Hoe beïnvloedt verwachting perceptie?", "Is perceptie cultuurgebonden?", "Wat zeggen neurowetenschappen over directe vs. geconstrueerde perceptie?"]
   }
 ];
