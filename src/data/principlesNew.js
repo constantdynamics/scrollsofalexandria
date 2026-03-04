@@ -9855,4 +9855,156 @@ export const principlesNew = [
       { domain: "Persoonlijke ethiek", icon: "🌟", text: "Hoeveel moet je geven? Singers antwoord: tot het punt waarop meer geven jou iets kost van vergelijkbaar moreel belang. Dat is radicaler dan bijna iemand in de praktijk brengt — maar de logica is moeilijk te weerleggen." }
     ],
   },
+
+  // ========== BATCH C2: GEDACHTE-EXPERIMENTEN — BEWUSTZIJN & IDENTITEIT ==========
+  {
+    id: "mary-color-room",
+    title: "Mary's Kamer (Jackson)",
+    difficulty: 3,
+    emoji: "🌈",
+    academicCategory: "Filosofie van de Geest",
+    skillCategory: "Kritisch Denken",
+    definition: "Mary is een briljant neurowetenschapper die haar hele leven in een zwart-witte kamer heeft doorgebracht. Ze weet alles wat er te weten valt over de fysica van kleur en de neurologie van kleurwaarneming. Dan stapt ze de kamer uit en ziet voor het eerst rood. Leert ze iets nieuws? Als ja: dan bestaat er kennis die niet in fysieke feiten wordt gevat — en is het materialisme onvolledig.",
+    abstractExample: "Frank Jackson's argument: als Mary na het verlaten van de kamer iets nieuws leert (hoe rood eruitziet), dan was er vóór haar ervaring kennis die ze miste ondanks alle fysische kennis. Dit suggereert dat qualia — subjectieve ervaringen — niet reduceerbaar zijn tot fysische processen. Het is een argument voor dualisme of kwaliteitsbewustzijn.",
+    examples: [
+      { domain: "Kunstmatige intelligentie", icon: "🤖", text: "Een AI die alle teksten over verdriet heeft gelezen, weet alles over de neurobiologie en sociale context van verdriet. Maar weet ze hoe het voelt? Mary's probleem is het probleem van AI-bewustzijn: is verwerking hetzelfde als ervaring?" },
+      { domain: "Empathie", icon: "🫂", text: "Je kunt alles weten over rouw — de fases, de neurologie, de sociologie — maar pas als je iemand verliest, weet je hoe het is. Mary's kamer illustreert waarom kennis over ervaringen nooit kennis van ervaringen vervangt." },
+      { domain: "Medische opleiding", icon: "🏥", text: "Een arts die alle symptomen van chronische pijn kent maar nooit pijn heeft geleden, mist iets. Niet kennis, maar ervaring. Dit heeft praktische implicaties voor hoe artsen worden opgeleid en hoe ze communiceren met patiënten." }
+    ],
+  },
+  {
+    id: "philosophical-zombie",
+    title: "De Filosofische Zombie (Chalmers)",
+    difficulty: 3,
+    emoji: "🧟",
+    academicCategory: "Filosofie van de Geest",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel je voor een wezen dat fysiek identiek is aan een mens — dezelfde neuronen, dezelfde gedragingen, dezelfde reacties — maar dat geen enkel subjectief bewustzijn heeft. Geen innerlijk leven, geen qualia, geen 'er is iemand thuis'. Is zo'n filosofische zombie denkbaar? Als ja, dan is bewustzijn meer dan fysische processen — een 'hard probleem'.",
+    abstractExample: "Chalmers stelt dat de denkbaarheid van p-zombies bewijst dat bewustzijn niet logisch wordt afgeleid uit fysische beschrijvingen. Zelfs een perfecte functionele kopie van een mens zou geen bewustzijn hoeven hebben. Dit is het 'hard problem of consciousness': waarom is er überhaupt iets zoals het is, in plaats van niets?",
+    examples: [
+      { domain: "AI-bewustzijn", icon: "🤖", text: "Als een toekomstige AI perfect menselijk gedrag simuleert — inclusief claims van pijn, vreugde, angst — is ze dan bewust? Of is ze een p-zombie? Chalmers' experiment vraagt of gedrag voldoende is als bewijs van bewustzijn." },
+      { domain: "Dierenrechten", icon: "🐾", text: "We weten niet zeker of dieren subjectief bewustzijn hebben. De p-zombie-mogelijkheid maakt dit extra lastig: een dier dat pijnreacties vertoont, kan theoretisch een p-zombie zijn. Maar op welke basis nemen we dan morele beslissingen?" },
+      { domain: "Andere mensen", icon: "👥", text: "Strikt genomen weet je alleen dat jijzelf bewust bent. Dat anderen bewust zijn, neem je aan op basis van analogie. Maar Chalmers' argument maakt duidelijk dat gedragsbewijzen logisch onvoldoende zijn voor bewustzijn." }
+    ],
+  },
+  {
+    id: "teleporter-identity",
+    title: "De Teleporteerder en Persoonlijke Identiteit",
+    difficulty: 2,
+    emoji: "✨",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel je stapt een teleporteerder in die je lichaam atoom voor atoom scant, vernietigt, en identiek reconstrueert op een andere planeet. Ben jij het die aankomt? Stel nu dat de originele niet vernietigd wordt — er zijn twee identieke 'jouwen'. Wie heeft recht op jouw leven, relaties en bezittingen? Het experiment ondervraagt wat persoonlijke identiteit in de tijd constitueert.",
+    abstractExample: "Drie kandidaattheorieën: (1) continuïteit van het lichaam (lichaamsdood = persoonsdood, dus de aangekomene is een kopie); (2) continuïteit van psychologie/geheugen (als hij alles herinnert, is hij jou); (3) er is geen diepe identiteit over tijd — identiteit is een nuttige fictie. Elk antwoord heeft radicale implicaties.",
+    examples: [
+      { domain: "Digitale onsterfelijkheid", icon: "💾", text: "Als je brein volledig wordt gedigitaliseerd en in een computer draait — ben jij dat, of een kopie van jou? Als je sterft na het uploaden, is er dan continuïteit? Teleportatie-intuïties bepalen hoe we over digitale onsterfelijkheid redeneren." },
+      { domain: "Slaap en bewustzijn", icon: "😴", text: "Elke nacht verlies je bewustzijn. Ben je dezelfde persoon als je wakker wordt? De meeste mensen zeggen ja — maar op welke grond? Het antwoord onthult welke theorie van persoonlijke identiteit je impliciet hanteert." },
+      { domain: "Persoonlijkheidsverandering", icon: "🦋", text: "Als je na een ernstige hersenaandoening radicaal van persoonlijkheid verandert — ben je dan nog dezelfde persoon? Juridisch, moreel, relationeel? Teleportatie maakt dit abstracte probleem concreet en urgent." }
+    ],
+  },
+  {
+    id: "ship-of-theseus",
+    title: "Het Schip van Theseus",
+    difficulty: 1,
+    emoji: "⛵",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Het legendarische schip van Theseus werd stuk voor stuk gerepareerd. Na verloop van tijd was elk onderdeel vervangen. Is het nog hetzelfde schip? En als de originele delen werden bewaard en tot een nieuw schip werden gebouwd — welk is dan het échte schip van Theseus? Het experiment ondervraagt identiteit door continuïteit: wat maakt iets dezelfde entiteit over tijd?",
+    abstractExample: "Het paradox heeft twee kandidaatoplossingen: (1) continuïteit van vorm en functie maakt het identiek (graduele vervanging = hetzelfde schip); (2) materiële continuïteit maakt het identiek (de originele delen zijn het echte schip). Beide lijken soms juist — de paradox onthult dat 'hetzelfde' afhankelijk is van welk criterium we kiezen.",
+    examples: [
+      { domain: "Persoonlijke identiteit", icon: "🪞", text: "Elke cel in je lichaam wordt in zeven jaar vervangen. Ben jij dezelfde persoon als zeven jaar geleden? Materieel niet, maar psychologisch misschien wel. Welk criterium telt voor wie jij 'bent'?" },
+      { domain: "Organisaties", icon: "🏢", text: "Een bedrijf dat al zijn medewerkers, producten en strategie heeft vervangen — is het nog hetzelfde bedrijf? Rechtspersoonlijk ja, maar cultureel? Het Theseus-probleem speelt bij fusies, overnames en reorganisaties." },
+      { domain: "Cultureel erfgoed", icon: "🏛️", text: "Een historisch gebouw dat na brand volledig is herbouwd met originele plannen maar nieuwe materialen — is het het originele gebouw? De Notre-Dame-herbouw roept precies deze vraag op: authentieke reconstructie of nieuwe kopie?" }
+    ],
+  },
+  {
+    id: "chinese-room",
+    title: "De Chinese Kamer (Searle)",
+    difficulty: 2,
+    emoji: "🀄",
+    academicCategory: "Filosofie van de Geest",
+    skillCategory: "Kritisch Denken",
+    definition: "John Searle vroeg: stel je zit in een kamer en ontvangt Chinese tekens. Je hebt een regelboek dat je vertelt welke tekens je terug moet sturen — zonder dat je Chinees verstaat. Van buiten lijkt het alsof de kamer Chinees spreekt. Maar jij begrijpt niets. Als AI's werken als de kamer — symboolmanipulatie zonder begrip — hebben ze dan echt intelligentie of begrip?",
+    abstractExample: "De kamer simuleert begrip perfect van buiten maar heeft geen begrip van binnen. Searle gebruikt dit om te argumenteren dat computationele processen — hoe gesofisticeerd ook — nooit intrinsiek betekenis of begrip kunnen hebben. Syntaxis (symboolmanipulatie) is niet voldoende voor semantiek (betekenis).",
+    examples: [
+      { domain: "Grote taalmodellen", icon: "💬", text: "Een taalmodel geeft overtuigende antwoorden op elke vraag. Begrijpt het de vragen, of manipuleert het statistisch symbolen zonder begrip — zoals Searle's kamer? Dit is het centrale debat over AI-intelligentie." },
+      { domain: "Vertaalmachines", icon: "🌐", text: "Een perfecte vertaalmachine die elke taal feilloos vertaalt: begrijpt ze de inhoud, of voert ze een geavanceerde symbolische transformatie uit? Searle zou zeggen: het laatste. Maakt het praktisch verschil?" },
+      { domain: "Onderwijs", icon: "📚", text: "Een leerling die examenantwoorden correct formuleert zonder de stof te begrijpen, is een menselijke Chinese kamer. Het onderscheid tussen begrip en reproductie is het centrale probleem in onderwijs en toetsing." }
+    ],
+  },
+  {
+    id: "split-brain-identity",
+    title: "Gespleten Brein en Dubbele Identiteit",
+    difficulty: 3,
+    emoji: "🧩",
+    academicCategory: "Neuropsychologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Bij split-brain-patiënten (waar het corpus callosum is doorgesneden) kunnen de twee hersenhelften onafhankelijk van elkaar waarnemen, redeneren en handelen. De linkerhand weet letterlijk niet wat de rechterhand doet. Dit is geen gedachte-experiment maar een empirisch feit — en het daagt de intuïtie van een eenheidsidentiteit radicaal uit.",
+    abstractExample: "Als de twee helften onafhankelijk reageren, oordelen en zelfs conflicteren — hoeveel 'personen' zitten er dan in één hoofd? En als de eenheid van bewustzijn een constructie is die afhangt van communicatie tussen hersendelen, is persoonlijke identiteit dan robuust of fragiel?",
+    examples: [
+      { domain: "Identiteit", icon: "🪞", text: "Het gevoel een coherent, eenheidservend bewustzijn te zijn is mogelijk een illusie geproduceerd door de integratiemechanismen van het brein. Split-brain-gevallen tonen dat die integratie breekbaar is — en daarmee de identiteit." },
+      { domain: "Besluitvorming", icon: "🎯", text: "Menselijke beslissingen zijn niet altijd coherent — niet omdat we onzeker zijn maar omdat verschillende hersendelen verschillende belangen nastreven. Split-brain maakt deze interne conflicten letterlijk zichtbaar." },
+      { domain: "Filosofie van de ziel", icon: "✨", text: "Als bewustzijn deelbaar is, is de idee van een ondeelbare ziel of eenheidsidentiteit moeilijk te handhaven. Neurologische fenomenen als split-brain hebben directe implicaties voor religieuse en metafysische opvattingen over het zelf." }
+    ],
+  },
+  {
+    id: "personal-identity-fission",
+    title: "Persoonsfissie (Parfit)",
+    difficulty: 3,
+    emoji: "🔀",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Derek Parfit vroeg: stel je hersenhelften worden gescheiden en elk geïmplanteerd in een andere persoon, die beide jouw herinneringen en persoonlijkheid volledig erven. Wie van de twee is jij? Als geen van beide jij is: dan is er dus een geval denkbaar waarin jij ophoudt te bestaan zonder dat iemand sterft. Dit ondermijnt de gedachte dat persoonlijke identiteit altijd de hoogste waarde is.",
+    abstractExample: "Parfit's conclusie: wat echt telt is niet dat 'ik' voortleef maar dat er continuïteit van psychologie is. Persoonlijke identiteit is niet wat moreel het zwaarst telt — survival van ervaringen en connecties is dat. Dit heeft radicale implicaties voor hoe we denken over zelfzorg, opoffering en de angst voor de dood.",
+    examples: [
+      { domain: "Angst voor de dood", icon: "💀", text: "Als persoonlijke identiteit minder substantieel is dan we denken, is de dood misschien minder verlies dan we vrezen. Parfit schreef dat zijn inzicht hem bevrijdde: 'I seemed to have lost my fear of death.'" },
+      { domain: "Zelfzorg vs. altruïsme", icon: "🌍", text: "Als er geen scherpe grens is tussen jij en anderen, is het rationele argument voor eigenbelang boven altruïsme zwakker. Parfit gebruikte dit om te beargumenteren dat morele verplichtingen jegens anderen sterker zijn dan we doorgaans denken." },
+      { domain: "Toekomstig zelf", icon: "🔮", text: "Hoe anders ben jij over 30 jaar? Als continuïteit gradueel is, is de 'jij' van 2055 in zekere zin een andere persoon — wat implicaties heeft voor hoe zwaar je toekomstige belangen telt bij beslissingen nu." }
+    ],
+  },
+  {
+    id: "inverted-qualia",
+    title: "Omgekeerde Qualia",
+    difficulty: 2,
+    emoji: "🔴🟢",
+    academicCategory: "Filosofie van de Geest",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel dat wat jij 'rood' noemt er voor jou van binnen uitziet zoals wat ik 'groen' noem — maar dat we allebei geleerd hebben dit 'rood' te noemen en er identiek op reageren. Niemand zou het verschil merken — geen enkel gedragsexperiment zou het onthullen. Zijn omgekeerde qualia denkbaar? En als ja, heeft dat implicaties voor de aard van bewustzijn?",
+    abstractExample: "Als omgekeerde qualia denkbaar zijn — twee mensen met identiek gedrag maar verschillende subjectieve ervaringen — dan zijn subjectieve ervaringen niet volledig bepaald door gedrag en functie. Dit ondersteunt Chalmers' 'hard problem': er is iets aan bewustzijn dat buiten functionalisme valt.",
+    examples: [
+      { domain: "Subjectiviteit", icon: "🌟", text: "Je kunt nooit met zekerheid weten of de rode roos voor jou er van binnen hetzelfde uitziet als voor mij. Dit is niet alleen een filosofisch curiosum maar een fundamenteel argument voor de onherleidbare subjectiviteit van bewustzijn." },
+      { domain: "AI en ervaring", icon: "🤖", text: "Als een AI 'pijn' rapporteert — is haar binnenste ervaring hetzelfde als jouw pijn? Of functioneel equivalent maar subjectief anders? Of heeft ze helemaal geen subjectieve ervaring? Omgekeerde qualia maken dit onoplosbaar via gedragstoetsing." },
+      { domain: "Communicatie", icon: "💬", text: "Taal is gebaseerd op gedeeld gedrag, niet op gedeelde ervaring. We spreken over 'rood' alsof we weten dat we hetzelfde bedoelen — maar de omgekeerde-qualia-mogelijkheid toont dat dit een aanname is, geen zekerheid." }
+    ],
+  },
+  {
+    id: "brain-in-vat",
+    title: "Een Brein in een Vat (Putnam / Descartes)",
+    difficulty: 2,
+    emoji: "🫙",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel je bent een brein in een vat, verbonden aan een supercomputer die je alle zintuiglijke input geeft die je normaal ervaart. Je zou niets merken — alles lijkt echt. Hoe weet je dat dit niet het geval is? Descartes gebruikte een vergelijkbaar argument (de boze demon) om te betogen dat je niets zeker kunt weten behalve dat je denkt.",
+    abstractExample: "Het gedachte-experiment stelt de externe wereld ter discussie. Putnam voegde een twist toe: als je een brein in een vat was, dan zou de zin 'ik ben een brein in een vat' iets anders betekenen — want je referentie zou anders zijn. Dus de zin 'ik ben een brein in een vat' kan niet waar zijn als je hem uitspreekt. Een zelfondermijnend scenario.",
+    examples: [
+      { domain: "Scepsis over werkelijkheid", icon: "🔍", text: "De Matrix-film is een populaire versie van dit gedachte-experiment. Het stelt de vraag: als alle ervaringen identiek zijn aan 'echte' ervaringen, maakt het dan moreel of praktisch verschil of ze echt zijn?" },
+      { domain: "Wetenschappelijk realisme", icon: "🔬", text: "Wetenschappers nemen aan dat hun instrumenten echte verschijnselen meten. Maar als je een brein in een vat bent, zijn die instrumenten ook simulaties. Het experiment markeert de limiet van empirisch bewijs voor externe realiteit." },
+      { domain: "Epistemisch vertrouwen", icon: "🧭", text: "Descartes' methode: twijfel aan alles wat twijfelbaar is, behoud alleen wat onbetwijfelbaar is. Cogito ergo sum: het enige zekere is dat er iets is dat twijfelt. Dit is de basis van moderne westerse epistemologie." }
+    ],
+  },
+  {
+    id: "turing-test-consciousness",
+    title: "De Turing-test en Bewustzijn",
+    difficulty: 2,
+    emoji: "🤖",
+    academicCategory: "Filosofie van de Geest",
+    skillCategory: "Kritisch Denken",
+    definition: "Alan Turing stelde voor: als een machine in een onbeperkt gesprek niet van een mens te onderscheiden is, moeten we haar als denkend beschouwen. Maar is het slagen van de Turing-test voldoende bewijs van bewustzijn of begrip? Searle's Chinese Kamer suggereert van niet — geslaagde imitatie impliceert niet intrinsiek begrip of subjectiviteit.",
+    abstractExample: "De Turing-test is een gedragscriterium voor intelligentie. Maar als p-zombies denkbaar zijn, dan kan een wezen de Turing-test halen zonder bewustzijn. De test mikt op het verkeerde doelwit als het gaat om bewustzijn — wat we écht willen weten is of er iemand 'thuis is', niet of gedrag overtuigt.",
+    examples: [
+      { domain: "Chatbots en AI-assistenten", icon: "💬", text: "Moderne taalmodellen halen de Turing-test in veel contexten. Betekent dat dat ze bewust zijn? Dat ze begrijpen? Of dat de Turing-test niet de juiste maatstaf is voor wat we eigenlijk willen weten?" },
+      { domain: "Dierenrechten", icon: "🐾", text: "Dieren falen de Turing-test maar er is brede consensus dat ze bewustzijn hebben. Dit toont aan dat Turing-test-succes niet noodzakelijk is voor bewustzijn — en dus ook niet voldoende." },
+      { domain: "Mens-machine-grens", icon: "🔬", text: "Als de grens tussen mensen en machines in de toekomst vervaagt — cyborgs, neurale implantaten, digitale bewustzijnsextensies — verliest de Turing-test zijn betekenis als scheidslijn. Wat is dan het criterium voor morele status?" }
+    ],
+  },
 ];
