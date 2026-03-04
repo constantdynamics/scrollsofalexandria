@@ -8326,5 +8326,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Zoek drie optische illusies. Beschrijf wat je ziet versus wat er objectief is. Wat leert dit over de betrouwbaarheid van jouw perceptie in alledaagse situaties?",
     aiHelperPrompts: ["Hoe beïnvloedt verwachting perceptie?", "Is perceptie cultuurgebonden?", "Wat zeggen neurowetenschappen over directe vs. geconstrueerde perceptie?"]
+  },
+
+  // Batch Z3 – Complexiteit & Systemen
+  {
+    id: "emergence-complexity",
+    title: "Emergentie",
+    difficulty: 3,
+    emoji: "🌀",
+    academicCategory: "Complexiteitswetenschap",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["systemen", "emergentie", "complexiteit", "zelforganisatie"],
+    definition: "Emergentie is het verschijnsel dat complexe systemen eigenschappen ontwikkelen die niet aanwezig zijn in de afzonderlijke delen — het geheel is anders dan (en niet reduceerbaar tot) de som der delen.",
+    abstractExample: "Watermoleculen hebben geen eigenschap 'nat' — maar miljarden samen produceren een vloeistof die je kunt voelen. Natheidheid emergeert uit de interacties.",
+    examples: [
+      { domain: "Bewustzijn", icon: "🧠", text: "Bewustzijn emergeert uit neuronen die individueel geen bewustzijn hebben — de meest mysterieuze emergentie in de natuur." },
+      { domain: "Markt", icon: "📈", text: "Marktprijzen emergeren uit miljoenen individuele transacties — geen centrale planner berekent ze, ze zijn het resultaat van de interacties." },
+      { domain: "Mierenkolo", icon: "🐜", text: "Een mierenkolo vertoont complex collectief gedrag (voedselroutes, verdediging) zonder centrale planning — emergentie uit eenvoudige lokale regels." }
+    ],
+    prerequisites: [],
+    unlocks: ["complex-adaptive-systems"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke eigenschap kenmerkt emergente eigenschappen?", options: ["Ze zijn voorspelbaar vanuit de delen", "Ze zijn aanwezig in elk individueel deel", "Ze zijn niet reduceerbaar tot de eigenschappen van de afzonderlijke delen", "Ze vereisen centrale coördinatie"], correct: 2, explanation: "Emergente eigenschappen zijn inherent niet-reduceerbaar: 'nat' is niet aanwezig in één watermolecuul, het emergeert alleen in het collectief." }
+    ],
+    creativePrompt: "Beschrijf drie emergente eigenschappen in jouw eigen leven of omgeving (een vriendschapsgroep, een bedrijf, een stad). Welke eigenschappen heeft het geheel die de individuele delen niet hebben?",
+    aiHelperPrompts: ["Hoe verschilt zwakke van sterke emergentie?", "Welke wetenschapsgebieden bestuderen emergentie?", "Heeft emergentie implicaties voor reductionisme?"]
+  },
+  {
+    id: "complex-adaptive-systems",
+    title: "Complexe Adaptieve Systemen",
+    difficulty: 3,
+    emoji: "🕸️",
+    academicCategory: "Complexiteitswetenschap",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["systemen", "adaptatie", "complexiteit", "zelforganisatie"],
+    definition: "Complexe adaptieve systemen (CAS) zijn systemen bestaande uit vele interacterende agenten die zich aanpassen aan hun omgeving — producerend orde zonder centrale leiding, via terugkoppeling en selectie.",
+    abstractExample: "Een stedelijk verkeerssysteem is een CAS: duizenden bestuurders passen individueel hun rijgedrag aan op basis van lokale informatie, waardoor globale verkeerspatronen emergeren zonder dirigent.",
+    examples: [
+      { domain: "Economie", icon: "📈", text: "Markten zijn CAS: miljoenen agenten handelen lokaal, producerend macro-economische patronen die niemand centraal heeft ontworpen." },
+      { domain: "Immune systeem", icon: "🦠", text: "Het immuunsysteem is een CAS: T-cellen en B-cellen interageren en leren van nieuwe pathogenen zonder centrale command." },
+      { domain: "Sociale media", icon: "📱", text: "Virale trends op sociale media emergeren uit miljoenen individuele shares en likes — niemand plan ze, ze zijn CAS-fenomenen." }
+    ],
+    prerequisites: ["emergence-complexity"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is een kenmerkende eigenschap van complexe adaptieve systemen?", options: ["Centrale sturing", "Terugkoppeling en aanpassing op basis van lokale informatie", "Eenvoudige lineaire causaliteit", "Stabiele, voorspelbare uitkomsten"], correct: 1, explanation: "CAS werken via terugkoppellussen: agenten passen hun gedrag aan op basis van lokale feedback, wat globale patronen produceert die niemand heeft gepland." }
+    ],
+    creativePrompt: "Kies een organisatie of systeem dat jij kent. Analyseer het als CAS: wie zijn de agenten, welke lokale regels volgen ze, welke feedback-loops bestaan er en welke globale patronen emergeren?",
+    aiHelperPrompts: ["Hoe beheer je complexe adaptieve systemen?", "Wat is het verschil tussen complex en ingewikkeld?", "Welke interventies werken wel en niet in CAS?"]
+  },
+  {
+    id: "feedback-loops",
+    title: "Terugkoppellussen",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Systeemtheorie",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["terugkoppeling", "systemen", "versterking", "regulering"],
+    definition: "Terugkoppellussen zijn circuits in systemen waarbij output de input beïnvloedt: positieve terugkoppeling versterkt verandering (instabiliteit); negatieve terugkoppeling dempte verandering (stabiliteit).",
+    abstractExample: "Een thermostaat is een negatieve terugkoppellus: als het te warm wordt, zet hij de verwarming uit. Een microfoonstoring is positief: geluid wordt versterkt, wat meer geluid maakt.",
+    examples: [
+      { domain: "Klimaat", icon: "🌡️", text: "Smeltend ijs reflecteert minder zonlicht → meer warmteabsorptie → meer ijs smelt: positieve terugkoppeling die klimaatverandering versnelt." },
+      { domain: "Economie", icon: "📈", text: "Economische groei → meer investeringen → meer groei: positieve terugkoppeling (totdat een rem optreedt)." },
+      { domain: "Leren", icon: "📚", text: "Succes → meer zelfvertrouwen → meer inspanning → meer succes: positieve terugkoppeling in het leerproces." }
+    ],
+    prerequisites: [],
+    unlocks: ["emergence-complexity"],
+    exercises: [
+      { type: "multipleChoice", question: "Welk type terugkoppeling stabiliseert een systeem?", options: ["Positieve terugkoppeling", "Negatieve terugkoppeling", "Vertraagde terugkoppeling", "Lineaire terugkoppeling"], correct: 1, explanation: "Negatieve terugkoppeling dempt afwijkingen van een doelistant — zoals een thermostaat of biologische homeostase." }
+    ],
+    creativePrompt: "Identificeer drie terugkoppellussen in jouw eigen leven: één positieve (versterkend) en twee negatieve (stabiliserend). Beschrijf hoe ze werken en of je er bewust van bent.",
+    aiHelperPrompts: ["Hoe ontwerp ik negatieve terugkoppelling in organisaties?", "Wat zijn gevaarlijke positieve terugkoppellussen in de maatschappij?", "Hoe herken ik terugkoppellussen in systemen?"]
+  },
+  {
+    id: "nonlinear-dynamics",
+    title: "Niet-lineaire Dynamica",
+    difficulty: 3,
+    emoji: "🦋",
+    academicCategory: "Wiskunde",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["chaos", "niet-lineair", "gevoeligheid", "systemen"],
+    definition: "Niet-lineaire dynamica beschrijft systemen waarbij kleine veranderingen in beginomstandigheden leiden tot dramatisch verschillende uitkomsten — het 'vlindereffect' maakt perfecte voorspelling op lange termijn onmogelijk.",
+    abstractExample: "Een pendulum dat iets harder wordt aangeslagen beweegt niet iets harder maar chaotisch compleet anders — kleine input, dramatisch andere output.",
+    examples: [
+      { domain: "Weer", icon: "⛈️", text: "Lorenz ontdekte dat weermodellen exponentieel afwijken bij minimale meetfouten — vandaar de 7-dag weersgrens voor betrouwbare voorspelling." },
+      { domain: "Ecologie", icon: "🦁", text: "Prooi-predatorcycli in ecosystemen zijn niet-lineair: kleine verstoringen kunnen leiden tot populatieexplosies of -crashes." },
+      { domain: "Economie", icon: "📈", text: "Financiële crises emergeren uit kleine aanvankelijke verstoringen die via niet-lineaire terugkoppeling escaleren naar systeemcrises." }
+    ],
+    prerequisites: ["feedback-loops"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het 'vlindereffect' in chaotheorie?", options: ["Vlinders zijn chaotische vliegers", "Kleine beginverschillen leiden tot grote verschillen in uitkomst", "Niet-lineaire systemen zijn oncontroleerbaar", "Chaos is willekeurig"], correct: 1, explanation: "Lorenz beschreef hoe een vlindervleugel in Brazilië een tornado in Texas kon veroorzaken — extreem gevoel voor beginomstandigheden." }
+    ],
+    creativePrompt: "Beschrijf een moment in je leven waarbij een kleine, schijnbaar onbelangrijke gebeurtenis leidde tot grote veranderingen (een ontmoeting, een beslissing, een toevalligheid). Wat leer je over het plannen van je leven?",
+    aiHelperPrompts: ["Hoe verschilt chaos van willekeur?", "Kunnen chaotische systemen worden beheerd?", "Welke systemen zijn het meest chaotisch?"]
+  },
+  {
+    id: "systems-thinking",
+    title: "Systeemdenken",
+    difficulty: 2,
+    emoji: "🔭",
+    academicCategory: "Systeemtheorie",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["systemen", "denken", "verbanden", "holisme"],
+    definition: "Systeemdenken is een benadering die focust op hoe onderdelen van een systeem met elkaar interageren en hoe systemen als geheel functioneren — in contrast met lineair denken dat oorzaken en gevolgen isoleert.",
+    abstractExample: "Lineair denken: bacteriën veroorzaken ziekte → antibiotica doden bacteriën → probleem opgelost. Systeemdenken: antibiotica beïnvloeden ook het microbioom, resistentie en immuunsysteem — het systeem als geheel.",
+    examples: [
+      { domain: "Gezondheidszorg", icon: "🏥", text: "Behandelen van diabetes alleen met medicatie negeert het systeem: voeding, beweging, stress, slaap en sociaaleconomische context zijn allen verweven." },
+      { domain: "Onderwijs", icon: "📚", text: "Lage schoolprestaties oplossen via betere docenten negeert het systeem: armoede, ouderlijk support, psychologische veiligheid en buurtomgeving spelen allen mee." },
+      { domain: "Bedrijf", icon: "💼", text: "Verkoop verhogen via meer verkopers zonder naar het productie- en distributiesysteem te kijken kan het systeem overbelasten." }
+    ],
+    prerequisites: ["feedback-loops"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt systeemdenken van lineair denken?", options: ["Systeemdenken is altijd beter", "Systeemdenken erkent terugkoppeling, vertraging en verbanden tussen delen", "Lineair denken is eenvoudiger", "Ze zijn complementair maar nooit verschillend"], correct: 1, explanation: "Systeemdenken erkent dat effecten terugwerken op oorzaken, dat er vertragingen zijn en dat interventies onbedoelde bijeffecten kunnen hebben." }
+    ],
+    creativePrompt: "Kies een probleem dat jou bezighoudt. Teken een systeemlus: welke factoren beïnvloeden het probleem, hoe hangen ze samen en welke terugkoppellussen bestaan er? Wat ontdek je dat lineaire analyse miste?",
+    aiHelperPrompts: ["Hoe maak ik een causal loop diagram?", "Welke problemen zijn het best te begrijpen met systeemdenken?", "Hoe gebruik ik systeemdenken in beleidsontwikkeling?"]
+  },
+  {
+    id: "scale-free-networks",
+    title: "Schaalvrije Netwerken",
+    difficulty: 3,
+    emoji: "🌐",
+    academicCategory: "Netwerkwetenschap",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["netwerk", "hub", "verbinding", "distributie"],
+    definition: "Schaalvrije netwerken volgen een machtswetdistributie: de meeste knopen hebben weinig verbindingen, maar een kleine minderheid (hubs) heeft extreem veel — internet, sociale netwerken en biologische netwerken volgen dit patroon.",
+    abstractExample: "Het internet is schaalvrij: de meeste sites hebben enkele bezoekers, maar Google en Wikipedia hebben miljarden — een kleine elite van hubs domineert het netwerk.",
+    examples: [
+      { domain: "Internet", icon: "💻", text: "Weinige websites ontvangen het leeuwendeel van het webverkeer — schaalvrije distributie maakt zoekmachines dominant en kleine sites kwetsbaar." },
+      { domain: "Biologie", icon: "🦠", text: "Metabolische netwerken in cellen zijn schaalvrij: weinige metabolieten zijn betrokken bij de meeste reacties — verwijdering van hubs is fataal." },
+      { domain: "Sociaal", icon: "👥", text: "Sociale netwerken zijn schaalvrij: superconnectors (hubs) zijn cruciaal voor informatieverbreiding — zij starten epidemieën van ideeën en virussen." }
+    ],
+    prerequisites: ["complex-adaptive-systems"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het voordeel én nadeel van schaalvrije netwerken?", options: ["Altijd stabiel", "Robuust tegen willekeurige fouten, kwetsbaar voor gerichte aanvallen op hubs", "Kwetsbaar voor alle fouten", "Gelijkmatig verdeeld risico"], correct: 1, explanation: "Schaalvrije netwerken zijn robuust als willekeurige knopen uitvallen (die zijn waarschijnlijk niet-hubs), maar bijzonder kwetsbaar als hubs worden aangevallen." }
+    ],
+    creativePrompt: "Analyseer jouw eigen sociale netwerk. Wie zijn de 'hubs' (mensen met extreem veel verbindingen)? Hoe beïnvloedt dat informatiestroom, geruchten en kansen in jouw netwerk?",
+    aiHelperPrompts: ["Hoe beïnvloeden hubs epidemieën?", "Hoe bouw je een schaalvrij netwerk?", "Waarom volgen zoveel netwerken een machtswetdistributie?"]
+  },
+  {
+    id: "cynefin-framework",
+    title: "Cynefin-raamwerk",
+    difficulty: 2,
+    emoji: "🗺️",
+    academicCategory: "Managementwetenschap",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["complexiteit", "beslissing", "context", "management"],
+    definition: "Het Cynefin-raamwerk (Snowden) onderscheidt vier contexten: eenvoudig (beste praktijken), ingewikkeld (goede praktijken via expertise), complex (emergente praktijken via experimenteren) en chaotisch (novelpraktijken via daadkracht) — elk vereist een andere beslisaanpak.",
+    abstractExample: "Een vliegtuigmotor repareren is ingewikkeld (expertise nodig maar kenbare procedure); een nieuwe markt betreden is complex (probeer-observeer-leer); een brand blussen is chaotisch (handel nu, analyseer later).",
+    examples: [
+      { domain: "Bedrijf", icon: "💼", text: "Productielijn is 'eenvoudig' (standaard procedures); R&D is 'complex' (onzekerheid vereist experimenten); PR-crisis is 'chaotisch' (handle first, analyze later)." },
+      { domain: "Beleid", icon: "🏛️", text: "Een pandemie begint chaotisch, wordt complex naarmate data groeit, en onderdelen worden ingewikkeld als oplossingen zijn gevonden." },
+      { domain: "Onderwijs", icon: "📚", text: "Rekenaritmetiek leren is 'ingewikkeld'; creatief schrijven faciliteren is 'complex'; kindbescherming bij crisissituatie is 'chaotisch'." }
+    ],
+    prerequisites: ["complex-adaptive-systems"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke aanpak past het beste bij een complex probleem?", options: ["Beste praktijken toepassen", "Expert raadplegen", "Experimenteren, observeren, reageren", "Onmiddellijk handelen zonder analyse"], correct: 2, explanation: "In een complexe context zijn oorzaak-gevolg relaties pas achteraf zichtbaar — experimenten en pilots zijn de aangewezen aanpak om te leren." }
+    ],
+    creativePrompt: "Kies drie uitdagingen in jouw werk of leven. Classificeer elk in het Cynefin-raamwerk. Hoe verandert die classificatie jouw aanpak voor elke uitdaging?",
+    aiHelperPrompts: ["Hoe gebruik ik het Cynefin-raamwerk in leiderschap?", "Wat zijn de gevaren van complexe problemen behandelen als ingewikkeld?", "Hoe verschuiven problemen tussen Cynefin-domeinen?"]
+  },
+  {
+    id: "self-organization",
+    title: "Zelforganisatie",
+    difficulty: 2,
+    emoji: "🌿",
+    academicCategory: "Complexiteitswetenschap",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["zelforganisatie", "orde", "systemen", "spontaan"],
+    definition: "Zelforganisatie is het emergeren van orde en structuur in een systeem zonder externe sturing — via lokale interacties tussen componenten die globale patronen produceren.",
+    abstractExample: "IJskristallen vormen ingewikkelde, symmetrische vormen via eenvoudige moleculaire interacties — geen blauwdruk, geen ontwerper, pure zelforganisatie.",
+    examples: [
+      { domain: "Biologie", icon: "🦋", text: "Vogelopstijgpatronen (murmurations) zijn zelforganisatie: duizenden vogels volgen drie eenvoudige regels (afstand houden, snelheid aanpassen, richting volgen) en produceren prachtige golven." },
+      { domain: "Samenleving", icon: "🏙️", text: "Stadswijken met karakter (Jordaan, Pijp) zijn zelforganiserend: ze emergeerden uit lokale interacties van bewoners, zonder masterplan." },
+      { domain: "Internet", icon: "💻", text: "Wikipedia is zelforganiserend: duizenden bijdragers coördineren zonder hiërarchie en produceren een coherente encyclopedie." }
+    ],
+    prerequisites: ["emergence-complexity"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat zijn de minimale vereisten voor zelforganisatie?", options: ["Centrale coördinatie", "Lokale interactie-regels en terugkoppeling", "Externe ontwerper", "Willekeurige beweging"], correct: 1, explanation: "Zelforganisatie vereist alleen lokale regels en terugkoppeling — uit die eenvoudige ingrediënten emergeren complexe globale patronen." }
+    ],
+    creativePrompt: "Ontwerp een zelforganiserend systeem voor een probleem: een buurtschoonmaakactie, een open-source project, of een informele leergroep. Welke minimale regels stel je in om goede zelforganisatie te bevorderen?",
+    aiHelperPrompts: ["Hoe faciliteer ik zelforganisatie in teams?", "Wanneer werkt zelforganisatie beter dan hiërarchie?", "Wat zijn gevaren van ongecontroleerde zelforganisatie?"]
+  },
+  {
+    id: "resilience-systems",
+    title: "Systeemveerkracht",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Complexiteitswetenschap",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["veerkracht", "systemen", "herstel", "robuustheid"],
+    definition: "Systeemveerkracht is het vermogen van een systeem om verstoringen op te vangen en te herstellen terwijl de essentiële structuur en functie behouden blijft — veerkracht verschilt van stabiliteit (geen verstoring) en weerstand (verstoring weerstaan).",
+    abstractExample: "Een rietstengel is veerkrachtig: hij buigt in de wind maar breekt niet en keert terug naar zijn oorspronkelijke positie. Een eiken plank is resistent maar breekt bij hoge spanning.",
+    examples: [
+      { domain: "Ecologie", icon: "🌳", text: "Een divers ecosysteem is veerkrachtiger dan een monocultuur: als één soort wegvalt, nemen andere de functie over." },
+      { domain: "Economie", icon: "💰", text: "Landen met gediversifieerde economieën herstellen sneller van crises dan landen die afhankelijk zijn van één sector." },
+      { domain: "Persoonlijk", icon: "👤", text: "Mensen met brede sociale netwerken, vaardigheden en financiële reserves zijn veerkrachtiger bij persoonlijke crises." }
+    ],
+    prerequisites: ["complex-adaptive-systems"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke eigenschap verhoogt systeemveerkracht het meest?", options: ["Maximale efficiëntie", "Redundantie en diversiteit", "Centrale controle", "Snelle groei"], correct: 1, explanation: "Redundantie (meerdere wegen naar hetzelfde doel) en diversiteit (verschillende typen componenten) zijn de twee centrale drivers van systeemveerkracht." }
+    ],
+    creativePrompt: "Beoordeel de veerkracht van jouw persoonlijk leven op drie dimensies: financieel, sociaal en professioneel. Waar is de grootste kwetsbaarheid? Wat zou jouw veerkracht het meest versterken?",
+    aiHelperPrompts: ["Hoe meet ik systeemveerkracht?", "Wat is het verschil tussen veerkracht en robuustheid?", "Hoe bouw ik veerkrachtige organisaties?"]
+  },
+  {
+    id: "unintended-consequences",
+    title: "Onbedoelde Gevolgen",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Systeemtheorie",
+    skillCategory: "Complexiteit & Systemen",
+    tags: ["gevolgen", "systemen", "beleid", "complexiteit"],
+    definition: "Onbedoelde gevolgen zijn effecten van interventies die niet waren beoogd en vaak het tegenovergestelde bereiken van het doel — een klassieke uitdaging bij ingrijpen in complexe systemen.",
+    abstractExample: "Pythons werden geïntroduceerd in Florida als huisdier, ontsnapten en verwoesten nu de lokale fauna — een onbedoeld gevolg van een ogenschijnlijk onschuldige actie.",
+    examples: [
+      { domain: "Cobra-effect", icon: "🐍", text: "De Britse overheid betaalde voor ingeleverde cobra-hoofden om slangen te bestrijden — kweekkwekers begonnen cobra's te kweeken voor het geld. Meer cobra's." },
+      { domain: "Verkeer", icon: "🚗", text: "Bredere wegen introduceren om files op te lossen trekken meer automobilisten aan — het geïnduceerde vraageffect herstelt de file." },
+      { domain: "Gezondheidszorg", icon: "🏥", text: "Antibioticaoveralgebruik in de veehouderij lost kortetermijninfecties op maar produceert resistente bacteriën — een serieuze lange-termijn bedreiging." }
+    ],
+    prerequisites: ["systems-thinking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke eigenschap van complexe systemen maakt onbedoelde gevolgen het meest waarschijnlijk?", options: ["Te weinig data", "Terugkoppellussen en niet-lineariteit", "Slechte planning", "Onvoldoende budget"], correct: 1, explanation: "Terugkoppellussen zorgen dat interventies terugwerken op het systeem, wat adaptief gedrag uitlokt dat de interventie kan ondermijnen of verergeren." }
+    ],
+    creativePrompt: "Beschrijf drie beleidsmaatregel of bedrijfsbeslissingen die je kent die onbedoelde gevolgen hadden. Welk systeemkenmerk maakte dat onvermijdelijk? Hoe had een systeemdenkende aanpak het kunnen voorkomen?",
+    aiHelperPrompts: ["Hoe voorspel ik onbedoelde gevolgen voor de implementatie?", "Welke methoden helpen bij het ontwerpen van robuust beleid?", "Zijn onbedoelde gevolgen altijd vermijdbaar?"]
   }
 ];
