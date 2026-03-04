@@ -3474,5 +3474,235 @@ export const principlesNew = [
     ],
     creativePrompt: "Reflecteer op een situatie waarin je een emotie onderdrukte die eigenlijk gepast was, of een situatie waarin je emotie niet paste bij de context. Wat zou emotionele flexibiliteit er anders aan gemaakt hebben?",
     aiHelperPrompts: ["Hoe vergroot ik mijn emotionele flexibiliteit?", "Hoe weet ik welke emotie past bij een situatie?", "Hoe ga ik om met emoties die ik niet wil voelen maar die toch aanwezig zijn?"]
+  },
+  {
+    id: "lateral-thinking",
+    title: "Lateraal Denken",
+    difficulty: 2,
+    emoji: "↔️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["creativiteit", "probleemoplossing", "innovatie", "denken"],
+    definition: "Lateraal denken (bedacht door Edward de Bono) is het benaderen van problemen vanuit onverwachte hoeken — buiten de logische, lineaire redenering om. Het daagt aannames uit en zoekt alternatieve frames die nieuwe oplossingen openen.",
+    abstractExample: "Verticaal denken graaft hetzelfde gat dieper. Lateraal denken begint een nieuw gat op een andere plek. Soms is de oplossing niet dieper graven maar ergens anders beginnen.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een hotel met lange wachttijden bij liften loste dit niet op door meer liften te plaatsen, maar door spiegels bij de liften te zetten. Klachten verdwenen — mensen waren bezig met zichzelf bekijken. Lateraal denken in actie." },
+      { domain: "Studie", icon: "📚", text: "Vastgelopen op een essay? In plaats van harder proberen: schrijf het essay vanuit het tegenovergestelde standpunt. Dit onthult zwakke punten en geeft nieuwe inzichten." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Ruzie over het opruimen van de keuken oplossen niet door de taken te verdelen, maar door een systeem te ontwerpen dat opruimen verleidelijker maakt." }
+    ],
+    prerequisites: [],
+    unlocks: ["first-principles-thinking", "inversion-thinking"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kernverschil tussen lateraal en verticaal denken?", options: ["Lateraal denken is sneller", "Lateraal denken zoekt alternatieve perspectieven; verticaal denken verdiept de bestaande benadering", "Verticaal denken is creatiever", "Ze zijn hetzelfde maar voor verschillende problemen"], correctIndex: 1, explanation: "Verticaal denken excelleert bij problemen met één juist antwoord. Lateraal denken is effectiever bij complexe problemen waar de standaardaanpak vastloopt — het daagt het frame zelf uit." }
+    ],
+    creativePrompt: "Kies een probleem dat je al lang hebt. Bedenk vijf compleet onlogische of absurde oplossingen. Welke absurde oplossing bevat een kern van iets nuttigs?",
+    aiHelperPrompts: ["Hoe oefen ik lateraal denken dagelijks?", "Welke technieken helpen lateraal denken te stimuleren?", "Wanneer is lateraal denken beter dan analytisch denken?"]
+  },
+  {
+    id: "first-principles-thinking",
+    title: "Redeneren vanuit Eerste Principes",
+    difficulty: 3,
+    emoji: "🔬",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["redeneren", "innovatie", "aannames", "fundamenten"],
+    definition: "Redeneren vanuit eerste principes is het ontmantelen van problemen tot hun meest fundamentele bouwstenen — feiten die niet verder herleid kunnen worden — en van daaruit opnieuw opbouwen. Het weigert analogieën en bestaande aannames als startpunt.",
+    abstractExample: "Analoog denken: 'We doen het zo omdat anderen het zo doen.' Eerste-principes denken: 'Waarom doen we het überhaupt? Wat zijn de fundamentele feiten? Wat is de theoretisch beste oplossing?'",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "SpaceX vroeg niet 'Hoe maken we raketten goedkoper?' maar 'Wat kost een raket in grondstoffen?' (~2% van marktprijs). Dit leidde tot een volledig nieuw bedrijfsmodel." },
+      { domain: "Studie", icon: "📚", text: "In plaats van een essay schrijven 'zoals je het hebt geleerd': 'Wat is een essay eigenlijk? Een betoog. Welke elementen zijn essentieel voor een overtuigend betoog?' Terug naar de kern." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Dieet kiezen niet op basis van trends, maar vragen: 'Welke voedingsstoffen heeft mijn lichaam daadwerkelijk nodig? Wat zijn de werkelijke effecten van voedsel op mijn doelen?'" }
+    ],
+    prerequisites: ["lateral-thinking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt eerste-principes denken van analogisch denken?", options: ["Eerste-principes denken is sneller", "Eerste-principes denken begint bij fundamentele feiten; analogisch denken laat zich leiden door wat anderen doen", "Analogisch denken is altijd fout", "Ze zijn complementair en even waardevol"], correctIndex: 1, explanation: "Analogisch denken is efficiënt maar beperkt tot bestaande oplossingen. Eerste-principes denken is trager maar kan radicaal nieuwe oplossingen genereren door aannames te elimineren." }
+    ],
+    creativePrompt: "Kies een gewoonte of systeem in je leven. Vraag vijf keer 'waarom' totdat je bij de fundamentele aanname aankomt. Is die aanname werkelijk waar?",
+    aiHelperPrompts: ["Hoe pas ik eerste-principes denken toe op alledaagse problemen?", "Wanneer is analoog denken beter dan eerste principes?", "Hoe weet ik of ik bij een eerste principe ben aangekomen?"]
+  },
+  {
+    id: "inversion-thinking",
+    title: "Inversiedenken",
+    difficulty: 2,
+    emoji: "🔃",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["probleemoplossing", "strategie", "denken", "risico"],
+    definition: "Inversiedenken (geïnspireerd door Carl Jacobi en Charlie Munger) is het omdraaien van een probleem: in plaats van 'Hoe bereik ik succes?' vragen 'Hoe zou ik zeker falen?' Door faalscenario's te identificeren kun je ze vermijden.",
+    abstractExample: "Wil je gelukkig zijn? Vraag: 'Wat maakt mensen miserable?' Vermijd dat. Wil je een goed product bouwen? Vraag: 'Hoe zou ik dit product zo slecht mogelijk maken?' Doe het tegenovergestelde.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "In plaats van 'Hoe maak ik dit project succesvol?' vragen: 'Wat zou dit project zeker laten mislukken?' Gebrekkige communicatie, geen duidelijke verantwoordelijkheid, te optimistische planning — elimineer die." },
+      { domain: "Relaties", icon: "❤️", text: "In plaats van 'Hoe verbeter ik mijn relatie?': 'Wat zou mijn relatie zeker beschadigen?' Gebrek aan eerlijkheid, verwaarlozing, weinig waardering. Vermijd die." },
+      { domain: "Studie", icon: "📚", text: "'Hoe zorg ik ervoor dat ik absoluut niets leer?' Passief lezen, geen oefening, geen herhaling. Het tegenovergestelde van die lijst is een effectief studieplan." }
+    ],
+    prerequisites: ["lateral-thinking"],
+    unlocks: ["pre-mortem"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is inversiedenken bijzonder nuttig?", options: ["Alleen bij kleine beslissingen", "Bij complexe systemen waar directe aanpak moeilijk is en faalrisico's helder zijn", "Als alternatief voor gewone planning", "Nooit — het is te negatief"], correctIndex: 1, explanation: "Inversiedenken is krachtig bij complexe situaties omdat menselijke hersenen beter zijn in het identificeren van wat fout kan gaan dan wat succes garandeert. Door te starten bij faalscenario's worden blinde vlekken blootgelegd." }
+    ],
+    creativePrompt: "Kies een doel. Schrijf een lijst van alles wat dit doel zeker zou saboteren. Hoe goed beschermt je huidige aanpak je tegen die sabotages?",
+    aiHelperPrompts: ["Hoe gebruik ik inversiedenken bij persoonlijke beslissingen?", "Hoe combineer ik inversie met andere denkstijlen?", "Is inversiedenken pessimistisch of realistisch?"]
+  },
+  {
+    id: "pre-mortem",
+    title: "Pre-mortem Analyse",
+    difficulty: 2,
+    emoji: "🔮",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["risico", "planning", "projectmanagement", "vooruitdenken"],
+    definition: "Een pre-mortem is een planningsoefening waarbij je je voorstelt dat een project al mislukt is en terugredeneert: 'Stel het is over een jaar mislukt — wat is er misgegaan?' Dit activeert kritisch denken en identificeert risico's die optimisme en groepsdruk anders verbergen.",
+    abstractExample: "Een post-mortem analyseert een mislukt project na afloop. Een pre-mortem doet dit vóóraf — je reist mentaal naar een mislukt toekomst en analyseert de oorzaken alsof ze al zijn gebeurd.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Voor een productlancering het team vragen: 'Stel dat we over zes maanden op de voorpagina staan als voorbeeld van een mislukte lancering — wat is er fout gegaan?' Mensen benoemen risico's die ze anders niet uitspreken." },
+      { domain: "Studie", icon: "📚", text: "Voor een grote presentatie vragen: 'Stel ik sta er morgen slecht voor — wat heeft dat veroorzaakt?' Onvoldoende voorbereiding, technische problemen, geen backup. Nu kun je ze voorkomen." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Voor een grote reis: 'Stel dat de vakantie een ramp wordt — wat is er misgegaan?' Paspoort vergeten, geen reisverzekering. Checklist van preventie volgt vanzelf." }
+    ],
+    prerequisites: ["inversion-thinking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is een pre-mortem effectiever dan gewone risicoanalyse?", options: ["Het is sneller", "Het 'prospective hindsight' frame maakt het makkelijker risico's te benoemen die optimisme anders onderdrukken", "Het vereist minder expertise", "Het is hetzelfde als gewone risicoanalyse"], correctIndex: 1, explanation: "Onderzoek toont dat 'prospective hindsight' (jezelf in de toekomst plaatsen alsof iets al is gebeurd) mensen 30% beter maakt in het identificeren van oorzaken. Het omzeilt ook groepsdenken door risico's legitiem te maken." }
+    ],
+    creativePrompt: "Kies een huidig project. Schrijf een krantenkopartikel van de toekomst: 'Project X mislukt na een jaar.' Wat staat in de eerste alinea? Wat ging er mis?",
+    aiHelperPrompts: ["Hoe leid ik een pre-mortem sessie met een team?", "Hoe diep moet een pre-mortem gaan?", "Hoe zorg ik dat mensen eerlijk zijn in een pre-mortem?"]
+  },
+  {
+    id: "design-thinking",
+    title: "Design Thinking",
+    difficulty: 2,
+    emoji: "🎨",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["ontwerp", "empathie", "innovatie", "probleemoplossing"],
+    definition: "Design thinking is een mensgerichte probleemoplossingsmethodologie in vijf fasen: Empathie (begrijp de gebruiker), Definieer (formuleer het werkelijke probleem), Ideeer (genereer veel ideeën), Prototypeer (maak snelle modellen), Test (valideer met echte gebruikers).",
+    abstractExample: "Ingenieurs vragen: 'Hoe bouwen we dit?' Design thinkers vragen eerst: 'Wie gebruikt dit, en wat probeert hij werkelijk te bereiken?' Het antwoord verandert soms het hele probleem.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een ziekenhuis wilde de patiëntervaring verbeteren. Observaties toonden dat het grootste probleem verveling en angst was tijdens wachten. Oplossing: betere oriëntatie en entertainment — niet meer personeel." },
+      { domain: "Studie", icon: "📚", text: "Een scriptie schrijven met design thinking: eerst diep begrijpen welke lezer het leest (empathie), dan het werkelijke kennisgat definiëren, dan meerdere onderzoeksaanpakken bedenken." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een cadeau kopen met design thinking: niet 'wat wil ik geven' maar 'wat beleeft deze persoon dagelijks, wat mist hij, wat zou zijn dag beter maken?'" }
+    ],
+    prerequisites: [],
+    unlocks: ["lateral-thinking"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom begint design thinking met empathie?", options: ["Empathie is altijd de eerste stap bij elk proces", "Diep begrip van de gebruiker onthult het werkelijke probleem dat anders verkeerd gedefinieerd wordt", "Empathie maakt het proces sneller", "Zonder empathie kun je niet prototyperen"], correctIndex: 1, explanation: "De meest gemaakte fout in probleemoplossing is het verkeerd definiëren van het probleem. Door te beginnen met empathisch begrip van de gebruiker vermijd je oplossingen die technisch perfect zijn maar het verkeerde probleem aanpakken." }
+    ],
+    creativePrompt: "Kies een frustratie in je dagelijks leven. Stel jezelf drie vragen: Wie ervaart dit probleem? Wat probeert hij werkelijk te bereiken? Wat zijn zijn echte belemmeringen? Hoe verandert dit je probleemoplossing?",
+    aiHelperPrompts: ["Hoe pas ik design thinking toe op persoonlijke problemen?", "Wat is het verschil tussen design thinking en gewoon creatief zijn?", "Hoe doe ik empathisch onderzoek zonder middelen?"]
+  },
+  {
+    id: "six-thinking-hats",
+    title: "Zes Denkhoeden",
+    difficulty: 2,
+    emoji: "🎩",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["denken", "besluitvorming", "perspectief", "groepsdynamiek"],
+    definition: "De Zes Denkhoeden (Edward de Bono) is een denkkader waarbij zes 'hoeden' zes denkstijlen vertegenwoordigen: wit (feiten), rood (gevoel), zwart (risico), geel (optimisme), groen (creativiteit), blauw (proces). Door bewust van hoed te wisselen, denk je vollediger.",
+    abstractExample: "Normaal denk je gelijktijdig over feiten, risico's, emoties en ideeën — en ze storen elkaar. De hoeden zorgen dat iedereen tegelijk in dezelfde richting denkt, wat denken effectiever maakt.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "In een vergadering over een nieuw product: Witte hoed: 'Wat zijn de marktcijfers?' Zwarte hoed: 'Welke risico's zijn er?' Gele hoed: 'Welke kansen zien we?' Groene hoed: 'Welke creatieve ideeën hebben we?' Dit voorkomt dat pessimisme creativiteit blokkeert." },
+      { domain: "Studie", icon: "📚", text: "Een essay kritisch beoordelen met alle zes hoeden: de feiten checken (wit), de sterke punten benoemen (geel), de zwakke argumenten identificeren (zwart), alternatieve invalshoeken bedenken (groen)." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een groot besluit nemen (verhuizen, carrièreswitch) door bewust elke hoed 'op te zetten' en vanuit die lens vijf minuten te denken, voordat je conclusies trekt." }
+    ],
+    prerequisites: ["lateral-thinking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het hoofddoel van de zes denkhoedenmethode?", options: ["Sneller vergaderen", "Parallel denken faciliteren — iedereen denkt tegelijk vanuit dezelfde lens", "Creativiteit bevorderen ten koste van analyse", "Conflicten vermijden"], correctIndex: 1, explanation: "Paralleel denken (iedereen tegelijk in dezelfde richting) is efficiënter dan adversarieel denken (voor vs. tegen). De hoeden zorgen dat alle perspectieven systematisch worden overwogen zonder dat ze elkaar in de weg zitten." }
+    ],
+    creativePrompt: "Neem een beslissing die je voor je uitschuift. Loop door elk van de zes hoeden: wat zegt elke hoed over deze beslissing? Welke hoed gebruik je normaal bijna nooit?",
+    aiHelperPrompts: ["Hoe gebruik ik de zes denkhoeden alleen (zonder groep)?", "Welke hoed is het moeilijkst voor mij en hoe oefen ik die?", "Hoe introduceer ik de zes hoeden in mijn team?"]
+  },
+  {
+    id: "divergent-convergent",
+    title: "Divergent en Convergent Denken",
+    difficulty: 2,
+    emoji: "🔀",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["creativiteit", "probleemoplossing", "ideeëngeneratie", "selectie"],
+    definition: "Creatief probleemoplossen vereist twee denkfasen: divergent denken (zo veel mogelijk ideeën genereren zonder oordeel) en convergent denken (het beste idee selecteren via analyse). Ze mogen elkaar niet verstoren — oordelen tijdens ideegeneratie doodt creativiteit.",
+    abstractExample: "Divergent denken is als een vuurwerk: ideeën vliegen in alle richtingen. Convergent denken is als een trechter: al die ideeën worden gefilterd tot één krachtige richting. Beide fasen zijn noodzakelijk.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een brainstorm wordt effectiever in twee fasen: eerst 20 minuten alle ideeën opschrijven zonder commentaar (divergent), dan de beste drie selecteren op basis van criteria (convergent)." },
+      { domain: "Studie", icon: "📚", text: "Een essay beginnen: eerst alles opschrijven wat je over het onderwerp weet (divergent), dan structureren en selecteren wat relevant is (convergent)." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een verjaardag plannen: eerst alle ideeën noteren zonder te beoordelen, dan filteren op budget en voorkeur van de jarige." }
+    ],
+    prerequisites: [],
+    unlocks: ["design-thinking"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom mogen divergent en convergent denken niet gelijktijdig plaatsvinden?", options: ["Ze vereisen verschillende ruimtes", "Oordelen tijdens ideegeneratie remt de vrije associatie die creatieve ideeën voortbrengt", "Divergent denken is altijd de betere fase", "Ze zijn beide analytisch"], correctIndex: 1, explanation: "Vroeg oordelen tijdens brainstormen filtert ideeën weg voor ze volledig zijn uitgedacht. De meest bizarre ideeën kunnen soms de beste kern bevatten — maar alleen als ze niet meteen worden afgewezen." }
+    ],
+    creativePrompt: "Stel jezelf een creatieve uitdaging. Stel een timer op 10 minuten en schrijf alle ideeën op zonder te oordelen. Stop dan en selecteer de drie meest interessante. Hoe verschilt dit van hoe je normaal ideeën genereert?",
+    aiHelperPrompts: ["Hoe schakel ik bewust tussen divergent en convergent denken?", "Hoe genereer ik meer ideeën tijdens divergent denken?", "Welke criteria gebruik ik bij convergent denken?"]
+  },
+  {
+    id: "five-whys",
+    title: "Vijf Keer Waarom",
+    difficulty: 1,
+    emoji: "❓",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["oorzaak", "analyse", "probleemoplossing", "Toyota"],
+    definition: "De Vijf Keer Waarom-methode (ontwikkeld door Toyota) is een root-cause analyse techniek: op elke 'waarom'-vraag geef je een antwoord en stel je opnieuw 'waarom', totdat je de fundamentele oorzaak bereikt. Vijf is een richtlijn — soms zijn het drie, soms zeven.",
+    abstractExample: "Je auto start niet. Waarom? Accu leeg. Waarom? Dynamo kapot. Waarom? Riem gebroken. Waarom? Niet vervangen bij onderhoudsbeurt. Waarom? Geen onderhoudsschema. Dáár zit de werkelijke oorzaak.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Klant is ontevreden. Waarom? Levering te laat. Waarom? Productie vertraagd. Waarom? Grondstofprobleem. Waarom? Leverancier niet gecommuniceerd. Waarom? Geen vroegwaarschuwingssysteem. Oplossing: systeem bouwen." },
+      { domain: "Studie", icon: "📚", text: "Ik slaag niet voor dit vak. Waarom? Ik begrijp de stof niet goed. Waarom? Ik lees het wel maar oefen niet. Waarom? Oefenopgaven voelen saai. Waarom? Ik zie het nut niet. Oplossing: verbind de stof aan praktische toepassingen." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Ik sport niet. Waarom? Geen tijd. Waarom? Avonden vol. Waarom? Te veel verplichtingen. Waarom? Ik kan moeilijk nee zeggen. Werkelijke probleem: assertiviteit, niet agenda-beheer." }
+    ],
+    prerequisites: [],
+    unlocks: ["inversion-thinking"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is de vijf-keer-waarom methode effectiever dan directe probleemoplossing?", options: ["Het is sneller", "Het identificeert de grondoorzaak in plaats van symptomen te behandelen", "Het vereist meer expertise", "Het is beter voor grote problemen"], correctIndex: 1, explanation: "Directe probleemoplossing behandelt vaak symptomen — de zichtbare uitingen van een onderliggend probleem. Door herhaald 'waarom' te vragen, bereik je de root cause, waardoor de oplossing het probleem definitief aanpakt." }
+    ],
+    creativePrompt: "Kies een probleem dat telkens terugkeert in je leven. Stel vijf keer 'waarom'. Wat is de diepste oorzaak? Is dit wat je dacht?",
+    aiHelperPrompts: ["Hoe weet ik wanneer ik de echte oorzaak heb bereikt?", "Wat doe ik als er meerdere antwoorden zijn op één waarom-vraag?", "Hoe gebruik ik de vijf-keer-waarom in teamverband?"]
+  },
+  {
+    id: "brainwriting",
+    title: "Brainwriting",
+    difficulty: 1,
+    emoji: "✍️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["brainstormen", "groepswerk", "ideeën", "creativiteit"],
+    definition: "Brainwriting is een alternatief voor mondelinge brainstormen waarbij deelnemers ideeën schriftelijk noteren en elkaars ideeën verder ontwikkelen. Dit vermijdt sociale remming, dominante sprekers en groepsdenken die traditionele brainstormsessies beperken.",
+    abstractExample: "In een klassieke brainstorm domineert wie het hardst praat. Brainwriting geeft iedereen evenveel stem — introvert of extrovert, junior of senior — omdat ideeën op papier staan, niet in de lucht.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Elk teamlid schrijft drie ideeën op een vel, geeft het door, de volgende voegt drie ideeën toe op basis van wat er staat. Na vier rondes heeft elk vel twaalf ideeën — zonder dominantie." },
+      { domain: "Studie", icon: "📚", text: "Groepsopdracht beginnen met brainwriting: iedereen schrijft vijf minuten individueel ideeën, deelt ze dan. Minder groepsdenken, meer diversiteit in output." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Met je gezin vakantieideeën plannen: iedereen schrijft vijf ideeën op, dan vergelijk je. Kinderen durven vaker iets te schrijven dan te zeggen als de ouders al iets zeiden." }
+    ],
+    prerequisites: ["divergent-convergent"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk probleem van traditioneel brainstormen lost brainwriting op?", options: ["Te weinig ideeën worden gegenereerd", "Sociale remming en dominantie van bepaalde stemmen", "Ideeën worden te vaag", "Er is geen structuur"], correctIndex: 1, explanation: "Onderzoek toont dat groepen minder en minder diverse ideeën produceren bij mondeling brainstormen dan bij individueel genereren + combineren. Sociale remming, evaluatieangst en productieblokkering zijn de oorzaken." }
+    ],
+    creativePrompt: "Doe een solo brainwriting-oefening: stel jezelf een creatief probleem. Schrijf 5 minuten lang onophoudelijk ideeën op. Geen oordeel. Geen pauze. Wat verrast je?",
+    aiHelperPrompts: ["Hoe faciliteer ik een brainwriting-sessie?", "Wanneer gebruik ik brainwriting versus mondelinge brainstorm?", "Hoe bouw ik voort op andermans ideeën in brainwriting?"]
+  },
+  {
+    id: "creative-constraints",
+    title: "Creatieve Beperkingen",
+    difficulty: 2,
+    emoji: "🔒",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Creativiteit",
+    tags: ["creativiteit", "beperkingen", "innovatie", "focus"],
+    definition: "Creatieve beperkingen zijn bewust opgestelde limieten (tijd, middelen, regels) die de creativiteit paradoxaal genoeg stimuleren. Onbeperkte vrijheid leidt vaak tot verlamming of oppervlakkigheid; beperkingen dwingen tot diep nadenken en onconventionele oplossingen.",
+    abstractExample: "Een blanco canvas kan verlammend zijn. Een canvas met drie kleuren en de opdracht 'maak een portret in 30 minuten' dwingt tot keuzes en creativiteit. Beperkingen zijn geen hindernis maar een springplank.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Twitter's 280-tekenlimiet dwong gebruikers tot scherper, bondiger schrijven — wat een geheel nieuwe schrijfcultuur creëerde die zonder de limiet niet was ontstaan." },
+      { domain: "Studie", icon: "📚", text: "Een essay schrijven in maximaal 500 woorden dwingt tot scherper nadenken over wat werkelijk belangrijk is — effectiever dan 'schrijf zoveel als nodig'." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Koken met alleen wat in de koelkast zit dwingt tot creatieve combinaties die je nooit zelf zou bedenken bij een leeg receptenboek." }
+    ],
+    prerequisites: ["divergent-convergent"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom stimuleren beperkingen soms meer creativiteit dan volledige vrijheid?", options: ["Beperkingen maken taken makkelijker", "Beperkingen forceren creatieve probleemoplossing door voor de hand liggende opties weg te nemen", "Vrijheid leidt altijd tot mindere resultaten", "Beperkingen zijn alleen nuttig voor beginners"], correctIndex: 1, explanation: "Volledige vrijheid leidt vaak tot het kiezen van de veiligste optie. Beperkingen elimineren die opties, waardoor het brein gedwongen wordt dieper te graven naar onconventionele oplossingen." }
+    ],
+    creativePrompt: "Kies een creatief project. Stel jezelf drie willekeurige beperkingen op (bijv. geen gebruik van kleur X, max 100 woorden, klaar in een uur). Hoe beïnvloedt dit je creatieve proces?",
+    aiHelperPrompts: ["Hoe gebruik ik creatieve beperkingen in mijn werk?", "Welke soorten beperkingen zijn het meest stimulerend?", "Hoe vermijd ik dat beperkingen me frustreren in plaats van inspireren?"]
   }
 ];
