@@ -7271,4 +7271,156 @@ export const principlesNew = [
       { domain: "Familie", icon: "👨‍👩‍👧", text: "Regelmatig oprechte aandacht geven aan familieleden zonder speciale aanleiding bouwt de relationele buffer die nodig is als zich echte crises voordoen." }
     ],
   },
+
+  // ── Batch A5: Productiviteit & Focus ─────────────────────────────────────────
+  {
+    id: "attention-residue",
+    title: "Aandachtsresidu",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Aandachtsresidu (Leroy) is het fenomeen dat een deel van je aandacht bij een vorige taak blijft hangen nadat je overschakelt — waardoor je cognitieve prestatie op de nieuwe taak verminderd is. Multitasking en frequent schakelen stapelen dit effect.",
+    abstractExample: "Je beantwoordt halverwege een rapport een e-mail. Zelfs nadat je terugkeert naar het rapport, blijft een deel van je brein bezig met de e-mail. Je denkt dat je 100% aanwezig bent, maar bent het niet.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Onderzoekers die taken afmaken voor ze schakelen, presteren significant beter op de nieuwe taak dan degenen die halfafgemaakt overschakelen. Afmaken verlaagt het residu." },
+      { domain: "Vergaderingen", icon: "📅", text: "Naar een vergadering gaan terwijl je midden in een moeilijk probleem zit, leidt tot verdeelde aandacht in de vergadering — het probleem blijft aandacht eisen totdat het is opgelost." },
+      { domain: "Studie", icon: "📚", text: "Studeren met meldingen aan creëert constant aandachtsresidu. Eén notificatie om de 5 minuten leidt tot effectief 40% minder cognitieve capaciteit voor de studiestof." }
+    ],
+  },
+  {
+    id: "time-blocking",
+    title: "Tijdblokken",
+    difficulty: 1,
+    emoji: "📅",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Tijdblokken is het vooraf toewijzen van specifieke tijdsblokken aan specifieke taken of taaksoorten — in plaats van een takenlijst af te werken wanneer het uitkomt. Kalender = prioriteitenverklaring.",
+    abstractExample: "Een open takenlijst geeft je de illusie van controle maar creëert voortdurende keuzedruk. Een gevulde kalender met blokken schakelt de dagelijkse vraag 'wat doe ik nu?' uit — je volgt gewoon het plan.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Cal Newport: plan elke dag voor de dag begint elk uur. Diep werk 's ochtends (ongestoord), vergaderingen 's middags gebundeld, e-mail in vaste blokken — niet doorlopend." },
+      { domain: "Studie", icon: "📚", text: "Studenten die hun studie inplannen als harde afspraken in de kalender (niet als vage intenties) studeren gemiddeld 2x meer uren per week dan degenen met alleen een takenlijst." },
+      { domain: "Creatief werk", icon: "🎨", text: "Schrijvers die een vast tijdblok hebben (09:00-12:00, altijd, geen uitzonderingen) produceren consistent meer dan schrijvers die 'schrijven als ze inspiratie voelen'." }
+    ],
+  },
+  {
+    id: "single-tasking",
+    title: "Ééntaakgericht Werken",
+    difficulty: 1,
+    emoji: "🎯",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Ééntaakgericht werken is het bewust en volledig richten van aandacht op één taak tegelijk, zonder parallelle taken of afleiding. Multitasking is een mythe — het brein wisselt snel maar kan niet parallel cognitieve taken uitvoeren.",
+    abstractExample: "Je denkt dat je tegelijk e-mail leest en luistert naar een vergadering. Neurobiologisch schakelt je brein snel tussen beide — geen enkel moment zijn beide volledig actief. Kwaliteit van beide lijdt.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Onderzoek: mensen die hun e-mail sluiten en telefoon wegleggen bij een complexe taak, voltooien die taak 25-30% sneller én met minder fouten dan degenen die 'multitasken'." },
+      { domain: "Vergaderingen", icon: "📅", text: "Laptop openhouden in vergaderingen verlaagt begrip van de vergadering met ~20% én cognitieve prestatie op de laptoptaak — beide verliezen. Eén ding tegelijk werkt beter." },
+      { domain: "Gesprekken", icon: "💬", text: "Volledig aanwezig in een gesprek (telefoon weg, oogcontact, actief luisteren) leidt tot dieper begrip en sterkere verbinding dan gesplitste aandacht — de ander merkt het altijd." }
+    ],
+  },
+  {
+    id: "energy-management",
+    title: "Energiebeheer",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Energiebeheer (Loehr & Schwartz) stelt dat prestatie niet wordt beperkt door tijd maar door energie — fysiek, emotioneel, mentaal en spiritueel. Strategisch herstellen is even belangrijk als inspannen; prestatie = stress + herstel.",
+    abstractExample: "Je kunt tijd niet vermenigvuldigen, maar je kunt energie vermenigvuldigen. Een uur productieve arbeid met hoge energie overtreft twee uur uitgeputte arbeid. Herstel is niet zwakheid maar prestatiestrategie.",
+    examples: [
+      { domain: "Prestatie", icon: "🏆", text: "Topsporters schakelen bewust tussen volle inspanning en herstel. Kenniswerkers die dit principe toepassen (echte pauzes, niet doorwerken) presteren consistent beter over tijd." },
+      { domain: "Werk", icon: "💼", text: "Een 20-minuten middagdutje verhoogt de cognitieve prestatie de rest van de middag meer dan cafeïne — fysiek herstel heeft direct effect op mentale energie." },
+      { domain: "Leefstijl", icon: "🌿", text: "Slaap, beweging, voeding en sociale verbinding zijn energiebronnen — niet luxe. Mensen die deze als niet-onderhandelbaar behandelen, presteren over lange termijn beter dan degenen die ze sacrificeren voor meer werktijd." }
+    ],
+  },
+  {
+    id: "flow-conditions",
+    title: "Voorwaarden voor Flow",
+    difficulty: 2,
+    emoji: "🌊",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Flow (Csikszentmihalyi) treedt op als uitdaging en vaardigheid in evenwicht zijn, het doel helder is, en feedback onmiddellijk is. In flow is je prestatie maximaal en tijdsbeleving vervalt. Flow is te creëren, niet te wachten.",
+    abstractExample: "Te makkelijk = verveling. Te moeilijk = angst. Op de juiste rand van je vermogen, met duidelijk doel en directe feedback — dat is de flowzone. Dit is geen toeval maar een optimaliseerbaar systeem.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Programmeur in flow: moeilijk maar oplosbaar probleem, geen notificaties, directe feedback van de compiler. Na uren werken voelt het als minuten — de productiviteit was drie keer normaal." },
+      { domain: "Sport", icon: "🏃", text: "Hardloper in flow: uitdagend tempo voor je niveau, mooie route, muziek die past bij ritme. Flow in sport correleerd met hogere prestatie én hogere intrinsieke motivatie om te trainen." },
+      { domain: "Creativiteit", icon: "🎨", text: "Muzikanten, schrijvers en kunstenaars beschrijven flow als de beste werksessies — ze zoeken bewust de condities op (geen afleiding, uitdagende taak, tijdsdruk) die flow faciliteren." }
+    ],
+  },
+  {
+    id: "proactive-vs-reactive",
+    title: "Proactief vs. Reactief",
+    difficulty: 1,
+    emoji: "🚀",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Proactief zijn is handelen op basis van waarden en intenties, los van externe omstandigheden. Reactief zijn is reageren op wat er op je afkomt. Covey: proactieve mensen focussen op hun invloedscirkel, reactieve op zorgen waar ze geen controle over hebben.",
+    abstractExample: "Proactief: 'Ik kies hoe ik reageer op dit probleem, ongeacht de oorzaak.' Reactief: 'Ik ben zo omdat het weer slecht is, mijn baas vervelend is, het verkeer zwaar was.' De omgeving bepaalt de staat.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Proactieve medewerker: anticipeert op problemen, vraagt verduidelijking voor de deadline, bespreekt verwachtingen voor het project. Reactieve medewerker: wacht, en klaagt als het misgaat." },
+      { domain: "Gezondheid", icon: "🏃", text: "Reactief: dokter bezoeken als je ziek bent. Proactief: bewegen, slapen en eten zodat je minder ziek wordt. Preventief handelen is proactiviteit in de gezondheidssfeer." },
+      { domain: "Relaties", icon: "❤️", text: "Proactief in relaties: regelmatig quality time inplannen zonder dat er een probleem is. Reactief: pas investeren als de relatie al in crisis is." }
+    ],
+  },
+  {
+    id: "batching",
+    title: "Taken Samenvoegen",
+    difficulty: 1,
+    emoji: "📦",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Batching is het samenvoegen van gelijksoortige taken in één tijdsblok om schakelovergangen te minimaliseren. Elke taakwissel kost aandachtsenergie — door gelijksoortige taken te clusteren, benut je de mentale context-setup maximaal.",
+    abstractExample: "In plaats van de hele dag e-mail beantwoorden (constant schakelen), verwerk je e-mail in twee blokken van 30 minuten. In plaats van telefoontjes tussendoor, cluster je ze in één uur. Minder schakelen = meer focus.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "E-mailbatching: tweemaal per dag op vaste tijden e-mail behandelen (10:00 en 16:00) verhoogt productiviteit en verlaagt stress — je bent niet constant bereikbaar maar wel betrouwbaar." },
+      { domain: "Administratie", icon: "📋", text: "Alle facturen, formulieren en administratie eens per week in één blok afhandelen, niet verspreid. De mentale setup voor 'administratiemodus' hoef je maar één keer per week te activeren." },
+      { domain: "Boodschappen", icon: "🛒", text: "Eén grote boodschappenrun per week in plaats van dagelijks kleine ritjes bespaart niet alleen tijd maar ook beslissingsenergie — elke supermarktbezoek vereist cognitieve inspanning." }
+    ],
+  },
+  {
+    id: "weekly-review",
+    title: "Wekelijkse Evaluatie",
+    difficulty: 1,
+    emoji: "📊",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Een wekelijkse evaluatie (Allen/Newport) is een structureel moment om terug te kijken op de afgelopen week, te beoordelen wat goed ging en wat niet, en de komende week bewust te plannen vanuit je prioriteiten.",
+    abstractExample: "Zonder periodieke evaluatie leef je reactief — je past je aan wat er op je afkomt. Met een wekelijkse evaluatie stuur je actief: je ziet patronen, past bij, en behoudt richting op doelen die maanden vergen.",
+    examples: [
+      { domain: "Productiviteit", icon: "💼", text: "GTD-beoefenaars die wekelijkse reviews consequent doen, rapporteren lagere stress en hogere productiviteit dan degenen die alleen dagelijkse takenlijsten bijhouden." },
+      { domain: "Gezondheid", icon: "🏃", text: "Wekelijks terugkijken op slaap, beweging en eetgedrag maakt patronen zichtbaar die dagelijks onzichtbaar blijven — de week als analyse-eenheid is optimaal voor gedragspatronen." },
+      { domain: "Doelen", icon: "🎯", text: "Doelen die je wekelijks evalueert, zijn 4x vaker bereikt dan doelen die alleen jaarlijks worden bekeken — de frequentie van evaluatie voorspelt de kans van succes." }
+    ],
+  },
+  {
+    id: "maker-manager-schedule",
+    title: "Maker vs. Manager Agenda",
+    difficulty: 2,
+    emoji: "🗓️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Paul Graham: makers (schrijvers, programmeurs, ontwerpers) hebben blokken van meerdere uren nodig voor creatief werk. Managers werken op uur-segmenten. Een vergadering midden in de dag vernietigt een maker's productiviteit terwijl het voor een manager normaal is.",
+    abstractExample: "Als maker: één vergadering om 14:00 vernietigt effectief de hele middag — de anticipatie ervoor en de herstelperiode erna maken diep werk onmogelijk. Managers begrijpen dit zelden omdat hun werk anders werkt.",
+    examples: [
+      { domain: "Creatief werk", icon: "🎨", text: "Schrijvers, ontwerpers en ontwikkelaars presteren optimaal met ochtendblokken van 3-4 uur zonder onderbreking. Eén 10-minuten vergadering om 10:00 vernietigt de hele ochtend." },
+      { domain: "Leiderschap", icon: "👥", text: "Leiders die makers in hun team begrijpen, clusteren vergaderingen aan begin of eind van de dag — dit respecteert de maker-agenda en verhoogt teamproductiviteit significant." },
+      { domain: "Freelance", icon: "💻", text: "Freelancers die klantcontact clusteren (bijv. dinsdag en donderdag) en maandag, woensdag en vrijdag vrijhouden voor productief werk, leveren consistent meer kwaliteitswerk." }
+    ],
+  },
+  {
+    id: "pareto-principle-personal",
+    title: "Pareto in Persoonlijke Effectiviteit",
+    difficulty: 1,
+    emoji: "📈",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het Pareto-principe (80/20) toegepast op persoonlijke effectiviteit: 20% van je activiteiten levert 80% van je resultaten. Identificeer die 20% en elimineer, automatiseer of delegeer zoveel mogelijk van de andere 80%.",
+    abstractExample: "In je werk levert waarschijnlijk één of twee kerntaken het meeste op. De rest is ondersteuning, administratie en ruis. Radicaal focussen op de hoge-impact-20% verdubbelt effectief de uitkomst zonder meer uren.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een verkoper ontdekt dat 3 van zijn 15 klanten 80% van zijn omzet genereren. Door meer tijd te investeren in de top-3 en tijd te verminderen bij de rest, verdubbelt hij zijn inkomen." },
+      { domain: "Leren", icon: "📚", text: "20% van de grammaticaregels van een taal dekt 80% van alledaagse communicatie — richt je op de kern, niet op zeldzame uitzonderingen. Pareto-leren is efficiënter dan volledigheid zoeken." },
+      { domain: "Gezondheid", icon: "🏃", text: "Een paar fundamentele gewoonten (slaap, kracht/conditietraining, minimaal bewerkt voedsel) hebben meer effect op gezondheid dan tientallen supplementen en biohacks samen." }
+    ],
+  },
 ];
