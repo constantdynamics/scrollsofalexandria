@@ -7727,4 +7727,156 @@ export const principlesNew = [
       { domain: "Leren", icon: "📚", text: "Een vreemde taal in 3 maanden leren dwingt je tot dagelijks intensief contact in plaats van wekelijks een lesje — de ambitie stuurt radicaal andere methodes dan een bescheiden doel." }
     ],
   },
+
+  // ── Batch A8: Creativiteit & Probleemoplossing ───────────────────────────────
+  {
+    id: "divergent-convergent-thinking",
+    title: "Divergent en Convergent Denken",
+    difficulty: 2,
+    emoji: "🔀",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Creatief probleemoplossen wisselt tussen twee modi: divergent denken (breed, open, associatief — zoveel mogelijk ideeën genereren zonder oordeel) en convergent denken (gericht, kritisch, selectief — het beste idee kiezen). Beiden tegelijk doen, werkt niet.",
+    abstractExample: "Brainstormen lukt alleen als je de convergente modus uitstelt — geen kritiek tijdens het genereren. Daarna schakel je om naar convergent om te selecteren. De volgorde is cruciaal: divergeer eerst, convergeer later.",
+    examples: [
+      { domain: "Teamwork", icon: "👥", text: "In vergaderingen worden ideeën te snel beoordeeld door de groep — dit onderdrukt divergent denken. Eerst 5 minuten stille individuele brainstorm, daarna gezamenlijke selectie, levert meer en betere ideeën op." },
+      { domain: "Schrijven", icon: "✍️", text: "Eerste draft schrijven met uitgeschakelde zelfkritiek (divergent) — gewoon typen. Later reviseren met kritische blik (convergent). Schrijvers die tegelijk schrijven en redigeren, blokkeren beide processen." },
+      { domain: "Design", icon: "🎨", text: "UX-designers gebruiken expliciete divergentie (crazy 8s: 8 ideeën in 8 minuten) gevolgd door convergentie (dotmethode om top-3 te kiezen). De scheiding van fasen is de methodologie." }
+    ],
+  },
+  {
+    id: "incubation-effect",
+    title: "Het Incubatie-effect",
+    difficulty: 2,
+    emoji: "🥚",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het incubatie-effect beschrijft hoe doorbraken in probleemoplossing vaak plaatsvinden na een pauze van actief nadenken — de 'aha!'-momenten tijdens een wandeling, douche of slaap zijn geen toeval maar een neurobiologisch proces.",
+    abstractExample: "Je brein werkt onbewust door aan problemen als je er niet actief mee bezig bent. Defocus-mode netwerken (DMN) maken associatieve verbindingen die bewust, gefocust denken mist.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "Beroemde doorbraken (Archimedes, Kekulé's droomstructuur van benzeen, Newton's appel) illustreren incubatie. De pauze is geen afleiding maar een essentieel deel van het creatieve proces." },
+      { domain: "Werk", icon: "💼", text: "Vastgelopen op een probleem? Doe iets anders 20-30 minuten. Wandelen, een andere taak, of een licht gesprek. De kans dat je terugkeert met een oplossing is significant groter dan doorbijten." },
+      { domain: "Schrijven", icon: "✍️", text: "Schrijvers die stukken 'weg leggen' en later terugkijken, zien verbeteringen die ze tijdens intensief schrijven missen — de incubatieperiode verschaft de analytische afstand." }
+    ],
+  },
+  {
+    id: "lateral-thinking",
+    title: "Lateraal Denken",
+    difficulty: 2,
+    emoji: "↗️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Lateraal denken (De Bono) is het bewust zoeken naar onconventionele benaderingen van problemen — zijwaarts denken in plaats van lineair dieper graven. Technieken: willekeurige stimulus, provocatie, alternatieve perspectieven.",
+    abstractExample: "Verticaal denken: beter en dieper graven in dezelfde richting. Lateraal denken: zoeken naar een ander gat op een andere plek. Soms is de oplossing niet in de voor de hand liggende richting.",
+    examples: [
+      { domain: "Business", icon: "💼", text: "Cirque du Soleil loste de vraag 'hoe concurreer ik met grote circussen?' niet op door goedkoper of beter te worden, maar door te stoppen dieren te gebruiken en kunst te worden — lateraal denken." },
+      { domain: "Design", icon: "🎨", text: "Willekeurige stimulus-techniek: neem een willekeurig woord (bijv. 'schildpad') en dwing verbindingen met het probleem. De onverwachte associaties doorbreken vaste denkpatronen." },
+      { domain: "Probleemoplossing", icon: "🧩", text: "Invers denken: 'Hoe kunnen we dit probleem erger maken?' — de tegenovergestelde vraag onthult factoren die je anders mist, en geeft vervolgens aanwijzingen voor verbetering." }
+    ],
+  },
+  {
+    id: "first-principles-thinking",
+    title: "Eerste-Principes Denken",
+    difficulty: 3,
+    emoji: "🔧",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Eerste-principes denken is het afbreken van complexe problemen naar hun fundamentele bouwstenen, en vandaaruit opnieuw opbouwen — in plaats van op analogy-denken (wat doen anderen?) te vertrouwen.",
+    abstractExample: "Analogie: 'Elektrische auto's zijn te duur omdat batterijen altijd duur zijn.' Eerste-principes: 'Wat zijn de grondstoffen voor een batterij? Hoeveel kosten die op de spotmarkt?' → Musk ontdekte dat de prijs kan dalen.",
+    examples: [
+      { domain: "Business", icon: "💼", text: "Musk over SpaceX: raketten kosten $65M. Breakdown van materiaalkosten: $2M. Vraag: waarom zijn we 30x te duur? Analyse leidde tot volledige herontwerp van productieproces." },
+      { domain: "Persoonlijk", icon: "🎯", text: "'Ik kan me geen gezond eten veroorloven' — eerste-principes: wat kost gezond eten werkelijk per dag? Wat geef ik nu uit aan ongezond eten? De aanname was fout." },
+      { domain: "Studie", icon: "📚", text: "In plaats van 'hoe studeren anderen dit vak?' (analogie), vraag: 'Wat moet ik werkelijk begrijpen? Wat is de meest effectieve manier om dat begrip te bouwen?' — ontwerp je eigen leerpad." }
+    ],
+  },
+  {
+    id: "constraint-driven-creativity",
+    title: "Beperkingen als Creativiteitsbron",
+    difficulty: 2,
+    emoji: "🚀",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Beperkingen (tijd, budget, middelen, regels) stimuleren vaak creativiteit in plaats van haar te onderdrukken. Een onbeperkt canvas leidt tot verlammende keuzevrijheid. Beperkingen dwingen gedisciplineerd denken en onconventionele oplossingen.",
+    abstractExample: "Twitter's 140-tekenlimiet leidde tot een geheel nieuwe taalstijl. Shakespeare's sonettenstructuur dwong tot poëtische precisie. The Dogma 95-filmmakers creëerden krachtige films door regels op te leggen die Hollywood films verboden.",
+    examples: [
+      { domain: "Creativiteit", icon: "🎨", text: "Schrijfuitdaging: vertel een volledig verhaal in precies 6 woorden. De extreme beperking dwingt tot radicale selectie — het resultaat is soms krachtiger dan een onbeperkt verhaal." },
+      { domain: "Business", icon: "💼", text: "Startups met beperkt budget dwingen prioritering die grote bedrijven niet hebben — ze innoveren met minder omdat ze niet anders kunnen. Beperking dwingt focus op wat echt essentieel is." },
+      { domain: "Leren", icon: "📚", text: "Leren in een vreemde taal met beperkt vocabulaire dwingt tot creatieve omschrijvingen. Native speakers beschrijven iets 'geel-oranje' — een kind zegt 'kleur van de zon'. De beperking creëert poëzie." }
+    ],
+  },
+  {
+    id: "reframing-problems",
+    title: "Problemen Herkaderen",
+    difficulty: 2,
+    emoji: "🖼️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Problemen herkaderen is het veranderen van de probleemformulering om nieuwe oplossingsruimte te openen. Hoe je een probleem formuleert, bepaalt sterk welke oplossingen je ziet. Een andere formulering onthult andere mogelijkheden.",
+    abstractExample: "Probleem: 'Hoe maken we de lift sneller?' (technisch, duur). Herkaderd: 'Hoe zorgen we dat wachten minder vervelend is?' Oplossing: spiegel in de lift. Zelfde resultaat, radicaal andere oplossingsruimte.",
+    examples: [
+      { domain: "Design", icon: "🎨", text: "IDEO's David Kelley: 'Ontwerp een beter ziekenhuis' versus 'ontwerp een betere patiëntervaring' — de tweede formulering opent heel andere oplossingen die de eerste sluit." },
+      { domain: "Persoonlijk", icon: "🎯", text: "'Hoe stop ik met te veel eten?' → 'Hoe maak ik het makkelijker om gezond te eten?' — de tweede formulering leidt tot toevoegen (gezond eten toegankelijker) in plaats van verbieden (niet eten)." },
+      { domain: "Werk", icon: "💼", text: "'Hoe verhogen we de medewerkerstevredenheid?' → 'Wanneer zijn medewerkers van nature het meest gemotiveerd, en hoe creëren we meer van die condities?' — focus verschuift van remedie naar ontwerp." }
+    ],
+  },
+  {
+    id: "six-thinking-hats",
+    title: "Zes Denkhoeden",
+    difficulty: 2,
+    emoji: "🎩",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De zes denkhoeden (De Bono) is een parallelle denkstructuur waarbij deelnemers bewust van perspectief wisselen: feiten (wit), emoties (rood), risico's (zwart), kansen (geel), creativiteit (groen), en proces (blauw). Het voorkomt polariserend debat.",
+    abstractExample: "In een normale vergadering debatteren mensen vanuit hun vaste perspectief. Met denkhoeden denkt iedereen tegelijk hetzelfde soort gedachten — eerst iedereen feiten, dan iedereen risico's. Dit leidt tot rijkere analyse.",
+    examples: [
+      { domain: "Vergaderingen", icon: "📅", text: "Teams die de zesdenkhoedenmethode gebruiken bij complexe beslissingen, nemen betere beslissingen dan teams die vrij debatteren — iedereen is gedwongen elk perspectief te verkennen." },
+      { domain: "Persoonlijk", icon: "🎯", text: "Bij een moeilijke carrièrebeslissing: doorloop bewust alle zes perspectieven voordat je besluit. De emotionele hoed (wat voelt goed?) naast de zwarte (wat kan misgaan?) geeft volledig beeld." },
+      { domain: "Schrijven", icon: "✍️", text: "Een essay schrijven met de denkhoeden-aanpak: eerst alle feiten verzamelen (wit), dan tegenargumenten (zwart), dan kansen (geel), dan creatieve invalshoeken (groen) — voor je structuur kiest." }
+    ],
+  },
+  {
+    id: "productive-failure",
+    title: "Productief Falen",
+    difficulty: 2,
+    emoji: "🏗️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Productief falen (Kapur) is het ontdekken dat studenten die eerst zelf moeizaam problemen oplossen (en falen), later beter presteren dan studenten die direct correcte instructie krijgen. De strijd voor begrip versterkt het leren.",
+    abstractExample: "Directe instructie geeft snelle initiële prestatie maar minder diep begrip. Worstelen met een probleem voor de oplossing wordt gepresenteerd, activeert dieper cognitief verwerken en betere langetermijnretentie.",
+    examples: [
+      { domain: "Onderwijs", icon: "📚", text: "Wiskundestudenten die eerst zelf probeerden een nieuw concept toe te passen (met fouten) voor ze de formule kregen, scoorden hoger op transfertaken dan studenten die direct de formule kregen." },
+      { domain: "Werk", icon: "💼", text: "Nieuwe medewerkers die eerst zelf een probleem mogen aanpakken voor ze de standaardprocedure leren, begrijpen waarom de procedure werkt — ze falen productief." },
+      { domain: "Sport", icon: "🏋️", text: "Coaches die atleten eerst zelf oplossingen laten proberen voor ze corrigeren, creëren meer autonome leerders die beter presteren op nieuwe uitdagingen dan atleten die altijd direct instructie kregen." }
+    ],
+  },
+  {
+    id: "systems-thinking-personal",
+    title: "Systeemdenken voor Persoonlijk Gebruik",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Systeemdenken voor persoonlijk gebruik is het begrijpen van je eigen gedragspatronen als systemen met feedbacklussen — hoe stress leidt tot slechte slaap, wat leidt tot verminderde focus, wat leidt tot meer stress. Interventie op het systeem, niet op symptomen.",
+    abstractExample: "Als je telkens 's avonds te laat eet, is de symptoomoplossing: minder eten 's avonds. De systeemoplossing: begrijpen waarom (honger overdag onderdrukt, middagmaal overgeslagen) en de systeemfout aanpakken.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏃", text: "Stresscyclus als systeem: stress → slechte slaap → verminderde zelfregulatie → slechte voeding → meer stress. Interventie op slaap (niet op stress) doorbreekt de cyclus effectiever." },
+      { domain: "Financiën", icon: "💰", text: "Impulsief kopen als systeem: verveling → online shoppen → tijdelijk gevoel van beloning → lege bankrekening → stress → verveling. Interventie op verveling, niet op verbod van kopen." },
+      { domain: "Relaties", icon: "❤️", text: "Conflictpatroon als systeem: partner A negeert → partner B escaleert → partner A trekt zich verder terug → partner B escaleert meer. Interventie op de feedbacklus, niet op het symptoom." }
+    ],
+  },
+  {
+    id: "inversion-thinking",
+    title: "Inversiedenken",
+    difficulty: 2,
+    emoji: "🔃",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Inversiedenken is het omdraaien van de vraag — in plaats van 'hoe bereik ik succes?' vragen 'wat zorgt zeker voor mislukking?' en dat vermijden. Charlie Munger: 'Keer het probleem altijd om.'",
+    abstractExample: "Je wilt een gelukkig leven. Inversie: wat maakt mensen zeker ongelukkig? (sociaal isolement, zinloos werk, financiële zorgen, slechte gezondheid). Vermijd die zaken systemisch in plaats van 'geluk' te najagen.",
+    examples: [
+      { domain: "Investeren", icon: "💰", text: "Munger: 'Vertel me waar ik ga sterven, zodat ik daar nooit naartoe ga.' Buffett's strategie is grotendeels inversie: wees gedisciplineerd in vermijden van blunders, niet alleen in zoeken naar goede deals." },
+      { domain: "Gezondheid", icon: "🏃", text: "Inversie op gezondheid: wat veroorzaakt zeker chronische ziekte? (roken, obesitas, slaaptekort, sedentair leven). Vermijden hiervan heeft meer impact dan het najagen van de perfecte dieet of supplement." },
+      { domain: "Leiderschap", icon: "👥", text: "Inversie op teamleiderschap: wat zeker een team vernietigt? (micromanagement, politiek, gebrek aan doel, geen feedback). Systematisch vermijden hiervan is een betere strategie dan de perfecte leiderschapsstijl zoeken." }
+    ],
+  },
 ];
