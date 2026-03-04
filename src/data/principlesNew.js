@@ -8790,5 +8790,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Doe de IAT-test online (implicit.harvard.edu). Hoe is het resultaat, en stemt het overeen met jouw bewuste attitudes? Hoe beïnvloedt impliciete bias jou in dagelijkse situaties?",
     aiHelperPrompts: ["Hoe verminder ik mijn impliciete bias?", "Is de IAT een betrouwbare meting?", "Welke structurele veranderingen verminderen de impact van impliciete bias?"]
+  },
+
+  // Batch Z5 – Persoonlijke Effectiviteit II
+  {
+    id: "ikigai",
+    title: "Ikigai",
+    difficulty: 1,
+    emoji: "🌸",
+    academicCategory: "Levensfilosofie",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["doel", "passie", "zingeving", "japans"],
+    definition: "Ikigai is een Japans concept dat de reden voor het opstaan beschrijft — het snijpunt van wat je liefhebt, waar je goed in bent, wat de wereld nodig heeft en waarvoor je betaald kunt worden.",
+    abstractExample: "Een muziekdocent in een achterstandswijk vindt ikigai: hij houdt van muziek (passie), is een goede leraar (talent), helpt kwetsbare kinderen (missie) en verdient er zijn brood mee (beroep).",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Een datawetenschapper die passie combineert met technische competentie, milieuoplossingen onderzoekt en een goed salaris verdient, heeft een sterk ikigai-alignment." },
+      { domain: "Vrijwilligerswerk", icon: "❤️", text: "Een gepensioneerde die gratis taal-les geeft aan vluchtelingen vindt ikigai zonder financieel component — passie, talent en missie overlappen." },
+      { domain: "Burnout-preventie", icon: "🔥", text: "Mensen zonder ikigai — die goed verdienen maar geen passie of missie ervaren — lopen hoger risico op burnout en zinloosheidscrises." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het risico van werk dat goed betaalt en nuttig is maar niet je passie of talent is?", options: ["Er is geen risico", "Gevoel van leegte en langzame uitputting", "Te hoog inkomen", "Te weinig uitdaging"], correct: 1, explanation: "Werk zonder passie of talent leidt tot 'zinloosheid' — je verdient misschien goed maar voelt je leeg of uitgeput." }
+    ],
+    creativePrompt: "Teken het ikigai-diagram voor jouw huidige leven. Welk van de vier cirkels ontbreekt of is het kleinst? Wat zou je kunnen doen om meer overlap te creëren?",
+    aiHelperPrompts: ["Hoe vind ik mijn ikigai?", "Hoe verhoudt ikigai zich tot purpose en passie?", "Is ikigai een westers misverstand van een Japans concept?"]
+  },
+  {
+    id: "time-blocking",
+    title: "Tijdblokken",
+    difficulty: 1,
+    emoji: "📅",
+    academicCategory: "Productiviteitswetenschap",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["tijdbeheer", "productiviteit", "planning", "focus"],
+    definition: "Tijdblokken is de productiviteitsmethode waarbij je agenda-blokken reserveert voor specifieke taken in plaats van open tijd te laten — het omzetten van een takenlijst naar een concreet tijdschema.",
+    abstractExample: "In plaats van 'schrijf rapport schrijven' op een takenlijst, blokkeer je maandag 09:00-11:00 voor 'rapport schrijven' in de agenda — specifiek, dus uitvoerbaar.",
+    examples: [
+      { domain: "Schrijven", icon: "✏️", text: "Cal Newport blokkeert 'deep work'-uren in de vroege ochtend voor zijn meest cognitief veeleisende werk, vrij van e-mail en vergaderingen." },
+      { domain: "Leiderschap", icon: "👔", text: "Elon Musk gebruikte 5-minuut tijdblokken voor maximale controle over zijn agenda — extreme versie van de methode." },
+      { domain: "Creativiteit", icon: "🎨", text: "Kunstenaars als Charles Darwin hadden vaste dagelijkse werkblokken — de structuur gaf creativiteit ruimte zonder eindeloze beslissingsmoeheid." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste voordeel van tijdblokken boven een takenlijst?", options: ["Het is eenvoudiger", "Het maakt tijd voor een taak concreet en reserveert energie bewust", "Het geeft meer flexibiliteit", "Het is populairder"], correct: 1, explanation: "Een takenlijst beschrijft wat je wil doen; tijdblokken bepalen wanneer en hoe lang — dat maakt het uitvoerbaar en meetbaar." }
+    ],
+    creativePrompt: "Plan jouw komende week via tijdblokken. Welke drie taken verdienen bewuste deep-work-blokken? Wanneer plan je die en hoe bescherm je die blokken tegen onderbrekingen?",
+    aiHelperPrompts: ["Hoe combineer ik tijdblokken met onverwachte verzoeken?", "Hoeveel tijdblokken per dag zijn optimaal?", "Hoe herstel ik mijn tijdblokken-routine na een chaotische week?"]
+  },
+  {
+    id: "second-brain",
+    title: "Het Tweede Brein",
+    difficulty: 1,
+    emoji: "💾",
+    academicCategory: "Productiviteitswetenschap",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["kennis", "notities", "systeem", "productiviteit"],
+    definition: "Een 'tweede brein' (Forte) is een persoonlijk kennisbeheersysteem — digitale notities, verbanden en referenties — dat als extern geheugen fungeert en creatieve verbanden legt die het biologische brein alleen niet kan bijhouden.",
+    abstractExample: "In plaats van een briljant inzicht uit een boek te vergeten, leg je het vast in een gekoppeld notitiesysteem waar je het later terugvindt wanneer je het nodig hebt.",
+    examples: [
+      { domain: "Schrijven", icon: "✏️", text: "Een schrijver bouwt een Zettelkasten (kaartensysteem) van ideeën — bij het schrijven van een essay verbindt hij automatisch relevante notities." },
+      { domain: "Onderzoek", icon: "🔬", text: "Wetenschappers die Roam Research of Obsidian gebruiken, bouwen een netwerk van concepten dat nieuwe verbanden zichtbaar maakt." },
+      { domain: "Leren", icon: "📚", text: "Elke interessante quote, concept of inzicht wordt opgeslagen met context en verband — kennis accumuleeert over jaren en wordt bruikbaar." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het CODE-systeem in Forte's tweede-brein-methode?", options: ["Create, Organize, Document, Evaluate", "Capture, Organize, Distill, Express", "Connect, Order, Develop, Export", "Collect, Outline, Design, Edit"], correct: 1, explanation: "CODE staat voor Capture (vastleggen), Organize (ordenen), Distill (destilleren tot kern) en Express (uitdrukken in output) — de vier fasen van kennisbeheer." }
+    ],
+    creativePrompt: "Begin vandaag met één notitie in een systeem naar keuze. Schrijf de belangrijkste les uit dit principe op, voeg twee persoonlijke voorbeelden toe en één vraag voor verder onderzoek. Dat is je eerste tweede-brein-notitie.",
+    aiHelperPrompts: ["Welk tool past het beste bij mij voor een tweede brein?", "Hoe begin ik met een tweede-brein zonder overweldigd te raken?", "Hoe verbind ik het tweede brein met mijn dagelijks werk?"]
+  },
+  {
+    id: "energy-management",
+    title: "Energiebeheer",
+    difficulty: 1,
+    emoji: "⚡",
+    academicCategory: "Productiviteitswetenschap",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["energie", "productiviteit", "herstel", "prestatie"],
+    definition: "Energiebeheer erkent dat productiviteit niet alleen afhankelijk is van tijd maar ook van energie — fysieke, emotionele, mentale en spirituele energie moeten actief beheerd worden voor duurzame hoge prestaties.",
+    abstractExample: "Je kunt 12 uur werken maar weinig bereiken bij lage energie; of in 4 uur uitzonderlijk presteren met hoge energie — de energiekwaliteit bepaalt meer dan de tijdkwantiteit.",
+    examples: [
+      { domain: "Atleten", icon: "🏃", text: "Topsporters plannen herstel zo zorgvuldig als training — energiebeheer is het plannen van herstelperiodes, niet alleen werktijden." },
+      { domain: "Creatieven", icon: "🎨", text: "Schrijvers als Maya Angelou schreven alleen 's ochtends vroeg wanneer mentale energie op zijn hoogst was — pieken benutten, dalen accepteren." },
+      { domain: "Management", icon: "💼", text: "De meest impactvolle beslissingen nemen in de ochtend (piek mentale energie) en routinetaken 's middags plannen." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk hersteltype is het meest verwaarloosd door kenniswerkers?", options: ["Fysiek herstel", "Emotioneel herstel", "Mentaal herstel", "Slaap"], correct: 1, explanation: "Emotioneel herstel — loskomen van negatieve interacties en emotionele druk — wordt zelden actief gepland, terwijl het een belangrijke energiedimensie is." }
+    ],
+    creativePrompt: "Track jouw energieniveaus gedurende één week op vier dimensies (fysiek, mentaal, emotioneel, spiritueel) op een schaal 1-10. Wanneer zijn de pieken en dalen? Hoe sluit jouw agenda aan op jouw energiepatroon?",
+    aiHelperPrompts: ["Hoe herstel ik mentale energie sneller?", "Welke activiteiten herstellen emotionele energie het meest?", "Hoe ontwerp ik mijn dag op basis van energiepieken?"]
+  },
+  {
+    id: "decision-fatigue",
+    title: "Beslissingsvermoeidheid",
+    difficulty: 2,
+    emoji: "😩",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["beslissing", "vermoeidheid", "wilskracht", "cognitie"],
+    definition: "Beslissingsvermoeidheid is de verslechterende kwaliteit van beslissingen na een lange reeks beslismomenten — de mentale hulpbron voor beslissen raakt op, wat leidt tot impulsiviteit of vermijding.",
+    abstractExample: "Rechters die eerder op de dag beslissen over gratieverzoeken, stemmen vaker in dan rechters die laat op de dag beslissen — de mentale hulpbron is uitgeput.",
+    examples: [
+      { domain: "Recht", icon: "⚖️", text: "Israelische rechters gaven 65% invrijheidsstelling na de ochtendpauze en vrijwel 0% vlak voor lunch — beslissingsvermoeidheid beïnvloede ernstige beslissingen." },
+      { domain: "Winkelen", icon: "🛒", text: "Supermarkten plaatsen verleidelijke producten bij de kassa — aan het einde van een lang winkelproces is je beslissingsenergie op en zijn impulsaankopen het meest waarschijnlijk." },
+      { domain: "Creatief werk", icon: "🎨", text: "Barack Obama en Steve Jobs droegen elke dag hetzelfde soort kleding om triviaal beslissingen te elimineren en beslissingsenergie te bewaren voor het belangrijke." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke strategie vermindert beslissingsvermoeidheid het meest effectief?", options: ["Meer koffie drinken", "Triviaal beslissingen automatiseren of elimineren", "Vroeg opstaan", "Meer pauzes nemen"], correct: 1, explanation: "Door routinebeslissingen te automatiseren (vaste gewoontes, uniforme keuzes) spaar je beslissingsenergie voor de beslissingen die er echt toe doen." }
+    ],
+    creativePrompt: "Identificeer drie beslissingen die je dagelijks maakt die getrivialiseerd kunnen worden (kleding, maaltijden, werkstartprocedure). Automatiseer ze dit week. Hoe beïnvloedt dat jouw energie voor belangrijkere beslissingen?",
+    aiHelperPrompts: ["Wanneer van de dag neem ik de beste beslissingen?", "Hoe herstel ik beslissingsenergie snel?", "Welke beslissingen zou ik nooit moe moeten nemen?"]
+  },
+  {
+    id: "atomic-habits-system",
+    title: "Atoomgewoontes",
+    difficulty: 1,
+    emoji: "⚛️",
+    academicCategory: "Gedragspsychologie",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["gewoontes", "systemen", "gedrag", "verbetering"],
+    definition: "James Clear's atoomgewoontes stellen dat kleine 1%-verbeteringen dagelijks cumuleren tot enorme transformaties — en dat focus op systemen (gewoontes) consistenter resultaat geeft dan focus op doelen.",
+    abstractExample: "1% beter per dag is na een jaar 37 keer beter; 1% slechter per dag is na een jaar vrijwel nul — de kracht van dagelijkse cumulatie is niet-intuïtief maar wiskundig enorm.",
+    examples: [
+      { domain: "Sport", icon: "🏃", text: "Brailsford's 'aggregation of marginal gains' bij Team Sky: tientallen 1%-verbeteringen in fietsers, voeding, slaap en uitrusting leidden naar meerdere Tour de France-overwinningen." },
+      { domain: "Schrijven", icon: "✏️", text: "Elke dag 200 woorden schrijven bouwt een roman in een jaar — de dagelijkse atoomgewoonte maakt het onmogelijk om niet te slagen." },
+      { domain: "Gezondheid", icon: "💪", text: "Elke dag de sportschoenen aan bij het opstaan (cue-routine) vermindert de drempel voor sporten drastisch — de gewoonte wordt automatisch." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat zijn de vier wetten van gedragsverandering in Clear's model?", options: ["Doel, plan, actie, reflectie", "Maak het duidelijk, aantrekkelijk, makkelijk en bevredigend", "Denk, voel, handel, herhaal", "Cue, routine, beloning, herhaling"], correct: 1, explanation: "Clear's vier wetten: Maak het duidelijk (cue), aantrekkelijk (verlangen), makkelijk (respons) en bevredigend (beloning) — elk aspect van de gewoontecyclus optimaliseren." }
+    ],
+    creativePrompt: "Kies één nieuwe gewoonte die je wil bouwen. Pas Clear's vier wetten toe: maak de cue onmisbaar, maak de gewoonte aantrekkelijk, zo makkelijk mogelijk en geef jezelf een directe beloning.",
+    aiHelperPrompts: ["Hoe breek ik een slechte gewoonte via atoomgewoontes?", "Hoe lang duurt het om een gewoonte te vormen?", "Wat is het verschil tussen identiteitsgewoontes en resultaatgewoontes?"]
+  },
+  {
+    id: "deliberate-practice",
+    title: "Bewust Oefenen",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Expertise-onderzoek",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["oefenen", "expertiseontwikkeling", "feedback", "verbetering"],
+    definition: "Bewust oefenen (Ericsson) is gefocuste, gedisciplineerde training buiten de comfortzone — met onmiddellijke feedback, gerichte correctie en doelbewuste aandacht voor zwakheden — in contrast met onderbewust 'herhalen van wat al goed gaat'.",
+    abstractExample: "Een pianist die dezelfde stukken speelt die hij al kent, oefent niet bewust. Bewust oefenen: de moeilijkste passages 50 keer herhalen tot ze foutloos zijn.",
+    examples: [
+      { domain: "Muziek", icon: "🎵", text: "Yo-Yo Ma oefent niet zijn gehele repertoire maar focust op de maten die technisch onvolmaakt zijn — gerichte zwakte-aanpak." },
+      { domain: "Sport", icon: "⚽", text: "Cristiano Ronaldo staat na training uren extra vrijschoppentraining te oefenen — bewuste repetitie van specifieke zwakheden." },
+      { domain: "Schrijven", icon: "✏️", text: "Een schrijver die zijn eigen stijl analyseert, bewust probeert nieuwe structuren en feedback zoekt van redacteuren, groeit sneller dan iemand die 'gewoon schrijft'." }
+    ],
+    prerequisites: ["growth-mindset-education"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt bewust oefenen van gewoon oefenen?", options: ["Langer oefenen", "Gerichte focus op zwakheden met directe feedback buiten de comfortzone", "Meer pauzes nemen", "Meerdere vaardigheden tegelijk oefenen"], correct: 1, explanation: "Bewust oefenen vereist drie elementen: focus op specifieke verbeterpunten, onmiddellijke feedback en consistente operatie buiten de comfortzone." }
+    ],
+    creativePrompt: "Kies een vaardigheid die je wil verbeteren. Identificeer jouw drie grootste zwakheden daarin. Ontwerp een bewust oefen-sessie van 30 minuten die uitsluitend op die zwakheden focust.",
+    aiHelperPrompts: ["Hoeveel uur bewust oefenen is nodig voor expertise?", "Hoe krijg ik feedback als ik alleen oefen?", "Hoe past bewust oefenen in een vol dagschema?"]
+  },
+  {
+    id: "mental-contrasting",
+    title: "Mentaal Contrasteren",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Motivatiepsychologie",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["doelen", "motivatie", "obstakels", "implementatie"],
+    definition: "Mentaal contrasteren (Oettingen) combineert positieve visualisatie van het gewenste resultaat met realistisch nadenken over obstakels — bewezen effectiever dan puur positief denken of negatief piekeren.",
+    abstractExample: "WOOP-methode: Wish (doel), Outcome (visualiseer het succes), Obstacle (identificeer het reële obstakel), Plan (als X, dan Y). Positief dromen mét obstakelbewustzijn.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏃", text: "Vrouwen die WOOP toepasten bij gewichtsverlies bereikten significant meer dan vrouwen die alleen positief fantaseerden of alleen obstakels zagen." },
+      { domain: "Werk", icon: "💼", text: "Een medewerker die een projectdoel visualiseert én de verwachte teamweerstand expliciet nadenkt, bereidt betere oplossingen voor dan iemand die alleen het doel voor ogen heeft." },
+      { domain: "Relaties", icon: "💑", text: "Stel die positief denken combineert met realistisch nadenken over uitdagingen in hun relatie, rapporteert hogere relationele tevredenheid na jaren." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom werkt positief denken alleen niet zo goed als mentaal contrasteren?", options: ["Positief denken is onrealistisch", "Positief denken geeft een valse gevoel van volbrenging dat motivatie verlaagt", "Positief denken werkt alleen voor simpele doelen", "Er is geen verschil"], correct: 1, explanation: "Oettingen's onderzoek toont dat pure positieve fantasie de motivatie verlaagt: je voelt je alvast geslaagd, waardoor de urgentie om actie te ondernemen verdwijnt." }
+    ],
+    creativePrompt: "Pas WOOP toe op één doel dat je al een tijdje hebt uitgesteld. Schrijf het doel op, visualiseer de beste uitkomst, identificeer het grootste obstakel en maak een als-dan-plan voor dat obstakel.",
+    aiHelperPrompts: ["Hoe verschilt WOOP van affirmaties?", "Hoe vaak moet ik WOOP toepassen op hetzelfde doel?", "Werkt WOOP ook voor kleine dagelijkse doelen?"]
+  },
+  {
+    id: "self-compassion",
+    title: "Zelfcompassie",
+    difficulty: 1,
+    emoji: "🤗",
+    academicCategory: "Positieve Psychologie",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["zelfcompassie", "veerkracht", "zelfkritiek", "welzijn"],
+    definition: "Zelfcompassie (Neff) is het behandelen van jezelf bij mislukking of moeilijkheid met dezelfde vriendelijkheid en begrip als een goede vriend — in contrast met zelfkritiek die prestatie ondermijnt en veerkracht verlaagt.",
+    abstractExample: "Wanneer je een fout maakt: zelfkritiek zegt 'je bent zo stom'; zelfcompassie zegt 'fouten maken is menselijk, hoe herstel ik?'. Zelfcompassie leidt paradoxaal tot betere prestaties.",
+    examples: [
+      { domain: "Sport", icon: "🏃", text: "Atleten met hoge zelfcompassie herstellen sneller van mislukkingen en nemen meer risico in training dan atleten met hoge zelfkritiek." },
+      { domain: "Werk", icon: "💼", text: "Na een mislukt project: zelfcompassie analyseert wat er fout ging en leert, zelfkritiek piekert en vermijdt vergelijkbare uitdagingen." },
+      { domain: "Gezondheid", icon: "💪", text: "Mensen met zelfcompassie houden hun gezonde gewoontes beter vol na een 'slip' — één slechte dag saboteert niet de hele week." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Uit welke drie componenten bestaat Neff's zelfcompassie?", options: ["Zelfacceptatie, zelfzorg, zelfvertrouwen", "Vriendelijkheid voor jezelf, gemeenschappelijke menselijkheid, mindfulle bewustzijn", "Zelfrespect, doorzettingsvermogen, veerkracht", "Acceptatie, assertiviteit, groei"], correct: 1, explanation: "Neff's drie componenten: (1) Self-kindness (vriendelijk vs. kritisch), (2) Common humanity (fouten zijn universeel menselijk, niet uniek slecht) en (3) Mindfulness (evenwichtig bewust zijn)." }
+    ],
+    creativePrompt: "Schrijf een brief aan jezelf over een recente mislukking of moeilijkheid, vanuit het perspectief van een wijze, vriendelijke vriend die jou door en door kent. Wat zegt die vriend?",
+    aiHelperPrompts: ["Is zelfcompassie hetzelfde als zelfmedelijden?", "Hoe combineer ik zelfcompassie met hoge standaarden?", "Welke oefeningen verhogen zelfcompassie?"]
+  },
+  {
+    id: "essentialism",
+    title: "Essentialisme",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Levensfilosofie",
+    skillCategory: "Persoonlijke Effectiviteit",
+    tags: ["focus", "prioriteiten", "minder meer", "essentieel"],
+    definition: "Essentialisme (McKeown) is de discipline om systematisch te onderscheiden wat essentieel is en alles wat dat niet is bewust te elimineren — zodat de hoogste bijdrage aan wat echt telt mogelijk wordt.",
+    abstractExample: "Een essentialist zegt niet 'ja' op 99% van de kansen en offert zijn beste werk op. Hij zegt 'ja' op 10% van de kansen en bereikt 10x meer met elk van die tien.",
+    examples: [
+      { domain: "Bedrijf", icon: "💼", text: "Apple lanceerde in de periode 1997-2007 slechts een handvol producten; Jobs' essentialisme maakte de Mac, iPod, iPhone en iPad mogelijk." },
+      { domain: "Persoonlijk", icon: "👤", text: "Iemand die drie grote commitments heeft (gezin, één project, gezondheid) in plaats van twintig, presteert op elk van die drie consequent." },
+      { domain: "Agenda", icon: "📅", text: "Een essentialistische agenda heeft 'nee' als standaardantwoord en 'ja' als uitzondering die defensief wordt bewaakt." }
+    ],
+    prerequisites: [],
+    unlocks: ["time-blocking"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het kernprincipe van essentialisme?", options: ["Meer gedaan krijgen in minder tijd", "Minder maar beter: selectief de hoogste bijdrage leveren", "Alles weigeren", "Simplificatie van taken"], correct: 1, explanation: "Essentialisme is niet over efficiëntie (meer doen) maar over selectiviteit (de juiste dingen doen) — minder maar beter, niet sneller meer." }
+    ],
+    creativePrompt: "Maak een lijst van al jouw huidige commitments, projecten en verplichtingen. Markeer de drie die de hoogste bijdrage leveren aan wat jij het meest waardeert. Wat kun je kwijt zonder dat het leven slechter wordt?",
+    aiHelperPrompts: ["Hoe leer ik nee te zeggen zonder relaties te beschadigen?", "Hoe onderscheid ik het essentiële van het urgente?", "Welke criteria gebruik ik om te bepalen wat essentieel is?"]
   }
 ];
