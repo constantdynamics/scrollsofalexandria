@@ -7630,5 +7630,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Stel je bent energieminister in 2030. Welke drie prioriteiten stel je om Nederland in 2050 klimaatneutraal te maken? Welke compromissen moet je sluiten?",
     aiHelperPrompts: ["Hoe snel verloopt de energietransitie wereldwijd?", "Welke rol speelt kernenergie in de energietransitie?", "Hoe beïnvloedt de energietransitie mijn eigen energierekening?"]
+  },
+
+  // Batch Y – Menselijke Natuur & Evolutie
+  {
+    id: "kin-selection",
+    title: "Verwantenselectie",
+    difficulty: 3,
+    emoji: "👨‍👩‍👧",
+    academicCategory: "Evolutiebiologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["evolutie", "altruïsme", "familie", "biologie"],
+    definition: "Verwantenselectie (Hamilton's regel) verklaart altruïsme voor verwanten: een gen kan zich verspreiden door gedrag dat de eigen reproductie vermindert maar de reproductie van voldoende verwanten verhoogt — want verwanten dragen dezelfde genen.",
+    abstractExample: "Hamilton's regel: r × B > C (verwantschapsgraad × voordeel voor verwant > kosten voor helper). Jij helpt je broer als het evolutionaire voordeel voor zijn genen groter is dan je eigen kosten.",
+    examples: [
+      { domain: "Dieren", icon: "🐝", text: "Werkbijen vermenigvuldigen zich niet zelf maar helpen de koningin — hun genen verspreiden zich via zussen die 75% van hun genen delen (supernormaal hoog)." },
+      { domain: "Mensen", icon: "👨‍👩‍👧", text: "Mensen geven significant meer geld en tijd aan directe familie dan aan vreemden — een evolutionaire logica die ook cultureel is versterkt." },
+      { domain: "Nepotisme", icon: "💼", text: "Nepotisme (banen geven aan familie) is evolutionair begrijpelijk als verwantenselectie, ook al is het sociaal ongewenst in moderne instituties." }
+    ],
+    prerequisites: [],
+    unlocks: ["reciprocal-altruism"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe groot is de genetische verwantschap tussen broers en zussen?", options: ["25%", "50%", "75%", "100%"], correct: 1, explanation: "Broers en zussen delen gemiddeld 50% van hun genen (r = 0.5) — hetzelfde als ouder-kind." }
+    ],
+    creativePrompt: "Beschrijf drie situaties waar je meer moeite deed voor familie dan voor vrienden. Zijn er gevallen waar je voor een vriend meer deed dan voor een verre familielid? Wat bepaalt de keuze?",
+    aiHelperPrompts: ["Wat is het verschil tussen verwantenselectie en groepsselectie?", "Hoe verklaart verwantenselectie adoptie?", "Hoe beïnvloedt verwantschapsperceptie ons altruïsme?"]
+  },
+  {
+    id: "reciprocal-altruism",
+    title: "Wederkerig Altruïsme",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Evolutiebiologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["samenwerking", "evolutie", "wederkerigheid", "vertrouwen"],
+    definition: "Wederkerig altruïsme (Trivers) verklaart samenwerking tussen niet-verwanten: jij helpt mij nu, ik help jou later — evolutionair stabiel als individuen elkaar herkennen en interacties herhalen.",
+    abstractExample: "Wederkerig altruïsme is als een oud dorpssysteem: jij helpt mij mijn dak te repareren nu, en ik help jou bij jouw oogst straks — iedereen wint over de lange termijn.",
+    examples: [
+      { domain: "Vampieren", icon: "🦇", text: "Vampierknuppels delen bloed met hongerige groepsgenoten — maar weigeren te delen met vleermuizen die eerder niet deelden. Exacte tit-for-tat." },
+      { domain: "Handel", icon: "🛒", text: "Menselijke handel is fundamenteel gebouwd op wederkerig altruïsme: ik geef jou dit, jij geeft mij dat — een evolutionair voorgebakken instinct." },
+      { domain: "Vriendschap", icon: "👫", text: "Vriendschappen die imbalanced worden (één persoon geeft altijd meer) verwelken — ons evolutionaire systeem registreert eerlijkheid nauwgezet." }
+    ],
+    prerequisites: ["kin-selection"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke omstandigheid maakt wederkerig altruïsme evolutionair stabiel?", options: ["Grote groepen", "Herhaalde interacties tussen individuen die elkaar herkennen", "Verwantschap", "Toevallige ontmoetingen"], correct: 1, explanation: "Tit-for-tat werkt alleen als je de ander kunt herkennen en de kans groot is dat je hem opnieuw ontmoet — anders loont bedriegen te veel." }
+    ],
+    creativePrompt: "Analyseer drie relaties in jouw leven (vriendschap, collega, buur). Is de wederkerigheid in balans? Hoe zou een evolutionair psycholoog jouw gedrag verklaren?",
+    aiHelperPrompts: ["Wat is de tit-for-tat strategie in game theory?", "Hoe onderscheid ik wederkerig altruïsme van berekende samenwerking?", "Verklaart wederkerig altruïsme ook liefdadigheid aan vreemden?"]
+  },
+  {
+    id: "sexual-selection",
+    title: "Seksuele Selectie",
+    difficulty: 2,
+    emoji: "🦚",
+    academicCategory: "Evolutiebiologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["evolutie", "aantrekkelijkheid", "selectie", "mate-choice"],
+    definition: "Seksuele selectie is een evolutief mechanisme naast natuurlijke selectie: kenmerken evolueren niet omdat ze overleven bevorderen, maar omdat ze de kans op paring vergroten — via partnerkeuze of concurrentie tussen soortgenoten.",
+    abstractExample: "De pauwenstaart is levensgevaarlijk (roofvijanden zien hem snel) maar geeft aan dat de pauw zo fit is dat hij dit handicap kan dragen — een 'eerlijk signaal' van genetische kwaliteit.",
+    examples: [
+      { domain: "Dieren", icon: "🦁", text: "De leeuwenmanen zijn metabolisch duur en hinder hinderlijk bij jacht — maar signaleren naar leeuwinnen een gezond, fit individu." },
+      { domain: "Mensen", icon: "👤", text: "Menselijke voorkeuren voor symmetrische gezichten, lange benen (vrouwen) en V-taille (mannen) zijn waarschijnlijk evolutionaire signalen van genetische gezondheid." },
+      { domain: "Kunst", icon: "🎵", text: "Geoffrey Miller argumenteert dat menselijke creativiteit en kunst deels seksueel geselecteerde signalen zijn van cognitieve fit." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat zijn de twee mechanismen van seksuele selectie?", options: ["Concurrentie en camouflage", "Partnerkeuze en intraseksuele competitie", "Voortplanting en overleving", "Lerend en genetisch gedrag"], correct: 1, explanation: "Seksuele selectie werkt via (1) het kiezen door partners (interseksueel) en (2) concurrentie binnen hetzelfde geslacht om toegang tot partners (intraseksueel)." }
+    ],
+    creativePrompt: "Beschrijf drie menselijke gedragingen of kenmerken die moeilijk te verklaren zijn via overleving maar wel via seksuele selectie. Wat zegt dit over hoe wij zijn geworden wie we zijn?",
+    aiHelperPrompts: ["Hoe beïnvloedt seksuele selectie genderrollen?", "Zijn menselijke schoonheidsidealen universeel of cultureel?", "Hoe verhoudt seksuele selectie zich tot evolutie van intelligentie?"]
+  },
+  {
+    id: "status-hierarchy-evolution",
+    title: "Statushiërarchie en Evolutie",
+    difficulty: 2,
+    emoji: "👑",
+    academicCategory: "Evolutionaire Psychologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["status", "hiërarchie", "dominantie", "sociaal"],
+    definition: "Statusgedrag is evolutionair diep geworteld: hogere status levert toegang tot betere bronnen, partners en allianties op — waardoor mensen automatisch statussignalen sturen en ontvangen, vaak onbewust.",
+    abstractExample: "Statusgedrag is als de evolutionaire armoede die we draagbaar hebben gemaakt met jas: we dragen nog altijd de onderliggende hiërarchische software, maar vertolken die nu via auto's, titels en volgers.",
+    examples: [
+      { domain: "Werkplek", icon: "💼", text: "Hoekkantoortjes, grote bureaus en bijzondere parkeerplaatsen zijn moderne statusmarkers die dezelfde evolutionaire logica weerspiegelen als alfadieren in een kudde." },
+      { domain: "Consumptie", icon: "🛍️", text: "Luxe goederen zijn deels statusmarkers: ze signaleren aanwezige hulpbronnen ('ik kan dit permitteren') aan potentiële partners en rivalen." },
+      { domain: "Sociale media", icon: "📱", text: "Volgersaantallen, likes en verificatievinkjes zijn digitale statusmarkers die dezelfde neurale beloningscircuits activeren als traditionele sociale status." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen dominantie- en prestige-gebaseerde status?", options: ["Er is geen verschil", "Dominantie via intimidatie; prestige via bewondering en expertise", "Prestige is moderner", "Dominantie geldt alleen voor mannen"], correct: 1, explanation: "Dominantie (alfa-gedrag) en prestige (bewondering voor competentie/grootmoedigheid) zijn twee evolutionair verschillende statusroutes met eigen gedragsprofielen." }
+    ],
+    creativePrompt: "Analyseer jouw eigen statusgedrag. Welke signalen stuur jij bewust of onbewust? Via welk type status (dominantie of prestige) probeer je doorgaans status te verwerven?",
+    aiHelperPrompts: ["Hoe verschilt statusgedrag bij mannen en vrouwen?", "Hoe beïnvloedt statusangst onze beslissingen?", "Hoe bouw ik op een gezonde manier aan sociale status?"]
+  },
+  {
+    id: "mismatch-hypothesis",
+    title: "Mismatch-hypothese",
+    difficulty: 2,
+    emoji: "🔄",
+    academicCategory: "Evolutionaire Psychologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["evolutie", "omgeving", "gedrag", "modern leven"],
+    definition: "De mismatch-hypothese stelt dat veel moderne gezondheidsproblemen (obesitas, angst, eenzaamheid) voortkomen uit een mismatch tussen de omgeving waarvoor onze hersenen zijn geëvolueerd (het Pleistoceen) en de moderne wereld.",
+    abstractExample: "Onze vetopslag-instincten zijn perfect voor een wereld waar voedsel schaars en onregelmatig beschikbaar is — catastrofaal voor een wereld waar calorieëndichterijke voeding 24/7 beschikbaar is.",
+    examples: [
+      { domain: "Voeding", icon: "🍔", text: "Suiker- en vetdrang is evolutionair nuttig (schaarse calorieën opslaan) maar leidt tot obesitas in een wereld van overvloed." },
+      { domain: "Sociale media", icon: "📱", text: "Onze hersenen zijn geëvolueerd voor kleine, stabiele sociale groepen (~150 personen) — sociale media blootstelt ons aan miljoenen oordelen en vergelijkingen." },
+      { domain: "Stress", icon: "😰", text: "De stressrespons is geëvolueerd voor acute fysieke gevaren (tijger) maar wordt geactiveerd door chronische zorgen (werk, geld) — met gezondheidsschade als gevolg." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk aspect van moderne leven veroorzaakt de meeste mismatch met onze evolutionaire aard?", options: ["Technologie gebruik", "Zittende levensstijl en ongezond dieet", "Internationale reizen", "Hoog opleidingsniveau"], correct: 1, explanation: "Onze lichamen zijn geoptimaliseerd voor beweging en wisselend voedsel — zittend werken met calorierijke voeding veroorzaakt de grootste fysiologische mismatch." }
+    ],
+    creativePrompt: "Identificeer drie aspecten van jouw modern leven die waarschijnlijk een evolutionaire mismatch veroorzaken. Welke aanpassingen zou je kunnen maken om die mismatch te verkleinen?",
+    aiHelperPrompts: ["Hoe pas ik mismatch-inzichten toe op mijn gezondheid?", "Zijn alle evolutionaire neigingen problematisch in de moderne wereld?", "Wat zegt de mismatch-hypothese over mentale gezondheid?"]
+  },
+  {
+    id: "in-group-out-group",
+    title: "Ingroep-Uitgroep Dynamiek",
+    difficulty: 2,
+    emoji: "👥",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["groep", "bias", "tribaal", "sociale identiteit"],
+    definition: "De neiging om de eigen groep (ingroep) te bevoordelen en uitgroepen te wantrouwen of te devalueren is een evolutionaire aanpassing die samenwerking bevorderde maar ook tribaal conflict veroorzaakt.",
+    abstractExample: "Zelfs willekeurige groepsindeling (rood versus blauw team) activeert direct ingroep-bias: mensen geven teamgenoten hogere beoordelingen, vertrouwen hen meer en zien hen als individuen.",
+    examples: [
+      { domain: "Sport", icon: "⚽", text: "Voetbalsupporters overschatten de kwaliteit van hun eigen team en zien overwinningen als verdiend, verlies als pech of slechte scheidsrechter." },
+      { domain: "Politiek", icon: "🏛️", text: "Mensen lezen dezelfde statistieken fundamenteel anders afhankelijk van of 'hun partij' er goed of slecht uitkomt." },
+      { domain: "Werk", icon: "💼", text: "Afdelingsbias: mensen beoordelen voorstellen van de eigen afdeling systematisch positiever dan gelijkwaardige voorstellen van andere afdelingen." }
+    ],
+    prerequisites: ["kin-selection"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat toonde Tajfel's minimale groepsparadigma aan?", options: ["Alleen echte groepen creëren bias", "Zelfs willekeurige groepsindeling activeert ingroep-favoritisme", "Ingroep-bias is aangeleerd, niet aangeboren", "Volwassenen zijn immuun voor groepsbias"], correct: 1, explanation: "Tajfel toonde dat zelfs toewijzing aan 'groep rood vs. blauw' op basis van niets onmiddellijk ingroep-favoritisme activeerde — de neiging is basaal." }
+    ],
+    creativePrompt: "Beschrijf een situatie waarbij jij ingroep-bias ervaarde of zelf vertoonde. Wat was de groepsbasis (familie, team, nationaliteit, partij)? Hoe beïnvloedde dit je oordeel?",
+    aiHelperPrompts: ["Hoe verminder ik mijn eigen ingroep-bias?", "Wat zijn interventies om tribaal denken te verminderen?", "Hoe beïnvloedt ingroep-uitgroep dynamiek conflicten?"]
+  },
+  {
+    id: "moral-foundations-theory",
+    title: "Morele Fundamententheorie",
+    difficulty: 3,
+    emoji: "🏛️",
+    academicCategory: "Moraalpsychologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["moraliteit", "politiek", "waarden", "evolutie"],
+    definition: "Jonathan Haidt's morele fundamententheorie stelt dat menselijke moraliteit is opgebouwd uit zes evolutionair geselecteerde fundamenten: zorg/schade, eerlijkheid, loyaliteit, autoriteit, heiligheid en vrijheid — en dat politieke stromingen zich onderscheiden door welke fundamenten ze benadrukken.",
+    abstractExample: "Progressieven benadrukken zorg en eerlijkheid; conservatieven benadrukken alle zes fundamenten — waardoor ze elkaar letterlijk moreel onbegrijpelijk vinden.",
+    examples: [
+      { domain: "Politiek", icon: "🏛️", text: "Discussies over immigratie raken loyaliteits- (nationale identiteit) én zorgfundament (vluchtelingen helpen) — verschillende basismorele talen." },
+      { domain: "Voeding", icon: "🥩", text: "Veganisme raakt het schaadfundament (dieren); vleeseten kan het loyaliteitsfundament raken (traditionele cultuur, gemeenschap)." },
+      { domain: "Religie", icon: "🕌", text: "Religieuze rituelen activeren heiligheids- en loyaliteitsfundamenten sterk — seculiere mensen begrijpen vaak niet waarom dit zo moreel geladen is voor gelovigen." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk moreel fundament benadrukt 'het volgen van traditie en het respecteren van autoriteit'?", options: ["Zorg/schade", "Eerlijkheid", "Autoriteit/subversie", "Heiligheid"], correct: 2, explanation: "Het autoriteit/subversie-fundament heeft betrekking op respect voor hiërarchie, traditie en rolgedrag — sterk aanwezig in conservatieve morele systemen." }
+    ],
+    creativePrompt: "Doe de Moral Foundations Questionnaire online. Analyseer jouw profiel: welke fundamenten zijn het sterkst? Hoe verklaren ze standpunten die jij inneemt en die anderen je misschien niet begrijpen?",
+    aiHelperPrompts: ["Hoe gebruik ik morele fundamententheorie in politieke discussies?", "Zijn de zes fundamenten universeel of cultureel?", "Hoe verbeter ik begrip tussen mensen met andere morele fundamenten?"]
+  },
+  {
+    id: "evolved-intuitions",
+    title: "Geëvolueerde Intuïties",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Evolutionaire Psychologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["intuïtie", "evolutie", "instinct", "hersenen"],
+    definition: "Veel van onze morele en sociale intuïties zijn geëvolueerde snelle antwoorden op terugkerende uitdagingen in de ancestrale omgeving — ze zijn niet altijd correct in moderne contexten maar krachtig en moeilijk te negeren.",
+    abstractExample: "Weerzin bij het zien van rot voedsel is een geëvolueerde beschermende intuïtie — diezelfde weerzin-emotie wordt echter ook getriggerd bij moreel 'vuile' acties, waar ze minder betrouwbaar is.",
+    examples: [
+      { domain: "Rechtvaardigheid", icon: "⚖️", text: "Onze intuïtie dat 'straf verdiend is' zelfs als het niemand helpt, is waarschijnlijk een geëvolueerde sociale handhavingsintuïtie." },
+      { domain: "Moraal", icon: "🏛️", text: "De trolleyprobleem-intuïtie (meer mensen redden is toch verkeerd als je iemand actief moet doden) weerspiegelt een geëvolueerde aversie tegen direct schaden." },
+      { domain: "Gezicht", icon: "👤", text: "Gezichtsherkenning is zo sterk geëvolueerd dat we gezichten zien in wolken, toast en auto's — de hersenen zijn overgeselecteerd voor dit patroon." }
+    ],
+    prerequisites: ["mismatch-hypothesis"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom zijn geëvolueerde intuïties niet altijd betrouwbare morele gidsen?", options: ["Ze zijn te langzaam", "Ze zijn geëvolueerd voor een andere omgeving dan de moderne wereld", "Ze zijn altijd correct", "Ze zijn alleen voor dieren relevant"], correct: 1, explanation: "Intuïties zijn geoptimaliseerd voor ancestrale problemen — in moderne contexten kunnen dezelfde intuïties leiden tot racism, tribalism of andere bias." }
+    ],
+    creativePrompt: "Beschrijf een sterke morele intuïtie die jij hebt die je moeilijk rationeel kunt verklaren. Bedenk dan welke ancestrale situatie die intuïtie nuttig zou hebben gemaakt. Vertrouw je haar nog?",
+    aiHelperPrompts: ["Hoe onderscheid ik betrouwbare van onbetrouwbare intuïties?", "Hoe verhoudt morele intuïtie zich tot morele redenering?", "Wat zegt evolutionaire psychologie over universele morele regels?"]
+  },
+  {
+    id: "theory-of-mind-evolution",
+    title: "Theory of Mind",
+    difficulty: 2,
+    emoji: "🧠",
+    academicCategory: "Cognitieve Wetenschap",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["empathie", "perspectief", "cognitie", "sociaal"],
+    definition: "Theory of Mind is het vermogen om te begrijpen dat anderen overtuigingen, wensen en intenties hebben die verschillen van die van jouzelf — een cruciale vaardigheid voor sociale samenwerking die zich vroeg in de evolutie van de mensheid ontwikkelde.",
+    abstractExample: "Theory of Mind is het besef dat de kaart in jouw hoofd ('de wereld zoals ik die zie') anders is dan de kaart in jouw hoofd van andermans hoofd — een recursief bewustzijn van perspectivisme.",
+    examples: [
+      { domain: "Kind", icon: "👶", text: "Kinderen onder 4 jaar begrijpen de 'false belief task' niet — ze denken dat anderen weten wat zij weten. Pas daarna ontwikkelt Theory of Mind." },
+      { domain: "Autisme", icon: "🧩", text: "Mensen met autisme hebben vaak moeite met Theory of Mind — waardoor sociale situaties moeilijker te interpreteren zijn." },
+      { domain: "Marketing", icon: "🛍️", text: "Effectieve marketing vereist Theory of Mind: je moet de gedachtewereld van de klant modelleren, niet vanuit jezelf redeneren." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk experiment test Theory of Mind bij kinderen?", options: ["Het marshmallow-experiment", "De valse-overtuiging taak (false belief task)", "Het spiegeltest", "Raven's progressieve matrices"], correct: 1, explanation: "De valse-overtuiging taak vraagt kinderen te voorspellen wat een ander denkt — wie Theory of Mind heeft, begrijpt dat de ander een andere (onjuiste) overtuiging heeft." }
+    ],
+    creativePrompt: "Kies een recent conflict of misverstand. Reconstrueer zorgvuldig hoe de andere partij de situatie zag: welke overtuigingen, informatie en intenties hadden zij? Wat begrijp je nu anders?",
+    aiHelperPrompts: ["Hoe verbeter ik mijn Theory of Mind?", "Hoe verhoudt Theory of Mind zich tot empathie?", "Welke dieren hebben Theory of Mind?"]
+  },
+  {
+    id: "costly-signaling",
+    title: "Kostbare Signalering",
+    difficulty: 3,
+    emoji: "🎁",
+    academicCategory: "Evolutiebiologie",
+    skillCategory: "Menselijke Natuur & Evolutie",
+    tags: ["signaal", "eerlijkheid", "altruïsme", "evolutie"],
+    definition: "Kostbare signalering is het principe dat geloofwaardige signalen van kwaliteit of intentie kosten met zich meebrengen — juist omdat ze duur zijn, kunnen ze niet makkelijk worden nagemaakt door inferieure individuen.",
+    abstractExample: "Een dure huwelijksring is kostbaar signalering: juist de hoge prijs communiceert toewijding — een goedkope imitatie signaleert hetzelfde maar kost meer voor wie het zich niet kan permitteren.",
+    examples: [
+      { domain: "Liefdadigheid", icon: "❤️", text: "Openbaar doneren is kostbaar signalering van grootmoedigheid — het is geloofwaardig juist omdat je echt iets opgeeft." },
+      { domain: "Opleiding", icon: "🎓", text: "Een dure elite-opleiding signaleert niet alleen kennis maar ook capaciteit om door een rigoureus selectieproces te komen — het signaal is ook de prestatie." },
+      { domain: "Rituelen", icon: "🕌", text: "Religieuze rituelen die veel moeite kosten (vasten, pelgrimstochten) signaleren oprechte toewijding aan de geloofsgroep." }
+    ],
+    prerequisites: ["sexual-selection"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom zijn kostbare signalen geloofwaardiger dan goedkope signalen?", options: ["Ze zijn mooier", "Nep-signalen kunnen de kosten niet dragen, waardoor het signaal eerlijk blijft", "Ze zijn ouder", "Ze zijn wetenschappelijk bewezen"], correct: 1, explanation: "Het kostbare karakter van het signaal filtert imitators eruit — wie het signaal niet kan waarmaken, kan de kosten niet dragen." }
+    ],
+    creativePrompt: "Welke kostbare signalen stuur jij in je leven (in werk, relaties, sociale context)? Zijn er goedkopere manieren om hetzelfde te communiceren, of ondermijnt dat de geloofwaardigheid?",
+    aiHelperPrompts: ["Hoe herken ik kostbare vs. goedkope signalen in dagelijks leven?", "Hoe verhoudt kostbare signalering zich tot performatief altruïsme?", "Wat zijn voorbeelden van digitale kostbare signalering?"]
   }
 ];
