@@ -10159,4 +10159,156 @@ export const principlesNew = [
       { domain: "Corporate accountability", icon: "🏢", text: "Bedrijven die decennia lang fossiele brandstoffen verkochten terwijl ze de gevaren kenden — zijn ze collectief verantwoordelijk voor klimaatschade? En zijn aandeelhouders die toen niet bestonden mede-aansprakelijk via hun eigendom?" }
     ],
   },
+
+  // ========== BATCH C4: GEDACHTE-EXPERIMENTEN — METAFYSICA & WERKELIJKHEID ==========
+  {
+    id: "simulation-hypothesis",
+    title: "De Simulatiehypothese (Bostrom)",
+    difficulty: 2,
+    emoji: "🎮",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Nick Bostrom redeneerde: als beschavingen technologisch ver genoeg komen, kunnen ze ancestrale simulaties draaien. Als dat mogelijk is, zijn er óf veel meer gesimuleerde dan echte beschavingen, óf bijna geen enkele beschaving bereikt dat stadium, óf ze doen het bewust niet. De eerste optie impliceert dat de kans groot is dat wij in een simulatie leven.",
+    abstractExample: "Bostrom's trilemma: (1) vrijwel alle beschavingen gaan ten onder voor ze simulaties kunnen draaien; (2) gevorderde beschavingen kiezen ervoor dit niet te doen; (3) we zijn bijna zeker in een simulatie. Eén van de drie moet waar zijn. De derde is filosofisch fascinerend maar onverifieerbaar.",
+    examples: [
+      { domain: "Fysica", icon: "⚛️", text: "Sommige fysici zoeken naar 'rastereffecten' in de natuur die de discrete structuur van een computationele simulatie zouden onthullen — zoals een digitaal scherm van dichtbij pixels toont. Tot nu toe niets gevonden, maar de zoektocht is legitiem." },
+      { domain: "Existentiële vragen", icon: "🌌", text: "Als we in een simulatie leven, heeft het leven dan betekenis? Is morele verantwoordelijkheid reëel? Zijn de pijn en vreugde die we ervaren 'echt'? De simulatiehypothese dwingt na te denken over wat realiteit voor ons doen telt." },
+      { domain: "Godsbewijs", icon: "✨", text: "Als de simulatie werd gemaakt door een intelligente entiteit — is dat functioneel gelijkwaardig aan een god? De simulatiehypothese is een seculiere variant van theologische schepping, zonder de traditionele attributen." }
+    ],
+  },
+  {
+    id: "possible-worlds",
+    title: "Mogelijke Werelden en Modaal Realisme (Lewis)",
+    difficulty: 3,
+    emoji: "🌌",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "David Lewis stelde dat alle logisch mogelijke werelden even werkelijk zijn als onze wereld — het zijn geen abstracties maar concrete werkelijkheden die we toevallig niet kunnen bezoeken. Dit 'modaal realisme' klinkt absurd maar lost logische problemen op: 'wat had kunnen zijn' heeft een reële referent.",
+    abstractExample: "In een mogelijke wereld won je die weddenschap die je verloor. In een andere stierf je op twee jaar oud. In een andere bestaan mensen niet. Lewis: al deze werelden zijn even reëel als deze — we wonen toevallig in deze. De term 'actueel' betekent slechts: de wereld die wij bewonen.",
+    examples: [
+      { domain: "Kwantummechanica", icon: "⚛️", text: "De vele-werelden-interpretatie van kwantummechanica (Everett) is verwant aan Lewis' modaal realisme: bij elke kwantummeting splitsen alle uitkomsten in parallelle takken die alle even reëel zijn. Dit is geen metafoor maar serieuze fysica." },
+      { domain: "Spijt en alternatieven", icon: "🔮", text: "'Ik had anders kunnen kiezen' impliceert een mogelijke wereld waarin je dat deed. Lewis: die wereld bestaat. Hoe verandert dat hoe je nadenkt over spijt, verantwoordelijkheid en de waarde van keuzes?" },
+      { domain: "Morele verbeelding", icon: "🌟", text: "Mogelijke werelden zijn ook nuttig zonder metafysisch realisme: als denkgereedschap voor ethiek. 'Wat als we anders waren georganiseerd?' is een vraag naar een mogelijke wereld die ons helpt het actuele te beoordelen." }
+    ],
+  },
+  {
+    id: "leibniz-best-world",
+    title: "Leibniz' Beste Mogelijke Wereld",
+    difficulty: 2,
+    emoji: "🏆",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Leibniz redeneerde: God is almachtig, alwetend en algoed. Dus koos God de beste aller mogelijke werelden. Maar waarom bestaat er dan kwaad? Leibniz: zelfs God kan logische onmogelijkheden niet realiseren. Een wereld zonder enig kwaad is logisch onmogelijk, of de beste mogelijke — met kwaad — is toch beter dan geen wereld.",
+    abstractExample: "Voltaire bespotte dit in Candide via het karakter Pangloss die na iedere ramp verzekert dat dit 'de beste aller mogelijke werelden' is. Het kwaadsprobleem: hoe kan een goede, almachtige God kwaad toestaan? Leibniz' antwoord: Gods keuze was beperkt tot wat logisch mogelijk is — en dit was het beste.",
+    examples: [
+      { domain: "Theodicee", icon: "⛪", text: "Het kwaadsprobleem is het centrale argument tegen het bestaan van een almachtige goede God: als God dit alles had kunnen voorkomen en het niet deed, is hij niet goed. Als hij het niet kon, is hij niet almachtig. Leibniz' antwoord beperkt Gods almacht tot logische mogelijkheden." },
+      { domain: "Optimisme als houding", icon: "😊", text: "Het beste-wereld-argument vertaalt naar een seculiere optimisme: de werkelijkheid is, gegeven alle beperkingen, misschien het meest goede dat mogelijk was. Is dat troostend of naïef? Voltaire koos voor het laatste." },
+      { domain: "Risicobeoordeling", icon: "⚖️", text: "Bij beleidsbeslissingen accepteren we altijd dat de beste keuze niet perfect is maar het beste beschikbare. Leibniz' kader helpt onderscheid te maken tussen vermijdbaar kwaad (dat we moeten bestrijden) en het onvermijdbare (dat we moeten accepteren)." }
+    ],
+  },
+  {
+    id: "hard-determinism-free-will",
+    title: "Hard Determinisme en de Illusie van Vrije Wil",
+    difficulty: 3,
+    emoji: "🎲",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Stel alle gebeurtenissen in het universum worden volledig bepaald door voorafgaande oorzaken plus natuurwetten. Dan gold dat ook voor de neurale processen die jouw 'beslissingen' produceren. Ben je dan vrij? Hard determinisme zegt: nee — vrije wil is een illusie. Compatibilisme zegt: vrijheid is verenigbaar met determinisme als je handelt conform je eigen verlangens zonder externe dwang.",
+    abstractExample: "Laplace's demon: stel een superintelligentie kent de positie en impuls van elk deeltje op een moment. Dan kan ze elke toekomstige toestand berekenen — inclusief jouw beslissingen van morgen. Als dat klopt, zijn jouw toekomstige keuzes al 'bepaald'. Wat betekent dat voor verantwoordelijkheid?",
+    examples: [
+      { domain: "Strafrechtelijke aansprakelijkheid", icon: "⚖️", text: "Als gedrag volledig neurobiologisch bepaald is — en neurobiologie door genetica en omgeving — is straf dan moreel gerechtvaardigd? Of is het louter een mechanisme ter bescherming en gedragsmodificatie, zonder vergeldings-logica?" },
+      { domain: "Zelfverbetering", icon: "🌱", text: "Als je toekomstige keuzes al vastliggen, heeft zelfverbetering dan zin? Compatibilistisch antwoord: ja — jouw keuze om aan jezelf te werken is ook een oorzaak in de keten. Het determinisme sluit jouw handelen niet uit, het omvat het." },
+      { domain: "Morele verantwoordelijkheid", icon: "🎯", text: "De meeste mensen geloven in vrije wil en morele verantwoordelijkheid. Als determinisme klopt maar dat geloof nuttig is voor de samenleving — moeten we de illusie dan bewust in stand houden? Dit is de 'illusionistische' positie van filosofen als Daniel Dennett." }
+    ],
+  },
+  {
+    id: "ontological-argument",
+    title: "Het Ontologisch Argument voor Gods Bestaan (Anselmus)",
+    difficulty: 3,
+    emoji: "✨",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Anselmus betoogde: God is 'datgene waarboven niets groters gedacht kan worden'. Een wezen dat bestaat is groter dan een wezen dat alleen in de gedachte bestaat. Dus als God alleen in de gedachte bestaat, is een groter wezen denkbaar (namelijk een bestaand God). Maar dat contradiceert de definitie. Dus God moet bestaan.",
+    abstractExample: "Het argument probeert het bestaan van God te bewijzen puur vanuit de definitie — zonder empirische premissen. Kant's kritiek: bestaan is geen eigenschap. 'Bestaat' voegt niets toe aan een begrip. Een bestaande honderd euro is niet meer dan een denkbeeldige honderd euro — het is precies even veel euro.",
+    examples: [
+      { domain: "Taal en werkelijkheid", icon: "📖", text: "Kan een definitie het bestaan van een entiteit bewijzen? Het ontologisch argument onthult een fundamenteel probleem in de relatie tussen taal en werkelijkheid: begrippen zijn niet hetzelfde als entiteiten." },
+      { domain: "Wiskundige objecten", icon: "🔢", text: "Bestaan wiskundige objecten (getallen, driehoeken) in werkelijkheid of zijn het slechts concepten? Platonisten zeggen: ze bestaan noodzakelijk, net zoals God in het ontologisch argument. Nominalisten: ze zijn nuttige ficties." },
+      { domain: "Perfectie als begrip", icon: "🌟", text: "Kunnen we het meest perfecte van iets definiëren en dan concluderen dat het bestaat? De perfecte pizza, de perfecte samenleving — het ontologisch argument maakt de overgang van definitie naar bestaan die de meeste mensen als ongeldig beschouwen." }
+    ],
+  },
+  {
+    id: "causal-closure",
+    title: "Causale Geslotenheid van het Fysische",
+    difficulty: 3,
+    emoji: "🔗",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "De causale geslotenheidsthese stelt dat elke fysische gebeurtenis een volledig fysische oorzaak heeft. Dit stelt een probleem voor dualisten die geloven dat de geest (niet-fysisch) oorzaken kan zijn van lichaamsgedrag: als het lichaam causaal gesloten is, hoe kan de geest dan iets veroorzaken? Dit is het interactie-probleem voor mind-body-dualisme.",
+    abstractExample: "Als jij je arm optilt door een mentale beslissing, en die beslissing niet-fysisch is, maar de beweging van je arm volledig fysisch verklaarbaar is — dan is er óf causaliteitsduplicatie (mentale én fysische oorzaak) óf de mentale oorzaak is epifenomeneel (heeft geen echte causale kracht). Beide opties zijn problematisch.",
+    examples: [
+      { domain: "Mentale causaliteit", icon: "🧠", text: "Als gedachten de wereld kunnen veranderen, moeten ze dan fysische effecten hebben? Als ja: zijn ze dan niet fysisch? Causale geslotenheid dwingt tot materialisme of tot het accepteren van een mysterieuze mind-body-interactie." },
+      { domain: "Placebo-effect", icon: "💊", text: "Het placebo-effect toont dat overtuigingen fysiologische effecten hebben. Is dit bewijs dat de geest oorzakelijk op het lichaam inwerkt? Of tonen neurowetenschappers dat de 'overtuiging' zelf een hersenproces is dat andere hersenprocessen veroorzaakt?" },
+      { domain: "Wilskracht en neurobiologie", icon: "💪", text: "Libet's experiment suggereerde dat hersenactiviteit je bewuste beslissing voorafgaat. Betekent dat dat je beslissing niet de oorzaak is van je handeling, maar het gevolg van een eerdere neurale oorzaak? En wat betekent dat voor vrije wil?" }
+    ],
+  },
+  {
+    id: "boltzmann-brain",
+    title: "Het Boltzmann-Brein",
+    difficulty: 3,
+    emoji: "🌀",
+    academicCategory: "Kosmologie",
+    skillCategory: "Kritisch Denken",
+    definition: "In een oneindig oud universum met thermische fluctuaties is het statistisch waarschijnlijker dat een volledig gevormd brein met al jouw herinneringen spontaan fluctueert uit chaos, dan dat het hele universum de complexe evolutie doormaakte die tot jou leidde. Als dat klopt, ben jij waarschijnlijk een Boltzmann-brein van een seconde oud met valse herinneringen.",
+    abstractExample: "Het argument is een reductio ad absurdum van bepaalde kosmologische modellen: als ze impliceren dat Boltzmann-hersenen waarschijnlijker zijn dan echte observatoren, moeten die modellen worden verworpen. Het is ook een radicale sceptische uitdaging: jouw herinneringen van gisteren bewijzen niet dat gisteren bestond.",
+    examples: [
+      { domain: "Kosmologie", icon: "🔭", text: "Het Boltzmann-hersenprobleem sluit bepaalde eeuwige-inflatie-modellen uit: als ze Boltzmann-hersenen produceren die waarschijnlijker zijn dan echte mensen, voorspellen ze dat de meeste 'observaties' door Boltzmann-hersenen worden gedaan — wat absurd is." },
+      { domain: "Epistemologie", icon: "🔍", text: "Als jij een Boltzmann-brein van een seconde zou zijn, zou je dit niet kunnen weten — alle herinneringen zouden vals maar identiek aan echte herinneringen zijn. Dit is scepticisme in zijn meest extreme kosmologische vorm." },
+      { domain: "Occam's scheermes", icon: "✂️", text: "De rijkste hypothese (heel universum) versus de eenvoudigste (één fluctuerend brein) — Occam's scheermes wijst naar het brein. Maar intuïtie wijst naar het universum. Dit spanning toont de grenzen van eenvoudigheid als wetenschappelijk criterium." }
+    ],
+  },
+  {
+    id: "mereology-composition",
+    title: "Het Composieprobleem: Wanneer Vormen Delen een Geheel?",
+    difficulty: 3,
+    emoji: "🧱",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Peter van Inwagen vroeg: wanneer vormen meerdere objecten samengesteld één object? Een tafel bestaat uit atomen — maar wanneer precies? Als alle atomen samengesteld zijn tot een tafel: is er dan een tafel naast de atomen, of zijn de atomen de tafel? En als we één atoom verwijderen — is er dan nog een tafel?",
+    abstractExample: "Het sorites-probleem: hoeveel korrels zand vormen een hoop? Eén niet. Twee niet. Maar op een gegeven moment wel. Waar is de grens? Van Inwagen stelde: samengestelde objecten bestaan alleen bij 'leven' — organismen zijn echte eenheden; tafels zijn conceptuele constructies op een verzameling atomen.",
+    examples: [
+      { domain: "Persoonlijke identiteit", icon: "🪞", text: "Ben jij een échte eenheid of een conceptuele constructie op een verzameling cellen? Als het laatste: is het 'ik' dan een handige fictie? Composieprobleem en identiteitsprobleem zijn diep verweven." },
+      { domain: "Organisaties", icon: "🏢", text: "Is een bedrijf een echte entiteit of slechts een concept toegepast op een groep mensen? De vraag heeft juridische, morele en economische implicaties: kan een bedrijf schuldig zijn? Kan het rechten hebben?" },
+      { domain: "Naties", icon: "🌍", text: "Een natie is een samengesteld object: mensen, grondgebied, instituties, cultuur. Is er een natie naast deze componenten, of is de natie simpelweg een naam voor die componenten op een bepaald moment? Dit raakt aan nationale identiteit en soevereiniteit." }
+    ],
+  },
+  {
+    id: "abstract-objects-existence",
+    title: "Bestaan Abstracte Objecten?",
+    difficulty: 2,
+    emoji: "🔢",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Bestaan getallen, wiskundige waarheden, logische wetten en morele feiten onafhankelijk van menselijke geest — als abstracte objecten? Platonisme zegt ja: het getal zeven bestond al voor mensen er een naam aan gaven. Nominalisme zegt nee: abstracta zijn nuttige mentale constructies of taalpatronen, geen werkelijke entiteiten.",
+    abstractExample: "Argument voor Platonisme: 7 + 5 = 12 was waar voor mensen bestonden en zal waar zijn als ze uitgestorven zijn. Wiskundigen ontdekken waarheden, ze verzinnen ze niet. Argument voor Nominalisme: als getallen bestaan buiten ruimte en tijd, hoe kennen we ze dan? Ze zijn nergens en veroorzaken niets.",
+    examples: [
+      { domain: "Wiskunde", icon: "📐", text: "Zijn wiskundige theorema's uitvindingen (menselijke constructies) of ontdekkingen (preexistente waarheden)? Wiskundigen zijn verdeeld: sommigen voelen ze ontdekken; anderen geloven ze construeren. De keuze heeft implicaties voor de status van wiskunde." },
+      { domain: "Morele feiten", icon: "⚖️", text: "Bestaat 'marteling is verkeerd' als een objectief feit in de wereld, of is het een menselijke conventie? Moreel realisme (feiten bestaan onafhankelijk) versus anti-realisme (moraal is constructie). Beide hebben radicale gevolgen voor ethiek." },
+      { domain: "Wetten van de natuur", icon: "🔭", text: "Zijn natuurwetten (zwaartekracht, lichtsnelheid) objectieve feiten over de werkelijkheid of nuttige beschrijvingen van patronen die we observeren? Dit raakt aan of wetenschap de werkelijkheid beschrijft of slechts modellen bouwt." }
+    ],
+  },
+  {
+    id: "zenos-paradox",
+    title: "Zeno's Paradoxen: Beweging is Onmogelijk",
+    difficulty: 2,
+    emoji: "🏹",
+    academicCategory: "Metafysica",
+    skillCategory: "Kritisch Denken",
+    definition: "Zeno van Elea beweerde: beweging is onmogelijk. Achilles en de schildpad: geef de schildpad een voorsprong. Achilles moet eerst de helft van de afstand afleggen, dan de helft van de resterende afstand, enzovoort oneindig. Hij haalt de schildpad nooit in — maar in de praktijk doet hij het wel. Hoe lossen we dit op?",
+    abstractExample: "De wiskundige oplossing: een oneindige reeks kan een eindige som hebben (1/2 + 1/4 + 1/8 + ... = 1). Achilles legt oneindig veel stappen af maar in eindige tijd. Maar de filosofische vraag blijft: hoe kan een eindig moment oneindig deelbaar zijn? En hoe kan beweging plaatsvinden als elk moment er geen is?",
+    examples: [
+      { domain: "Wiskunde en filosofie", icon: "📐", text: "Zeno's paradox dreef de ontwikkeling van de infinitesimaalrekening (Newton, Leibniz) aan. Filosofische puzzels produceren soms wiskundige doorbraken — de oplossing van het paradox vereiste nieuwe concepten van oneindigheid en limiet." },
+      { domain: "Digitale vs. analoge werkelijkheid", icon: "💻", text: "Als ruimte en tijd discreet zijn (kwantumgranulariteit) in plaats van oneindig deelbaar, verdwijnt Zeno's probleem. Of leidt het slechts tot een ander niveau: Achilles moet een eindig aantal kwanta nemen, maar hoeveel?" },
+      { domain: "Procesfilosofie", icon: "🌊", text: "Zeno's paradoxen zijn ook een uitdaging voor hoe we over verandering en worden nadenken. Whitehead's procesfilosofie ziet werkelijkheid als reeks gebeurtenissen (processen) in plaats van vaste objecten — wat sommige Zeno-problemen oplost." }
+    ],
+  },
 ];
