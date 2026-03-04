@@ -8558,5 +8558,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Beschrijf drie beleidsmaatregel of bedrijfsbeslissingen die je kent die onbedoelde gevolgen hadden. Welk systeemkenmerk maakte dat onvermijdelijk? Hoe had een systeemdenkende aanpak het kunnen voorkomen?",
     aiHelperPrompts: ["Hoe voorspel ik onbedoelde gevolgen voor de implementatie?", "Welke methoden helpen bij het ontwerpen van robuust beleid?", "Zijn onbedoelde gevolgen altijd vermijdbaar?"]
+  },
+
+  // Batch Z4 – Culturele Intelligentie
+  {
+    id: "hofstede-dimensions",
+    title: "Hofstede's Cultuurdimensies",
+    difficulty: 2,
+    emoji: "🌍",
+    academicCategory: "Cross-culturele Psychologie",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["cultuur", "dimensies", "intercultureel", "waarden"],
+    definition: "Hofstede identificeerde zes dimensies waarop nationale culturen verschillen: machtsafstand, individualisme/collectivisme, onzekerheidsvermijding, masculiniteit/feminiteit, lange/korte termijnoriëntatie en inschikkelijkheid/ingetogenheid.",
+    abstractExample: "Een hoge machtsafstand cultuur verwacht dat medewerkers opdrachten uitvoeren zonder te vragen; een lage machtsafstand cultuur verwacht dat medewerkers terugkoppelen en aanvechten.",
+    examples: [
+      { domain: "Bedrijfsleven", icon: "💼", text: "Nederlandse medewerkers (lage machtsafstand) spreken managers direct aan; Japanse medewerkers (hoge machtsafstand) vermijden openbaar conflict met superieuren." },
+      { domain: "Familiecultuur", icon: "👨‍👩‍👧", text: "Collectivistische culturen (China, India) verwachten dat familiale overwegingen carrièrebeslissingen domineren; individualistische culturen (VS, NL) verwachten het omgekeerde." },
+      { domain: "Risico", icon: "🎲", text: "Landen met hoge onzekerheidsvermijding (Japan, Duitsland) hebben meer regels, protocollen en risicoaversie; lage (Denemarken, Singapore) accepteren meer ambiguïteit." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Op welke dimensie scoort Nederland het meest extreem?", options: ["Machtsafstand (hoog)", "Individualisme (hoog)", "Masculiniteit (laag)", "Inschikkelijkheid (hoog)"], correct: 1, explanation: "Nederland scoort extreem hoog op individualisme en laag op machtsafstand — wat de directe, egalitaire communicatiecultuur verklaart." }
+    ],
+    creativePrompt: "Analyseer een interculturele misverstand dat je hebt meegemaakt (werk, reizen, online). Welke Hofstede-dimensies zijn waarschijnlijk betrokken? Hoe zou je het anders aanpakken?",
+    aiHelperPrompts: ["Hoe gebruik ik Hofstede's model in internationale teams?", "Wat zijn de kritieken op Hofstede's model?", "Hoe verschilt Nederland van buurlanden op Hofstede-dimensies?"]
+  },
+  {
+    id: "high-low-context-culture",
+    title: "Hoge- en Lage-Contextculturen",
+    difficulty: 2,
+    emoji: "💬",
+    academicCategory: "Communicatiewetenschap",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["communicatie", "cultuur", "impliciet", "direct"],
+    definition: "In hoge-contextculturen hangt communicatie sterk af van impliciete context, relaties en non-verbale signalen; in lage-contextculturen is communicatie expliciet, direct en grotendeels in woorden zelf.",
+    abstractExample: "In Japan kan 'dat is moeilijk' 'nee' betekenen — de context geeft de werkelijke betekenis. In Nederland betekent 'nee' gewoon nee en wordt dit direct uitgesproken.",
+    examples: [
+      { domain: "Vergadering", icon: "💼", text: "Japanse onderhandelaars die zwijgen of indirect reageren, communiceren 'nee' — directe Nederlanders interpreteren dat als onzekerheid en gaan door." },
+      { domain: "E-mail", icon: "📧", text: "Hoge-contextculturen beginnen e-mails met uitgebreide begroetingen en contextbuilding; lage-contextculturen komen onmiddellijk to the point." },
+      { domain: "Feedback", icon: "🗣️", text: "Een Amerikaanse manager geeft direct kritische feedback; een Koreaanse manager geeft dezelfde kritiek indirect via subtiele signalen." }
+    ],
+    prerequisites: ["hofstede-dimensions"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke regio is het meest hoge-context?", options: ["VS en Canada", "Duitsland en Scandinavië", "Japan en China", "Nederland en Australië"], correct: 2, explanation: "Oost-Aziatische culturen zoals Japan en China zijn klassieke hoge-contextculturen — communicatie is sterk afhankelijk van context, relatie en implicatie." }
+    ],
+    creativePrompt: "Schrijf dezelfde boodschap ('ik vind het voorstel niet goed') op twee manieren: één voor een lage-contextcultuur en één voor een hoge-contextcultuur. Wat verandert er fundamenteel?",
+    aiHelperPrompts: ["Hoe communiceer ik effectief in een hoge-contextcultuur?", "Wat zijn veelgemaakte fouten bij lage-context mensen in hoge-context omgevingen?", "Hoe beïnvloedt context-niveau teamwork?"]
+  },
+  {
+    id: "cultural-intelligence-cq",
+    title: "Culturele Intelligentie (CQ)",
+    difficulty: 2,
+    emoji: "🌐",
+    academicCategory: "Organisatiepsychologie",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["CQ", "intercultureel", "aanpassing", "competentie"],
+    definition: "Culturele intelligentie (CQ) is het vermogen om effectief te functioneren in cultureel diverse omgevingen — bestaande uit CQ-kennis (begrip van cultuurverschillen), CQ-strategie (bewust omgaan ermee) en CQ-gedrag (aanpassen van eigen stijl).",
+    abstractExample: "CQ is als muzikale intelligentie: je kunt muzieknotenschrift kennen (kennis), een nieuw stuk analyseren (strategie) en het spelen aanpassen aan een andere stijl (gedrag) — allemaal vereist zijn eigen vaardigheid.",
+    examples: [
+      { domain: "Internationaal zakendoen", icon: "✈️", text: "Een hoge-CQ manager begrijpt dat een Japanse partner die een beslissing uitstelt niet twijfelt maar meer informele consensus nodig heeft." },
+      { domain: "Zorg", icon: "🏥", text: "Een verpleegkundige met hoge CQ past communicatiestijl aan bij patiënten uit verschillende culturele achtergronden." },
+      { domain: "Leiderschap", icon: "👔", text: "Een globale teamleider met hoge CQ begrijpt dat motivatietechnieken die in Nederland werken niet universeel effectief zijn." }
+    ],
+    prerequisites: ["high-low-context-culture"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke component van CQ is het meest bepalend voor intercultureel succes?", options: ["CQ-kennis (knowing)", "CQ-strategie (metacognitief)", "CQ-gedrag (behavioreel)", "Alle drie zijn even belangrijk"], correct: 3, explanation: "Onderzoek toont dat alle drie componenten bijdragen — kennis zonder aanpassing of strategie zonder kennis leidt tot minder effectief intercultureel functioneren." }
+    ],
+    creativePrompt: "Beschrijf jouw eigen CQ-profiel. In welke culturele contexten voel je je thuis? Welke dimensies (kennis, strategie, gedrag) zijn jouw sterkste en zwakste punten? Hoe zou je groeien?",
+    aiHelperPrompts: ["Hoe verhoog ik mijn culturele intelligentie?", "Hoe verschilt CQ van EQ (emotionele intelligentie)?", "Welke praktijktoetsen bestaan er voor CQ?"]
+  },
+  {
+    id: "cultural-relativism",
+    title: "Cultureel Relativisme",
+    difficulty: 3,
+    emoji: "🌈",
+    academicCategory: "Antropologie",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["cultuur", "relativisme", "moraal", "antropologie"],
+    definition: "Cultureel relativisme is de opvatting dat culturele praktijken en waarden begrepen moeten worden binnen hun eigen context, niet beoordeeld met maatstaven van een andere cultuur — maar het heeft grenzen als het culturele morele relativisme wordt.",
+    abstractExample: "Cultureel relativisme: begrijp eerder waarom in sommige culturen ouders bij echtgenoten beslissen, dan het direct als 'fout' te labelen. Moreel absolutisme: erken tegelijk dat gedwongen huwelijken universele mensenrechten schenden.",
+    examples: [
+      { domain: "Antropologie", icon: "🌍", text: "Boas ontwikkelde cultureel relativisme om Europees etnocentrisme te bestrijden — culturen zijn niet 'primitiever' of 'geavanceerder', alleen anders." },
+      { domain: "Mensenrechten", icon: "⚖️", text: "De grens van cultureel relativisme: vrouwenbesnijdenis wordt door sommigen verdedigd als culturele praktijk, maar gaat in tegen het universele recht op lichamelijke integriteit." },
+      { domain: "Zakendoen", icon: "💼", text: "Corruptie als culturele norm: cultureel relativisme begrijpt het, maar de grens is dat naleving van corruptie ernstige schade berokkent." }
+    ],
+    prerequisites: ["hofstede-dimensions"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het fundamentele probleem met sterk moreel relativisme?", options: ["Het is te intellectueel", "Het biedt geen basis om universele mensenrechtenschendingen te bekritiseren", "Het is alleen voor antropologen", "Het respecteert culturen te veel"], correct: 1, explanation: "Als alle morele oordelen cultuurgebonden zijn, kan genocide, slavernij of marteling niet moreel worden veroordeeld — een consequentie die de meeste morele relativisten niet willen accepteren." }
+    ],
+    creativePrompt: "Kies een culturele praktijk van een andere cultuur die jij ongemakkelijk vindt. Probeer het eerst volledig te begrijpen vanuit die cultuur. Beslis dan: is er een universeel principe dat het overstijgt? Welk?",
+    aiHelperPrompts: ["Waar ligt de grens tussen cultureel respect en morele aanklacht?", "Hoe verhoudt cultureel relativisme zich tot universele mensenrechten?", "Hoe vermijd ik etnocentrisme zonder moreel nihilisme?"]
+  },
+  {
+    id: "acculturation",
+    title: "Acculturatie",
+    difficulty: 2,
+    emoji: "🤝",
+    academicCategory: "Culturele Psychologie",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["integratie", "cultuur", "identiteit", "aanpassing"],
+    definition: "Acculturatie beschrijft de aanpassing van individuen of groepen bij contact met een andere cultuur — via assimilatie (eigen cultuur opgeven), integratie (beide behouden), separatie (eigen cultuur behouden) of marginalisatie (beiden verliezen).",
+    abstractExample: "Een immigrant integreert wanneer hij Nederlandse feestdagen viert terwijl hij ook zijn eigen culturele tradities thuis behoudt — beide culturen zijn actief.",
+    examples: [
+      { domain: "Immigratie", icon: "🌍", text: "Berry's model toont dat integratie (beide culturen) het meest positief correleert met psychologisch welzijn bij immigranten." },
+      { domain: "Bedrijfsfusie", icon: "🏢", text: "Bij fusies assimileren sommige afdelingen de cultuur van de nieuwe eigenaar; andere behouden hun cultuur (separatie) — integratie is zelden het gevolg." },
+      { domain: "Expats", icon: "✈️", text: "Expats die lokale gewoontes adopteren terwijl ze hun professionele identiteit behouden (integratie) passen zich het snelst aan." }
+    ],
+    prerequisites: ["cultural-intelligence-cq"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke acculturatiestrategie correleert het meest positief met psychologisch welzijn?", options: ["Assimilatie", "Separatie", "Marginalisatie", "Integratie"], correct: 3, explanation: "Integratie — het behouden van de eigen culturele identiteit terwijl ook de nieuwe cultuur wordt omarmd — leidt consistent tot het beste psychologisch welzijn." }
+    ],
+    creativePrompt: "Beschrijf een moment waarop jij een nieuwe omgeving, cultuur of groep moest navigeren. Welke acculturatiestrategie gebruikte je (bewust of onbewust)? Was het de meest effectieve keuze?",
+    aiHelperPrompts: ["Hoe help ik nieuwkomers accultureren?", "Hoe beïnvloedt acculturatie identiteit op lange termijn?", "Wat zijn de gevolgen van geforceerde assimilatie?"]
+  },
+  {
+    id: "stereotype-threat",
+    title: "Stereotypedreig",
+    difficulty: 2,
+    emoji: "⚡",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["stereotype", "prestatie", "identiteit", "druk"],
+    definition: "Stereotype-dreiging is het fenomeen waarbij mensen slechter presteren op een taak wanneer ze zich bewust zijn van een negatief stereotype over hun groep — de angst het stereotype te bevestigen ondermijnt zelf de prestatie.",
+    abstractExample: "Vrouwen die voor een wiskunde-examen worden herinnerd dat 'vrouwen slechter zijn in wiskunde', scoren gemiddeld lager — niet vanwege intelligentie maar vanwege de prestatiedruk het stereotype te ontkrachten.",
+    examples: [
+      { domain: "Onderwijs", icon: "📚", text: "Steele's originele onderzoek: zwarte studenten presteerden slechter op verbale tests wanneer ze de test als intelligentiemeting zagen, maar gelijkwaardig wanneer dat label werd verwijderd." },
+      { domain: "Sport", icon: "⚽", text: "Witte sprinters presteren slechter wanneer ze worden herinnerd aan het stereotype dat 'zwarte atleten sneller zijn' — stereotype-dreiging werkt beide kanten op." },
+      { domain: "Ouderdom", icon: "👴", text: "Ouderen doen het slechter op geheugentests wanneer ze vooraf worden geconfronteerd met statistieken over leeftijdsgerelateerd geheugenverlies." }
+    ],
+    prerequisites: ["in-group-out-group"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke interventie vermindert stereotype-dreiging het meest?", options: ["Ontkennen dat stereotypen bestaan", "Zelftranscendentie-oefeningen voor de taak of herdefinitie van de evaluatiecontext", "Harder werken", "Groepen scheiden"], correct: 1, explanation: "Waarden-bevestiging (nadenken over wat écht belangrijk voor je is) en herdefinitie van de test (als leerervaring, niet als intelligentiemeting) zijn bewezen effectief." }
+    ],
+    creativePrompt: "Welk stereotype over jouw groep (geslacht, nationaliteit, leeftijd, beroep) heeft jou ooit beïnvloed in een prestatie- of beoordelingssituatie? Hoe herkende je het en hoe reageerde je?",
+    aiHelperPrompts: ["Hoe maak ik toetsomgevingen minder dreigend?", "Is stereotype-dreiging opzettelijk of onbewust?", "Wat zijn de langetermijngevolgen van stereotype-dreiging?"]
+  },
+  {
+    id: "intercultural-communication",
+    title: "Interculturele Communicatie",
+    difficulty: 2,
+    emoji: "🗺️",
+    academicCategory: "Communicatiewetenschap",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["communicatie", "cultuur", "misverstand", "intercultureel"],
+    definition: "Interculturele communicatie onderzoekt hoe culturele achtergronden communicatiepatronen beïnvloeden en hoe misverstanden ontstaan en overwonnen worden — essentieel in een geglobaliseerde wereld.",
+    abstractExample: "Een handreiking, knikje of stilte betekenen totaal verschillende dingen in verschillende culturen — dezelfde actie, completely andere boodschap.",
+    examples: [
+      { domain: "Non-verbaal", icon: "🤝", text: "Een duim omhoog is positief in Nederland, maar beledigend in delen van het Midden-Oosten — non-verbale communicatie is niet universeel." },
+      { domain: "Vergadering", icon: "💼", text: "Stilte in een vergadering: Finnen respecteren stille pauzes; Amerikanen ervaren stilte als ongemakkelijk en vullen het onmiddellijk op." },
+      { domain: "E-mail", icon: "📧", text: "Een bondig antwoord als 'OK, dank je' wordt in Nederland als normaal gezien; in sommige Latijnse culturen kan het koud of ongeïnteresseerd overkomen." }
+    ],
+    prerequisites: ["high-low-context-culture"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de meest effectieve strategie bij interculturele misverstanden?", options: ["Aannemen dat jouw interpretatie correct is", "Actief verifiëren van bedoelingen en betekenissen", "Vermijden van het onderwerp", "De andere persoon corrigeren"], correct: 1, explanation: "Actief verifiëren ('Ik begrijp dat je... bedoelt, klopt dat?') is de meest effectieve strategie om interpretatiekloven te overbruggen." }
+    ],
+    creativePrompt: "Beschrijf een intercultureel misverstand uit eigen ervaring. Wat gingen beide partijen van uit? Wat was het culturele frame van de andere kant? Hoe had je het effectiever kunnen aanpakken?",
+    aiHelperPrompts: ["Hoe bereid ik me voor op werken in een andere cultuur?", "Hoe herstel ik een intercultureel misverstand?", "Welke culturele communicatietrainingen zijn wetenschappelijk onderbouwd?"]
+  },
+  {
+    id: "sapir-whorf-revisited",
+    title: "Taal en Denken",
+    difficulty: 2,
+    emoji: "🗣️",
+    academicCategory: "Taalkunde",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["taal", "denken", "cultuur", "perceptie"],
+    definition: "De relatie tussen taal en denken: taalstructuur beïnvloedt aantoonbaar bepaalde cognitieve processen (ruimtelijke oriëntatie, tijdperceptie, kleurnuance) — een zwakkere versie van de Sapir-Whorf-hypothese die empirisch wordt ondersteund.",
+    abstractExample: "De Pirahã-taal heeft geen getallen — en sprekers hebben moeite met exacte kwantiteiten. Taal zonder concept beperkt cognitie op dat gebied.",
+    examples: [
+      { domain: "Kleur", icon: "🎨", text: "Russischsprekenden hebben twee basiswoorden voor blauw (licht en donker) en onderscheiden blauwtinten sneller dan Engelstaligen die maar één basiswoord hebben." },
+      { domain: "Ruimte", icon: "🧭", text: "Guugu Yimithirr-sprekers (Australisch Inheems) navigeren via absolute windrichtingen (noorden, zuiden) in plaats van relatieve richtingen (links, rechts) — en hebben een superieur intern kompas." },
+      { domain: "Tijd", icon: "⏰", text: "Talen met een zwak uitgesproken toekomst (Fins vs. Engels) correleren met hogere spaar- en gezondheidsinvesteringen — toekomst voelt minder ver weg." }
+    ],
+    prerequisites: ["philosophy-of-language"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke versie van Sapir-Whorf is empirisch het best ondersteund?", options: ["Sterke versie: taal bepaalt wat men kan denken", "Zwakke versie: taal beïnvloedt bepaalde cognitieve processen", "Geen versie heeft empirische steun", "Beide versies zijn gelijkwaardig ondersteund"], correct: 1, explanation: "De zwakke hypothese (linguïstische relativiteit) is empirisch ondersteund: taal beïnvloedt perceptie en cognitie in meetbare maar niet-absolute zin." }
+    ],
+    creativePrompt: "Leer het woord voor een concept in een andere taal waarvoor jouw taal geen equivalent heeft (zoals het Japanse 'wabi-sabi' of het Duits 'Fernweh'). Verander dit woord jouw perceptie van dat concept?",
+    aiHelperPrompts: ["Welke talen worden geassocieerd met unieke cognitieve voordelen?", "Hoe beïnvloedt tweetaligheid het denken?", "Zijn er concepten die onvertaalbaar zijn?"]
+  },
+  {
+    id: "globalization-culture",
+    title: "Globalisering en Cultuur",
+    difficulty: 2,
+    emoji: "🌐",
+    academicCategory: "Culturele Studies",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["globalisering", "cultuur", "identiteit", "homogenisatie"],
+    definition: "Globalisering homogeniseert culturele expressie (McDonald's, Netflix, jeans) maar creëert tegelijkertijd lokale resistentie en hybridisatie — globale culturen en lokale identiteiten bestaan naast en doorheen elkaar.",
+    abstractExample: "K-pop is een hybride: Koreaanse culturele identiteit gecombineerd met westerse pop-productietechnieken en wereldwijde distributie via YouTube — noch volledig westers, noch traditioneel Koreaans.",
+    examples: [
+      { domain: "Voeding", icon: "🍔", text: "McDonald's past menu's aan per land (McSpaghetti in de Filipijnen, Maharaja Mac in India) — globale formule, lokale aanpassing." },
+      { domain: "Media", icon: "📺", text: "K-pop, Bollywood en Telenovela's tonen dat culturele producten niet alleen van west naar oost stromen — globale cultuur is meervoudig." },
+      { domain: "Taal", icon: "🗣️", text: "Engels als lingua franca homogeniseert zakelijke communicatie, maar lokale talen herwinnen terrein via sociale media en cultuurtrots." }
+    ],
+    prerequisites: ["cultural-relativism"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat beschrijft 'glokalisering'?", options: ["Alleen lokale cultuur behouden", "Globale ideeën aanpassen aan lokale context", "Cultuur exporteren", "Migratie van mensen"], correct: 1, explanation: "Glokalisering is het aanpassen van globale producten, ideeën of praktijken aan lokale culturele context — een strategie van multinationals en een cultureel fenomeen." }
+    ],
+    creativePrompt: "Analyseer één product of mediatrend uit jouw eigen leven. Hoe is het geglobaliseerd? Welke lokale aanpassingen zijn er gemaakt? Wat is er zuiver globaal en wat is hybride?",
+    aiHelperPrompts: ["Bedreigt globalisering culturele diversiteit?", "Wat zijn de economische gevolgen van culturele globalisering?", "Hoe bescherm je lokale cultuur in een geglobaliseerde wereld?"]
+  },
+  {
+    id: "implicit-bias",
+    title: "Impliciete Bias",
+    difficulty: 2,
+    emoji: "🔍",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Culturele Intelligentie",
+    tags: ["bias", "onbewust", "oordeel", "discriminatie"],
+    definition: "Impliciete bias zijn onbewuste attitudes of stereotypen die automatisch oordelen en gedrag beïnvloeden — zonder dat de persoon zich ervan bewust is of er mee instemt.",
+    abstractExample: "Een sollicitatiecommissie die dezelfde CV tweemaal evalueert met een mannelijke of vrouwelijke naam, beoordeelt de 'mannelijke' versie consistent competenter — ook als alle leden zeggen geen gender-bias te hebben.",
+    examples: [
+      { domain: "Sollicitaties", icon: "💼", text: "Studies tonen dat CV's met 'witte' namen vaker uitnodigingen krijgen dan identieke CV's met 'allochtone' namen — aantoonbare impliciete bias." },
+      { domain: "Geneeskunde", icon: "🏥", text: "Zwarte patiënten krijgen aantoonbaar minder pijnstillers voorgeschreven bij vergelijkbare pijn — impliciete bias bij medisch personeel." },
+      { domain: "Rechtbank", icon: "⚖️", text: "Rechters geven soms hogere straffen aan mensen met 'sterker Afrikaans-Amerikaans gezicht' — onbewuste rassenbias beïnvloedt juridische oordelen." }
+    ],
+    prerequisites: ["in-group-out-group"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe wordt impliciete bias het meest gemeten?", options: ["Enquêtes over eigen attitudes", "Impliciete Associatietest (IAT) die reactietijden meet", "Observatie van gedrag", "Hersenscans"], correct: 1, explanation: "De IAT meet de snelheid van associaties — de aanname is dat snellere associaties sterkere impliciete verbanden weerspiegelen, ook als men die bewust ontkent." }
+    ],
+    creativePrompt: "Doe de IAT-test online (implicit.harvard.edu). Hoe is het resultaat, en stemt het overeen met jouw bewuste attitudes? Hoe beïnvloedt impliciete bias jou in dagelijkse situaties?",
+    aiHelperPrompts: ["Hoe verminder ik mijn impliciete bias?", "Is de IAT een betrouwbare meting?", "Welke structurele veranderingen verminderen de impact van impliciete bias?"]
   }
 ];
