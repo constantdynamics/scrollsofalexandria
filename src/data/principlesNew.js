@@ -10752,4 +10752,141 @@ export const principlesNew = [
       { domain: "Filosofische praktijk", icon: "📚", text: "Wittgenstein: de oplossing van filosofische problemen is het ontwarren van taalverwarringen. De zinvraag is paradigmatisch: niet één mysterieuze vraag maar meerdere verwarde vragen die elk hun eigen soort antwoord verlangen." }
     ],
   },
+
+  // ========== BATCH C8: GEDACHTE-EXPERIMENTEN — KENNISFILOSOFIE & EPISTEMOLOGIE ==========
+  {
+    id: "gettier-problem",
+    title: "Het Gettier-Probleem",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    definition: "De klassieke definitie van kennis: gerechtvaardigd ware overtuiging. Edmund Gettier toonde in 1963 met eenvoudige voorbeelden aan dat dit niet voldoende is. Jij kijkt op je telefoon die 14:30 aangeeft en gelooft terecht dat het 14:30 is — maar je telefoon staat stil en het is toevallig daadwerkelijk 14:30. Je overtuiging is gerechtvaardigd en waar, maar het is geen kennis.",
+    abstractExample: "Gettier-gevallen: gerechtvaardigd ware overtuigingen die niet als kennis tellen omdat het toeval is dat ze waar zijn. Na 2500 jaar werd met twee pagina's de standaardanalyse van kennis weerlegd. Dit triggerde decennia van epistemologisch werk om de definitie te repareren — tot nu toe zonder consensus.",
+    examples: [
+      { domain: "Getuigenissen", icon: "⚖️", text: "Een getuige beschrijft correct de verdachte — maar op basis van een toevallige gelijkenis, niet directe observatie. De beschrijving is waar en gerechtvaardigd, maar het is geen kennis. In het recht is dit relevant voor de bewijswaarde van getuigenissen." },
+      { domain: "Wetenschappelijke theorie", icon: "🔬", text: "Een theorie die correct voorspelt maar om de verkeerde redenen — de verklaring is fout maar de voorspelling toevallig waar. Is de wetenschapper gerechtvaardigd in zijn overtuiging? Gettier-scenario's spelen ook in wetenschappelijke epistemologie." },
+      { domain: "Dagelijkse overtuigingen", icon: "🌟", text: "Je gelooft dat je vriendin thuis is omdat haar auto voor de deur staat — maar ze is op de fiets weggegaan en een buurman parkeert toevallig dezelfde auto voor haar huis. Gerechtvaardigd, waar, maar geen kennis. Hoe robuust zijn onze alledaagse kennisclaims?" }
+    ],
+  },
+  {
+    id: "epistemic-closure",
+    title: "Epistemische Sluiting en Scepticisme",
+    difficulty: 3,
+    emoji: "🔒",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Als je weet dat P, en je weet dat P impliceert Q, weet je dan ook Q? Dit lijkt evident (kennis is gesloten onder logische implicatie). Maar het leidt tot sceptische conclusies: ik weet dat ik handen heb; handen hebben impliceert dat ik geen hersenloze zombie in een vat ben; dus weet ik dat ik geen zombie in een vat ben. Maar weet ik dat laatste echt?",
+    abstractExample: "Nozick en Dretske betwistten epistemische sluiting: je kunt weten dat P (ik heb handen) zonder te weten dat sceptische scenario's vals zijn (ik ben geen zombie). Kennis vereist een 'tracking'-relatie met de werkelijkheid — die aanwezig kan zijn voor alledaagse kennis maar niet voor sceptische scenario's.",
+    examples: [
+      { domain: "Radicaal scepticisme", icon: "🤔", text: "Als epistemische sluiting klopt, en je niet kunt uitsluiten dat je een brein in een vat bent, dan weet je niets over de buitenwereld. Als sluiting niet klopt, kun je gewone kennis hebben zonder extreme sceptische scenario's te weerleggen." },
+      { domain: "Juridisch bewijs", icon: "⚖️", text: "Rechters zijn overtuigd dat de verdachte schuldig is. Sluiting impliceert: ze weten dan ook dat hij niet toevallig op de verkeerde plek was, dat de bewijzen niet vals zijn, etc. Maar die chain kan oneindig worden. Juridische kennis moet pragmatisch ergens stoppen." },
+      { domain: "Vertrouwen en zekerheid", icon: "🌟", text: "Elke claim tot kennis impliceert logisch oneindige kettingen van sceptische scenario's die men zou moeten uitsluiten. Pragmatisch epistemologen: we moeten bij een plek stoppen. De vraag is: waar?" }
+    ],
+  },
+  {
+    id: "testimony-epistemology",
+    title: "Kennis via Getuigenis: Wanneer Vertrouw je Anderen?",
+    difficulty: 2,
+    emoji: "📢",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Verreweg de meeste menselijke kennis is gebaseerd op getuigenis — wat anderen ons vertellen. Ik weet dat Caesar bestond, dat bacteriën bestaan, dat Mars een planeet is — allemaal via getuigenis. Maar getuigenis overdraagt kennis via een epistemisch riskant kanaal: de getuige kan vergissen of liegen. Wanneer is getuigenis een legitieme kennisbron?",
+    abstractExample: "Reductionisten: getuigenis rechtvaardigt geloof alleen als je onafhankelijke gronden hebt om de getuige te vertrouwen (inductief: getuigen zijn over het algemeen betrouwbaar). Anti-reductionisten: getuigenis is een basisbron van rechtvaardiging — je hoeft het niet te reduceren tot andere bronnen.",
+    examples: [
+      { domain: "Nieuws en media", icon: "📰", text: "Hoeveel van je politieke en feitelijke overtuigingen zijn gebaseerd op wat je hebt gelezen of gehoord? Bijna alles. De kwaliteit van jouw epistemische positie is sterk afhankelijk van de kwaliteit van de getuigeniskanalen die je gebruikt." },
+      { domain: "Expertise vertrouwen", icon: "🔬", text: "Wanneer is het rationeel experts te vertrouwen — ook als je hun redeneringen niet kunt volgen? Als je de methodologie niet kunt beoordelen, vertrouw je op de reputatie, het peer review-systeem en de consensus. Dit is getuigenis-epistemologie in actie." },
+      { domain: "Desinformatie", icon: "📱", text: "Sociale media zijn getuigeniskanalen met lage betrouwbaarheidsdrempel — iedereen kan ongecontroleerde claims verspreiden. Epistemisch zelfverdediging vereist criteria voor wanneer je getuigenis accepteert. Welke criteria zijn dat?" }
+    ],
+  },
+  {
+    id: "foundationalism-coherentism",
+    title: "Fundationalisme vs. Coherentisme",
+    difficulty: 3,
+    emoji: "🏗️",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Hoe worden overtuigingen gerechtvaardigd? Fundationalisme: via een hiërarchie van overtuigingen die uiteindelijk rusten op basale, niet-inferable overtuigingen (zintuiglijke indrukken, zelfevidente waarheden). Coherentisme: via coherentie — een overtuiging is gerechtvaardigd als ze coherent past in het web van alle overtuigingen. Er zijn geen fundamenten.",
+    abstractExample: "Fundationalisme-metafoor: een gebouw op fundering. Coherentisme-metafoor: een boot die drijft en gerepareerd wordt terwijl ze vaart (Neurath's boot). Elk heeft problemen: fundationalisme (zijn basale overtuigingen onfeilbaar?), coherentisme (kan een coherente maar volledig verkeerde set overtuigingen gerechtvaardigd zijn?).",
+    examples: [
+      { domain: "Wetenschappelijke methode", icon: "🔬", text: "Wetenschappelijke overtuigingen rusten uiteindelijk op observaties (fundationalistisch). Maar observaties zijn theorie-geladen (coherentistisch punt). De grens tussen 'observationeel' en 'theoretisch' is vager dan het fundationalisme suggereert." },
+      { domain: "Persoonlijk geloof", icon: "🌟", text: "Berust jij bij fundamentele overtuigingen of is je gehele overtuigingsstelsel een coherente structuur zonder absolute fundering? De vraag raakt religieus geloof: is dit gebaseerd op fundamenten (openbaring, ervaring) of op coherentie met andere overtuigingen?" },
+      { domain: "Filosofisch debat", icon: "💬", text: "In een debat kan men hetzelfde gegeven interpreteren via verschillende coherentiesystemen en tot tegengestelde conclusies komen. Dit illustreert coherentisme: feiten krijgen betekenis in een netwerk van overtuigingen, niet als autonome bouwstenen." }
+    ],
+  },
+  {
+    id: "epistemic-injustice",
+    title: "Epistemisch Onrecht (Fricker)",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Miranda Fricker identificeerde epistemisch onrecht: schade toegebracht aan iemand specifiek in hun hoedanigheid als kennisdrager. Twee vormen: getuigenisinjustice (iemands getuigenis niet geloven door hun identiteit — gender, ras, klasse) en hermeneutische injustice (iemand mist de conceptuele middelen om zijn eigen ervaring te begrijpen omdat die nooit zijn benoemd door de meerderheid).",
+    abstractExample: "Een vrouw die seksuele intimidatie ervaart maar het woord 'seksuele intimidatie' bestaat nog niet als concept — ze kan haar ervaring niet articuleren of aan anderen overdragen. Dit is hermeneutische injustice: de conceptuele bronnen zijn niet beschikbaar voor degene die ze het meest nodig heeft.",
+    examples: [
+      { domain: "Gezondheidszorg", icon: "🏥", text: "Patiënten van bepaalde demografische groepen (vrouwen, niet-westerse patiënten) worden minder snel geloofd over pijnniveaus — getuigenisinjustice in de medische context met levensechte gevolgen voor diagnose en behandeling." },
+      { domain: "Recht", icon: "⚖️", text: "Getuigenissen van bepaalde groepen wegen historisch zwaarder dan van andere. Dit is epistemische injustice gecodificeerd in juridische procedures — rechterlijk systeem als epistemisch systeem met structurele bias." },
+      { domain: "Sociale verandering", icon: "🌱", text: "Nieuwe concepten als 'gaslighting', 'microagressies' of 'burnout' reduceren hermeneutische injustice door ervaringen te benoemen die eerder onbenoembaar waren. Conceptuele uitbreiding is een vorm van epistemische rechtvaardigheid." }
+    ],
+  },
+  {
+    id: "extended-mind",
+    title: "De Uitgebreide Geest (Clark & Chalmers)",
+    difficulty: 2,
+    emoji: "📱",
+    academicCategory: "Cognitiewetenschap",
+    skillCategory: "Kritisch Denken",
+    definition: "Andy Clark en David Chalmers betoogden: als een externe bron (notitieboekje, smartphone, omgeving) dezelfde cognitieve functie vervult als een interne hersenprocedure, maakt die bron dan deel uit van de geest? Otto heeft Alzheimer en noteert alles in een boek dat hij altijd bij zich heeft. Inga herinnert het zich intern. Functioneel zijn ze identiek — is Otto's boek deel van zijn geest?",
+    abstractExample: "De uitgebreide-geest-hypothese: geest is niet begrensd door schedel en huid maar kan zich uitstrekken in de omgeving. Als een extern systeem functioneel equivalent is aan een intern systeem, is er geen principieel verschil. Dit heeft implicaties voor cognitieve wetenschappen en AI.",
+    examples: [
+      { domain: "Smartphone als geheugen", icon: "📱", text: "Mensen vertrouwen op smartphones voor telefoonnummers, navigatie, agenda, kennis. Als de smartphone wegvalt, verliest men toegang tot 'kennis' die functioneel deel uitmaakte van het cognitieve systeem. Is dat een cognitieve aantasting?" },
+      { domain: "Toegankelijkheid", icon: "♿", text: "Hulpmiddelen voor mensen met cognitieve beperkingen zijn letterlijk verlengstukken van de geest. Clark & Chalmers' theorie herwaardeert die hulpmiddelen: ze vergroten de geest, ze compenseren niet slechts een tekort." },
+      { domain: "AI-assistenten", icon: "🤖", text: "Een AI die jouw planning, communicatie en kennis beheert en waarmee je voortdurend samenwerkt — maakt die dan deel uit van jouw uitgebreide geest? En welke implicaties heeft dat voor privacy, autonomie en identiteit?" }
+    ],
+  },
+  {
+    id: "epistemic-humility-limits",
+    title: "Grenzen van Kennis: Wat Kunnen We Niet Weten?",
+    difficulty: 2,
+    emoji: "🌫️",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Kant betoogde: er zijn structurele grenzen aan menselijke kennis. Ding-an-sich — de werkelijkheid buiten onze cognitieve categorieën — is principieel onkenbaar. We kennen alleen de verschijnselen: de werkelijkheid zoals gestructureerd door onze waarnemings- en denkcategorieën (tijd, ruimte, causaliteit). Cognitieve architectuur is een kennis-filter.",
+    abstractExample: "Onze hersenen zijn geëvolueerd voor overleving in de savanne, niet voor waarheid over de kosmos. Kwantummechanica en relativiteitstheorie zijn onintuitief niet omdat ze complex zijn maar omdat onze cognitieve architectuur niet is geëvolueerd om ze direct te begrijpen. Wat we nooit kunnen begrijpen, kunnen we niet weten.",
+    examples: [
+      { domain: "Bewustzijnsvraagstuk", icon: "🧠", text: "Chalmers' hard problem of consciousness is mogelijk een Kantiaans onoplosbaar probleem: de vraag waarom er subjectieve ervaring is, is misschien principieel buiten het bereik van objectiverende wetenschappelijke methode — die altijd van buiten kijkt." },
+      { domain: "Morele epistemologie", icon: "⚖️", text: "Kant stelde ook grenzen aan ethische kennis. Morele waarheden zijn niet empirisch kenbaar via de zintuigen. Ze zijn a priori — via zuivere rede. Maar kan zuivere rede objectieve morele waarheden bereiken? Metaethica debatteert dit nog steeds." },
+      { domain: "Wetenschappelijke demarcatie", icon: "🔬", text: "Welke vragen zijn in principe wetenschappelijk beantwoordbaar en welke niet? 'Bestaat God?' is misschien niet-wetenschappelijk beantwoordbaar — niet omdat het onbelangrijk is maar omdat het buiten het domein valt dat wetenschappelijke methode kan bereiken." }
+    ],
+  },
+  {
+    id: "contextualism-knowledge",
+    title: "Contextualisme over Kennis",
+    difficulty: 2,
+    emoji: "🔍",
+    academicCategory: "Epistemologie",
+    skillCategory: "Kritisch Denken",
+    definition: "Contextualisme stelt dat 'weten' contextafhankelijk is: de drempel voor 'weten' varieert per context. In alledaagse context weet je dat de bank morgen open is. In een filosofische context over scepticisme weet je het niet (want misschien is alles illusie). Beide uitspraken kunnen waar zijn — de drempel verschilt.",
+    abstractExample: "Hoge-inzet-contexten vereisen meer zekerheid dan lage-inzet-contexten. Een chirurg die 'weet' welk been hij moet amputeren, moet veel zekerder zijn dan iemand die 'weet' welke bus hij moet pakken. Dit verklaart waarom scepticisme in filosofische contexten overtuigend is maar irrelevant in het dagelijks leven.",
+    examples: [
+      { domain: "Rechtbank", icon: "⚖️", text: "Strafrechtelijk: 'buiten redelijke twijfel' is een hoge kennisdrempel. Civielrechtelijk: 'preponderantie van bewijs' (meer dan 50% waarschijnlijk) is lager. Contextualisme over kennis is rechtspraktijk — de drempel varieert met de inzet." },
+      { domain: "Medische beslissingen", icon: "🏥", text: "Een arts die besluit een operatie te doen 'weet' dit nodig is — maar in hoge-inzet-context. Een verkeerd-been-amputatie vereist zekerheid die een routinecheck niet vereist. Contextueel bepaalde kennisdrempels zijn deel van goede medische praktijk." },
+      { domain: "Dagelijks leven", icon: "🌟", text: "Je weet dat de stoel je houdt als je gaat zitten — in de alledaagse zin. Een structuuringenieur die de stoel inspecteert, heeft een andere kennisdrempel. Contextualisme verklaart waarom we tegelijkertijd kunnen zeggen 'ik weet het' en 'ik weet het nooit zeker'." }
+    ],
+  },
+  {
+    id: "thought-experiment-method",
+    title: "Gedachte-experimenten als Filosofische Methode",
+    difficulty: 2,
+    emoji: "💡",
+    academicCategory: "Wetenschapsfilosofie",
+    skillCategory: "Kritisch Denken",
+    definition: "Gedachte-experimenten zijn mentale simulaties die worden gebruikt om concepten te testen, intuïties te mobiliseren, theorieën te falsificeren of nieuwe ideeën te genereren. Ze zijn het fundament van filosofie en hebben ook in de wetenschap (Einstein, Galileo, Schrödinger) cruciale rollen gespeeld. Maar zijn intuïties betrouwbare epistemische bronnen?",
+    abstractExample: "Gedachte-experimenten testen een theorie op haar implicaties — 'als T klopt, dan geldt ook P, maar P is onaanvaardbaar, dus T klopt niet'. Ze mobiliseren intuïties die functieoneren als data. Maar intuïties zijn cultureel en evolutionair geconditioneerd — zijn ze betrouwbaar voor filosofische waarheid?",
+    examples: [
+      { domain: "Filosofische intuïties", icon: "🧠", text: "Experimentele filosofen tonen dat morele intuïties variëren tussen culturen, contexten en personen. Als trolley-intuïties cultureel bepaald zijn, wat zegt dat dan over de filosofische conclusies die erop worden gebouwd? Zijn gedachte-experimenten betrouwbaar?" },
+      { domain: "Wetenschappelijke doorbraken", icon: "🔬", text: "Einsteins lichtstraal, Galileo's vallende lichamen, Maxwells demon — gedachte-experimenten die wetenschappelijke revoluties aanzetten. Ze zijn geen vervanging voor empirisch onderzoek maar een krachtig instrument voor conceptuele analyse vóór empirische test." },
+      { domain: "Ethisch redeneren", icon: "⚖️", text: "Gedachte-experimenten creëren gecontroleerde situaties die variabelen isoleren die in de werkelijkheid verweven zijn. Een ethisch gedachte-experiment isoleert het relevante principe door alles niet-essentieel te elimineren — zoals een laboratoriumconditie voor moreel redeneren." }
+    ],
+  },
 ];
