@@ -9254,5 +9254,237 @@ export const principlesNew = [
     ],
     creativePrompt: "Sluit dit principe en probeer het in eigen woorden uit te leggen aan een denkbeeldig kind van 10 jaar. Waar haperde je? Welke delen bleek je minder goed te begrijpen dan je dacht?",
     aiHelperPrompts: ["Hoe vermijd ik de illusie van kennen?", "Hoe herken ik bij studenten de illusie van kennen?", "Waarom voelt herlezen zo goed maar werkt het zo slecht?"]
+  },
+
+  // Batch Z7 – Gedragseconomie II
+  {
+    id: "mental-accounting",
+    title: "Mentale Boekhouding",
+    difficulty: 2,
+    emoji: "📒",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["geld", "psychologie", "beslissing", "bias"],
+    definition: "Mentale boekhouding is de neiging om geld te categoriseren in aparte mentale 'accounts' (loon, erfenis, gokwinst) en het anders uit te geven afhankelijk van die herkomst — ook al is geld fungibel.",
+    abstractExample: "€100 op je loon voelt 'verdiend' en je spaart het; €100 gewonnen bij poker voelt als 'huis geld' en je geeft het uit aan luxe — maar beide zijn precies €100.",
+    examples: [
+      { domain: "Bonus", icon: "💰", text: "Mensen geven bonussen vaker uit aan luxe dan regulier loon — ze categoriseren het als 'extra geld' en geven het anders uit." },
+      { domain: "Belasting", icon: "💳", text: "Een belastingteruggave voelt als een meevaller die uitgegeven mag worden; dezelfde som als salarisverhoging zou gespaard worden — hetzelfde geld, ander mentaal account." },
+      { domain: "Rondjes", icon: "🍺", text: "Bij rondjes kopen voel je je minder de pinautomaat omdat je 'rondjes-account' mentaal is gecompartmentaliseerd van je spaar-account." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe manifesteert mentale boekhouding bij verlies van een concertkaartje?", options: ["Je koopt geen nieuw kaartje want je hebt al eens betaald", "Je koopt makkelijker een nieuw kaartje als je het kaartje verloor vs. het equivalente geld", "Je gaat toch want de kaartjes zijn al betaald", "Er is geen effect"], correct: 1, explanation: "Thaler's experiment: verlies van €100 kaartje leidt vaker tot niet-kopen van nieuw kaartje dan verlies van €100 cash — het mental account 'concert' is al leeg." }
+    ],
+    creativePrompt: "Analyseer jouw eigen mentale boekhoudingspatronen: hoe geef je bonus-, belasting- en erfenisgeld anders uit dan loon? Welke mentale categorieën heb je die niet rationeel zijn?",
+    aiHelperPrompts: ["Hoe gebruik ik mentale boekhouding voor beter sparen?", "Hoe beïnvloedt mentale boekhouding schulden?", "Welke producenten spelen bewust in op mentale boekhouding?"]
+  },
+  {
+    id: "status-quo-bias",
+    title: "Status Quo Bias",
+    difficulty: 1,
+    emoji: "🔒",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["bias", "inertie", "verandering", "beslissing"],
+    definition: "Status quo bias is de voorkeur voor de huidige toestand boven verandering — zelfs als rationeel een alternatief beter is — voortkomend uit verliesaversie, inertie en cognitieve gemakzucht.",
+    abstractExample: "Je blijft bij je huidige stroomleverancier ook al zijn er goedkopere alternatieven — de moeite van wisselen voelt groter dan de besparing, ook als het objectief de moeite waard is.",
+    examples: [
+      { domain: "Orgaandonatie", icon: "❤️", text: "Landen met opt-out systeem (standaard donor) hebben 90%+ donorpercentages; opt-in landen ~15% — status quo bias bepaalt leven en dood." },
+      { domain: "Beleggen", icon: "📈", text: "Beleggers houden hun huidige portefeuille aan ook als herbalancering voordelig is — de status quo voelt als de veilige keuze." },
+      { domain: "Carrière", icon: "💼", text: "Mensen blijven in onbevredigende banen langer dan rationeel — de zekerheid van het bekende overwint het risico van beter." }
+    ],
+    prerequisites: ["loss-aversion"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke techniek maakt gebruik van status quo bias voor positief gedrag?", options: ["Negatieve prikkels", "Standaardopties (defaults) instellen op gewenste keuze", "Belonen van verandering", "Verbieden van alternatieven"], correct: 1, explanation: "Slim ontworpen defaults benutten status quo bias: als de gewenste keuze de standaardoptie is, kiezen de meeste mensen die zonder na te denken." }
+    ],
+    creativePrompt: "Identificeer drie gebieden in jouw leven waar status quo bias je verhindert een betere keuze te maken. Voor elk: wat is de rationele reden voor verandering? Wat houdt je specifiek tegen?",
+    aiHelperPrompts: ["Hoe gebruik ik defaults om beter gedrag te sturen?", "Hoe overwin ik mijn eigen status quo bias?", "Wanneer is status quo bias nuttig?"]
+  },
+  {
+    id: "peak-end-rule",
+    title: "Piek-Eind-Regel",
+    difficulty: 2,
+    emoji: "📈",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["beleving", "herinnering", "ervaring", "hedonisme"],
+    definition: "De piek-eindregel (Kahneman) stelt dat mensen een ervaring niet beoordelen op het gemiddelde maar op het piekmoment (het beste of slechtste) en het einde — implicaties voor klantervaring, pijnbehandeling en evenementenontwerp.",
+    abstractExample: "Een vakantie met één fantastisch moment en een goede afsluiting wordt beter herinnerd dan een vakantie die continu goed was maar vlak eindigde — ook al was de tweede objectief beter.",
+    examples: [
+      { domain: "Geneeskunde", icon: "🏥", text: "Kahneman's coloscopie-studie: patiënten met een langere maar eindende met minder pijn, waardeerden de procedure lager dan kortere procedures die eindigden met pijn." },
+      { domain: "Klantenservice", icon: "🛍️", text: "Restaurants die klanten verrassen met een gratis dessert aan het einde scoren hoger in herinneringswaardering dan betere restaurants zonder die eindervaring." },
+      { domain: "Evenementen", icon: "🎉", text: "Concerten investeren enorm in de encore (eindervaring) — de piek-eindregel verklaart waarom het publiek dit het meest onthoudt." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke implicatie heeft de piek-eindregel voor klantervaring?", options: ["Gemiddelde kwaliteit is het meest bepalend", "Piekmoment en afsluiting zijn het meest bepalend voor herinnering", "Duur van de ervaring bepaalt beoordeling", "Frequentie van ervaringen is het meest bepalend"], correct: 1, explanation: "Investeren in een memorabele piek en een positieve afsluiting geeft meer retentie in klantengeheugen dan algehele kwaliteitsverbetering." }
+    ],
+    creativePrompt: "Ontwerp de ideale klantreis voor een dienst naar keuze met de piek-eindregel in gedachten. Welke piekmoment bouw je in en hoe ziet de perfecte afsluiting eruit?",
+    aiHelperPrompts: ["Hoe beïnvloedt de piek-eindregel mijn eigen herinneringen?", "Hoe gebruik ik de piek-eindregel in presentaties?", "Zijn er situaties waar de regel niet opgaat?"]
+  },
+  {
+    id: "endowment-effect",
+    title: "Bezitseffect",
+    difficulty: 2,
+    emoji: "🏠",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["bezit", "waarde", "verliesaversie", "economie"],
+    definition: "Het bezitseffect is de neiging om bezittingen hoger te waarderen simpelweg omdat ze van jou zijn — mensen vragen meer voor hun bezit dan ze zelf zouden betalen voor hetzelfde object.",
+    abstractExample: "Een mok die jij hebt gekregen, waardeer je op €7; diezelfde mok zou je niet kopen voor meer dan €3 als je hem niet had. Bezit verhoogt de waargenomen waarde.",
+    examples: [
+      { domain: "Woningmarkt", icon: "🏠", text: "Huizenverkopers overschatten consequent de waarde van hun woning — de emotionele band met het bezit beïnvloedt de prijs." },
+      { domain: "Handel", icon: "🛒", text: "Thaler's klassieke experimenten: studenten die een mok kregen vroegen significant meer om hem te verkopen dan anderen bereid waren te betalen." },
+      { domain: "Onderhandeling", icon: "🤝", text: "Twee partijen zien een verschil in de 'objectieve waarde' van wat ze inbrengen — elk overschat de waarde van zijn eigen bezit." }
+    ],
+    prerequisites: ["loss-aversion"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de psychologische verklaring voor het bezitseffect?", options: ["Mensen zijn rationeel in hun waardering", "Verliesaversie: afgeven van bezit voelt als verlies, wat zwaarder weegt dan de mogelijke winst", "Bezit verbetert objectief de kwaliteit van een object", "Mensen zijn ijdel over hun bezit"], correct: 1, explanation: "Het bezitseffect is een manifestatie van verliesaversie: verkopen voelt als verliezen (negatief gewogen), kopen als winnen — asymmetrische waardering." }
+    ],
+    creativePrompt: "Welke bezittingen heb jij die je niet zou kopen voor de prijs waarvoor je ze zou verkopen? Beschrijf de emotionele en rationele redenen voor de waarderingsgap.",
+    aiHelperPrompts: ["Hoe beïnvloedt het bezitseffect investeringsbeslissingen?", "Hoe overwin ik het bezitseffect bij het opruimen?", "Zijn er culturele verschillen in het bezitseffect?"]
+  },
+  {
+    id: "choice-overload",
+    title: "Keuzeparadox",
+    difficulty: 2,
+    emoji: "😵",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["keuze", "paradox", "vrijheid", "tevredenheid"],
+    definition: "De keuzeparadox (Schwartz) stelt dat meer keuzevrijheid boven een optimum leidt tot minder tevredenheid — te veel opties veroorzaken decisie-verlamming, verhoogde verwachtingen en spijt over de niet-gekozen alternatieven.",
+    abstractExample: "Jam-experiment (Iyengar): 24 jam-soorten trok meer bezoekers dan 6, maar de 6-keuzestand verkocht 10x meer — meer keuze leidde tot minder actie.",
+    examples: [
+      { domain: "Consumentisme", icon: "🛒", text: "Netflix's immense catalogus leidt tot eindeloos scrollen zonder keuze — meer opties, minder kijkplezier en meer keuzespijt." },
+      { domain: "Werk", icon: "💼", text: "Te veel projectopties voor een medewerker leiden tot verlamming en uitstelgedrag — het vereenvoudigen van keuzes verhoogt de productiviteit." },
+      { domain: "Pensioen", icon: "💰", text: "Bedrijven met meer pensioenfondsopties hebben lagere deelnamecijfers — meer keuze ontmoedigt actie." }
+    ],
+    prerequisites: [],
+    unlocks: ["status-quo-bias"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke strategie helpt bij keuzeverlamming?", options: ["Nog meer opties aanbieden", "Keuzes vereenvoudigen via goede defaults of beperking van opties", "Mensen langer laten nadenken", "Keuzehulp vermijden"], correct: 1, explanation: "Goed ontworpen keuze-architectuur beperkt opties tot het noodzakelijke, biedt aanbevolen defaults en verhelpt keuzeverlamming." }
+    ],
+    creativePrompt: "Beschrijf een domein in jouw leven waar je keuzeparadox ervaart (eten, media, kleding, vakantie). Ontwerp een 'keuze-beperking'-strategie die jou gelukkiger maakt met minder keuzestress.",
+    aiHelperPrompts: ["Hoeveel opties zijn optimaal?", "Hoe ontwerp ik mijn eigen leven met minder keuzes?", "Wanneer zijn meer opties wel beter?"]
+  },
+  {
+    id: "projection-bias",
+    title: "Projectiebias",
+    difficulty: 2,
+    emoji: "🔮",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["toekomst", "emotie", "bias", "voorspelling"],
+    definition: "Projectiebias is de neiging om te verwachten dat onze toekomstige voorkeuren en gevoelens dezelfde zijn als onze huidige — terwijl ze in werkelijkheid significant veranderen met omstandigheden.",
+    abstractExample: "Honger boodschappen doen leidt tot teveel kopen — je verwacht morgen ook hongerig te zijn. Een vol gevoel leidt tot te weinig kopen — je vergeet dat morgen je honger terugkeert.",
+    examples: [
+      { domain: "Boodschappen", icon: "🛒", text: "Mensen die hongerig boodschappen doen kopen significant meer dan nodig — ze projecteren hun huidige hongergevoel op de toekomst." },
+      { domain: "Aankopen", icon: "🚗", text: "Mensen die een auto kopen in de zomer kiezen vaker voor een cabriolet — ze projecteren de zomervreugde op hun toekomstige autogebruik in de winter." },
+      { domain: "Abonnementen", icon: "📺", text: "Mensen nemen abonnementen op basis van hoe enthousiast ze nu zijn, zonder te beseffen dat enthousiasme vervaagt — Netflix, sportschool, tijdschriften." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke strategie helpt projectiebias te verminderen?", options: ["Sneller beslissen", "Bewust nadenken over toekomstige omstandigheden die kunnen verschillen van nu", "Anderen om advies vragen", "Meer data verzamelen"], correct: 1, explanation: "Projectiebias verminderen vereist bewust 'toekomst-denken': hoe zal ik me waarschijnlijk voelen in de context van die toekomstige beslissing?" }
+    ],
+    creativePrompt: "Bedenk drie recente beslissingen waarbij je jouw huidige gevoel onterecht op de toekomst projecteerde. Hoe had je beter kunnen voorspellen hoe je je dan zou voelen?",
+    aiHelperPrompts: ["Hoe voorspel ik mijn toekomstige voorkeuren accurater?", "In welke domijnen is projectiebias het sterkst?", "Hoe beïnvloedt projectiebias langetermijndoelen?"]
+  },
+  {
+    id: "affect-heuristic",
+    title: "Affectieve Heuristiek",
+    difficulty: 2,
+    emoji: "❤️",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["emotie", "risico", "beslissing", "heuristiek"],
+    definition: "De affectieve heuristiek is de neiging om beslissingen te baseren op hoe iets voelt in plaats van een rationele risico-baten-analyse — positieve gevoelens verlagen de waargenomen risico's en verhogen de waargenomen voordelen, negatieve gevoelens doen het omgekeerde.",
+    abstractExample: "Als je kernenergie eng vindt, schat je de risico's hoger en voordelen lager in — als je kernenergie omarmt, doe je het omgekeerde — dezelfde feiten, tegengestelde risicoperceptie.",
+    examples: [
+      { domain: "Kernenergie", icon: "⚛️", text: "Mensen die kernenergie als 'eng' ervaren, schatten de risico's significant hoger in en voordelen lager — affect trekt de perceptie mee." },
+      { domain: "Investeren", icon: "📈", text: "Mensen die enthousiast zijn over een startup (positief affect) onderschatten systematisch de risico's en overschatten de kansen." },
+      { domain: "Gezondheid", icon: "🏥", text: "Risicovolle activiteiten (extreme sport) die als 'opwindend' worden ervaren, lijken veiliger dan ze zijn — positief affect verlaagt risicoperceptie." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe beïnvloedt de affectieve heuristiek risicoperceptie?", options: ["Ze is altijd accuraat", "Positieve gevoelens verlagen risicoperceptie; negatieve verhogen deze, ongeacht de werkelijke risico's", "Ze werkt alleen bij grote beslissingen", "Ze vermindert bij expertise"], correct: 1, explanation: "De inverted relationship between risk and benefit in perceptie (meer voordeel = minder risico ervaren) is een artefact van de affectieve heuristiek." }
+    ],
+    creativePrompt: "Kies een maatschappelijk controversieel thema (kernenergie, GMO, vaccins, AI). Hoe beïnvloedt jouw initiële gevoel jouw risicobeoordeling? Probeer de risico's en voordelen te evalueren na het bewust neutraliseren van jouw affect.",
+    aiHelperPrompts: ["Hoe neutraliseer ik de affectieve heuristiek in risicobeoordelingen?", "Zijn er gevallen waarbij de affectieve heuristiek nuttig is?", "Hoe beïnvloedt branding de affectieve heuristiek?"]
+  },
+  {
+    id: "gambler-fallacy",
+    title: "Gokkersdrogdenkt",
+    difficulty: 2,
+    emoji: "🎲",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["kansen", "statistiek", "bias", "onafhankelijkheid"],
+    definition: "De gokkersdrogdenkt is de onjuiste overtuiging dat eerdere willekeurige uitkomsten toekomstige kansen beïnvloeden — de overtuiging dat 'na vijf keer kop, munt nu 'aan de beurt is'.",
+    abstractExample: "Na vijf keer kop, gooit je weer op — munt is nu 'verplicht' denk je. Maar de munt heeft geen geheugen: elke worp is 50/50 ongeacht de geschiedenis.",
+    examples: [
+      { domain: "Gokken", icon: "🎰", text: "Casinospelers zetten na een reeks verlies met meer zekerheid in — ze geloven dat 'hun beurt' nadert. De roulettetal heeft geen geheugen." },
+      { domain: "Sport", icon: "⚽", text: "Na vijf verlorenwedstrijden verwacht een trainer dat 'de volgende' gewonnen moet worden — statistisch gedrag dat tot overmoed leidt." },
+      { domain: "Beleggen", icon: "📈", text: "Na een reeks dalende koersen verwachten beleggers een stijging — maar de markt heeft geen verplichting tot herstel op elke tijdschaal." }
+    ],
+    prerequisites: ["base-rate-fallacy"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is de gokkersdrogdenkt een drogdenkt?", options: ["Statistische analyse bewijst het", "Willekeurige onafhankelijke gebeurtenissen worden niet beïnvloed door eerdere uitkomsten", "Kansen veranderen over tijd", "Het geldt alleen voor munten, niet voor kaarten"], correct: 1, explanation: "Willekeurige, onafhankelijke processen (munt gooien, roulette) hebben per definitie geen geheugen — elke uitkomst is statistisch identiek ongeacht de geschiedenis." }
+    ],
+    creativePrompt: "Beschrijf een situatie in jouw eigen leven (werk, sport, relaties) waarbij jij de gokkersdrogdenkt toepaste en verwachtte dat een patroon moest keren. Wat was het resultaat?",
+    aiHelperPrompts: ["Hoe onderscheid ik de gokkersdrogdenkt van echt patronen?", "Bestaat de omgekeerde gokkersdrogdenkt (hot hand)?", "Hoe beïnvloedt de gokkersdrogdenkt financiële beslissingen?"]
+  },
+  {
+    id: "present-bias",
+    title: "Heden-bias",
+    difficulty: 2,
+    emoji: "⏰",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["uitstelgedrag", "toekomst", "impulsiviteit", "beloning"],
+    definition: "Heden-bias is de neiging om onmiddellijke beloningen onevenredig hoog te waarderen ten opzichte van toekomstige beloningen — zelfs bij gelijke rationele waarde voelt de directe beloning zo veel aantrekkelijker.",
+    abstractExample: "Je kiest €50 nu boven €60 over twee weken — maar je kiest geen €50 over zes maanden boven €60 over zes maanden en twee weken. De heden-bias vervormt de tijdshorizon.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏥", text: "Het genot van ongezond eten nu versus gezondheidsvoordelen over jaren — heden-bias verklaart waarom we weten wat goed is maar er anders naar handelen." },
+      { domain: "Sparen", icon: "💰", text: "De pensioenspaarpuzzel: logisch weten dat we moeten sparen, maar de onmiddellijke consumptie wint steeds van het verre toekomstdoel." },
+      { domain: "Studeren", icon: "📚", text: "Uitstelgedrag: een film kijken nu versus studeren voor een examen over drie weken — heden-bias maakt de film veel aantrekkelijker dan rationeel gerechtvaardigd." }
+    ],
+    prerequisites: ["time-preference"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welk mechanisme helpt bij het overwinnen van heden-bias?", options: ["Harder denken", "Precommitment-apparaten die toekomstige keuzes binden", "Meer wilskracht", "Beter informeren"], correct: 1, explanation: "Precommitment (Ulysses-strategie): je bindt je toekomstige zelf van tevoren aan de juiste keuze, zodat de heden-bias op het moment zelf geen kans krijgt." }
+    ],
+    creativePrompt: "Identificeer een domein waar heden-bias jou systematisch schaadt (sparen, eten, sport, studeren). Ontwerp een precommitment-mechanisme dat de heden-bias omzeilt.",
+    aiHelperPrompts: ["Hoe werkt precommitment in de praktijk?", "Zijn er apps die heden-bias verminderen?", "Hoe verschilt heden-bias van normale tijdsdiscontering?"]
+  },
+  {
+    id: "nudge-theory",
+    title: "Nudge-theorie",
+    difficulty: 2,
+    emoji: "👆",
+    academicCategory: "Gedragseconomie",
+    skillCategory: "Gedragseconomie",
+    tags: ["nudge", "keuze-architectuur", "gedrag", "beleid"],
+    definition: "Nudge-theorie (Thaler & Sunstein) stelt dat keuze-architectuur — hoe keuzes worden gepresenteerd — gedrag significant kan sturen zonder dwang of financiële prikkels, via slim gebruik van gedragspsychologische patronen.",
+    abstractExample: "Het plaatsen van gezond eten op ooghoogte in de kantine en ongezond eten op moeilijk bereikbare plekken 'nudget' naar gezondere keuzes zonder een ongezond eten te verbieden.",
+    examples: [
+      { domain: "Orgaandonatie", icon: "❤️", text: "Opt-out systeem (standaard donor) nudget naar hoge donorpercentages zonder iemand te dwingen donor te zijn." },
+      { domain: "Sparen", icon: "💰", text: "Automatische inschrijving voor pensioensparen (opt-out) verhoogt spaarparticipatiecijfers dramatisch versus opt-in systemen." },
+      { domain: "Energie", icon: "⚡", text: "Bericht op energierekening dat jouw verbruik vergelijkt met buren reduceert energiegebruik — sociale norm-nudge." }
+    ],
+    prerequisites: ["status-quo-bias"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt een nudge ethisch controversieel?", options: ["Het is een verbod", "Het stuurt gedrag via psychologische mechanismen zonder bewuste instemming", "Het is duur", "Het werkt te goed"], correct: 1, explanation: "Critici stellen dat nudges mensen manipuleren via hun biases zonder hun autonomie te respecteren — de keuze-architectuur beïnvloedt gedrag zonder dat mensen het doorhebben." }
+    ],
+    creativePrompt: "Ontwerp drie nudges voor een probleem in jouw directe omgeving (op school, werk of thuis): één via defaults, één via sociale normen en één via framing. Welke zou het meest effectief zijn?",
+    aiHelperPrompts: ["Hoe verschilt een nudge van manipulatie?", "Zijn nudges democratisch en transparant genoeg voor beleid?", "Welke nudges zijn bewezen het meest effectief?"]
   }
 ];
