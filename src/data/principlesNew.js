@@ -5544,5 +5544,235 @@ export const principlesNew = [
     ],
     creativePrompt: "Schrijf de eerste alinea van je levensverhaal — het genre, de toon, de centrale spanning. Is het een held's journey, een coming-of-age verhaal, een tragedie met redemptie? Wat vertelt dat verhaal over hoe je je leven interpreteert?",
     aiHelperPrompts: ["Hoe herschrijf ik een negatief levensverhaal constructief?", "Hoe beïnvloedt mijn levensverhaal mijn toekomstvisie?", "Is narratieve identiteit manipulatie van de werkelijkheid?"]
+  },
+  {
+    id: "reciprocity-principle",
+    title: "Wederkerigheid",
+    difficulty: 1,
+    emoji: "🔄",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["overtuiging", "invloed", "sociale norm", "Cialdini"],
+    definition: "Wederkerigheid (Cialdini) is het principe dat mensen zich verplicht voelen iets terug te doen als ze iets hebben ontvangen. Dit diepgewortelde sociale mechanisme is een van de krachtigste beïnvloedingsprincipes en kan worden gebruikt voor oprechte verbinding of manipulatie.",
+    abstractExample: "Als iemand je een cadeau geeft — ook een klein, ongewenst cadeau — voel je de sociale druk om iets terug te geven. Dit gevoel van verplichting is zo sterk dat marketeers, politici en fondsenwervers het systematisch benutten.",
+    examples: [
+      { domain: "Marketing", icon: "📢", text: "Gratis proefversies, monsters in de supermarkt, gratis e-books — allemaal gebaseerd op wederkerigheid: geef iets weg, wek de verplichting, verhoog de kans op aankoop aanzienlijk." },
+      { domain: "Relaties", icon: "❤️", text: "Oprechte wederkerigheid bouwt gezonde relaties: jij helpt mij verhuizen, ik help jou wanneer jij het nodig hebt. Dit is het cement van sociale gemeenschappen." },
+      { domain: "Onderhandelen", icon: "💼", text: "Een concessie doen in een onderhandeling activeert wederkerigheid: de ander voelt de druk ook een concessie te doen. Dit is de basis van het 'deur in het gezicht'-techniek." }
+    ],
+    prerequisites: [],
+    unlocks: ["social-proof", "commitment-consistency"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe werkt wederkerigheid als manipulatiestrategie?", options: ["Door agressief te zijn", "Door een klein ongewenst cadeau te geven dat de ontvanger verplicht voelt groter terug te geven", "Door hoge prijzen te vragen", "Door vriendelijk te zijn"], correctIndex: 1, explanation: "De kracht van wederkerigheid zit in de asymmetrie: een klein cadeau kan een grote verplichting wekken. Fondsenwervers die kleine geschenken sturen zien donaties stijgen — de verplichting overstijgt de waarde van het geschenk." }
+    ],
+    creativePrompt: "Observeer een week lang hoe wederkerigheid in jouw leven werkt. Wanneer geef jij iets om iets terug te verwachten? Wanneer voel jij je verplicht vanwege een ontvangen gunst? Is die verplichting proportioneel?",
+    aiHelperPrompts: ["Hoe gebruik ik wederkerigheid ethisch?", "Hoe herken ik wanneer wederkerigheid tegen mij wordt ingezet?", "Hoe zeg ik nee als wederkerigheid me onder druk zet?"]
+  },
+  {
+    id: "social-proof-2",
+    title: "Sociale Bewijskracht",
+    difficulty: 1,
+    emoji: "👥",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["conformiteit", "normen", "kuddegedrag", "Cialdini"],
+    definition: "Sociale bewijskracht is het principe dat mensen het gedrag van anderen als richtlijn gebruiken voor eigen gedrag, met name in onzekere situaties. Als veel mensen iets doen, lijkt het de juiste keuze — ongeacht of dat werkelijk zo is.",
+    abstractExample: "Een restaurant waar het vol zit lijkt beter dan een leeg restaurant — ook al heb je geen informatie over de kwaliteit. De aanwezigheid van anderen is het 'bewijs'. Dit is sociale bewijskracht: anderen doen het, dus het klopt.",
+    examples: [
+      { domain: "Online", icon: "💻", text: "'Meer dan 10.000 tevreden klanten', vijf sterren reviews, 'bestseller' labels — allemaal sociale bewijskracht die koopbeslissingen beïnvloedt zonder inhoudelijke informatie over kwaliteit." },
+      { domain: "Gezondheid", icon: "❤️‍🩹", text: "De meeste mensen doen wat hun omgeving doet: als je vrienden weinig bewegen en ongezond eten, is de kans groter dat jij dat ook doet. Sociale norm als gedragsbeïnvloeder." },
+      { domain: "Politiek", icon: "🏛️", text: "Peilingen beïnvloeden verkiezingen: een kandidaat die hoog scoort wint extra stemmen van mensen die 'met de winnaar mee' willen — sociale bewijskracht in politiek." }
+    ],
+    prerequisites: ["reciprocity-principle"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is sociale bewijskracht het sterkst?", options: ["Altijd en overal", "Bij onzekerheid en wanneer de anderen op jou lijken", "Alleen bij aankopen", "Alleen bij grote groepen"], correctIndex: 1, explanation: "Sociale bewijskracht is het krachtigst wanneer we onzeker zijn (wat is hier de norm?) en wanneer degenen die het doen op ons lijken ('als mensen zoals ik het doen, is het relevant voor mij'). Gelijkenis versterkt het effect significant." }
+    ],
+    creativePrompt: "Identificeer drie recente beslissingen die je hebt gemaakt op basis van wat anderen doen. Was die invloed bewust of onbewust? Hoe zou je de beslissing anders hebben genomen op basis van eigen criteria?",
+    aiHelperPrompts: ["Hoe herken ik wanneer sociale bewijskracht mijn oordeel vertekent?", "Hoe gebruik ik sociale bewijskracht ethisch in mijn werk?", "Wanneer is het verstandig de sociale norm te volgen en wanneer niet?"]
+  },
+  {
+    id: "commitment-consistency",
+    title: "Toewijding en Consistentie",
+    difficulty: 2,
+    emoji: "📌",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["consistentie", "commitment", "overtuiging", "identiteit"],
+    definition: "Het toewijdings- en consistentieprincipe (Cialdini) stelt dat mensen nadat ze een standpunt hebben ingenomen of een actie hebben ondernomen, sterk gedreven worden om consistent te blijven met die keuze — zelfs als nieuwe informatie het tegendeel suggereert.",
+    abstractExample: "Als je publiekelijk zegt dat je X steunt, zul je waarschijnlijk X blijven steunen — ook als je dat later betwijfelt — om consistent te lijken. Het is psychologisch moeilijker toe te geven dat je van mening bent veranderd dan consistent te zijn.",
+    examples: [
+      { domain: "Marketing", icon: "📢", text: "De 'voet tussen de deur'-techniek: eerst om een kleine gunst vragen (één euro voor goed doel), dan later om een grotere. Na de eerste toewijding voelt de tweede consistent." },
+      { domain: "Persoonlijk", icon: "💙", text: "Iemand die zichzelf identificeert als 'niet-lezer' zal minder snel een boek oppakken — ook als hij veel zou profiteren van lezen. De zelfidentificatie stuurt gedrag via consistentiedrang." },
+      { domain: "Politiek", icon: "🏛️", text: "Kiezers die publiekelijk een kandidaat hebben gesteund of een verkiezingsbord hebben geplaatst, zijn moeilijker te overtuigen van andere standpunten — toewijding vergrendelt overtuigingen." }
+    ],
+    prerequisites: ["reciprocity-principle"],
+    unlocks: ["identity-based-habits"],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe kan het toewijdings- en consistentieprincipe je schaden?", options: ["Het maakt je betrouwbaarder", "Het kan je vasthouden aan foute beslissingen omdat toegeven inconsistentie zou impliceren", "Het heeft geen nadelen", "Het werkt alleen bij anderen, niet bij jezelf"], correctIndex: 1, explanation: "Consistentiedrang kan de sunk cost fallacy versterken: je investering in een standpunt maakt het psychologisch moeilijker om het te herzien. Dit leidt tot voortgezet fout gedrag ter bescherming van zelfconsistentie." }
+    ],
+    creativePrompt: "Herinner je een beslissing die je lang hebt volgehouden ook nadat je wist dat het niet goed werkte. Wat hield je vast? Was het consistent willen zijn? Hoe had je dit eerder kunnen doorbreken?",
+    aiHelperPrompts: ["Hoe vermijd ik dat consistentiedrang me vasthoudt aan foute keuzes?", "Hoe gebruik ik kleine commitments om gewenst gedrag op te bouwen?", "Hoe maak ik het voor anderen makkelijker van mening te veranderen?"]
+  },
+  {
+    id: "scarcity-principle",
+    title: "Schaarsteprincipe",
+    difficulty: 1,
+    emoji: "⏳",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["schaarste", "urgentie", "waarde", "beïnvloeding"],
+    definition: "Het schaarsteprincipe stelt dat mensen dingen meer waarderen naarmate ze minder beschikbaar zijn. Beperkte beschikbaarheid — in tijd, hoeveelheid of toegang — verhoogt de waargenomen waarde en urgentie, ongeacht de werkelijke kwaliteit van het object.",
+    abstractExample: "Een cookie uit een pot met tien koekjes smaakt minder goed dan dezelfde cookie uit een bijna lege pot — dit is aangetoond in onderzoek. Schaarste verandert de waargenomen waarde letterlijk, niet alleen psychologisch.",
+    examples: [
+      { domain: "Marketing", icon: "📢", text: "'Nog maar 3 op voorraad!', 'Aanbieding geldig tot middernacht', 'Exclusief voor leden' — allemaal toepassingen van het schaarsteprincipe die urgentie en waarde verhogen." },
+      { domain: "Relaties", icon: "❤️", text: "Mensen die moeilijk bereikbaar zijn worden soms aantrekkelijker gevonden — deels door het schaarsteprincipe. Beschikbaarheid verlaagt paradoxaal genoeg soms de waargenomen waarde." },
+      { domain: "Collectibles", icon: "🏺", text: "Beperkte oplages, gecertificeerde unieke kunstwerken, één-van-een items — schaarste is de primaire waardedrijver, niet gebruikswaarde." }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom verhoogt schaarste de waarde van een object psychologisch?", options: ["Zeldzame dingen zijn altijd van hogere kwaliteit", "Schaarste activeert verliesaversie en reactance, wat urgentie en verlangen vergroot", "Mensen zijn altijd rationeel over prijs", "Schaarste is een objectief kwaliteitscriterium"], correctIndex: 1, explanation: "Schaarste activeert twee mechanismen: verliesaversie (ik zou iets kunnen missen) en psychologische reactance (mijn vrijheid om het te verkrijgen wordt beperkt, dus ik wil het meer). Beide verhogen het verlangen ongeacht werkelijke kwaliteit." }
+    ],
+    creativePrompt: "Herinner drie aankopen of keuzes die je maakte omdat iets 'schaars' of 'tijdelijk' was. Hoe groot was de bijdrage van schaarste aan je beslissing? Hoe zou je dezelfde keuze maken zonder de tijdsdruk?",
+    aiHelperPrompts: ["Hoe herken ik kunstmatige schaarste in marketing?", "Wanneer is echte schaarste een goede reden om snel te beslissen?", "Hoe gebruik ik het schaarsteprincipe ethisch?"]
+  },
+  {
+    id: "authority-bias-influence",
+    title: "Autoriteitsbias",
+    difficulty: 2,
+    emoji: "👔",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Kritisch Denken",
+    tags: ["autoriteit", "gezag", "overtuiging", "conformiteit"],
+    definition: "Autoriteitsbias is de neiging om de meningen en richtlijnen van mensen met autoriteit — door titel, positie, expertise of symbolen — als juister te beschouwen dan die van anderen, soms boven eigen oordeel. Dit is soms nuttig maar kan ook leiden tot blind volgen van foute autoriteiten.",
+    abstractExample: "Een dokter met een witte jas overtuigt anders dan dezelfde persoon in vrijetijdskleding — ook als de inhoud identiek is. Symbolen van autoriteit activeren automatisch meer vertrouwen en gehoorzaamheid.",
+    examples: [
+      { domain: "Psychologie", icon: "🧠", text: "Milgram's gehoorzaamheidsexperiment: gewone mensen gaven schijnbaar dodelijke elektroshocks aan anderen op aanwijzing van een autoriteit. Autoriteit overschrijft individueel moreel oordeel in schokkende mate." },
+      { domain: "Werk", icon: "💼", text: "Een medewerker die een duidelijk fout besluit niet aanvecht omdat het van de CEO komt, illustreert autoriteitsbias in praktijk. Hierarchische positie vervangt inhoudelijk oordeel." },
+      { domain: "Media", icon: "📺", text: "Een 'expert' op tv overtuigt kijkers meer dan dezelfde mening van een vriend — ook als de expert geen relevante expertise heeft voor de specifieke claim die hij maakt." }
+    ],
+    prerequisites: ["social-proof-2"],
+    unlocks: ["epistemic-humility"],
+    exercises: [
+      { type: "multipleChoice", question: "Wanneer is het volgen van autoriteit nuttig en wanneer niet?", options: ["Altijd nuttig", "Nuttig bij legitieme expertise in relevant domein; gevaarlijk bij misplaatste autoriteit of gecreëerde autoriteitsperceptie", "Nooit nuttig — altijd zelf beoordelen", "Nuttig bij grote beslissingen, onnuttig bij kleine"], correctIndex: 1, explanation: "Autoriteit als heuristiek is efficiënt: een neurochirurg vertrouwen op hersenchirurgie is rationeel. Het wordt problematisch als: de autoriteit buiten haar expertise spreekt, de perceptie kunstmatig is gecreëerd, of als autoriteit kritisch denken vervangt." }
+    ],
+    creativePrompt: "Identificeer drie mensen of instituten wiens mening jij automatisch meer vertrouwt. Waarop is dat vertrouwen gebaseerd? Is het gebaseerd op werkelijke expertise of op symbolen van autoriteit? Hoe zou je hun claims kunnen toetsen?",
+    aiHelperPrompts: ["Hoe onderscheid ik legitieme expertise van gecreëerde autoriteitsperceptie?", "Hoe bevraag ik autoriteiten respectvol maar kritisch?", "Hoe bouw ik zelf gezag op dat op werkelijke expertise is gebaseerd?"]
+  },
+  {
+    id: "liking-principle",
+    title: "Sympathieprincipe",
+    difficulty: 1,
+    emoji: "😊",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["sympathie", "invloed", "aantrekkelijkheid", "gelijkenis"],
+    definition: "Het sympathieprincipe stelt dat mensen eerder instemmen met verzoeken van mensen die ze sympathiek vinden. Sympathie wordt vergroot door: fysieke aantrekkelijkheid, gelijkenis, vertrouwdheid, complimenten en associatie met positieve dingen.",
+    abstractExample: "We kopen meer van verkopers die we aardig vinden, stemmen meer op politici die we sympathiek achten, en helpen eerder vrienden dan vreemden — ook als de inhoud van het verzoek identiek is. Sympathie is een sociale smeerolie die beslissingen beïnvloedt los van inhoud.",
+    examples: [
+      { domain: "Verkoop", icon: "💼", text: "Tupperware-feestjes zijn volledig gebaseerd op het sympathieprincipe: je koopt van een vriendin in jouw sociale omgeving. De vriendschapsband vergroot de koopbereidheid enorm." },
+      { domain: "Politiek", icon: "🏛️", text: "Onderzoek toont dat fysiek aantrekkelijkere kandidaten meer stemmen krijgen — een direct effect van het sympathieprincipe, niet van politieke inhoud." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Mensen geven vaker toe aan verzoeken van vrienden dan van vreemden met identieke verzoeken. Sympathie overbrugt sociale grenzen die inhoud alleen niet kan overbruggen." }
+    ],
+    prerequisites: ["reciprocity-principle"],
+    unlocks: ["rapport-building"],
+    exercises: [
+      { type: "multipleChoice", question: "Welke factoren verhogen sympathie het meest?", options: ["Hoge status en expertise", "Gelijkenis, vertrouwdheid, complimenten en associatie met positieve ervaringen", "Formele kleding en professionele taal", "Directheid en efficiëntie"], correctIndex: 1, explanation: "Cialdini identificeert vijf sympathiefactoren: fysieke aantrekkelijkheid, gelijkenis, vertrouwdheid, complimenten, en conditionering. Gelijkenis en vertrouwdheid zijn de meest krachtige." }
+    ],
+    creativePrompt: "Bij wie in jouw leven hecht je meer waarde aan wat ze zeggen dan misschien inhoudelijk gerechtvaardigd is? Is dat gezonde sympathie of sympathiebias? Hoe houdt je het onderscheid bij?",
+    aiHelperPrompts: ["Hoe bouw ik oprechte sympathie op in professionele relaties?", "Hoe herken ik wanneer sympathie mijn oordeel vertekent?", "Is het gebruik van sympathie in overtuiging altijd manipulatie?"]
+  },
+  {
+    id: "foot-in-door",
+    title: "Voet-in-de-deur Techniek",
+    difficulty: 1,
+    emoji: "🚪",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["overtuiging", "stapsgewijs", "commitment", "verzoeken"],
+    definition: "De voet-in-de-deur techniek is een overtuigingsstrategie waarbij je begint met een klein verzoek dat vrijwel zeker wordt ingewilligd, en daarna een groter verzoek doet. Door de eerste instemming voelt het grotere verzoek consistenter met het zelfbeeld van de persoon.",
+    abstractExample: "Een verkoopster die eerst vraagt of je even de winkel in wil kijken (klein verzoek), dan of je dit product wil proberen, dan of je het wil kopen — heeft stapsgewijs commitment opgebouwd. Elke stap is kleiner dan de volgende stap als directe vraag zou voelen.",
+    examples: [
+      { domain: "Fondsenwerving", icon: "❤️", text: "Vredesorganisaties vroegen mensen eerst een kleine sticker te plaatsen (bijna niemand weigert). Later vroegen ze een groot bord in de tuin te plaatsen. Sticker-groep: 76% ja; controlegroep: 17% ja." },
+      { domain: "Werk", icon: "💼", text: "Een junior medewerker die zijn baas overtuigt een klein experiment toe te staan, heeft een opening gecreëerd. Als het werkt: commitment voor groter experiment." },
+      { domain: "Relaties", icon: "❤️", text: "Kleine gunsten vragen en verlenen bouwt wederkerigheid en commitment op. Dit is de organische manier waarop mensen diepere banden vormen." }
+    ],
+    prerequisites: ["commitment-consistency"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom werkt de voet-in-de-deur techniek?", options: ["Mensen zijn lui en zeggen liever ja", "De eerste instemming verandert het zelfconcept — 'ik ben iemand die dit soort dingen doet' — wat grotere verzoeken consistent maakt", "Kleine verzoeken conditioneren mensen om automatisch ja te zeggen", "Het werkt alleen bij vrienden"], correctIndex: 1, explanation: "Na de eerste instemming herdefiniëren mensen hun zelfconcept subtiel: 'ik steun dit soort zaak'. Het grotere verzoek voelt dan consistent met die nieuwe zelfperceptie. Consistentiedrang doet de rest." }
+    ],
+    creativePrompt: "Kies iets wat je graag wil bereiken van iemand. Wat is de kleinste, gemakkelijkste eerste stap die je kunt vragen? Plan een reeks van toenemende stappen richting je doel.",
+    aiHelperPrompts: ["Wanneer is de voet-in-de-deur ethisch en wanneer manipulatief?", "Hoe herken ik wanneer deze techniek op mij wordt toegepast?", "Hoe combineer ik dit met andere overtuigingstechnieken?"]
+  },
+  {
+    id: "anchoring-negotiation",
+    title: "Ankereffect in Onderhandeling",
+    difficulty: 2,
+    emoji: "⚓",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["ankereffect", "onderhandelen", "prijzen", "cognitie"],
+    definition: "Het ankereffect in onderhandeling beschrijft hoe het eerste getal of voorstel dat wordt geïntroduceerd — het 'anker' — de volledige verdere discussie beïnvloedt. Onderhandelen begint altijd vanuit het anker, zelfs als het volkomen willekeurig of extreem was.",
+    abstractExample: "Gooi een dartpijl op een rad met willekeurige getallen. Vraag daarna: 'Hoeveel Afrikaanse landen zijn er in de VN?' De willekeurige waarde van het rad voorspelt het antwoord — ook al is het aantoonbaar irrelevant. Dit is het ankereffect.",
+    examples: [
+      { domain: "Vastgoed", icon: "🏠", text: "De vraagprijs van een huis is het anker voor de onderhandeling. Onderzoek toont dat een hogere vraagprijs leidt tot hogere verkoopprijzen — ook als het huis objectief hetzelfde waard is." },
+      { domain: "Salaris", icon: "💰", text: "De eerste die een salarisgetal noemt in een onderhandeling, zet het anker. Als jij als eerste een hoog bedrag noemt, verschuift de hele discussie." },
+      { domain: "Retail", icon: "🛒", text: "'Normaalprijs €299, nu €149' — de €299 is het anker dat €149 goedkoop laat lijken, ook als €149 de werkelijke marktwaarde is." }
+    ],
+    prerequisites: ["scarcity-principle"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Welke onderhandelingsstrategie neutraliseert het ankereffect het best?", options: ["Altijd een tegenbod doen ver van het anker", "Het anker expliciet erkennen als irrelevant en de discussie herkaderen vanuit objectieve criteria", "Nooit als eerste een bod doen", "Hogere aankopen altijd in termijnen denken"], correctIndex: 1, explanation: "Het anker expliciet benoemen ('Dat getal is een startpunt, maar laten we kijken naar objectieve criteria') vermindert zijn kracht. Bewust alternatieve referentiepunten invoeren ondermijnt het ankereffect." }
+    ],
+    creativePrompt: "Bereid een onderhandeling voor die je binnenkort hebt. Welk anker ga jij introduceren? Hoe hoog is het realistisch hoog? Hoe ga je reageren als de ander als eerste een anker gooit?",
+    aiHelperPrompts: ["Hoe bepaal ik een sterk openingsbod in onderhandelingen?", "Hoe herken ik wanneer ik door een anker word beïnvloed?", "Welke andere cognitieve biases spelen een rol in onderhandelingen?"]
+  },
+  {
+    id: "door-in-face",
+    title: "Deur-in-het-gezicht Techniek",
+    difficulty: 2,
+    emoji: "🔚",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["overtuiging", "contrast", "verzoeken", "wederkerigheid"],
+    definition: "De deur-in-het-gezicht techniek is de omgekeerde van voet-in-de-deur: begin met een extreem groot verzoek dat bijna zeker wordt geweigerd, doe dan een kleiner verzoek dat je eigenlijk wil. Door contrast en wederkerigheid stijgt de kans op instemming met het tweede verzoek.",
+    abstractExample: "Je wil dat een vriend je helpt verhuizen (één dag). Je vraagt eerst of hij een week wil helpen bij een renovatie. Hij weigert. Dan vraag je of hij één dag wil helpen verhuizen. De kans op 'ja' is groter dan als je direct om één dag had gevraagd.",
+    examples: [
+      { domain: "Fondsenwerving", icon: "❤️", text: "Een fondsenwerver vraagt €500 aan een potentiële donor. Na weigering vraagt hij €50. De kans op €50-instemming is groter dan als hij direct om €50 had gevraagd — door contrast en wederkerigheid." },
+      { domain: "Opvoeding", icon: "👨‍👩‍👧", text: "Een tiener vraagt of hij de hele nacht mag wegblijven (zeker nee). Dan vraagt hij of hij tot 1 uur mag blijven. De eerste weigering maakt de tweede concessie voor de ouder aantrekkelijker." },
+      { domain: "Werk", icon: "💼", text: "Een werknemer vraagt zijn baas om een week thuiswerken (nee). Dan vraagt hij om twee dagen per week thuiswerken. De eerste weigering creëert een 'concessie' voor het kleinere verzoek." }
+    ],
+    prerequisites: ["reciprocity-principle", "foot-in-door"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom werkt de deur-in-het-gezicht techniek?", options: ["Mensen vergeten het eerste verzoek snel", "Het gecreëerde contrast maakt het tweede verzoek kleiner lijken, en de concessie wekt wederkerigheid", "Mensen zijn inconsistent in hun beslissingen", "Het werkt alleen bij autoritaire persoonlijkheden"], correctIndex: 1, explanation: "Twee mechanismen werken samen: contrast (na een groot verzoek lijkt het kleine verzoek redelijker) en wederkerigheid (de aanvrager deed een concessie door te reduceren; de ander voelt de norm ook een concessie te doen door in te stemmen)." }
+    ],
+    creativePrompt: "Bedenk een situatie waarbij je deur-in-het-gezicht zou kunnen toepassen voor iets dat je werkelijk wil. Wat is het extreme verzoek? Wat is het echte doel? Hoe ver moet het extreme verzoek gaan om effectief te zijn?",
+    aiHelperPrompts: ["Wanneer is deur-in-het-gezicht effectiever dan voet-in-de-deur?", "Is deur-in-het-gezicht altijd manipulatie?", "Hoe ga ik om met dit als het op mij wordt toegepast?"]
+  },
+  {
+    id: "priming-effect",
+    title: "Primingeffect",
+    difficulty: 2,
+    emoji: "🔑",
+    academicCategory: "Sociale Psychologie",
+    skillCategory: "Kritisch Denken",
+    tags: ["priming", "onderbewust", "context", "gedrag"],
+    definition: "Priming is het verschijnsel waarbij blootstelling aan één stimulus de verwerking van en reactie op een latere stimulus beïnvloedt — vaak buiten bewust bewustzijn. Onze gedachten, oordelen en gedragingen worden continu beïnvloed door recente ervaringen en context.",
+    abstractExample: "Mensen die gevraagd worden een zin met het woord 'oud' te maken, lopen daarna langzamer de gang door. Mensen die een warme kop koffie vasthouden beoordelen anderen als 'warmer'. Dit is priming: context beïnvloedt gedrag zonder dat je het weet.",
+    examples: [
+      { domain: "Marketing", icon: "📢", text: "Supermarkten spelen langzame muziek om klanten langzamer te laten lopen en meer te laten kopen. Of Franse muziek in de wijnafdeling om Franse wijn te primen. Subtiele priming verhoogt verkopen." },
+      { domain: "Werk", icon: "💼", text: "Een vergadering beginnen met positieve nieuwsberichten primet de groep voor constructief denken. Een vergadering beginnen met problemen primet defensief denken." },
+      { domain: "Onderwijs", icon: "📚", text: "Studenten herinneren aan hun studenten-identiteit voor een toets verbetert prestaties. Herinneren aan stereotypen verslechtert dit — het 'stereotype threat' is een vorm van negatieve priming." }
+    ],
+    prerequisites: ["social-proof-2"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt priming zo krachtig als beïnvloedingsinstrument?", options: ["Het is altijd bewust toegepast", "Het werkt buiten bewust bewustzijn — mensen merken de beïnvloeding niet en kunnen zich er daardoor niet tegen verdedigen", "Priming werkt alleen bij zwakke wilskracht", "Het heeft alleen korte-termijneffecten"], correctIndex: 1, explanation: "Priming is effectief juist omdat het onbewust werkt. Bewuste beïnvloeding kan worden herkend en weerstaan. Priming beïnvloedt associatieve netwerken zonder dat de persoon zich bewust is van de invloed." }
+    ],
+    creativePrompt: "Ontwerp de ideale 'priming-omgeving' voor een doel dat je wil bereiken: een productieve werkdag, een creatieve sessie, een moeilijk gesprek. Welke elementen in je omgeving kun je aanpassen om je de juiste richting te primen?",
+    aiHelperPrompts: ["Hoe gebruik ik priming bewust voor betere prestaties?", "Hoe herken ik wanneer ik ongewenst geprimd word?", "Welke omgevingsfactoren primen het meest?"]
   }
 ];
