@@ -3704,5 +3704,235 @@ export const principlesNew = [
     ],
     creativePrompt: "Kies een creatief project. Stel jezelf drie willekeurige beperkingen op (bijv. geen gebruik van kleur X, max 100 woorden, klaar in een uur). Hoe beïnvloedt dit je creatieve proces?",
     aiHelperPrompts: ["Hoe gebruik ik creatieve beperkingen in mijn werk?", "Welke soorten beperkingen zijn het meest stimulerend?", "Hoe vermijd ik dat beperkingen me frustreren in plaats van inspireren?"]
+  },
+  {
+    id: "empathic-accuracy",
+    title: "Empathische Nauwkeurigheid",
+    difficulty: 2,
+    emoji: "🎯",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["empathie", "begrip", "perspectief", "relaties"],
+    definition: "Empathische nauwkeurigheid is het vermogen om nauwkeurig te begrijpen wat iemand anders denkt en voelt — niet alleen te veronderstellen. Het verschilt van sympatie (meevoelen) en algemene empathie (inleven): het gaat om precisie in het begrijpen van andermans innerlijke wereld.",
+    abstractExample: "Empathie zonder nauwkeurigheid is als navigeren met een kompas dat soms de verkeerde richting wijst. Je probeert te begrijpen, maar je aannames kloppen niet. Nauwkeurigheid vereist navragen, luisteren en aanpassen.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Je partner is stil na het werk. In plaats van aannemen dat hij boos is (lage empathische nauwkeurigheid), vraag je: 'Ben je moe, of zit er iets wat je bezig houdt?' De werkelijkheid kan totaal anders zijn." },
+      { domain: "Werk", icon: "💼", text: "Een collega stelt kritische vragen in een vergadering. Lage nauwkeurigheid: 'Hij is moeilijk.' Hoge nauwkeurigheid: 'Hij maakt zich zorgen over de tijdlijn — navragen bevestigt dit.' Reactie verandert volledig." },
+      { domain: "Opvoeding", icon: "👨‍👩‍👧", text: "Een kind is boos en huilt. In plaats van 'hij is moe' automatisch aannnemen, vraag je door wat er is. Soms is de echte oorzaak anders dan de vermoedde — en dan helpt de juiste respons veel beter." }
+    ],
+    prerequisites: [],
+    unlocks: ["perspective-taking", "conflict-resolution"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt empathische nauwkeurigheid van gewone empathie?", options: ["Empathische nauwkeurigheid is sterker dan empathie", "Nauwkeurigheid vereist actief toetsen of je begrip van andermans innerlijke toestand klopt", "Empathie is altijd voldoende", "Ze zijn hetzelfde"], correctIndex: 1, explanation: "Gewone empathie ('ik probeer te begrijpen hoe jij je voelt') kan gebaseerd zijn op projectie of aannames. Empathische nauwkeurigheid voegt de stap toe van toetsen en corrigeren: 'Klopt mijn beeld?' Dit maakt het aanzienlijk effectiever." }
+    ],
+    creativePrompt: "Denk aan iemand met wie je regelmatig contact hebt. Schrijf op wat je denkt dat zij momenteel bezighoudt. Ga dan een gesprek aan en toets dit. Hoe nauwkeurig was je?",
+    aiHelperPrompts: ["Hoe verbeter ik mijn empathische nauwkeurigheid?", "Hoe vraag ik door zonder indringend te zijn?", "Wanneer is het goed genoeg om te veronderstellen versus actief te toetsen?"]
+  },
+  {
+    id: "perspective-taking",
+    title: "Perspectiefname",
+    difficulty: 2,
+    emoji: "👓",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["perspectief", "empathie", "begrip", "conflicten"],
+    definition: "Perspectiefname is het bewust innemen van het standpunt van een ander persoon — hun situatie, achtergrond, behoeften en overtuigingen in overweging nemen bij het begrijpen van hun gedrag. Het is een cognitieve vaardigheid die begrip en samenwerking verdiept.",
+    abstractExample: "Stel je voor dat je dezelfde film ziet vanuit de ogen van een ander personage. Plotseling begrijp je waarom 'de slechterik' doet wat hij doet — hij is de held van zijn eigen verhaal. Perspectiefname is dat ook in het echte leven doen.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een moeilijke klant begrijp je beter als je nadenkt over zijn context: hij heeft zijn eigen baas, zijn eigen druk, zijn eigen angst. Zijn 'onredelijke' eisen worden logisch vanuit zijn perspectief." },
+      { domain: "Relaties", icon: "❤️", text: "Een argument met je partner: in plaats van je eigen gelijk verdedigen, je afvragen: 'Welk verhaal vertelt hij zichzelf over deze situatie? Welke behoefte speelt hierin?' Dit opent de dialoog." },
+      { domain: "Studie", icon: "📚", text: "Een historische figuur begrijpen door je af te vragen: 'In welke wereld leefde hij? Wat waren zijn opties? Wat wist hij wel en niet?' Dit leidt tot genuanceerder historisch begrip." }
+    ],
+    prerequisites: ["empathic-accuracy"],
+    unlocks: ["conflict-resolution"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de belangrijkste valkuil bij perspectiefname?", options: ["Dat je te veel begrip toont", "Dat je je eigen perspectief projecteert op de ander in plaats van werkelijk hun standpunt in te nemen", "Dat je je eigen mening verliest", "Dat het te lang duurt"], correctIndex: 1, explanation: "De meest gemaakte fout bij perspectiefname is te denken vanuit 'hoe zou ik mij voelen in zijn situatie?' in plaats van 'hoe voelt hij zich, gegeven wie hij is?' Dit leidt tot projectie, niet tot werkelijk begrip." }
+    ],
+    creativePrompt: "Kies een persoon met wie je een meningsverschil hebt. Schrijf een brief vanuit hun perspectief — alsof jij die persoon bent en je jouw eigen standpunt verdedigt. Wat leer je?",
+    aiHelperPrompts: ["Hoe neem ik een perspectief in van iemand die heel anders is dan ik?", "Wat is het verschil tussen perspectiefname en instemmen?", "Hoe gebruik ik perspectiefname in conflicten?"]
+  },
+  {
+    id: "rapport-building",
+    title: "Rapport Opbouwen",
+    difficulty: 1,
+    emoji: "🤝",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["vertrouwen", "verbinding", "communicatie", "relaties"],
+    definition: "Rapport opbouwen is het creëren van een gevoel van wederzijds begrip, vertrouwen en verbinding met een ander persoon. Het bestaat uit elementen als actieve aandacht, gelijkschakeling, oprechte interesse en het vinden van gemeenschappelijke grond.",
+    abstractExample: "Rapport is als een brug tussen twee mensen. Zonder brug staan jullie op aparte oevers — communicatie is moeilijk en inspannend. Met een stevige brug stroomt uitwisseling gemakkelijk en vanzelf.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een salesgesprek beginnen met oprechte interesse in de persoon (niet het product), luisteren naar zijn situatie en spiegelen van zijn tempo en taal — dit bouwt rapport dat verkoopgesprekken effectiever maakt." },
+      { domain: "Studie", icon: "📚", text: "Een goede relatie met een docent opbouwen door actief te luisteren, vragen te stellen en interesse te tonen — dit maakt feedback ontvangen en hulp zoeken gemakkelijker." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Bij een eerste ontmoeting: de naam onthouden, doorvragen op wat de ander zegt, en iets persoonlijks delen. Kleine handelingen die een grote verbindingsbrug bouwen." }
+    ],
+    prerequisites: [],
+    unlocks: ["trust-building", "conflict-resolution"],
+    exercises: [
+      { type: "multipleChoice", question: "Welk element draagt het meest bij aan snel rapport opbouwen?", options: ["Veel over jezelf vertellen", "Oprechte, actieve aandacht voor de ander tonen", "Professionele competentie demonstreren", "Grappig zijn"], correctIndex: 1, explanation: "Mensen voelen zich verbonden als ze zich gezien en gehoord voelen. Oprechte aandacht — oogcontact, doorvragen, samenvatten wat gezegd is — signaleert respect en interesse, de basis van rapport." }
+    ],
+    creativePrompt: "Ga een week lang bewust één nieuw rapport-element oefenen: bijv. de naam van de persoon drie keer gebruiken in een gesprek, of altijd één verdiepende vraag stellen. Wat merk je?",
+    aiHelperPrompts: ["Hoe bouw ik snel rapport op in zakelijke situaties?", "Hoe bouw ik rapport op met moeilijke persoonlijkheden?", "Is rapport opbouwen manipulatief?"]
+  },
+  {
+    id: "conflict-resolution",
+    title: "Conflictoplossing",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["conflict", "communicatie", "samenwerking", "onderhandeling"],
+    definition: "Conflictoplossing is het proces van het constructief aanpakken van meningsverschillen zodat alle partijen zich gehoord voelen en een duurzame oplossing wordt gevonden. Effectieve conflictoplossing richt zich op belangen (waarom iemand iets wil), niet op posities (wat iemand eist).",
+    abstractExample: "Twee mensen willen dezelfde sinaasappel. Positie-denken: je snijdt hem doormidden. Belangen-denken: de een wil het sap, de ander de schil. Beiden kunnen volledig krijgen wat ze willen — als je vraagt waarom.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Twee teamleden botsen over de aanpak van een project. In plaats van te oordelen wie gelijk heeft, vraag je elk: 'Welk resultaat is voor jou het belangrijkst?' Vaak zijn de onderliggende doelen compatibel." },
+      { domain: "Relaties", icon: "❤️", text: "Een herhalend argument over huishoudtaken aanpakken door te vragen: 'Wat maakt dit voor jou zo belangrijk?' Het antwoord ('Ik wil me gewaardeerd voelen') opent een heel andere oplossingsruimte." },
+      { domain: "Buurt", icon: "🏘️", text: "Buurconflict over geluidsoverlast: in plaats van beschuldigingen, samen praten over wederzijdse behoeften (rust vs. sociale vrijheid) en gezamenlijk werkbare afspraken maken." }
+    ],
+    prerequisites: ["perspective-taking", "rapport-building"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het verschil tussen focussen op posities vs. belangen bij conflictoplossing?", options: ["Posities zijn altijd juister", "Posities zijn wat iemand eist; belangen zijn waarom — belangen bieden meer ruimte voor creatieve oplossingen", "Belangen zijn minder belangrijk dan posities", "Ze zijn hetzelfde"], correctIndex: 1, explanation: "Posities zijn starre standpunten. Belangen zijn de onderliggende behoeften en motivaties. Door te focussen op belangen ontdek je oplossingen die voor beide partijen werken — iets wat bij positie-denken onmogelijk lijkt." }
+    ],
+    creativePrompt: "Denk aan een huidig conflict of meningsverschil. Schrijf op: wat is je positie? Wat zijn je werkelijke belangen? Wat zijn de waarschijnlijke belangen van de andere partij? Welke oplossing dient beide?",
+    aiHelperPrompts: ["Hoe begin ik een moeilijk conflictgesprek?", "Hoe ga ik om met iemand die niet constructief wil zijn?", "Wanneer is het beter een conflict te vermijden dan op te lossen?"]
+  },
+  {
+    id: "boundary-setting",
+    title: "Grenzen Stellen",
+    difficulty: 2,
+    emoji: "🛑",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["grenzen", "assertiviteit", "zelfrespect", "relaties"],
+    definition: "Grenzen stellen is het communiceren van wat voor jou acceptabel is in hoe anderen zich naar jou gedragen, en dit handhaven met respectvolle duidelijkheid. Gezonde grenzen beschermen je welzijn zonder de ander uit te sluiten.",
+    abstractExample: "Grenzen zijn als de wanden van een huis: ze definiëren wat binnen (acceptabel) en buiten (niet-acceptabel) valt. Zonder wanden is er geen beschutting. Maar een huis dat volledig afgesloten is, is ook geen thuis — er moeten ook deuren zijn.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Aan een manager die 's avonds verwacht te bereiken zijn: 'Ik ben van 9-18 uur beschikbaar voor urgente zaken. Na werktijd ben ik offline tenzij we dat vooraf afspreken.' Dit is een duidelijke, respectvolle grens." },
+      { domain: "Relaties", icon: "❤️", text: "Aan een vriend die je regelmatig afzegtop het laatste moment: 'Als je een afspraak afzegt, hoor ik dat graag minstens een dag van tevoren — tenzij het echt niet anders kan.' Grens gesteld, vriendschap intact." },
+      { domain: "Familie", icon: "👨‍👩‍👧", text: "Aan ouders die overal commentaar op hebben: 'Ik waardeer jullie betrokkenheid, maar over X (opvoedkeuzes, relatie) beslis ik zelf. Jullie mening vraag ik wanneer ik die nodig heb.'" }
+    ],
+    prerequisites: [],
+    unlocks: ["conflict-resolution"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt grenzen stellen effectief in plaats van afwijzend?", options: ["Grenzen zo zacht mogelijk formuleren", "Grenzen communiceren vanuit eigen behoeften, niet als aanval op de ander, en consequent handhaven", "Altijd een reden geven voor elke grens", "Grenzen alleen stellen als situaties al eskaleren"], correctIndex: 1, explanation: "Effectieve grenzen zijn helder, komen vanuit 'ik' (niet 'jij doet fout'), zijn consistent en worden gehandhaafd. Grenzen die worden gesteld maar niet gehandhaafd, werken averechtsen — ze ondermijnen je geloofwaardigheid." }
+    ],
+    creativePrompt: "Identificeer één situatie in je leven waar je een grens wil stellen maar dat nog niet hebt gedaan. Schrijf precies op wat je zou zeggen — rustig, duidelijk, zonder verontschuldiging.",
+    aiHelperPrompts: ["Hoe stel ik grenzen als ik bang ben voor de reactie?", "Hoe handhaaf ik grenzen als iemand ze negeert?", "Is grenzen stellen egoïstisch?"]
+  },
+  {
+    id: "vulnerability-courage",
+    title: "Kwetsbaarheid als Kracht",
+    difficulty: 2,
+    emoji: "💎",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["kwetsbaarheid", "authenticiteit", "verbinding", "moed"],
+    definition: "Kwetsbaarheid als kracht (gebaseerd op Brené Brown's onderzoek) is de inzicht dat kwetsbaarheid — het durven tonen van onzekerheid, risico en emotionele blootstelling — de basis is van diepe menselijke verbinding, creativiteit en moed, niet een teken van zwakte.",
+    abstractExample: "Pantser beschermt, maar sluit ook buiten. Mensen die volledig gepantserd leven, vermijden pijn maar missen ook verbinding, vreugde en groei. Kwetsbaarheid is het afleggen van het pantser wanneer het veilig genoeg is.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "In een vergadering zeggen 'Ik weet het antwoord op deze vraag niet' in plaats van bluffen. Dit bouwt meer vertrouwen dan een zelfverzekerd fout antwoord." },
+      { domain: "Relaties", icon: "❤️", text: "Aan iemand vertellen dat je om hem geeft, wetende dat er kans is op afwijzing. Dit is kwetsbaarheid in actie — de basis van echte intimiteit." },
+      { domain: "Studie", icon: "📚", text: "Om hulp vragen bij iets wat je niet begrijpt, in plaats van te doen alsof je het snapt. Dit vereist kwetsbaarheid maar leidt tot daadwerkelijk leren." }
+    ],
+    prerequisites: [],
+    unlocks: ["trust-building"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom beschouwt Brené Brown kwetsbaarheid als de oorsprong van verbinding?", options: ["Omdat kwetsbaarheid zwakheid toont die anderen willen beschermen", "Omdat alleen echte, imperfecte presentatie van jezelf diepe verbinding mogelijk maakt", "Omdat kwetsbaarheid anderen minder bedreigd laat voelen", "Omdat kwetsbaarheid de spanning verlaagt"], correctIndex: 1, explanation: "Verbinding vereist gezien worden zoals je werkelijk bent, niet zoals je wil overkomen. Kwetsbaarheid is de bereidheid om dat risico te nemen. Perfecte presentaties creëren bewondering maar geen diepe verbinding." }
+    ],
+    creativePrompt: "Kies één situatie komende week waar je iets echts kunt delen — een twijfel, een fout, een gevoel — met iemand die je vertrouwt. Wat merk je in het contact daarna?",
+    aiHelperPrompts: ["Hoe weet ik wanneer kwetsbaarheid veilig is en wanneer niet?", "Hoe oefen ik kwetsbaarheid als ik daar niet mee ben opgegroeid?", "Wat is het verschil tussen kwetsbaarheid en oversharing?"]
+  },
+  {
+    id: "forgiveness-psychology",
+    title: "Psychologie van Vergeven",
+    difficulty: 3,
+    emoji: "🕊️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["vergeven", "loslaten", "welzijn", "relaties"],
+    definition: "Vergeven is het bewuste loslaten van wrok, rancune en negatieve gevoelens jegens iemand die je heeft gekwetst — niet voor hen, maar voor je eigen welzijn. Vergeven betekent niet goedkeuren, vergeten of de relatie herstellen.",
+    abstractExample: "Wrok vasthouden is als vergif drinken en hopen dat de ander eraan doodgaat. Vergeven is het vergif neerzetten — niet omdat de ander het verdient, maar omdat jij het niet verdient te dragen.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Een ex-partner vergeven die je heeft bedrogen — niet om de relatie te herstellen of het goed te praten, maar om jezelf te bevrijden van de mentale last van aanhoudende woede." },
+      { domain: "Familie", icon: "👨‍👩‍👧", text: "Ouders vergeven voor fouten in de opvoeding — begrijpen dat ze deden wat ze konden met wat ze hadden, zonder dat te goedkeuren of te bagatelliseren." },
+      { domain: "Werk", icon: "💼", text: "Een collega vergeven die je oneerlijk heeft behandeld en doorgestuurd — loslaten zodat je energie vrijkomt voor je eigen groei in plaats van de wrok te koesteren." }
+    ],
+    prerequisites: ["self-compassion"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste misverstand over vergeven?", options: ["Dat vergeven moeilijk is", "Dat vergeven goedkeuring inhoudt of de relatie herstelt", "Dat vergeven voor de ander is", "Dat vergeven te lang duurt"], correctIndex: 1, explanation: "Vergeven is geen oordeel over de handeling (die kan nog steeds verkeerd zijn) of de relatie (die hoef je niet te herstellen). Het is een keuze voor je eigen emotionele vrijheid — loslaten van de last van wrok." }
+    ],
+    creativePrompt: "Denk aan iemand aan wie je wrok koestert. Schrijf hem een brief (die je niet hoeft te versturen) waarin je alles uitdrukt wat je voelt EN een poging doet te begrijpen hoe het zo is gegaan. Wat verandert er?",
+    aiHelperPrompts: ["Hoe vergeef ik iemand die geen spijt heeft?", "Hoe weet ik wanneer vergeven gezond is en wanneer het zelfbedrog is?", "Wat is het verschil tussen vergeven en toestaan dat iemand je blijft kwetsen?"]
+  },
+  {
+    id: "social-intuition",
+    title: "Sociale Intuïtie",
+    difficulty: 2,
+    emoji: "🔮",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["intuïtie", "lezen", "non-verbaal", "sociale intelligentie"],
+    definition: "Sociale intuïtie is het vermogen om snel en accuraat de sociale dynamiek, stemming en behoeften van een groep of individu te lezen — vaak op basis van subtiele signalen zoals lichaamstaal, toon, ritme en context. Het is trainbare sociale intelligentie, geen aangeboren gave.",
+    abstractExample: "Een goede muzikant voelt de sfeer van de kamer en speelt daarnaar — hij legt zijn setlist naast zich neer als de energie anders is dan verwacht. Sociale intuïtie is hetzelfde maar in menselijk contact.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een presentator voelt halverwege dat het publiek afhaakt — gespannen lichaamstaal, minder oogcontact, onrust. Hij past zijn tempo en aanpak aan zonder dat er iets gezegd is." },
+      { domain: "Relaties", icon: "❤️", text: "Je partner binnenkomt en direct voelen — door subtiele signalen — of hij behoefte heeft aan gesprek of juist aan ruimte. En dit accuraat aflezen, niet projecteren." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Bij een etentje voelen wanneer een onderwerp gevoelig ligt voor iemand aan tafel, voordat hij het zelf zegt, en het gesprek subtiel sturen." }
+    ],
+    prerequisites: ["empathic-accuracy"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Hoe wordt sociale intuïtie het best ontwikkeld?", options: ["Door boeken over lichaamstaal te lezen", "Door aandachtig te observeren, hypotheses te toetsen en feedback te ontvangen over je sociale lezingen", "Het is aangeboren en niet te trainen", "Door meer sociale situaties te vermijden"], correctIndex: 1, explanation: "Sociale intuïtie is patroonherkenning opgebouwd door ervaring. Het wordt verfijnd door bewust te observeren, te toetsen wat je waarneemt (door te vragen of door uitkomsten te monitoren) en te corrigeren op basis van feedback." }
+    ],
+    creativePrompt: "Observeer in je volgende sociale situatie bewust drie minuten lang zonder te spreken. Wie heeft de meeste invloed? Wie voelt zich ongemakkelijk? Hoe weet je dat? Toets daarna je observaties.",
+    aiHelperPrompts: ["Hoe verbeter ik mijn vermogen om sociale situaties te lezen?", "Wat zijn de meest betrouwbare non-verbale signalen?", "Hoe vermijd ik dat mijn eigen projecties mijn sociale lezingen vertekenen?"]
+  },
+  {
+    id: "giving-receiving-help",
+    title: "Hulp Vragen en Ontvangen",
+    difficulty: 2,
+    emoji: "🤲",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["hulp", "kwetsbaarheid", "samenwerking", "afhankelijkheid"],
+    definition: "Hulp vragen en ontvangen is een sociale vaardigheid die veel mensen moeilijk vinden door angst voor zwakte, afhankelijkheid of het opleggen van lasten. Onderzoek toont dat hulp vragen relaties versterkt en dat mensen die hulp ontvangen meer waardering voelen voor de helper (het Benjamin Franklin-effect).",
+    abstractExample: "Mensen denken dat hulp vragen een schuld creëert. In werkelijkheid schept hulp geven de helper een investering in jou — ze willen dat je slaagt. Het vragen is geen zwakheid; het is een uitnodiging tot verbinding.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een nieuwe medewerker die snel om hulp vraagt bij onduidelijkheden (specifiek, niet alles) leert sneller én bouwt sneller relaties dan iemand die alles zelf probeert uit te vogelen." },
+      { domain: "Studie", icon: "📚", text: "Na een slecht tentamen een docent opzoeken om feedback te vragen — niet makkelijk, maar het toont initiatief en leidt tot beter begrip dan alleen de stof opnieuw lezen." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Aan buren om hulp vragen bij een verhuizing in plaats van het alleen te doen — dit bouwt gemeenschap. En jij helpt hen als zij het nodig hebben." }
+    ],
+    prerequisites: ["vulnerability-courage"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het Benjamin Franklin-effect?", options: ["Mensen waarderen je minder als je hen om hulp vraagt", "Mensen die jou een gunst hebben gedaan, staan welwillender tegenover je dan daarvoor", "Hulp vragen creëert afhankelijkheid", "Mensen vinden het irritant om om hulp gevraagd te worden"], correctIndex: 1, explanation: "Het Benjamin Franklin-effect beschrijft dat mensen die jou een gunst hebben gedaan, deze actie rationaliseren door te concluderen dat ze je graag mogen. Hulp vragen versterkt zo paradoxaal genoeg de relatie." }
+    ],
+    creativePrompt: "Vraag deze week bewust om hulp bij iets wat je normaal alleen zou doen. Hoe voelde het om te vragen? Hoe reageerde de ander? Wat gebeurde er met de relatie?",
+    aiHelperPrompts: ["Hoe vraag ik op een goede manier om hulp?", "Hoe ga ik om met de schaamte van hulp nodig hebben?", "Wanneer is het beter zelf iets op te lossen dan hulp te vragen?"]
+  },
+  {
+    id: "loneliness-connection",
+    title: "Eenzaamheid en Verbinding",
+    difficulty: 2,
+    emoji: "🌐",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Sociale Vaardigheden",
+    tags: ["eenzaamheid", "verbinding", "welzijn", "gemeenschap"],
+    definition: "Eenzaamheid is de pijnlijke discrepantie tussen gewenste en werkelijke sociale verbinding — het gaat om kwaliteit, niet kwantiteit van relaties. Chronische eenzaamheid heeft vergelijkbare gezondheidsrisico's als roken. Verbinding is een fundamentele menselijke behoefte, geen luxe.",
+    abstractExample: "Je kunt omringd zijn door mensen en diep eenzaam zijn, of alleen zijn en je volledig verbonden voelen. Eenzaamheid zit niet in de aanwezigheid van anderen, maar in de kwaliteit van de verbinding.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Iemand die honderden online volgers heeft maar niemand heeft om 's nachts mee te praten over wat hem echt bezighoudt, ervaart functionele eenzaamheid ondanks sociale aanwezigheid." },
+      { domain: "Werk", icon: "💼", text: "Veel werknemers rapporteren eenzaamheid zelfs in actieve kantooromgevingen — oppervlakkige professionele interacties vervangen geen echte verbinding." },
+      { domain: "Ouderen", icon: "👴", text: "Oudereneenzaamheid is een gezondheidscrisis: sociaal geïsoleerde ouderen hebben hogere sterftecijfers dan rokers. Regelmatig contact — ook digitaal — heeft meetbaar gezondheideffect." }
+    ],
+    prerequisites: ["vulnerability-courage"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de effectiefste manier om eenzaamheid te verminderen?", options: ["Meer sociale media gebruiken", "Diepere, kwalitatieve verbindingen bouwen door oprechte interesse en kwetsbaarheid", "Zoveel mogelijk mensen ontmoeten", "Professionele hulp zoeken"], correctIndex: 1, explanation: "Onderzoek toont dat het aantal contacten weinig correleert met eenzaamheid — de kwaliteit van verbinding telt. Diepere gesprekken, oprechte interesse en bereidheid jezelf te laten zien zijn effectiever dan meer oppervlakkige contacten." }
+    ],
+    creativePrompt: "Hoeveel echte, diepgaande gesprekken heb jij per week? Met wie kun jij je echt uitspreken? Wat is één stap die je kunt zetten om een bestaande relatie te verdiepen?",
+    aiHelperPrompts: ["Hoe onderscheid ik eenzaamheid van introversie?", "Hoe bouw ik echte verbindingen op als volwassene?", "Hoe help ik iemand die eenzaam is zonder opdringerig te zijn?"]
   }
 ];
