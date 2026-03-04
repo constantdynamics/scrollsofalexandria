@@ -5337,5 +5337,212 @@ export const principlesNew = [
     ],
     creativePrompt: "Zoek drie recente advertenties of uitspraken die 'natuurlijk' als argument voor veiligheid of kwaliteit gebruiken. Is de claim inhoudelijk onderbouwd of is het een naturalistisch drogargument?",
     aiHelperPrompts: ["Hoe onderscheid ik het naturalistisch drogargument van terechte claims over natuur?", "Zijn er andere 'descriptief naar normatief'-drogredenen?", "Hoe reageer ik constructief als iemand dit argument gebruikt?"]
+  },
+  {
+    id: "aesthetic-experience",
+    title: "Esthetische Ervaring",
+    difficulty: 2,
+    emoji: "🎨",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Zingeving",
+    tags: ["schoonheid", "kunst", "ervaring", "esthetiek"],
+    definition: "Een esthetische ervaring is een intensief, aandachtig contact met iets schoons of kunstzinnigs waarbij de normale doelgerichtheid wegvalt — je bent volledig aanwezig in het waarnemen zelf, niet in wat het oplevert. Filosoof Kant noemde dit 'doelmatigheid zonder doel'.",
+    abstractExample: "Je loopt langs een landschap en stopt plotseling — niet omdat je iets wil doen, maar omdat de aanblik je grijpt. De normale stroom van gedachten valt weg. Je bent puur aanwezig bij het zien. Dat is de esthetische ervaring.",
+    examples: [
+      { domain: "Kunst", icon: "🖼️", text: "Stil staan voor een schilderij in een museum en merken dat de tijd stopt — je bent in gesprek met het werk, niet er langs lopend. Dit is de esthetische ervaring die kunst beoogt te creëren." },
+      { domain: "Muziek", icon: "🎵", text: "Een muziekstuk dat je volledig absorbeert — waarbij je de regie kwijtraakt en puur ervaart. Niet analyseren, niet evalueren: ondergaan. Dat is esthetisch horen." },
+      { domain: "Natuur", icon: "🌄", text: "Een zonsondergang die je plotseling tot stilstand brengt. Geen plannen, geen telefoon, geen 'wat moet ik vanavond nog doen' — alleen het zien. Een spontane esthetische ervaring." }
+    ],
+    prerequisites: ["present-moment-focus"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt een ervaring 'esthetisch' in filosofische zin?", options: ["Het gaat altijd om kunst", "De ervaring is zelfgericht, aandachtig, en los van praktisch nut — je waarneemt omwille van het waarnemen zelf", "Esthetiek vereist professionele opleiding", "Alleen mooie dingen geven esthetische ervaringen"], correctIndex: 1, explanation: "Kant beschreef esthetische ervaring als 'vrij welgevallen' — plezier dat niet gebaseerd is op persoonlijk nut, begeerte of conceptueel oordeel, maar op de pure waarneming zelf. Het is contemplatief, aandachtig en niet-instrumenteel." }
+    ],
+    creativePrompt: "Plan een uur voor puur esthetische ervaring: bezoek een museum, luister aandachtig naar muziek, of wandel bewust in de natuur. Laat je telefoon thuis. Wat neem je waar? Wanneer raak je afgeleid naar doelgericht denken?",
+    aiHelperPrompts: ["Hoe cultiveer ik meer esthetische aandacht in het dagelijks leven?", "Is esthetische ervaring te trainen?", "Hoe verschilt esthetisch genieten van passief vermaak?"]
+  },
+  {
+    id: "creative-process",
+    title: "Het Creatieve Proces",
+    difficulty: 2,
+    emoji: "✨",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Creativiteit",
+    tags: ["creativiteit", "inspiratie", "incubatie", "proces"],
+    definition: "Het creatieve proces verloopt typisch in vier fasen (Graham Wallas): Voorbereiding (intensief onderzoek), Incubatie (bewust loslaten), Illuminatie (het 'aha-moment'), Verificatie (kritisch uitwerken). Creativiteit is geen mysterieus talent maar een begrijpelijk en deels bestuurbaar proces.",
+    abstractExample: "Je hebt urenlang een probleem bestudeerd. Je zet het opzij. Douchen, wandelen, slapen — en plotseling: de oplossing. Dit is incubatie en illuminatie in actie. Het onbewuste heeft de connecties gelegd die bewust denken blokkeerde.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "Archimedes' 'Eureka!'-moment in bad is illuminatie na voorbereiding (hij bestudeerde het probleem) en incubatie (hij was zich aan het ontspannen). Bijna alle grote wetenschappelijke doorbraken hebben dit patroon." },
+      { domain: "Schrijven", icon: "✍️", text: "Een schrijver die vastloopt, stopt bewust te schrijven en gaat wandelen. Bij terugkomst weet hij hoe de plot zich ontvouwt — het onbewuste heeft de structuur gevonden terwijl hij liep." },
+      { domain: "Werk", icon: "💼", text: "Een moeilijk strategisch probleem 'slapen over' is letterlijk incubatie. Slaap consolideert informatie en het onbewuste maakt verbanden — de ochtendinzichten zijn niet toevallig." }
+    ],
+    prerequisites: ["lateral-thinking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is incubatie (loslaten) een essentieel onderdeel van het creatieve proces?", options: ["Rust is altijd beter dan hard werken", "Het onbewuste brein verwerkt verbanden en patronen door zonder de beperkingen van bewuste lineaire verwerking", "Incubatie vervangt voorbereiding", "Creatieve ideeën komen altijd spontaan"], correctIndex: 1, explanation: "Bewust denken is lineair en beperkt. Het onbewuste werkt parallel, associatief en zonder de beperkingen van mentale sets. Incubatie geeft het onbewuste ruimte om verbindingen te maken die bewust denken blokkeert — vandaar de 'eureka' na afstand nemen." }
+    ],
+    creativePrompt: "Kies een creatief probleem dat je bezighoudt. Bestudeer het intensief (30 minuten). Laat het dan los (ga iets heel anders doen). Noteer wat er opkomt in de volgende 24 uur — gedachten, dromen, invallen.",
+    aiHelperPrompts: ["Hoe begeleid ik het incubatieproces bewust?", "Hoe weet ik wanneer ik klaar ben voor illuminatie?", "Hoe combineer ik het creatieve proces met deadlines?"]
+  },
+  {
+    id: "art-interpretation",
+    title: "Kunstinterpretatie",
+    difficulty: 2,
+    emoji: "🖼️",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Zingeving",
+    tags: ["interpretatie", "kunst", "betekenis", "perspectief"],
+    definition: "Kunstinterpretatie is het actieve proces van betekenis geven aan een kunstwerk — niet passief ontvangen maar actief construeren van betekenis vanuit de interactie tussen het werk, de context en de toeschouwer. Er is geen enkele 'correcte' interpretatie, maar sommige zijn rijker dan andere.",
+    abstractExample: "Een schilderij spreekt nooit voor zichzelf — het spreekt in dialoog met de toeschouwer. Twee mensen voor hetzelfde werk 'zien' fundamenteel iets anders, afhankelijk van hun cultuur, ervaringen en aandacht. Interpretatie is co-creatie.",
+    examples: [
+      { domain: "Beeldende kunst", icon: "🖼️", text: "Munch's 'De Schreeuw': is het angst? existentiële paniek? milieu-vernietiging (de rode lucht is historisch gelinkt aan de vulkaanuitbarsting van Krakatau)? Alle interpretaties zijn geldig en verrijken de ervaring." },
+      { domain: "Literatuur", icon: "📚", text: "Kafka's 'Het Proces': is het een politieke metafoor (totalitarisme)? een psychologische beschrijving (neurose)? een religieuze allegorie (God's oordeel)? De rijkdom van het werk ligt in deze meervoudigheid." },
+      { domain: "Muziek", icon: "🎵", text: "Beethoven's 9e Symfonie: voor de componist een expressie van menselijke triomf. Voor de EU het symbool van Europese eenheid. Voor een Zuid-Afrikaan tijdens apartheid: een marslied van vrijheid. Dezelfde muziek, radicaal verschillende resonantie." }
+    ],
+    prerequisites: ["aesthetic-experience"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de 'intentional fallacy' in kunstinterpretatie?", options: ["Dat de kunstenaar altijd gelijk heeft over de betekenis van zijn werk", "Dat de bedoeling van de kunstenaar irrelevant is voor de betekenis van het werk — de tekst 'emancipeert' zich van zijn maker", "Dat kunstinterpretatie subjectief is", "Dat kunstenaars hun werk niet moeten verklaren"], correctIndex: 1, explanation: "W.K. Wimsatt en Monroe Beardsley betoogden dat de intentie van de kunstenaar geen doorslaggevend criterium is voor interpretatie. Het werk bestaat autonoom — de toeschouwer construeert betekenis in dialoog met het werk, los van wat de maker bedoelde." }
+    ],
+    creativePrompt: "Bekijk een kunstwerk (schilderij, muziek, film) en schrijf je eigen interpretatie op zonder naslag te doen. Lees dan daarna wat anderen erover schrijven. Hoe verschilt jouw interpretatie? Wat verrijkt de andermans perspectief jouw begrip?",
+    aiHelperPrompts: ["Hoe leer ik beter naar kunst te kijken?", "Zijn alle kunstinterpretaties even geldig?", "Hoe interpreteer ik moderne kunst die ik niet begrijp?"]
+  },
+  {
+    id: "beauty-truth",
+    title: "Schoonheid en Waarheid",
+    difficulty: 3,
+    emoji: "💫",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Zingeving",
+    tags: ["schoonheid", "waarheid", "filosofie", "esthetiek"],
+    definition: "De relatie tussen schoonheid en waarheid is een centraal filosofisch thema: Plato zag schoonheid als een verschijningsvorm van het Ware en het Goede. Keats schreef 'Beauty is truth, truth beauty.' Wetenschappers beschrijven elegante theorieën als 'mooi' — en deze schoonheidservaring blijkt een betrouwbare gids voor wetenschappelijke juistheid.",
+    abstractExample: "Wiskundigen beschrijven vaak dat hun mooiste bewijzen 'waar moeten zijn' — een esthetisch gevoel dat hen naar correcte resultaten leidt. Einstein vertrouwde zijn relativiteitstheorie mede omdat ze zo elegant was. Schoonheid blijkt een epistemisch kompas.",
+    examples: [
+      { domain: "Wetenschap", icon: "🔬", text: "E=mc² is een schone vergelijking: weinig symbolen, grote omvang van werkelijkheid. De schoonheid van wiskundige elegantie blijkt historisch een betrouwbare indicator van diepe waarheid." },
+      { domain: "Kunst", icon: "🎨", text: "Dostojevski: 'Schoonheid zal de wereld redden.' Niet sentimenteel maar als geloof dat esthetische ervaring ons verbindt met het diepere — het echte, het waardevolle, het transcendente." },
+      { domain: "Filosofie", icon: "🦉", text: "Plato's kalokagathia: het idee dat het ware, goede en mooie uiteindelijk samenvallen. Dit is een radicale filosofische positie maar met verrassend veel steun in de geschiedenis van wetenschappelijke ontdekking." }
+    ],
+    prerequisites: ["aesthetic-experience"],
+    unlocks: ["eudaimonia"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom gebruiken wiskundigen en fysici 'elegantie' als een aanwijzing voor waarheid?", options: ["Toeval — mooie theorie kunnen ook fout zijn", "Historisch bleek dat theorieën die als elegant werden beschreven dieper structuren van de werkelijkheid vingen — schoonheid als indicatie van juistheid", "Schoonheid is objectief in wiskunde", "Elegantie maakt complexe ideeën simpeler"], correctIndex: 1, explanation: "Er is een mysterieuze maar empirisch waarneembare correlatie tussen wiskundige elegantie en diepte/waarheid. Dirac's mooie vergelijkingen bleken later experimenteel bevestigd. Feynman, Einstein en anderen vertrouwden esthetiek als epistemisch kompas naast logica." }
+    ],
+    creativePrompt: "Denk aan iets in jouw leven of vakgebied dat je als 'elegant' of 'mooi' ervaart — een oplossing, een argument, een idee. Wat maakt het mooi? Klopt die schoonheid met de werkelijkheid of juistheid ervan?",
+    aiHelperPrompts: ["Is schoonheid objectief of subjectief?", "Hoe gebruik ik esthetische intuïtie bij beslissingen of probleemoplossing?", "Welke filosofen schreven het meest inspirerend over schoonheid?"]
+  },
+  {
+    id: "creative-courage",
+    title: "Creatieve Moed",
+    difficulty: 2,
+    emoji: "🦁",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Creativiteit",
+    tags: ["moed", "creativiteit", "angst", "scheppen"],
+    definition: "Creatieve moed is de bereidheid om iets te maken — te scheppen, te delen, te tonen — ondanks de angst voor oordeel, mislukking of afwijzing. Het is erkennen dat het maken van kwetsbaar werk de meest menselijke daad is, en het toch doen.",
+    abstractExample: "Elke kunstenaar, schrijver of maker kent de lege pagina-angst. Creatieve moed is niet de afwezigheid van die angst, maar het scheppen ondanks haar. Het is het wereld geven van iets wat volledig van jou is — en dus volledig kwetsbaar.",
+    examples: [
+      { domain: "Kunst", icon: "🎨", text: "Een beginnend schrijver zijn eerste verhaal delen — wetend dat het onvolmaakt is, wetend dat het beoordeeld kan worden, het toch doen. Dit is creatieve moed in haar puurste vorm." },
+      { domain: "Werk", icon: "💼", text: "Een onorthodox voorstel doen in een vergadering, wetend dat het afgewezen kan worden. Een nieuw businessmodel verdedigen dat haaks staat op de conventie. Creatieve moed in professionele context." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Je mening geven over iets dat je diep beweegt, ook als je weet dat anderen het er niet mee eens zijn. Of iets maken — muziek, koken, tuinieren — puur voor de vreugde van het maken, zonder resultaatgarantie." }
+    ],
+    prerequisites: ["vulnerability-courage"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is 'kunstenaarsblok' (creative block) in psychologische zin?", options: ["Gebrek aan talent", "De angst voor oordeel of mislukking die de cognitieve en emotionele vrijheid blokkeert die creativiteit vereist", "Te weinig inspiratie", "Een fase die iedereen doormaakt en die vanzelf overgaat"], correctIndex: 1, explanation: "Creative block is primair een angstfenomeen: de verwachting van perfectionisme, oordeel of mislukking blokkeert de speelse staat die creativiteit vereist. De remedie is zelden 'meer inspiratie' maar 'meer toestemming voor onvolmaatheid'." }
+    ],
+    creativePrompt: "Maak iets vanavond — schrijf een gedicht, teken iets, kook iets nieuws, maak muziek — zonder het te plannen en zonder het te delen tenzij je wil. Laat het onvolmaakt zijn. Hoe voelt het om te scheppen zonder doel?",
+    aiHelperPrompts: ["Hoe overwin ik creative block?", "Hoe leer ik omgaan met de angst voor oordeel over mijn creatief werk?", "Is creatieve moed te trainen?"]
+  },
+  {
+    id: "cultural-literacy",
+    title: "Culturele Geletterdheid",
+    difficulty: 2,
+    emoji: "🌍",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Zingeving",
+    tags: ["cultuur", "referenties", "context", "communicatie"],
+    definition: "Culturele geletterdheid (E.D. Hirsch) is de brede kennis van gedeelde culturele referenties — literatuur, geschiedenis, kunst, mythologie — die effectieve communicatie in een samenleving mogelijk maakt. Gedeelde culturele kennis is de impliciete woordenschat van een beschaving.",
+    abstractExample: "Iemand zegt 'hij heeft echt een pyrrusoverwinning behaald' — dit veronderstelt kennis van de Griekse koning Pyrrus. Of 'dat is een kafkaeske situatie' — zonder Kafka-kennis is de communicatie mislukt. Culturele geletterdheid is de gedeelde code die communicatie verrijkt.",
+    examples: [
+      { domain: "Communicatie", icon: "💬", text: "Politici en columnisten verwijzen naar Dante, Shakespeare, de Bijbel of de Verlichting als gedeeld referentiekader. Wie die kennis mist, mist de halve betekenis van de tekst." },
+      { domain: "Werk", icon: "💼", text: "In een internationale context weten welke culturele verwijzingen anderen hebben (Confucius in Azië, de Bijbel in het Midden-Oosten, de Renaissance in Europa) maakt cross-culturele communicatie dieper." },
+      { domain: "Kunst", icon: "🎨", text: "Een schilderij begrijpen dat verwijst naar de mythe van Icarus, of een roman die alludeert aan Hamlet, vereist culturele geletterdheid — het mist zijn volle rijkdom zonder die context." }
+    ],
+    prerequisites: [],
+    unlocks: ["aesthetic-experience"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het risico van beperkte culturele geletterdheid in een diverse samenleving?", options: ["Het maakt mensen minder intelligent", "Communicatie verliest diepte en nuance als gedeelde referenties ontbreken, wat verstand en verbinding bemoeilijkt", "Culturele geletterdheid is elitistisch en overbodig", "Het heeft alleen gevolgen voor academici"], correctIndex: 1, explanation: "Culturele geletterdheid is de gedeelde code die diepe communicatie mogelijk maakt. Naarmate samenlevingen diverser worden en gedeelde referenties minder worden, wordt het harder om gedeelde betekenis te creëren — een democratisch en sociaal probleem." }
+    ],
+    creativePrompt: "Ga op culturele safari: maak een lijst van vijf culturele referenties (mythologisch, historisch, literair) die je vaag kent maar niet goed genoeg om te gebruiken. Bestudeer één ervan diepgaand. Hoe opent het andere teksten en gesprekken?",
+    aiHelperPrompts: ["Hoe bouw ik mijn culturele geletterdheid op als volwassene?", "Welke culturele kennis is het meest nuttig voor communicatie?", "Is culturele geletterdheid elitistisch?"]
+  },
+  {
+    id: "sublimity",
+    title: "Het Sublieme",
+    difficulty: 3,
+    emoji: "⛰️",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Zingeving",
+    tags: ["subliem", "ontzag", "grootsheid", "filosofie"],
+    definition: "Het sublieme (Edmund Burke, Immanuel Kant) is de esthetische ervaring van iets dat zo geweldig, overweldigend of onmetelijk groot is dat het de normale menselijke schaal overschrijdt en tegelijkertijd angst en verrukking wekt. Het sublieme overstijgt het mooie — het is onrustig, groots, onbeheerst.",
+    abstractExample: "Schoonheid kalmeert en stelt je op je gemak. Het sublieme overweldigt je — een vulkaan, een storm, het uitspansel 's nachts, een titanisch muziekstuk. Je voelt je klein maar ook, paradoxaal, verheven. Het sublieme confronteert met je eigen eindigheid én grootheid.",
+    examples: [
+      { domain: "Natuur", icon: "🌋", text: "Staan aan de rand van de Grand Canyon of onder een sterrenhemel ver van stedelijke verlichting geeft de sublieme ervaring: overweldiging, ontzag, het besef van de eigen kleinheid en de grootheid van het heelal." },
+      { domain: "Muziek", icon: "🎵", text: "Beethovens 9e Symfonie, Mahlers 8e, Wagners Parsifal — werken die zo groot en intens zijn dat ze de luisteraar overmeesteren. Niet prettig in de gewone zin maar diep transformerend." },
+      { domain: "Kunst", icon: "🖼️", text: "Rothko's grootschalige kleurenvelden geven sommige beschouwers een bijna religieuze ervaring van het sublieme — overweldigend aanwezig, grensoverschrijdend, bijna angstaanjagend in hun directheid." }
+    ],
+    prerequisites: ["aesthetic-experience"],
+    unlocks: ["memento-mori"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat onderscheidt het sublieme van het gewoon mooie?", options: ["Het sublieme is mooier", "Het sublieme overweldigt en confronteert met iets dat de normale menselijke schaal overschrijdt — angst en verrukking tegelijk", "Het sublieme is altijd lawaaiiger", "Alleen natuur kan subliem zijn"], correctIndex: 1, explanation: "Burke en Kant onderscheiden: het mooie stelt ons op ons gemak en past in onze schaal. Het sublieme overstijgt ons — het is groter, rauwer, overweldigender. Het confronteert ons met onze eindigheid en wekt tegelijk ontzag voor het grotere." }
+    ],
+    creativePrompt: "Wanneer heb jij het sublieme ervaren — in natuur, muziek, kunst, of een andere context? Beschrijf de ervaring zo precies mogelijk: wat voelde je? Wat dacht je? Hoe lang hield het aan? Wat bleef er daarna?",
+    aiHelperPrompts: ["Hoe zoek ik bewust sublieme ervaringen op?", "Wat is het psychologisch effect van sublieme ervaringen?", "Is het sublieme in moderne cultuur minder aanwezig dan vroeger?"]
+  },
+  {
+    id: "music-cognition",
+    title: "Muziek en Cognitie",
+    difficulty: 2,
+    emoji: "🎵",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Zingeving",
+    tags: ["muziek", "hersenen", "emotie", "cognitie"],
+    definition: "Muziek en cognitie bestudeert hoe muziek de hersenen beïnvloedt: emotionele regulatie, geheugen, motoriek en zelfs taalverwerving. Muziek is een uniek menselijk fenomeen dat vrijwel alle hersengebieden tegelijkertijd activeert — de meest holistische hersenactiviteit die bekend is.",
+    abstractExample: "Luisteren naar muziek is geen passieve activiteit voor de hersenen: het activeert motorgebieden (ritme), emotionele centra (amygdala), geheugengebieden (hippocampus), taalgebieden en beloningssystemen tegelijk. Muziek is een totaalsimulatie van het brein.",
+    examples: [
+      { domain: "Alzheimer", icon: "🧠", text: "Alzheimer-patiënten die geen familieleden meer herkennen, herkennen soms nog liederen uit hun jeugd — muziekgeheugen zit in andere (meer duurzame) hersensystemen dan episodisch geheugen." },
+      { domain: "Sportprestatie", icon: "🏃", text: "Muziek tijdens sporten verhoogt prestatie met gemiddeld 10-15%: het maskeert vermoeidheid, reguleert ritme en verhoogt motivatie via dopamine-response — een van de meest bewezen ergogene hulpmiddelen." },
+      { domain: "Leren", icon: "📚", text: "Muziekonderwijs op jonge leeftijd verbetert executieve functies, taalverwerking en wiskundige vaardigheden — muziek traint breedspectrum hersenconnectiviteit die overdraagt op andere domeinen." }
+    ],
+    prerequisites: ["aesthetic-experience"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is muziek zo effectief bij het oproepen van herinneringen (de 'Proust-effect')?", options: ["Muziek activeert het visuele geheugen", "Muziek is emotioneel gecodeerd — herinneringen met sterke emotionele lading zijn duurzamer opgeslagen, en muziek activeert direct emotionele geheugensporen", "Muzikanten hebben een beter geheugen", "Het is toeval — muziek is niet speciaal voor geheugen"], correctIndex: 1, explanation: "Herinneringen die zijn gevormd tijdens sterke emotionele ervaringen worden duurzamer opgeslagen en makkelijker opgehaald. Muziek activeert het limbisch systeem (emotie) en de hippocampus (geheugen) tegelijk — vandaar de krachtige herinneringsreactie bij vertrouwde muziek." }
+    ],
+    creativePrompt: "Maak een afspeellijst van tien nummers die sterke herinneringen oproepen. Luister bewust naar elk nummer: welke herinneringen, gevoelens, beelden komen op? Wat vertelt dit over hoe je geheugen werkt?",
+    aiHelperPrompts: ["Hoe gebruik ik muziek bewust voor betere cognitieve prestaties?", "Welke muziek helpt bij focus en welke bij creativiteit?", "Hoe beïnvloedt het spelen van een instrument de hersenen anders dan luisteren?"]
+  },
+  {
+    id: "narrative-identity",
+    title: "Narratieve Identiteit",
+    difficulty: 3,
+    emoji: "📖",
+    academicCategory: "Kunst & Esthetiek",
+    skillCategory: "Zingeving",
+    tags: ["verhaal", "identiteit", "betekenis", "autobiografie"],
+    definition: "Narratieve identiteit (Dan McAdams) is de theorie dat mensen hun identiteit construeren als een persoonlijk mythos — een voortdurend herzien levensverhaal dat hun ervaringen integreert in een coherent geheel. Wie je bent is deels het verhaal dat je over jezelf vertelt.",
+    abstractExample: "Je bent niet de som van je feiten (geboren op X, getrouwd op Y, werkt bij Z). Je bent het verhaal dat je van die feiten maakt: hoe je de moeilijkheden omschrijft, welke betekenis je aan gebeurtenissen geeft, welke personage jij bent in je eigen epische vertelling.",
+    examples: [
+      { domain: "Persoonlijk", icon: "💙", text: "Twee mensen maken dezelfde scheiding mee. Eén vertelt het als 'ik ben mislukt als partner'. De andere als 'ik heb geleerd wat ik echt nodig heb'. Hetzelfde feit, fundamenteel ander verhaal — en dus fundamenteel andere identiteit en toekomst." },
+      { domain: "Therapie", icon: "🛋️", text: "Narratieve therapie (White & Epston) helpt mensen hun levensverhaal te 'herschrijven' — niet de feiten veranderen maar de betekenis en het perspectief. Dit is een van de effectiefste psychotherapeutische benaderingen." },
+      { domain: "Werk", icon: "💼", text: "Hoe jij je carrièrepad vertelt — als een rechte lijn, als een kronkelpad vol onverwachte lessen, als een heldentocht — bepaalt hoe jij en anderen jou zien en wat voor kansen je aangaat." }
+    ],
+    prerequisites: ["meaning-making", "values-clarification"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is de kern van narratieve identiteitstheorie?", options: ["Feiten bepalen je identiteit", "Identiteit wordt geconstrueerd via de verhalen die we over onze ervaringen vertellen — en die verhalen zijn veranderbaar", "Je identiteit is aangeboren en stabiel", "Verhalen zijn illusies die identiteit verbergen"], correctIndex: 1, explanation: "McAdams toont dat mensen actief hun ervaringen selecteren, ordenen en interpreteren in een persoonlijk mythos. Die constructie is dynamisch — het verhaal kan worden herzien, wat directe gevolgen heeft voor identiteit, welzijn en richting." }
+    ],
+    creativePrompt: "Schrijf de eerste alinea van je levensverhaal — het genre, de toon, de centrale spanning. Is het een held's journey, een coming-of-age verhaal, een tragedie met redemptie? Wat vertelt dat verhaal over hoe je je leven interpreteert?",
+    aiHelperPrompts: ["Hoe herschrijf ik een negatief levensverhaal constructief?", "Hoe beïnvloedt mijn levensverhaal mijn toekomstvisie?", "Is narratieve identiteit manipulatie van de werkelijkheid?"]
   }
 ];
