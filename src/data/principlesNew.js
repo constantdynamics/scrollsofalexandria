@@ -3934,5 +3934,212 @@ export const principlesNew = [
     ],
     creativePrompt: "Hoeveel echte, diepgaande gesprekken heb jij per week? Met wie kun jij je echt uitspreken? Wat is één stap die je kunt zetten om een bestaande relatie te verdiepen?",
     aiHelperPrompts: ["Hoe onderscheid ik eenzaamheid van introversie?", "Hoe bouw ik echte verbindingen op als volwassene?", "Hoe help ik iemand die eenzaam is zonder opdringerig te zijn?"]
+  },
+  {
+    id: "ikigai",
+    title: "Ikigai",
+    difficulty: 2,
+    emoji: "🌸",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["zingeving", "carrière", "passie", "doel"],
+    definition: "Ikigai is een Japans concept dat verwijst naar de reden om 's ochtends op te staan — het snijpunt van vier cirkels: wat je liefhebt, wat je goed in bent, wat de wereld nodig heeft, en wat je betaald kunt krijgen. In het midden ligt je ikigai.",
+    abstractExample: "Stel je vier overlappende cirkels voor. Elk overlapt geeft iets: passie (liefde + talent), missie (liefde + behoefte), roeping (talent + behoefte), professie (talent + betaling). Alleen in het midden van alle vier is er ikigai.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een leraar die schrijven geweldig vindt (liefde), er goed in is (talent), die schrijfvaardigheid nodig is in de maatschappij (behoefte), en er een salaris voor ontvangt (betaling) — heeft zijn ikigai gevonden." },
+      { domain: "Studie", icon: "📚", text: "Een student die worstelt met studiekeuze kan ikigai gebruiken: Wat vind ik fascinerend? Waar ben ik goed in? Welke problemen wil ik in de wereld oplossen? Wat kan ik verdienen?" },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Iemand die zijn dag doorbrengt met werk dat hij niet liefheeft en slecht doet, voelt de leegte — het ikigai-kader helpt verklaren waarom en richting wijzen." }
+    ],
+    prerequisites: [],
+    unlocks: ["smart-goals", "values-clarification"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het risico als je werk slechts op drie van de vier ikigai-cirkels overlapt?", options: ["Er is geen risico — drie is al goed", "Elk ontbrekend kwadrant leidt tot een specifieke leegte: bijv. talent + behoefte + betaling zonder liefde leidt tot gevoel van leegte ondanks succes", "Je bent altijd tevreden als je betaald wordt voor iets goeds", "Ikigai vereist geen betaling"], correctIndex: 1, explanation: "Elk kwadrant-ontbrekende combinatie heeft een eigen gevolg: liefde + talent zonder betaling = armoede; talent + betaling zonder liefde = gevoel van leegte; liefde + behoefte zonder talent = frustratie. Het volledige midden vereist alle vier." }
+    ],
+    creativePrompt: "Teken vier overlappende cirkels en schrijf in elke cirkel wat voor jou geldt. Wat staat in het midden? Wat is er bijna maar niet helemaal in het midden? Welke cirkel is het minst gevuld?",
+    aiHelperPrompts: ["Hoe vind ik mijn ikigai als ik niet weet wat ik liefheb?", "Moet ikigai altijd over werk gaan?", "Hoe verander ik mijn situatie als mijn ikigai niet mijn huidige job is?"]
+  },
+  {
+    id: "smart-goals",
+    title: "SMART-doelen",
+    difficulty: 1,
+    emoji: "🎯",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["doelen", "planning", "succes", "motivatie"],
+    definition: "SMART-doelen zijn doelstellingen die Specifiek, Meetbaar, Acceptabel (haalbaar), Relevant en Tijdgebonden zijn. Het SMART-kader transformeert vage intenties ('ik wil fitter worden') in concrete plannen ('ik loop drie keer per week 30 minuten, startend maandag, tot einde van het kwartaal').",
+    abstractExample: "Een wens is een richting: 'Ik wil naar Parijs.' Een SMART-doel is een navigatieplan: 'Ik boek een ticket naar Parijs voor 15 juni, binnen een budget van €400, om het Louvre en Musée d'Orsay te bezoeken.' De kans op aankomst verschilt enorm.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "'Beter presenteren' wordt: 'Ik volg voor 1 april een presentatietraining van 4 sessies en geef in mei mijn eerste presentatie aan het management met een feedbackformulier.' SMART." },
+      { domain: "Studie", icon: "📚", text: "'Betere cijfers halen' wordt: 'Ik leer de komende vier weken drie uur per dag voor statistiek en doe elke week één proefexamen, met het doel een 7 of hoger.' SMART." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "'Meer sparen' wordt: 'Ik boek elke eerste van de maand automatisch €200 over naar een spaarrekening die ik niet kan pinnen.' SMART." }
+    ],
+    prerequisites: ["ikigai"],
+    unlocks: ["implementation-intention", "habit-stacking"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom zijn vage doelen minder effectief dan SMART-doelen?", options: ["Vage doelen zijn minder ambitieus", "Vage doelen bieden geen basis voor actie, meting of bijsturing", "SMART-doelen zijn altijd makkelijker te bereiken", "Vage doelen laten meer ruimte voor flexibiliteit"], correctIndex: 1, explanation: "Zonder specificiteit weet je niet wanneer je begint of klaar bent. Zonder meetbaarheid kun je geen voortgang zien. Zonder tijdskader creëert de wet van Parkinson eindeloze uitstelling. SMART-doelen maken actie concreet en voortgang zichtbaar." }
+    ],
+    creativePrompt: "Neem één grote wens of intentie. Herschrijf hem als SMART-doel. Merk je verschil in hoe haalbaar en concreet het nu voelt?",
+    aiHelperPrompts: ["Hoe maak ik een SMART-doel voor langetermijnambities?", "Wat doe ik als mijn doel niet meetbaar is?", "Hoe hou ik mezelf gemotiveerd bij langetermijn SMART-doelen?"]
+  },
+  {
+    id: "habit-stacking",
+    title: "Gewoontesstapeling",
+    difficulty: 1,
+    emoji: "🔗",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["gewoonten", "routine", "gedragsverandering", "automatisering"],
+    definition: "Gewoontesstapeling (habit stacking) is de techniek van het koppelen van een nieuwe gewoonte aan een bestaande, als anker: 'Na [bestaande gewoonte] doe ik [nieuwe gewoonte].' Dit maakt gebruik van bestaande neurale paden om nieuwe gedragingen in te bedden.",
+    abstractExample: "Een nieuw gedrag proberen op een willekeurig moment is moeilijk — je moet er steeds aan denken. Door het te koppelen aan iets wat je al automatisch doet (koffie zetten, tanden poetsen), 'leent' de nieuwe gewoonte de kracht van de bestaande.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "'Na het poetsen van mijn tanden doe ik twee minuten meditatie.' De tandenborstel wordt de cue die de meditatie triggert — zo wordt de nieuwe gewoonte vastgehecht aan een bestaande routine." },
+      { domain: "Werk", icon: "💼", text: "'Na het openen van mijn laptop schrijf ik eerst drie prioriteiten op voor de dag.' Het opstarten wordt de trigger voor doelbewuste dagplanning." },
+      { domain: "Studie", icon: "📚", text: "'Na het eten van de lunch doe ik 15 minuten flashcards.' De lunch is het anker — de studietijd volgt automatisch zonder wilskracht." }
+    ],
+    prerequisites: ["smart-goals"],
+    unlocks: ["identity-based-habits"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom werkt gewoontesstapeling beter dan simpelweg een nieuw tijdstip plannen?", options: ["Gewoontesstapeling is makkelijker te onthouden", "Bestaande gewoonten fungeren als krachtige contextuele signalen die automatisch gedrag activeren", "Tijdsplanning werkt niet voor gewoonten", "Gewoontesstapeling vereist minder discipline"], correctIndex: 1, explanation: "Gedrag is sterk contextgebonden. Bestaande gewoonten activeren een reeks automatische gedragingen. Door de nieuwe gewoonte te koppelen aan deze context, profiteert ze van de automatisering die al bestaat — waardoor wilskracht minder nodig is." }
+    ],
+    creativePrompt: "Kies één nieuwe gewoonte die je wil opbouwen. Identificeer drie bestaande gewoonten in je dag. Welk anker is het logischst? Schrijf de exacte formule op: 'Na [X] doe ik [Y].'",
+    aiHelperPrompts: ["Hoe kies ik het beste anker voor een nieuwe gewoonte?", "Wat doe ik als de gestapelde gewoonte te groot is?", "Hoe vermijd ik dat stapeling mijn bestaande gewoonten verstoort?"]
+  },
+  {
+    id: "identity-based-habits",
+    title: "Identiteitsgebaseerde Gewoontes",
+    difficulty: 2,
+    emoji: "🪞",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["identiteit", "gewoonten", "gedragsverandering", "zelfconcept"],
+    definition: "Identiteitsgebaseerde gewoontes (uit James Clear's Atomic Habits) is het principe dat duurzame gedragsverandering begint bij het veranderen van hoe je jezelf ziet, niet wat je doet. In plaats van 'Ik probeer te hardlopen' denk je 'Ik ben een hardloper.' Elke actie bewijst dan je identiteit.",
+    abstractExample: "Er zijn twee niveaus van doelen: uitkomst ('ik wil 10 kilo afvallen') en identiteit ('ik ben iemand die gezond leeft'). Uitkomstdoelen eindigen na bereiken; identiteitsdoelen houden het gedrag in stand — omdat elke actie de identiteit bevestigt.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "In plaats van 'Ik probeer minder te drinken' denken: 'Ik ben iemand die niet drinkt.' Als iemand je een drankje aanbiedt: 'Nee dank je, ik drink niet' — niet 'Ik probeer te stoppen.' De taal vormt de identiteit." },
+      { domain: "Werk", icon: "💼", text: "In plaats van 'Ik moet schrijven voor mijn werk': 'Ik ben een schrijver.' Schrijven is dan geen taak maar een uitdrukking van wie je bent — consistentie volgt naturlijk." },
+      { domain: "Studie", icon: "📚", text: "In plaats van 'Ik moet studeren': 'Ik ben iemand die elke dag iets nieuws leert.' Elke studiesessie bevestigt en versterkt die identiteit." }
+    ],
+    prerequisites: ["habit-stacking"],
+    unlocks: ["keystone-habits"],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom zijn identiteitsgebaseerde gewoontes effectiever dan uitkomstgebaseerde doelen?", options: ["Identiteitsverandering is makkelijker", "Identiteit houdt gedrag in stand na het bereiken van doelen — uitkomstdoelen eindigen bij bereik", "Uitkomstdoelen zijn te concreet", "Ze zijn even effectief maar voor verschillende mensen"], correctIndex: 1, explanation: "Na het bereiken van een uitkomstdoel (10 kilo kwijt) is er geen motivatie meer om het gedrag voort te zetten. Identiteitsgebaseerde verandering ('ik ben iemand die gezond leeft') heeft geen eindpunt — het is wie je bent." }
+    ],
+    creativePrompt: "Kies een gewoonte die je wil opbouwen. Welk type persoon vertoont dat gedrag? Herschrijf je doel als identiteitsverklaring. Hoe voelt die verklaring? Welke kleine acties bewijzen die identiteit vandaag al?",
+    aiHelperPrompts: ["Hoe verander ik mijn zelfconcept als dat diep geworteld is?", "Wat doe ik als mijn identiteitsverklaring niet klopt met wie ik ben?", "Hoe vermijd ik dat identiteitsverandering oppervlakkig blijft?"]
+  },
+  {
+    id: "keystone-habits",
+    title: "Sleutelgewoontes",
+    difficulty: 2,
+    emoji: "🗝️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["gewoonten", "domino-effect", "gedrag", "verandering"],
+    definition: "Sleutelgewoontes (keystone habits) zijn gewoontes die als hefboom werken: het opbouwen ervan triggert automatisch positieve veranderingen in andere levensdomeinen. Ze creëren structuren die ander gewenst gedrag gemakkelijker maken.",
+    abstractExample: "Een keystone habit is als het eerste dominosteen: zodra het valt, brengt het een ketting van andere stenen in beweging. Je zet slechts één steen op, maar de rest volgt vanzelf.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Regelmatig sporten blijkt voor velen een keystone habit: het verbetert automatisch slaapkwaliteit, eetpatroon, stressmanagement en concentratie — zonder dat daarvoor extra doelen worden gesteld." },
+      { domain: "Werk", icon: "💼", text: "Een dagelijkse planning maken (10 minuten 's ochtends) is een keystone habit die focus, prioritering en gevoel van controle over de dag verbetert." },
+      { domain: "Studie", icon: "📚", text: "Dagelijks vroeg opstaan is een keystone habit: het creëert rustige ochtendstudetijd, verbetert slaapritme en vermindert nachtelijke stress — andere positieve gewoonten volgen." }
+    ],
+    prerequisites: ["identity-based-habits"],
+    unlocks: ["environment-design"],
+    exercises: [
+      { type: "multipleChoice", question: "Wat maakt een gewoonte een 'keystone habit'?", options: ["Het kost veel discipline", "Het triggert automatisch positieve veranderingen in andere levensdomeinen als bijproduct", "Het is de moeilijkste gewoonte op te bouwen", "Het vereist altijd meerdere stappen"], correctIndex: 1, explanation: "Keystone habits werken als katalysatoren. Ze scheppen structuren, rituelen en kleine zeges die andere positieve gedragspatronen bevorderen. Niet alle gewoonten hebben dit domino-effect — keystone habits zijn de uitzonderingen die het meeste rendement geven." }
+    ],
+    creativePrompt: "Wat is de gewoonte in jouw leven die, als je ze opbouwt, de meeste andere positieve effecten zou hebben? Hoe kun je daar stapsgewijs mee beginnen?",
+    aiHelperPrompts: ["Hoe identificeer ik mijn persoonlijke keystone habits?", "Hoe bouw ik een keystone habit op als ik al eerder gefaald ben?", "Hoe lang duurt het voor een keystone habit zijn domino-effecten toont?"]
+  },
+  {
+    id: "environment-design",
+    title: "Omgevingsontwerp",
+    difficulty: 2,
+    emoji: "🏗️",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["omgeving", "gedrag", "gewoonten", "design"],
+    definition: "Omgevingsontwerp is het bewust aanpassen van je fysieke en digitale omgeving om gewenst gedrag makkelijker en ongewenst gedrag moeilijker te maken. Gedrag is sterk contextafhankelijk — de omgeving stuurt keuzes meer dan we denken.",
+    abstractExample: "Fruit op het aanrecht eten versus verstopt in de koelkast — de kans dat je fruit eet verdubbelt door positie alleen. Je karakter verandert niet; de omgeving verandert. Gedrag volgt de weg van minste weerstand.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Sportkleding de avond ervoor klaarleggen (omgevingsontwerp voor sporten). Telefoon buiten de slaapkamer laden (ontwerp voor beter slapen). Ongezond eten niet in huis hebben (ontwerp voor gezonder eten)." },
+      { domain: "Werk", icon: "💼", text: "Notificaties uitzetten, website-blockers instellen voor sociale media, en een opgeruimd bureau — dit zijn ontwerpen die focuswerk gemakkelijker maken zonder extra wilskracht." },
+      { domain: "Studie", icon: "📚", text: "Een vaste studieplek die alleen voor leren wordt gebruikt, traint de hersenen om in die ruimte automatisch in studiemodus te gaan — omgevingsontwerp als conditionering." }
+    ],
+    prerequisites: ["keystone-habits"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom is omgevingsontwerp effectiever dan puur op wilskracht vertrouwen?", options: ["Wilskracht is altijd betrouwbaarder", "Wilskracht is een beperkte hulpbron; omgeving stuurt gedrag automatisch en verbruikt geen wilskracht", "Omgevingsontwerp werkt alleen voor eenvoudige gewoonten", "Ze zijn even effectief"], correctIndex: 1, explanation: "Wilskracht is beperkt en put uit. Omgevingsontwerp verschuift de standaard — het maakt het gewenste gedrag de 'weg van minste weerstand', waardoor wilskracht zelden nodig is. Architectuur van keuze bepaalt gedrag meer dan karakter." }
+    ],
+    creativePrompt: "Loop door je huis en werkplek. Welke drie kleine aanpassingen aan je omgeving zouden goed gedrag makkelijker en slecht gedrag moeilijker maken? Voer er één vandaag door.",
+    aiHelperPrompts: ["Hoe ontwerp ik mijn digitale omgeving voor beter focuswerk?", "Welke omgevingsveranderingen hebben het meeste impact op gewoontevorming?", "Hoe overwin ik sociale omgevingen die slecht gedrag aanmoedigen?"]
+  },
+  {
+    id: "temptation-bundling",
+    title: "Verleiding Koppelen",
+    difficulty: 1,
+    emoji: "🎁",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["motivatie", "gewoonten", "beloning", "zelfcontrole"],
+    definition: "Verleiding koppelen (temptation bundling) is de strategie van het combineren van een taak die je moet doen (maar niet leuk vindt) met iets wat je wil doen (maar 'niet zou mogen' doen tenzij als beloning). Dit maakt verplichte taken aantrekkelijker.",
+    abstractExample: "Je mag je favoriete podcast alleen luisteren terwijl je sport. De podcast wordt een reden om te sporten — want anders mis je de afleveringen. De beloning en de verplichting zijn onlosmakelijk verbonden.",
+    examples: [
+      { domain: "Dagelijks leven", icon: "🏠", text: "Je favoriete serie alleen kijken terwijl je de vaatwasser inruimt, de was doet of de woonkamer opruimt. Huishoudtaken worden aangenamer; de serie wordt een beloning die plichtvervulling vereist." },
+      { domain: "Werk", icon: "💼", text: "Je favoriete koffie of muziek alleen toelaten tijdens de meest vervelende taken van de dag — administratie, facturering, rapportages. Dit maakt die taken minder zwaar." },
+      { domain: "Studie", icon: "📚", text: "Flashcards oefenen alleen op je comfortabele favoriete stoel. Die stoel wordt geassocieerd met studeren én gemak — beide positief." }
+    ],
+    prerequisites: ["habit-stacking"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom werkt verleiding koppelen psychologisch?", options: ["Het elimineert de vervelende taak", "Het vergroot de directe beloning van een taak die anders alleen uitgestelde beloning heeft", "Het maakt de taak makkelijker", "Het leidt af van de vervelende taak"], correctIndex: 1, explanation: "Mensen zijn sterk gericht op directe beloningen boven uitgestelde. Een taak die pas later beloont (bijv. sporten → gezondheid over jaren) legt het af tegen een taak met directe beloning. Verleiding koppelen voegt directe beloning toe." }
+    ],
+    creativePrompt: "Maak een lijst van drie taken die je uitstelt én drie genoegens die je reserveert voor vrije tijd. Koppel ze. Wat klinkt het meest als een eerlijke deal?",
+    aiHelperPrompts: ["Welke verleidingen werken het beste voor koppelen?", "Wat doe ik als de koppeling niet meer werkt?", "Is verleiding koppelen een duurzame strategie?"]
+  },
+  {
+    id: "personal-board",
+    title: "Persoonlijke Raad van Advies",
+    difficulty: 2,
+    emoji: "🧑‍🤝‍🧑",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["mentorship", "netwerk", "groei", "advies"],
+    definition: "Een persoonlijke raad van advies is een informeel netwerk van mentoren, adviseurs en rolmodellen — mensen die elk een ander perspectief, expertise of levenservaring vertegenwoordigen die aanvullend is op de jouwe. Dit concept past het corporate governance-model toe op persoonlijke ontwikkeling.",
+    abstractExample: "Grote bedrijven hebben een raad van bestuur die diverse perspectieven inbrengt voor betere beslissingen. Jij als individu verdient hetzelfde: een diverse groep mensen die jou helpt groeien vanuit complementaire invalshoeken.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Een jonge professional bouwt een persoonlijke raad met: een senior in het vakgebied (expertise), een leeftijdsgenoot in een andere branche (fris perspectief), een ondernemer (risicodenkwijze), en een levenscoach (persoonlijk welzijn)." },
+      { domain: "Studie", icon: "📚", text: "Een student bouwt haar raad met: een succesvolle alumnus (loopbaanperspectief), een medestudent die verder is (peer learning), en een professor die haar uitdaagt (intellectuele scherpte)." },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Voor grote levensbeslissingen (verhuizen, carrièreswitch) een informele raad raadplegen van drie tot vijf mensen met relevante ervaringen, in plaats van alleen de mening te zoeken van mensen die het met je eens zijn." }
+    ],
+    prerequisites: ["rapport-building"],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Wat is het grootste voordeel van een persoonlijke raad van advies?", options: ["Je hebt altijd mensen die het met je eens zijn", "Diverse perspectieven helpen blinde vlekken identificeren en betere beslissingen nemen", "Je hoeft geen eigen beslissingen meer te nemen", "Het bouwt je professionele netwerk op"], correctIndex: 1, explanation: "Het grootste risico bij persoonlijke besluitvorming is het zoeken van bevestiging bij mensen die al op jou lijken. Diversiteit in adviseurs — leeftijd, achtergrond, denkstijl — brengt perspectieven die je eigenblindheid compenseren." }
+    ],
+    creativePrompt: "Wie zijn de vijf mensen die je nu raadpleegt bij grote beslissingen? Welk perspectief ontbreekt in die groep? Wie zou dat perspectief kunnen toevoegen?",
+    aiHelperPrompts: ["Hoe vraag ik iemand om mentoring zonder opdringerig te zijn?", "Hoe onderhoud ik relaties met mijn persoonlijke raad?", "Hoeveel adviseurs is ideaal?"]
+  },
+  {
+    id: "after-action-review",
+    title: "Evaluatie na Actie",
+    difficulty: 1,
+    emoji: "🔍",
+    academicCategory: "Persoonlijke Ontwikkeling",
+    skillCategory: "Persoonlijke Strategie",
+    tags: ["reflectie", "leren", "verbetering", "evaluatie"],
+    definition: "Een evaluatie na actie (After Action Review, ontwikkeld door het Amerikaanse leger) is een gestructureerde reflectiepraktijk na een gebeurtenis: Wat was de bedoeling? Wat gebeurde er werkelijk? Wat ging goed? Wat kan beter? Wat leer ik hiervan? Regelmatig toegepast, versnelt het leren enorm.",
+    abstractExample: "Ervaring alleen leert weinig — het is gereflecteerde ervaring die leert. Een vliegtuig met alleen instrumenten maar geen piloot die ze leest, is nutteloos. De evaluatie is de piloot die de instrumenten leest.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Na elke projectmijlpaal 30 minuten nemen om te bespreken: wat was de planning, wat is er gebeurd, welke beslissingen werkten, wat zouden we anders doen. Dit versnelt teamleren exponentieel." },
+      { domain: "Studie", icon: "📚", text: "Na elk tentamen: wat had ik verwacht, hoe ging het werkelijk, welke vragen overvielen me, hoe studeer ik anders voor het volgende tentamen?" },
+      { domain: "Dagelijks leven", icon: "🏠", text: "Een wekelijkse persoonlijke evaluatie van 15 minuten: wat waren mijn intenties deze week, wat heb ik bereikt, wat hield me tegen, wat doe ik volgende week anders?" }
+    ],
+    prerequisites: [],
+    unlocks: [],
+    exercises: [
+      { type: "multipleChoice", question: "Waarom leert een evaluatie na actie méér dan alleen nadenken over wat misging?", options: ["Het is sneller dan nadenken", "Structuur dwingt zowel successen als mislukkingen te onderzoeken, wat volledigere lessen oplevert", "Het vereist een team", "Informeel nadenken is altijd voldoende"], correctIndex: 1, explanation: "Zonder structuur focust reflectie op het meest opvallende (vaak wat misging), mist het successen die herhaalbaar zijn, en vergeet het de oorspronkelijke intentie. Een structureel kader zorgt voor volledigheid en eerlijkheid." }
+    ],
+    creativePrompt: "Doe nu een mini-evaluatie van de afgelopen week: Wat was je intentie? Wat heb je bereikt? Wat ging goed (schrijf minstens drie dingen)? Wat doe je volgende week anders?",
+    aiHelperPrompts: ["Hoe doe ik een effectieve persoonlijke evaluatie na actie?", "Hoe regelmatig moet ik evalueren voor maximale groei?", "Hoe vermijd ik dat evaluaties te negatief worden?"]
   }
 ];
