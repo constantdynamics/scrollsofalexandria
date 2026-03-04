@@ -6663,4 +6663,156 @@ export const principlesNew = [
       { domain: "Desinformatie", icon: "📱", text: "Als sociale kennisstructuren worden aangetast door desinformatie, verdwijnt het fundament van gesocialiseerde kennis — epistemic crisis is ook een sociale crisis." }
     ],
   },
+
+  // ── Batch A1: Zelfkennis & Identiteit ───────────────────────────────────────
+  {
+    id: "johari-window",
+    title: "Johari-venster",
+    difficulty: 2,
+    emoji: "🪟",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het Johari-venster is een model met vier kwadranten: wat jij én anderen weten (open), wat jij weet maar anderen niet (verborgen), wat anderen weten maar jij niet (blinde vlek), en wat niemand weet (onbekend). Groei zit in het verkleinen van blinde vlekken.",
+    abstractExample: "Door actief feedback te vragen en te delen over jezelf, vergroot je het 'open' venster ten koste van het 'verborgen' en 'blinde vlek'-venster — je zelfkennis en authenticiteit groeien.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Je denkt dat je vergaderingen goed faciliteert, maar collega's ervaren je als dominant. Die blinde vlek wordt pas zichtbaar via eerlijke 360-graden feedback." },
+      { domain: "Relaties", icon: "❤️", text: "Partners die openlijk praten over angsten en zwakheden (het verborgen gebied verkleinen) ervaren meer intimiteit en minder conflicten door verrassingen." },
+      { domain: "Coaching", icon: "🎯", text: "Een goede coach helpt het onbekende gebied te verkennen via vraagtechnieken — dingen ontdekken over jezelf die je zelf nog niet wist dat ze er waren." }
+    ],
+  },
+  {
+    id: "values-clarification",
+    title: "Waardenclarificatie",
+    difficulty: 2,
+    emoji: "⚖️",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Waardenclarificatie is het proces van bewust identificeren welke waarden voor jou centraal staan — eerlijkheid, vrijheid, verbinding, groei — zodat je keuzes en gedrag in lijn brengt met wat je echt belangrijk vindt.",
+    abstractExample: "Veel ontevredenheid ontstaat doordat mensen leven naar andermans waarden (succes zoals de maatschappij het definieert) in plaats van hun eigen. Clarificatie onthult de discrepantie.",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Iemand die autonomie hoog waardeert maar een strak gestructureerde kantoorbaan accepteert, ervaart chronische frustratie — waardenclarificatie onthult de mismatch." },
+      { domain: "Beslissingen", icon: "🎯", text: "Bij een moeilijke beslissing (verhuizen voor een baan?) helpt het je topwaarden expliciet te maken: als familie boven carrière gaat, wordt de keuze duidelijker." },
+      { domain: "Relaties", icon: "❤️", text: "Conflicten in relaties komen vaak voort uit conflicterende waarden (vrijheid vs. stabiliteit). Clarificatie maakt impliciet verschil expliciet en bespreekbaar." }
+    ],
+  },
+  {
+    id: "narrative-identity",
+    title: "Narratieve Identiteit",
+    difficulty: 2,
+    emoji: "📖",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Narratieve identiteit (McAdams) stelt dat we onszelf begrijpen via het levensverhaal dat we construeren — we zijn de protagonist in een intern verhaal dat verleden, heden en toekomst verbindt en betekenis geeft.",
+    abstractExample: "Hetzelfde verleden kan worden verteld als een heldenreis ('ik heb tegenslagen overwonnen'), een slachtofferverhaal ('het leven was onrechtvaardig') of een groeiverhaal. Het verhaal dat je kiest, vormt wie je bent.",
+    examples: [
+      { domain: "Trauma", icon: "💪", text: "Post-traumatische groei treedt op als mensen hun pijnlijke ervaringen herkaderen als deel van een groeiverhaal, niet als definitieve breuk in hun levenslijn." },
+      { domain: "Loopbaan", icon: "💼", text: "Iemand die zijn ontslag vertelt als 'ik werd geforceerd een betere weg te kiezen' versus 'ik heb gefaald' — hetzelfde feit, radicaal ander toekomstperspectief." },
+      { domain: "Therapie", icon: "🛋️", text: "Narratieve therapie helpt mensen hun probleemverzadigd verhaal te herschrijven — je bent niet je probleem, het probleem is het probleem, en verhalen kunnen worden veranderd." }
+    ],
+  },
+  {
+    id: "self-concept",
+    title: "Zelfconcept",
+    difficulty: 2,
+    emoji: "🪞",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het zelfconcept is het geheel van overtuigingen dat je over jezelf hebt — wie je bent, wat je kunt, wat je waard bent. Het zelfconcept stuurt gedrag, keuzes en hoe je anderen ervaart.",
+    abstractExample: "Als je gelooft 'ik ben iemand die sport', ga je automatisch sporten — je gedrag confirmeert de identiteit. Als je gelooft 'ik ben lui', zoek je bevestiging daarvoor. Identiteit gaat vóór gedrag.",
+    examples: [
+      { domain: "Sport", icon: "🏃", text: "James Clear: 'Elke keer dat je traint, bevestig je aan jezelf dat je een sporter bent.' Identiteitsverandering is duurzamer dan gedragsverandering zonder identiteitsverschuiving." },
+      { domain: "School", icon: "📚", text: "Een kind dat zichzelf als 'slecht in wiskunde' ziet, vermijdt wiskundetaken — het zelfconcept creëert een self-fulfilling prophecy die moeilijk te doorbreken is." },
+      { domain: "Leiderschap", icon: "👥", text: "Mensen die zichzelf niet als leider zien, ondermijnen hun eigen leiderschapsgedrag onbewust — het zelfconcept moet verschuiven voor duurzame gedragsverandering." }
+    ],
+  },
+  {
+    id: "ego-depletion-awareness",
+    title: "Zelfbewustzijn van Ego-uitputting",
+    difficulty: 2,
+    emoji: "🔋",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Zelfcontrole, beslissingen nemen en emotieregulatie putten een beperkte mentale bron uit. Aan het eind van de dag zijn wilskracht en oordeel verminderd — bewustzijn hiervan helpt om slimmer te plannen.",
+    abstractExample: "Je neemt 's avonds slechte eetbeslissingen niet door gebrek aan karakter maar door uitgeputte zelfcontrole. Weten dat je moe bent helpt je structuren te bouwen die wilskracht niet vereisen.",
+    examples: [
+      { domain: "Voeding", icon: "🥗", text: "Gezond eten 's avonds mislukt vaker dan 's ochtends — niet door slechte intenties, maar door verminderde zelfcontrole na een dag beslissingen nemen." },
+      { domain: "Werk", icon: "💼", text: "Zet de moeilijkste, meest creatieve taken 's ochtends vroeg. Vergaderingen, e-mails en routinetaken 's middags. Je betere zelf werkt vroeg." },
+      { domain: "Relaties", icon: "❤️", text: "Moeilijke gesprekken na een stressvolle werkdag leiden vaker tot conflict — uitgeputte partners hebben minder geduld. Plan zware gesprekken bewust op betere momenten." }
+    ],
+  },
+  {
+    id: "locus-of-control",
+    title: "Interne vs. Externe Controle",
+    difficulty: 2,
+    emoji: "🎮",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Locus of control beschrijft of je gelooft dat je leven wordt bepaald door je eigen keuzes en acties (intern) of door externe krachten zoals geluk, anderen en omstandigheden (extern).",
+    abstractExample: "Twee mensen falen een examen. De interne: 'Ik heb niet genoeg gestudeerd — ik ga dat veranderen.' De externe: 'Het examen was oneerlijk.' Zelfde feit, heel ander perspectief op agency.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏥", text: "Mensen met interne locus of control volgen medisch advies beter op, sporten meer en leven gemiddeld gezonder — ze geloven dat hun keuzes er toe doen." },
+      { domain: "Carrière", icon: "💼", text: "Mensen met externe locus of control wachten op kansen; interne mensen creëren kansen actief. Research laat consistent hogere carrièresucces zien bij interne oriëntatie." },
+      { domain: "Tegenslag", icon: "💪", text: "Na een bedrijfsfaillissement: externe locus ('de markt werkte tegen mij') leidt tot herhaling; interne ('wat had ik anders kunnen doen') leidt tot leren en verbetering." }
+    ],
+  },
+  {
+    id: "authenticity",
+    title: "Authenticiteit",
+    difficulty: 2,
+    emoji: "✨",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Authenticiteit is het consistent handelen in lijn met je eigen waarden, overtuigingen en karakter — ongeacht externe druk of sociale verwachtingen. Het is het tegendeel van performativiteit en masker dragen.",
+    abstractExample: "Authenticiteit is niet alles zeggen wat je denkt (dat is bruutheid). Het is handelen vanuit wie je werkelijk bent in plaats van wie je denkt te moeten zijn — een subtiel maar fundamenteel onderscheid.",
+    examples: [
+      { domain: "Leiderschap", icon: "👥", text: "Authentieke leiders delen eigen fouten en twijfels — dit creëert meer vertrouwen dan een perfecte façade, omdat teams zien dat zwakheid benoemen veilig is." },
+      { domain: "Relaties", icon: "❤️", text: "Mensen die in relaties consequent een beter zelf presenteren, ervaren chronische uitputting en afstand — het masker vereist energie die intimiteit ondermijnt." },
+      { domain: "Carrière", icon: "💼", text: "Iemand die in een rol werkt die niet bij hem past (introvert in verkooprol) ervaart identiteitsconflict — authenticiteitsonderzoek wijst naar baantevredenheid als sleutelvoorwaarde." }
+    ],
+  },
+  {
+    id: "self-compassion",
+    title: "Zelfcompassie",
+    difficulty: 1,
+    emoji: "🤗",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Zelfcompassie (Kristin Neff) betekent jezelf behandelen met hetzelfde begrip en vriendelijkheid als je een goede vriend zou behandelen bij fouten, falen of pijn — in plaats van harde zelfkritiek.",
+    abstractExample: "Als een vriend een fout maakt, zeg je: 'Het kan gebeuren, wat kun je ervan leren?' Bij jezelf zeg je: 'Hoe kon ik zo stom zijn?' Zelfcompassie brengt de eerste reactie ook op jezelf toe.",
+    examples: [
+      { domain: "Prestatie", icon: "🏆", text: "Onderzoek: mensen met hoge zelfcompassie presteren beter na falen dan mensen met hoge zelfkritiek — ze herstellen sneller en leren meer omdat schaamte geen blokkerend effect heeft." },
+      { domain: "Gezondheid", icon: "🏥", text: "Bij terugval in ongezond gedrag (roken, eten) leidt zelfcompassie tot sneller hervatten van gezond gedrag — zelfkritiek vergroot de spiraal van hopeloosheid." },
+      { domain: "Ouderschap", icon: "👨‍👩‍👧", text: "Ouders die zichzelf vergeven voor fouten, modelleren dit voor kinderen — zelfcompassieve ouders hebben kinderen met hogere emotionele veerkracht en lager perfectionisme." }
+    ],
+  },
+  {
+    id: "shadow-self",
+    title: "Het Schaduwzelf",
+    difficulty: 3,
+    emoji: "🌑",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Het schaduwzelf (Jung) zijn de onderdelen van onszelf die we onbewust afwijzen, ontkennen of verborgen houden — kanten die we als onaanvaardbaar beschouwen maar die ons gedrag onbewust sturen.",
+    abstractExample: "Als je sterk reageert op 'arrogante' mensen, kan je eigen afgewezen arrogantie de echte oorzaak zijn. Wat je in anderen irriteert, wijst vaak naar je eigen schaduw.",
+    examples: [
+      { domain: "Relaties", icon: "❤️", text: "Extreme irritatie aan andermans gedrag is vaak projectie van de eigen schaduw — de persoon die altijd anderen als lui betitelt, vecht mogelijk met zijn eigen luiheid." },
+      { domain: "Leiderschap", icon: "👥", text: "Leiders die falen publiek niet kunnen accepteren, projecteren hun schaduw (angst voor incompetentie) op medewerkers via micromanagement en overmatige controle." },
+      { domain: "Persoonlijk", icon: "🧘", text: "Schaduwwerk via therapie of journaling: bewust maken wat onbewust was, vermindert projectie op anderen en vergroot authentieke zelfacceptatie." }
+    ],
+  },
+  {
+    id: "identity-foreclosure",
+    title: "Identiteitsbevriezing",
+    difficulty: 2,
+    emoji: "🧊",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Identiteitsbevriezing (Marcia) treedt op als mensen een identiteit overnemen zonder haar te verkennen — de dokter-zijn die altijd dokter werd, de religie die nooit werd bevraagd. Groei vereist identiteitscrises.",
+    abstractExample: "Een midlifecrisis is vaak een uitgestelde identiteitscrisis — 'Wie ben ik los van de rollen die anderen voor mij kozen?' Dat is pijnlijk maar noodzakelijk voor echte volwassenheid.",
+    examples: [
+      { domain: "Carrière", icon: "💼", text: "Iemand die advocaat werd omdat zijn vader advocaat was, zonder ooit andere mogelijkheden te verkennen, ervaart op zijn 40e een diepe identiteitscrisis als de bevrijdende vraag opkomt." },
+      { domain: "Religie", icon: "🕌", text: "Mensen die als kind een geloof overnamen zonder persoonlijk te verkennen, hebben een bevroren religieuze identiteit — zij die het bevragen komen tot rijkere, authentiekere spiritualiteit." },
+      { domain: "Studiekeuze", icon: "📚", text: "Jongeren die direct na middelbare school studeren zonder zelfexploratie, hebben hogere kans op spijt en studiewisseling — een gap year kan identiteitsverkenning faciliteren." }
+    ],
+  },
 ];
