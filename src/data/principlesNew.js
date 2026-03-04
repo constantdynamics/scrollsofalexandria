@@ -9095,4 +9095,156 @@ export const principlesNew = [
       { domain: "Mentale gezondheid", icon: "🧠", text: "Mensen die in steden wonen nabij parken of water scoren consistent beter op mentale gezondheidsmetingen dan mensen in buurten zonder groen — natuur-nabijheid is een onderschat factor in stedelijk welzijn." }
     ],
   },
+
+  // ========== BATCH B7: MINIMALISME & VEREENVOUDIGING ==========
+  {
+    id: "essentialism-principle",
+    title: "Essentialisme: Het Krachtigste Nee",
+    difficulty: 2,
+    emoji: "✂️",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Essentialisme (Greg McKeown) is de discipline van het systematisch onderscheiden van wat essentieel is van wat niet-essentieel is, en het elimineren van het niet-essentiële. Het is niet over meer dingen doen maar over de juiste dingen doen — minder maar beter. De essentalist zegt nee op 90% om voluit ja te kunnen zeggen op 10%.",
+    abstractExample: "De niet-essentalist probeert alles te doen en bereikt weinig volledig. De essentalist kiest één richting, gaat er volledig voor en bereikt uitzonderlijke resultaten op dat domein. Focus is vermenigvuldiger; versnippering is verdeler.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Van alle projecten en taken de top 3 selecteren die echt impact hebben en de rest afwijzen of delegeren. Pareto-principe: 80% van de waarde komt van 20% van de activiteiten — bewust kiezen welke 20%." },
+      { domain: "Beslissingen", icon: "🎯", text: "Bij twijfel nee zeggen. Als het geen volmondig 'Hell yes!' is, is het een nee. Dit elimineert de vage middenzone van verplichtingen die energie kosten maar weinig waarde toevoegen." },
+      { domain: "Bezittingen", icon: "🏠", text: "De vraag: gebruik ik dit actief en geeft het waarde? Alles wat twee keer nee heeft, gaat weg. Minder spullen = minder mentale belasting (elk bezit vraagt indirect aandacht)." }
+    ],
+  },
+  {
+    id: "decluttering-mental-space",
+    title: "Opruimen als Mentale Vrijheid",
+    difficulty: 1,
+    emoji: "🧹",
+    academicCategory: "Omgevingspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Rommel — fysieke en digitale — legt beslag op cognitieve capaciteit. Elk niet-afgehandeld item in je omgeving is een open loop die achtergrondaandacht vraagt. Opruimen is niet esthetiek maar cognitieve hygiëne: een opgeruimde ruimte reduceert cognitieve belasting en verlaagt stress.",
+    abstractExample: "Het zien van rommel activeert onbewust aandacht voor onafgemaaktheid. Een bureau vol papieren, een overvolle inbox, een rommelige slaapkamer — elk is een kleine belasting op de prefrontale cortex. Opruimen is het sluiten van open loops.",
+    examples: [
+      { domain: "Werkplek", icon: "💼", text: "Een opgeruimd bureau aan het begin van een werkdag is geen oppervlakkige gewoontes maar een cognitieve start-conditie. Studies tonen hogere concentratie en lagere stress bij werken in opgeruimde omgevingen." },
+      { domain: "Digitaal", icon: "💻", text: "Een inbox op nul, een georganiseerd bestandssysteem en een opgeruimd bureaublad hebben het zelfde cognitief-belasting-reducerende effect als een opgeruimde fysieke ruimte — digitale rommel is echte rommel." },
+      { domain: "Konmari-principe", icon: "🌸", text: "Marie Kondo's vraag 'Geeft het vreugde?' is psychologisch onderbouwd: alleen bezittingen die positieve respons opwekken behouden. De keuze zelf is therapeutisch — het is ruimte terugnemen over eigen omgeving." }
+    ],
+  },
+  {
+    id: "simplify-commitments",
+    title: "Verplichtingen Reduceren",
+    difficulty: 2,
+    emoji: "📋",
+    academicCategory: "Tijdmanagement",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Overcommitting — meer verplichtingen aangaan dan je kunt naleven — is een van de meest voorkomende bronnen van stress en kwaliteitsverlies. Het is makkelijker ja te zeggen dan nee, maar elke nieuwe verplichting concurreert om dezelfde beperkte pool van tijd en energie. Strategisch reduceren van verplichtingen vergroot kwaliteit van wat overblijft.",
+    abstractExample: "Elke nieuwe verplichting die je aanneemt, financiert deels met de aandacht die je al ergens anders hebt beloofd. Het is een zero-sum spel: meer verplichtingen = minder per verplichting. De paradox: minder doen levert vaak betere resultaten op in wat je doet.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Het lijstje van verplichtingen naast je waarden en prioriteiten leggen: welke verplichtingen draagt niet bij aan wat ik echt wil? Die exit-strategie zoeken — elegant uitfaseren of delegeren, niet abrupt laten vallen." },
+      { domain: "Sociale verplichtingen", icon: "🤝", text: "Sociale verplichtingen die energie kosten en weinig waarde toevoegen bewust afbouwen. Niet elke verjaardag bijwonen, niet elke uitnodiging accepteren — kwaliteit van sociale tijd gaat omhoog wanneer kwantiteit afneemt." },
+      { domain: "Agenda", icon: "📅", text: "White space in de agenda beschermen als essentieel — niet vullen tot de rand. Onverwachte kansen, diep werk en herstel vereisen vrije tijd. Een volle agenda is een agenda zonder flexibiliteit." }
+    ],
+  },
+  {
+    id: "one-in-one-out",
+    title: "Één Erin, Één Eruit Regel",
+    difficulty: 1,
+    emoji: "⚖️",
+    academicCategory: "Gedragspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De één-erin-één-eruit regel is een eenvoudig systeem om opbouw van bezittingen, verplichtingen of gewoonten te voorkomen: elke keer dat er iets bij komt, gaat er iets soortgelijks uit. Dit creëert een natuurlijk maximum en dwingt bewuste afwegingen bij toevoegingen.",
+    abstractExample: "Een nieuw boek kopen: welk boek geef ik weg? Een nieuwe verplichting aangaan: welke oudere verplichting laat ik gaan? Een nieuw apparaat aanschaffen: welk oud apparaat verdwijnt? De regel voorkomt de sluipende opbouw van bezit en verplichtingen.",
+    examples: [
+      { domain: "Kleding", icon: "👔", text: "Nieuwe kleding kopen gaat altijd gepaard met het weggeven van een kledingstuk — dit voorkomt klerenkast-overloop en dwingt de vraag: is dit nieuwe item echt beter dan wat ik al heb?" },
+      { domain: "Apps en abonnementen", icon: "📱", text: "Elke nieuwe app of abonnement gaat gepaard met het opzeggen van een bestaande — digitale rommel accumuleert net zo makkelijk als fysieke rommel, met hetzelfde effect op cognitieve belasting." },
+      { domain: "Verplichtingen", icon: "📋", text: "Een nieuw project of committee overnemen: welk bestaand project of commitment laat ik los? Dit maakt de echte kosten van nieuwe verplichtingen zichtbaar en dwingt prioritering." }
+    ],
+  },
+  {
+    id: "slow-living",
+    title: "Langzamer Leven: De Kracht van Ritme",
+    difficulty: 2,
+    emoji: "🐢",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Langzamer leven is niet traag zijn maar bewust kiezen voor diepte boven breedte, kwaliteit boven kwantiteit en aanwezigheid boven efficiëntie. De slow movement (Carl Honoré) stelt dat versnelling van het moderne leven leidt tot verlies van kwaliteit in ervaringen, relaties en werk — en dat bewust vertragen dit keert.",
+    abstractExample: "Een maaltijd in 10 minuten naar binnen werken vs. 45 minuten samen eten. Snel door een stad lopen vs. langzaam verkennen. Meerdere projecten half doen vs. één project volledig uitwerken. Snelheid en kwaliteit zijn niet altijd vrienden.",
+    examples: [
+      { domain: "Eten", icon: "🍽️", text: "Bewust eten — zittend, zonder scherm, aandacht voor smaak en gezelschap — is zowel gezonder (beter verzadigingssignaal) als plezieriger. Het langzamer maken van maaltijden is een van de makkelijkste slow living interventies." },
+      { domain: "Werk", icon: "💼", text: "Deep work blokken van 2-4 uur zonder onderbrekingen leveren meer resultaat dan gefragmenteerde 8-urige werkdagen. Bewust vertragen om te verdiepen is productiever dan altijd in reactiemodus zijn." },
+      { domain: "Vrijetijd", icon: "🌿", text: "Een weekend bewust niet volplannen — ruimte laten voor improvisation, verkenning en rust — geeft meer herstelling en plezier dan een weekend vol activiteiten die even snel voorbijgaan als ze zijn ingepland." }
+    ],
+  },
+  {
+    id: "default-behaviors",
+    title: "Standaardgedrag Bewust Instellen",
+    difficulty: 2,
+    emoji: "⚙️",
+    academicCategory: "Gedragspsychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "De meeste menselijke gedragingen zijn standaardgedrag — automatische reacties op situaties, ingesteld door gewoonten en omgeving. Bewust nadenken over je standaardgedrag en ze strategisch herprogrammeren is efficiënter dan wilskracht — je kiest het pad van de minste weerstand in de richting die je wilt gaan.",
+    abstractExample: "Als de standaard bij aankomst thuis is: telefoon pakken, Netfix openen, op de bank zitten — dan kost afwijken van dat pad wilskracht. Als de standaard is: boek pakken, naar buiten lopen — dan kost dat geen wilskracht. Defaults zijn de architectuur van gedrag.",
+    examples: [
+      { domain: "Gezondheid", icon: "🏃", text: "Sportkleding en -schoenen 's avonds klaarleggen maakt sporten de 'default' ochtendoptie — de weerstand is al weggenomen voor het moment van beslissen. Omgevingsdesign bepaalt wat de default is." },
+      { domain: "Productiviteit", icon: "⚡", text: "Browser openen en direct beginnen met werk in plaats van nieuwssites checken vereist het instellen van een werkdocument als startpagina. De browserstandaard bepaalt het eerste gedrag van de dag." },
+      { domain: "Financiën", icon: "💰", text: "Automatisch sparen direct na salarisontvangst is de standaard instellen op spaargedrag — het werkt omdat het geen actieve beslissing meer vereist. Automation van goede defaults is krachtig gedragsdesign." }
+    ],
+  },
+  {
+    id: "single-tasking",
+    title: "Singletasking: De Mythe van Multitasking",
+    difficulty: 1,
+    emoji: "🎯",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Multitasking is neurobiologisch niet mogelijk voor cognitieve taken — het brein wisselt snel tussen taken (task switching) maar doet ze niet simultaan. Elk task-switch kost cognitieve energie en tijd (switching cost). Singletasking — één taak tegelijk, volledig — is significant efficiënter en levert betere output.",
+    abstractExample: "Twee taken 'tegelijk' doen kost meer tijd dan ze sequentieel doen. Bovendien daalt de kwaliteit van beide taken. De illusie van multitasking is productiviteitsgevoel zonder productiviteitsresultaat.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Email, chat en een taak tegelijk 'doen' leidt tot gemiddeld 40% langere werktijd per taak. Emailsessies blokkeren (bijv. 9:00-9:30 en 14:00-14:30) en de rest van de dag sluiten verhoogt effectieve outputtijd aanzienlijk." },
+      { domain: "Studie", icon: "📚", text: "Studeren met muziek of podcast op de achtergrond verlaagt begrip en retentie — de cognitieve capaciteit is gedeeld. Diepe studie vereist volledige aandacht zonder concurrerende auditieve input." },
+      { domain: "Gesprekken", icon: "💬", text: "Telefoon in het zicht hebben tijdens een gesprek vermindert de kwaliteit van de conversatie voor beide partijen — ook als je er niet naar kijkt. Aanwezig zijn vereist volledig singletasken op de ander." }
+    ],
+  },
+  {
+    id: "subtraction-bias",
+    title: "Subtractie Bias: Toevoegen vs. Weghalen",
+    difficulty: 2,
+    emoji: "➖",
+    academicCategory: "Cognitieve Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Mensen hebben een sterke voorkeur voor het toevoegen van oplossingen (meer doen, meer hebben, meer aanpassen) boven het weghalen (minder doen, verwijderen, vereenvoudigen). Onderzoek toont dat subtractive oplossingen systematisch over het hoofd worden gezien, ook als ze eenvoudiger en effectiever zijn.",
+    abstractExample: "Als een recept niet lekker is, bedenken mensen eerder extra ingrediënten dan er één te weghalen. Als een presentatie te lang is, voegen mensen eerder een samenvatting toe dan slides te verwijderen. Subtractie is de onderbenutte route naar verbetering.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Alvorens een nieuw proces of systeem toe te voegen bij een probleem: eerst vragen welke bestaande stap, vergadering of regel kan worden geëlimineerd. Vereenvoudiging is vaak de snellere oplossing dan toevoeging." },
+      { domain: "Leven", icon: "🌟", text: "Bij ongelukkigheid zoeken mensen naar wat toe te voegen (meer activiteiten, meer doelen, meer spullen). Vragen: wat kan ik elimineren dat energie kost? is de onderbenutte maar effectievere richting." },
+      { domain: "Communicatie", icon: "💬", text: "Een tekst of email die niet helder is, verbetert vaker door zinnen te schrappen dan zinnen toe te voegen. 'Ik had geen tijd voor een kortere brief' (Pascal) — beknoptheid vereist meer moeite maar is sterker." }
+    ],
+  },
+  {
+    id: "good-enough-standard",
+    title: "De Goed-Genoeg Standaard",
+    difficulty: 1,
+    emoji: "✅",
+    academicCategory: "Psychologie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Perfectie is de vijand van het gedane. Het stellen van een 'goed genoeg' standaard — een expliciete drempel waarbij werk klaar is — voorkomt perfectionisme-valkuilen, vermindert procrastinatie en verhoogt output. Het is niet over laag staan maar over bewust de juiste kwaliteitsdrempel kiezen per taak.",
+    abstractExample: "Een chirurg moet perfectie nastreven. Een dagelijkse email niet. Bewust kalibreren welke taken 60%, 80% of 99% kwaliteit vereisen — en stoppen bij die drempel — is een productiviteitsstrategie die perfectionisme omzeilt.",
+    examples: [
+      { domain: "Werk", icon: "💼", text: "Intern memo of presentatie: 80% is goed genoeg. Klantleverancier of publieke publicatie: misschien 95%. Het verschil bewust stellen voordat je begint, in plaats van altijd naar perfectie streven ongeacht de context." },
+      { domain: "Hobby's", icon: "🎨", text: "Creatieve projecten niet beginnen omdat je bang bent dat ze niet goed genoeg zijn? De goed-genoeg standaard verlaagt de startdrempel: maak het, leer, verbeter. Imperfect actie versloeg perfect uitgesteld." },
+      { domain: "Beslissingen", icon: "🎯", text: "Voor omkeerbare beslissingen bewust de goed-genoeg drempel stellen: dit is goed genoeg om van te leren en bij te sturen. Wachten op perfecte informatie voor een beslissing die toch gecorrigeerd kan worden is verspilling." }
+    ],
+  },
+  {
+    id: "values-based-simplicity",
+    title: "Vereenvoudiging op Basis van Waarden",
+    difficulty: 2,
+    emoji: "🧭",
+    academicCategory: "Filosofie",
+    skillCategory: "Persoonlijke Ontwikkeling",
+    definition: "Doelmatige vereenvoudiging begint niet met het weggooien van willekeurige dingen maar met helderheid over wat echt waardevol is. Waarden-gebaseerde vereenvoudiging vraagt: wat is mij werkelijk belangrijk? En wat van wat ik doe, heb en ben draagt daaraan bij? Alles wat dat niet doet is een kandidaat voor eliminatie.",
+    abstractExample: "Als authenticiteit en diepgang jouw waarden zijn, maar je agenda vol is met oppervlakkige sociale verplichtingen — er is een kloof. Waarden-gebaseerde vereenvoudiging herstelt die afstemming. Het is niet minimalisme als esthetiek maar als uitdrukking van waarden.",
+    examples: [
+      { domain: "Tijdsbesteding", icon: "⏰", text: "Een week bijhouden hoe je daadwerkelijk je tijd besteedt vs. hoe je die zou willen besteden op basis van je waarden — de kloof is de informatie. Wat zou je elimineren om afstemming te herstellen?" },
+      { domain: "Bezittingen", icon: "🏠", text: "Bezittingen beoordelen niet op sentimentaliteit of theoretische toekomstige bruikbaarheid, maar op: draagt dit bij aan wat ik werkelijk wil? Een sober huis dat energie geeft versus een vol huis dat energie kost." },
+      { domain: "Activiteiten", icon: "🌟", text: "Elke verplichting en activiteit toetsen aan de vraag: als ik eerlijk ben, geeft dit me energie of kost het energie? Als het structureel energie kost en niet bijdraagt aan iets essentieel — elimineren is een daad van zelfrespect." }
+    ],
+  },
 ];
