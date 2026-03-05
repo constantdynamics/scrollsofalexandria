@@ -42,6 +42,7 @@ import { zelfvertrouwen27 } from './zelfvertrouwen27.js';
 import { zelfvertrouwen28 } from './zelfvertrouwen28.js';
 import { zelfvertrouwen29 } from './zelfvertrouwen29.js';
 import { emotieregulatie1 } from './emotieregulatie1.js';
+import { ethiek1 } from './ethiek1.js';
 import { emotieregulatie2 } from './emotieregulatie2.js';
 import { emotieregulatie3 } from './emotieregulatie3.js';
 import { emotieregulatie4 } from './emotieregulatie4.js';
@@ -2237,6 +2238,7 @@ const allPrinciples = [
   ...emotieregulatie8,
   ...emotieregulatie9,
   ...emotieregulatie10,
+  ...ethiek1,
 ];
 
 // Helper function to get principle by ID
