@@ -12,6 +12,15 @@ import { gedachteExperimenten7 } from './gedachteExperimenten7.js';
 import { gedachteExperimenten8 } from './gedachteExperimenten8.js';
 import { gedachteExperimenten9 } from './gedachteExperimenten9.js';
 import { gedachteExperimenten10 } from './gedachteExperimenten10.js';
+import { zelfvertrouwen1 } from './zelfvertrouwen1.js';
+import { zelfvertrouwen2 } from './zelfvertrouwen2.js';
+import { zelfvertrouwen3 } from './zelfvertrouwen3.js';
+import { zelfvertrouwen4 } from './zelfvertrouwen4.js';
+import { zelfvertrouwen5 } from './zelfvertrouwen5.js';
+import { zelfvertrouwen6 } from './zelfvertrouwen6.js';
+import { zelfvertrouwen7 } from './zelfvertrouwen7.js';
+import { zelfvertrouwen8 } from './zelfvertrouwen8.js';
+import { zelfvertrouwen9 } from './zelfvertrouwen9.js';
 
 export const principles = [
   {
@@ -2159,6 +2168,15 @@ const allPrinciples = [
   ...gedachteExperimenten8,
   ...gedachteExperimenten9,
   ...gedachteExperimenten10,
+  ...zelfvertrouwen1,
+  ...zelfvertrouwen2,
+  ...zelfvertrouwen3,
+  ...zelfvertrouwen4,
+  ...zelfvertrouwen5,
+  ...zelfvertrouwen6,
+  ...zelfvertrouwen7,
+  ...zelfvertrouwen8,
+  ...zelfvertrouwen9,
 ];
 
 // Helper function to get principle by ID
