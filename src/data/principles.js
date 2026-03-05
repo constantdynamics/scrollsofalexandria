@@ -47,6 +47,7 @@ import { zelfvertrouwen32 } from './zelfvertrouwen32.js';
 import { zelfvertrouwen33 } from './zelfvertrouwen33.js';
 import { zelfvertrouwen34 } from './zelfvertrouwen34.js';
 import { zelfvertrouwen35 } from './zelfvertrouwen35.js';
+import { zelfvertrouwen36 } from './zelfvertrouwen36.js';
 import { emotieregulatie1 } from './emotieregulatie1.js';
 import { ethiek1 } from './ethiek1.js';
 import { emotieregulatie2 } from './emotieregulatie2.js';
@@ -2240,6 +2241,7 @@ const allPrinciples = [
   ...zelfvertrouwen33,
   ...zelfvertrouwen34,
   ...zelfvertrouwen35,
+  ...zelfvertrouwen36,
   ...emotieregulatie1,
   ...emotieregulatie2,
   ...emotieregulatie3,
