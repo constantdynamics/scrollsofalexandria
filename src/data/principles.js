@@ -2,6 +2,16 @@
 // Each principle includes full content, exercises, and relationships
 
 import { principlesNew } from './principlesNew.js';
+import { gedachteExperimenten1 } from './gedachteExperimenten1.js';
+import { gedachteExperimenten2 } from './gedachteExperimenten2.js';
+import { gedachteExperimenten3 } from './gedachteExperimenten3.js';
+import { gedachteExperimenten4 } from './gedachteExperimenten4.js';
+import { gedachteExperimenten5 } from './gedachteExperimenten5.js';
+import { gedachteExperimenten6 } from './gedachteExperimenten6.js';
+import { gedachteExperimenten7 } from './gedachteExperimenten7.js';
+import { gedachteExperimenten8 } from './gedachteExperimenten8.js';
+import { gedachteExperimenten9 } from './gedachteExperimenten9.js';
+import { gedachteExperimenten10 } from './gedachteExperimenten10.js';
 
 export const principles = [
   {
@@ -2135,8 +2145,21 @@ export const principles = [
   }
 ];
 
-// Combineer originele en nieuwe principes
-const allPrinciples = [...principles, ...principlesNew];
+// Combineer originele, nieuwe principes en alle gedachte-experimenten
+const allPrinciples = [
+  ...principles,
+  ...principlesNew,
+  ...gedachteExperimenten1,
+  ...gedachteExperimenten2,
+  ...gedachteExperimenten3,
+  ...gedachteExperimenten4,
+  ...gedachteExperimenten5,
+  ...gedachteExperimenten6,
+  ...gedachteExperimenten7,
+  ...gedachteExperimenten8,
+  ...gedachteExperimenten9,
+  ...gedachteExperimenten10,
+];
 
 // Helper function to get principle by ID
 export const getPrincipleById = (id) => {
