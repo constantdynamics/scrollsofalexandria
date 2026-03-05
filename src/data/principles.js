@@ -21,6 +21,10 @@ import { zelfvertrouwen6 } from './zelfvertrouwen6.js';
 import { zelfvertrouwen7 } from './zelfvertrouwen7.js';
 import { zelfvertrouwen8 } from './zelfvertrouwen8.js';
 import { zelfvertrouwen9 } from './zelfvertrouwen9.js';
+import { zelfvertrouwen10 } from './zelfvertrouwen10.js';
+import { zelfvertrouwen11 } from './zelfvertrouwen11.js';
+import { zelfvertrouwen12 } from './zelfvertrouwen12.js';
+import { zelfvertrouwen13 } from './zelfvertrouwen13.js';
 
 export const principles = [
   {
@@ -2177,6 +2181,10 @@ const allPrinciples = [
   ...zelfvertrouwen7,
   ...zelfvertrouwen8,
   ...zelfvertrouwen9,
+  ...zelfvertrouwen10,
+  ...zelfvertrouwen11,
+  ...zelfvertrouwen12,
+  ...zelfvertrouwen13,
 ];
 
 // Helper function to get principle by ID
