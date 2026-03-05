@@ -31,6 +31,16 @@ import { zelfvertrouwen16 } from './zelfvertrouwen16.js';
 import { zelfvertrouwen17 } from './zelfvertrouwen17.js';
 import { zelfvertrouwen18 } from './zelfvertrouwen18.js';
 import { zelfvertrouwen19 } from './zelfvertrouwen19.js';
+import { zelfvertrouwen20 } from './zelfvertrouwen20.js';
+import { zelfvertrouwen21 } from './zelfvertrouwen21.js';
+import { zelfvertrouwen22 } from './zelfvertrouwen22.js';
+import { zelfvertrouwen23 } from './zelfvertrouwen23.js';
+import { zelfvertrouwen24 } from './zelfvertrouwen24.js';
+import { zelfvertrouwen25 } from './zelfvertrouwen25.js';
+import { zelfvertrouwen26 } from './zelfvertrouwen26.js';
+import { zelfvertrouwen27 } from './zelfvertrouwen27.js';
+import { zelfvertrouwen28 } from './zelfvertrouwen28.js';
+import { zelfvertrouwen29 } from './zelfvertrouwen29.js';
 import { emotieregulatie1 } from './emotieregulatie1.js';
 import { emotieregulatie2 } from './emotieregulatie2.js';
 import { emotieregulatie3 } from './emotieregulatie3.js';
@@ -2207,6 +2217,16 @@ const allPrinciples = [
   ...zelfvertrouwen17,
   ...zelfvertrouwen18,
   ...zelfvertrouwen19,
+  ...zelfvertrouwen20,
+  ...zelfvertrouwen21,
+  ...zelfvertrouwen22,
+  ...zelfvertrouwen23,
+  ...zelfvertrouwen24,
+  ...zelfvertrouwen25,
+  ...zelfvertrouwen26,
+  ...zelfvertrouwen27,
+  ...zelfvertrouwen28,
+  ...zelfvertrouwen29,
   ...emotieregulatie1,
   ...emotieregulatie2,
   ...emotieregulatie3,
