@@ -17,6 +17,8 @@ const PrinciplePage = () => {
     trackLearningStyleChoice,
     getPrincipleStatuses,
     togglePrincipleStatus,
+    userData,
+    setMentorPrinciple,
   } = useUser();
 
   const [learningStyle, setLearningStyle] = useState('');
@@ -64,6 +66,7 @@ const PrinciplePage = () => {
 
   const isRead = progress.activities.read || hasMarkedAsRead;
   const statuses = getPrincipleStatuses(principleId);
+  const isMentor = userData?.preferences?.mentorPrincipleId === principleId;
 
   return (
     <div className="min-h-screen bg-bg">
@@ -233,6 +236,13 @@ const PrinciplePage = () => {
                   emoji="⭐"
                   label="Bewaren"
                   activeStyle={{ background: 'rgba(92,79,207,0.08)', borderColor: 'rgba(92,79,207,0.35)', color: 'var(--color-primary)' }}
+                />
+                <StatusButton
+                  active={isMentor}
+                  onClick={() => setMentorPrinciple(isMentor ? null : principleId)}
+                  emoji="🌟"
+                  label="Principe van de maand"
+                  activeStyle={{ background: 'rgba(201,136,15,0.10)', borderColor: 'rgba(201,136,15,0.45)', color: 'var(--color-accent-dark)' }}
                 />
               </div>
             </div>

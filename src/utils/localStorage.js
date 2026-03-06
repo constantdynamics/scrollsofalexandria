@@ -13,7 +13,8 @@ const defaultUserData = {
     defaultLearningStyle: 'auto', // 'definition-first', 'example-first', or 'auto'
     dailyReminder: false,
     reminderTime: '08:00',
-    theme: 'classic'
+    theme: 'classic',
+    mentorPrincipleId: null // principe van de maand
   },
   learningStyleHistory: [],
   completedOnboarding: false,

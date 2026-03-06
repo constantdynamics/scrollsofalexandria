@@ -211,6 +211,10 @@ export const UserProvider = ({ children }) => {
     });
   };
 
+  const setMentorPrinciple = (principleId) => {
+    updatePreference('mentorPrincipleId', principleId);
+  };
+
   const value = {
     userData,
     loading,
@@ -224,7 +228,8 @@ export const UserProvider = ({ children }) => {
     resetUserData,
     updateStreak,
     getPrincipleStatuses,
-    togglePrincipleStatus
+    togglePrincipleStatus,
+    setMentorPrinciple
   };
 
   if (loading) {

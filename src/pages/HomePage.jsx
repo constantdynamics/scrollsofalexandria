@@ -2,11 +2,11 @@ import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useUser } from '../context/UserContext';
-import { allPrinciples, getCategories, getPrinciplesByCategory } from '../data/principles';
+import { allPrinciples, getCategories, getPrinciplesByCategory, getPrincipleById } from '../data/principles';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { userData, getUserStats, getPrincipleStatuses } = useUser();
+  const { userData, getUserStats, getPrincipleStatuses, setMentorPrinciple } = useUser();
   const [organizationSystem, setOrganizationSystem] = useState(userData?.preferences?.organization || 'academic');
   const [searchQuery, setSearchQuery] = useState('');
   const [difficultyFilter, setDifficultyFilter] = useState('all');
@@ -79,6 +79,16 @@ const HomePage = () => {
     navigate(`/principle/${principleId}`);
   };
 
+  const handleWillekeurigeWandeling = () => {
+    const random = allPrinciples[Math.floor(Math.random() * allPrinciples.length)];
+    navigate(`/principle/${random.id}`);
+  };
+
+  const mentorPrinciple = useMemo(() => {
+    const id = userData?.preferences?.mentorPrincipleId;
+    return id ? getPrincipleById(id) : null;
+  }, [userData?.preferences?.mentorPrincipleId]);
+
   const totaalGelezen = allPrinciples.filter(p => userData?.principleProgress?.[p.id]?.activities?.read).length;
 
   return (
@@ -100,6 +110,22 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <button
+                onClick={handleWillekeurigeWandeling}
+                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:text-text hover:border-primary/40 hover:shadow-sm transition-all"
+                title="Neem me mee op een intellectueel avontuur"
+              >
+                <span>🎲</span>
+                <span className="hidden md:inline">Willekeurig</span>
+              </button>
+              <button
+                onClick={() => navigate('/blinde-definitie')}
+                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:text-text hover:border-primary/40 hover:shadow-sm transition-all"
+                title="Blinde definitie — raad het principe"
+              >
+                <span>🎭</span>
+                <span className="hidden md:inline">Raadspel</span>
+              </button>
               {stats.currentStreak > 0 && (
                 <div
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-accent/25 transition-all"
@@ -390,6 +416,89 @@ const HomePage = () => {
                       </button>
                     );
                   })}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Principe-mentor */}
+            {mentorPrinciple ? (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="section-label">🌟 Principe van de maand</span>
+                  <div className="flex-1 h-px bg-border" />
+                  <button
+                    onClick={() => setMentorPrinciple(null)}
+                    className="text-xs text-text-muted hover:text-text transition-colors"
+                    title="Verwijder mentor principe"
+                  >
+                    Wijzigen
+                  </button>
+                </div>
+                <motion.div
+                  whileHover={{ y: -2, boxShadow: 'var(--shadow-md)' }}
+                  onClick={() => handlePrincipleClick(mentorPrinciple.id)}
+                  className="cursor-pointer rounded-2xl border p-5 relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(201,136,15,0.07) 0%, var(--color-surface) 60%)',
+                    borderColor: 'rgba(201,136,15,0.35)',
+                    boxShadow: 'var(--shadow-sm)',
+                    transition: 'box-shadow 0.25s ease, transform 0.2s ease',
+                  }}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm"
+                      style={{ background: 'rgba(201,136,15,0.12)', border: '1px solid rgba(201,136,15,0.25)' }}>
+                      <span className="text-2xl">{mentorPrinciple.emoji}</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-bold text-text leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
+                          {mentorPrinciple.title}
+                        </h3>
+                      </div>
+                      <p className="text-xs text-text-secondary leading-relaxed line-clamp-2">
+                        {(mentorPrinciple.definition || '').substring(0, 120)}{mentorPrinciple.definition?.length > 120 ? '...' : ''}
+                      </p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="tag-pill text-xs">{mentorPrinciple.academicCategory}</span>
+                        <span className="text-xs text-accent-dark font-medium">Bewust toepassen deze maand</span>
+                      </div>
+                    </div>
+                    <svg className="w-4 h-4 text-text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="section-label">🌟 Principe van de maand</span>
+                  <div className="flex-1 h-px bg-border" />
+                </div>
+                <div
+                  className="rounded-2xl border border-dashed p-5 flex items-center gap-4 cursor-pointer hover:border-accent/50 transition-colors group"
+                  style={{ borderColor: 'rgba(201,136,15,0.3)' }}
+                  onClick={() => {
+                    const random = allPrinciples[Math.floor(Math.random() * allPrinciples.length)];
+                    setMentorPrinciple(random.id);
+                  }}
+                >
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'rgba(201,136,15,0.08)', border: '1px solid rgba(201,136,15,0.2)' }}>
+                    <span className="text-xl">🌟</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-sm font-semibold text-text mb-0.5">Kies je principe van de maand</div>
+                    <p className="text-xs text-text-muted">Klik op een principe en kies het als je maandmentor, of klik hier voor een willekeurige keuze.</p>
+                  </div>
+                  <svg className="w-4 h-4 text-text-muted group-hover:text-text transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
                 </div>
               </motion.div>
             )}

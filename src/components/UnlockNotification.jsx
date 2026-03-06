@@ -24,32 +24,40 @@ const UnlockNotification = ({ principleId, delay = 0, onClose }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -50, scale: 0.9 }}
+      initial={{ opacity: 0, y: 80 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -40, scale: 0.92 }}
       transition={{
         delay,
         type: 'spring',
-        stiffness: 260,
-        damping: 22
+        stiffness: 280,
+        damping: 24
       }}
       className="fixed bottom-6 right-6 z-50 max-w-sm"
     >
       <div
-        className="bg-surface border border-border rounded-2xl p-5 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow relative overflow-hidden"
+        className="scroll-unfurl bg-surface border border-border rounded-2xl p-5 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow relative overflow-hidden"
+        style={{ animationDelay: `${delay}s` }}
         onClick={handleClick}
       >
+        {/* Perkament-texture achtergrond */}
+        <div className="absolute inset-0 opacity-30 pointer-events-none"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(201,136,15,0.06) 24px, rgba(201,136,15,0.06) 25px)',
+          }}
+        />
         {/* Accent top bar */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary-light to-accent" />
 
-        <div className="mb-3">
+        <div className="mb-3 relative">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: delay + 0.3 }}
+            transition={{ delay: delay + 0.4 }}
             className="flex items-center gap-2 text-sm font-semibold text-primary"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" /></svg>
+            {/* Zegel-animatie */}
+            <span className="scroll-seal-pop inline-block" style={{ animationDelay: `${delay + 0.1}s` }}>📜</span>
             Nieuwe scroll ontgrendeld!
           </motion.div>
         </div>
