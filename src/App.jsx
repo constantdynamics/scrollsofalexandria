@@ -6,6 +6,9 @@ import PrinciplePage from './pages/PrinciplePage';
 import SettingsPage from './pages/SettingsPage';
 import RegisterPage from './pages/RegisterPage';
 import BlindDefinitionPage from './pages/BlindDefinitionPage';
+import HerhalingPage from './pages/HerhalingPage';
+import ExpertiseProfielPage from './pages/ExpertiseProfielPage';
+import BoekenplankPage from './pages/BoekenplankPage';
 import ErrorBoundary from './components/ErrorBoundary';
 
 function AppRoutes() {
@@ -40,6 +43,9 @@ function AppRoutes() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/blinde-definitie" element={<BlindDefinitionPage />} />
+        <Route path="/herhaling" element={<HerhalingPage />} />
+        <Route path="/expertise" element={<ExpertiseProfielPage />} />
+        <Route path="/boekenplank" element={<BoekenplankPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

@@ -133,13 +133,13 @@ const PrinciplePage = () => {
           </div>
         </motion.div>
 
-        {/* Principle Content */}
+        {/* Principle Content — ontvouwt als perkamentrol */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-          className="decorative-border bg-surface mb-8 scroll-reveal relative overflow-hidden"
-          style={{ boxShadow: 'var(--shadow-md)' }}
+          initial={{ opacity: 0, scaleY: 0.08, y: -20 }}
+          animate={{ opacity: 1, scaleY: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: [0.34, 1.3, 0.64, 1] }}
+          style={{ transformOrigin: 'top center', boxShadow: 'var(--shadow-md)' }}
+          className="decorative-border bg-surface mb-8 relative overflow-hidden"
         >
           <div className="hero-overlay" />
           <div className="p-6 md:p-8 relative">
@@ -310,7 +310,11 @@ const DefinitionFirstContent = ({ principle }) => {
   return (
     <div className="space-y-6">
       {/* Definition */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.25, duration: 0.4 }}
+      >
         <h2 className="text-lg font-bold text-text mb-3 flex items-center gap-2.5" style={{ fontFamily: 'var(--font-display)' }}>
           <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center" style={{ border: '1px solid var(--color-primary-100)' }}>
             <span className="text-sm">📍</span>
@@ -320,10 +324,14 @@ const DefinitionFirstContent = ({ principle }) => {
         <div className="prose-definition">
           <p className="text-base text-text-secondary leading-relaxed relative z-10">{principle.definition}</p>
         </div>
-      </div>
+      </motion.div>
 
       {principle.abstractExample && (
-        <div className="rounded-xl p-4 border-l-4 ml-2"
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.38, duration: 0.4 }}
+          className="rounded-xl p-4 border-l-4 ml-2"
           style={{
             borderLeftColor: 'var(--color-accent)',
             background: 'rgba(201,136,15,0.05)',
@@ -336,11 +344,15 @@ const DefinitionFirstContent = ({ principle }) => {
             Abstract voorbeeld
           </h3>
           <p className="text-sm text-text-secondary leading-relaxed">{principle.abstractExample}</p>
-        </div>
+        </motion.div>
       )}
 
       {principle.examples && principle.examples.length > 0 && (
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
+        >
           <h2 className="text-lg font-bold text-text mb-4 flex items-center gap-2.5" style={{ fontFamily: 'var(--font-display)' }}>
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(201,136,15,0.1)', border: '1px solid rgba(201,136,15,0.2)' }}>
               <span className="text-sm">💡</span>
@@ -353,7 +365,7 @@ const DefinitionFirstContent = ({ principle }) => {
                 key={index}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.09, ease: 'easeOut' }}
+                transition={{ delay: 0.55 + index * 0.09, ease: 'easeOut' }}
                 className="rounded-xl p-4"
                 style={{
                   background: 'var(--color-surface)',
@@ -369,7 +381,7 @@ const DefinitionFirstContent = ({ principle }) => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
@@ -379,7 +391,11 @@ const ExampleFirstContent = ({ principle }) => {
   return (
     <div className="space-y-6">
       {principle.examples && principle.examples.length > 0 && (
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.4 }}
+        >
           <h2 className="text-lg font-bold text-text mb-4 flex items-center gap-2.5" style={{ fontFamily: 'var(--font-display)' }}>
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(201,136,15,0.1)', border: '1px solid rgba(201,136,15,0.2)' }}>
               <span className="text-sm">💡</span>
@@ -392,7 +408,7 @@ const ExampleFirstContent = ({ principle }) => {
                 key={index}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.09, ease: 'easeOut' }}
+                transition={{ delay: 0.3 + index * 0.09, ease: 'easeOut' }}
                 className="rounded-xl p-4"
                 style={{
                   background: 'var(--color-surface)',
@@ -408,14 +424,19 @@ const ExampleFirstContent = ({ principle }) => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       )}
 
-      <div className="rounded-xl p-6"
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.55, duration: 0.4 }}
+        className="rounded-xl p-6"
         style={{
           background: 'linear-gradient(135deg, var(--color-primary-50) 0%, rgba(201,136,15,0.05) 100%)',
           border: '1px solid var(--color-primary-100)',
-        }}>
+        }}
+      >
         <h2 className="text-lg font-bold text-text mb-3 flex items-center gap-2.5" style={{ fontFamily: 'var(--font-display)' }}>
           <div className="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center" style={{ border: '1px solid var(--color-primary-100)' }}>
             <span className="text-sm">📍</span>
@@ -431,7 +452,7 @@ const ExampleFirstContent = ({ principle }) => {
             <p className="text-sm text-text-secondary leading-relaxed">{principle.abstractExample}</p>
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };

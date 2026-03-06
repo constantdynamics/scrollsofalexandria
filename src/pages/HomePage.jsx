@@ -166,6 +166,26 @@ const HomePage = () => {
       </header>
 
       <div className="max-w-6xl mx-auto px-4 py-6">
+        {/* Snelle toegang */}
+        <div className="flex flex-wrap gap-2 mb-5">
+          {[
+            { label: 'Herhaling', emoji: '⚡', path: '/herhaling', title: 'Snelherhalings-deck' },
+            { label: 'Expertise', emoji: '📊', path: '/expertise', title: 'Expertise-profiel' },
+            { label: 'Boekenplank', emoji: '📚', path: '/boekenplank', title: 'Boekenplank-view' },
+            { label: 'Raadspel', emoji: '🎭', path: '/blinde-definitie', title: 'Blinde definitie' },
+          ].map(item => (
+            <button
+              key={item.path}
+              onClick={() => navigate(item.path)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:text-text hover:border-primary/40 hover:shadow-sm transition-all"
+              title={item.title}
+            >
+              <span>{item.emoji}</span>
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </div>
+
         {/* Zoekbalk */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
