@@ -5,6 +5,7 @@ on:
     branches:
       - claude/scrolls-wisdom-app-IfttL
       - claude/redesign-webapp-ui-TX0mS
+      - claude/add-100-principles-IIAsW
   workflow_dispatch:
 
 permissions:
