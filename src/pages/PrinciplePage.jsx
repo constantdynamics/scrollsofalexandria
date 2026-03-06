@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useUser } from '../context/UserContext';
 import { getPrincipleById } from '../data/principles';
+import MultipleChoiceExercise from '../components/MultipleChoiceExercise';
+import CreativeExercise from '../components/CreativeExercise';
+import UnlockNotification from '../components/UnlockNotification';
 
 const PrinciplePage = () => {
   const { principleId } = useParams();
@@ -18,6 +21,7 @@ const PrinciplePage = () => {
 
   const [learningStyle, setLearningStyle] = useState('');
   const [hasMarkedAsRead, setHasMarkedAsRead] = useState(false);
+  const [unlockedPrinciples, setUnlockedPrinciples] = useState([]);
 
   const principle = getPrincipleById(principleId);
   const progress = getPrincipleProgress(principleId);
@@ -81,6 +85,18 @@ const PrinciplePage = () => {
         </div>
       </header>
 
+      {/* Unlock notifications */}
+      <AnimatePresence>
+        {unlockedPrinciples.map((id, index) => (
+          <UnlockNotification
+            key={id}
+            principleId={id}
+            delay={index * 0.4}
+            onClose={() => setUnlockedPrinciples(prev => prev.filter(p => p !== id))}
+          />
+        ))}
+      </AnimatePresence>
+
       <div className="max-w-4xl mx-auto px-4 py-6">
         {/* Learning Style Toggle */}
         <motion.div
@@ -139,7 +155,7 @@ const PrinciplePage = () => {
                 <span className="text-3xl md:text-4xl">{principle.emoji}</span>
               </motion.div>
               <div className="flex-1">
-                <h1 className="text-2xl md:text-3xl font-bold text-text mb-2 leading-tight" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.01em' }}>
+                <h1 className="text-2xl md:text-3xl font-bold text-text mb-2 leading-tight" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
                   {principle.title}
                 </h1>
                 <div className="flex items-center gap-2 flex-wrap">
@@ -222,6 +238,44 @@ const PrinciplePage = () => {
             </div>
           </div>
         </motion.div>
+
+        {/* Exercises */}
+        {principle.exercises && principle.exercises.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="mb-6"
+          >
+            <MultipleChoiceExercise
+              principle={principle}
+              exercise={principle.exercises[0]}
+              onComplete={(newlyUnlocked) => {
+                if (newlyUnlocked?.length > 0) {
+                  setUnlockedPrinciples(prev => [...prev, ...newlyUnlocked]);
+                }
+              }}
+            />
+          </motion.div>
+        )}
+
+        {principle.creativePrompt && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.35 }}
+            className="mb-6"
+          >
+            <CreativeExercise
+              principle={principle}
+              onComplete={(newlyUnlocked) => {
+                if (newlyUnlocked?.length > 0) {
+                  setUnlockedPrinciples(prev => [...prev, ...newlyUnlocked]);
+                }
+              }}
+            />
+          </motion.div>
+        )}
       </div>
     </div>
   );

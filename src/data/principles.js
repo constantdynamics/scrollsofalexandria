@@ -236,6 +236,24 @@ export const principles = [
       }
     ],
     relatedPrinciples: ["opportunity-cost", "loss-aversion", "status-quo-bias"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Je hebt 3 jaar gestudeerd voor een diploma dat je niet meer wilt. Je hebt nog 1 jaar te gaan. Welk argument is rationeel om te stoppen?",
+      options: [
+        "Ik heb er al 3 jaar in geïnvesteerd, dus ik moet doorgaan",
+        "De toekomstige kosten en baten van stoppen vs. doorgaan bepalen de keuze",
+        "Mijn ouders hebben veel betaald, dus ik moet het afmaken",
+        "Ik stop nooit halfweg iets"
+      ],
+      correct: 1,
+      feedback: "Juist! De 3 jaar die je al hebt geïnvesteerd zijn weg, ongeacht je keuze. De rationele vraag is: 'Weegt het diploma het komende jaar tijd en geld op?' Niet: 'Wat heb ik al gespendeerd?' Eerdere investeringen zijn sunk costs en mogen je beslissing niet beïnvloeden."
+    }],
+    creativePrompt: "Bedenk een situatie in jouw eigen leven waarbij je merkte dat je doorging met iets vanwege wat je er al in had gestoken. Hoe zou je die beslissing nu rationeel benaderen?",
+    aiHelperPrompts: [
+      "Wanneer merk jij dat je 'sunk costs' laat meewegen in je beslissingen?",
+      "Wat is de rationele vraag die je jezelf moet stellen als je een beslissing evalueert?",
+      "Hoe kun je jezelf trainen om sunk costs los te laten en verder te kijken?"
+    ]
   },
   {
     id: "prisoners-dilemma",
@@ -488,8 +506,25 @@ export const principles = [
       }
     ],
     relatedPrinciples: ["straw-man-fallacy", "slippery-slope", "excluded-middle"],
-  }
-,
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een manager zegt: 'Je bent óf volledig toegewijd aan dit bedrijf óf je bent hier niet op je plek.' Wat klopt er niet aan dit argument?",
+      options: [
+        "Niets, dit is een logisch argument",
+        "Er worden slechts twee extremen gepresenteerd terwijl er tussenposities mogelijk zijn",
+        "De manager is te bot in zijn communicatie",
+        "Toewijding aan een bedrijf is onmeetbaar"
+      ],
+      correct: 1,
+      feedback: "Precies! Dit is een vals dilemma. Er zijn talloze tussenposities: iemand kan toegewijd zijn maar ook grenzen stellen, werk-privébalans bewaken, of kritisch zijn op bepaalde beslissingen. De werkelijkheid is zelden 'alles of niets'."
+    }],
+    creativePrompt: "Herinner je een moment waarop iemand jou voor een vals dilemma plaatste. Welke opties werden weggelaten? Hoe zou je het argument nu weerleggen?",
+    aiHelperPrompts: [
+      "Welke tussenposities waren er in die situatie die niet werden benoemd?",
+      "Hoe herken je een vals dilemma in een discussie?",
+      "Wanneer kan het presenteren van twee opties wél legitiem zijn?"
+    ]
+  },
   {
     id: "modus-tollens",
     title: "Modus Tollens",
@@ -505,6 +540,24 @@ export const principles = [
       { domain: "business", icon: "💼", text: "Als de campagne werkte, stijgen de verkopen. Ze zijn niet gestegen. Dus heeft de campagne niet gewerkt." }
     ],
     relatedPrinciples: ["modus-ponens", "falsification", "deduction-induction"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Als het goed management is, stijgen de winsten. De winsten zijn dit kwartaal gedaald. Wat volgt logisch?",
+      options: [
+        "Het management is goed",
+        "De winsten stijgen altijd uiteindelijk",
+        "Het is geen goed management",
+        "We kunnen niets concluderen zonder meer data"
+      ],
+      correct: 2,
+      feedback: "Correct! Dit is modus tollens: Als P→Q en ¬Q, dan ¬P. Als goed management (P) leidt tot winstgroei (Q), en de winsten zijn gedaald (¬Q), dan volgt: het is geen goed management (¬P). Dit is een geldige logische gevolgtrekking."
+    }],
+    creativePrompt: "Bedenk een eigen voorbeeld van modus tollens: formuleer een 'als...dan...' regel, geef aan dat het gevolg niet optrad, en trek de logische conclusie.",
+    aiHelperPrompts: [
+      "Wat is het verschil tussen modus ponens en modus tollens?",
+      "Kun je een modus tollens-redenering bedenken uit wetenschap of dagelijks leven?",
+      "Waarom is modus tollens zo krachtig voor het weerleggen van hypotheses?"
+    ]
   },
   {
     id: "necessary-sufficient",
@@ -715,6 +768,24 @@ export const principles = [
       { domain: "politics", icon: "🏛️", text: "Kiezers stemmen op de zittende partij zelfs als een nieuw alternatief objectief beter lijkt. 'Liever de duivel die je kent.'" }
     ],
     relatedPrinciples: ["loss-aversion", "anchoring", "sunk-cost-fallacy"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Erik weet dat een ander energiebedrijf hem €300 per jaar bespaart. Toch stapt hij niet over. 'Het is te veel gedoe', zegt hij. Welk principe speelt hier?",
+      options: [
+        "Opportunity cost",
+        "Sunk cost fallacy",
+        "Status quo bias",
+        "Confirmation bias"
+      ],
+      correct: 2,
+      feedback: "Juist! Status quo bias maakt dat mensen de huidige situatie verkiezen boven verandering, ook als de verandering objectief beter is. Het 'gedoe' wordt zwaarder gewogen dan de voordelen van overstappen — zelfs als die voordelen aanzienlijk zijn."
+    }],
+    creativePrompt: "In welk gebied van jouw leven zie jij status quo bias bij jezelf? Welke verandering heb je uitgesteld die eigenlijk beter voor je zou zijn?",
+    aiHelperPrompts: [
+      "Welke drempels houden jou tegen om veranderingen door te voeren die je eigenlijk wil?",
+      "Hoe kun je status quo bias bewust tegengaan bij beslissingen?",
+      "Is vasthouden aan de status quo altijd irrationeel, of zijn er situaties waar het zinvol is?"
+    ]
   },
   {
     id: "framing-effect",
@@ -1138,6 +1209,24 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Geef je iemand een compliment na een geweldige prestatie en straf je hem na een slechte, dan lijkt straf effectiever – maar dat is regressie naar het gemiddelde." }
     ],
     relatedPrinciples: ["law-of-large-numbers", "correlation-causation", "post-hoc-ergo"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Na een uitzonderlijk goed seizoen presteert een voetballer gemiddeld. De trainer schrijft dit toe aan zijn nieuwe trainingsaanpak. Wat is de meest waarschijnlijke verklaring?",
+      options: [
+        "De nieuwe trainingsaanpak werkt averechts",
+        "De speler heeft minder gemotiveerd getraind",
+        "Uitzonderlijke prestaties worden statistisch gevolgd door meer gemiddelde prestaties",
+        "De concurrenten zijn sterker geworden"
+      ],
+      correct: 2,
+      feedback: "Precies! Dit is regressie naar het gemiddelde. Het uitzonderlijk goede seizoen bevatte een element van toeval. De volgende meting valt statistisch dichter bij het langetermijngemiddelde — niet door de trainingsaanpak, maar door kans. De trainer trekt een causale conclusie uit wat statistiek is."
+    }],
+    creativePrompt: "Beschrijf een situatie waarbij je dacht dat een interventie (beloning, straf, beleid) werkte, maar waarbij regressie naar het gemiddelde een betere verklaring zou kunnen zijn.",
+    aiHelperPrompts: [
+      "Hoe kun je onderscheid maken tussen een echte verbetering en regressie naar het gemiddelde?",
+      "Waarom overschatten managers en coaches vaak de effectiviteit van hun interventies?",
+      "In welke domeinen is regressie naar het gemiddelde het meest misleidend?"
+    ]
   },
   {
     id: "selection-bias",
@@ -1170,6 +1259,24 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Je hoort een knal buiten: is het een schot of een knallend uitlaatpijp? In een veilige wijk is de kans op uitlaatpijp veel groter – je prior speelt mee." }
     ],
     relatedPrinciples: ["base-rate-fallacy", "confirmation-bias", "epistemic-humility"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een zeldzame ziekte treft 1 op 1000 mensen. Een test is 99% nauwkeurig. Je test positief. Hoe groot is de kans dat je de ziekte daadwerkelijk hebt?",
+      options: [
+        "99% — de test is immers 99% nauwkeurig",
+        "50% — het is een open vraag",
+        "Bijna 100% — positief is positief",
+        "Ongeveer 9% — de lage basisfrequentie telt zwaar mee"
+      ],
+      correct: 3,
+      feedback: "Juist! Bayes: P(ziekte|positief) = (0,99 × 0,001) / (0,99 × 0,001 + 0,01 × 0,999) ≈ 9%. De basisfrequentie van 0,1% is zo laag dat de meeste positieve tests vals-positief zijn. Nieuwe informatie updatet de kans, maar kan de prior niet zomaar overschrijven."
+    }],
+    creativePrompt: "Bedenk een situatie in jouw leven of werk waarbij je een conclusie trok op basis van één datapunt, zonder de basisfrequentie mee te nemen. Hoe zou Bayesiaans denken dit anders inzichtelijk maken?",
+    aiHelperPrompts: [
+      "Wat is een 'prior' in Bayesiaans denken, en hoe beïnvloedt die je conclusie?",
+      "Waarom is het zo moeilijk voor mensen om lage basisfrequenties mee te wegen?",
+      "Kun je een Bayesiaanse redenering toepassen op een beslissing die je binnenkort moet nemen?"
+    ]
   },
   {
     id: "multiple-comparisons",
@@ -1630,6 +1737,24 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Iemand die denkt dat zijn gezondheid puur door genen bepaald wordt (externe locus), is minder geneigd gezond te leven. Iemand met interne locus zal eerder sport en voeding aanpassen." }
     ],
     relatedPrinciples: ["self-serving-bias", "planning-fallacy", "dunning-kruger"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Welke uitspraak toont een interne locus of control?",
+      options: [
+        "\"Ik had gewoon pech bij dat sollicitatiegesprek\"",
+        "\"Als ik harder oefen, verbeter ik mijn resultaten\"",
+        "\"Succes hangt grotendeels af van de omstandigheden\"",
+        "\"De docent was oneerlijk tegenover mij\""
+      ],
+      correct: 1,
+      feedback: "Juist! Een interne locus of control betekent dat je gelooft dat jouw eigen inspanning en keuzes de uitkomsten beïnvloeden. 'Als ik harder oefen, verbeter ik' weerspiegelt dit geloof in eigen controle. De andere antwoorden schrijven uitkomsten toe aan externe factoren (pech, omstandigheden, anderen)."
+    }],
+    creativePrompt: "Denk aan een recente uitdaging of tegenslag. Welke elementen had je echt in de hand, en welke niet? Hoe verhoudt jouw interne vs. externe locus zich tot hoe je hiermee omgaat?",
+    aiHelperPrompts: [
+      "In welke situaties heb jij de neiging om succes of falen aan externe factoren toe te schrijven?",
+      "Hoe kan een te sterke interne locus ook een nadeel zijn?",
+      "Hoe cultiveer je een gezonde interne locus of control zonder zelfkritiek te overdrijven?"
+    ]
   },
 
   // ── EXTRA PRINCIPES – BATCH 6 (Organisatie & Besliskunde) ──
@@ -1760,6 +1885,24 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Je verwijdert een 'onnodige' stap uit een recept. Het gerecht mislukt. Die stap had een functie die je niet begreep." }
     ],
     relatedPrinciples: ["second-order-effects", "occams-razor", "epistemic-humility"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een nieuwe medewerker ziet een stap in het werkproces die 'nergens goed voor lijkt'. Wat zou Chesterton adviseren?",
+      options: [
+        "Schaf de stap meteen af — onnodige complexiteit moet weg",
+        "Vraag eerst waarom de stap er is voordat je hem verwijdert",
+        "Stel een stemming in om democratisch te beslissen",
+        "Documenteer de stap en laat hem verder ongemoeid"
+      ],
+      correct: 1,
+      feedback: "Correct! Het Hek van Chesterton: begrijp eerst waarom iets bestaat voordat je het verwijdert. De stap heeft waarschijnlijk een functie die de nieuwe medewerker nog niet ziet. Als je die functie begrijpt, kun je beter beoordelen of de stap echt overbodig is of een cruciaal probleem oplost."
+    }],
+    creativePrompt: "Herinner je een moment waarop jij (of iemand om je heen) iets veranderde of afschafte zonder de reden te begrijpen — met onverwachte gevolgen. Wat had je eerst moeten uitzoeken?",
+    aiHelperPrompts: [
+      "Hoe vraag je op een respectvolle manier naar de reden achter een bestaande regel of werkwijze?",
+      "Wanneer is het wél gerechtvaardigd om iets te verwijderen zonder de volledige geschiedenis te kennen?",
+      "Hoe past het Hek van Chesterton in het denken over organisatieverandering?"
+    ]
   },
 
   // ── EXTRA PRINCIPES – BATCH 7 (Psychologie & Organisatie) ──
@@ -1778,6 +1921,24 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Te veel koks bederven de broth: in een keuken met te veel medewerkers stijgen de coördinatiekosten sneller dan de output." }
     ],
     relatedPrinciples: ["planning-fallacy", "dunbar-number", "bikeshedding"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een softwareproject loopt 6 weken achter op de deadline. De projectmanager voegt 4 extra ontwikkelaars toe. Wat voorspelt de Wet van Brooks op korte termijn?",
+      options: [
+        "Het project haalt nu wel de deadline",
+        "Het project loopt nog verder achter",
+        "De kwaliteit van de code verbetert sterk",
+        "De 4 nieuwe mensen compenseren precies de achterstand"
+      ],
+      correct: 1,
+      feedback: "Juist! De Wet van Brooks: meer mensen toevoegen aan een laat project maakt het nog later. Nieuwe ontwikkelaars moeten ingewerkt worden, de communicatie tussen teamleden neemt kwadratisch toe, en de productiviteit van bestaande teamleden daalt doordat zij hun nieuwe collega's moeten begeleiden."
+    }],
+    creativePrompt: "Herinner je een situatie — in werk, studie of privé — waarbij meer mensen toevoegen aan een probleem het erger maakte in plaats van beter. Wat was de oorzaak?",
+    aiHelperPrompts: [
+      "Waarom schalen sommige taken niet met het aantal mensen dat eraan werkt?",
+      "In welke situaties helpt het wél om meer mensen toe te voegen aan een project?",
+      "Hoe verhoudt de Wet van Brooks zich tot het concept van afnemende meeropbrengsten?"
+    ]
   },
   {
     id: "abilene-paradox",
@@ -1874,6 +2035,24 @@ export const principles = [
       { domain: "daily", icon: "🏠", text: "Je generaliseert op basis van drie ervaringen met één type persoon. Je 'model' is overfit op een te kleine steekproef en voorspelt nieuwe ontmoetingen slecht." }
     ],
     relatedPrinciples: ["occams-razor", "multiple-comparisons", "hasty-generalization"],
+    exercises: [{
+      type: "multiple-choice",
+      question: "Een handelsstrategie beschrijft historische beursdata perfect maar faalt volledig op nieuwe markten. Wat is het probleem?",
+      options: [
+        "De historische data was te oud",
+        "Het model had te weinig parameters",
+        "Het model heeft toevallige patronen en ruis geleerd in plaats van echte structuur",
+        "De nieuwe markten zijn fundamenteel anders dan alle voorgaande markten"
+      ],
+      correct: 2,
+      feedback: "Correct! Dit is overfitting. Een model dat te precies is afgesteld op trainingsdata leert ook ruis en toevalspatronen. Het generaliseert daardoor slecht naar nieuwe, onziene data. Meer complexiteit leidt na een punt tot slechtere generalisatie — de kern van de bias-variantie-afweging."
+    }],
+    creativePrompt: "Herken je een moment waarop jij of iemand anders een 'regel' formuleerde op basis van te weinig voorbeelden, die later niet bleek te kloppen? Beschrijf de situatie.",
+    aiHelperPrompts: [
+      "Hoe weet je of je conclusie gebaseerd is op een patroon of op toeval?",
+      "Wat is de rol van Occam's scheermes bij het voorkomen van overfitting in denken?",
+      "Hoe past overfitting als concept buiten machine learning, in het dagelijks leven?"
+    ]
   },
 
   // ── BATCH 8: 20 NIEUWE PRINCIPES ──────────────────────────────
