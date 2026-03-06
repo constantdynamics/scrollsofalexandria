@@ -9,7 +9,11 @@ import BlindDefinitionPage from './pages/BlindDefinitionPage';
 import HerhalingPage from './pages/HerhalingPage';
 import ExpertiseProfielPage from './pages/ExpertiseProfielPage';
 import BoekenplankPage from './pages/BoekenplankPage';
+import PrestatiePage from './pages/PrestatiePage';
+import LeerpadPage from './pages/LeerpadPage';
+import DagelijkseUitdagingPage from './pages/DagelijkseUitdagingPage';
 import ErrorBoundary from './components/ErrorBoundary';
+import AchievementToast from './components/AchievementToast';
 
 function AppRoutes() {
   const { userData } = useUser();
@@ -18,6 +22,7 @@ function AppRoutes() {
 
   return (
     <div className={`${themeClass} min-h-screen bg-bg`}>
+      <AchievementToast />
       <Routes>
         <Route
           path="/"
@@ -46,6 +51,9 @@ function AppRoutes() {
         <Route path="/herhaling" element={<HerhalingPage />} />
         <Route path="/expertise" element={<ExpertiseProfielPage />} />
         <Route path="/boekenplank" element={<BoekenplankPage />} />
+        <Route path="/prestaties" element={<PrestatiePage />} />
+        <Route path="/leerpad" element={<LeerpadPage />} />
+        <Route path="/uitdaging" element={<DagelijkseUitdagingPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

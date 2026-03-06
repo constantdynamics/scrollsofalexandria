@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { allPrinciples } from '../data/principles';
@@ -6,7 +6,12 @@ import { useUser } from '../context/UserContext';
 
 const HerhalingPage = () => {
   const navigate = useNavigate();
-  const { userData } = useUser();
+  const { userData, trackHerhalingSessie } = useUser();
+
+  useEffect(() => {
+    trackHerhalingSessie?.();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Sorteer: nooit bekeken eerst, daarna op lastVisited (oudste eerst)
   const deck = useMemo(() => {

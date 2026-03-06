@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { allPrinciples } from '../data/principles';
@@ -36,9 +36,14 @@ const getDomainName = (domain) => {
 
 const BlindDefinitionPage = () => {
   const navigate = useNavigate();
-  const { userData } = useUser();
+  const { userData, trackGamePlayed } = useUser();
 
   const [question, setQuestion] = useState(() => buildQuestion(allPrinciples));
+
+  useEffect(() => {
+    trackGamePlayed?.('blindeDefinitie');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [showStreak, setShowStreak] = useState(false);

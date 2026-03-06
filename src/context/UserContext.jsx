@@ -1,5 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import * as storage from '../utils/localStorage';
+import { checkAchievements, findNewAchievements } from '../data/achievements';
+import { allPrinciples } from '../data/principles';
 
 const UserContext = createContext();
 
@@ -14,6 +16,7 @@ export const useUser = () => {
 export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [newAchievements, setNewAchievements] = useState([]); // voor toast-notificaties
 
   useEffect(() => {
     const data = storage.loadUserData();
@@ -24,8 +27,10 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     if (userData && !loading) {
       storage.saveUserData(userData);
+      // Check achievements na elke data-update
+      checkAndNotifyAchievements(userData);
     }
-  }, [userData, loading]);
+  }, [userData, loading, checkAndNotifyAchievements]);
 
   const updatePreference = (key, value) => {
     setUserData(prev => ({
@@ -215,6 +220,51 @@ export const UserProvider = ({ children }) => {
     updatePreference('mentorPrincipleId', principleId);
   };
 
+  // Achievement check — roep aan na elke state-update die scores/progress wijzigt
+  const checkAndNotifyAchievements = useCallback((updatedData) => {
+    if (!updatedData) return;
+    const oldUnlocked = updatedData.unlockedAchievements || [];
+    const nowUnlocked = checkAchievements(updatedData, allPrinciples);
+    const nieuw = findNewAchievements(oldUnlocked, nowUnlocked);
+    if (nieuw.length > 0) {
+      setUserData(prev => ({ ...prev, unlockedAchievements: nowUnlocked }));
+      setNewAchievements(prev => [...prev, ...nieuw]);
+    }
+  }, []);
+
+  // Verwijder een achievement-notificatie (na tonen)
+  const dismissAchievement = (achievementId) => {
+    setNewAchievements(prev => prev.filter(id => id !== achievementId));
+  };
+
+  // Registreer nacht/vroeg sessie
+  const trackSessionTime = () => {
+    const hour = new Date().getHours();
+    if (hour >= 0 && hour < 5) {
+      setUserData(prev => ({ ...prev, nachtSessies: (prev.nachtSessies || 0) + 1 }));
+    } else if (hour < 7) {
+      setUserData(prev => ({ ...prev, vroegeSessies: (prev.vroegeSessies || 0) + 1 }));
+    }
+  };
+
+  // Registreer spel gespeeld
+  const trackGamePlayed = (game) => {
+    setUserData(prev => ({
+      ...prev,
+      gamesPlayed: { ...(prev.gamesPlayed || {}), [game]: ((prev.gamesPlayed?.[game] || 0) + 1) }
+    }));
+  };
+
+  // Registreer herhaling sessie
+  const trackHerhalingSessie = () => {
+    setUserData(prev => ({ ...prev, herhalingSessies: (prev.herhalingSessies || 0) + 1 }));
+  };
+
+  // Registreer uitdaging voltooid
+  const trackUitdagingVoltooid = () => {
+    setUserData(prev => ({ ...prev, uitdagingenVoltooid: (prev.uitdagingenVoltooid || 0) + 1 }));
+  };
+
   const value = {
     userData,
     loading,
@@ -229,7 +279,14 @@ export const UserProvider = ({ children }) => {
     updateStreak,
     getPrincipleStatuses,
     togglePrincipleStatus,
-    setMentorPrinciple
+    setMentorPrinciple,
+    // Achievements
+    newAchievements,
+    dismissAchievement,
+    trackSessionTime,
+    trackGamePlayed,
+    trackHerhalingSessie,
+    trackUitdagingVoltooid,
   };
 
   if (loading) {

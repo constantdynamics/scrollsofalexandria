@@ -19,6 +19,7 @@ const PrinciplePage = () => {
     togglePrincipleStatus,
     userData,
     setMentorPrinciple,
+    trackSessionTime,
   } = useUser();
 
   const [learningStyle, setLearningStyle] = useState('');
@@ -35,7 +36,8 @@ const PrinciplePage = () => {
     }
     const recommended = getRecommendedLearningStyle();
     setLearningStyle(recommended);
-  }, [principle, navigate, getRecommendedLearningStyle]);
+    trackSessionTime();
+  }, [principle, navigate, getRecommendedLearningStyle, trackSessionTime]);
 
   useEffect(() => {
     if (!hasMarkedAsRead && !progress.activities.read) {

@@ -91,6 +91,8 @@ const HomePage = () => {
 
   const totaalGelezen = allPrinciples.filter(p => userData?.principleProgress?.[p.id]?.activities?.read).length;
 
+  const uitdagingVoltooid = userData?.dagelijkseUitdaging?.datum === new Date().toDateString() && userData?.dagelijkseUitdaging?.voltooid;
+
   return (
     <div className="min-h-screen bg-bg">
       {/* Header */}
@@ -141,6 +143,14 @@ const HomePage = () => {
                 <span className="font-semibold text-primary text-sm">{stats.points}</span>
               </div>
               <button
+                onClick={() => navigate('/prestaties')}
+                className="w-9 h-9 flex items-center justify-center rounded-lg text-text-muted hover:text-text hover:bg-bg-alt transition-all"
+                aria-label="Prestaties"
+                title="Prestaties — jouw achievements"
+              >
+                <span className="text-lg">🏆</span>
+              </button>
+              <button
                 onClick={() => navigate('/register')}
                 className="w-9 h-9 flex items-center justify-center rounded-lg text-text-muted hover:text-text hover:bg-bg-alt transition-all"
                 aria-label="Register"
@@ -173,6 +183,9 @@ const HomePage = () => {
             { label: 'Expertise', emoji: '📊', path: '/expertise', title: 'Expertise-profiel' },
             { label: 'Boekenplank', emoji: '📚', path: '/boekenplank', title: 'Boekenplank-view' },
             { label: 'Raadspel', emoji: '🎭', path: '/blinde-definitie', title: 'Blinde definitie' },
+            { label: 'Leerpad', emoji: '🗺️', path: '/leerpad', title: 'Aanbevolen leerpad' },
+            { label: 'Uitdaging', emoji: '🎯', path: '/uitdaging', title: 'Dagelijkse uitdaging' },
+            { label: 'Prestaties', emoji: '🏆', path: '/prestaties', title: 'Jouw prestaties' },
           ].map(item => (
             <button
               key={item.path}
@@ -185,6 +198,40 @@ const HomePage = () => {
             </button>
           ))}
         </div>
+
+        {/* Dagelijkse uitdaging banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-4"
+        >
+          <button
+            onClick={() => navigate('/uitdaging')}
+            className="w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl border transition-all hover:shadow-sm"
+            style={{
+              borderColor: uitdagingVoltooid ? 'rgba(5,150,105,0.3)' : 'rgba(92,79,207,0.25)',
+              background: uitdagingVoltooid ? 'rgba(5,150,105,0.05)' : 'linear-gradient(135deg, rgba(92,79,207,0.07) 0%, var(--color-surface) 100%)',
+            }}
+          >
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+              style={{ background: uitdagingVoltooid ? 'rgba(5,150,105,0.12)' : 'linear-gradient(140deg, var(--color-primary), var(--color-accent))', boxShadow: uitdagingVoltooid ? 'none' : '0 2px 8px rgba(92,79,207,0.2)' }}>
+              {uitdagingVoltooid ? '✅' : '🎯'}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-bold text-text">
+                {uitdagingVoltooid ? 'Uitdaging voltooid vandaag!' : 'Dagelijkse uitdaging — doe mee!'}
+              </div>
+              <div className="text-xs text-text-muted">
+                {uitdagingVoltooid
+                  ? `Score: ${userData?.dagelijkseUitdaging?.score ?? '?'}/5 · Kom morgen terug`
+                  : '5 vragen · Tot 25 punten · Dagelijks vernieuwd'}
+              </div>
+            </div>
+            <svg className="w-4 h-4 text-text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </motion.div>
 
         {/* Zoekbalk */}
         <motion.div
