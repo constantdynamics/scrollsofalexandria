@@ -62,6 +62,11 @@ import { emotieregulatie7 } from './emotieregulatie7.js';
 import { emotieregulatie8 } from './emotieregulatie8.js';
 import { emotieregulatie9 } from './emotieregulatie9.js';
 import { emotieregulatie10 } from './emotieregulatie10.js';
+import { extraPrinciples3 } from './principlesExtra3.js';
+import { extraPrinciples4 } from './principlesExtra4.js';
+import { extraPrinciples5 } from './principlesExtra5.js';
+import { extraPrinciples6 } from './principlesExtra6.js';
+import { extraPrinciples7 } from './principlesExtra7.js';
 
 export const principles = [
   {
@@ -2259,6 +2264,11 @@ const allPrinciples = [
   ...emotieregulatie9,
   ...emotieregulatie10,
   ...ethiek1,
+  ...extraPrinciples3,
+  ...extraPrinciples4,
+  ...extraPrinciples5,
+  ...extraPrinciples6,
+  ...extraPrinciples7,
 ];
 
 // Helper function to get principle by ID

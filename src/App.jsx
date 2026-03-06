@@ -4,6 +4,7 @@ import Onboarding from './pages/Onboarding';
 import HomePage from './pages/HomePage';
 import PrinciplePage from './pages/PrinciplePage';
 import SettingsPage from './pages/SettingsPage';
+import RegisterPage from './pages/RegisterPage';
 import ErrorBoundary from './components/ErrorBoundary';
 
 function AppRoutes() {
@@ -36,6 +37,7 @@ function AppRoutes() {
         />
         <Route path="/principle/:principleId" element={<PrinciplePage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
