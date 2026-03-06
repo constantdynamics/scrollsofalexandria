@@ -7,6 +7,7 @@ const defaultUserData = {
   userId: generateUserId(),
   points: 0,
   principleProgress: {},
+  principleStatuses: {}, // { [principleId]: { kenIk: bool, herlezen: bool, bewaard: bool } }
   preferences: {
     organization: 'academic', // 'academic' or 'skills'
     defaultLearningStyle: 'auto', // 'definition-first', 'example-first', or 'auto'
@@ -37,7 +38,8 @@ export const loadUserData = () => {
         ...defaultUserData,
         ...data,
         preferences: { ...defaultUserData.preferences, ...(data.preferences || {}) },
-        streak: { ...defaultUserData.streak, ...(data.streak || {}) }
+        streak: { ...defaultUserData.streak, ...(data.streak || {}) },
+        principleStatuses: data.principleStatuses || {}
       };
     }
     return { ...defaultUserData };

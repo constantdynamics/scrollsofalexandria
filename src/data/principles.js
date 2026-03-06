@@ -2201,7 +2201,7 @@ export const principles = [
 ];
 
 // Combineer originele, nieuwe principes en alle gedachte-experimenten
-const allPrinciples = [
+export const allPrinciples = [
   ...principles,
   ...principlesNew,
   ...gedachteExperimenten1,

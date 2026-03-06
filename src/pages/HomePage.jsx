@@ -2,11 +2,11 @@ import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useUser } from '../context/UserContext';
-import { principles, getCategories, getPrinciplesByCategory } from '../data/principles';
+import { allPrinciples, getCategories, getPrinciplesByCategory } from '../data/principles';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { userData, getUserStats } = useUser();
+  const { userData, getUserStats, getPrincipleStatuses } = useUser();
   const [organizationSystem, setOrganizationSystem] = useState(userData?.preferences?.organization || 'academic');
   const [searchQuery, setSearchQuery] = useState('');
   const [difficultyFilter, setDifficultyFilter] = useState('all');
@@ -16,10 +16,30 @@ const HomePage = () => {
   const featuredPrinciple = useMemo(() => {
     const today = new Date().toDateString();
     const dayHash = today.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    if (principles.length === 0) return null;
-    const index = dayHash % principles.length;
-    return principles[index];
+    if (allPrinciples.length === 0) return null;
+    const index = dayHash % allPrinciples.length;
+    return allPrinciples[index];
   }, []);
+
+  // Recent bekeken principes (max 6, gesorteerd op lastVisited)
+  const recentBekeken = useMemo(() => {
+    if (!userData?.principleProgress) return [];
+    return Object.entries(userData.principleProgress)
+      .filter(([, p]) => p.lastVisited)
+      .sort(([, a], [, b]) => (b.lastVisited || '').localeCompare(a.lastVisited || ''))
+      .slice(0, 6)
+      .map(([id]) => allPrinciples.find(p => p.id === id))
+      .filter(Boolean);
+  }, [userData]);
+
+  // Bewaarde en herlezen principes
+  const bewaardePrincipes = useMemo(() => {
+    return allPrinciples.filter(p => getPrincipleStatuses(p.id).bewaard).slice(0, 6);
+  }, [userData, getPrincipleStatuses]);
+
+  const herlezenPrincipes = useMemo(() => {
+    return allPrinciples.filter(p => getPrincipleStatuses(p.id).herlezen).slice(0, 4);
+  }, [userData, getPrincipleStatuses]);
 
   const categories = useMemo(() => {
     return getCategories(organizationSystem);
@@ -27,14 +47,14 @@ const HomePage = () => {
 
   const filteredPrinciples = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
-    return principles.filter(p => {
+    return allPrinciples.filter(p => {
       const matchesDifficulty = difficultyFilter === 'all' || p.difficulty === difficultyFilter;
       if (!q) return matchesDifficulty;
       const matchesSearch =
         p.title.toLowerCase().includes(q) ||
-        p.definition.toLowerCase().includes(q) ||
-        p.academicCategory.toLowerCase().includes(q) ||
-        p.skillCategory.toLowerCase().includes(q);
+        (p.definition || '').toLowerCase().includes(q) ||
+        (p.academicCategory || '').toLowerCase().includes(q) ||
+        (p.skillCategory || '').toLowerCase().includes(q);
       return matchesDifficulty && matchesSearch;
     });
   }, [searchQuery, difficultyFilter]);
@@ -51,13 +71,15 @@ const HomePage = () => {
     return {
       total: categoryPrinciples.length,
       completed: completedCount,
-      percentage: (completedCount / categoryPrinciples.length) * 100
+      percentage: categoryPrinciples.length > 0 ? (completedCount / categoryPrinciples.length) * 100 : 0
     };
   };
 
   const handlePrincipleClick = (principleId) => {
     navigate(`/principle/${principleId}`);
   };
+
+  const totaalGelezen = allPrinciples.filter(p => userData?.principleProgress?.[p.id]?.activities?.read).length;
 
   return (
     <div className="min-h-screen bg-bg">
@@ -111,7 +133,7 @@ const HomePage = () => {
       </header>
 
       <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* Search + Filter bar */}
+        {/* Zoekbalk */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -119,12 +141,12 @@ const HomePage = () => {
         >
           <div className="flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               <input
                 type="text"
-                placeholder="Zoek een principe..."
+                placeholder={`Zoek tussen ${allPrinciples.length} principes...`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-border bg-surface text-text placeholder-text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
@@ -146,6 +168,7 @@ const HomePage = () => {
                 { label: 'Alle', value: 'all' },
                 { label: 'Beginner', value: 1 },
                 { label: 'Gemiddeld', value: 2 },
+                { label: 'Expert', value: 3 },
               ].map(opt => (
                 <button
                   key={opt.value}
@@ -163,7 +186,7 @@ const HomePage = () => {
           </div>
         </motion.div>
 
-        {/* Search results view */}
+        {/* Zoekresultaten */}
         {isSearchActive ? (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className="mb-4 flex items-center justify-between">
@@ -203,7 +226,150 @@ const HomePage = () => {
           </motion.div>
         ) : (
           <>
-            {/* Featured Principle of the Day */}
+            {/* Voortgang banner */}
+            {totaalGelezen > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 bg-surface border border-border rounded-xl p-4 flex items-center gap-4"
+              >
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-sm font-semibold text-text">Jouw voortgang</span>
+                    <span className="text-sm font-bold text-primary">{totaalGelezen}/{allPrinciples.length}</span>
+                  </div>
+                  <div className="w-full h-2 bg-bg-alt rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-primary to-primary-light transition-all duration-700"
+                      style={{ width: `${(totaalGelezen / allPrinciples.length) * 100}%` }}
+                    />
+                  </div>
+                  <p className="text-xs text-text-muted mt-1.5">
+                    {Math.round((totaalGelezen / allPrinciples.length) * 100)}% gelezen · {allPrinciples.length - totaalGelezen} nog te ontdekken
+                  </p>
+                </div>
+                <button
+                  onClick={() => navigate('/register')}
+                  className="flex-shrink-0 text-xs text-primary font-medium hover:underline"
+                >
+                  Bekijk register →
+                </button>
+              </motion.div>
+            )}
+
+            {/* Herlezen lijst */}
+            {herlezenPrincipes.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-sm font-semibold text-text flex items-center gap-2">
+                    <span>📖</span>
+                    Nog eens lezen
+                  </h2>
+                  <button
+                    onClick={() => navigate('/register?status=herlezen')}
+                    className="text-xs text-primary hover:underline"
+                  >
+                    Alles zien →
+                  </button>
+                </div>
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-2">
+                  {herlezenPrincipes.map(p => (
+                    <button
+                      key={p.id}
+                      onClick={() => handlePrincipleClick(p.id)}
+                      className="text-left p-3 rounded-xl border border-amber-200 bg-amber-50/50 hover:bg-amber-50 hover:border-amber-300 transition-all"
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-base">{p.emoji}</span>
+                        <span className="text-xs font-semibold text-text truncate">{p.title}</span>
+                      </div>
+                      <span className="text-xs text-amber-700">{p.academicCategory}</span>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Bewaarde principes */}
+            {bewaardePrincipes.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-sm font-semibold text-text flex items-center gap-2">
+                    <span>⭐</span>
+                    Bewaard
+                  </h2>
+                  <button
+                    onClick={() => navigate('/register?status=bewaard')}
+                    className="text-xs text-primary hover:underline"
+                  >
+                    Alles zien →
+                  </button>
+                </div>
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+                  {bewaardePrincipes.map(p => (
+                    <button
+                      key={p.id}
+                      onClick={() => handlePrincipleClick(p.id)}
+                      className="text-left p-3 rounded-xl border border-border bg-surface hover:border-primary/40 hover:bg-bg-alt/40 transition-all flex items-center gap-3"
+                    >
+                      <span className="text-xl">{p.emoji}</span>
+                      <div className="min-w-0">
+                        <div className="text-xs font-semibold text-text truncate">{p.title}</div>
+                        <div className="text-xs text-text-muted">{p.academicCategory}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Recent bekeken */}
+            {recentBekeken.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6"
+              >
+                <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-3">
+                  Recent bekeken
+                </h2>
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+                  {recentBekeken.map(p => {
+                    const progress = userData?.principleProgress[p.id];
+                    return (
+                      <button
+                        key={p.id}
+                        onClick={() => handlePrincipleClick(p.id)}
+                        className="text-left p-3 rounded-xl border border-border bg-surface hover:border-primary/40 hover:shadow-sm transition-all flex items-center gap-3"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
+                          <span className="text-lg">{p.emoji}</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs font-semibold text-text truncate">{p.title}</div>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <div className="w-10 h-1 bg-bg-alt rounded-full overflow-hidden">
+                              <div className="h-full bg-primary rounded-full" style={{ width: `${progress?.masteryPercentage || 0}%` }} />
+                            </div>
+                            <span className="text-xs text-text-muted">{progress?.masteryPercentage || 0}%</span>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Principe van de dag */}
             {featuredPrinciple && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -211,7 +377,7 @@ const HomePage = () => {
                 className="mb-8"
               >
                 <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-3">
-                  Aanbevolen vandaag
+                  Ontdek vandaag
                 </h2>
                 <motion.div
                   whileHover={{ y: -2 }}
@@ -226,12 +392,12 @@ const HomePage = () => {
                       <h3 className="text-xl font-bold text-text mb-1.5">{featuredPrinciple.title}</h3>
                       <div className="flex items-center gap-2 mb-3">
                         <span className="tag-pill text-xs">
-                          {organizationSystem === 'academic' ? featuredPrinciple.academicCategory : featuredPrinciple.skillCategory}
+                          {featuredPrinciple.academicCategory}
                         </span>
                         <DifficultyBadge difficulty={featuredPrinciple.difficulty} />
                       </div>
                       <p className="text-sm text-text-secondary mb-4 line-clamp-2">
-                        {featuredPrinciple.definition.substring(0, 150)}...
+                        {(featuredPrinciple.definition || '').substring(0, 150)}{featuredPrinciple.definition?.length > 150 ? '...' : ''}
                       </p>
                       <div className="flex items-center justify-between">
                         <span className="btn-primary text-sm px-4 py-2">
@@ -246,7 +412,7 @@ const HomePage = () => {
               </motion.div>
             )}
 
-            {/* Organization Toggle */}
+            {/* Organisatie toggle */}
             <div className="mb-6">
               <div className="inline-flex rounded-xl bg-bg-alt p-1 border border-border">
                 <button
@@ -272,7 +438,7 @@ const HomePage = () => {
               </div>
             </div>
 
-            {/* Categories */}
+            {/* Categorieën */}
             <div className="space-y-5">
               {categories.map((category, index) => {
                 const progress = getCategoryProgress(category);
@@ -283,7 +449,7 @@ const HomePage = () => {
                     key={category}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.08 }}
+                    transition={{ delay: index * 0.05 }}
                     className="card"
                   >
                     <div className="mb-4">
@@ -304,7 +470,7 @@ const HomePage = () => {
                           className="progress-fill"
                           initial={{ width: 0 }}
                           animate={{ width: `${progress.percentage}%` }}
-                          transition={{ duration: 0.8, delay: index * 0.08 + 0.2 }}
+                          transition={{ duration: 0.8, delay: index * 0.05 + 0.2 }}
                           style={{
                             background: progress.percentage < 33
                               ? 'linear-gradient(90deg, #ef4444, #f87171)'
@@ -387,7 +553,7 @@ const PrincipleCard = ({ principle, principleProgress, onClick, compact, index =
             )}
           </div>
           {!compact && (
-            <p className="text-xs text-text-secondary line-clamp-2">{principle.definition.substring(0, 80)}...</p>
+            <p className="text-xs text-text-secondary line-clamp-2">{(principle.definition || '').substring(0, 80)}...</p>
           )}
         </div>
       </div>
@@ -410,7 +576,7 @@ const PrincipleProgressBadge = ({ principleId }) => {
     return (
       <span className="flex items-center gap-1.5 text-sm font-semibold text-success">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-        Beheerst
+        Gelezen
       </span>
     );
   } else {
@@ -446,7 +612,10 @@ const getCategoryIcon = (category) => {
     'Beter Redeneren': '🧩',
     'Beter Beslissen': '🎯',
     'Mensen Begrijpen': '👥',
-    'Causale Verbanden Begrijpen': '🔗'
+    'Causale Verbanden Begrijpen': '🔗',
+    'Zelfvertrouwen': '💪',
+    'Emotieregulatie': '🌊',
+    'Gedachteexperimenten': '🔮',
   };
   return icons[category] || '📖';
 };

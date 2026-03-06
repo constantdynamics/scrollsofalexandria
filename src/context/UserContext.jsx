@@ -187,6 +187,30 @@ export const UserProvider = ({ children }) => {
     setUserData(freshData);
   };
 
+  // Get statuses for a principle (kenIk, herlezen, bewaard)
+  const getPrincipleStatuses = (principleId) => {
+    return userData?.principleStatuses?.[principleId] || { kenIk: false, herlezen: false, bewaard: false };
+  };
+
+  // Toggle a specific status for a principle
+  const togglePrincipleStatus = (principleId, statusKey) => {
+    setUserData(prev => {
+      const current = prev.principleStatuses?.[principleId] || { kenIk: false, herlezen: false, bewaard: false };
+      const newVal = !current[statusKey];
+      // kenIk and herlezen are mutually exclusive
+      const updated = { ...current, [statusKey]: newVal };
+      if (statusKey === 'kenIk' && newVal) updated.herlezen = false;
+      if (statusKey === 'herlezen' && newVal) updated.kenIk = false;
+      return {
+        ...prev,
+        principleStatuses: {
+          ...prev.principleStatuses,
+          [principleId]: updated
+        }
+      };
+    });
+  };
+
   const value = {
     userData,
     loading,
@@ -198,7 +222,9 @@ export const UserProvider = ({ children }) => {
     completeOnboarding,
     getUserStats,
     resetUserData,
-    updateStreak
+    updateStreak,
+    getPrincipleStatuses,
+    togglePrincipleStatus
   };
 
   if (loading) {

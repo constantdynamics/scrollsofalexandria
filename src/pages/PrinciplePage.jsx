@@ -12,6 +12,8 @@ const PrinciplePage = () => {
     markPrincipleAsRead,
     getRecommendedLearningStyle,
     trackLearningStyleChoice,
+    getPrincipleStatuses,
+    togglePrincipleStatus,
   } = useUser();
 
   const [learningStyle, setLearningStyle] = useState('');
@@ -57,6 +59,7 @@ const PrinciplePage = () => {
   };
 
   const isRead = progress.activities.read || hasMarkedAsRead;
+  const statuses = getPrincipleStatuses(principleId);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -165,6 +168,34 @@ const PrinciplePage = () => {
               </div>
             </motion.div>
           )}
+
+          {/* Status knoppen */}
+          <div className="mt-4 pt-4 border-t border-border">
+            <p className="text-xs text-text-muted mb-3 font-medium uppercase tracking-wide">Markeer dit principe</p>
+            <div className="flex flex-wrap gap-2">
+              <StatusButton
+                active={statuses.kenIk}
+                onClick={() => togglePrincipleStatus(principleId, 'kenIk')}
+                emoji="✅"
+                label="Dit ken ik"
+                activeClass="bg-green-50 border-green-300 text-green-700"
+              />
+              <StatusButton
+                active={statuses.herlezen}
+                onClick={() => togglePrincipleStatus(principleId, 'herlezen')}
+                emoji="📖"
+                label="Nog eens lezen"
+                activeClass="bg-amber-50 border-amber-300 text-amber-700"
+              />
+              <StatusButton
+                active={statuses.bewaard}
+                onClick={() => togglePrincipleStatus(principleId, 'bewaard')}
+                emoji="⭐"
+                label="Bewaren"
+                activeClass="bg-blue-50 border-blue-300 text-blue-700"
+              />
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>
@@ -310,5 +341,24 @@ const getDomainName = (domain) => {
   };
   return names[domain] || domain;
 };
+
+const StatusButton = ({ active, onClick, emoji, label, activeClass }) => (
+  <button
+    onClick={onClick}
+    className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-medium transition-all ${
+      active
+        ? `${activeClass} shadow-sm`
+        : 'border-border bg-bg-alt text-text-muted hover:text-text hover:border-border-dark'
+    }`}
+  >
+    <span>{emoji}</span>
+    <span>{label}</span>
+    {active && (
+      <svg className="w-3.5 h-3.5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+      </svg>
+    )}
+  </button>
+);
 
 export default PrinciplePage;
