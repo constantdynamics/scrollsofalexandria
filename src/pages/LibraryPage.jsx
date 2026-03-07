@@ -736,6 +736,33 @@ const LibraryPage = () => {
         }
       }
 
+      // Wall shadow casting onto adjacent floor tiles
+      for (let ty = startTY; ty < endTY; ty++) {
+        for (let tx = startTX; tx < endTX; tx++) {
+          const tile = map[ty][tx];
+          if (tile === FLOOR || tile === CARPET || tile === DOOR) {
+            const sx = tx * TILE - camX;
+            const sy = ty * TILE - camY;
+            // Shadow from wall above
+            if (ty > 0 && (map[ty - 1][tx] === WALL || map[ty - 1][tx] === TORCH)) {
+              const shadowGrad = ctx.createLinearGradient(sx, sy, sx, sy + 10);
+              shadowGrad.addColorStop(0, 'rgba(0,0,0,0.12)');
+              shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = shadowGrad;
+              ctx.fillRect(sx, sy, TILE, 10);
+            }
+            // Shadow from wall to the left
+            if (tx > 0 && (map[ty][tx - 1] === WALL || map[ty][tx - 1] === TORCH)) {
+              const shadowGrad = ctx.createLinearGradient(sx, sy, sx + 8, sy);
+              shadowGrad.addColorStop(0, 'rgba(0,0,0,0.08)');
+              shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = shadowGrad;
+              ctx.fillRect(sx, sy, 8, TILE);
+            }
+          }
+        }
+      }
+
       // Torch light glow overlay (additive-like)
       for (let ty = startTY; ty < endTY; ty++) {
         for (let tx = startTX; tx < endTX; tx++) {
@@ -769,14 +796,39 @@ const LibraryPage = () => {
         }
       }
 
+      // Check if near a room (for glow)
+      let isNearRoom = false;
+      for (const room of rooms) {
+        const rdx = player.x - room.centerX;
+        const rdy = player.y - room.centerY;
+        if (Math.sqrt(rdx * rdx + rdy * rdy) < (room.w / 2) * TILE) {
+          isNearRoom = true;
+          break;
+        }
+      }
+
       // Player
       const px = player.x - camX;
-      const bobOffset = player.moving ? Math.sin(player.bobTime) * 2 : 0;
+      // Idle breathing when stationary, walk bob when moving
+      const idleBreath = !player.moving ? Math.sin(time * 2) * 1.5 : 0;
+      const bobOffset = player.moving ? Math.sin(player.bobTime) * 2 : idleBreath;
       const py = player.y - camY + bobOffset;
+
+      // Player glow when near interactable room
+      if (isNearRoom) {
+        const glowPulse = 0.4 + Math.sin(time * 3) * 0.15;
+        const glow = ctx.createRadialGradient(px, py, 10, px, py, 35);
+        glow.addColorStop(0, `rgba(92,79,207,${glowPulse})`);
+        glow.addColorStop(1, 'rgba(92,79,207,0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(px, py, 35, 0, Math.PI * 2);
+        ctx.fill();
+      }
 
       // Schaduw (smaller when bobbing up)
       const shadowScale = player.moving ? 1 - Math.sin(player.bobTime) * 0.15 : 1;
-      ctx.fillStyle = 'rgba(0,0,0,0.2)';
+      ctx.fillStyle = 'rgba(0,0,0,0.25)';
       ctx.beginPath();
       ctx.ellipse(px, player.y - camY + 14, 12 * shadowScale, 5 * shadowScale, 0, 0, Math.PI * 2);
       ctx.fill();
@@ -807,6 +859,14 @@ const LibraryPage = () => {
       ctx.arc(px - 5 + eyeDx, py - 3 + eyeDy, 2, 0, Math.PI * 2);
       ctx.arc(px + 5 + eyeDx, py - 3 + eyeDy, 2, 0, Math.PI * 2);
       ctx.fill();
+
+      // Nameplate
+      if (userData?.name) {
+        ctx.font = '600 9px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.fillText(userData.name, px, player.y - camY + 26);
+      }
 
       // Footstep dust rendering
       for (const d of footstepDustRef.current) {
