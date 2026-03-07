@@ -169,8 +169,6 @@ function generateLibrary(categories) {
 
     // Horizontale corridor naar hoofdcorridor
     const corY = ry + roomH - 1;
-    const fromX = Math.min(doorX + 1, corStartX + corridorW);
-    const toX = Math.max(doorX - 1, corStartX);
     const startX = Math.min(rx, corStartX);
     const endX = Math.max(rx + roomW, corStartX + corridorW);
     for (let x = startX; x < endX; x++) {
@@ -316,8 +314,10 @@ const LibraryPage = () => {
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
   const [showMinimap, setShowMinimap] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-  const isMobileRef = useRef(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    return typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+  });
+  const isMobileRef = useRef(typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches);
   const joystickRef = useRef({ dx: 0, dy: 0 });
   const joystickTouchIdRef = useRef(null);
   const joystickOriginRef = useRef({ x: 0, y: 0 });
@@ -340,7 +340,6 @@ const LibraryPage = () => {
   useEffect(() => {
     const checkTouch = () => { setIsMobile(true); isMobileRef.current = true; };
     window.addEventListener('touchstart', checkTouch, { once: true });
-    if (window.matchMedia('(pointer: coarse)').matches) { setIsMobile(true); isMobileRef.current = true; }
     return () => window.removeEventListener('touchstart', checkTouch);
   }, []);
 
@@ -403,6 +402,19 @@ const LibraryPage = () => {
     };
   }, [isMobile]);
 
+  const handleInteraction = useCallback(() => {
+    const p = playerRef.current;
+    for (const room of rooms) {
+      const dx = p.x - room.centerX;
+      const dy = p.y - room.centerY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < (room.w / 2) * TILE) {
+        setSelectedRoom(room.name);
+        return;
+      }
+    }
+  }, [rooms]);
+
   // Keyboard handlers
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -430,20 +442,7 @@ const LibraryPage = () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [rooms]);
-
-  const handleInteraction = useCallback(() => {
-    const p = playerRef.current;
-    for (const room of rooms) {
-      const dx = p.x - room.centerX;
-      const dy = p.y - room.centerY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < (room.w / 2) * TILE) {
-        setSelectedRoom(room.name);
-        return;
-      }
-    }
-  }, [rooms]);
+  }, [handleInteraction]);
 
   // Game loop
   useEffect(() => {
@@ -451,7 +450,6 @@ const LibraryPage = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    const bookColors = [COLORS.shelfBooks1, COLORS.shelfBooks2, COLORS.shelfBooks3, COLORS.shelfBooks4, COLORS.shelfBooks5];
 
     const gameLoop = () => {
       gameTimeRef.current += 1 / 60;
@@ -988,7 +986,7 @@ const LibraryPage = () => {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [map, mapW, mapH, rooms]);
+  }, [map, mapW, mapH, rooms, hallW, hallX, hallY, tileRoomIdx, userData?.name]);
 
   // Minimap - canvas-based for showing corridors
   const minimapImageRef = useRef(null);
@@ -1024,8 +1022,6 @@ const LibraryPage = () => {
     const scale = 3;
     const mmW = mapW * scale;
     const mmH = mapH * scale;
-    const playerTX = Math.floor(playerRef.current.x / TILE);
-    const playerTY = Math.floor(playerRef.current.y / TILE);
 
     return (
       <div
@@ -1064,7 +1060,9 @@ const LibraryPage = () => {
                 mCtx.fillStyle = 'rgba(255,255,255,0.6)';
                 mCtx.fillText(room.emoji, (room.x + room.w / 2) * scale, (room.y + room.h / 2) * scale + 3);
               });
-              // Player dot
+              // Player dot (read ref inside callback, not during render)
+              const playerTX = Math.floor(playerRef.current.x / TILE);
+              const playerTY = Math.floor(playerRef.current.y / TILE);
               mCtx.fillStyle = '#5c4fcf';
               mCtx.beginPath();
               mCtx.arc(playerTX * scale, playerTY * scale, 3, 0, Math.PI * 2);
