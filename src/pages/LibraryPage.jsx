@@ -94,6 +94,7 @@ function generateLibrary(categories) {
   const mapH = marginY * 2 + rows * roomH + (rows + 1) * corridorW + 6; // +6 voor entreehal
 
   const map = Array.from({ length: mapH }, () => Array(mapW).fill(EMPTY));
+  const tileRoomIdx = Array.from({ length: mapH }, () => Array(mapW).fill(-1));
   const rooms = [];
 
   // Entreehal
@@ -144,6 +145,12 @@ function generateLibrary(categories) {
     // Kamer vloer
     fillRect(map, rx, ry, roomW, roomH, FLOOR);
     addWalls(map, rx, ry, roomW, roomH);
+    // Mark tiles as belonging to this room
+    for (let dy = 0; dy < roomH; dy++) {
+      for (let dx = 0; dx < roomW; dx++) {
+        if (ry + dy < mapH && rx + dx < mapW) tileRoomIdx[ry + dy][rx + dx] = i;
+      }
+    }
 
     // Boekenkasten langs de muren (boven en zijkanten)
     for (let x = rx + 1; x < rx + roomW - 1; x++) {
@@ -251,7 +258,7 @@ function generateLibrary(categories) {
     }
   }
 
-  return { map, mapW, mapH, rooms, hallX, hallY, hallW, hallH };
+  return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH };
 }
 
 function fillRect(map, x, y, w, h, tile) {
@@ -319,7 +326,7 @@ const LibraryPage = () => {
   const categories = useMemo(() => getCategories('academic'), []);
 
   const library = useMemo(() => generateLibrary(categories), [categories]);
-  const { map, mapW, mapH, rooms, hallX, hallY, hallW, hallH } = library;
+  const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH } = library;
 
   // Init player positie
   useEffect(() => {
@@ -578,12 +585,17 @@ const LibraryPage = () => {
             // Kast achtergrond
             ctx.fillStyle = COLORS[BOOKSHELF];
             ctx.fillRect(sx, sy, TILE, TILE);
-            // Boeken - deterministic heights via seededRandom
+            // Boeken - deterministic heights, colored by room category
+            const roomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            const roomHue = roomIdx >= 0 && rooms[roomIdx] ? rooms[roomIdx].catHue : 0;
             const booksPerShelf = 5;
             const bookW = (TILE - 4) / booksPerShelf;
             for (let b = 0; b < booksPerShelf; b++) {
-              const colorIdx = (tx * 7 + ty * 3 + b) % bookColors.length;
-              ctx.fillStyle = bookColors[colorIdx];
+              // Mix category hue with variation per book
+              const hueShift = seededRandom(tx, ty, b * 17 + 3) * 60 - 30;
+              const sat = 45 + seededRandom(tx, ty, b * 11 + 5) * 25;
+              const lit = 35 + seededRandom(tx, ty, b * 7 + 1) * 20;
+              ctx.fillStyle = `hsl(${roomHue + hueShift}, ${sat}%, ${lit}%)`;
               const bh = TILE * (0.5 + seededRandom(tx, ty, b * 13 + 7) * 0.15);
               ctx.fillRect(sx + 2 + b * bookW, sy + (TILE - bh), bookW - 1, bh - 2);
               // Book spine highlight
