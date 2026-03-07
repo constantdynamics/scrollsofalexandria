@@ -219,7 +219,7 @@ function generateLibrary(categories) {
   for (let y = marginY; y < hallY + 1; y++) {
     for (let x = corStartX; x < corStartX + corridorW; x++) {
       if (x >= 0 && x < mapW && y >= 0 && y < mapH) {
-        if (map[y][x] === WALL || map[y][x] === EMPTY) {
+        if (map[y][x] !== FLOOR && map[y][x] !== CARPET && map[y][x] !== DOOR) {
           map[y][x] = FLOOR;
         }
       }
@@ -328,10 +328,23 @@ const LibraryPage = () => {
   const library = useMemo(() => generateLibrary(categories), [categories]);
   const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH } = library;
 
-  // Init player positie
+  // Init player positie (herstel uit sessionStorage als beschikbaar)
   useEffect(() => {
-    const startX = (hallX + hallW / 2) * TILE;
-    const startY = (hallY + hallH / 2) * TILE;
+    const saved = sessionStorage.getItem('libraryPlayerPos');
+    let startX, startY;
+    if (saved) {
+      try {
+        const pos = JSON.parse(saved);
+        startX = pos.x;
+        startY = pos.y;
+      } catch {
+        startX = (hallX + hallW / 2) * TILE;
+        startY = (hallY + hallH / 2) * TILE;
+      }
+    } else {
+      startX = (hallX + hallW / 2) * TILE;
+      startY = (hallY + hallH / 2) * TILE;
+    }
     playerRef.current = { x: startX, y: startY, dirX: 0, dirY: 1, bobTime: 0, moving: false };
     cameraRef.current = { x: startX, y: startY };
   }, [hallX, hallY, hallW, hallH]);
@@ -1164,7 +1177,10 @@ const LibraryPage = () => {
               return (
                 <button
                   key={p.id}
-                  onClick={() => navigate(`/principle/${p.id}`)}
+                  onClick={() => {
+                    sessionStorage.setItem('libraryPlayerPos', JSON.stringify({ x: playerRef.current.x, y: playerRef.current.y }));
+                    navigate(`/principle/${p.id}`);
+                  }}
                   style={{
                     display: 'flex', alignItems: 'center', gap: 12,
                     padding: '12px 16px',
@@ -1380,7 +1396,10 @@ const LibraryPage = () => {
 
       {/* Back button */}
       <button
-        onClick={() => navigate('/home')}
+        onClick={() => {
+          sessionStorage.setItem('libraryPlayerPos', JSON.stringify({ x: playerRef.current.x, y: playerRef.current.y }));
+          navigate('/home');
+        }}
         style={{
           position: 'absolute', top: 16, right: 16,
           background: 'rgba(0,0,0,0.7)', color: '#fff',
