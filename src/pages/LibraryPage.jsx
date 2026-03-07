@@ -25,6 +25,8 @@ const DOOR = 4;
 const CARPET = 5;
 const PILLAR = 6;
 const TORCH = 7;
+const TABLE = 8;
+const PLANT = 9;
 
 // Ambient dust particles (generated once)
 const NUM_PARTICLES = 60;
@@ -47,6 +49,8 @@ const COLORS = {
   [CARPET]: '#7b3f5e',
   [PILLAR]: '#8a7a66',
   [TORCH]: '#6b5b4a',
+  [TABLE]: '#8B6914',
+  [PLANT]: '#2d8a4e',
   floorAlt: '#cbb99d',
   wallTop: '#7d6b58',
   shelfBooks1: '#c0392b',
@@ -104,6 +108,9 @@ function generateLibrary(categories) {
   // Entree opening
   map[hallY + hallH - 1][hallX + Math.floor(hallW / 2)] = DOOR;
   map[hallY + hallH - 1][hallX + Math.floor(hallW / 2) - 1] = DOOR;
+  // Planten in de hal
+  map[hallY + 1][hallX + 1] = PLANT;
+  map[hallY + 1][hallX + hallW - 2] = PLANT;
 
   // Hoofdcorridor - verticaal
   const corStartX = Math.floor(mapW / 2) - Math.floor(corridorW / 2);
@@ -178,6 +185,13 @@ function generateLibrary(categories) {
     // Fakkels naast deur
     if (doorX - 2 >= rx + 1) map[doorY][doorX - 2] = TORCH;
     if (doorX + 1 < rx + roomW - 1) map[doorY][doorX + 1] = TORCH;
+
+    // Lestafel in kamer (als er ruimte is)
+    const tableY = ry + roomH - 3;
+    const tableX = rx + 3;
+    if (map[tableY][tableX] === FLOOR) {
+      map[tableY][tableX] = TABLE;
+    }
 
     rooms.push({
       name: cat,
@@ -270,7 +284,7 @@ function isWalkable(map, px, py, mapW, mapH) {
     const ty = Math.floor(cy / TILE);
     if (tx < 0 || tx >= mapW || ty < 0 || ty >= mapH) return false;
     const tile = map[ty][tx];
-    if (tile === WALL || tile === BOOKSHELF || tile === PILLAR || tile === EMPTY || tile === TORCH) return false;
+    if (tile === WALL || tile === BOOKSHELF || tile === PILLAR || tile === EMPTY || tile === TORCH || tile === TABLE || tile === PLANT) return false;
   }
   return true;
 }
@@ -607,6 +621,57 @@ const LibraryPage = () => {
             ctx.beginPath();
             ctx.arc(sx + TILE / 2, sy + TILE / 2, TILE / 3, 0, Math.PI * 2);
             ctx.stroke();
+          } else if (tile === TABLE) {
+            // Floor underneath
+            ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
+            ctx.fillRect(sx, sy, TILE, TILE);
+            // Table shadow
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + 2, sy + TILE / 2 + 6, TILE * 0.4, TILE * 0.25, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Table top
+            ctx.fillStyle = COLORS[TABLE];
+            ctx.beginPath();
+            ctx.roundRect(sx + 4, sy + 6, TILE - 8, TILE - 12, 3);
+            ctx.fill();
+            // Table highlight
+            ctx.fillStyle = 'rgba(255,255,255,0.12)';
+            ctx.fillRect(sx + 6, sy + 8, TILE - 14, 4);
+            // Book on table
+            ctx.fillStyle = '#8e44ad';
+            ctx.fillRect(sx + TILE / 2 - 5, sy + TILE / 2 - 4, 10, 7);
+            ctx.fillStyle = 'rgba(255,255,255,0.15)';
+            ctx.fillRect(sx + TILE / 2 - 5, sy + TILE / 2 - 4, 10, 1);
+          } else if (tile === PLANT) {
+            // Floor underneath
+            ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
+            ctx.fillRect(sx, sy, TILE, TILE);
+            // Pot
+            ctx.fillStyle = '#a0522d';
+            ctx.beginPath();
+            ctx.moveTo(sx + TILE * 0.3, sy + TILE * 0.55);
+            ctx.lineTo(sx + TILE * 0.7, sy + TILE * 0.55);
+            ctx.lineTo(sx + TILE * 0.65, sy + TILE - 4);
+            ctx.lineTo(sx + TILE * 0.35, sy + TILE - 4);
+            ctx.closePath();
+            ctx.fill();
+            // Rim
+            ctx.fillStyle = '#8b4513';
+            ctx.fillRect(sx + TILE * 0.28, sy + TILE * 0.52, TILE * 0.44, 4);
+            // Leaves (animated slight sway)
+            const sway = Math.sin(time * 1.5 + tx * 2) * 2;
+            ctx.fillStyle = COLORS[PLANT];
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + sway, sy + TILE * 0.35, 8, 12, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#3aa85e';
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 - 5 + sway * 0.7, sy + TILE * 0.3, 5, 8, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + 5 + sway * 0.7, sy + TILE * 0.3, 5, 8, 0.3, 0, Math.PI * 2);
+            ctx.fill();
           } else if (tile === TORCH) {
             // Wall background
             ctx.fillStyle = COLORS[WALL];
@@ -771,7 +836,35 @@ const LibraryPage = () => {
     };
   }, [map, mapW, mapH, rooms]);
 
-  // Minimap
+  // Minimap - canvas-based for showing corridors
+  const minimapImageRef = useRef(null);
+
+  // Generate minimap image once
+  useEffect(() => {
+    const scale = 3;
+    const mmW = mapW * scale;
+    const mmH = mapH * scale;
+    const offscreen = document.createElement('canvas');
+    offscreen.width = mmW;
+    offscreen.height = mmH;
+    const mCtx = offscreen.getContext('2d');
+    mCtx.fillStyle = 'rgba(0,0,0,0)';
+    mCtx.clearRect(0, 0, mmW, mmH);
+    for (let ty = 0; ty < mapH; ty++) {
+      for (let tx = 0; tx < mapW; tx++) {
+        const tile = map[ty][tx];
+        if (tile === EMPTY) continue;
+        if (tile === WALL || tile === TORCH) mCtx.fillStyle = 'rgba(100,90,75,0.7)';
+        else if (tile === BOOKSHELF) mCtx.fillStyle = 'rgba(139,69,19,0.7)';
+        else if (tile === CARPET) mCtx.fillStyle = 'rgba(123,63,94,0.5)';
+        else if (tile === DOOR) mCtx.fillStyle = 'rgba(201,168,108,0.7)';
+        else mCtx.fillStyle = 'rgba(212,196,168,0.4)';
+        mCtx.fillRect(tx * scale, ty * scale, scale, scale);
+      }
+    }
+    minimapImageRef.current = offscreen;
+  }, [map, mapW, mapH]);
+
   const renderMinimap = () => {
     if (!showMinimap) return null;
     const scale = 3;
@@ -787,34 +880,45 @@ const LibraryPage = () => {
           bottom: isMobile ? 180 : 16,
           right: isMobile ? 8 : 16,
           width: mmW, height: mmH,
-          background: 'rgba(0,0,0,0.7)', borderRadius: 8,
+          background: 'rgba(0,0,0,0.75)', borderRadius: 8,
           border: '1px solid rgba(255,255,255,0.2)',
           overflow: 'hidden', zIndex: 10,
+          boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
         }}
       >
-        {rooms.map((room, i) => (
-          <div
-            key={i}
-            style={{
-              position: 'absolute',
-              left: room.x * scale,
-              top: room.y * scale,
-              width: room.w * scale,
-              height: room.h * scale,
-              background: selectedRoom === room.name ? 'rgba(92,79,207,0.6)' : 'rgba(212,196,168,0.4)',
-              border: '1px solid rgba(255,255,255,0.15)',
-            }}
-          />
-        ))}
-        <div
-          style={{
-            position: 'absolute',
-            left: playerTX * scale - 2,
-            top: playerTY * scale - 2,
-            width: 5, height: 5,
-            background: '#5c4fcf',
-            borderRadius: '50%',
-            boxShadow: '0 0 4px rgba(92,79,207,0.8)',
+        <canvas
+          width={mmW}
+          height={mmH}
+          style={{ width: mmW, height: mmH }}
+          ref={(el) => {
+            if (el && minimapImageRef.current) {
+              const mCtx = el.getContext('2d');
+              mCtx.clearRect(0, 0, mmW, mmH);
+              mCtx.drawImage(minimapImageRef.current, 0, 0);
+              // Highlight selected room
+              if (selectedRoom) {
+                const room = rooms.find(r => r.name === selectedRoom);
+                if (room) {
+                  mCtx.fillStyle = 'rgba(92,79,207,0.4)';
+                  mCtx.fillRect(room.x * scale, room.y * scale, room.w * scale, room.h * scale);
+                }
+              }
+              // Room labels on minimap
+              rooms.forEach(room => {
+                mCtx.font = '7px sans-serif';
+                mCtx.textAlign = 'center';
+                mCtx.fillStyle = 'rgba(255,255,255,0.6)';
+                mCtx.fillText(room.emoji, (room.x + room.w / 2) * scale, (room.y + room.h / 2) * scale + 3);
+              });
+              // Player dot
+              mCtx.fillStyle = '#5c4fcf';
+              mCtx.beginPath();
+              mCtx.arc(playerTX * scale, playerTY * scale, 3, 0, Math.PI * 2);
+              mCtx.fill();
+              mCtx.strokeStyle = '#fff';
+              mCtx.lineWidth = 1;
+              mCtx.stroke();
+            }
           }}
         />
       </div>
