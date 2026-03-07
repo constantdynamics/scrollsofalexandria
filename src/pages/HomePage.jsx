@@ -115,6 +115,14 @@ const HomePage = () => {
                 <span className="font-semibold text-primary text-sm">{stats.points}</span>
               </div>
               <button
+                onClick={() => navigate('/library')}
+                className="w-9 h-9 flex items-center justify-center rounded-lg text-text-muted hover:text-text hover:bg-bg-alt transition-all"
+                aria-label="Bibliotheek"
+                title="Verken de Bibliotheek"
+              >
+                <span className="text-lg">🏛️</span>
+              </button>
+              <button
                 onClick={() => navigate('/register')}
                 className="w-9 h-9 flex items-center justify-center rounded-lg text-text-muted hover:text-text hover:bg-bg-alt transition-all"
                 aria-label="Register"
