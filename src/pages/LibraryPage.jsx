@@ -7,6 +7,14 @@ import { allPrinciples, getCategories, getPrinciplesByCategory } from '../data/p
 const TILE = 40;
 const PLAYER_SPEED = 3;
 const INTERACTION_DIST = 50;
+const CAMERA_LERP = 0.08; // Smooth camera follow speed
+
+// Deterministic pseudo-random based on position (no flicker)
+function seededRandom(x, y, seed) {
+  let h = (x * 374761393 + y * 668265263 + seed * 1274126177) | 0;
+  h = ((h ^ (h >> 13)) * 1103515245) | 0;
+  return ((h & 0x7fffffff) / 0x7fffffff);
+}
 
 // Tile types
 const EMPTY = 0;
@@ -256,7 +264,8 @@ const LibraryPage = () => {
   const { userData, getPrincipleProgress } = useUser();
   const canvasRef = useRef(null);
   const keysRef = useRef(new Set());
-  const playerRef = useRef({ x: 0, y: 0 });
+  const playerRef = useRef({ x: 0, y: 0, dirX: 0, dirY: 1, bobTime: 0, moving: false });
+  const cameraRef = useRef({ x: 0, y: 0 });
   const animFrameRef = useRef(null);
 
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -276,10 +285,10 @@ const LibraryPage = () => {
 
   // Init player positie
   useEffect(() => {
-    playerRef.current = {
-      x: (hallX + hallW / 2) * TILE,
-      y: (hallY + hallH / 2) * TILE,
-    };
+    const startX = (hallX + hallW / 2) * TILE;
+    const startY = (hallY + hallH / 2) * TILE;
+    playerRef.current = { x: startX, y: startY, dirX: 0, dirY: 1, bobTime: 0, moving: false };
+    cameraRef.current = { x: startX, y: startY };
   }, [hallX, hallY, hallW, hallH]);
 
   // Detect touch device
@@ -400,10 +409,15 @@ const LibraryPage = () => {
     const bookColors = [COLORS.shelfBooks1, COLORS.shelfBooks2, COLORS.shelfBooks3, COLORS.shelfBooks4, COLORS.shelfBooks5];
 
     const gameLoop = () => {
+      // Retina/HiDPI support
+      const dpr = window.devicePixelRatio || 1;
       const w = window.innerWidth;
       const h = window.innerHeight;
-      canvas.width = w;
-      canvas.height = h;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // Player movement (keyboard + virtual joystick)
       const keys = keysRef.current;
@@ -427,16 +441,32 @@ const LibraryPage = () => {
         dy = (dy / mag) * PLAYER_SPEED;
       }
 
-      const newX = playerRef.current.x + dx;
-      const newY = playerRef.current.y + dy;
-      if (isWalkable(map, newX, playerRef.current.y, mapW, mapH)) playerRef.current.x = newX;
-      if (isWalkable(map, playerRef.current.x, newY, mapW, mapH)) playerRef.current.y = newY;
-
       const player = playerRef.current;
+      const isMoving = Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1;
 
-      // Camera
-      const camX = player.x - w / 2;
-      const camY = player.y - h / 2;
+      // Track direction for eyes
+      if (isMoving) {
+        player.dirX = dx;
+        player.dirY = dy;
+        player.bobTime += 0.15;
+        player.moving = true;
+      } else {
+        player.moving = false;
+      }
+
+      const newX = player.x + dx;
+      const newY = player.y + dy;
+      if (isWalkable(map, newX, player.y, mapW, mapH)) player.x = newX;
+      if (isWalkable(map, player.x, newY, mapW, mapH)) player.y = newY;
+
+      // Smooth camera (lerp)
+      const cam = cameraRef.current;
+      const targetCamX = player.x - w / 2;
+      const targetCamY = player.y - h / 2;
+      cam.x += (targetCamX - cam.x) * CAMERA_LERP;
+      cam.y += (targetCamY - cam.y) * CAMERA_LERP;
+      const camX = cam.x;
+      const camY = cam.y;
 
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = COLORS[EMPTY];
@@ -461,9 +491,23 @@ const LibraryPage = () => {
             // Subtiele voegen
             ctx.strokeStyle = 'rgba(0,0,0,0.06)';
             ctx.strokeRect(sx, sy, TILE, TILE);
+            // Soms een kleine crack/detail
+            if (seededRandom(tx, ty, 42) > 0.92) {
+              ctx.strokeStyle = 'rgba(0,0,0,0.08)';
+              ctx.beginPath();
+              ctx.moveTo(sx + TILE * 0.3, sy + TILE * 0.2);
+              ctx.lineTo(sx + TILE * 0.7, sy + TILE * 0.6);
+              ctx.stroke();
+            }
           } else if (tile === WALL) {
             ctx.fillStyle = COLORS[WALL];
             ctx.fillRect(sx, sy, TILE, TILE);
+            // Stone brick pattern
+            ctx.strokeStyle = 'rgba(0,0,0,0.12)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(sx + 1, sy + 1, TILE / 2 - 1, TILE / 2 - 1);
+            ctx.strokeRect(sx + TILE / 2, sy + 1, TILE / 2 - 1, TILE / 2 - 1);
+            ctx.strokeRect(sx + TILE / 4, sy + TILE / 2, TILE / 2, TILE / 2 - 1);
             // 3D effect
             ctx.fillStyle = COLORS.wallTop;
             ctx.fillRect(sx, sy, TILE, 6);
@@ -473,24 +517,35 @@ const LibraryPage = () => {
             // Kast achtergrond
             ctx.fillStyle = COLORS[BOOKSHELF];
             ctx.fillRect(sx, sy, TILE, TILE);
-            // Boeken
+            // Boeken - deterministic heights via seededRandom
             const booksPerShelf = 5;
             const bookW = (TILE - 4) / booksPerShelf;
             for (let b = 0; b < booksPerShelf; b++) {
               const colorIdx = (tx * 7 + ty * 3 + b) % bookColors.length;
               ctx.fillStyle = bookColors[colorIdx];
-              const bh = TILE * (0.5 + Math.random() * 0.15);
+              const bh = TILE * (0.5 + seededRandom(tx, ty, b * 13 + 7) * 0.15);
               ctx.fillRect(sx + 2 + b * bookW, sy + (TILE - bh), bookW - 1, bh - 2);
+              // Book spine highlight
+              ctx.fillStyle = 'rgba(255,255,255,0.12)';
+              ctx.fillRect(sx + 2 + b * bookW, sy + (TILE - bh), 1, bh - 2);
             }
             // Plank
             ctx.fillStyle = '#5a3a1a';
             ctx.fillRect(sx, sy + TILE - 3, TILE, 3);
             ctx.fillRect(sx, sy + Math.floor(TILE / 2), TILE, 2);
+            // Plank schaduw
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.fillRect(sx, sy + Math.floor(TILE / 2) + 2, TILE, 2);
           } else if (tile === DOOR) {
             ctx.fillStyle = COLORS[DOOR];
             ctx.fillRect(sx, sy, TILE, TILE);
             ctx.fillStyle = 'rgba(0,0,0,0.1)';
             ctx.fillRect(sx + 2, sy + 2, TILE - 4, TILE - 4);
+            // Deur panelen
+            ctx.strokeStyle = 'rgba(0,0,0,0.12)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(sx + 5, sy + 4, TILE - 10, TILE / 2 - 4);
+            ctx.strokeRect(sx + 5, sy + TILE / 2 + 2, TILE - 10, TILE / 2 - 6);
           } else if (tile === CARPET) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
@@ -498,21 +553,39 @@ const LibraryPage = () => {
             ctx.globalAlpha = 0.35;
             ctx.fillRect(sx, sy, TILE, TILE);
             ctx.globalAlpha = 1;
-            // Patroon
+            // Patroon - diamond pattern
             ctx.fillStyle = 'rgba(200,160,80,0.15)';
-            ctx.fillRect(sx + 4, sy + 4, TILE - 8, TILE - 8);
+            ctx.beginPath();
+            ctx.moveTo(sx + TILE / 2, sy + 4);
+            ctx.lineTo(sx + TILE - 4, sy + TILE / 2);
+            ctx.lineTo(sx + TILE / 2, sy + TILE - 4);
+            ctx.lineTo(sx + 4, sy + TILE / 2);
+            ctx.closePath();
+            ctx.fill();
           } else if (tile === PILLAR) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
+            // Pilaar schaduw
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + 2, sy + TILE / 2 + 4, TILE / 3, TILE / 4, 0, 0, Math.PI * 2);
+            ctx.fill();
             // Pilaar
             ctx.fillStyle = COLORS[PILLAR];
             ctx.beginPath();
             ctx.arc(sx + TILE / 2, sy + TILE / 2, TILE / 3, 0, Math.PI * 2);
             ctx.fill();
+            // Highlight
             ctx.fillStyle = 'rgba(255,255,255,0.15)';
             ctx.beginPath();
             ctx.arc(sx + TILE / 2 - 3, sy + TILE / 2 - 3, TILE / 5, 0, Math.PI * 2);
             ctx.fill();
+            // Dark edge
+            ctx.strokeStyle = 'rgba(0,0,0,0.15)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(sx + TILE / 2, sy + TILE / 2, TILE / 3, 0, Math.PI * 2);
+            ctx.stroke();
           }
         }
       }
@@ -520,23 +593,28 @@ const LibraryPage = () => {
       // Room labels
       for (const room of rooms) {
         const labelX = room.centerX - camX;
-        const labelY = (room.y + 1) * TILE - camY - 8;
+        const labelY = room.centerY - camY - 8;
         if (labelX > -200 && labelX < w + 200 && labelY > -100 && labelY < h + 100) {
           ctx.font = '600 13px Inter, sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillStyle = 'rgba(0,0,0,0.55)';
-          ctx.fillText(`${room.emoji} ${room.name}`, labelX, room.centerY - camY - 8);
+          // Text shadow
+          ctx.fillStyle = 'rgba(255,255,255,0.5)';
+          ctx.fillText(`${room.emoji} ${room.name}`, labelX + 1, labelY + 1);
+          ctx.fillStyle = 'rgba(0,0,0,0.6)';
+          ctx.fillText(`${room.emoji} ${room.name}`, labelX, labelY);
         }
       }
 
       // Player
       const px = player.x - camX;
-      const py = player.y - camY;
+      const bobOffset = player.moving ? Math.sin(player.bobTime) * 2 : 0;
+      const py = player.y - camY + bobOffset;
 
-      // Schaduw
+      // Schaduw (smaller when bobbing up)
+      const shadowScale = player.moving ? 1 - Math.sin(player.bobTime) * 0.15 : 1;
       ctx.fillStyle = 'rgba(0,0,0,0.2)';
       ctx.beginPath();
-      ctx.ellipse(px, py + 14, 12, 5, 0, 0, Math.PI * 2);
+      ctx.ellipse(px, player.y - camY + 14, 12 * shadowScale, 5 * shadowScale, 0, 0, Math.PI * 2);
       ctx.fill();
 
       // Lichaam
@@ -550,16 +628,20 @@ const LibraryPage = () => {
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // Ogen
+      // Ogen - follow movement direction
+      const dirMag = Math.sqrt(player.dirX * player.dirX + player.dirY * player.dirY);
+      const eyeDx = dirMag > 0.1 ? (player.dirX / dirMag) * 2 : 0;
+      const eyeDy = dirMag > 0.1 ? (player.dirY / dirMag) * 1.5 : 0;
+
       ctx.fillStyle = '#fff';
       ctx.beginPath();
-      ctx.arc(px - 4, py - 3, 4, 0, Math.PI * 2);
-      ctx.arc(px + 4, py - 3, 4, 0, Math.PI * 2);
+      ctx.arc(px - 5 + eyeDx * 0.5, py - 3, 4, 0, Math.PI * 2);
+      ctx.arc(px + 5 + eyeDx * 0.5, py - 3, 4, 0, Math.PI * 2);
       ctx.fill();
       ctx.fillStyle = '#1a1520';
       ctx.beginPath();
-      ctx.arc(px - 3, py - 3, 2, 0, Math.PI * 2);
-      ctx.arc(px + 5, py - 3, 2, 0, Math.PI * 2);
+      ctx.arc(px - 5 + eyeDx, py - 3 + eyeDy, 2, 0, Math.PI * 2);
+      ctx.arc(px + 5 + eyeDx, py - 3 + eyeDy, 2, 0, Math.PI * 2);
       ctx.fill();
 
       // Interactie indicator
@@ -588,7 +670,7 @@ const LibraryPage = () => {
         ctx.textAlign = 'center';
         const text = isMobileRef.current ? 'Tik op boek-knop' : '[ E ] Boeken bekijken';
         const tw = ctx.measureText(text).width;
-        ctx.fillStyle = 'rgba(0,0,0,0.7)';
+        ctx.fillStyle = 'rgba(0,0,0,0.75)';
         ctx.beginPath();
         ctx.roundRect(px - tw / 2 - 10, promptY - 14, tw + 20, 26, 8);
         ctx.fill();
