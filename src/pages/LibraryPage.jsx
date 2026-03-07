@@ -7,6 +7,14 @@ import { allPrinciples, getCategories, getPrinciplesByCategory } from '../data/p
 const TILE = 40;
 const PLAYER_SPEED = 3;
 const INTERACTION_DIST = 50;
+const CAMERA_LERP = 0.08; // Smooth camera follow speed
+
+// Deterministic pseudo-random based on position (no flicker)
+function seededRandom(x, y, seed) {
+  let h = (x * 374761393 + y * 668265263 + seed * 1274126177) | 0;
+  h = ((h ^ (h >> 13)) * 1103515245) | 0;
+  return ((h & 0x7fffffff) / 0x7fffffff);
+}
 
 // Tile types
 const EMPTY = 0;
@@ -16,6 +24,20 @@ const BOOKSHELF = 3;
 const DOOR = 4;
 const CARPET = 5;
 const PILLAR = 6;
+const TORCH = 7;
+const TABLE = 8;
+const PLANT = 9;
+
+// Ambient dust particles (generated once)
+const NUM_PARTICLES = 60;
+const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => ({
+  x: seededRandom(i, 0, 99) * 2000,
+  y: seededRandom(0, i, 77) * 2000,
+  size: 1 + seededRandom(i, i, 33) * 2,
+  speed: 0.1 + seededRandom(i, 0, 55) * 0.3,
+  drift: seededRandom(i, 0, 11) * 0.2 - 0.1,
+  alpha: 0.15 + seededRandom(i, 0, 22) * 0.2,
+}));
 
 // Kleuren
 const COLORS = {
@@ -26,6 +48,9 @@ const COLORS = {
   [DOOR]: '#c9a86c',
   [CARPET]: '#7b3f5e',
   [PILLAR]: '#8a7a66',
+  [TORCH]: '#6b5b4a',
+  [TABLE]: '#8B6914',
+  [PLANT]: '#2d8a4e',
   floorAlt: '#cbb99d',
   wallTop: '#7d6b58',
   shelfBooks1: '#c0392b',
@@ -69,6 +94,7 @@ function generateLibrary(categories) {
   const mapH = marginY * 2 + rows * roomH + (rows + 1) * corridorW + 6; // +6 voor entreehal
 
   const map = Array.from({ length: mapH }, () => Array(mapW).fill(EMPTY));
+  const tileRoomIdx = Array.from({ length: mapH }, () => Array(mapW).fill(-1));
   const rooms = [];
 
   // Entreehal
@@ -83,6 +109,9 @@ function generateLibrary(categories) {
   // Entree opening
   map[hallY + hallH - 1][hallX + Math.floor(hallW / 2)] = DOOR;
   map[hallY + hallH - 1][hallX + Math.floor(hallW / 2) - 1] = DOOR;
+  // Planten in de hal
+  map[hallY + 1][hallX + 1] = PLANT;
+  map[hallY + 1][hallX + hallW - 2] = PLANT;
 
   // Hoofdcorridor - verticaal
   const corStartX = Math.floor(mapW / 2) - Math.floor(corridorW / 2);
@@ -116,6 +145,12 @@ function generateLibrary(categories) {
     // Kamer vloer
     fillRect(map, rx, ry, roomW, roomH, FLOOR);
     addWalls(map, rx, ry, roomW, roomH);
+    // Mark tiles as belonging to this room
+    for (let dy = 0; dy < roomH; dy++) {
+      for (let dx = 0; dx < roomW; dx++) {
+        if (ry + dy < mapH && rx + dx < mapW) tileRoomIdx[ry + dy][rx + dx] = i;
+      }
+    }
 
     // Boekenkasten langs de muren (boven en zijkanten)
     for (let x = rx + 1; x < rx + roomW - 1; x++) {
@@ -134,8 +169,6 @@ function generateLibrary(categories) {
 
     // Horizontale corridor naar hoofdcorridor
     const corY = ry + roomH - 1;
-    const fromX = Math.min(doorX + 1, corStartX + corridorW);
-    const toX = Math.max(doorX - 1, corStartX);
     const startX = Math.min(rx, corStartX);
     const endX = Math.max(rx + roomW, corStartX + corridorW);
     for (let x = startX; x < endX; x++) {
@@ -154,6 +187,21 @@ function generateLibrary(categories) {
       map[ry + Math.floor(roomH / 2)][rx + Math.floor(roomW / 2)] = PILLAR;
     }
 
+    // Fakkels naast deur
+    if (doorX - 2 >= rx + 1) map[doorY][doorX - 2] = TORCH;
+    if (doorX + 1 < rx + roomW - 1) map[doorY][doorX + 1] = TORCH;
+
+    // Lestafel in kamer (als er ruimte is)
+    const tableY = ry + roomH - 3;
+    const tableX = rx + 3;
+    if (map[tableY][tableX] === FLOOR) {
+      map[tableY][tableX] = TABLE;
+    }
+
+    // Categorie kleur voor boekenkasten (hash van naam)
+    const catHash = cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+    const catHue = catHash % 360;
+
     rooms.push({
       name: cat,
       emoji: CATEGORY_EMOJIS[cat] || '📚',
@@ -163,6 +211,7 @@ function generateLibrary(categories) {
       h: roomH,
       centerX: (rx + roomW / 2) * TILE,
       centerY: (ry + roomH / 2) * TILE,
+      catHue,
     });
   });
 
@@ -207,7 +256,7 @@ function generateLibrary(categories) {
     }
   }
 
-  return { map, mapW, mapH, rooms, hallX, hallY, hallW, hallH };
+  return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH };
 }
 
 function fillRect(map, x, y, w, h, tile) {
@@ -245,7 +294,7 @@ function isWalkable(map, px, py, mapW, mapH) {
     const ty = Math.floor(cy / TILE);
     if (tx < 0 || tx >= mapW || ty < 0 || ty >= mapH) return false;
     const tile = map[ty][tx];
-    if (tile === WALL || tile === BOOKSHELF || tile === PILLAR || tile === EMPTY) return false;
+    if (tile === WALL || tile === BOOKSHELF || tile === PILLAR || tile === EMPTY || tile === TORCH || tile === TABLE || tile === PLANT) return false;
   }
   return true;
 }
@@ -256,14 +305,19 @@ const LibraryPage = () => {
   const { userData, getPrincipleProgress } = useUser();
   const canvasRef = useRef(null);
   const keysRef = useRef(new Set());
-  const playerRef = useRef({ x: 0, y: 0 });
+  const playerRef = useRef({ x: 0, y: 0, dirX: 0, dirY: 1, bobTime: 0, moving: false });
+  const cameraRef = useRef({ x: 0, y: 0 });
+  const gameTimeRef = useRef(0);
+  const footstepDustRef = useRef([]); // { x, y, age, size }
   const animFrameRef = useRef(null);
 
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
   const [showMinimap, setShowMinimap] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-  const isMobileRef = useRef(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    return typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+  });
+  const isMobileRef = useRef(typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches);
   const joystickRef = useRef({ dx: 0, dy: 0 });
   const joystickTouchIdRef = useRef(null);
   const joystickOriginRef = useRef({ x: 0, y: 0 });
@@ -272,21 +326,20 @@ const LibraryPage = () => {
   const categories = useMemo(() => getCategories('academic'), []);
 
   const library = useMemo(() => generateLibrary(categories), [categories]);
-  const { map, mapW, mapH, rooms, hallX, hallY, hallW, hallH } = library;
+  const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH } = library;
 
   // Init player positie
   useEffect(() => {
-    playerRef.current = {
-      x: (hallX + hallW / 2) * TILE,
-      y: (hallY + hallH / 2) * TILE,
-    };
+    const startX = (hallX + hallW / 2) * TILE;
+    const startY = (hallY + hallH / 2) * TILE;
+    playerRef.current = { x: startX, y: startY, dirX: 0, dirY: 1, bobTime: 0, moving: false };
+    cameraRef.current = { x: startX, y: startY };
   }, [hallX, hallY, hallW, hallH]);
 
   // Detect touch device
   useEffect(() => {
     const checkTouch = () => { setIsMobile(true); isMobileRef.current = true; };
     window.addEventListener('touchstart', checkTouch, { once: true });
-    if (window.matchMedia('(pointer: coarse)').matches) { setIsMobile(true); isMobileRef.current = true; }
     return () => window.removeEventListener('touchstart', checkTouch);
   }, []);
 
@@ -349,6 +402,19 @@ const LibraryPage = () => {
     };
   }, [isMobile]);
 
+  const handleInteraction = useCallback(() => {
+    const p = playerRef.current;
+    for (const room of rooms) {
+      const dx = p.x - room.centerX;
+      const dy = p.y - room.centerY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < (room.w / 2) * TILE) {
+        setSelectedRoom(room.name);
+        return;
+      }
+    }
+  }, [rooms]);
+
   // Keyboard handlers
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -376,20 +442,7 @@ const LibraryPage = () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [rooms]);
-
-  const handleInteraction = useCallback(() => {
-    const p = playerRef.current;
-    for (const room of rooms) {
-      const dx = p.x - room.centerX;
-      const dy = p.y - room.centerY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < (room.w / 2) * TILE) {
-        setSelectedRoom(room.name);
-        return;
-      }
-    }
-  }, [rooms]);
+  }, [handleInteraction]);
 
   // Game loop
   useEffect(() => {
@@ -397,13 +450,20 @@ const LibraryPage = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    const bookColors = [COLORS.shelfBooks1, COLORS.shelfBooks2, COLORS.shelfBooks3, COLORS.shelfBooks4, COLORS.shelfBooks5];
 
     const gameLoop = () => {
+      gameTimeRef.current += 1 / 60;
+      const time = gameTimeRef.current;
+
+      // Retina/HiDPI support
+      const dpr = window.devicePixelRatio || 1;
       const w = window.innerWidth;
       const h = window.innerHeight;
-      canvas.width = w;
-      canvas.height = h;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // Player movement (keyboard + virtual joystick)
       const keys = keysRef.current;
@@ -427,16 +487,52 @@ const LibraryPage = () => {
         dy = (dy / mag) * PLAYER_SPEED;
       }
 
-      const newX = playerRef.current.x + dx;
-      const newY = playerRef.current.y + dy;
-      if (isWalkable(map, newX, playerRef.current.y, mapW, mapH)) playerRef.current.x = newX;
-      if (isWalkable(map, playerRef.current.x, newY, mapW, mapH)) playerRef.current.y = newY;
-
       const player = playerRef.current;
+      const isMoving = Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1;
 
-      // Camera
-      const camX = player.x - w / 2;
-      const camY = player.y - h / 2;
+      // Track direction for eyes
+      if (isMoving) {
+        player.dirX = dx;
+        player.dirY = dy;
+        player.bobTime += 0.15;
+        player.moving = true;
+        // Spawn footstep dust
+        if (Math.random() < 0.3) {
+          footstepDustRef.current.push({
+            x: player.x + (Math.random() - 0.5) * 8,
+            y: player.y + 12 + Math.random() * 4,
+            age: 0,
+            size: 2 + Math.random() * 3,
+            vx: -dx * 0.3 + (Math.random() - 0.5) * 0.5,
+            vy: -0.3 - Math.random() * 0.3,
+          });
+        }
+      } else {
+        player.moving = false;
+      }
+
+      // Update footstep dust
+      const dust = footstepDustRef.current;
+      for (let i = dust.length - 1; i >= 0; i--) {
+        dust[i].age += 1 / 60;
+        dust[i].x += dust[i].vx;
+        dust[i].y += dust[i].vy;
+        if (dust[i].age > 0.6) dust.splice(i, 1);
+      }
+
+      const newX = player.x + dx;
+      const newY = player.y + dy;
+      if (isWalkable(map, newX, player.y, mapW, mapH)) player.x = newX;
+      if (isWalkable(map, player.x, newY, mapW, mapH)) player.y = newY;
+
+      // Smooth camera (lerp)
+      const cam = cameraRef.current;
+      const targetCamX = player.x - w / 2;
+      const targetCamY = player.y - h / 2;
+      cam.x += (targetCamX - cam.x) * CAMERA_LERP;
+      cam.y += (targetCamY - cam.y) * CAMERA_LERP;
+      const camX = cam.x;
+      const camY = cam.y;
 
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = COLORS[EMPTY];
@@ -458,12 +554,32 @@ const LibraryPage = () => {
           if (tile === FLOOR) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
+            // Subtle room tint for floor tiles inside rooms
+            const floorRoomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            if (floorRoomIdx >= 0 && rooms[floorRoomIdx]) {
+              ctx.fillStyle = `hsla(${rooms[floorRoomIdx].catHue}, 20%, 50%, 0.04)`;
+              ctx.fillRect(sx, sy, TILE, TILE);
+            }
             // Subtiele voegen
             ctx.strokeStyle = 'rgba(0,0,0,0.06)';
             ctx.strokeRect(sx, sy, TILE, TILE);
+            // Soms een kleine crack/detail
+            if (seededRandom(tx, ty, 42) > 0.92) {
+              ctx.strokeStyle = 'rgba(0,0,0,0.08)';
+              ctx.beginPath();
+              ctx.moveTo(sx + TILE * 0.3, sy + TILE * 0.2);
+              ctx.lineTo(sx + TILE * 0.7, sy + TILE * 0.6);
+              ctx.stroke();
+            }
           } else if (tile === WALL) {
             ctx.fillStyle = COLORS[WALL];
             ctx.fillRect(sx, sy, TILE, TILE);
+            // Stone brick pattern
+            ctx.strokeStyle = 'rgba(0,0,0,0.12)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(sx + 1, sy + 1, TILE / 2 - 1, TILE / 2 - 1);
+            ctx.strokeRect(sx + TILE / 2, sy + 1, TILE / 2 - 1, TILE / 2 - 1);
+            ctx.strokeRect(sx + TILE / 4, sy + TILE / 2, TILE / 2, TILE / 2 - 1);
             // 3D effect
             ctx.fillStyle = COLORS.wallTop;
             ctx.fillRect(sx, sy, TILE, 6);
@@ -473,24 +589,55 @@ const LibraryPage = () => {
             // Kast achtergrond
             ctx.fillStyle = COLORS[BOOKSHELF];
             ctx.fillRect(sx, sy, TILE, TILE);
-            // Boeken
+            // Boeken - deterministic heights, colored by room category
+            const roomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            const roomHue = roomIdx >= 0 && rooms[roomIdx] ? rooms[roomIdx].catHue : 0;
             const booksPerShelf = 5;
             const bookW = (TILE - 4) / booksPerShelf;
             for (let b = 0; b < booksPerShelf; b++) {
-              const colorIdx = (tx * 7 + ty * 3 + b) % bookColors.length;
-              ctx.fillStyle = bookColors[colorIdx];
-              const bh = TILE * (0.5 + Math.random() * 0.15);
+              // Mix category hue with variation per book
+              const hueShift = seededRandom(tx, ty, b * 17 + 3) * 60 - 30;
+              const sat = 45 + seededRandom(tx, ty, b * 11 + 5) * 25;
+              const lit = 35 + seededRandom(tx, ty, b * 7 + 1) * 20;
+              ctx.fillStyle = `hsl(${roomHue + hueShift}, ${sat}%, ${lit}%)`;
+              const bh = TILE * (0.5 + seededRandom(tx, ty, b * 13 + 7) * 0.15);
               ctx.fillRect(sx + 2 + b * bookW, sy + (TILE - bh), bookW - 1, bh - 2);
+              // Book spine highlight
+              ctx.fillStyle = 'rgba(255,255,255,0.12)';
+              ctx.fillRect(sx + 2 + b * bookW, sy + (TILE - bh), 1, bh - 2);
             }
             // Plank
             ctx.fillStyle = '#5a3a1a';
             ctx.fillRect(sx, sy + TILE - 3, TILE, 3);
             ctx.fillRect(sx, sy + Math.floor(TILE / 2), TILE, 2);
+            // Plank schaduw
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.fillRect(sx, sy + Math.floor(TILE / 2) + 2, TILE, 2);
           } else if (tile === DOOR) {
+            // Warm glow underneath door
+            const doorGlow = ctx.createRadialGradient(
+              sx + TILE / 2, sy + TILE / 2, 2,
+              sx + TILE / 2, sy + TILE / 2, TILE * 1.2
+            );
+            doorGlow.addColorStop(0, 'rgba(255,220,150,0.15)');
+            doorGlow.addColorStop(1, 'rgba(255,200,100,0)');
+            ctx.fillStyle = doorGlow;
+            ctx.fillRect(sx - TILE * 0.5, sy - TILE * 0.5, TILE * 2, TILE * 2);
+            // Door base
             ctx.fillStyle = COLORS[DOOR];
             ctx.fillRect(sx, sy, TILE, TILE);
-            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.fillStyle = 'rgba(0,0,0,0.08)';
             ctx.fillRect(sx + 2, sy + 2, TILE - 4, TILE - 4);
+            // Deur panelen
+            ctx.strokeStyle = 'rgba(0,0,0,0.12)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(sx + 5, sy + 4, TILE - 10, TILE / 2 - 4);
+            ctx.strokeRect(sx + 5, sy + TILE / 2 + 2, TILE - 10, TILE / 2 - 6);
+            // Door handle
+            ctx.fillStyle = '#b8860b';
+            ctx.beginPath();
+            ctx.arc(sx + TILE - 9, sy + TILE / 2, 2.5, 0, Math.PI * 2);
+            ctx.fill();
           } else if (tile === CARPET) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
@@ -498,45 +645,239 @@ const LibraryPage = () => {
             ctx.globalAlpha = 0.35;
             ctx.fillRect(sx, sy, TILE, TILE);
             ctx.globalAlpha = 1;
-            // Patroon
+            // Diamond pattern
             ctx.fillStyle = 'rgba(200,160,80,0.15)';
-            ctx.fillRect(sx + 4, sy + 4, TILE - 8, TILE - 8);
+            ctx.beginPath();
+            ctx.moveTo(sx + TILE / 2, sy + 4);
+            ctx.lineTo(sx + TILE - 4, sy + TILE / 2);
+            ctx.lineTo(sx + TILE / 2, sy + TILE - 4);
+            ctx.lineTo(sx + 4, sy + TILE / 2);
+            ctx.closePath();
+            ctx.fill();
+            // Inner diamond
+            ctx.fillStyle = 'rgba(160,120,60,0.1)';
+            ctx.beginPath();
+            ctx.moveTo(sx + TILE / 2, sy + 10);
+            ctx.lineTo(sx + TILE - 10, sy + TILE / 2);
+            ctx.lineTo(sx + TILE / 2, sy + TILE - 10);
+            ctx.lineTo(sx + 10, sy + TILE / 2);
+            ctx.closePath();
+            ctx.fill();
+            // Gold thread border
+            ctx.strokeStyle = 'rgba(200,160,80,0.12)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(sx + 2, sy + 2, TILE - 4, TILE - 4);
           } else if (tile === PILLAR) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
+            // Pilaar schaduw
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + 2, sy + TILE / 2 + 4, TILE / 3, TILE / 4, 0, 0, Math.PI * 2);
+            ctx.fill();
             // Pilaar
             ctx.fillStyle = COLORS[PILLAR];
             ctx.beginPath();
             ctx.arc(sx + TILE / 2, sy + TILE / 2, TILE / 3, 0, Math.PI * 2);
             ctx.fill();
+            // Highlight
             ctx.fillStyle = 'rgba(255,255,255,0.15)';
             ctx.beginPath();
             ctx.arc(sx + TILE / 2 - 3, sy + TILE / 2 - 3, TILE / 5, 0, Math.PI * 2);
+            ctx.fill();
+            // Dark edge
+            ctx.strokeStyle = 'rgba(0,0,0,0.15)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(sx + TILE / 2, sy + TILE / 2, TILE / 3, 0, Math.PI * 2);
+            ctx.stroke();
+          } else if (tile === TABLE) {
+            // Floor underneath
+            ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
+            ctx.fillRect(sx, sy, TILE, TILE);
+            // Table shadow
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + 2, sy + TILE / 2 + 6, TILE * 0.4, TILE * 0.25, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Table top
+            ctx.fillStyle = COLORS[TABLE];
+            ctx.beginPath();
+            ctx.roundRect(sx + 4, sy + 6, TILE - 8, TILE - 12, 3);
+            ctx.fill();
+            // Table highlight
+            ctx.fillStyle = 'rgba(255,255,255,0.12)';
+            ctx.fillRect(sx + 6, sy + 8, TILE - 14, 4);
+            // Book on table
+            ctx.fillStyle = '#8e44ad';
+            ctx.fillRect(sx + TILE / 2 - 5, sy + TILE / 2 - 4, 10, 7);
+            ctx.fillStyle = 'rgba(255,255,255,0.15)';
+            ctx.fillRect(sx + TILE / 2 - 5, sy + TILE / 2 - 4, 10, 1);
+          } else if (tile === PLANT) {
+            // Floor underneath
+            ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
+            ctx.fillRect(sx, sy, TILE, TILE);
+            // Pot
+            ctx.fillStyle = '#a0522d';
+            ctx.beginPath();
+            ctx.moveTo(sx + TILE * 0.3, sy + TILE * 0.55);
+            ctx.lineTo(sx + TILE * 0.7, sy + TILE * 0.55);
+            ctx.lineTo(sx + TILE * 0.65, sy + TILE - 4);
+            ctx.lineTo(sx + TILE * 0.35, sy + TILE - 4);
+            ctx.closePath();
+            ctx.fill();
+            // Rim
+            ctx.fillStyle = '#8b4513';
+            ctx.fillRect(sx + TILE * 0.28, sy + TILE * 0.52, TILE * 0.44, 4);
+            // Leaves (animated slight sway)
+            const sway = Math.sin(time * 1.5 + tx * 2) * 2;
+            ctx.fillStyle = COLORS[PLANT];
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + sway, sy + TILE * 0.35, 8, 12, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#3aa85e';
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 - 5 + sway * 0.7, sy + TILE * 0.3, 5, 8, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + 5 + sway * 0.7, sy + TILE * 0.3, 5, 8, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+          } else if (tile === TORCH) {
+            // Wall background
+            ctx.fillStyle = COLORS[WALL];
+            ctx.fillRect(sx, sy, TILE, TILE);
+            ctx.fillStyle = COLORS.wallTop;
+            ctx.fillRect(sx, sy, TILE, 6);
+            // Torch bracket
+            ctx.fillStyle = '#4a3a2a';
+            ctx.fillRect(sx + TILE / 2 - 2, sy + TILE * 0.3, 4, TILE * 0.4);
+            // Flame (animated)
+            const flicker = Math.sin(time * 8 + tx * 3) * 2 + Math.sin(time * 12 + ty * 5) * 1;
+            const flameH = 10 + flicker;
+            const flameY = sy + TILE * 0.3 - flameH;
+            const grad = ctx.createRadialGradient(
+              sx + TILE / 2, flameY + flameH / 2, 1,
+              sx + TILE / 2, flameY + flameH / 2, flameH
+            );
+            grad.addColorStop(0, 'rgba(255,220,100,0.9)');
+            grad.addColorStop(0.4, 'rgba(255,160,40,0.7)');
+            grad.addColorStop(1, 'rgba(255,80,20,0)');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2, flameY + flameH / 2, 5 + flicker * 0.3, flameH / 2, 0, 0, Math.PI * 2);
             ctx.fill();
           }
         }
       }
 
+      // Wall shadow casting onto adjacent floor tiles
+      for (let ty = startTY; ty < endTY; ty++) {
+        for (let tx = startTX; tx < endTX; tx++) {
+          const tile = map[ty][tx];
+          if (tile === FLOOR || tile === CARPET || tile === DOOR) {
+            const sx = tx * TILE - camX;
+            const sy = ty * TILE - camY;
+            // Shadow from wall above
+            if (ty > 0 && (map[ty - 1][tx] === WALL || map[ty - 1][tx] === TORCH)) {
+              const shadowGrad = ctx.createLinearGradient(sx, sy, sx, sy + 10);
+              shadowGrad.addColorStop(0, 'rgba(0,0,0,0.12)');
+              shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = shadowGrad;
+              ctx.fillRect(sx, sy, TILE, 10);
+            }
+            // Shadow from wall to the left
+            if (tx > 0 && (map[ty][tx - 1] === WALL || map[ty][tx - 1] === TORCH)) {
+              const shadowGrad = ctx.createLinearGradient(sx, sy, sx + 8, sy);
+              shadowGrad.addColorStop(0, 'rgba(0,0,0,0.08)');
+              shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = shadowGrad;
+              ctx.fillRect(sx, sy, 8, TILE);
+            }
+          }
+        }
+      }
+
+      // Torch light glow overlay (additive-like)
+      for (let ty = startTY; ty < endTY; ty++) {
+        for (let tx = startTX; tx < endTX; tx++) {
+          if (map[ty][tx] === TORCH) {
+            const sx = tx * TILE - camX + TILE / 2;
+            const sy = ty * TILE - camY + TILE * 0.25;
+            const flicker = 1 + Math.sin(time * 6 + tx * 5) * 0.1;
+            const radius = TILE * 3 * flicker;
+            const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, radius);
+            glow.addColorStop(0, 'rgba(255,180,60,0.08)');
+            glow.addColorStop(0.5, 'rgba(255,140,40,0.03)');
+            glow.addColorStop(1, 'rgba(255,100,20,0)');
+            ctx.fillStyle = glow;
+            ctx.fillRect(sx - radius, sy - radius, radius * 2, radius * 2);
+          }
+        }
+      }
+
+      // Entreehal welkomsttekst
+      const hallCenterX = (hallX + hallW / 2) * TILE - camX;
+      const hallCenterY = (hallY + 1) * TILE - camY;
+      if (hallCenterX > -300 && hallCenterX < w + 300 && hallCenterY > -100 && hallCenterY < h + 100) {
+        ctx.font = "700 16px 'Playfair Display', Georgia, serif";
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(92,79,207,0.5)';
+        ctx.fillText('Bibliotheek van Alexandrië', hallCenterX, hallCenterY);
+        ctx.font = '400 10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(0,0,0,0.35)';
+        ctx.fillText('Verken de kamers om te leren', hallCenterX, hallCenterY + 16);
+      }
+
       // Room labels
       for (const room of rooms) {
         const labelX = room.centerX - camX;
-        const labelY = (room.y + 1) * TILE - camY - 8;
+        const labelY = room.centerY - camY - 8;
         if (labelX > -200 && labelX < w + 200 && labelY > -100 && labelY < h + 100) {
           ctx.font = '600 13px Inter, sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillStyle = 'rgba(0,0,0,0.55)';
-          ctx.fillText(`${room.emoji} ${room.name}`, labelX, room.centerY - camY - 8);
+          // Text shadow
+          ctx.fillStyle = 'rgba(255,255,255,0.5)';
+          ctx.fillText(`${room.emoji} ${room.name}`, labelX + 1, labelY + 1);
+          ctx.fillStyle = 'rgba(0,0,0,0.6)';
+          ctx.fillText(`${room.emoji} ${room.name}`, labelX, labelY);
+        }
+      }
+
+      // Check if near a room (for glow)
+      let isNearRoom = false;
+      for (const room of rooms) {
+        const rdx = player.x - room.centerX;
+        const rdy = player.y - room.centerY;
+        if (Math.sqrt(rdx * rdx + rdy * rdy) < (room.w / 2) * TILE) {
+          isNearRoom = true;
+          break;
         }
       }
 
       // Player
       const px = player.x - camX;
-      const py = player.y - camY;
+      // Idle breathing when stationary, walk bob when moving
+      const idleBreath = !player.moving ? Math.sin(time * 2) * 1.5 : 0;
+      const bobOffset = player.moving ? Math.sin(player.bobTime) * 2 : idleBreath;
+      const py = player.y - camY + bobOffset;
 
-      // Schaduw
-      ctx.fillStyle = 'rgba(0,0,0,0.2)';
+      // Player glow when near interactable room
+      if (isNearRoom) {
+        const glowPulse = 0.4 + Math.sin(time * 3) * 0.15;
+        const glow = ctx.createRadialGradient(px, py, 10, px, py, 35);
+        glow.addColorStop(0, `rgba(92,79,207,${glowPulse})`);
+        glow.addColorStop(1, 'rgba(92,79,207,0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(px, py, 35, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Schaduw (smaller when bobbing up)
+      const shadowScale = player.moving ? 1 - Math.sin(player.bobTime) * 0.15 : 1;
+      ctx.fillStyle = 'rgba(0,0,0,0.25)';
       ctx.beginPath();
-      ctx.ellipse(px, py + 14, 12, 5, 0, 0, Math.PI * 2);
+      ctx.ellipse(px, player.y - camY + 14, 12 * shadowScale, 5 * shadowScale, 0, 0, Math.PI * 2);
       ctx.fill();
 
       // Lichaam
@@ -550,17 +891,38 @@ const LibraryPage = () => {
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // Ogen
+      // Ogen - follow movement direction
+      const dirMag = Math.sqrt(player.dirX * player.dirX + player.dirY * player.dirY);
+      const eyeDx = dirMag > 0.1 ? (player.dirX / dirMag) * 2 : 0;
+      const eyeDy = dirMag > 0.1 ? (player.dirY / dirMag) * 1.5 : 0;
+
       ctx.fillStyle = '#fff';
       ctx.beginPath();
-      ctx.arc(px - 4, py - 3, 4, 0, Math.PI * 2);
-      ctx.arc(px + 4, py - 3, 4, 0, Math.PI * 2);
+      ctx.arc(px - 5 + eyeDx * 0.5, py - 3, 4, 0, Math.PI * 2);
+      ctx.arc(px + 5 + eyeDx * 0.5, py - 3, 4, 0, Math.PI * 2);
       ctx.fill();
       ctx.fillStyle = '#1a1520';
       ctx.beginPath();
-      ctx.arc(px - 3, py - 3, 2, 0, Math.PI * 2);
-      ctx.arc(px + 5, py - 3, 2, 0, Math.PI * 2);
+      ctx.arc(px - 5 + eyeDx, py - 3 + eyeDy, 2, 0, Math.PI * 2);
+      ctx.arc(px + 5 + eyeDx, py - 3 + eyeDy, 2, 0, Math.PI * 2);
       ctx.fill();
+
+      // Nameplate
+      if (userData?.name) {
+        ctx.font = '600 9px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.fillText(userData.name, px, player.y - camY + 26);
+      }
+
+      // Footstep dust rendering
+      for (const d of footstepDustRef.current) {
+        const alpha = 1 - d.age / 0.6;
+        ctx.fillStyle = `rgba(180,160,130,${alpha * 0.4})`;
+        ctx.beginPath();
+        ctx.arc(d.x - camX, d.y - camY, d.size * (1 + d.age), 0, Math.PI * 2);
+        ctx.fill();
+      }
 
       // Interactie indicator
       let nearRoom = null;
@@ -588,13 +950,34 @@ const LibraryPage = () => {
         ctx.textAlign = 'center';
         const text = isMobileRef.current ? 'Tik op boek-knop' : '[ E ] Boeken bekijken';
         const tw = ctx.measureText(text).width;
-        ctx.fillStyle = 'rgba(0,0,0,0.7)';
+        ctx.fillStyle = 'rgba(0,0,0,0.75)';
         ctx.beginPath();
         ctx.roundRect(px - tw / 2 - 10, promptY - 14, tw + 20, 26, 8);
         ctx.fill();
         ctx.fillStyle = '#fff';
         ctx.fillText(text, px, promptY + 2);
       }
+
+      // Ambient dust particles
+      ctx.fillStyle = 'rgba(220,200,170,0.25)';
+      for (const p of particles) {
+        const px2 = ((p.x + p.drift * time * 60) % (mapW * TILE)) - camX;
+        const py2 = ((p.y - p.speed * time * 60) % (mapH * TILE)) - camY;
+        if (px2 > -10 && px2 < w + 10 && py2 > -10 && py2 < h + 10) {
+          ctx.globalAlpha = p.alpha * (0.5 + 0.5 * Math.sin(time * 2 + p.x));
+          ctx.beginPath();
+          ctx.arc(px2, py2, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+
+      // Vignette overlay
+      const vignetteGrad = ctx.createRadialGradient(w / 2, h / 2, h * 0.3, w / 2, h / 2, h * 0.9);
+      vignetteGrad.addColorStop(0, 'rgba(0,0,0,0)');
+      vignetteGrad.addColorStop(1, 'rgba(0,0,0,0.3)');
+      ctx.fillStyle = vignetteGrad;
+      ctx.fillRect(0, 0, w, h);
 
       animFrameRef.current = requestAnimationFrame(gameLoop);
     };
@@ -603,16 +986,42 @@ const LibraryPage = () => {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [map, mapW, mapH, rooms]);
+  }, [map, mapW, mapH, rooms, hallW, hallX, hallY, tileRoomIdx, userData?.name]);
 
-  // Minimap
+  // Minimap - canvas-based for showing corridors
+  const minimapImageRef = useRef(null);
+
+  // Generate minimap image once
+  useEffect(() => {
+    const scale = 3;
+    const mmW = mapW * scale;
+    const mmH = mapH * scale;
+    const offscreen = document.createElement('canvas');
+    offscreen.width = mmW;
+    offscreen.height = mmH;
+    const mCtx = offscreen.getContext('2d');
+    mCtx.fillStyle = 'rgba(0,0,0,0)';
+    mCtx.clearRect(0, 0, mmW, mmH);
+    for (let ty = 0; ty < mapH; ty++) {
+      for (let tx = 0; tx < mapW; tx++) {
+        const tile = map[ty][tx];
+        if (tile === EMPTY) continue;
+        if (tile === WALL || tile === TORCH) mCtx.fillStyle = 'rgba(100,90,75,0.7)';
+        else if (tile === BOOKSHELF) mCtx.fillStyle = 'rgba(139,69,19,0.7)';
+        else if (tile === CARPET) mCtx.fillStyle = 'rgba(123,63,94,0.5)';
+        else if (tile === DOOR) mCtx.fillStyle = 'rgba(201,168,108,0.7)';
+        else mCtx.fillStyle = 'rgba(212,196,168,0.4)';
+        mCtx.fillRect(tx * scale, ty * scale, scale, scale);
+      }
+    }
+    minimapImageRef.current = offscreen;
+  }, [map, mapW, mapH]);
+
   const renderMinimap = () => {
     if (!showMinimap) return null;
     const scale = 3;
     const mmW = mapW * scale;
     const mmH = mapH * scale;
-    const playerTX = Math.floor(playerRef.current.x / TILE);
-    const playerTY = Math.floor(playerRef.current.y / TILE);
 
     return (
       <div
@@ -621,34 +1030,47 @@ const LibraryPage = () => {
           bottom: isMobile ? 180 : 16,
           right: isMobile ? 8 : 16,
           width: mmW, height: mmH,
-          background: 'rgba(0,0,0,0.7)', borderRadius: 8,
+          background: 'rgba(0,0,0,0.75)', borderRadius: 8,
           border: '1px solid rgba(255,255,255,0.2)',
           overflow: 'hidden', zIndex: 10,
+          boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
         }}
       >
-        {rooms.map((room, i) => (
-          <div
-            key={i}
-            style={{
-              position: 'absolute',
-              left: room.x * scale,
-              top: room.y * scale,
-              width: room.w * scale,
-              height: room.h * scale,
-              background: selectedRoom === room.name ? 'rgba(92,79,207,0.6)' : 'rgba(212,196,168,0.4)',
-              border: '1px solid rgba(255,255,255,0.15)',
-            }}
-          />
-        ))}
-        <div
-          style={{
-            position: 'absolute',
-            left: playerTX * scale - 2,
-            top: playerTY * scale - 2,
-            width: 5, height: 5,
-            background: '#5c4fcf',
-            borderRadius: '50%',
-            boxShadow: '0 0 4px rgba(92,79,207,0.8)',
+        <canvas
+          width={mmW}
+          height={mmH}
+          style={{ width: mmW, height: mmH }}
+          ref={(el) => {
+            if (el && minimapImageRef.current) {
+              const mCtx = el.getContext('2d');
+              mCtx.clearRect(0, 0, mmW, mmH);
+              mCtx.drawImage(minimapImageRef.current, 0, 0);
+              // Highlight selected room
+              if (selectedRoom) {
+                const room = rooms.find(r => r.name === selectedRoom);
+                if (room) {
+                  mCtx.fillStyle = 'rgba(92,79,207,0.4)';
+                  mCtx.fillRect(room.x * scale, room.y * scale, room.w * scale, room.h * scale);
+                }
+              }
+              // Room labels on minimap
+              rooms.forEach(room => {
+                mCtx.font = '7px sans-serif';
+                mCtx.textAlign = 'center';
+                mCtx.fillStyle = 'rgba(255,255,255,0.6)';
+                mCtx.fillText(room.emoji, (room.x + room.w / 2) * scale, (room.y + room.h / 2) * scale + 3);
+              });
+              // Player dot (read ref inside callback, not during render)
+              const playerTX = Math.floor(playerRef.current.x / TILE);
+              const playerTY = Math.floor(playerRef.current.y / TILE);
+              mCtx.fillStyle = '#5c4fcf';
+              mCtx.beginPath();
+              mCtx.arc(playerTX * scale, playerTY * scale, 3, 0, Math.PI * 2);
+              mCtx.fill();
+              mCtx.strokeStyle = '#fff';
+              mCtx.lineWidth = 1;
+              mCtx.stroke();
+            }
           }}
         />
       </div>
@@ -667,9 +1089,14 @@ const LibraryPage = () => {
           background: 'rgba(0,0,0,0.6)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           zIndex: 50,
+          animation: 'fadeIn 0.2s ease-out',
         }}
         onClick={() => setSelectedRoom(null)}
       >
+        <style>{`
+          @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+          @keyframes slideUp { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        `}</style>
         <div
           onClick={e => e.stopPropagation()}
           style={{
@@ -682,6 +1109,7 @@ const LibraryPage = () => {
             overflow: 'auto',
             boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
             border: '1px solid var(--color-border, #e5d9c8)',
+            animation: 'slideUp 0.25s ease-out',
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
@@ -703,12 +1131,28 @@ const LibraryPage = () => {
             </button>
           </div>
 
-          <p style={{
-            color: 'var(--color-text-secondary, #4a3d2e)',
-            marginBottom: 16, fontSize: '0.9rem',
-          }}>
-            {principles.length} {principles.length === 1 ? 'boek' : 'boeken'} in deze sectie
-          </p>
+          {(() => {
+            const masteredCount = principles.filter(p => (getPrincipleProgress(p.id)?.masteryPercentage || 0) >= 100).length;
+            const readCount = principles.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+            const avgMastery = principles.length > 0
+              ? Math.round(principles.reduce((sum, p) => sum + (getPrincipleProgress(p.id)?.masteryPercentage || 0), 0) / principles.length)
+              : 0;
+            return (
+              <div style={{ marginBottom: 16 }}>
+                <p style={{ color: 'var(--color-text-secondary, #4a3d2e)', fontSize: '0.9rem', marginBottom: 8 }}>
+                  {principles.length} {principles.length === 1 ? 'boek' : 'boeken'} &middot; {readCount} gelezen &middot; {masteredCount} voltooid
+                </p>
+                <div style={{ height: 6, borderRadius: 3, background: 'var(--color-bg-alt, #f1e9dc)', overflow: 'hidden' }}>
+                  <div style={{
+                    height: '100%', borderRadius: 3,
+                    width: `${avgMastery}%`,
+                    background: 'linear-gradient(90deg, #5c4fcf, #c9880f)',
+                    transition: 'width 0.3s ease',
+                  }} />
+                </div>
+              </div>
+            );
+          })()}
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {principles.map(p => {
@@ -815,7 +1259,20 @@ const LibraryPage = () => {
           fontSize: '1.1rem', fontWeight: 700,
           backdropFilter: 'blur(8px)',
         }}>
-          📍 {currentRoomName}
+          {currentRoomName}
+        </div>
+        {/* Totale voortgang */}
+        <div style={{
+          background: 'rgba(0,0,0,0.6)', color: 'rgba(255,255,255,0.8)',
+          padding: '6px 12px', borderRadius: 8,
+          fontSize: '0.75rem',
+          backdropFilter: 'blur(8px)',
+        }}>
+          {(() => {
+            const all = allPrinciples || [];
+            const read = all.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+            return `${read}/${all.length} gelezen`;
+          })()}
         </div>
       </div>
 
