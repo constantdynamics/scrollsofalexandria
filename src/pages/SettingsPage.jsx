@@ -215,21 +215,29 @@ const SettingsPage = () => {
             <p className="text-xs text-text-muted mb-3">Kies het uiterlijk van de app</p>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { value: 'classic', label: 'Standaard', gradient: 'from-slate-100 to-slate-200', dot: 'bg-primary' },
-                { value: 'light', label: 'Licht', gradient: 'from-white to-gray-100', dot: 'bg-gray-300' },
-                { value: 'dark', label: 'Donker', gradient: 'from-slate-800 to-slate-900', dot: 'bg-slate-600' },
+                { value: 'classic', label: 'Alexandrisch', emoji: '📜', colors: ['#faf6ef', '#5c4fcf', '#c9880f'] },
+                { value: 'light', label: 'Licht', emoji: '☀️', colors: ['#ffffff', '#e5ddd0', '#8a7a66'] },
+                { value: 'dark', label: 'Donker', emoji: '🌙', colors: ['#0c0a16', '#1b1730', '#5c4fcf'] },
+                { value: 'egyptian', label: 'Egyptisch', emoji: '𓂀', colors: ['#f5e8c8', '#b5651d', '#d4a017'] },
+                { value: 'greek', label: 'Grieks', emoji: '⚔️', colors: ['#f0ebe3', '#1a5276', '#c0392b'] },
+                { value: 'medieval', label: 'Middeleeuws', emoji: '⚜️', colors: ['#f0e8d5', '#722f37', '#2d5a27'] },
               ].map(theme => (
                 <button
                   key={theme.value}
                   onClick={() => handlePreferenceChange('theme', theme.value)}
-                  className={`p-4 rounded-xl border transition-all text-center ${
+                  className={`p-3 rounded-xl border transition-all text-center ${
                     userData?.preferences?.theme === theme.value
                       ? 'border-primary ring-1 ring-primary/30 bg-primary-50'
                       : 'border-border hover:border-primary/40'
                   }`}
                 >
-                  <div className={`w-full h-8 rounded-lg bg-gradient-to-br ${theme.gradient} mb-2 border border-border`}></div>
-                  <div className="text-sm font-semibold text-text">{theme.label}</div>
+                  <div className="w-full h-8 rounded-lg mb-2 border border-border overflow-hidden flex">
+                    {theme.colors.map((c, i) => (
+                      <div key={i} className="flex-1 h-full" style={{ backgroundColor: c }} />
+                    ))}
+                  </div>
+                  <div className="text-base mb-0.5">{theme.emoji}</div>
+                  <div className="text-xs font-semibold text-text">{theme.label}</div>
                 </button>
               ))}
             </div>

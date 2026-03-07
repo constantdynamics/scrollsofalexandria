@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useUser } from '../context/UserContext';
 import { allPrinciples, getCategories, getPrinciplesByCategory, getPrincipleById } from '../data/principles';
+import LibraryMinimap from '../components/LibraryMinimap';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -573,6 +574,7 @@ const HomePage = () => {
             {/* Principe van de dag */}
             {featuredPrinciple && (
               <motion.div
+                id="section-featured"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="mb-8"
@@ -649,7 +651,7 @@ const HomePage = () => {
             </div>
 
             {/* Categorieën */}
-            <div className="space-y-5">
+            <div id="section-categorieen" className="space-y-5">
               {categories.map((category, index) => {
                 const progress = getCategoryProgress(category);
                 const categoryPrinciples = getPrinciplesByCategory(category, organizationSystem);
@@ -657,6 +659,7 @@ const HomePage = () => {
                 return (
                   <motion.div
                     key={category}
+                    id={`section-cat-${index}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
@@ -715,6 +718,22 @@ const HomePage = () => {
           </>
         )}
       </div>
+
+      {/* Navigatiekaart */}
+      {!isSearchActive && (
+        <LibraryMinimap
+          sections={[
+            { id: 'section-featured', label: 'Ontdek vandaag', emoji: '⭐' },
+            { id: 'section-categorieen', label: 'Bibliotheek', emoji: '🏛️' },
+            ...categories.map((cat, i) => ({
+              id: `section-cat-${i}`,
+              label: cat,
+              emoji: getCategoryIcon(cat),
+              count: getPrinciplesByCategory(cat, organizationSystem).length,
+            })),
+          ]}
+        />
+      )}
     </div>
   );
 };

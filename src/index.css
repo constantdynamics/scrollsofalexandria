@@ -128,6 +128,154 @@
 }
 
 /* ╔══════════════════════════════════════════════════════════════════╗
+   ║  EGYPTIAN THEME — Zand, goud & koperrood                       ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+.theme-egyptian {
+  --color-bg:             #f5e8c8;
+  --color-bg-alt:         #eedcb0;
+  --color-surface:        #fdf6e3;
+  --color-surface-hover:  #f9eecc;
+  --color-border:         #d4b483;
+  --color-border-strong:  #b8945a;
+  --color-text:           #3a1c02;
+  --color-text-secondary: #6b3a12;
+  --color-text-muted:     #9a7040;
+  --color-primary:        #b5651d;
+  --color-primary-dark:   #8b4513;
+  --color-primary-light:  #cd853f;
+  --color-primary-50:     rgba(181, 101, 29, 0.10);
+  --color-primary-100:    rgba(181, 101, 29, 0.20);
+  --color-accent:         #d4a017;
+  --color-accent-dark:    #b8860b;
+  --color-accent-light:   #f0c040;
+  --shadow-xs: 0 1px 2px rgba(58, 28, 2, 0.06);
+  --shadow-sm: 0 2px 8px rgba(58, 28, 2, 0.10), 0 1px 2px rgba(58, 28, 2, 0.06);
+  --shadow-md: 0 4px 16px rgba(58, 28, 2, 0.12), 0 2px 6px rgba(58, 28, 2, 0.06);
+  --shadow-lg: 0 8px 32px rgba(58, 28, 2, 0.16), 0 4px 12px rgba(58, 28, 2, 0.08);
+  --shadow-xl: 0 20px 60px rgba(58, 28, 2, 0.20), 0 8px 24px rgba(58, 28, 2, 0.10);
+  --shadow-glow: 0 0 30px rgba(212, 160, 23, 0.30);
+}
+
+.theme-egyptian body,
+.theme-egyptian {
+  background-image:
+    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(212, 160, 23, 0.12) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(181, 101, 29, 0.08) 0%, transparent 100%);
+}
+
+.theme-egyptian .decorative-border::before {
+  background: linear-gradient(90deg, #8b4513 0%, #b5651d 30%, #d4a017 65%, #f0c040 100%);
+}
+
+.theme-egyptian .progress-fill {
+  background: linear-gradient(90deg, #b5651d 0%, #d4a017 100%);
+}
+
+.theme-egyptian .btn-primary {
+  background: linear-gradient(140deg, #b5651d 0%, #8b4513 100%);
+  box-shadow: 0 2px 8px rgba(181, 101, 29, 0.35), 0 1px 2px rgba(181, 101, 29, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.theme-egyptian .btn-primary:hover {
+  background: linear-gradient(140deg, #8b4513 0%, #6b3410 100%);
+  box-shadow: 0 8px 24px rgba(181, 101, 29, 0.45), 0 4px 8px rgba(181, 101, 29, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  GREEK THEME — Marmer, Egeïsch blauw & terracotta              ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+.theme-greek {
+  --color-bg:             #f0ebe3;
+  --color-bg-alt:         #e8e0d4;
+  --color-surface:        #faf8f5;
+  --color-surface-hover:  #f2ede6;
+  --color-border:         #c8bfb0;
+  --color-border-strong:  #a89e8e;
+  --color-text:           #1a1410;
+  --color-text-secondary: #3d3028;
+  --color-text-muted:     #8a7e70;
+  --color-primary:        #1a5276;
+  --color-primary-dark:   #0f3460;
+  --color-primary-light:  #2980b9;
+  --color-primary-50:     rgba(26, 82, 118, 0.08);
+  --color-primary-100:    rgba(26, 82, 118, 0.16);
+  --color-accent:         #c0392b;
+  --color-accent-dark:    #a93226;
+  --color-accent-light:   #e74c3c;
+  --shadow-xs: 0 1px 2px rgba(26, 20, 16, 0.04);
+  --shadow-sm: 0 2px 8px rgba(26, 20, 16, 0.08), 0 1px 2px rgba(26, 20, 16, 0.04);
+  --shadow-md: 0 4px 16px rgba(26, 20, 16, 0.10), 0 2px 6px rgba(26, 20, 16, 0.05);
+  --shadow-lg: 0 8px 32px rgba(26, 20, 16, 0.12), 0 4px 12px rgba(26, 20, 16, 0.06);
+  --shadow-xl: 0 20px 60px rgba(26, 20, 16, 0.16), 0 8px 24px rgba(26, 20, 16, 0.08);
+  --shadow-glow: 0 0 30px rgba(26, 82, 118, 0.25);
+}
+
+.theme-greek .decorative-border::before {
+  background: linear-gradient(90deg, #0f3460 0%, #1a5276 30%, #2980b9 65%, #c0392b 100%);
+}
+
+.theme-greek .progress-fill {
+  background: linear-gradient(90deg, #1a5276 0%, #c0392b 100%);
+}
+
+.theme-greek .btn-primary {
+  background: linear-gradient(140deg, #1a5276 0%, #0f3460 100%);
+  box-shadow: 0 2px 8px rgba(26, 82, 118, 0.35), 0 1px 2px rgba(26, 82, 118, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.theme-greek .btn-primary:hover {
+  background: linear-gradient(140deg, #0f3460 0%, #0a2440 100%);
+  box-shadow: 0 8px 24px rgba(26, 82, 118, 0.45), 0 4px 8px rgba(26, 82, 118, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  MEDIEVAL THEME — Perkament, bordeaux & bosgroen               ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+.theme-medieval {
+  --color-bg:             #f0e8d5;
+  --color-bg-alt:         #e8dcc4;
+  --color-surface:        #faf4e8;
+  --color-surface-hover:  #f4ecda;
+  --color-border:         #c8b898;
+  --color-border-strong:  #a89878;
+  --color-text:           #1a0a00;
+  --color-text-secondary: #40200a;
+  --color-text-muted:     #806040;
+  --color-primary:        #722f37;
+  --color-primary-dark:   #5a1f26;
+  --color-primary-light:  #8b3a44;
+  --color-primary-50:     rgba(114, 47, 55, 0.09);
+  --color-primary-100:    rgba(114, 47, 55, 0.18);
+  --color-accent:         #2d5a27;
+  --color-accent-dark:    #1e3f1a;
+  --color-accent-light:   #3d7a35;
+  --shadow-xs: 0 1px 2px rgba(26, 10, 0, 0.06);
+  --shadow-sm: 0 2px 8px rgba(26, 10, 0, 0.10), 0 1px 2px rgba(26, 10, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(26, 10, 0, 0.12), 0 2px 6px rgba(26, 10, 0, 0.06);
+  --shadow-lg: 0 8px 32px rgba(26, 10, 0, 0.16), 0 4px 12px rgba(26, 10, 0, 0.08);
+  --shadow-xl: 0 20px 60px rgba(26, 10, 0, 0.20), 0 8px 24px rgba(26, 10, 0, 0.10);
+  --shadow-glow: 0 0 30px rgba(114, 47, 55, 0.28);
+}
+
+.theme-medieval .decorative-border::before {
+  background: linear-gradient(90deg, #5a1f26 0%, #722f37 30%, #8b3a44 65%, #2d5a27 100%);
+}
+
+.theme-medieval .progress-fill {
+  background: linear-gradient(90deg, #722f37 0%, #2d5a27 100%);
+}
+
+.theme-medieval .btn-primary {
+  background: linear-gradient(140deg, #722f37 0%, #5a1f26 100%);
+  box-shadow: 0 2px 8px rgba(114, 47, 55, 0.35), 0 1px 2px rgba(114, 47, 55, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.theme-medieval .btn-primary:hover {
+  background: linear-gradient(140deg, #5a1f26 0%, #40141a 100%);
+  box-shadow: 0 8px 24px rgba(114, 47, 55, 0.45), 0 4px 8px rgba(114, 47, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ╔══════════════════════════════════════════════════════════════════╗
    ║  BASE STYLES                                                   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 *, *::before, *::after {

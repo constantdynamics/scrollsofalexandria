@@ -18,7 +18,8 @@ import AchievementToast from './components/AchievementToast';
 function AppRoutes() {
   const { userData } = useUser();
   const theme = userData?.preferences?.theme || 'classic';
-  const themeClass = theme === 'dark' ? 'theme-dark' : theme === 'light' ? 'theme-light' : '';
+  const themeMap = { dark: 'theme-dark', light: 'theme-light', egyptian: 'theme-egyptian', greek: 'theme-greek', medieval: 'theme-medieval' };
+  const themeClass = themeMap[theme] || '';
 
   return (
     <div className={`${themeClass} min-h-screen bg-bg`}>
