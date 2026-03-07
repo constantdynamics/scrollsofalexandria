@@ -24,6 +24,18 @@ export const UserProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  // Achievement check — roep aan na elke state-update die scores/progress wijzigt
+  const checkAndNotifyAchievements = useCallback((updatedData) => {
+    if (!updatedData) return;
+    const oldUnlocked = updatedData.unlockedAchievements || [];
+    const nowUnlocked = checkAchievements(updatedData, allPrinciples);
+    const nieuw = findNewAchievements(oldUnlocked, nowUnlocked);
+    if (nieuw.length > 0) {
+      setUserData(prev => ({ ...prev, unlockedAchievements: nowUnlocked }));
+      setNewAchievements(prev => [...prev, ...nieuw]);
+    }
+  }, []);
+
   useEffect(() => {
     if (userData && !loading) {
       storage.saveUserData(userData);
@@ -219,18 +231,6 @@ export const UserProvider = ({ children }) => {
   const setMentorPrinciple = (principleId) => {
     updatePreference('mentorPrincipleId', principleId);
   };
-
-  // Achievement check — roep aan na elke state-update die scores/progress wijzigt
-  const checkAndNotifyAchievements = useCallback((updatedData) => {
-    if (!updatedData) return;
-    const oldUnlocked = updatedData.unlockedAchievements || [];
-    const nowUnlocked = checkAchievements(updatedData, allPrinciples);
-    const nieuw = findNewAchievements(oldUnlocked, nowUnlocked);
-    if (nieuw.length > 0) {
-      setUserData(prev => ({ ...prev, unlockedAchievements: nowUnlocked }));
-      setNewAchievements(prev => [...prev, ...nieuw]);
-    }
-  }, []);
 
   // Verwijder een achievement-notificatie (na tonen)
   const dismissAchievement = (achievementId) => {
