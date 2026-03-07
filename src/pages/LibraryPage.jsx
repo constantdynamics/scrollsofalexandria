@@ -24,6 +24,18 @@ const BOOKSHELF = 3;
 const DOOR = 4;
 const CARPET = 5;
 const PILLAR = 6;
+const TORCH = 7;
+
+// Ambient dust particles (generated once)
+const NUM_PARTICLES = 60;
+const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => ({
+  x: seededRandom(i, 0, 99) * 2000,
+  y: seededRandom(0, i, 77) * 2000,
+  size: 1 + seededRandom(i, i, 33) * 2,
+  speed: 0.1 + seededRandom(i, 0, 55) * 0.3,
+  drift: seededRandom(i, 0, 11) * 0.2 - 0.1,
+  alpha: 0.15 + seededRandom(i, 0, 22) * 0.2,
+}));
 
 // Kleuren
 const COLORS = {
@@ -34,6 +46,7 @@ const COLORS = {
   [DOOR]: '#c9a86c',
   [CARPET]: '#7b3f5e',
   [PILLAR]: '#8a7a66',
+  [TORCH]: '#6b5b4a',
   floorAlt: '#cbb99d',
   wallTop: '#7d6b58',
   shelfBooks1: '#c0392b',
@@ -162,6 +175,10 @@ function generateLibrary(categories) {
       map[ry + Math.floor(roomH / 2)][rx + Math.floor(roomW / 2)] = PILLAR;
     }
 
+    // Fakkels naast deur
+    if (doorX - 2 >= rx + 1) map[doorY][doorX - 2] = TORCH;
+    if (doorX + 1 < rx + roomW - 1) map[doorY][doorX + 1] = TORCH;
+
     rooms.push({
       name: cat,
       emoji: CATEGORY_EMOJIS[cat] || '📚',
@@ -253,7 +270,7 @@ function isWalkable(map, px, py, mapW, mapH) {
     const ty = Math.floor(cy / TILE);
     if (tx < 0 || tx >= mapW || ty < 0 || ty >= mapH) return false;
     const tile = map[ty][tx];
-    if (tile === WALL || tile === BOOKSHELF || tile === PILLAR || tile === EMPTY) return false;
+    if (tile === WALL || tile === BOOKSHELF || tile === PILLAR || tile === EMPTY || tile === TORCH) return false;
   }
   return true;
 }
@@ -266,6 +283,7 @@ const LibraryPage = () => {
   const keysRef = useRef(new Set());
   const playerRef = useRef({ x: 0, y: 0, dirX: 0, dirY: 1, bobTime: 0, moving: false });
   const cameraRef = useRef({ x: 0, y: 0 });
+  const gameTimeRef = useRef(0);
   const animFrameRef = useRef(null);
 
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -409,6 +427,9 @@ const LibraryPage = () => {
     const bookColors = [COLORS.shelfBooks1, COLORS.shelfBooks2, COLORS.shelfBooks3, COLORS.shelfBooks4, COLORS.shelfBooks5];
 
     const gameLoop = () => {
+      gameTimeRef.current += 1 / 60;
+      const time = gameTimeRef.current;
+
       // Retina/HiDPI support
       const dpr = window.devicePixelRatio || 1;
       const w = window.innerWidth;
@@ -586,6 +607,48 @@ const LibraryPage = () => {
             ctx.beginPath();
             ctx.arc(sx + TILE / 2, sy + TILE / 2, TILE / 3, 0, Math.PI * 2);
             ctx.stroke();
+          } else if (tile === TORCH) {
+            // Wall background
+            ctx.fillStyle = COLORS[WALL];
+            ctx.fillRect(sx, sy, TILE, TILE);
+            ctx.fillStyle = COLORS.wallTop;
+            ctx.fillRect(sx, sy, TILE, 6);
+            // Torch bracket
+            ctx.fillStyle = '#4a3a2a';
+            ctx.fillRect(sx + TILE / 2 - 2, sy + TILE * 0.3, 4, TILE * 0.4);
+            // Flame (animated)
+            const flicker = Math.sin(time * 8 + tx * 3) * 2 + Math.sin(time * 12 + ty * 5) * 1;
+            const flameH = 10 + flicker;
+            const flameY = sy + TILE * 0.3 - flameH;
+            const grad = ctx.createRadialGradient(
+              sx + TILE / 2, flameY + flameH / 2, 1,
+              sx + TILE / 2, flameY + flameH / 2, flameH
+            );
+            grad.addColorStop(0, 'rgba(255,220,100,0.9)');
+            grad.addColorStop(0.4, 'rgba(255,160,40,0.7)');
+            grad.addColorStop(1, 'rgba(255,80,20,0)');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2, flameY + flameH / 2, 5 + flicker * 0.3, flameH / 2, 0, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      // Torch light glow overlay (additive-like)
+      for (let ty = startTY; ty < endTY; ty++) {
+        for (let tx = startTX; tx < endTX; tx++) {
+          if (map[ty][tx] === TORCH) {
+            const sx = tx * TILE - camX + TILE / 2;
+            const sy = ty * TILE - camY + TILE * 0.25;
+            const flicker = 1 + Math.sin(time * 6 + tx * 5) * 0.1;
+            const radius = TILE * 3 * flicker;
+            const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, radius);
+            glow.addColorStop(0, 'rgba(255,180,60,0.08)');
+            glow.addColorStop(0.5, 'rgba(255,140,40,0.03)');
+            glow.addColorStop(1, 'rgba(255,100,20,0)');
+            ctx.fillStyle = glow;
+            ctx.fillRect(sx - radius, sy - radius, radius * 2, radius * 2);
           }
         }
       }
@@ -677,6 +740,27 @@ const LibraryPage = () => {
         ctx.fillStyle = '#fff';
         ctx.fillText(text, px, promptY + 2);
       }
+
+      // Ambient dust particles
+      ctx.fillStyle = 'rgba(220,200,170,0.25)';
+      for (const p of particles) {
+        const px2 = ((p.x + p.drift * time * 60) % (mapW * TILE)) - camX;
+        const py2 = ((p.y - p.speed * time * 60) % (mapH * TILE)) - camY;
+        if (px2 > -10 && px2 < w + 10 && py2 > -10 && py2 < h + 10) {
+          ctx.globalAlpha = p.alpha * (0.5 + 0.5 * Math.sin(time * 2 + p.x));
+          ctx.beginPath();
+          ctx.arc(px2, py2, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+
+      // Vignette overlay
+      const vignetteGrad = ctx.createRadialGradient(w / 2, h / 2, h * 0.3, w / 2, h / 2, h * 0.9);
+      vignetteGrad.addColorStop(0, 'rgba(0,0,0,0)');
+      vignetteGrad.addColorStop(1, 'rgba(0,0,0,0.3)');
+      ctx.fillStyle = vignetteGrad;
+      ctx.fillRect(0, 0, w, h);
 
       animFrameRef.current = requestAnimationFrame(gameLoop);
     };
