@@ -221,6 +221,12 @@ const LibraryPage = () => {
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
   const [showMinimap, setShowMinimap] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const isMobileRef = useRef(false);
+  const joystickRef = useRef({ dx: 0, dy: 0 });
+  const joystickTouchIdRef = useRef(null);
+  const joystickOriginRef = useRef({ x: 0, y: 0 });
+  const [joystickVisual, setJoystickVisual] = useState(null); // { originX, originY, thumbX, thumbY }
 
   const categories = useMemo(() => getCategories('academic'), []);
 
@@ -234,6 +240,73 @@ const LibraryPage = () => {
       y: (hallY + hallH / 2) * TILE,
     };
   }, [hallX, hallY, hallW, hallH]);
+
+  // Detect touch device
+  useEffect(() => {
+    const checkTouch = () => { setIsMobile(true); isMobileRef.current = true; };
+    window.addEventListener('touchstart', checkTouch, { once: true });
+    if (window.matchMedia('(pointer: coarse)').matches) { setIsMobile(true); isMobileRef.current = true; }
+    return () => window.removeEventListener('touchstart', checkTouch);
+  }, []);
+
+  // Virtual joystick touch handlers
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleTouchStart = (e) => {
+      for (const touch of e.changedTouches) {
+        // Left half of screen = joystick area
+        if (touch.clientX < window.innerWidth * 0.5 && joystickTouchIdRef.current === null) {
+          joystickTouchIdRef.current = touch.identifier;
+          joystickOriginRef.current = { x: touch.clientX, y: touch.clientY };
+          joystickRef.current = { dx: 0, dy: 0 };
+          setJoystickVisual({ originX: touch.clientX, originY: touch.clientY, thumbX: touch.clientX, thumbY: touch.clientY });
+        }
+      }
+    };
+
+    const handleTouchMove = (e) => {
+      e.preventDefault();
+      for (const touch of e.changedTouches) {
+        if (touch.identifier === joystickTouchIdRef.current) {
+          const ox = joystickOriginRef.current.x;
+          const oy = joystickOriginRef.current.y;
+          let dx = touch.clientX - ox;
+          let dy = touch.clientY - oy;
+          const maxDist = 50;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist > maxDist) {
+            dx = (dx / dist) * maxDist;
+            dy = (dy / dist) * maxDist;
+          }
+          joystickRef.current = { dx: dx / maxDist, dy: dy / maxDist };
+          setJoystickVisual({ originX: ox, originY: oy, thumbX: ox + dx, thumbY: oy + dy });
+        }
+      }
+    };
+
+    const handleTouchEnd = (e) => {
+      for (const touch of e.changedTouches) {
+        if (touch.identifier === joystickTouchIdRef.current) {
+          joystickTouchIdRef.current = null;
+          joystickRef.current = { dx: 0, dy: 0 };
+          setJoystickVisual(null);
+        }
+      }
+    };
+
+    const opts = { passive: false };
+    window.addEventListener('touchstart', handleTouchStart, opts);
+    window.addEventListener('touchmove', handleTouchMove, opts);
+    window.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener('touchcancel', handleTouchEnd);
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('touchcancel', handleTouchEnd);
+    };
+  }, [isMobile]);
 
   // Keyboard handlers
   useEffect(() => {
@@ -291,7 +364,7 @@ const LibraryPage = () => {
       canvas.width = w;
       canvas.height = h;
 
-      // Player movement
+      // Player movement (keyboard + virtual joystick)
       const keys = keysRef.current;
       let dx = 0, dy = 0;
       if (keys.has('w') || keys.has('arrowup')) dy -= PLAYER_SPEED;
@@ -299,10 +372,18 @@ const LibraryPage = () => {
       if (keys.has('a') || keys.has('arrowleft')) dx -= PLAYER_SPEED;
       if (keys.has('d') || keys.has('arrowright')) dx += PLAYER_SPEED;
 
+      // Virtual joystick input
+      const joy = joystickRef.current;
+      if (joy.dx !== 0 || joy.dy !== 0) {
+        dx += joy.dx * PLAYER_SPEED;
+        dy += joy.dy * PLAYER_SPEED;
+      }
+
       // Normalize diagonal
-      if (dx !== 0 && dy !== 0) {
-        dx *= 0.707;
-        dy *= 0.707;
+      const mag = Math.sqrt(dx * dx + dy * dy);
+      if (mag > PLAYER_SPEED) {
+        dx = (dx / mag) * PLAYER_SPEED;
+        dy = (dy / mag) * PLAYER_SPEED;
       }
 
       const newX = playerRef.current.x + dx;
@@ -464,8 +545,7 @@ const LibraryPage = () => {
         const promptY = py - 35;
         ctx.font = '600 13px Inter, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillStyle = 'rgba(92, 79, 207, 0.9)';
-        const text = '[ E ] Boeken bekijken';
+        const text = isMobileRef.current ? 'Tik op boek-knop' : '[ E ] Boeken bekijken';
         const tw = ctx.measureText(text).width;
         ctx.fillStyle = 'rgba(0,0,0,0.7)';
         ctx.beginPath();
@@ -496,11 +576,13 @@ const LibraryPage = () => {
     return (
       <div
         style={{
-          position: 'absolute', bottom: 16, right: 16,
+          position: 'absolute',
+          bottom: isMobile ? 180 : 16,
+          right: isMobile ? 8 : 16,
           width: mmW, height: mmH,
           background: 'rgba(0,0,0,0.7)', borderRadius: 8,
           border: '1px solid rgba(255,255,255,0.2)',
-          overflow: 'hidden',
+          overflow: 'hidden', zIndex: 10,
         }}
       >
         {rooms.map((room, i) => (
@@ -696,18 +778,107 @@ const LibraryPage = () => {
         </div>
       </div>
 
-      {/* Controls hint */}
-      <div style={{
-        position: 'absolute', bottom: 16, left: 16,
-        background: 'rgba(0,0,0,0.65)', color: 'rgba(255,255,255,0.8)',
-        padding: '8px 14px', borderRadius: 8,
-        fontSize: '0.75rem', lineHeight: 1.6,
-        backdropFilter: 'blur(8px)', zIndex: 10,
-      }}>
-        <span style={{ fontWeight: 600, color: '#fff' }}>WASD</span> Bewegen &nbsp;
-        <span style={{ fontWeight: 600, color: '#fff' }}>E</span> Interactie &nbsp;
-        <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap
-      </div>
+      {/* Controls hint — desktop only */}
+      {!isMobile && (
+        <div style={{
+          position: 'absolute', bottom: 16, left: 16,
+          background: 'rgba(0,0,0,0.65)', color: 'rgba(255,255,255,0.8)',
+          padding: '8px 14px', borderRadius: 8,
+          fontSize: '0.75rem', lineHeight: 1.6,
+          backdropFilter: 'blur(8px)', zIndex: 10,
+        }}>
+          <span style={{ fontWeight: 600, color: '#fff' }}>WASD</span> Bewegen &nbsp;
+          <span style={{ fontWeight: 600, color: '#fff' }}>E</span> Interactie &nbsp;
+          <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap
+        </div>
+      )}
+
+      {/* Mobile: virtual joystick visual */}
+      {isMobile && joystickVisual && (
+        <>
+          {/* Joystick base */}
+          <div style={{
+            position: 'fixed',
+            left: joystickVisual.originX - 55,
+            top: joystickVisual.originY - 55,
+            width: 110, height: 110,
+            borderRadius: '50%',
+            background: 'rgba(255,255,255,0.1)',
+            border: '2px solid rgba(255,255,255,0.25)',
+            pointerEvents: 'none', zIndex: 20,
+          }} />
+          {/* Joystick thumb */}
+          <div style={{
+            position: 'fixed',
+            left: joystickVisual.thumbX - 24,
+            top: joystickVisual.thumbY - 24,
+            width: 48, height: 48,
+            borderRadius: '50%',
+            background: 'rgba(92,79,207,0.7)',
+            border: '2px solid rgba(255,255,255,0.5)',
+            boxShadow: '0 0 12px rgba(92,79,207,0.5)',
+            pointerEvents: 'none', zIndex: 21,
+          }} />
+        </>
+      )}
+
+      {/* Mobile: joystick hint area */}
+      {isMobile && !joystickVisual && (
+        <div style={{
+          position: 'absolute', bottom: 32, left: 32,
+          width: 90, height: 90,
+          borderRadius: '50%',
+          background: 'rgba(255,255,255,0.06)',
+          border: '2px dashed rgba(255,255,255,0.15)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          pointerEvents: 'none', zIndex: 10,
+        }}>
+          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.65rem', fontWeight: 600, textAlign: 'center', lineHeight: 1.3 }}>
+            Sleep<br/>hier
+          </span>
+        </div>
+      )}
+
+      {/* Mobile: action button */}
+      {isMobile && (
+        <button
+          onTouchStart={(e) => { e.stopPropagation(); handleInteraction(); }}
+          style={{
+            position: 'absolute', bottom: 36, right: 32,
+            width: 72, height: 72,
+            borderRadius: '50%',
+            background: 'rgba(92,79,207,0.8)',
+            border: '3px solid rgba(255,255,255,0.35)',
+            color: '#fff', fontSize: '0.75rem', fontWeight: 700,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: 'pointer', zIndex: 20,
+            boxShadow: '0 4px 20px rgba(92,79,207,0.4)',
+            touchAction: 'none',
+          }}
+        >
+          Boeken
+        </button>
+      )}
+
+      {/* Mobile: minimap toggle */}
+      {isMobile && (
+        <button
+          onTouchStart={(e) => { e.stopPropagation(); setShowMinimap(prev => !prev); }}
+          style={{
+            position: 'absolute', bottom: 120, right: 40,
+            width: 44, height: 44,
+            borderRadius: '50%',
+            background: 'rgba(0,0,0,0.6)',
+            border: '2px solid rgba(255,255,255,0.2)',
+            color: '#fff', fontSize: '1.1rem',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: 'pointer', zIndex: 20,
+            touchAction: 'none',
+          }}
+        >
+          {showMinimap ? '🗺️' : '🗺️'}
+        </button>
+      )}
 
       {/* Back button */}
       <button
