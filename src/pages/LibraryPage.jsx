@@ -298,6 +298,7 @@ const LibraryPage = () => {
   const playerRef = useRef({ x: 0, y: 0, dirX: 0, dirY: 1, bobTime: 0, moving: false });
   const cameraRef = useRef({ x: 0, y: 0 });
   const gameTimeRef = useRef(0);
+  const footstepDustRef = useRef([]); // { x, y, age, size }
   const animFrameRef = useRef(null);
 
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -485,8 +486,28 @@ const LibraryPage = () => {
         player.dirY = dy;
         player.bobTime += 0.15;
         player.moving = true;
+        // Spawn footstep dust
+        if (Math.random() < 0.3) {
+          footstepDustRef.current.push({
+            x: player.x + (Math.random() - 0.5) * 8,
+            y: player.y + 12 + Math.random() * 4,
+            age: 0,
+            size: 2 + Math.random() * 3,
+            vx: -dx * 0.3 + (Math.random() - 0.5) * 0.5,
+            vy: -0.3 - Math.random() * 0.3,
+          });
+        }
       } else {
         player.moving = false;
+      }
+
+      // Update footstep dust
+      const dust = footstepDustRef.current;
+      for (let i = dust.length - 1; i >= 0; i--) {
+        dust[i].age += 1 / 60;
+        dust[i].x += dust[i].vx;
+        dust[i].y += dust[i].vy;
+        if (dust[i].age > 0.6) dust.splice(i, 1);
       }
 
       const newX = player.x + dx;
@@ -572,15 +593,30 @@ const LibraryPage = () => {
             ctx.fillStyle = 'rgba(0,0,0,0.1)';
             ctx.fillRect(sx, sy + Math.floor(TILE / 2) + 2, TILE, 2);
           } else if (tile === DOOR) {
+            // Warm glow underneath door
+            const doorGlow = ctx.createRadialGradient(
+              sx + TILE / 2, sy + TILE / 2, 2,
+              sx + TILE / 2, sy + TILE / 2, TILE * 1.2
+            );
+            doorGlow.addColorStop(0, 'rgba(255,220,150,0.15)');
+            doorGlow.addColorStop(1, 'rgba(255,200,100,0)');
+            ctx.fillStyle = doorGlow;
+            ctx.fillRect(sx - TILE * 0.5, sy - TILE * 0.5, TILE * 2, TILE * 2);
+            // Door base
             ctx.fillStyle = COLORS[DOOR];
             ctx.fillRect(sx, sy, TILE, TILE);
-            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.fillStyle = 'rgba(0,0,0,0.08)';
             ctx.fillRect(sx + 2, sy + 2, TILE - 4, TILE - 4);
             // Deur panelen
             ctx.strokeStyle = 'rgba(0,0,0,0.12)';
             ctx.lineWidth = 1;
             ctx.strokeRect(sx + 5, sy + 4, TILE - 10, TILE / 2 - 4);
             ctx.strokeRect(sx + 5, sy + TILE / 2 + 2, TILE - 10, TILE / 2 - 6);
+            // Door handle
+            ctx.fillStyle = '#b8860b';
+            ctx.beginPath();
+            ctx.arc(sx + TILE - 9, sy + TILE / 2, 2.5, 0, Math.PI * 2);
+            ctx.fill();
           } else if (tile === CARPET) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
@@ -772,6 +808,15 @@ const LibraryPage = () => {
       ctx.arc(px + 5 + eyeDx, py - 3 + eyeDy, 2, 0, Math.PI * 2);
       ctx.fill();
 
+      // Footstep dust rendering
+      for (const d of footstepDustRef.current) {
+        const alpha = 1 - d.age / 0.6;
+        ctx.fillStyle = `rgba(180,160,130,${alpha * 0.4})`;
+        ctx.beginPath();
+        ctx.arc(d.x - camX, d.y - camY, d.size * (1 + d.age), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       // Interactie indicator
       let nearRoom = null;
       for (const room of rooms) {
@@ -937,9 +982,14 @@ const LibraryPage = () => {
           background: 'rgba(0,0,0,0.6)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           zIndex: 50,
+          animation: 'fadeIn 0.2s ease-out',
         }}
         onClick={() => setSelectedRoom(null)}
       >
+        <style>{`
+          @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+          @keyframes slideUp { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        `}</style>
         <div
           onClick={e => e.stopPropagation()}
           style={{
@@ -952,6 +1002,7 @@ const LibraryPage = () => {
             overflow: 'auto',
             boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
             border: '1px solid var(--color-border, #e5d9c8)',
+            animation: 'slideUp 0.25s ease-out',
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
