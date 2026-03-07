@@ -556,6 +556,12 @@ const LibraryPage = () => {
           if (tile === FLOOR) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
+            // Subtle room tint for floor tiles inside rooms
+            const floorRoomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            if (floorRoomIdx >= 0 && rooms[floorRoomIdx]) {
+              ctx.fillStyle = `hsla(${rooms[floorRoomIdx].catHue}, 20%, 50%, 0.04)`;
+              ctx.fillRect(sx, sy, TILE, TILE);
+            }
             // Subtiele voegen
             ctx.strokeStyle = 'rgba(0,0,0,0.06)';
             ctx.strokeRect(sx, sy, TILE, TILE);
@@ -641,7 +647,7 @@ const LibraryPage = () => {
             ctx.globalAlpha = 0.35;
             ctx.fillRect(sx, sy, TILE, TILE);
             ctx.globalAlpha = 1;
-            // Patroon - diamond pattern
+            // Diamond pattern
             ctx.fillStyle = 'rgba(200,160,80,0.15)';
             ctx.beginPath();
             ctx.moveTo(sx + TILE / 2, sy + 4);
@@ -650,6 +656,19 @@ const LibraryPage = () => {
             ctx.lineTo(sx + 4, sy + TILE / 2);
             ctx.closePath();
             ctx.fill();
+            // Inner diamond
+            ctx.fillStyle = 'rgba(160,120,60,0.1)';
+            ctx.beginPath();
+            ctx.moveTo(sx + TILE / 2, sy + 10);
+            ctx.lineTo(sx + TILE - 10, sy + TILE / 2);
+            ctx.lineTo(sx + TILE / 2, sy + TILE - 10);
+            ctx.lineTo(sx + 10, sy + TILE / 2);
+            ctx.closePath();
+            ctx.fill();
+            // Gold thread border
+            ctx.strokeStyle = 'rgba(200,160,80,0.12)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(sx + 2, sy + 2, TILE - 4, TILE - 4);
           } else if (tile === PILLAR) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
