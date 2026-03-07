@@ -973,12 +973,28 @@ const LibraryPage = () => {
             </button>
           </div>
 
-          <p style={{
-            color: 'var(--color-text-secondary, #4a3d2e)',
-            marginBottom: 16, fontSize: '0.9rem',
-          }}>
-            {principles.length} {principles.length === 1 ? 'boek' : 'boeken'} in deze sectie
-          </p>
+          {(() => {
+            const masteredCount = principles.filter(p => (getPrincipleProgress(p.id)?.masteryPercentage || 0) >= 100).length;
+            const readCount = principles.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+            const avgMastery = principles.length > 0
+              ? Math.round(principles.reduce((sum, p) => sum + (getPrincipleProgress(p.id)?.masteryPercentage || 0), 0) / principles.length)
+              : 0;
+            return (
+              <div style={{ marginBottom: 16 }}>
+                <p style={{ color: 'var(--color-text-secondary, #4a3d2e)', fontSize: '0.9rem', marginBottom: 8 }}>
+                  {principles.length} {principles.length === 1 ? 'boek' : 'boeken'} &middot; {readCount} gelezen &middot; {masteredCount} voltooid
+                </p>
+                <div style={{ height: 6, borderRadius: 3, background: 'var(--color-bg-alt, #f1e9dc)', overflow: 'hidden' }}>
+                  <div style={{
+                    height: '100%', borderRadius: 3,
+                    width: `${avgMastery}%`,
+                    background: 'linear-gradient(90deg, #5c4fcf, #c9880f)',
+                    transition: 'width 0.3s ease',
+                  }} />
+                </div>
+              </div>
+            );
+          })()}
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {principles.map(p => {
@@ -1085,7 +1101,20 @@ const LibraryPage = () => {
           fontSize: '1.1rem', fontWeight: 700,
           backdropFilter: 'blur(8px)',
         }}>
-          📍 {currentRoomName}
+          {currentRoomName}
+        </div>
+        {/* Totale voortgang */}
+        <div style={{
+          background: 'rgba(0,0,0,0.6)', color: 'rgba(255,255,255,0.8)',
+          padding: '6px 12px', borderRadius: 8,
+          fontSize: '0.75rem',
+          backdropFilter: 'blur(8px)',
+        }}>
+          {(() => {
+            const all = allPrinciples || [];
+            const read = all.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+            return `${read}/${all.length} gelezen`;
+          })()}
         </div>
       </div>
 
