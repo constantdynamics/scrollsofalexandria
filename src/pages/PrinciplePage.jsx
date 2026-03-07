@@ -72,7 +72,13 @@ const PrinciplePage = () => {
         <div className="max-w-4xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <button
-              onClick={() => navigate('/home')}
+              onClick={() => {
+                if (window.history.length > 1) {
+                  navigate(-1);
+                } else {
+                  navigate('/home');
+                }
+              }}
               className="flex items-center gap-2 text-text-secondary hover:text-text transition-colors text-sm font-medium group"
             >
               <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

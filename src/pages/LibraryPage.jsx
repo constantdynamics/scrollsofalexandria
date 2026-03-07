@@ -166,6 +166,47 @@ function generateLibrary(categories) {
     });
   });
 
+  // Herstel hoofdcorridor - kamermuren kunnen deze overschreven hebben
+  for (let y = marginY; y < hallY + 1; y++) {
+    for (let x = corStartX; x < corStartX + corridorW; x++) {
+      if (x >= 0 && x < mapW && y >= 0 && y < mapH) {
+        if (map[y][x] === WALL || map[y][x] === EMPTY) {
+          map[y][x] = FLOOR;
+        }
+      }
+    }
+  }
+
+  // Herstel horizontale corridors - zorg dat ze niet geblokkeerd zijn
+  categories.forEach((cat, i) => {
+    const row = Math.floor(i / roomsPerRow);
+    const col = i % roomsPerRow;
+    const rx = marginX + col * (roomW + corridorW);
+    const ry = marginY + row * (roomH + corridorW);
+    const corY = ry + roomH - 1;
+    const startX = Math.min(rx, corStartX);
+    const endX = Math.max(rx + roomW, corStartX + corridorW);
+    for (let x = startX; x < endX; x++) {
+      for (let dy = 0; dy < 3; dy++) {
+        const cy = corY + dy;
+        if (cy < mapH && x >= 0 && x < mapW) {
+          if (map[cy][x] === WALL || map[cy][x] === EMPTY) {
+            map[cy][x] = FLOOR;
+          }
+        }
+      }
+    }
+  });
+
+  // Tapijt in hoofdcorridor herstellen
+  for (let y = marginY + 1; y < hallY; y++) {
+    for (let x = corStartX + 1; x < corStartX + corridorW - 1; x++) {
+      if (x >= 0 && x < mapW && map[y][x] === FLOOR) {
+        map[y][x] = CARPET;
+      }
+    }
+  }
+
   return { map, mapW, mapH, rooms, hallX, hallY, hallW, hallH };
 }
 
