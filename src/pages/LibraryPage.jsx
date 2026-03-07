@@ -193,6 +193,10 @@ function generateLibrary(categories) {
       map[tableY][tableX] = TABLE;
     }
 
+    // Categorie kleur voor boekenkasten (hash van naam)
+    const catHash = cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+    const catHue = catHash % 360;
+
     rooms.push({
       name: cat,
       emoji: CATEGORY_EMOJIS[cat] || '📚',
@@ -202,6 +206,7 @@ function generateLibrary(categories) {
       h: roomH,
       centerX: (rx + roomW / 2) * TILE,
       centerY: (ry + roomH / 2) * TILE,
+      catHue,
     });
   });
 
@@ -779,6 +784,19 @@ const LibraryPage = () => {
             ctx.fillRect(sx - radius, sy - radius, radius * 2, radius * 2);
           }
         }
+      }
+
+      // Entreehal welkomsttekst
+      const hallCenterX = (hallX + hallW / 2) * TILE - camX;
+      const hallCenterY = (hallY + 1) * TILE - camY;
+      if (hallCenterX > -300 && hallCenterX < w + 300 && hallCenterY > -100 && hallCenterY < h + 100) {
+        ctx.font = "700 16px 'Playfair Display', Georgia, serif";
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(92,79,207,0.5)';
+        ctx.fillText('Bibliotheek van Alexandrië', hallCenterX, hallCenterY);
+        ctx.font = '400 10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(0,0,0,0.35)';
+        ctx.fillText('Verken de kamers om te leren', hallCenterX, hallCenterY + 16);
       }
 
       // Room labels
