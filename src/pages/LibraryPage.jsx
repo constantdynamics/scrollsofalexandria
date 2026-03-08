@@ -342,6 +342,9 @@ const LibraryPage = () => {
   const teleportFlashRef = useRef(0); // Flash intensity on arrival
   const interactPulseRef = useRef(0); // Pulse on interaction
   const zoomRef = useRef(1); // Camera zoom level
+  const torchSparksRef = useRef([]); // { x, y, vx, vy, life, maxLife, size }
+  const lastRoomRef = useRef(null); // Track room entry for camera pulse
+  const roomZoomPulseRef = useRef(0); // Camera zoom pulse on room entry
 
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
@@ -358,6 +361,7 @@ const LibraryPage = () => {
   const joystickTouchIdRef = useRef(null);
   const joystickOriginRef = useRef({ x: 0, y: 0 });
   const [joystickVisual, setJoystickVisual] = useState(null); // { originX, originY, thumbX, thumbY }
+  const pinchRef = useRef({ active: false, startDist: 0, startZoom: 1 });
 
   getPrincipleProgressRef.current = getPrincipleProgress;
 
@@ -421,6 +425,18 @@ const LibraryPage = () => {
 
     const handleTouchMove = (e) => {
       e.preventDefault();
+      // Pinch-to-zoom
+      if (e.touches.length === 2) {
+        const t1 = e.touches[0], t2 = e.touches[1];
+        const dist = Math.sqrt((t1.clientX - t2.clientX) ** 2 + (t1.clientY - t2.clientY) ** 2);
+        if (!pinchRef.current.active) {
+          pinchRef.current = { active: true, startDist: dist, startZoom: zoomRef.current };
+        } else {
+          const scale = dist / pinchRef.current.startDist;
+          zoomRef.current = Math.max(0.4, Math.min(2, pinchRef.current.startZoom * scale));
+        }
+        return;
+      }
       for (const touch of e.changedTouches) {
         if (touch.identifier === joystickTouchIdRef.current) {
           const ox = joystickOriginRef.current.x;
@@ -440,6 +456,7 @@ const LibraryPage = () => {
     };
 
     const handleTouchEnd = (e) => {
+      if (e.touches.length < 2) pinchRef.current.active = false;
       for (const touch of e.changedTouches) {
         if (touch.identifier === joystickTouchIdRef.current) {
           joystickTouchIdRef.current = null;
@@ -635,8 +652,14 @@ const LibraryPage = () => {
         }
       }
 
+      // Room entry zoom pulse decay
+      if (roomZoomPulseRef.current > 0) {
+        roomZoomPulseRef.current *= 0.93;
+        if (roomZoomPulseRef.current < 0.005) roomZoomPulseRef.current = 0;
+      }
+
       // Smooth camera (lerp) with zoom
-      const zoom = zoomRef.current;
+      const zoom = zoomRef.current + roomZoomPulseRef.current;
       const cam = cameraRef.current;
       const lerpSpeed = tp ? 0.15 : CAMERA_LERP;
       const targetCamX = player.x - w / 2 / zoom;
@@ -935,6 +958,44 @@ const LibraryPage = () => {
         }
       }
 
+      // Torch spark particles - spawn from visible torches
+      for (let ty = startTY; ty < endTY; ty++) {
+        for (let tx = startTX; tx < endTX; tx++) {
+          if (map[ty][tx] === TORCH && Math.random() < 0.04) {
+            torchSparksRef.current.push({
+              x: tx * TILE + TILE / 2 + (Math.random() - 0.5) * 6,
+              y: ty * TILE + TILE * 0.2,
+              vx: (Math.random() - 0.5) * 0.8,
+              vy: -0.5 - Math.random() * 1.2,
+              life: 0,
+              maxLife: 0.4 + Math.random() * 0.6,
+              size: 1 + Math.random() * 2,
+            });
+          }
+        }
+      }
+      // Update and render torch sparks
+      const sparks = torchSparksRef.current;
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const s = sparks[i];
+        s.life += 1 / 60;
+        s.x += s.vx;
+        s.y += s.vy;
+        s.vx += (Math.random() - 0.5) * 0.1;
+        if (s.life >= s.maxLife) { sparks.splice(i, 1); continue; }
+        const t2 = 1 - s.life / s.maxLife;
+        const spx = s.x - camX;
+        const spy = s.y - camY;
+        if (spx > -20 && spx < viewW + 20 && spy > -20 && spy < viewH + 20) {
+          ctx.fillStyle = `rgba(255,${160 + Math.floor(t2 * 60)},${20 + Math.floor(t2 * 40)},${t2 * 0.8})`;
+          ctx.beginPath();
+          ctx.arc(spx, spy, s.size * t2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      // Cap sparks count
+      if (sparks.length > 150) sparks.splice(0, sparks.length - 150);
+
       // Floor/section numbers along corridor (use rooms[0,3,6,...] y positions)
       const corCenterX = Math.floor(mapW / 2) * TILE + TILE / 2;
       const seenRows = new Set();
@@ -1157,10 +1218,15 @@ const LibraryPage = () => {
         }
       }
 
-      // Update current room name
+      // Update current room name + room entry pulse
       if (nearRoom) {
+        if (lastRoomRef.current !== nearRoom.name) {
+          lastRoomRef.current = nearRoom.name;
+          roomZoomPulseRef.current = 0.12; // Trigger zoom pulse
+        }
         setCurrentRoomName(nearRoom.name);
       } else {
+        lastRoomRef.current = null;
         // Check if player is in entreehal
         const ptx = Math.floor(player.x / TILE);
         const pty = Math.floor(player.y / TILE);
@@ -1208,8 +1274,16 @@ const LibraryPage = () => {
         const mCtx = minimapCanvasRef.current.getContext('2d');
         mCtx.clearRect(0, 0, mmW2, mmH2);
         mCtx.drawImage(minimapImageRef.current, 0, 0);
-        // Room emojis
+        // Room mastery tint + emojis
+        const getProgressMM = getPrincipleProgressRef.current;
         for (const room of rooms) {
+          const rp = roomPrinciplesMap[room.name] || [];
+          const avg = rp.length > 0 ? rp.reduce((s, p) => s + (getProgressMM(p.id)?.masteryPercentage || 0), 0) / rp.length : 0;
+          if (avg > 0) {
+            const color = avg >= 100 ? 'rgba(201,136,15,0.35)' : `rgba(92,79,207,${0.1 + (avg / 100) * 0.25})`;
+            mCtx.fillStyle = color;
+            mCtx.fillRect(room.x * mmScale, room.y * mmScale, room.w * mmScale, room.h * mmScale);
+          }
           mCtx.font = '7px sans-serif';
           mCtx.textAlign = 'center';
           mCtx.fillStyle = 'rgba(255,255,255,0.6)';
@@ -1265,6 +1339,58 @@ const LibraryPage = () => {
       vignetteGrad.addColorStop(1, `rgba(0,0,0,${0.3 + nightIntensity})`);
       ctx.fillStyle = vignetteGrad;
       ctx.fillRect(0, 0, w, h);
+
+      // Compass: arrow pointing to nearest unread room
+      const getProgressCompass = getPrincipleProgressRef.current;
+      let nearestUnread = null;
+      let nearestDist = Infinity;
+      for (const room of rooms) {
+        const rp = roomPrinciplesMap[room.name] || [];
+        const readCount = rp.filter(p => getProgressCompass(p.id)?.activities?.read).length;
+        if (readCount < rp.length && rp.length > 0) {
+          const cdx = room.centerX - player.x;
+          const cdy = room.centerY - player.y;
+          const cd = Math.sqrt(cdx * cdx + cdy * cdy);
+          if (cd < nearestDist && cd > 100) {
+            nearestDist = cd;
+            nearestUnread = room;
+          }
+        }
+      }
+      if (nearestUnread) {
+        const compassX = w - 60;
+        const compassY = 70;
+        const adx = nearestUnread.centerX - player.x;
+        const ady = nearestUnread.centerY - player.y;
+        const angle = Math.atan2(ady, adx);
+        // Compass circle
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.beginPath();
+        ctx.arc(compassX, compassY, 22, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        // Arrow
+        ctx.save();
+        ctx.translate(compassX, compassY);
+        ctx.rotate(angle);
+        ctx.fillStyle = '#5c4fcf';
+        ctx.beginPath();
+        ctx.moveTo(14, 0);
+        ctx.lineTo(-6, -7);
+        ctx.lineTo(-3, 0);
+        ctx.lineTo(-6, 7);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+        // Distance label
+        const distLabel = nearestDist > 1000 ? `${(nearestDist / TILE).toFixed(0)}` : `${Math.round(nearestDist / TILE)}`;
+        ctx.font = '500 8px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.fillText(distLabel + ' tiles', compassX, compassY + 34);
+      }
 
       animFrameRef.current = requestAnimationFrame(gameLoop);
     };
@@ -1576,7 +1702,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>Q</span> Stats &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.5.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.6.0</div>
         </div>
       )}
 
@@ -1632,7 +1758,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.5.0</div>
+        }}>v0.6.0</div>
       )}
 
       {/* Mobile: action button */}
