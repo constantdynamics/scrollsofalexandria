@@ -6,6 +6,7 @@ import { allPrinciples, getCategories, getPrinciplesByCategory } from '../data/p
 // ── Constanten ──
 const TILE = 40;
 const PLAYER_SPEED = 3;
+const PLAYER_SPRINT = 6;
 const INTERACTION_DIST = 50;
 const CAMERA_LERP = 0.08; // Smooth camera follow speed
 
@@ -64,20 +65,31 @@ const COLORS = {
 
 // Category emoji mapping
 const CATEGORY_EMOJIS = {
-  'Logica': '🔗',
-  'Epistemologie': '🧠',
-  'Psychologie': '🧩',
-  'Behavioral Economics': '💰',
-  'Retorica': '🎭',
-  'Speltheorie': '♟️',
-  'Statistiek': '📊',
-  'Besliskunde': '⚖️',
-  'Systeemdenken': '🔄',
-  'Organisatie': '🏛️',
-  'Ethiek': '⭐',
-  'Gedachte-experimenten': '💭',
-  'Zelfvertrouwen': '💪',
-  'Emotieregulatie': '🌊',
+  'Logica': '🔗', 'Epistemologie': '🧠', 'Psychologie': '🧩',
+  'Behavioral Economics': '💰', 'Retorica': '🎭', 'Speltheorie': '♟️',
+  'Statistiek': '📊', 'Besliskunde': '⚖️', 'Systeemdenken': '🔄',
+  'Organisatie': '🏛️', 'Ethiek': '⭐', 'Gedachte-experimenten': '💭',
+  'Zelfvertrouwen': '💪', 'Emotieregulatie': '🌊', 'Gedragseconomie': '🧮',
+  'Sociale Psychologie': '👥', 'Cognitieve Psychologie': '🧬',
+  'Economie': '📈', 'Sociologie': '🌐', 'Filosofie': '🏺',
+  'Communicatie': '💬', 'Communicatiewetenschap': '📡', 'Leiderschap': '👑',
+  'Organisatiepsychologie': '🏢', 'Persoonlijke Ontwikkeling': '🌱',
+  'Politicologie': '🗳️', 'Politieke Filosofie': '⚔️', 'Bedrijfskunde': '💼',
+  'Linguïstiek': '🗣️', 'Innovatiemanagement': '💡', 'Pedagogie': '📖',
+  'Pedagogiek': '📖', 'Criminologie': '🔍', 'Rechtsfilosofie': '⚖️',
+  'Rechtswetenschappen': '⚖️', 'Geschiedenis': '📜', 'Risicobeheer': '🛡️',
+  'Wetenschapsfilosofie': '🔬', 'Narratologie': '📕', 'Positieve Psychologie': '☀️',
+  'Ontwikkelingspsychologie': '🌿', 'Mindfulness': '🧘', 'Creativiteit': '🎨',
+  'Neurowetenschappen': '🧪', 'Stoïcisme': '🗿', 'Existentialisme': '🌑',
+  'Sportpsychologie': '🏅', 'Slaapwetenschap': '😴', 'Slaapgeneeskunde': '😴',
+  'Motivatiepsychologie': '🔥', 'Conflicthantering': '🤝',
+  'Metacognitie': '🪞', 'Schrijfkunst': '✍️', 'Presentatiekunst': '🎤',
+  'Ondernemerschap': '🚀', 'Ecologie': '🌍', 'Wiskunde': '➗',
+  'Natuurkunde': '⚛️', 'Levensfilosofie': '🌳', 'Tijdmanagement': '⏰',
+  'Traumapsychologie': '💜', 'Relatiepsychologie': '❤️',
+  'Contemplatieve Wetenschap': '🕊️', 'Levenslooppsychologie': '🔄',
+  'Integratiepsychologie': '🔗', 'Ervaringspsychologie': '✨',
+  'Levenspsychologie': '🌻', 'Dieptepsychologie': '🌊',
 };
 
 // ── Bibliotheek layout genereren ──
@@ -310,6 +322,7 @@ const LibraryPage = () => {
   const gameTimeRef = useRef(0);
   const footstepDustRef = useRef([]); // { x, y, age, size }
   const animFrameRef = useRef(null);
+  const getPrincipleProgressRef = useRef(getPrincipleProgress);
 
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
@@ -322,6 +335,8 @@ const LibraryPage = () => {
   const joystickTouchIdRef = useRef(null);
   const joystickOriginRef = useRef({ x: 0, y: 0 });
   const [joystickVisual, setJoystickVisual] = useState(null); // { originX, originY, thumbX, thumbY }
+
+  getPrincipleProgressRef.current = getPrincipleProgress;
 
   const categories = useMemo(() => getCategories('academic'), []);
 
@@ -435,6 +450,7 @@ const LibraryPage = () => {
         e.preventDefault();
         keysRef.current.add(e.key.toLowerCase());
       }
+      if (e.key === 'Shift') keysRef.current.add('shift');
       if (e.key === 'e' || e.key === 'E' || e.key === ' ') {
         e.preventDefault();
         handleInteraction();
@@ -448,6 +464,7 @@ const LibraryPage = () => {
     };
     const handleKeyUp = (e) => {
       keysRef.current.delete(e.key.toLowerCase());
+      if (e.key === 'Shift') keysRef.current.delete('shift');
     };
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
@@ -480,24 +497,26 @@ const LibraryPage = () => {
 
       // Player movement (keyboard + virtual joystick)
       const keys = keysRef.current;
+      const sprinting = keys.has('shift');
+      const speed = sprinting ? PLAYER_SPRINT : PLAYER_SPEED;
       let dx = 0, dy = 0;
-      if (keys.has('w') || keys.has('arrowup')) dy -= PLAYER_SPEED;
-      if (keys.has('s') || keys.has('arrowdown')) dy += PLAYER_SPEED;
-      if (keys.has('a') || keys.has('arrowleft')) dx -= PLAYER_SPEED;
-      if (keys.has('d') || keys.has('arrowright')) dx += PLAYER_SPEED;
+      if (keys.has('w') || keys.has('arrowup')) dy -= speed;
+      if (keys.has('s') || keys.has('arrowdown')) dy += speed;
+      if (keys.has('a') || keys.has('arrowleft')) dx -= speed;
+      if (keys.has('d') || keys.has('arrowright')) dx += speed;
 
       // Virtual joystick input
       const joy = joystickRef.current;
       if (joy.dx !== 0 || joy.dy !== 0) {
-        dx += joy.dx * PLAYER_SPEED;
-        dy += joy.dy * PLAYER_SPEED;
+        dx += joy.dx * speed;
+        dy += joy.dy * speed;
       }
 
       // Normalize diagonal
       const mag = Math.sqrt(dx * dx + dy * dy);
-      if (mag > PLAYER_SPEED) {
-        dx = (dx / mag) * PLAYER_SPEED;
-        dy = (dy / mag) * PLAYER_SPEED;
+      if (mag > speed) {
+        dx = (dx / mag) * speed;
+        dy = (dy / mag) * speed;
       }
 
       const player = playerRef.current;
@@ -841,11 +860,35 @@ const LibraryPage = () => {
         ctx.fillText('Verken de kamers om te leren', hallCenterX, hallCenterY + 16);
       }
 
-      // Room labels
+      // Room labels + progress bars + mastery glow
+      const getProgress = getPrincipleProgressRef.current;
       for (const room of rooms) {
         const labelX = room.centerX - camX;
         const labelY = room.centerY - camY - 8;
         if (labelX > -200 && labelX < w + 200 && labelY > -100 && labelY < h + 100) {
+          // Compute room mastery
+          const roomPrinciples = getPrinciplesByCategory(room.name, 'academic');
+          const avgMastery = roomPrinciples.length > 0
+            ? roomPrinciples.reduce((sum, p) => sum + (getProgress(p.id)?.masteryPercentage || 0), 0) / roomPrinciples.length
+            : 0;
+
+          // Mastery glow for rooms with progress
+          if (avgMastery > 0) {
+            const glowAlpha = 0.03 + (avgMastery / 100) * 0.08;
+            const glowColor = avgMastery >= 100
+              ? `rgba(201,136,15,${glowAlpha + Math.sin(time * 2) * 0.02})`
+              : `rgba(92,79,207,${glowAlpha})`;
+            const glowR = room.w * TILE * 0.6;
+            const glow = ctx.createRadialGradient(
+              room.centerX - camX, room.centerY - camY, 0,
+              room.centerX - camX, room.centerY - camY, glowR
+            );
+            glow.addColorStop(0, glowColor);
+            glow.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = glow;
+            ctx.fillRect(room.centerX - camX - glowR, room.centerY - camY - glowR, glowR * 2, glowR * 2);
+          }
+
           ctx.font = '600 13px Inter, sans-serif';
           ctx.textAlign = 'center';
           // Text shadow
@@ -853,6 +896,35 @@ const LibraryPage = () => {
           ctx.fillText(`${room.emoji} ${room.name}`, labelX + 1, labelY + 1);
           ctx.fillStyle = 'rgba(0,0,0,0.6)';
           ctx.fillText(`${room.emoji} ${room.name}`, labelX, labelY);
+
+          // Progress bar under label
+          if (roomPrinciples.length > 0) {
+            const barW = 60;
+            const barH = 4;
+            const barX = labelX - barW / 2;
+            const barY = labelY + 6;
+            // Background
+            ctx.fillStyle = 'rgba(0,0,0,0.25)';
+            ctx.beginPath();
+            ctx.roundRect(barX, barY, barW, barH, 2);
+            ctx.fill();
+            // Fill
+            if (avgMastery > 0) {
+              const fillW = (avgMastery / 100) * barW;
+              const grad = ctx.createLinearGradient(barX, barY, barX + barW, barY);
+              grad.addColorStop(0, '#5c4fcf');
+              grad.addColorStop(1, avgMastery >= 100 ? '#c9880f' : '#7b6bd4');
+              ctx.fillStyle = grad;
+              ctx.beginPath();
+              ctx.roundRect(barX, barY, fillW, barH, 2);
+              ctx.fill();
+            }
+            // Count text
+            const readCount = roomPrinciples.filter(p => getProgress(p.id)?.activities?.read).length;
+            ctx.font = '500 8px Inter, sans-serif';
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
+            ctx.fillText(`${readCount}/${roomPrinciples.length}`, labelX, barY + barH + 10);
+          }
         }
       }
 
@@ -1065,6 +1137,31 @@ const LibraryPage = () => {
     minimapImageRef.current = offscreen;
   }, [map, mapW, mapH]);
 
+  const handleMinimapClick = useCallback((e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const scale = 3;
+    const clickX = (e.clientX - rect.left) / scale;
+    const clickY = (e.clientY - rect.top) / scale;
+    // Find closest room
+    let bestRoom = null;
+    let bestDist = Infinity;
+    for (const room of rooms) {
+      const rcx = room.x + room.w / 2;
+      const rcy = room.y + room.h / 2;
+      const dist = Math.sqrt((clickX - rcx) ** 2 + (clickY - rcy) ** 2);
+      if (dist < bestDist && dist < room.w) {
+        bestDist = dist;
+        bestRoom = room;
+      }
+    }
+    if (bestRoom) {
+      playerRef.current.x = bestRoom.centerX;
+      playerRef.current.y = bestRoom.centerY;
+      cameraRef.current.x = bestRoom.centerX - window.innerWidth / 2;
+      cameraRef.current.y = bestRoom.centerY - window.innerHeight / 2;
+    }
+  }, [rooms]);
+
   const renderMinimap = () => {
     if (!showMinimap) return null;
     const scale = 3;
@@ -1073,6 +1170,7 @@ const LibraryPage = () => {
 
     return (
       <div
+        onClick={handleMinimapClick}
         style={{
           position: 'absolute',
           bottom: isMobile ? 180 : 16,
@@ -1082,13 +1180,14 @@ const LibraryPage = () => {
           border: '1px solid rgba(255,255,255,0.2)',
           overflow: 'hidden', zIndex: 10,
           boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+          cursor: 'pointer',
         }}
       >
         <canvas
           ref={minimapCanvasRef}
           width={mmW}
           height={mmH}
-          style={{ width: mmW, height: mmH }}
+          style={{ width: mmW, height: mmH, pointerEvents: 'none' }}
         />
       </div>
     );
@@ -1306,9 +1405,10 @@ const LibraryPage = () => {
           backdropFilter: 'blur(8px)', zIndex: 10,
         }}>
           <span style={{ fontWeight: 600, color: '#fff' }}>WASD</span> Bewegen &nbsp;
+          <span style={{ fontWeight: 600, color: '#fff' }}>Shift</span> Sprint &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>E</span> Interactie &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.1.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.2.0</div>
         </div>
       )}
 
@@ -1364,7 +1464,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.1.0</div>
+        }}>v0.2.0</div>
       )}
 
       {/* Mobile: action button */}
