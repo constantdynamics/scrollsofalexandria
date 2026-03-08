@@ -53,6 +53,14 @@ const stars = Array.from({ length: NUM_STARS }, (_, i) => ({
   hue: seededRandom(i, 0, 206) > 0.7 ? 220 + seededRandom(i, 0, 207) * 40 : 40 + seededRandom(i, 0, 208) * 20,
 }));
 
+// Category floor symbols (Unicode geometric shapes per category type)
+const CATEGORY_FLOOR_SYMBOLS = {
+  'Logica': '◇', 'Epistemologie': '◈', 'Psychologie': '◎',
+  'Behavioral Economics': '◆', 'Retorica': '◉', 'Speltheorie': '⬡',
+  'Statistiek': '▣', 'Besliskunde': '⬢', 'Systeemdenken': '◌',
+  'Organisatie': '▥', 'Ethiek': '✦', 'Gedachte-experimenten': '◇',
+};
+
 // Kleuren
 const COLORS = {
   [EMPTY]: '#1a1520',
@@ -365,6 +373,10 @@ const LibraryPage = () => {
   const celebrationParticlesRef = useRef([]); // Golden celebration particles
   const footprintsRef = useRef([]); // { x, y, angle, age }
   const lastFootprintRef = useRef({ x: 0, y: 0 }); // Track distance for spacing
+  const batsRef = useRef([]); // { x, y, vx, vy, wingPhase, life }
+  const wispsRef = useRef([]); // { x, y, baseX, baseY, phase, life, hue }
+  const waterDripsRef = useRef([]); // { x, y, vy, age, splash }
+  const sprintTrailRef = useRef([]); // { x, y, age, hue }
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
 
@@ -768,7 +780,9 @@ const LibraryPage = () => {
               ctx.stroke();
             }
           } else if (tile === WALL) {
-            ctx.fillStyle = COLORS[WALL];
+            // Base wall with subtle color variation
+            const wallVar = seededRandom(tx, ty, 300) * 8 - 4;
+            ctx.fillStyle = `rgb(${107 + wallVar},${91 + wallVar},${74 + wallVar})`;
             ctx.fillRect(sx, sy, TILE, TILE);
             // Stone brick pattern
             ctx.strokeStyle = 'rgba(0,0,0,0.12)';
@@ -781,6 +795,26 @@ const LibraryPage = () => {
             ctx.fillRect(sx, sy, TILE, 6);
             ctx.fillStyle = 'rgba(0,0,0,0.15)';
             ctx.fillRect(sx, sy + TILE - 4, TILE, 4);
+            // Wall cracks (rare)
+            if (seededRandom(tx, ty, 310) > 0.88) {
+              ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              const cx1 = sx + seededRandom(tx, ty, 311) * TILE * 0.3 + TILE * 0.2;
+              const cy1 = sy + seededRandom(tx, ty, 312) * TILE * 0.3 + TILE * 0.1;
+              ctx.moveTo(cx1, cy1);
+              ctx.lineTo(cx1 + seededRandom(tx, ty, 313) * 10 - 3, cy1 + seededRandom(tx, ty, 314) * 12);
+              ctx.lineTo(cx1 + seededRandom(tx, ty, 315) * 8, cy1 + seededRandom(tx, ty, 316) * 16);
+              ctx.stroke();
+            }
+            // Moss patches (very rare, on lower walls)
+            if (seededRandom(tx, ty, 320) > 0.93) {
+              ctx.fillStyle = 'rgba(45,100,50,0.12)';
+              ctx.beginPath();
+              ctx.ellipse(sx + seededRandom(tx, ty, 321) * TILE * 0.6 + TILE * 0.2,
+                sy + TILE * 0.7, 4, 3, 0, 0, Math.PI * 2);
+              ctx.fill();
+            }
           } else if (tile === BOOKSHELF) {
             // Kast achtergrond
             ctx.fillStyle = COLORS[BOOKSHELF];
@@ -809,6 +843,36 @@ const LibraryPage = () => {
             // Plank schaduw
             ctx.fillStyle = 'rgba(0,0,0,0.1)';
             ctx.fillRect(sx, sy + Math.floor(TILE / 2) + 2, TILE, 2);
+            // Sparkle effect on bookshelves with unread content
+            const sparkRoomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            if (sparkRoomIdx >= 0 && rooms[sparkRoomIdx]) {
+              const sparkRoom = rooms[sparkRoomIdx];
+              const sparkRP = roomPrinciplesMap[sparkRoom.name] || [];
+              const unreadCount = sparkRP.filter(p => !getPrincipleProgressRef.current(p.id)?.activities?.read).length;
+              if (unreadCount > 0) {
+                // Twinkling sparkle at random position on shelf
+                const sparkSeed = seededRandom(tx, ty, 500);
+                const sparkPhase = (time * 2 + sparkSeed * 10) % 4;
+                if (sparkPhase < 1) {
+                  const sparkAlpha = Math.sin(sparkPhase * Math.PI) * 0.6;
+                  const spkX = sx + 4 + sparkSeed * (TILE - 8);
+                  const spkY = sy + 4 + seededRandom(tx, ty, 501) * (TILE - 8);
+                  ctx.fillStyle = `rgba(255,255,200,${sparkAlpha})`;
+                  // 4-point star sparkle
+                  ctx.beginPath();
+                  ctx.moveTo(spkX, spkY - 3);
+                  ctx.lineTo(spkX + 1, spkY - 1);
+                  ctx.lineTo(spkX + 3, spkY);
+                  ctx.lineTo(spkX + 1, spkY + 1);
+                  ctx.lineTo(spkX, spkY + 3);
+                  ctx.lineTo(spkX - 1, spkY + 1);
+                  ctx.lineTo(spkX - 3, spkY);
+                  ctx.lineTo(spkX - 1, spkY - 1);
+                  ctx.closePath();
+                  ctx.fill();
+                }
+              }
+            }
           } else if (tile === DOOR) {
             // Category-colored glow underneath door
             const doorRoomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
@@ -866,6 +930,29 @@ const LibraryPage = () => {
             ctx.strokeStyle = 'rgba(200,160,80,0.12)';
             ctx.lineWidth = 1;
             ctx.strokeRect(sx + 2, sy + 2, TILE - 4, TILE - 4);
+            // Carpet fringe at edges (check neighboring tiles)
+            const aboveCarpet = ty > 0 && map[ty - 1][tx] === CARPET;
+            const belowCarpet = ty < mapH - 1 && map[ty + 1][tx] === CARPET;
+            if (!aboveCarpet) {
+              for (let fi = 0; fi < 6; fi++) {
+                ctx.fillStyle = 'rgba(200,160,80,0.2)';
+                ctx.fillRect(sx + 3 + fi * 6, sy - 2, 2, 4);
+              }
+            }
+            if (!belowCarpet) {
+              for (let fi = 0; fi < 6; fi++) {
+                ctx.fillStyle = 'rgba(200,160,80,0.2)';
+                ctx.fillRect(sx + 3 + fi * 6, sy + TILE - 2, 2, 4);
+              }
+            }
+            // Ornate corner dots
+            ctx.fillStyle = 'rgba(200,160,80,0.18)';
+            ctx.beginPath();
+            ctx.arc(sx + 8, sy + 8, 1.5, 0, Math.PI * 2);
+            ctx.arc(sx + TILE - 8, sy + 8, 1.5, 0, Math.PI * 2);
+            ctx.arc(sx + 8, sy + TILE - 8, 1.5, 0, Math.PI * 2);
+            ctx.arc(sx + TILE - 8, sy + TILE - 8, 1.5, 0, Math.PI * 2);
+            ctx.fill();
           } else if (tile === PILLAR) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
@@ -928,18 +1015,36 @@ const LibraryPage = () => {
             // Rim
             ctx.fillStyle = '#8b4513';
             ctx.fillRect(sx + TILE * 0.28, sy + TILE * 0.52, TILE * 0.44, 4);
-            // Leaves (animated slight sway)
-            const sway = Math.sin(time * 1.5 + tx * 2) * 2;
+            // Leaves (animated multi-layer sway)
+            const sway = Math.sin(time * 1.5 + tx * 2) * 2.5;
+            const sway2 = Math.sin(time * 2.1 + tx * 3 + 1) * 1.5;
+            // Stem
+            ctx.strokeStyle = '#2d6a3e';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(sx + TILE / 2, sy + TILE * 0.52);
+            ctx.quadraticCurveTo(sx + TILE / 2 + sway * 0.3, sy + TILE * 0.42, sx + TILE / 2 + sway * 0.5, sy + TILE * 0.35);
+            ctx.stroke();
+            // Main foliage
             ctx.fillStyle = COLORS[PLANT];
             ctx.beginPath();
-            ctx.ellipse(sx + TILE / 2 + sway, sy + TILE * 0.35, 8, 12, 0, 0, Math.PI * 2);
+            ctx.ellipse(sx + TILE / 2 + sway, sy + TILE * 0.33, 9, 12, sway * 0.02, 0, Math.PI * 2);
             ctx.fill();
+            // Side leaves
             ctx.fillStyle = '#3aa85e';
             ctx.beginPath();
-            ctx.ellipse(sx + TILE / 2 - 5 + sway * 0.7, sy + TILE * 0.3, 5, 8, -0.3, 0, Math.PI * 2);
+            ctx.ellipse(sx + TILE / 2 - 6 + sway * 0.7, sy + TILE * 0.28, 5, 8, -0.3 + sway2 * 0.05, 0, Math.PI * 2);
             ctx.fill();
             ctx.beginPath();
-            ctx.ellipse(sx + TILE / 2 + 5 + sway * 0.7, sy + TILE * 0.3, 5, 8, 0.3, 0, Math.PI * 2);
+            ctx.ellipse(sx + TILE / 2 + 6 + sway * 0.7, sy + TILE * 0.28, 5, 8, 0.3 + sway2 * 0.05, 0, Math.PI * 2);
+            ctx.fill();
+            // Tiny highlight leaves
+            ctx.fillStyle = '#4cc86e';
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + sway * 0.8 - 2, sy + TILE * 0.26, 3, 4, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + sway * 0.8 + 3, sy + TILE * 0.24, 2, 3, 0.4, 0, Math.PI * 2);
             ctx.fill();
           } else if (tile === TORCH) {
             // Wall background
@@ -947,23 +1052,55 @@ const LibraryPage = () => {
             ctx.fillRect(sx, sy, TILE, TILE);
             ctx.fillStyle = COLORS.wallTop;
             ctx.fillRect(sx, sy, TILE, 6);
-            // Torch bracket
+            // Torch bracket (more detailed)
+            ctx.fillStyle = '#3a2a1a';
+            ctx.fillRect(sx + TILE / 2 - 3, sy + TILE * 0.3, 6, TILE * 0.42);
+            ctx.fillStyle = '#5a4a3a';
+            ctx.fillRect(sx + TILE / 2 - 1, sy + TILE * 0.3, 2, TILE * 0.42);
+            // Cup/holder at top
             ctx.fillStyle = '#4a3a2a';
-            ctx.fillRect(sx + TILE / 2 - 2, sy + TILE * 0.3, 4, TILE * 0.4);
-            // Flame (animated)
-            const flicker = Math.sin(time * 8 + tx * 3) * 2 + Math.sin(time * 12 + ty * 5) * 1;
-            const flameH = 10 + flicker;
-            const flameY = sy + TILE * 0.3 - flameH;
-            const grad = ctx.createRadialGradient(
-              sx + TILE / 2, flameY + flameH / 2, 1,
-              sx + TILE / 2, flameY + flameH / 2, flameH
-            );
-            grad.addColorStop(0, 'rgba(255,220,100,0.9)');
-            grad.addColorStop(0.4, 'rgba(255,160,40,0.7)');
-            grad.addColorStop(1, 'rgba(255,80,20,0)');
-            ctx.fillStyle = grad;
             ctx.beginPath();
-            ctx.ellipse(sx + TILE / 2, flameY + flameH / 2, 5 + flicker * 0.3, flameH / 2, 0, 0, Math.PI * 2);
+            ctx.moveTo(sx + TILE / 2 - 6, sy + TILE * 0.32);
+            ctx.lineTo(sx + TILE / 2 + 6, sy + TILE * 0.32);
+            ctx.lineTo(sx + TILE / 2 + 4, sy + TILE * 0.28);
+            ctx.lineTo(sx + TILE / 2 - 4, sy + TILE * 0.28);
+            ctx.closePath();
+            ctx.fill();
+            // Multi-layered flame
+            const flicker = Math.sin(time * 8 + tx * 3) * 2 + Math.sin(time * 12 + ty * 5) * 1;
+            const flicker2 = Math.sin(time * 15 + tx * 7) * 1;
+            const flameH = 11 + flicker;
+            const flameY = sy + TILE * 0.28 - flameH;
+            // Outer flame (red-orange)
+            const outerGrad = ctx.createRadialGradient(
+              sx + TILE / 2, flameY + flameH * 0.6, 1,
+              sx + TILE / 2, flameY + flameH * 0.6, flameH * 0.9
+            );
+            outerGrad.addColorStop(0, 'rgba(255,120,20,0.7)');
+            outerGrad.addColorStop(0.6, 'rgba(255,60,10,0.3)');
+            outerGrad.addColorStop(1, 'rgba(200,30,0,0)');
+            ctx.fillStyle = outerGrad;
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + flicker2 * 0.3, flameY + flameH * 0.6, 7 + flicker * 0.4, flameH * 0.55, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Inner flame (yellow-white core)
+            const innerGrad = ctx.createRadialGradient(
+              sx + TILE / 2, flameY + flameH * 0.6, 0,
+              sx + TILE / 2, flameY + flameH * 0.6, flameH * 0.5
+            );
+            innerGrad.addColorStop(0, 'rgba(255,255,200,0.95)');
+            innerGrad.addColorStop(0.3, 'rgba(255,220,100,0.8)');
+            innerGrad.addColorStop(0.7, 'rgba(255,160,40,0.4)');
+            innerGrad.addColorStop(1, 'rgba(255,100,20,0)');
+            ctx.fillStyle = innerGrad;
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2, flameY + flameH * 0.65, 4 + flicker * 0.2, flameH * 0.35, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Flame tip (flickering upward tongue)
+            const tipY = flameY + 2 + Math.sin(time * 10 + tx) * 2;
+            ctx.fillStyle = 'rgba(255,200,80,0.4)';
+            ctx.beginPath();
+            ctx.ellipse(sx + TILE / 2 + flicker2, tipY, 2, 4, 0, 0, Math.PI * 2);
             ctx.fill();
           }
         }
@@ -1010,6 +1147,126 @@ const LibraryPage = () => {
             glow.addColorStop(1, 'rgba(255,100,20,0)');
             ctx.fillStyle = glow;
             ctx.fillRect(sx - radius, sy - radius, radius * 2, radius * 2);
+          }
+        }
+      }
+
+      // Dust motes visible in torch light cones
+      for (let ty2 = startTY; ty2 < endTY; ty2++) {
+        for (let tx2 = startTX; tx2 < endTX; tx2++) {
+          if (map[ty2][tx2] === TORCH) {
+            const tcx = tx2 * TILE + TILE / 2 - camX;
+            const tcy = ty2 * TILE + TILE * 0.25 - camY;
+            // 4 dust motes per torch
+            for (let dm = 0; dm < 4; dm++) {
+              const dmSeed = seededRandom(tx2, ty2, 400 + dm);
+              const dmAngle = (time * 0.3 + dmSeed * 6.28 + dm * 1.57) % (Math.PI * 2);
+              const dmDist = TILE * (0.5 + dmSeed * 1.5);
+              const dmx = tcx + Math.cos(dmAngle) * dmDist;
+              const dmy = tcy + Math.sin(dmAngle) * dmDist * 0.6 + Math.sin(time * 0.8 + dm) * 4;
+              const dmAlpha = 0.2 + Math.sin(time * 1.5 + dm * 2) * 0.1;
+              ctx.fillStyle = `rgba(255,220,150,${dmAlpha})`;
+              ctx.beginPath();
+              ctx.arc(dmx, dmy, 1 + dmSeed * 1.5, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        }
+      }
+
+      // Cobwebs in room corners
+      for (const room of rooms) {
+        const rcx = room.x * TILE - camX;
+        const rcy = room.y * TILE - camY;
+        if (rcx > -room.w * TILE && rcx < viewW + 50 && rcy > -room.h * TILE && rcy < viewH + 50) {
+          // Top-left corner cobweb (deterministic per room)
+          if (seededRandom(room.x, room.y, 600) > 0.5) {
+            const cwx = (room.x + 1) * TILE - camX;
+            const cwy = (room.y + 1) * TILE - camY;
+            ctx.strokeStyle = 'rgba(200,200,200,0.08)';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(cwx, cwy);
+            ctx.quadraticCurveTo(cwx + 12, cwy + 8, cwx + 20, cwy);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(cwx, cwy);
+            ctx.quadraticCurveTo(cwx + 8, cwy + 12, cwx, cwy + 20);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(cwx, cwy);
+            ctx.quadraticCurveTo(cwx + 10, cwy + 10, cwx + 16, cwy + 16);
+            ctx.stroke();
+            // Cross threads
+            ctx.beginPath();
+            ctx.moveTo(cwx + 6, cwy + 2);
+            ctx.quadraticCurveTo(cwx + 7, cwy + 7, cwx + 2, cwy + 6);
+            ctx.stroke();
+          }
+          // Top-right corner cobweb
+          if (seededRandom(room.x, room.y, 601) > 0.6) {
+            const cwx2 = (room.x + room.w - 1) * TILE + TILE - camX;
+            const cwy2 = (room.y + 1) * TILE - camY;
+            ctx.strokeStyle = 'rgba(200,200,200,0.08)';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(cwx2, cwy2);
+            ctx.quadraticCurveTo(cwx2 - 12, cwy2 + 8, cwx2 - 20, cwy2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(cwx2, cwy2);
+            ctx.quadraticCurveTo(cwx2 - 8, cwy2 + 12, cwx2, cwy2 + 20);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Category symbols etched in room floors
+      for (const room of rooms) {
+        const rsx = room.centerX - camX;
+        const rsy = room.centerY + TILE * 1.2 - camY;
+        if (rsx > -100 && rsx < viewW + 100 && rsy > -100 && rsy < viewH + 100) {
+          const sym = CATEGORY_FLOOR_SYMBOLS[room.name] || '◈';
+          ctx.font = '20px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = `hsla(${room.catHue}, 25%, 50%, 0.06)`;
+          ctx.fillText(sym, rsx, rsy + 6);
+          // Circular etch ring around symbol
+          ctx.strokeStyle = `hsla(${room.catHue}, 20%, 45%, 0.05)`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.arc(rsx, rsy, 16, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+      }
+
+      // Golden ornate border on 100% mastered rooms
+      for (const room of rooms) {
+        const rmRP = roomPrinciplesMap[room.name] || [];
+        if (rmRP.length === 0) continue;
+        const rmAvg = rmRP.reduce((s, p) => s + (getPrincipleProgressRef.current(p.id)?.masteryPercentage || 0), 0) / rmRP.length;
+        if (rmAvg < 100) continue;
+        const bx = room.x * TILE - camX;
+        const by = room.y * TILE - camY;
+        const bw = room.w * TILE;
+        const bh = room.h * TILE;
+        if (bx > -bw && bx < viewW + 50 && by > -bh && by < viewH + 50) {
+          const goldPulse = 0.4 + Math.sin(time * 1.5) * 0.15;
+          // Outer glow
+          ctx.strokeStyle = `rgba(201,168,15,${goldPulse * 0.4})`;
+          ctx.lineWidth = 4;
+          ctx.strokeRect(bx - 2, by - 2, bw + 4, bh + 4);
+          // Inner gold line
+          ctx.strokeStyle = `rgba(255,215,0,${goldPulse * 0.6})`;
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(bx + 1, by + 1, bw - 2, bh - 2);
+          // Corner ornaments
+          const corners = [[bx, by], [bx + bw, by], [bx, by + bh], [bx + bw, by + bh]];
+          for (const [cx, cy] of corners) {
+            ctx.fillStyle = `rgba(255,215,0,${goldPulse * 0.5})`;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+            ctx.fill();
           }
         }
       }
@@ -1333,11 +1590,18 @@ const LibraryPage = () => {
         }
       }
 
-      // Schaduw (smaller when bobbing up)
+      // Dynamic blob shadow (scales with movement, gradient fade)
       const shadowScale = player.moving ? 1 - Math.sin(player.bobTime) * 0.15 : 1;
-      ctx.fillStyle = 'rgba(0,0,0,0.25)';
+      const shadowStretch = sprinting ? 1.2 : 1;
+      const shX = px + (sprinting && dirMag > 0.1 ? player.dirX / dirMag * 3 : 0);
+      const shY = player.y - camY + 14;
+      const shadowGrad2 = ctx.createRadialGradient(shX, shY, 0, shX, shY, 13 * shadowScale);
+      shadowGrad2.addColorStop(0, 'rgba(0,0,0,0.3)');
+      shadowGrad2.addColorStop(0.6, 'rgba(0,0,0,0.15)');
+      shadowGrad2.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = shadowGrad2;
       ctx.beginPath();
-      ctx.ellipse(px, player.y - camY + 14, 12 * shadowScale, 5 * shadowScale, 0, 0, Math.PI * 2);
+      ctx.ellipse(shX, shY, 13 * shadowScale * shadowStretch, 5 * shadowScale, 0, 0, Math.PI * 2);
       ctx.fill();
 
       // Lichaam - color evolves with overall mastery
@@ -1456,6 +1720,166 @@ const LibraryPage = () => {
           ctx.closePath();
           ctx.fill();
           ctx.restore();
+        }
+      }
+
+      // Bats - spawn occasionally, fly across the map
+      if (Math.random() < 0.003 && batsRef.current.length < 3) {
+        const batStartX = player.x + (Math.random() - 0.5) * viewW * 1.5;
+        const batStartY = player.y - viewH * 0.4 - Math.random() * 200;
+        batsRef.current.push({
+          x: batStartX, y: batStartY,
+          vx: (Math.random() - 0.5) * 3, vy: 0.5 + Math.random() * 1,
+          wingPhase: Math.random() * Math.PI * 2, life: 0, maxLife: 4 + Math.random() * 3,
+        });
+      }
+      for (let bi = batsRef.current.length - 1; bi >= 0; bi--) {
+        const bat = batsRef.current[bi];
+        bat.life += 1 / 60;
+        bat.x += bat.vx;
+        bat.y += bat.vy + Math.sin(bat.life * 3) * 0.5;
+        bat.vx += (Math.random() - 0.5) * 0.1;
+        bat.wingPhase += 0.25;
+        if (bat.life >= bat.maxLife) { batsRef.current.splice(bi, 1); continue; }
+        const bpx = bat.x - camX;
+        const bpy = bat.y - camY;
+        if (bpx > -40 && bpx < viewW + 40 && bpy > -40 && bpy < viewH + 40) {
+          const batAlpha = Math.min(1, bat.life * 2) * Math.min(1, (bat.maxLife - bat.life) * 2);
+          ctx.fillStyle = `rgba(30,20,40,${batAlpha * 0.6})`;
+          // Body
+          ctx.beginPath();
+          ctx.ellipse(bpx, bpy, 3, 2, 0, 0, Math.PI * 2);
+          ctx.fill();
+          // Wings
+          const wingY = Math.sin(bat.wingPhase) * 4;
+          ctx.beginPath();
+          ctx.moveTo(bpx - 2, bpy);
+          ctx.quadraticCurveTo(bpx - 8, bpy - wingY, bpx - 12, bpy + wingY * 0.5);
+          ctx.quadraticCurveTo(bpx - 8, bpy + 1, bpx - 2, bpy);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(bpx + 2, bpy);
+          ctx.quadraticCurveTo(bpx + 8, bpy - wingY, bpx + 12, bpy + wingY * 0.5);
+          ctx.quadraticCurveTo(bpx + 8, bpy + 1, bpx + 2, bpy);
+          ctx.fill();
+        }
+      }
+
+      // Ethereal wisps floating through corridors
+      if (Math.random() < 0.008 && wispsRef.current.length < 5) {
+        const wspX = player.x + (Math.random() - 0.5) * viewW;
+        const wspY = player.y + (Math.random() - 0.5) * viewH;
+        const wspTX = Math.floor(wspX / TILE);
+        const wspTY = Math.floor(wspY / TILE);
+        if (wspTX >= 0 && wspTX < mapW && wspTY >= 0 && wspTY < mapH &&
+            (map[wspTY][wspTX] === FLOOR || map[wspTY][wspTX] === CARPET)) {
+          wispsRef.current.push({
+            x: wspX, y: wspY, baseX: wspX, baseY: wspY,
+            phase: Math.random() * Math.PI * 2,
+            life: 0, maxLife: 5 + Math.random() * 5,
+            hue: 200 + Math.random() * 60,
+          });
+        }
+      }
+      for (let wi = wispsRef.current.length - 1; wi >= 0; wi--) {
+        const wisp = wispsRef.current[wi];
+        wisp.life += 1 / 60;
+        wisp.phase += 0.03;
+        wisp.x = wisp.baseX + Math.sin(wisp.phase) * 30 + Math.sin(wisp.phase * 1.7) * 15;
+        wisp.y = wisp.baseY + Math.cos(wisp.phase * 0.8) * 20 - wisp.life * 3;
+        if (wisp.life >= wisp.maxLife) { wispsRef.current.splice(wi, 1); continue; }
+        const wpx = wisp.x - camX;
+        const wpy = wisp.y - camY;
+        if (wpx > -20 && wpx < viewW + 20 && wpy > -20 && wpy < viewH + 20) {
+          const wAlpha = Math.min(1, wisp.life * 1.5) * Math.min(1, (wisp.maxLife - wisp.life) * 0.5) * 0.2;
+          const wGlow = ctx.createRadialGradient(wpx, wpy, 0, wpx, wpy, 12);
+          wGlow.addColorStop(0, `hsla(${wisp.hue}, 50%, 70%, ${wAlpha})`);
+          wGlow.addColorStop(0.5, `hsla(${wisp.hue}, 40%, 60%, ${wAlpha * 0.4})`);
+          wGlow.addColorStop(1, `hsla(${wisp.hue}, 30%, 50%, 0)`);
+          ctx.fillStyle = wGlow;
+          ctx.beginPath();
+          ctx.arc(wpx, wpy, 12, 0, Math.PI * 2);
+          ctx.fill();
+          // Core dot
+          ctx.fillStyle = `hsla(${wisp.hue}, 60%, 80%, ${wAlpha * 2})`;
+          ctx.beginPath();
+          ctx.arc(wpx, wpy, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Water drips from ceiling in corridors
+      if (Math.random() < 0.015 && waterDripsRef.current.length < 8) {
+        // Pick a random corridor tile near the player
+        const dripTX = Math.floor(player.x / TILE) + Math.floor(Math.random() * 10 - 5);
+        const dripTY = Math.floor(player.y / TILE) + Math.floor(Math.random() * 8 - 4);
+        if (dripTX >= 0 && dripTX < mapW && dripTY >= 0 && dripTY < mapH &&
+            map[dripTY][dripTX] === FLOOR && tileRoomIdx[dripTY]?.[dripTX] === -1) {
+          // Check if wall above (ceiling drip)
+          if (dripTY > 0 && (map[dripTY - 1][dripTX] === WALL || map[dripTY - 1][dripTX] === TORCH)) {
+            waterDripsRef.current.push({
+              x: dripTX * TILE + TILE / 2 + (Math.random() - 0.5) * 10,
+              y: dripTY * TILE, vy: 0, age: 0, splash: false,
+            });
+          }
+        }
+      }
+      for (let di = waterDripsRef.current.length - 1; di >= 0; di--) {
+        const drip = waterDripsRef.current[di];
+        drip.age += 1 / 60;
+        if (!drip.splash) {
+          drip.vy += 0.15;
+          drip.y += drip.vy;
+          // Check if hit floor level
+          if (drip.vy > 4) {
+            drip.splash = true;
+            drip.splashAge = 0;
+          }
+        } else {
+          drip.splashAge += 1 / 60;
+          if (drip.splashAge > 0.5) { waterDripsRef.current.splice(di, 1); continue; }
+        }
+        if (drip.age > 3) { waterDripsRef.current.splice(di, 1); continue; }
+        const dpx = drip.x - camX;
+        const dpy = drip.y - camY;
+        if (dpx > -10 && dpx < viewW + 10 && dpy > -10 && dpy < viewH + 10) {
+          if (!drip.splash) {
+            // Falling droplet
+            ctx.fillStyle = 'rgba(120,170,220,0.4)';
+            ctx.beginPath();
+            ctx.ellipse(dpx, dpy, 1, 2 + drip.vy * 0.3, 0, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            // Splash rings
+            const splashR = drip.splashAge * 15;
+            const splashA = 0.3 * (1 - drip.splashAge / 0.5);
+            ctx.strokeStyle = `rgba(120,170,220,${splashA})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.ellipse(dpx, dpy, splashR, splashR * 0.4, 0, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Sprint glow trail
+      if (sprinting && isMoving) {
+        sprintTrailRef.current.push({ x: player.x, y: player.y + 5, age: 0, hue: playerHue });
+        if (sprintTrailRef.current.length > 30) sprintTrailRef.current.shift();
+      }
+      for (let si = sprintTrailRef.current.length - 1; si >= 0; si--) {
+        const st = sprintTrailRef.current[si];
+        st.age += 1 / 60;
+        if (st.age > 0.5) { sprintTrailRef.current.splice(si, 1); continue; }
+        const stx = st.x - camX;
+        const sty = st.y - camY;
+        if (stx > -20 && stx < viewW + 20 && sty > -20 && sty < viewH + 20) {
+          const stAlpha = 0.2 * (1 - st.age / 0.5);
+          const stR = 8 * (1 - st.age / 0.5);
+          ctx.fillStyle = `hsla(${st.hue}, 60%, 60%, ${stAlpha})`;
+          ctx.beginPath();
+          ctx.arc(stx, sty, stR, 0, Math.PI * 2);
+          ctx.fill();
         }
       }
 
@@ -1995,7 +2419,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.8.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.9.0</div>
         </div>
       )}
 
@@ -2051,7 +2475,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.8.0</div>
+        }}>v0.9.0</div>
       )}
 
       {/* Mobile: action button */}
