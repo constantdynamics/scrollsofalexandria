@@ -5,10 +5,10 @@ import { allPrinciples, getCategories, getPrinciplesByCategory } from '../data/p
 
 // ── Constanten ──
 const TILE = 40;
-const PLAYER_SPEED = 3;
-const PLAYER_SPRINT = 6;
+const PLAYER_SPEED = 5;
+const PLAYER_SPRINT = 10;
 const INTERACTION_DIST = 50;
-const CAMERA_LERP = 0.08; // Smooth camera follow speed
+const CAMERA_LERP = 0.15; // Smooth camera follow speed (snappier)
 const DAY_CYCLE_DURATION = 300; // 5 minutes per full day/night cycle
 
 // Deterministic pseudo-random based on position (no flicker)
@@ -113,193 +113,343 @@ const CATEGORY_EMOJIS = {
   'Levenspsychologie': '🌻', 'Dieptepsychologie': '🌊',
 };
 
-// ── Bibliotheek layout genereren ──
+// ── Bibliotheek layout genereren (organisch, gerandomiseerd) ──
 function generateLibrary(categories) {
-  const roomsPerRow = 3;
-  const roomW = 10;
-  const roomH = 8;
-  const corridorW = 4;
-  const marginX = 2;
-  const marginY = 2;
+  const corridorW = 3;
+  const marginX = 3;
+  const marginY = 3;
+  const seed = categories.length * 7 + 42; // Deterministic based on category count
 
-  const rows = Math.ceil(categories.length / roomsPerRow);
-  const mapW = marginX * 2 + roomsPerRow * roomW + (roomsPerRow - 1) * corridorW + corridorW;
-  const mapH = marginY * 2 + rows * roomH + (rows + 1) * corridorW + 6; // +6 voor entreehal
+  // Randomize room sizes: width 8-12, height 7-10
+  const roomDefs = categories.map((cat, i) => ({
+    cat,
+    w: 8 + Math.floor(seededRandom(i, 0, seed + 1) * 5),   // 8-12
+    h: 7 + Math.floor(seededRandom(i, 1, seed + 2) * 4),   // 7-10
+  }));
+
+  // Shuffle room order for placement variety
+  const shuffled = roomDefs.map((r, i) => ({ ...r, origIdx: i }));
+  for (let si = shuffled.length - 1; si > 0; si--) {
+    const sj = Math.floor(seededRandom(si, 0, seed + 10) * (si + 1));
+    [shuffled[si], shuffled[sj]] = [shuffled[sj], shuffled[si]];
+  }
+
+  // Phase 1: Place rooms organically using a branching tree layout
+  // Start with entrance hall at the bottom center, then branch outward
+  const placed = []; // { x, y, w, h, cat, origIdx, catHue, connections: [] }
+
+  // Estimate map size generously
+  const estMapW = marginX * 2 + 80;
+  const estMapH = marginY * 2 + 80;
+
+  // Entrance hall
+  const hallW = 10;
+  const hallH = 5;
+  const hallX = Math.floor(estMapW / 2) - Math.floor(hallW / 2);
+  const hallY = estMapH - marginY - hallH;
+
+  // Place rooms in a branching pattern from the hall
+  // Use multiple "wings" that extend from the main corridor
+  const wingCount = 2 + Math.floor(seededRandom(0, 0, seed + 20) * 2); // 2-3 wings
+  const roomsPerWing = Math.ceil(shuffled.length / wingCount);
+
+  // Generate main spine going up from hall
+  const spineX = Math.floor(estMapW / 2);
+  const spineTopY = marginY + 4;
+
+  // Distribute rooms along wings branching from the spine
+  let wingRooms = [];
+  for (let wi = 0; wi < wingCount; wi++) {
+    wingRooms.push([]);
+  }
+  shuffled.forEach((r, i) => {
+    wingRooms[i % wingCount].push(r);
+  });
+
+  // Place rooms per wing with organic offsets
+  const corridorSegments = []; // { x1, y1, x2, y2 } for corridor carving
+
+  // Main vertical spine
+  corridorSegments.push({ x1: spineX, y1: spineTopY, x2: spineX, y2: hallY + 1 });
+
+  for (let wi = 0; wi < wingCount; wi++) {
+    const wing = wingRooms[wi];
+    // Wing branch point along the spine
+    const branchY = hallY - 6 - Math.floor((hallY - spineTopY - 10) * (wi / Math.max(1, wingCount - 1)));
+    // Wing direction: alternate left and right, some go both ways
+    const wingDir = wi % 2 === 0 ? -1 : 1;
+    const wingSpread = 14 + Math.floor(seededRandom(wi, 0, seed + 30) * 8); // How far the wing extends
+
+    // Wing horizontal corridor
+    const wingEndX = spineX + wingDir * wingSpread;
+    corridorSegments.push({ x1: spineX, y1: branchY, x2: wingEndX, y2: branchY });
+
+    // Place rooms along this wing
+    wing.forEach((r, ri) => {
+      // Distribute rooms along the wing corridor
+      const t = wing.length > 1 ? ri / (wing.length - 1) : 0.5;
+      const roomCorrX = Math.floor(spineX + wingDir * wingSpread * (0.2 + t * 0.8));
+
+      // Room goes above or below the wing corridor, alternating
+      const roomSide = ri % 2 === 0 ? -1 : 1;
+      const roomOffsetY = 1 + Math.floor(seededRandom(ri, wi, seed + 40) * 2);
+      const rx = roomCorrX - Math.floor(r.w / 2) + Math.floor(seededRandom(ri, wi, seed + 50) * 3 - 1);
+      const ry = branchY + roomSide * (corridorW + roomOffsetY);
+      if (roomSide === 1) {
+        // Room below corridor: corridor connects to top of room
+        corridorSegments.push({ x1: roomCorrX, y1: branchY, x2: roomCorrX, y2: ry + 1 });
+      } else {
+        // Room above corridor: corridor connects to bottom of room
+        corridorSegments.push({ x1: roomCorrX, y1: ry + r.h - 1, x2: roomCorrX, y2: branchY });
+      }
+
+      const catHash = r.cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+      placed.push({
+        x: Math.max(marginX, Math.min(estMapW - marginX - r.w, rx)),
+        y: Math.max(marginY, Math.min(estMapH - marginY - r.h - 5, ry)),
+        w: r.w, h: r.h,
+        cat: r.cat, origIdx: r.origIdx,
+        catHue: catHash % 360,
+        doorSide: roomSide, // -1 = door at bottom, 1 = door at top
+        corridorX: roomCorrX,
+      });
+    });
+  }
+
+  // Resolve overlaps: nudge rooms that overlap
+  for (let iter = 0; iter < 20; iter++) {
+    let anyOverlap = false;
+    for (let ai = 0; ai < placed.length; ai++) {
+      for (let bi = ai + 1; bi < placed.length; bi++) {
+        const a = placed[ai];
+        const b = placed[bi];
+        const overlapX = !(a.x + a.w + 1 < b.x || b.x + b.w + 1 < a.x);
+        const overlapY = !(a.y + a.h + 1 < b.y || b.y + b.h + 1 < a.y);
+        if (overlapX && overlapY) {
+          anyOverlap = true;
+          // Push rooms apart
+          const cx = (a.x + a.w / 2) - (b.x + b.w / 2);
+          const cy = (a.y + a.h / 2) - (b.y + b.h / 2);
+          const pushX = cx >= 0 ? 1 : -1;
+          const pushY = cy >= 0 ? 1 : -1;
+          if (Math.abs(cx) > Math.abs(cy)) {
+            a.x += pushX; b.x -= pushX;
+          } else {
+            a.y += pushY; b.y -= pushY;
+          }
+          // Clamp
+          a.x = Math.max(marginX, a.x);
+          a.y = Math.max(marginY, a.y);
+          b.x = Math.max(marginX, b.x);
+          b.y = Math.max(marginY, b.y);
+        }
+      }
+    }
+    if (!anyOverlap) break;
+  }
+
+  // Compute actual map bounds
+  let maxX = hallX + hallW + marginX;
+  let maxY = hallY + hallH + marginY;
+  for (const r of placed) {
+    maxX = Math.max(maxX, r.x + r.w + marginX + 2);
+    maxY = Math.max(maxY, r.y + r.h + marginY + 2);
+  }
+  const mapW = Math.min(estMapW, maxX);
+  const mapH = Math.min(estMapH, maxY);
 
   const map = Array.from({ length: mapH }, () => Array(mapW).fill(EMPTY));
   const tileRoomIdx = Array.from({ length: mapH }, () => Array(mapW).fill(-1));
   const rooms = [];
 
-  // Entreehal
-  const hallX = Math.floor(mapW / 2) - 5;
-  const hallY = mapH - marginY - 4;
-  const hallW = 10;
-  const hallH = 4;
+  // Draw entrance hall
   fillRect(map, hallX, hallY, hallW, hallH, FLOOR);
   addWalls(map, hallX, hallY, hallW, hallH);
-  // Tapijt in de hal
   fillRect(map, hallX + 2, hallY + 1, hallW - 4, hallH - 2, CARPET);
-  // Entree opening
-  map[hallY + hallH - 1][hallX + Math.floor(hallW / 2)] = DOOR;
-  map[hallY + hallH - 1][hallX + Math.floor(hallW / 2) - 1] = DOOR;
-  // Planten in de hal
+  map[hallY + hallH - 1][Math.floor(hallX + hallW / 2)] = DOOR;
+  map[hallY + hallH - 1][Math.floor(hallX + hallW / 2) - 1] = DOOR;
   map[hallY + 1][hallX + 1] = PLANT;
   map[hallY + 1][hallX + hallW - 2] = PLANT;
 
-  // Hoofdcorridor - verticaal
-  const corStartX = Math.floor(mapW / 2) - Math.floor(corridorW / 2);
-  for (let y = marginY; y < hallY + 1; y++) {
-    for (let x = corStartX; x < corStartX + corridorW; x++) {
-      if (x >= 0 && x < mapW && y >= 0 && y < mapH) {
-        map[y][x] = FLOOR;
+  // Carve corridors
+  const carveCorridor = (x1, y1, x2, y2) => {
+    const halfW = Math.floor(corridorW / 2);
+    // Horizontal segment
+    const minCX = Math.min(x1, x2);
+    const maxCX = Math.max(x1, x2);
+    const minCY = Math.min(y1, y2);
+    const maxCY = Math.max(y1, y2);
+
+    if (y1 === y2) {
+      // Horizontal
+      for (let cx = minCX - halfW; cx <= maxCX + halfW; cx++) {
+        for (let cy = y1 - halfW; cy <= y1 + halfW; cy++) {
+          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === EMPTY) {
+            map[cy][cx] = FLOOR;
+          }
+        }
+      }
+    } else if (x1 === x2) {
+      // Vertical
+      for (let cy = minCY; cy <= maxCY; cy++) {
+        for (let cx = x1 - halfW; cx <= x1 + halfW; cx++) {
+          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === EMPTY) {
+            map[cy][cx] = FLOOR;
+          }
+        }
+      }
+    } else {
+      // L-shaped: go horizontal first, then vertical
+      const midX = x2;
+      carveCorridor(x1, y1, midX, y1);
+      carveCorridor(midX, y1, midX, y2);
+    }
+  };
+
+  for (const seg of corridorSegments) {
+    carveCorridor(
+      Math.max(1, Math.min(mapW - 2, seg.x1)),
+      Math.max(1, Math.min(mapH - 2, seg.y1)),
+      Math.max(1, Math.min(mapW - 2, seg.x2)),
+      Math.max(1, Math.min(mapH - 2, seg.y2))
+    );
+  }
+
+  // Add carpet to main spine corridor
+  const spineHalfW = Math.floor(corridorW / 2);
+  for (let cy = spineTopY; cy <= hallY; cy++) {
+    for (let cx = spineX - spineHalfW + 1; cx < spineX + spineHalfW; cx++) {
+      if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === FLOOR) {
+        map[cy][cx] = CARPET;
       }
     }
   }
-  // Tapijt in hoofdcorridor
-  for (let y = marginY + 1; y < hallY; y++) {
-    for (let x = corStartX + 1; x < corStartX + corridorW - 1; x++) {
-      if (x >= 0 && x < mapW) map[y][x] = CARPET;
-    }
-  }
 
-  // Verbinding hal naar corridor
-  for (let x = corStartX; x < corStartX + corridorW; x++) {
-    map[hallY][x] = FLOOR;
-  }
+  // Draw rooms (sorted by origIdx to maintain category assignment)
+  const sortedPlaced = [...placed].sort((a, b) => a.origIdx - b.origIdx);
+  sortedPlaced.forEach((r, sortIdx) => {
+    // Clamp room position to map bounds
+    r.x = Math.max(1, Math.min(mapW - r.w - 1, r.x));
+    r.y = Math.max(1, Math.min(mapH - r.h - 1, r.y));
 
-  // Kamers genereren
-  categories.forEach((cat, i) => {
-    const row = Math.floor(i / roomsPerRow);
-    const col = i % roomsPerRow;
-
-    const rx = marginX + col * (roomW + corridorW);
-    const ry = marginY + row * (roomH + corridorW);
-
-    // Kamer vloer
-    fillRect(map, rx, ry, roomW, roomH, FLOOR);
-    addWalls(map, rx, ry, roomW, roomH);
-    // Mark tiles as belonging to this room
-    for (let dy = 0; dy < roomH; dy++) {
-      for (let dx = 0; dx < roomW; dx++) {
-        if (ry + dy < mapH && rx + dx < mapW) tileRoomIdx[ry + dy][rx + dx] = i;
+    fillRect(map, r.x, r.y, r.w, r.h, FLOOR);
+    addWalls(map, r.x, r.y, r.w, r.h);
+    // Mark room tiles
+    for (let dy = 0; dy < r.h; dy++) {
+      for (let dx = 0; dx < r.w; dx++) {
+        if (r.y + dy < mapH && r.x + dx < mapW) tileRoomIdx[r.y + dy][r.x + dx] = sortIdx;
       }
     }
 
-    // Boekenkasten langs de muren (boven en zijkanten)
-    for (let x = rx + 1; x < rx + roomW - 1; x++) {
-      map[ry + 1][x] = BOOKSHELF; // Boven
+    // Bookshelves (top wall + sides, varied amount based on room size)
+    for (let bx = r.x + 1; bx < r.x + r.w - 1; bx++) {
+      if (map[r.y + 1][bx] !== DOOR) map[r.y + 1][bx] = BOOKSHELF;
     }
-    for (let y = ry + 2; y < ry + roomH - 2; y++) {
-      map[y][rx + 1] = BOOKSHELF; // Links
-      map[y][rx + roomW - 2] = BOOKSHELF; // Rechts
+    const shelfLen = Math.min(r.h - 4, 3 + Math.floor(seededRandom(r.origIdx, 0, seed + 60) * 3));
+    for (let sy = r.y + 2; sy < r.y + 2 + shelfLen; sy++) {
+      if (sy < r.y + r.h - 1) {
+        map[sy][r.x + 1] = BOOKSHELF;
+        map[sy][r.x + r.w - 2] = BOOKSHELF;
+      }
     }
 
-    // Deur (aan de kant die het dichtst bij de corridor is)
-    const doorY = ry + roomH - 1;
-    const doorX = rx + Math.floor(roomW / 2);
-    map[doorY][doorX] = DOOR;
-    map[doorY][doorX - 1] = DOOR;
+    // Door placement: on the side facing the corridor connection
+    let doorX, doorY;
+    if (r.doorSide === 1) {
+      // Door on top wall
+      doorY = r.y;
+      doorX = Math.max(r.x + 2, Math.min(r.x + r.w - 3, r.corridorX));
+    } else {
+      // Door on bottom wall
+      doorY = r.y + r.h - 1;
+      doorX = Math.max(r.x + 2, Math.min(r.x + r.w - 3, r.corridorX));
+    }
+    if (doorX >= 0 && doorX < mapW && doorY >= 0 && doorY < mapH) {
+      map[doorY][doorX] = DOOR;
+      if (doorX + 1 < r.x + r.w - 1) map[doorY][doorX + 1] = DOOR;
+      // Torches next to door
+      if (doorX - 1 > r.x && map[doorY][doorX - 1] !== DOOR) map[doorY][doorX - 1] = TORCH;
+      if (doorX + 2 < r.x + r.w - 1) map[doorY][doorX + 2] = TORCH;
+    }
 
-    // Horizontale corridor naar hoofdcorridor
-    const corY = ry + roomH - 1;
-    const startX = Math.min(rx, corStartX);
-    const endX = Math.max(rx + roomW, corStartX + corridorW);
-    for (let x = startX; x < endX; x++) {
-      for (let dy = 0; dy < 3; dy++) {
-        const cy = corY + dy;
-        if (cy < mapH && x >= 0 && x < mapW) {
-          if (map[cy][x] === EMPTY || map[cy][x] === WALL) {
-            map[cy][x] = FLOOR;
+    // Ensure corridor connects to the door
+    if (r.doorSide === 1) {
+      // Connect corridor down to door from above
+      for (let cy = Math.max(0, r.y - 4); cy <= r.y; cy++) {
+        for (let cx = doorX - 1; cx <= doorX + 1; cx++) {
+          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && (map[cy][cx] === EMPTY || map[cy][cx] === WALL)) {
+            map[cy][cx] = FLOOR;
+          }
+        }
+      }
+    } else {
+      // Connect corridor up to door from below
+      for (let cy = r.y + r.h - 1; cy <= Math.min(mapH - 1, r.y + r.h + 3); cy++) {
+        for (let cx = doorX - 1; cx <= doorX + 1; cx++) {
+          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && (map[cy][cx] === EMPTY || map[cy][cx] === WALL)) {
+            map[cy][cx] = FLOOR;
           }
         }
       }
     }
 
-    // Pilaar decoratie
-    if (roomW > 6) {
-      map[ry + Math.floor(roomH / 2)][rx + Math.floor(roomW / 2)] = PILLAR;
-    }
+    // Pillar (varied position within room)
+    const pillarX = r.x + 2 + Math.floor(seededRandom(r.origIdx, 2, seed + 70) * (r.w - 5));
+    const pillarY = r.y + 2 + Math.floor(seededRandom(r.origIdx, 3, seed + 71) * (r.h - 4));
+    if (map[pillarY][pillarX] === FLOOR) map[pillarY][pillarX] = PILLAR;
 
-    // Fakkels naast deur
-    if (doorX - 2 >= rx + 1) map[doorY][doorX - 2] = TORCH;
-    if (doorX + 1 < rx + roomW - 1) map[doorY][doorX + 1] = TORCH;
-
-    // Lestafel in kamer (als er ruimte is)
-    const tableY = ry + roomH - 3;
-    const tableX = rx + 3;
-    if (map[tableY][tableX] === FLOOR) {
+    // Table (varied position)
+    const tableX = r.x + 2 + Math.floor(seededRandom(r.origIdx, 4, seed + 72) * (r.w - 5));
+    const tableY = r.y + r.h - 3 - Math.floor(seededRandom(r.origIdx, 5, seed + 73) * 2);
+    if (tableY > r.y + 1 && tableY < r.y + r.h - 1 && map[tableY][tableX] === FLOOR) {
       map[tableY][tableX] = TABLE;
     }
 
-    // Categorie kleur voor boekenkasten (hash van naam)
-    const catHash = cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
-    const catHue = catHash % 360;
+    // Extra plant in bigger rooms
+    if (r.w >= 10 && r.h >= 8) {
+      const plantX = r.x + r.w - 2;
+      const plantY = r.y + r.h - 2;
+      if (map[plantY][plantX] === FLOOR) map[plantY][plantX] = PLANT;
+    }
 
     rooms.push({
-      name: cat,
-      emoji: CATEGORY_EMOJIS[cat] || '📚',
-      x: rx,
-      y: ry,
-      w: roomW,
-      h: roomH,
-      centerX: (rx + roomW / 2) * TILE,
-      centerY: (ry + roomH / 2) * TILE,
-      catHue,
+      name: r.cat,
+      emoji: CATEGORY_EMOJIS[r.cat] || '📚',
+      x: r.x, y: r.y, w: r.w, h: r.h,
+      centerX: (r.x + r.w / 2) * TILE,
+      centerY: (r.y + r.h / 2) * TILE,
+      catHue: r.catHue,
     });
   });
 
-  // Herstel hoofdcorridor - kamermuren kunnen deze overschreven hebben
-  for (let y = marginY; y < hallY + 1; y++) {
-    for (let x = corStartX; x < corStartX + corridorW; x++) {
-      if (x >= 0 && x < mapW && y >= 0 && y < mapH) {
-        if (map[y][x] !== FLOOR && map[y][x] !== CARPET && map[y][x] !== DOOR) {
-          map[y][x] = FLOOR;
-        }
-      }
+  // Corridor torches along the main spine (every 5-7 tiles, varied)
+  for (let cy = spineTopY + 2; cy < hallY - 2; cy += 5 + Math.floor(seededRandom(cy, 0, seed + 80) * 3)) {
+    const leftX = spineX - spineHalfW - 1;
+    const rightX = spineX + spineHalfW + 1;
+    if (leftX >= 0 && leftX < mapW && cy >= 0 && cy < mapH && map[cy][leftX] === EMPTY) {
+      map[cy][leftX] = TORCH;
+    }
+    if (rightX >= 0 && rightX < mapW && cy >= 0 && cy < mapH && map[cy][rightX] === EMPTY) {
+      map[cy][rightX] = TORCH;
     }
   }
 
-  // Herstel horizontale corridors - zorg dat ze niet geblokkeerd zijn
-  categories.forEach((cat, i) => {
-    const row = Math.floor(i / roomsPerRow);
-    const col = i % roomsPerRow;
-    const rx = marginX + col * (roomW + corridorW);
-    const ry = marginY + row * (roomH + corridorW);
-    const corY = ry + roomH - 1;
-    const startX = Math.min(rx, corStartX);
-    const endX = Math.max(rx + roomW, corStartX + corridorW);
-    for (let x = startX; x < endX; x++) {
-      for (let dy = 0; dy < 3; dy++) {
-        const cy = corY + dy;
-        if (cy < mapH && x >= 0 && x < mapW) {
-          if (map[cy][x] === WALL || map[cy][x] === EMPTY) {
-            map[cy][x] = FLOOR;
-          }
+  // Wing corridor torches
+  for (const seg of corridorSegments) {
+    if (seg.y1 === seg.y2 && Math.abs(seg.x2 - seg.x1) > 6) {
+      // Horizontal corridor - add torches
+      const minSX = Math.min(seg.x1, seg.x2);
+      const maxSX = Math.max(seg.x1, seg.x2);
+      for (let cx = minSX + 3; cx < maxSX - 2; cx += 5 + Math.floor(seededRandom(cx, seg.y1, seed + 81) * 3)) {
+        const ty1 = seg.y1 - spineHalfW - 1;
+        const ty2 = seg.y1 + spineHalfW + 1;
+        if (ty1 >= 0 && cx >= 0 && cx < mapW && ty1 < mapH && map[ty1][cx] === EMPTY) {
+          map[ty1][cx] = TORCH;
+        }
+        if (ty2 < mapH && cx >= 0 && cx < mapW && map[ty2][cx] === EMPTY) {
+          map[ty2][cx] = TORCH;
         }
       }
-    }
-  });
-
-  // Tapijt in hoofdcorridor herstellen
-  for (let y = marginY + 1; y < hallY; y++) {
-    for (let x = corStartX + 1; x < corStartX + corridorW - 1; x++) {
-      if (x >= 0 && x < mapW && map[y][x] === FLOOR) {
-        map[y][x] = CARPET;
-      }
-    }
-  }
-
-  // Corridor fakkels langs de hoofdcorridor (elke 6 tiles)
-  for (let y = marginY + 3; y < hallY - 2; y += 6) {
-    // Links van corridor
-    const leftX = corStartX - 1;
-    if (leftX >= 0 && leftX < mapW && y >= 0 && y < mapH && map[y][leftX] === EMPTY) {
-      map[y][leftX] = TORCH;
-    }
-    // Rechts van corridor
-    const rightX = corStartX + corridorW;
-    if (rightX >= 0 && rightX < mapW && y >= 0 && y < mapH && map[y][rightX] === EMPTY) {
-      map[y][rightX] = TORCH;
     }
   }
 
@@ -438,13 +588,52 @@ const LibraryPage = () => {
   const library = useMemo(() => generateLibrary(categories), [categories]);
   const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY } = library;
 
-  // Init player positie (herstel uit sessionStorage als beschikbaar)
+  // Save game state to localStorage
+  const saveGameState = useCallback(() => {
+    try {
+      const state = {
+        playerX: playerRef.current.x,
+        playerY: playerRef.current.y,
+        fogOfWar: fogOfWarRef.current ? Array.from({ length: mapH }, (_, y) =>
+          Array.from(fogOfWarRef.current[y] || [])
+        ) : null,
+        discoveredRooms: Array.from(discoveredRoomsRef.current),
+        timestamp: Date.now(),
+      };
+      localStorage.setItem('libraryGameSave', JSON.stringify(state));
+      return true;
+    } catch { return false; }
+  }, [mapH]);
+
+  // Load game state from localStorage
+  const loadGameState = useCallback(() => {
+    try {
+      const raw = localStorage.getItem('libraryGameSave');
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch { return null; }
+  }, []);
+
+  // Init player positie (herstel uit save)
   useEffect(() => {
-    const saved = sessionStorage.getItem('libraryPlayerPos');
+    const savedGame = loadGameState();
+    // Also check sessionStorage for backward compat
+    const savedSession = sessionStorage.getItem('libraryPlayerPos');
     let startX, startY;
-    if (saved) {
+    if (savedGame) {
+      startX = savedGame.playerX;
+      startY = savedGame.playerY;
+      // Restore fog of war
+      if (savedGame.fogOfWar) {
+        fogOfWarRef.current = savedGame.fogOfWar.map(row => new Float32Array(row));
+      }
+      // Restore discovered rooms
+      if (savedGame.discoveredRooms) {
+        discoveredRoomsRef.current = new Set(savedGame.discoveredRooms);
+      }
+    } else if (savedSession) {
       try {
-        const pos = JSON.parse(saved);
+        const pos = JSON.parse(savedSession);
         startX = pos.x;
         startY = pos.y;
       } catch {
@@ -620,42 +809,51 @@ const LibraryPage = () => {
     const ctx = canvas.getContext('2d');
 
 
-    const gameLoop = () => {
-      gameTimeRef.current += 1 / 60;
+    let lastFrameTime = performance.now();
+    let cachedW = 0, cachedH = 0, cachedDpr = 0;
+    const gameLoop = (now) => {
+      const rawDt = (now - lastFrameTime) / 1000;
+      const dt = Math.min(rawDt, 0.05); // Cap at 50ms to prevent jumps
+      lastFrameTime = now;
+      gameTimeRef.current += dt;
       const time = gameTimeRef.current;
 
-      // Retina/HiDPI support
+      // Retina/HiDPI support (only resize when needed)
       const dpr = window.devicePixelRatio || 1;
       const w = window.innerWidth;
       const h = window.innerHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      canvas.style.width = w + 'px';
-      canvas.style.height = h + 'px';
+      if (w !== cachedW || h !== cachedH || dpr !== cachedDpr) {
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        cachedW = w; cachedH = h; cachedDpr = dpr;
+      }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Player movement (keyboard + virtual joystick)
+      // Player movement (keyboard + virtual joystick) — delta-time based
       const keys = keysRef.current;
       const sprinting = keys.has('shift');
-      const speed = sprinting ? PLAYER_SPRINT : PLAYER_SPEED;
+      const baseSpeed = sprinting ? PLAYER_SPRINT : PLAYER_SPEED;
+      const speed = baseSpeed * 60; // Convert to pixels/second
       let dx = 0, dy = 0;
-      if (keys.has('w') || keys.has('arrowup')) dy -= speed;
-      if (keys.has('s') || keys.has('arrowdown')) dy += speed;
-      if (keys.has('a') || keys.has('arrowleft')) dx -= speed;
-      if (keys.has('d') || keys.has('arrowright')) dx += speed;
+      if (keys.has('w') || keys.has('arrowup')) dy -= 1;
+      if (keys.has('s') || keys.has('arrowdown')) dy += 1;
+      if (keys.has('a') || keys.has('arrowleft')) dx -= 1;
+      if (keys.has('d') || keys.has('arrowright')) dx += 1;
 
       // Virtual joystick input
       const joy = joystickRef.current;
       if (joy.dx !== 0 || joy.dy !== 0) {
-        dx += joy.dx * speed;
-        dy += joy.dy * speed;
+        dx += joy.dx;
+        dy += joy.dy;
       }
 
-      // Normalize diagonal
+      // Normalize diagonal and apply speed * dt
       const mag = Math.sqrt(dx * dx + dy * dy);
-      if (mag > speed) {
-        dx = (dx / mag) * speed;
-        dy = (dy / mag) * speed;
+      if (mag > 0) {
+        dx = (dx / mag) * speed * dt;
+        dy = (dy / mag) * speed * dt;
       }
 
       const player = playerRef.current;
@@ -719,6 +917,11 @@ const LibraryPage = () => {
             }
           }
         }
+      }
+
+      // Auto-save every 10 seconds
+      if (Math.floor(time) % 10 === 0 && Math.floor(time) !== Math.floor(time - dt)) {
+        saveGameState();
       }
 
       // Update footprints
@@ -2912,9 +3115,11 @@ const LibraryPage = () => {
         }
       }
 
-      // Falling leaves from plants
-      for (let ty3 = startTY; ty3 < endTY; ty3++) {
-        for (let tx3 = startTX; tx3 < endTX; tx3++) {
+      // Falling leaves from nearby plants (check only near player, not full viewport)
+      const plTx = Math.floor(player.x / TILE);
+      const plTy = Math.floor(player.y / TILE);
+      for (let ty3 = Math.max(0, plTy - 5); ty3 < Math.min(mapH, plTy + 5); ty3++) {
+        for (let tx3 = Math.max(0, plTx - 5); tx3 < Math.min(mapW, plTx + 5); tx3++) {
           if (map[ty3][tx3] === PLANT && Math.random() < 0.003) {
             fallingLeavesRef.current.push({
               x: tx3 * TILE + TILE / 2 + (Math.random() - 0.5) * 10,
@@ -2968,29 +3173,9 @@ const LibraryPage = () => {
         }
       }
 
-      // Carpet wear patterns (darker at corridor junctions)
-      for (let ty4 = startTY; ty4 < endTY; ty4++) {
-        for (let tx4 = startTX; tx4 < endTX; tx4++) {
-          if (map[ty4][tx4] === CARPET) {
-            // Check if this is near a junction (multiple adjacent floor tiles)
-            let adjFloor = 0;
-            if (ty4 > 0 && (map[ty4 - 1][tx4] === FLOOR || map[ty4 - 1][tx4] === DOOR)) adjFloor++;
-            if (ty4 < mapH - 1 && (map[ty4 + 1][tx4] === FLOOR || map[ty4 + 1][tx4] === DOOR)) adjFloor++;
-            if (tx4 > 0 && (map[ty4][tx4 - 1] === FLOOR || map[ty4][tx4 - 1] === DOOR)) adjFloor++;
-            if (tx4 < mapW - 1 && (map[ty4][tx4 + 1] === FLOOR || map[ty4][tx4 + 1] === DOOR)) adjFloor++;
-            if (adjFloor >= 2) {
-              const wsx = tx4 * TILE - camX;
-              const wsy = ty4 * TILE - camY;
-              ctx.fillStyle = 'rgba(0,0,0,0.03)';
-              ctx.fillRect(wsx + 4, wsy + 4, TILE - 8, TILE - 8);
-            }
-          }
-        }
-      }
-
-      // Pillar ambient light reflection
-      for (let ty5 = startTY; ty5 < endTY; ty5++) {
-        for (let tx5 = startTX; tx5 < endTX; tx5++) {
+      // Pillar ambient light reflection (only near player)
+      for (let ty5 = Math.max(0, plTy - 6); ty5 < Math.min(mapH, plTy + 6); ty5++) {
+        for (let tx5 = Math.max(0, plTx - 8); tx5 < Math.min(mapW, plTx + 8); tx5++) {
           if (map[ty5][tx5] === PILLAR) {
             const plx = tx5 * TILE + TILE / 2 - camX;
             const ply = ty5 * TILE + TILE / 2 - camY;
@@ -3069,9 +3254,9 @@ const LibraryPage = () => {
         }
       }
 
-      // Fireflies near plants
-      for (let ty6 = startTY; ty6 < endTY; ty6++) {
-        for (let tx6 = startTX; tx6 < endTX; tx6++) {
+      // Fireflies near plants (only near player)
+      for (let ty6 = Math.max(0, plTy - 6); ty6 < Math.min(mapH, plTy + 6); ty6++) {
+        for (let tx6 = Math.max(0, plTx - 8); tx6 < Math.min(mapW, plTx + 8); tx6++) {
           if (map[ty6][tx6] === PLANT && Math.random() < 0.002 && firefliesRef.current.length < 15) {
             firefliesRef.current.push({
               x: tx6 * TILE + TILE / 2, y: ty6 * TILE + TILE / 2,
@@ -3827,6 +4012,190 @@ const LibraryPage = () => {
         ctx.globalAlpha = 1;
       }
 
+      // Room guardian NPCs - themed characters at each room
+      const NPC_THEMES = {
+        'Logica': { body: '#4a6fa5', robe: '#3a5a90', hat: 'pointy', accessory: '📐' },
+        'Epistemologie': { body: '#7a5aa5', robe: '#6a4a95', hat: 'hood', accessory: '🔮' },
+        'Psychologie': { body: '#5a8a6a', robe: '#4a7a5a', hat: 'glasses', accessory: '🧠' },
+        'Behavioral Economics': { body: '#8a7a3a', robe: '#7a6a2a', hat: 'crown', accessory: '💰' },
+        'Retorica': { body: '#a55a5a', robe: '#954a4a', hat: 'feather', accessory: '🎭' },
+        'Speltheorie': { body: '#5a5a8a', robe: '#4a4a7a', hat: 'pointy', accessory: '♟️' },
+        'Statistiek': { body: '#5a7a7a', robe: '#4a6a6a', hat: 'glasses', accessory: '📊' },
+        'Besliskunde': { body: '#6a6a5a', robe: '#5a5a4a', hat: 'hood', accessory: '⚖️' },
+      };
+      const defaultNPC = { body: '#6a5a7a', robe: '#5a4a6a', hat: 'hood', accessory: '📚' };
+
+      for (const room of rooms) {
+        const npcTheme = NPC_THEMES[room.name] || defaultNPC;
+        // NPC stands near the center of the room
+        const npcX = room.centerX + TILE * 1.5;
+        const npcY = room.centerY;
+        const npcSX = npcX - camX;
+        const npcSY = npcY - camY;
+
+        if (npcSX < -40 || npcSX > viewW + 40 || npcSY < -40 || npcSY > viewH + 40) continue;
+
+        // Check if tile is revealed (fog of war)
+        const npcTX = Math.floor(npcX / TILE);
+        const npcTY = Math.floor(npcY / TILE);
+        if (fogOfWarRef.current && npcTX >= 0 && npcTX < mapW && npcTY >= 0 && npcTY < mapH) {
+          if ((fogOfWarRef.current[npcTY]?.[npcTX] ?? 0) < 0.5) continue;
+        }
+
+        const npcDist = Math.sqrt((player.x - npcX) ** 2 + (player.y - npcY) ** 2);
+        const npcFacing = player.x < npcX ? -1 : 1;
+        const npcBob = Math.sin(time * 1.5 + room.x) * 1.5;
+
+        // Robe/body
+        ctx.fillStyle = npcTheme.robe;
+        ctx.globalAlpha = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(npcSX - 8, npcSY + 16);
+        ctx.quadraticCurveTo(npcSX - 10, npcSY - 2, npcSX - 5, npcSY - 10 + npcBob);
+        ctx.quadraticCurveTo(npcSX, npcSY - 14 + npcBob, npcSX + 5, npcSY - 10 + npcBob);
+        ctx.quadraticCurveTo(npcSX + 10, npcSY - 2, npcSX + 8, npcSY + 16);
+        ctx.closePath();
+        ctx.fill();
+
+        // Head
+        ctx.fillStyle = npcTheme.body;
+        ctx.beginPath();
+        ctx.arc(npcSX, npcSY - 14 + npcBob, 7, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Eyes (look at player when close)
+        const eyeLook = npcDist < TILE * 4 ? npcFacing * 1.5 : 0;
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.beginPath();
+        ctx.arc(npcSX - 2.5 + eyeLook * 0.3, npcSY - 15 + npcBob, 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(npcSX + 2.5 + eyeLook * 0.3, npcSY - 15 + npcBob, 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(0,0,0,0.6)';
+        ctx.beginPath();
+        ctx.arc(npcSX - 2.5 + eyeLook, npcSY - 15 + npcBob, 1, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(npcSX + 2.5 + eyeLook, npcSY - 15 + npcBob, 1, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Hat/accessory based on theme
+        if (npcTheme.hat === 'pointy') {
+          ctx.fillStyle = npcTheme.robe;
+          ctx.beginPath();
+          ctx.moveTo(npcSX - 7, npcSY - 19 + npcBob);
+          ctx.lineTo(npcSX, npcSY - 30 + npcBob);
+          ctx.lineTo(npcSX + 7, npcSY - 19 + npcBob);
+          ctx.closePath();
+          ctx.fill();
+          // Star on hat tip
+          ctx.fillStyle = 'rgba(255,220,100,0.5)';
+          ctx.beginPath();
+          ctx.arc(npcSX, npcSY - 30 + npcBob, 2, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (npcTheme.hat === 'hood') {
+          ctx.fillStyle = npcTheme.robe;
+          ctx.beginPath();
+          ctx.arc(npcSX, npcSY - 15 + npcBob, 9, Math.PI, 0);
+          ctx.fill();
+        } else if (npcTheme.hat === 'glasses') {
+          ctx.strokeStyle = 'rgba(200,200,200,0.5)';
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.arc(npcSX - 3, npcSY - 15 + npcBob, 2.5, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(npcSX + 3, npcSY - 15 + npcBob, 2.5, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(npcSX - 0.5, npcSY - 15 + npcBob);
+          ctx.lineTo(npcSX + 0.5, npcSY - 15 + npcBob);
+          ctx.stroke();
+        } else if (npcTheme.hat === 'crown') {
+          ctx.fillStyle = 'rgba(200,170,50,0.5)';
+          ctx.beginPath();
+          ctx.moveTo(npcSX - 6, npcSY - 20 + npcBob);
+          ctx.lineTo(npcSX - 4, npcSY - 24 + npcBob);
+          ctx.lineTo(npcSX - 2, npcSY - 20 + npcBob);
+          ctx.lineTo(npcSX, npcSY - 25 + npcBob);
+          ctx.lineTo(npcSX + 2, npcSY - 20 + npcBob);
+          ctx.lineTo(npcSX + 4, npcSY - 24 + npcBob);
+          ctx.lineTo(npcSX + 6, npcSY - 20 + npcBob);
+          ctx.closePath();
+          ctx.fill();
+        } else if (npcTheme.hat === 'feather') {
+          ctx.fillStyle = npcTheme.robe;
+          ctx.beginPath();
+          ctx.ellipse(npcSX, npcSY - 20 + npcBob, 8, 3, 0, Math.PI, 0);
+          ctx.fill();
+          // Feather
+          ctx.strokeStyle = 'rgba(255,100,100,0.4)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(npcSX + 5, npcSY - 21 + npcBob);
+          ctx.quadraticCurveTo(npcSX + 12, npcSY - 30 + npcBob + Math.sin(time * 2) * 2, npcSX + 8, npcSY - 35 + npcBob);
+          ctx.stroke();
+        }
+
+        // Accessory item floating next to NPC
+        ctx.globalAlpha = 0.4 + Math.sin(time * 2 + room.x) * 0.1;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(npcTheme.accessory, npcSX + 12, npcSY - 8 + npcBob + Math.sin(time * 1.5 + room.x) * 2);
+        ctx.globalAlpha = 1;
+
+        // Speech bubble when player is close
+        if (npcDist < TILE * 3) {
+          const roomPrinciples = roomPrinciplesMap[room.name] || [];
+          const unreadPrinciples = roomPrinciples.filter(p => !getPrincipleProgressRef.current(p.id)?.activities?.read);
+          let speechText;
+          if (unreadPrinciples.length > 0) {
+            const suggest = unreadPrinciples[Math.floor(seededRandom(room.x, room.y, 600 + Math.floor(time / 10)) * unreadPrinciples.length)];
+            speechText = `Lees "${suggest.title}"!`;
+          } else if (roomPrinciples.length > 0) {
+            speechText = 'Je hebt alles gelezen! ⭐';
+          } else {
+            speechText = `Welkom in ${room.name}!`;
+          }
+
+          const bubbleAlpha = Math.min(1, (TILE * 3 - npcDist) / TILE);
+          ctx.globalAlpha = bubbleAlpha * 0.9;
+
+          // Speech bubble
+          ctx.font = '600 10px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          const tw2 = ctx.measureText(speechText).width;
+          const bubbleW = tw2 + 16;
+          const bubbleH = 22;
+          const bubbleX = npcSX - bubbleW / 2;
+          const bubbleY = npcSY - 42 + npcBob;
+
+          // Bubble background
+          ctx.fillStyle = 'rgba(255,255,255,0.92)';
+          ctx.beginPath();
+          ctx.roundRect(bubbleX, bubbleY, bubbleW, bubbleH, 8);
+          ctx.fill();
+          // Bubble pointer
+          ctx.beginPath();
+          ctx.moveTo(npcSX - 4, bubbleY + bubbleH);
+          ctx.lineTo(npcSX, bubbleY + bubbleH + 6);
+          ctx.lineTo(npcSX + 4, bubbleY + bubbleH);
+          ctx.closePath();
+          ctx.fill();
+          // Border
+          ctx.strokeStyle = `hsla(${room.catHue}, 40%, 50%, 0.3)`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.roundRect(bubbleX, bubbleY, bubbleW, bubbleH, 8);
+          ctx.stroke();
+          // Text
+          ctx.fillStyle = '#333';
+          ctx.fillText(speechText, npcSX, bubbleY + 15);
+          ctx.globalAlpha = 1;
+        }
+      }
+
       // Interactie indicator
       let nearRoom = null;
       for (const room of rooms) {
@@ -4376,6 +4745,7 @@ const LibraryPage = () => {
                   key={p.id}
                   onClick={() => {
                     sessionStorage.setItem('libraryPlayerPos', JSON.stringify({ x: playerRef.current.x, y: playerRef.current.y }));
+                    saveGameState();
                     navigate(`/principle/${p.id}`);
                   }}
                   style={{
@@ -4523,7 +4893,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.4.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.6.0</div>
         </div>
       )}
 
@@ -4579,7 +4949,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.4.0</div>
+        }}>v1.6.0</div>
       )}
 
       {/* Mobile: action button */}
@@ -4627,6 +4997,7 @@ const LibraryPage = () => {
       <button
         onClick={() => {
           sessionStorage.setItem('libraryPlayerPos', JSON.stringify({ x: playerRef.current.x, y: playerRef.current.y }));
+                    saveGameState();
           navigate('/home');
         }}
         style={{
@@ -4639,6 +5010,60 @@ const LibraryPage = () => {
       >
         ← Terug
       </button>
+
+      {/* Save/Load buttons */}
+      <div style={{
+        position: 'absolute', top: 16, right: isMobile ? 16 : 140,
+        display: 'flex', gap: 6, zIndex: 10,
+      }}>
+        <button
+          onClick={() => {
+            if (saveGameState()) {
+              setToastMessage({ text: 'Spel opgeslagen!', emoji: '💾' });
+              if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+              toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 2000);
+            }
+          }}
+          style={{
+            background: 'rgba(0,0,0,0.7)', color: '#fff',
+            border: 'none', padding: '8px 12px', borderRadius: 10,
+            cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600,
+            backdropFilter: 'blur(8px)',
+          }}
+        >
+          💾 Opslaan
+        </button>
+        <button
+          onClick={() => {
+            const state = loadGameState();
+            if (state) {
+              playerRef.current.x = state.playerX;
+              playerRef.current.y = state.playerY;
+              if (state.fogOfWar) {
+                fogOfWarRef.current = state.fogOfWar.map(row => new Float32Array(row));
+              }
+              if (state.discoveredRooms) {
+                discoveredRoomsRef.current = new Set(state.discoveredRooms);
+              }
+              setToastMessage({ text: 'Spel geladen!', emoji: '📂' });
+              if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+              toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 2000);
+            } else {
+              setToastMessage({ text: 'Geen opgeslagen spel gevonden', emoji: '❌' });
+              if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+              toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 2000);
+            }
+          }}
+          style={{
+            background: 'rgba(0,0,0,0.7)', color: '#fff',
+            border: 'none', padding: '8px 12px', borderRadius: 10,
+            cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600,
+            backdropFilter: 'blur(8px)',
+          }}
+        >
+          📂 Laden
+        </button>
+      </div>
 
       {renderMinimap()}
       {renderBookPanel()}
