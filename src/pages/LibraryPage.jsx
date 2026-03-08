@@ -616,8 +616,41 @@ const LibraryPage = () => {
 
   // Init player positie (herstel uit save)
   useEffect(() => {
-    const defaultX = (hallX + hallW / 2) * TILE;
-    const defaultY = (hallY + hallH / 2) * TILE;
+    // Find a guaranteed walkable spawn point in the entrance hall
+    const findSafeSpawn = () => {
+      // Spiral outward from hall center to find a walkable FLOOR/CARPET tile
+      const cx = hallX + Math.floor(hallW / 2);
+      const cy = hallY + Math.floor(hallH / 2);
+      for (let r = 0; r < Math.max(hallW, hallH); r++) {
+        for (let dy = -r; dy <= r; dy++) {
+          for (let dx = -r; dx <= r; dx++) {
+            if (Math.abs(dx) !== r && Math.abs(dy) !== r) continue; // only ring
+            const tx = cx + dx, ty = cy + dy;
+            if (tx < 0 || tx >= mapW || ty < 0 || ty >= mapH) continue;
+            const tile = map[ty][tx];
+            if (tile === FLOOR || tile === CARPET || tile === DOOR) {
+              const px = tx * TILE + TILE / 2;
+              const py = ty * TILE + TILE / 2;
+              if (isWalkable(map, px, py, mapW, mapH)) return { x: px, y: py };
+            }
+          }
+        }
+      }
+      // Ultimate fallback: scan entire map
+      for (let y = 0; y < mapH; y++) {
+        for (let x = 0; x < mapW; x++) {
+          const tile = map[y][x];
+          if (tile === FLOOR || tile === CARPET) {
+            const px = x * TILE + TILE / 2;
+            const py = y * TILE + TILE / 2;
+            if (isWalkable(map, px, py, mapW, mapH)) return { x: px, y: py };
+          }
+        }
+      }
+      return { x: (cx + 0.5) * TILE, y: (cy + 0.5) * TILE };
+    };
+
+    const safeSpawn = findSafeSpawn();
 
     const savedGame = loadGameState();
     const savedSession = sessionStorage.getItem('libraryPlayerPos');
@@ -640,22 +673,19 @@ const LibraryPage = () => {
         startX = pos.x;
         startY = pos.y;
       } catch {
-        startX = defaultX;
-        startY = defaultY;
+        startX = safeSpawn.x;
+        startY = safeSpawn.y;
       }
     } else {
-      startX = defaultX;
-      startY = defaultY;
+      startX = safeSpawn.x;
+      startY = safeSpawn.y;
     }
 
-    // Validate position: must be on a walkable tile, otherwise reset to entrance hall
-    const checkTX = Math.floor(startX / TILE);
-    const checkTY = Math.floor(startY / TILE);
-    if (checkTX < 0 || checkTX >= mapW || checkTY < 0 || checkTY >= mapH ||
-        !isWalkable(map, startX, startY, mapW, mapH)) {
-      startX = defaultX;
-      startY = defaultY;
-      // Clear stale save data since layout changed
+    // Validate position: must be on a walkable tile, otherwise use safe spawn
+    if (!isWalkable(map, startX, startY, mapW, mapH)) {
+      startX = safeSpawn.x;
+      startY = safeSpawn.y;
+      // Clear stale save data since position was invalid
       fogOfWarRef.current = null;
       discoveredRoomsRef.current = new Set();
       localStorage.removeItem('libraryGameSave');
