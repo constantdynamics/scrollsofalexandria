@@ -9,6 +9,7 @@ const PLAYER_SPEED = 3;
 const PLAYER_SPRINT = 6;
 const INTERACTION_DIST = 50;
 const CAMERA_LERP = 0.08; // Smooth camera follow speed
+const DAY_CYCLE_DURATION = 300; // 5 minutes per full day/night cycle
 
 // Deterministic pseudo-random based on position (no flicker)
 function seededRandom(x, y, seed) {
@@ -338,6 +339,8 @@ const LibraryPage = () => {
   const animFrameRef = useRef(null);
   const getPrincipleProgressRef = useRef(getPrincipleProgress);
   const teleportTargetRef = useRef(null); // { x, y } smooth teleport destination
+  const teleportFlashRef = useRef(0); // Flash intensity on arrival
+  const interactPulseRef = useRef(0); // Pulse on interaction
   const zoomRef = useRef(1); // Camera zoom level
 
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -345,6 +348,7 @@ const LibraryPage = () => {
   const [showMinimap, setShowMinimap] = useState(true);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showStats, setShowStats] = useState(false);
   const searchInputRef = useRef(null);
   const [isMobile, setIsMobile] = useState(() => {
     return typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
@@ -466,6 +470,7 @@ const LibraryPage = () => {
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < (room.w / 2) * TILE) {
         setSelectedRoom(room.name);
+        interactPulseRef.current = 1.0;
         return;
       }
     }
@@ -512,6 +517,9 @@ const LibraryPage = () => {
         e.preventDefault();
         setShowSearch(true);
         setTimeout(() => searchInputRef.current?.focus(), 50);
+      }
+      if (e.key === 'q' || e.key === 'Q') {
+        setShowStats(prev => !prev);
       }
     };
     const handleKeyUp = (e) => {
@@ -619,6 +627,7 @@ const LibraryPage = () => {
           player.x = tp.x;
           player.y = tp.y;
           teleportTargetRef.current = null;
+          teleportFlashRef.current = 0.3; // Flash on arrival
         } else {
           const tSpeed = Math.max(15, tdist * 0.12);
           player.x += (tdx / tdist) * tSpeed;
@@ -1108,6 +1117,17 @@ const LibraryPage = () => {
       ctx.arc(px + 5 + eyeDx, py - 3 + eyeDy, 2, 0, Math.PI * 2);
       ctx.fill();
 
+      // Interaction pulse ring
+      if (interactPulseRef.current > 0) {
+        const pulseR = 20 + (1 - interactPulseRef.current) * 40;
+        ctx.strokeStyle = `rgba(92,79,207,${interactPulseRef.current * 0.6})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(px, py, pulseR, 0, Math.PI * 2);
+        ctx.stroke();
+        interactPulseRef.current -= 0.025;
+      }
+
       // Nameplate
       if (userData?.name) {
         ctx.font = '600 9px Inter, sans-serif';
@@ -1205,15 +1225,44 @@ const LibraryPage = () => {
         mCtx.strokeStyle = '#fff';
         mCtx.lineWidth = 1;
         mCtx.stroke();
+        // Viewport rectangle
+        const vpX = camX / TILE * mmScale;
+        const vpY = camY / TILE * mmScale;
+        const vpW = viewW / TILE * mmScale;
+        const vpH = viewH / TILE * mmScale;
+        mCtx.strokeStyle = 'rgba(255,255,255,0.3)';
+        mCtx.lineWidth = 1;
+        mCtx.strokeRect(vpX, vpY, vpW, vpH);
       }
 
       // End zoom transform
       ctx.restore();
 
+      // Day/night cycle overlay (screen-space)
+      const dayPhase = (time % DAY_CYCLE_DURATION) / DAY_CYCLE_DURATION;
+      const nightIntensity = Math.max(0, Math.sin(dayPhase * Math.PI * 2 - Math.PI / 2)) * 0.15;
+      if (nightIntensity > 0.01) {
+        ctx.fillStyle = `rgba(10,8,30,${nightIntensity})`;
+        ctx.fillRect(0, 0, w, h);
+      }
+      // Warm tint during "golden hour" (around transitions)
+      const warmPhase = Math.max(0, Math.sin(dayPhase * Math.PI * 2)) * 0.06;
+      if (warmPhase > 0.01) {
+        ctx.fillStyle = `rgba(255,180,60,${warmPhase})`;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      // Teleport arrival flash
+      if (teleportFlashRef.current > 0) {
+        ctx.fillStyle = `rgba(92,79,207,${teleportFlashRef.current})`;
+        ctx.fillRect(0, 0, w, h);
+        teleportFlashRef.current -= 0.03;
+      }
+
       // Vignette overlay (screen-space, not zoomed)
       const vignetteGrad = ctx.createRadialGradient(w / 2, h / 2, h * 0.3, w / 2, h / 2, h * 0.9);
       vignetteGrad.addColorStop(0, 'rgba(0,0,0,0)');
-      vignetteGrad.addColorStop(1, 'rgba(0,0,0,0.3)');
+      vignetteGrad.addColorStop(1, `rgba(0,0,0,${0.3 + nightIntensity})`);
       ctx.fillStyle = vignetteGrad;
       ctx.fillRect(0, 0, w, h);
 
@@ -1524,9 +1573,10 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>Shift</span> Sprint &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>E</span> Interactie &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>F</span> Zoeken &nbsp;
+          <span style={{ fontWeight: 600, color: '#fff' }}>Q</span> Stats &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.4.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.5.0</div>
         </div>
       )}
 
@@ -1582,7 +1632,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.4.0</div>
+        }}>v0.5.0</div>
       )}
 
       {/* Mobile: action button */}
@@ -1645,6 +1695,84 @@ const LibraryPage = () => {
 
       {renderMinimap()}
       {renderBookPanel()}
+
+      {/* Stats overlay */}
+      {showStats && (
+        <div
+          style={{
+            position: 'absolute', inset: 0,
+            background: 'rgba(0,0,0,0.7)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            zIndex: 55,
+          }}
+          onClick={() => setShowStats(false)}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: 'var(--color-surface, #fffef9)',
+              borderRadius: 16, padding: 24, width: '90%', maxWidth: 480,
+              maxHeight: '80vh', overflow: 'auto',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+              border: '1px solid var(--color-border, #e5d9c8)',
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.3rem', color: 'var(--color-text, #1c1510)' }}>
+                Statistieken
+              </h2>
+              <button onClick={() => setShowStats(false)} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'var(--color-text-muted, #8a7a66)' }}>✕</button>
+            </div>
+            {(() => {
+              const all = allPrinciples || [];
+              const totalRead = all.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+              const totalMastered = all.filter(p => (getPrincipleProgress(p.id)?.masteryPercentage || 0) >= 100).length;
+              const avgMastery = all.length > 0 ? Math.round(all.reduce((s, p) => s + (getPrincipleProgress(p.id)?.masteryPercentage || 0), 0) / all.length) : 0;
+              const topCats = categories
+                .map(cat => {
+                  const rp = roomPrinciplesMap[cat] || [];
+                  const avg = rp.length > 0 ? Math.round(rp.reduce((s, p) => s + (getPrincipleProgress(p.id)?.masteryPercentage || 0), 0) / rp.length) : 0;
+                  return { name: cat, emoji: CATEGORY_EMOJIS[cat] || '📚', count: rp.length, mastery: avg };
+                })
+                .sort((a, b) => b.mastery - a.mastery)
+                .slice(0, 10);
+              return (
+                <>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 20 }}>
+                    {[
+                      { label: 'Gelezen', value: totalRead, total: all.length, color: '#5c4fcf' },
+                      { label: 'Voltooid', value: totalMastered, total: all.length, color: '#c9880f' },
+                      { label: 'Gem. Mastery', value: `${avgMastery}%`, total: null, color: '#059669' },
+                    ].map(s => (
+                      <div key={s.label} style={{ textAlign: 'center', padding: 12, borderRadius: 10, background: 'var(--color-bg-alt, #f1e9dc)' }}>
+                        <div style={{ fontSize: '1.4rem', fontWeight: 700, color: s.color }}>{s.value}</div>
+                        {s.total !== null && <div style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)' }}>/ {s.total}</div>}
+                        <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary, #4a3d2e)', marginTop: 4 }}>{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <h3 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: 8, color: 'var(--color-text, #1c1510)' }}>Top categorieën</h3>
+                  {topCats.map(c => (
+                    <div key={c.name} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                      <span style={{ fontSize: '1rem' }}>{c.emoji}</span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: '0.8rem', fontWeight: 500 }}>{c.name}</div>
+                        <div style={{ height: 4, borderRadius: 2, background: 'var(--color-bg-alt, #f1e9dc)', overflow: 'hidden', marginTop: 2 }}>
+                          <div style={{ height: '100%', width: `${c.mastery}%`, background: c.mastery >= 100 ? '#c9880f' : '#5c4fcf', borderRadius: 2 }} />
+                        </div>
+                      </div>
+                      <span style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', minWidth: 32, textAlign: 'right' }}>{c.mastery}%</span>
+                    </div>
+                  ))}
+                  <div style={{ marginTop: 16, textAlign: 'center', fontSize: '0.7rem', color: 'var(--color-text-muted)' }}>
+                    {categories.length} kamers · {all.length} principes · Druk Q om te sluiten
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+        </div>
+      )}
 
       {/* Search overlay */}
       {showSearch && (
