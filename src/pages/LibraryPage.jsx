@@ -616,18 +616,21 @@ const LibraryPage = () => {
 
   // Init player positie (herstel uit save)
   useEffect(() => {
+    const defaultX = (hallX + hallW / 2) * TILE;
+    const defaultY = (hallY + hallH / 2) * TILE;
+
     const savedGame = loadGameState();
-    // Also check sessionStorage for backward compat
     const savedSession = sessionStorage.getItem('libraryPlayerPos');
     let startX, startY;
+
     if (savedGame) {
       startX = savedGame.playerX;
       startY = savedGame.playerY;
-      // Restore fog of war
-      if (savedGame.fogOfWar) {
+      // Restore fog of war only if dimensions match current map
+      if (savedGame.fogOfWar && savedGame.fogOfWar.length === mapH &&
+          savedGame.fogOfWar[0]?.length === mapW) {
         fogOfWarRef.current = savedGame.fogOfWar.map(row => new Float32Array(row));
       }
-      // Restore discovered rooms
       if (savedGame.discoveredRooms) {
         discoveredRoomsRef.current = new Set(savedGame.discoveredRooms);
       }
@@ -637,16 +640,31 @@ const LibraryPage = () => {
         startX = pos.x;
         startY = pos.y;
       } catch {
-        startX = (hallX + hallW / 2) * TILE;
-        startY = (hallY + hallH / 2) * TILE;
+        startX = defaultX;
+        startY = defaultY;
       }
     } else {
-      startX = (hallX + hallW / 2) * TILE;
-      startY = (hallY + hallH / 2) * TILE;
+      startX = defaultX;
+      startY = defaultY;
     }
+
+    // Validate position: must be on a walkable tile, otherwise reset to entrance hall
+    const checkTX = Math.floor(startX / TILE);
+    const checkTY = Math.floor(startY / TILE);
+    if (checkTX < 0 || checkTX >= mapW || checkTY < 0 || checkTY >= mapH ||
+        !isWalkable(map, startX, startY, mapW, mapH)) {
+      startX = defaultX;
+      startY = defaultY;
+      // Clear stale save data since layout changed
+      fogOfWarRef.current = null;
+      discoveredRoomsRef.current = new Set();
+      localStorage.removeItem('libraryGameSave');
+      sessionStorage.removeItem('libraryPlayerPos');
+    }
+
     playerRef.current = { x: startX, y: startY, dirX: 0, dirY: 1, bobTime: 0, moving: false };
     cameraRef.current = { x: startX, y: startY };
-  }, [hallX, hallY, hallW, hallH]);
+  }, [hallX, hallY, hallW, hallH, map, mapW, mapH]);
 
   // Detect touch device
   useEffect(() => {
