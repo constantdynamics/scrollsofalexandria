@@ -377,6 +377,10 @@ const LibraryPage = () => {
   const wispsRef = useRef([]); // { x, y, baseX, baseY, phase, life, hue }
   const waterDripsRef = useRef([]); // { x, y, vy, age, splash }
   const sprintTrailRef = useRef([]); // { x, y, age, hue }
+  const miceRef = useRef([]); // { x, y, tx, ty, speed, life, maxLife, dir }
+  const fallingLeavesRef = useRef([]); // { x, y, vx, vy, rot, rotSpeed, age, hue }
+  const emotionRef = useRef({ emoji: null, age: 0 }); // Current emotion bubble
+  const shootingStarsRef = useRef([]); // { x, y, vx, vy, life, length }
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
 
@@ -738,6 +742,41 @@ const LibraryPage = () => {
         ctx.fill();
       }
 
+      // Shooting stars (rare, screen-space)
+      if (Math.random() < 0.002 && shootingStarsRef.current.length < 2) {
+        const ssX = Math.random() * w;
+        const ssAngle = Math.PI * 0.6 + Math.random() * 0.4;
+        shootingStarsRef.current.push({
+          x: ssX, y: -10, vx: Math.cos(ssAngle) * 6, vy: Math.sin(ssAngle) * 6,
+          life: 0, maxLife: 0.8 + Math.random() * 0.6, length: 30 + Math.random() * 40,
+        });
+      }
+      for (let ssi = shootingStarsRef.current.length - 1; ssi >= 0; ssi--) {
+        const ss = shootingStarsRef.current[ssi];
+        ss.life += 1 / 60;
+        ss.x += ss.vx;
+        ss.y += ss.vy;
+        if (ss.life >= ss.maxLife) { shootingStarsRef.current.splice(ssi, 1); continue; }
+        const ssAlpha = Math.min(1, ss.life * 4) * Math.min(1, (ss.maxLife - ss.life) * 3);
+        const tailX = ss.x - (ss.vx / 6) * ss.length;
+        const tailY = ss.y - (ss.vy / 6) * ss.length;
+        const ssGrad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
+        ssGrad.addColorStop(0, `rgba(255,255,255,0)`);
+        ssGrad.addColorStop(0.7, `rgba(255,255,200,${ssAlpha * 0.3})`);
+        ssGrad.addColorStop(1, `rgba(255,255,255,${ssAlpha * 0.8})`);
+        ctx.strokeStyle = ssGrad;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(ss.x, ss.y);
+        ctx.stroke();
+        // Head glow
+        ctx.fillStyle = `rgba(255,255,255,${ssAlpha * 0.6})`;
+        ctx.beginPath();
+        ctx.arc(ss.x, ss.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       // Apply zoom
       ctx.save();
       ctx.translate(w / 2, h / 2);
@@ -815,6 +854,32 @@ const LibraryPage = () => {
                 sy + TILE * 0.7, 4, 3, 0, 0, Math.PI * 2);
               ctx.fill();
             }
+            // Wall-mounted paintings (rare, on walls adjacent to rooms)
+            const paintRoomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            if (paintRoomIdx >= 0 && seededRandom(tx, ty, 330) > 0.88) {
+              const paintHue = rooms[paintRoomIdx] ? rooms[paintRoomIdx].catHue : 0;
+              // Frame
+              ctx.fillStyle = '#5a4020';
+              ctx.fillRect(sx + 6, sy + 8, TILE - 12, TILE - 18);
+              // Canvas
+              ctx.fillStyle = `hsla(${paintHue}, 30%, 65%, 0.8)`;
+              ctx.fillRect(sx + 8, sy + 10, TILE - 16, TILE - 22);
+              // Abstract art (circle + line pattern)
+              ctx.fillStyle = `hsla(${paintHue + 60}, 40%, 50%, 0.5)`;
+              ctx.beginPath();
+              ctx.arc(sx + TILE / 2, sy + TILE / 2 - 2, 5, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.strokeStyle = `hsla(${paintHue + 120}, 35%, 55%, 0.3)`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(sx + 10, sy + TILE - 12);
+              ctx.lineTo(sx + TILE / 2, sy + 14);
+              ctx.lineTo(sx + TILE - 10, sy + TILE - 12);
+              ctx.stroke();
+              // Frame highlight
+              ctx.fillStyle = 'rgba(255,255,255,0.08)';
+              ctx.fillRect(sx + 6, sy + 8, TILE - 12, 2);
+            }
           } else if (tile === BOOKSHELF) {
             // Kast achtergrond
             ctx.fillStyle = COLORS[BOOKSHELF];
@@ -843,6 +908,17 @@ const LibraryPage = () => {
             // Plank schaduw
             ctx.fillStyle = 'rgba(0,0,0,0.1)';
             ctx.fillRect(sx, sy + Math.floor(TILE / 2) + 2, TILE, 2);
+            // Bookshelf ladder (rare, deterministic)
+            if (seededRandom(tx, ty, 700) > 0.85) {
+              ctx.fillStyle = '#7a5a2a';
+              // Rails
+              ctx.fillRect(sx + TILE - 8, sy + 2, 2, TILE - 4);
+              ctx.fillRect(sx + TILE - 3, sy + 2, 2, TILE - 4);
+              // Rungs
+              for (let ri = 0; ri < 4; ri++) {
+                ctx.fillRect(sx + TILE - 8, sy + 6 + ri * 8, 7, 2);
+              }
+            }
             // Sparkle effect on bookshelves with unread content
             const sparkRoomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
             if (sparkRoomIdx >= 0 && rooms[sparkRoomIdx]) {
@@ -901,6 +977,16 @@ const LibraryPage = () => {
             ctx.beginPath();
             ctx.arc(sx + TILE - 9, sy + TILE / 2, 2.5, 0, Math.PI * 2);
             ctx.fill();
+            // Welcome mat below door
+            const doorRIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            const matHue = doorRIdx >= 0 && rooms[doorRIdx] ? rooms[doorRIdx].catHue : 30;
+            ctx.fillStyle = `hsla(${matHue}, 30%, 35%, 0.25)`;
+            ctx.beginPath();
+            ctx.roundRect(sx - 2, sy + TILE - 3, TILE + 4, 6, 2);
+            ctx.fill();
+            ctx.strokeStyle = `hsla(${matHue}, 25%, 50%, 0.15)`;
+            ctx.lineWidth = 0.5;
+            ctx.strokeRect(sx, sy + TILE - 2, TILE, 4);
           } else if (tile === CARPET) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
@@ -977,6 +1063,27 @@ const LibraryPage = () => {
             ctx.beginPath();
             ctx.arc(sx + TILE / 2, sy + TILE / 2, TILE / 3, 0, Math.PI * 2);
             ctx.stroke();
+            // Glowing rune circle around pillar base
+            const pillarRoomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            const pillarHue = pillarRoomIdx >= 0 && rooms[pillarRoomIdx] ? rooms[pillarRoomIdx].catHue : 200;
+            const runeAlpha = 0.06 + Math.sin(time * 1.2 + tx + ty) * 0.03;
+            ctx.strokeStyle = `hsla(${pillarHue}, 50%, 60%, ${runeAlpha})`;
+            ctx.lineWidth = 0.5;
+            // Outer rune ring
+            ctx.beginPath();
+            ctx.arc(sx + TILE / 2, sy + TILE / 2, TILE * 0.45, 0, Math.PI * 2);
+            ctx.stroke();
+            // Rotating rune marks
+            for (let rm = 0; rm < 6; rm++) {
+              const rAngle = (rm / 6) * Math.PI * 2 + time * 0.2;
+              const rr = TILE * 0.45;
+              const rmx = sx + TILE / 2 + Math.cos(rAngle) * rr;
+              const rmy = sy + TILE / 2 + Math.sin(rAngle) * rr;
+              ctx.fillStyle = `hsla(${pillarHue}, 50%, 65%, ${runeAlpha * 1.5})`;
+              ctx.beginPath();
+              ctx.arc(rmx, rmy, 1.5, 0, Math.PI * 2);
+              ctx.fill();
+            }
           } else if (tile === TABLE) {
             // Floor underneath
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
@@ -999,6 +1106,30 @@ const LibraryPage = () => {
             ctx.fillRect(sx + TILE / 2 - 5, sy + TILE / 2 - 4, 10, 7);
             ctx.fillStyle = 'rgba(255,255,255,0.15)';
             ctx.fillRect(sx + TILE / 2 - 5, sy + TILE / 2 - 4, 10, 1);
+            // Candle on table
+            const candleX = sx + TILE / 2 + 10;
+            const candleY = sy + TILE / 2 - 2;
+            // Candle body
+            ctx.fillStyle = '#e8d8b0';
+            ctx.fillRect(candleX - 2, candleY - 6, 4, 8);
+            // Candle flame
+            const cFlicker = Math.sin(time * 10 + tx * 7) * 1.5;
+            const cFlameGrad = ctx.createRadialGradient(
+              candleX + cFlicker * 0.3, candleY - 9, 0,
+              candleX, candleY - 8, 5
+            );
+            cFlameGrad.addColorStop(0, 'rgba(255,240,180,0.9)');
+            cFlameGrad.addColorStop(0.5, 'rgba(255,180,60,0.5)');
+            cFlameGrad.addColorStop(1, 'rgba(255,100,20,0)');
+            ctx.fillStyle = cFlameGrad;
+            ctx.beginPath();
+            ctx.ellipse(candleX + cFlicker * 0.3, candleY - 9, 3 + cFlicker * 0.2, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Candle light glow on table
+            ctx.fillStyle = `rgba(255,200,100,${0.04 + Math.sin(time * 8 + tx) * 0.02})`;
+            ctx.beginPath();
+            ctx.arc(candleX, candleY, TILE * 0.6, 0, Math.PI * 2);
+            ctx.fill();
           } else if (tile === PLANT) {
             // Floor underneath
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
@@ -1269,6 +1400,116 @@ const LibraryPage = () => {
             ctx.fill();
           }
         }
+      }
+
+      // Window light beams in rooms (diagonal light shafts)
+      for (const room of rooms) {
+        const wlx = room.x * TILE - camX;
+        const wly = room.y * TILE - camY;
+        if (wlx > -room.w * TILE && wlx < viewW + 50 && wly > -room.h * TILE && wly < viewH + 50) {
+          // One light beam per room from top-right corner area
+          const beamX = (room.x + room.w - 2) * TILE - camX;
+          const beamY = (room.y + 1) * TILE - camY;
+          const beamAlpha = 0.015 + Math.sin(time * 0.5 + room.x) * 0.005;
+          ctx.save();
+          ctx.globalAlpha = beamAlpha;
+          ctx.fillStyle = 'rgba(255,240,200,1)';
+          ctx.beginPath();
+          ctx.moveTo(beamX, beamY);
+          ctx.lineTo(beamX - TILE * 3, beamY + TILE * (room.h - 2));
+          ctx.lineTo(beamX - TILE * 1.5, beamY + TILE * (room.h - 2));
+          ctx.closePath();
+          ctx.fill();
+          ctx.globalAlpha = 1;
+          ctx.restore();
+        }
+      }
+
+      // Corridor floor compass rose (once, at first corridor intersection)
+      if (rooms.length > 0) {
+        const croseX = Math.floor(mapW / 2) * TILE + TILE / 2 - camX;
+        const croseY = (rooms[0].y + rooms[0].h + 1) * TILE - camY;
+        if (croseX > -60 && croseX < viewW + 60 && croseY > -60 && croseY < viewH + 60) {
+          const crAlpha = 0.07;
+          ctx.save();
+          ctx.translate(croseX, croseY);
+          // Outer circle
+          ctx.strokeStyle = `rgba(200,180,140,${crAlpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.arc(0, 0, 18, 0, Math.PI * 2);
+          ctx.stroke();
+          // Cardinal points
+          ctx.fillStyle = `rgba(200,180,140,${crAlpha * 1.5})`;
+          for (let cp = 0; cp < 4; cp++) {
+            const cpAngle = (cp / 4) * Math.PI * 2 - Math.PI / 2;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(Math.cos(cpAngle - 0.15) * 6, Math.sin(cpAngle - 0.15) * 6);
+            ctx.lineTo(Math.cos(cpAngle) * 18, Math.sin(cpAngle) * 18);
+            ctx.lineTo(Math.cos(cpAngle + 0.15) * 6, Math.sin(cpAngle + 0.15) * 6);
+            ctx.closePath();
+            ctx.fill();
+          }
+          // Sub-cardinal lines
+          ctx.strokeStyle = `rgba(200,180,140,${crAlpha * 0.6})`;
+          for (let sc = 0; sc < 4; sc++) {
+            const scAngle = (sc / 4) * Math.PI * 2 - Math.PI / 4;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(Math.cos(scAngle) * 12, Math.sin(scAngle) * 12);
+            ctx.stroke();
+          }
+          // N marker
+          ctx.font = '500 6px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = `rgba(200,180,140,${crAlpha * 2})`;
+          ctx.fillText('N', 0, -22);
+          ctx.restore();
+        }
+      }
+
+      // Entrance hall chandelier
+      const chX = (hallX + hallW / 2) * TILE + TILE / 2 - camX;
+      const chY = hallY * TILE + TILE - camY;
+      if (chX > -80 && chX < viewW + 80 && chY > -80 && chY < viewH + 80) {
+        // Chain
+        ctx.strokeStyle = 'rgba(100,90,70,0.4)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(chX, chY - 15);
+        ctx.lineTo(chX, chY);
+        ctx.stroke();
+        // Chandelier body
+        ctx.fillStyle = 'rgba(140,120,80,0.5)';
+        ctx.beginPath();
+        ctx.moveTo(chX - 20, chY + 4);
+        ctx.lineTo(chX + 20, chY + 4);
+        ctx.lineTo(chX + 15, chY);
+        ctx.lineTo(chX - 15, chY);
+        ctx.closePath();
+        ctx.fill();
+        // Candle flames on chandelier
+        for (let cf = 0; cf < 5; cf++) {
+          const cfx = chX - 16 + cf * 8;
+          const cfy = chY - 2;
+          // Candle stubs
+          ctx.fillStyle = '#e8d8b0';
+          ctx.fillRect(cfx - 1, cfy, 2, 4);
+          // Tiny flames
+          const cfFlicker = Math.sin(time * 9 + cf * 2.5) * 1;
+          ctx.fillStyle = `rgba(255,220,100,${0.6 + Math.sin(time * 7 + cf) * 0.2})`;
+          ctx.beginPath();
+          ctx.ellipse(cfx + cfFlicker * 0.3, cfy - 2, 2, 3 + cfFlicker * 0.3, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // Chandelier warm glow
+        const chGlow = ctx.createRadialGradient(chX, chY, 0, chX, chY, TILE * 2.5);
+        chGlow.addColorStop(0, 'rgba(255,200,100,0.06)');
+        chGlow.addColorStop(0.5, 'rgba(255,180,60,0.02)');
+        chGlow.addColorStop(1, 'rgba(255,160,40,0)');
+        ctx.fillStyle = chGlow;
+        ctx.fillRect(chX - TILE * 2.5, chY - TILE * 2.5, TILE * 5, TILE * 5);
       }
 
       // Animated fountain in entrance hall
@@ -1883,6 +2124,175 @@ const LibraryPage = () => {
         }
       }
 
+      // Mice scurrying along walls
+      if (Math.random() < 0.002 && miceRef.current.length < 3) {
+        // Find a wall-adjacent floor tile near the player
+        const mtx = Math.floor(player.x / TILE) + Math.floor(Math.random() * 16 - 8);
+        const mty = Math.floor(player.y / TILE) + Math.floor(Math.random() * 12 - 6);
+        if (mtx > 1 && mtx < mapW - 1 && mty > 1 && mty < mapH - 1 &&
+            map[mty][mtx] === FLOOR &&
+            (map[mty - 1][mtx] === WALL || map[mty + 1][mtx] === WALL ||
+             map[mty][mtx - 1] === WALL || map[mty][mtx + 1] === WALL)) {
+          miceRef.current.push({
+            x: mtx * TILE + TILE / 2, y: mty * TILE + TILE / 2,
+            tx: mtx * TILE + TILE / 2 + (Math.random() - 0.5) * TILE * 4,
+            ty: mty * TILE + TILE / 2,
+            speed: 2 + Math.random() * 2,
+            life: 0, maxLife: 2 + Math.random() * 2,
+            dir: Math.random() > 0.5 ? 1 : -1,
+          });
+        }
+      }
+      for (let mi = miceRef.current.length - 1; mi >= 0; mi--) {
+        const mouse = miceRef.current[mi];
+        mouse.life += 1 / 60;
+        const mdx = mouse.tx - mouse.x;
+        const mdy = mouse.ty - mouse.y;
+        const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mDist > 2) {
+          mouse.x += (mdx / mDist) * mouse.speed;
+          mouse.y += (mdy / mDist) * mouse.speed;
+        }
+        if (mouse.life >= mouse.maxLife) { miceRef.current.splice(mi, 1); continue; }
+        const mx = mouse.x - camX;
+        const my = mouse.y - camY;
+        if (mx > -20 && mx < viewW + 20 && my > -20 && my < viewH + 20) {
+          const mAlpha = Math.min(1, mouse.life * 3) * Math.min(1, (mouse.maxLife - mouse.life) * 3);
+          ctx.fillStyle = `rgba(80,60,50,${mAlpha * 0.6})`;
+          // Body
+          ctx.beginPath();
+          ctx.ellipse(mx, my, 4, 2.5, 0, 0, Math.PI * 2);
+          ctx.fill();
+          // Tail
+          ctx.strokeStyle = `rgba(80,60,50,${mAlpha * 0.4})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(mx - 4 * mouse.dir, my);
+          ctx.quadraticCurveTo(mx - 8 * mouse.dir, my - 3, mx - 10 * mouse.dir, my + 1);
+          ctx.stroke();
+          // Ears
+          ctx.fillStyle = `rgba(120,90,70,${mAlpha * 0.5})`;
+          ctx.beginPath();
+          ctx.arc(mx + 3 * mouse.dir, my - 2, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Falling leaves from plants
+      for (let ty3 = startTY; ty3 < endTY; ty3++) {
+        for (let tx3 = startTX; tx3 < endTX; tx3++) {
+          if (map[ty3][tx3] === PLANT && Math.random() < 0.003) {
+            fallingLeavesRef.current.push({
+              x: tx3 * TILE + TILE / 2 + (Math.random() - 0.5) * 10,
+              y: ty3 * TILE + TILE * 0.3,
+              vx: (Math.random() - 0.5) * 0.5,
+              vy: 0.3 + Math.random() * 0.3,
+              rot: Math.random() * Math.PI * 2,
+              rotSpeed: (Math.random() - 0.5) * 0.1,
+              age: 0, hue: 100 + Math.random() * 40,
+            });
+          }
+        }
+      }
+      for (let li = fallingLeavesRef.current.length - 1; li >= 0; li--) {
+        const leaf = fallingLeavesRef.current[li];
+        leaf.age += 1 / 60;
+        leaf.x += leaf.vx + Math.sin(leaf.age * 3) * 0.3;
+        leaf.y += leaf.vy;
+        leaf.rot += leaf.rotSpeed;
+        if (leaf.age > 3) { fallingLeavesRef.current.splice(li, 1); continue; }
+        const lx = leaf.x - camX;
+        const ly = leaf.y - camY;
+        if (lx > -10 && lx < viewW + 10 && ly > -10 && ly < viewH + 10) {
+          const lAlpha = Math.min(1, leaf.age * 2) * Math.max(0, 1 - leaf.age / 3);
+          ctx.save();
+          ctx.translate(lx, ly);
+          ctx.rotate(leaf.rot);
+          ctx.fillStyle = `hsla(${leaf.hue}, 50%, 40%, ${lAlpha * 0.5})`;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, 3, 1.5, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+      if (fallingLeavesRef.current.length > 40) fallingLeavesRef.current.splice(0, fallingLeavesRef.current.length - 40);
+
+      // Floating dust swirls near player
+      const dsx = player.x - camX;
+      const dsy = player.y - camY;
+      if (player.moving) {
+        for (let ds = 0; ds < 3; ds++) {
+          const dsAngle = time * 1.5 + ds * 2.09;
+          const dsR = 25 + Math.sin(time * 2 + ds) * 8;
+          const dspx = dsx + Math.cos(dsAngle) * dsR;
+          const dspy = dsy + Math.sin(dsAngle) * dsR * 0.6;
+          const dsAlpha = 0.06 + Math.sin(time * 3 + ds * 1.5) * 0.03;
+          ctx.fillStyle = `rgba(200,180,150,${dsAlpha})`;
+          ctx.beginPath();
+          ctx.arc(dspx, dspy, 1.5 + Math.sin(time * 2 + ds) * 0.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Carpet wear patterns (darker at corridor junctions)
+      for (let ty4 = startTY; ty4 < endTY; ty4++) {
+        for (let tx4 = startTX; tx4 < endTX; tx4++) {
+          if (map[ty4][tx4] === CARPET) {
+            // Check if this is near a junction (multiple adjacent floor tiles)
+            let adjFloor = 0;
+            if (ty4 > 0 && (map[ty4 - 1][tx4] === FLOOR || map[ty4 - 1][tx4] === DOOR)) adjFloor++;
+            if (ty4 < mapH - 1 && (map[ty4 + 1][tx4] === FLOOR || map[ty4 + 1][tx4] === DOOR)) adjFloor++;
+            if (tx4 > 0 && (map[ty4][tx4 - 1] === FLOOR || map[ty4][tx4 - 1] === DOOR)) adjFloor++;
+            if (tx4 < mapW - 1 && (map[ty4][tx4 + 1] === FLOOR || map[ty4][tx4 + 1] === DOOR)) adjFloor++;
+            if (adjFloor >= 2) {
+              const wsx = tx4 * TILE - camX;
+              const wsy = ty4 * TILE - camY;
+              ctx.fillStyle = 'rgba(0,0,0,0.03)';
+              ctx.fillRect(wsx + 4, wsy + 4, TILE - 8, TILE - 8);
+            }
+          }
+        }
+      }
+
+      // Pillar ambient light reflection
+      for (let ty5 = startTY; ty5 < endTY; ty5++) {
+        for (let tx5 = startTX; tx5 < endTX; tx5++) {
+          if (map[ty5][tx5] === PILLAR) {
+            const plx = tx5 * TILE + TILE / 2 - camX;
+            const ply = ty5 * TILE + TILE / 2 - camY;
+            // Subtle light reflection pool around pillar
+            const plRoomIdx = tileRoomIdx[ty5]?.[tx5] ?? -1;
+            const plHue = plRoomIdx >= 0 && rooms[plRoomIdx] ? rooms[plRoomIdx].catHue : 40;
+            const plGlow = ctx.createRadialGradient(plx - 3, ply - 3, 0, plx, ply, TILE * 0.7);
+            plGlow.addColorStop(0, `hsla(${plHue}, 20%, 70%, 0.04)`);
+            plGlow.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = plGlow;
+            ctx.fillRect(plx - TILE, ply - TILE, TILE * 2, TILE * 2);
+          }
+        }
+      }
+
+      // Player emotion bubbles (thinking when idle)
+      const emo = emotionRef.current;
+      if (emo.age > 3) { emo.emoji = null; emo.age = 0; }
+      emo.age += 1 / 60;
+      if (!player.moving && emo.emoji === null && gameTimeRef.current > 2) {
+        if (Math.random() < 0.001) {
+          emo.emoji = '💭';
+          emo.age = 0;
+        }
+      }
+      if (player.moving && emo.emoji === '💭') { emo.emoji = null; }
+      if (emo.emoji) {
+        const emAlpha = Math.min(1, emo.age * 3) * Math.max(0, 1 - emo.age / 3);
+        const emY = py - 28 - Math.sin(emo.age * 2) * 3;
+        ctx.globalAlpha = emAlpha * 0.7;
+        ctx.font = '14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(emo.emoji, px, emY);
+        ctx.globalAlpha = 1;
+      }
+
       // Interactie indicator
       let nearRoom = null;
       for (const room of rooms) {
@@ -1904,6 +2314,7 @@ const LibraryPage = () => {
           if (!discoveredRoomsRef.current.has(nearRoom.name)) {
             discoveredRoomsRef.current.add(nearRoom.name);
             setToastMessage({ text: `Nieuwe kamer ontdekt: ${nearRoom.name}`, emoji: nearRoom.emoji });
+            emotionRef.current = { emoji: '✨', age: 0 };
             if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
             toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
           }
@@ -2419,7 +2830,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.9.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.0.0</div>
         </div>
       )}
 
@@ -2475,7 +2886,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.9.0</div>
+        }}>v1.0.0</div>
       )}
 
       {/* Mobile: action button */}
