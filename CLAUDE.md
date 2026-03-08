@@ -30,6 +30,8 @@ The Vite `base` is set to `/scrollsofalexandria/` for GitHub Pages path.
 - `/home` → HomePage (redirects to `/` if onboarding not done)
 - `/principle/:principleId` → PrinciplePage
 - `/settings` → SettingsPage
+- `/library` → LibraryPage (2D canvas exploration game)
+- `/register` → RegisterPage
 
 ### State Management
 
@@ -48,13 +50,33 @@ Components always go through `useUser()`, never call localStorage utils directly
 - `getPrinciplesByCategory(category, system)` — Filters principles by category
 - `getPrincipleById(id)` — Lookup by ID
 
-Additional principle data files (`principlesExtra3-7.js`) exist but are **not imported** anywhere currently.
+Additional principle data files (`principlesExtra3-7.js`, `emotieregulatie*.js`, `gedachteExperimenten*.js`, `zelfvertrouwen*.js`, etc.) exist but are **not imported** anywhere currently.
 
 ### Progress & Gamification System
 
 User progress per principle tracks four activities: `read` (+20%), `multipleChoiceCorrect` (+20%), `ownExample` (+30%), `aiAssistedExample` (+30%) = 100% mastery max. Points are awarded per activity. Completing exercises can unlock related principles via the `unlocks[]` field.
 
 15 principles are unlocked by default (defined in `localStorage.js:getInitialUnlockedPrinciples`).
+
+### Library Game (`LibraryPage.jsx`, ~5300 lines)
+
+A 2D canvas-based exploration game where the player walks through a procedurally generated library. This is the largest and most complex file in the codebase.
+
+**Key systems:**
+- **Map generation** (`generateLibrary()`) — Organic layout with a central spine, branching wings, and variable room sizes. Uses seeded pseudo-random for deterministic generation. Rooms are assigned principle categories.
+- **Tile types** — EMPTY(0), FLOOR(1), WALL(2), BOOKSHELF(3), DOOR(4), CARPET(5), PILLAR(6), TORCH(7), TABLE(8), PLANT(9). Walkable tiles: FLOOR, CARPET, DOOR.
+- **Game loop** — `requestAnimationFrame` with delta-time movement. Canvas rendering with camera follow (lerp-based).
+- **Fog of war** — `Float32Array` per-tile reveal grid, 3-tile visibility radius around player. Persists across page navigations via localStorage.
+- **Save/load system** — Versioned saves in localStorage (`SAVE_VERSION` constant). Old saves are auto-invalidated when version changes. Auto-saves every 10 seconds. Player position also stored in sessionStorage for quick restore.
+- **NPCs** — Themed characters at each room with speech bubbles recommending scrolls. NPC appearance (colors, hat style) maps to room category.
+- **Particle systems** — Dust, sparks, leaves, moths, footprints, quill trails — all managed via refs.
+- **Collision** — 10px hitbox corners checked against tile types.
+
+**When modifying the library game:**
+- Bump `SAVE_VERSION` if map generation changes (invalidates old saves)
+- Bump the UI version string (e.g., `v1.7.0`) shown at bottom-left so users can verify they're running new code
+- Player spawn uses `findSafeSpawn()` which spirals outward from hall center to find a walkable tile with room to move
+- Movement uses `speed * dt` (delta-time), not fixed timestep
 
 ### Styling
 
