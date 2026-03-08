@@ -588,10 +588,13 @@ const LibraryPage = () => {
   const library = useMemo(() => generateLibrary(categories), [categories]);
   const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY } = library;
 
+  const SAVE_VERSION = 2; // Bump this when layout/map generation changes
+
   // Save game state to localStorage
   const saveGameState = useCallback(() => {
     try {
       const state = {
+        version: SAVE_VERSION,
         playerX: playerRef.current.x,
         playerY: playerRef.current.y,
         fogOfWar: fogOfWarRef.current ? Array.from({ length: mapH }, (_, y) =>
@@ -610,24 +613,68 @@ const LibraryPage = () => {
     try {
       const raw = localStorage.getItem('libraryGameSave');
       if (!raw) return null;
-      return JSON.parse(raw);
+      const data = JSON.parse(raw);
+      // Invalidate saves from older versions
+      if (data.version !== SAVE_VERSION) {
+        localStorage.removeItem('libraryGameSave');
+        sessionStorage.removeItem('libraryPlayerPos');
+        return null;
+      }
+      return data;
     } catch { return null; }
   }, []);
 
   // Init player positie (herstel uit save)
   useEffect(() => {
+    // Find a guaranteed walkable spawn point where the player can also move
+    const canMoveFrom = (px, py) => {
+      // Check that at least one cardinal direction is also walkable
+      const step = TILE * 0.5;
+      return isWalkable(map, px + step, py, mapW, mapH) ||
+             isWalkable(map, px - step, py, mapW, mapH) ||
+             isWalkable(map, px, py + step, mapW, mapH) ||
+             isWalkable(map, px, py - step, mapW, mapH);
+    };
+    const findSafeSpawn = () => {
+      // Spiral outward from hall center to find a walkable tile with room to move
+      const cx = hallX + Math.floor(hallW / 2);
+      const cy = hallY + Math.floor(hallH / 2);
+      const maxR = Math.max(mapW, mapH);
+      for (let r = 0; r < maxR; r++) {
+        for (let dy = -r; dy <= r; dy++) {
+          for (let dx = -r; dx <= r; dx++) {
+            if (Math.abs(dx) !== r && Math.abs(dy) !== r) continue;
+            const tx = cx + dx, ty = cy + dy;
+            if (tx < 0 || tx >= mapW || ty < 0 || ty >= mapH) continue;
+            const tile = map[ty][tx];
+            if (tile === FLOOR || tile === CARPET || tile === DOOR) {
+              const px = tx * TILE + TILE / 2;
+              const py = ty * TILE + TILE / 2;
+              if (isWalkable(map, px, py, mapW, mapH) && canMoveFrom(px, py)) {
+                return { x: px, y: py };
+              }
+            }
+          }
+        }
+      }
+      // Should never reach here, but just in case
+      return { x: (cx + 0.5) * TILE, y: (cy + 0.5) * TILE };
+    };
+
+    const safeSpawn = findSafeSpawn();
+
     const savedGame = loadGameState();
-    // Also check sessionStorage for backward compat
     const savedSession = sessionStorage.getItem('libraryPlayerPos');
     let startX, startY;
+
     if (savedGame) {
       startX = savedGame.playerX;
       startY = savedGame.playerY;
-      // Restore fog of war
-      if (savedGame.fogOfWar) {
+      // Restore fog of war only if dimensions match current map
+      if (savedGame.fogOfWar && savedGame.fogOfWar.length === mapH &&
+          savedGame.fogOfWar[0]?.length === mapW) {
         fogOfWarRef.current = savedGame.fogOfWar.map(row => new Float32Array(row));
       }
-      // Restore discovered rooms
       if (savedGame.discoveredRooms) {
         discoveredRoomsRef.current = new Set(savedGame.discoveredRooms);
       }
@@ -637,16 +684,28 @@ const LibraryPage = () => {
         startX = pos.x;
         startY = pos.y;
       } catch {
-        startX = (hallX + hallW / 2) * TILE;
-        startY = (hallY + hallH / 2) * TILE;
+        startX = safeSpawn.x;
+        startY = safeSpawn.y;
       }
     } else {
-      startX = (hallX + hallW / 2) * TILE;
-      startY = (hallY + hallH / 2) * TILE;
+      startX = safeSpawn.x;
+      startY = safeSpawn.y;
     }
+
+    // Validate position: must be walkable AND have room to move, otherwise use safe spawn
+    if (!isWalkable(map, startX, startY, mapW, mapH) || !canMoveFrom(startX, startY)) {
+      startX = safeSpawn.x;
+      startY = safeSpawn.y;
+      // Clear stale save data since position was invalid
+      fogOfWarRef.current = null;
+      discoveredRoomsRef.current = new Set();
+      localStorage.removeItem('libraryGameSave');
+      sessionStorage.removeItem('libraryPlayerPos');
+    }
+
     playerRef.current = { x: startX, y: startY, dirX: 0, dirY: 1, bobTime: 0, moving: false };
     cameraRef.current = { x: startX, y: startY };
-  }, [hallX, hallY, hallW, hallH]);
+  }, [hallX, hallY, hallW, hallH, map, mapW, mapH]);
 
   // Detect touch device
   useEffect(() => {
@@ -4893,7 +4952,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.6.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.7.0</div>
         </div>
       )}
 
@@ -4949,7 +5008,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.6.0</div>
+        }}>v1.7.0</div>
       )}
 
       {/* Mobile: action button */}
