@@ -401,6 +401,7 @@ const LibraryPage = () => {
   const thunderRef = useRef(0); // Flash intensity for thunder
   const owlRef = useRef(null); // { x, y, blinkPhase, headAngle }
   const corridorFogRef = useRef([]); // { x, y, size, alpha, speed }
+  const fogOfWarRef = useRef(null); // 2D boolean array: true = revealed
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
 
@@ -688,6 +689,36 @@ const LibraryPage = () => {
         }
       } else {
         player.moving = false;
+      }
+
+      // Update fog of war - reveal tiles around player
+      if (!fogOfWarRef.current) {
+        fogOfWarRef.current = Array.from({ length: mapH }, () => new Float32Array(mapW));
+        // Reveal starting area (entrance hall)
+        for (let fy = hallY - 1; fy < hallY + hallH + 1; fy++) {
+          for (let fx = hallX - 1; fx < hallX + hallW + 1; fx++) {
+            if (fy >= 0 && fy < mapH && fx >= 0 && fx < mapW) {
+              fogOfWarRef.current[fy][fx] = 1;
+            }
+          }
+        }
+      }
+      const fowRadius = 3;
+      const fowPTX = Math.floor(player.x / TILE);
+      const fowPTY = Math.floor(player.y / TILE);
+      for (let fy = fowPTY - fowRadius; fy <= fowPTY + fowRadius; fy++) {
+        for (let fx = fowPTX - fowRadius; fx <= fowPTX + fowRadius; fx++) {
+          if (fy >= 0 && fy < mapH && fx >= 0 && fx < mapW) {
+            const fdx = fx - fowPTX;
+            const fdy = fy - fowPTY;
+            const fdist = Math.sqrt(fdx * fdx + fdy * fdy);
+            if (fdist <= fowRadius + 0.5) {
+              // Gradually reveal: closer tiles reveal faster
+              const revealAmount = fdist <= fowRadius - 0.5 ? 1 : 0.7;
+              fogOfWarRef.current[fy][fx] = Math.min(1, Math.max(fogOfWarRef.current[fy][fx], revealAmount));
+            }
+          }
+        }
       }
 
       // Update footprints
@@ -3891,6 +3922,19 @@ const LibraryPage = () => {
         const mCtx = minimapCanvasRef.current.getContext('2d');
         mCtx.clearRect(0, 0, mmW2, mmH2);
         mCtx.drawImage(minimapImageRef.current, 0, 0);
+        // Fog of war on minimap
+        if (fogOfWarRef.current) {
+          const fowMM = fogOfWarRef.current;
+          for (let mmy = 0; mmy < mapH; mmy++) {
+            for (let mmx = 0; mmx < mapW; mmx++) {
+              const mmRevealed = fowMM[mmy]?.[mmx] ?? 0;
+              if (mmRevealed < 1) {
+                mCtx.fillStyle = `rgba(0,0,0,${1 - mmRevealed})`;
+                mCtx.fillRect(mmx * mmScale, mmy * mmScale, mmScale, mmScale);
+              }
+            }
+          }
+        }
         // Room mastery tint + emojis
         const getProgressMM = getPrincipleProgressRef.current;
         for (const room of rooms) {
@@ -3924,6 +3968,40 @@ const LibraryPage = () => {
         mCtx.strokeStyle = 'rgba(255,255,255,0.3)';
         mCtx.lineWidth = 1;
         mCtx.strokeRect(vpX, vpY, vpW, vpH);
+      }
+
+      // Fog of war overlay - black on unrevealed tiles, soft edge on partially revealed
+      if (fogOfWarRef.current) {
+        const fow = fogOfWarRef.current;
+        for (let fty = startTY; fty < endTY; fty++) {
+          for (let ftx = startTX; ftx < endTX; ftx++) {
+            const revealed = fow[fty]?.[ftx] ?? 0;
+            if (revealed >= 1) continue; // Fully revealed, skip
+            const fsx = ftx * TILE - camX;
+            const fsy = fty * TILE - camY;
+            if (revealed <= 0) {
+              // Fully hidden - solid black
+              ctx.fillStyle = 'rgba(0,0,0,1)';
+              ctx.fillRect(fsx - 0.5, fsy - 0.5, TILE + 1, TILE + 1);
+            } else {
+              // Partially revealed - soft edge fade
+              ctx.fillStyle = `rgba(0,0,0,${1 - revealed})`;
+              ctx.fillRect(fsx - 0.5, fsy - 0.5, TILE + 1, TILE + 1);
+            }
+          }
+        }
+        // Smooth circle of light around current player position
+        const fowCX = player.x - camX;
+        const fowCY = player.y - camY;
+        const fowPixelR = (fowRadius + 1) * TILE;
+        const fowGrad = ctx.createRadialGradient(fowCX, fowCY, fowPixelR * 0.5, fowCX, fowCY, fowPixelR);
+        fowGrad.addColorStop(0, 'rgba(0,0,0,0)');
+        fowGrad.addColorStop(0.7, 'rgba(0,0,0,0)');
+        fowGrad.addColorStop(1, 'rgba(0,0,0,0.15)');
+        ctx.fillStyle = fowGrad;
+        ctx.beginPath();
+        ctx.arc(fowCX, fowCY, fowPixelR, 0, Math.PI * 2);
+        ctx.fill();
       }
 
       // End zoom transform
@@ -4445,7 +4523,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.3.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.4.0</div>
         </div>
       )}
 
@@ -4501,7 +4579,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.3.0</div>
+        }}>v1.4.0</div>
       )}
 
       {/* Mobile: action button */}
