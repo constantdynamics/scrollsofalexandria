@@ -113,239 +113,150 @@ const CATEGORY_EMOJIS = {
   'Levenspsychologie': '🌻', 'Dieptepsychologie': '🌊',
 };
 
-// ── Bibliotheek layout genereren (organisch, gerandomiseerd) ──
+// ── Bibliotheek layout genereren (grid-placed, no overlaps, fully connected) ──
 function generateLibrary(categories) {
-  const corridorW = 3;
-  const marginX = 3;
-  const marginY = 3;
-  const seed = categories.length * 7 + 42; // Deterministic based on category count
+  const seed = categories.length * 7 + 42;
+  const margin = 4;        // border around entire map
+  const corrW = 3;         // corridor width (tiles)
+  const halfC = Math.floor(corrW / 2);
+  const spacing = 6;       // space between rooms for corridors
 
-  // Randomize room sizes: width 8-12, height 7-10
+  // --- Room definitions with varied sizes ---
   const roomDefs = categories.map((cat, i) => ({
-    cat,
-    w: 8 + Math.floor(seededRandom(i, 0, seed + 1) * 5),   // 8-12
-    h: 7 + Math.floor(seededRandom(i, 1, seed + 2) * 4),   // 7-10
+    cat, origIdx: i,
+    w: 9 + Math.floor(seededRandom(i, 0, seed + 1) * 4),   // 9-12
+    h: 7 + Math.floor(seededRandom(i, 1, seed + 2) * 3),   // 7-9
+    catHue: cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 360,
   }));
 
-  // Shuffle room order for placement variety
-  const shuffled = roomDefs.map((r, i) => ({ ...r, origIdx: i }));
-  for (let si = shuffled.length - 1; si > 0; si--) {
-    const sj = Math.floor(seededRandom(si, 0, seed + 10) * (si + 1));
-    [shuffled[si], shuffled[sj]] = [shuffled[sj], shuffled[si]];
+  // Shuffle for random-looking placement
+  const shuffled = [...roomDefs];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(seededRandom(i, 0, seed + 10) * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
-  // Phase 1: Place rooms organically using a branching tree layout
-  // Start with entrance hall at the bottom center, then branch outward
-  const placed = []; // { x, y, w, h, cat, origIdx, catHue, connections: [] }
-
-  // Estimate map size generously
-  const estMapW = marginX * 2 + 80;
-  const estMapH = marginY * 2 + 80;
-
-  // Entrance hall
-  const hallW = 10;
-  const hallH = 5;
-  const hallX = Math.floor(estMapW / 2) - Math.floor(hallW / 2);
-  const hallY = estMapH - marginY - hallH;
-
-  // Place rooms in a branching pattern from the hall
-  // Use multiple "wings" that extend from the main corridor
-  const wingCount = 2 + Math.floor(seededRandom(0, 0, seed + 20) * 2); // 2-3 wings
-  const roomsPerWing = Math.ceil(shuffled.length / wingCount);
-
-  // Generate main spine going up from hall
-  const spineX = Math.floor(estMapW / 2);
-  const spineTopY = marginY + 4;
-
-  // Distribute rooms along wings branching from the spine
-  let wingRooms = [];
-  for (let wi = 0; wi < wingCount; wi++) {
-    wingRooms.push([]);
-  }
-  shuffled.forEach((r, i) => {
-    wingRooms[i % wingCount].push(r);
-  });
-
-  // Place rooms per wing with organic offsets
-  const corridorSegments = []; // { x1, y1, x2, y2 } for corridor carving
-
-  // Main vertical spine
-  corridorSegments.push({ x1: spineX, y1: spineTopY, x2: spineX, y2: hallY + 1 });
-
-  for (let wi = 0; wi < wingCount; wi++) {
-    const wing = wingRooms[wi];
-    // Wing branch point along the spine
-    const branchY = hallY - 6 - Math.floor((hallY - spineTopY - 10) * (wi / Math.max(1, wingCount - 1)));
-    // Wing direction: alternate left and right, some go both ways
-    const wingDir = wi % 2 === 0 ? -1 : 1;
-    const wingSpread = 14 + Math.floor(seededRandom(wi, 0, seed + 30) * 8); // How far the wing extends
-
-    // Wing horizontal corridor
-    const wingEndX = spineX + wingDir * wingSpread;
-    corridorSegments.push({ x1: spineX, y1: branchY, x2: wingEndX, y2: branchY });
-
-    // Place rooms along this wing
-    wing.forEach((r, ri) => {
-      // Distribute rooms along the wing corridor
-      const t = wing.length > 1 ? ri / (wing.length - 1) : 0.5;
-      const roomCorrX = Math.floor(spineX + wingDir * wingSpread * (0.2 + t * 0.8));
-
-      // Room goes above or below the wing corridor, alternating
-      const roomSide = ri % 2 === 0 ? -1 : 1;
-      const roomOffsetY = 1 + Math.floor(seededRandom(ri, wi, seed + 40) * 2);
-      const rx = roomCorrX - Math.floor(r.w / 2) + Math.floor(seededRandom(ri, wi, seed + 50) * 3 - 1);
-      const ry = branchY + roomSide * (corridorW + roomOffsetY);
-      if (roomSide === 1) {
-        // Room below corridor: corridor connects to top of room
-        corridorSegments.push({ x1: roomCorrX, y1: branchY, x2: roomCorrX, y2: ry + 1 });
-      } else {
-        // Room above corridor: corridor connects to bottom of room
-        corridorSegments.push({ x1: roomCorrX, y1: ry + r.h - 1, x2: roomCorrX, y2: branchY });
-      }
-
-      const catHash = r.cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
-      placed.push({
-        x: Math.max(marginX, Math.min(estMapW - marginX - r.w, rx)),
-        y: Math.max(marginY, Math.min(estMapH - marginY - r.h - 5, ry)),
-        w: r.w, h: r.h,
-        cat: r.cat, origIdx: r.origIdx,
-        catHue: catHash % 360,
-        doorSide: roomSide, // -1 = door at bottom, 1 = door at top
-        corridorX: roomCorrX,
-      });
-    });
+  // --- Arrange rooms in a grid pattern (rows x cols) ---
+  const cols = Math.ceil(Math.sqrt(shuffled.length));
+  const rowCount = Math.ceil(shuffled.length / cols);
+  const rows = [];
+  for (let ri = 0; ri < rowCount; ri++) {
+    rows.push(shuffled.slice(ri * cols, (ri + 1) * cols));
   }
 
-  // Resolve overlaps: nudge rooms that overlap
-  for (let iter = 0; iter < 20; iter++) {
-    let anyOverlap = false;
-    for (let ai = 0; ai < placed.length; ai++) {
-      for (let bi = ai + 1; bi < placed.length; bi++) {
-        const a = placed[ai];
-        const b = placed[bi];
-        const overlapX = !(a.x + a.w + 1 < b.x || b.x + b.w + 1 < a.x);
-        const overlapY = !(a.y + a.h + 1 < b.y || b.y + b.h + 1 < a.y);
-        if (overlapX && overlapY) {
-          anyOverlap = true;
-          // Push rooms apart
-          const cx = (a.x + a.w / 2) - (b.x + b.w / 2);
-          const cy = (a.y + a.h / 2) - (b.y + b.h / 2);
-          const pushX = cx >= 0 ? 1 : -1;
-          const pushY = cy >= 0 ? 1 : -1;
-          if (Math.abs(cx) > Math.abs(cy)) {
-            a.x += pushX; b.x -= pushX;
-          } else {
-            a.y += pushY; b.y -= pushY;
-          }
-          // Clamp
-          a.x = Math.max(marginX, a.x);
-          a.y = Math.max(marginY, a.y);
-          b.x = Math.max(marginX, b.x);
-          b.y = Math.max(marginY, b.y);
-        }
-      }
+  // Compute column widths (max room width in each column) and row heights
+  const colWidths = [];
+  for (let ci = 0; ci < cols; ci++) {
+    let maxW = 0;
+    for (const row of rows) {
+      if (ci < row.length) maxW = Math.max(maxW, row[ci].w);
     }
-    if (!anyOverlap) break;
+    colWidths.push(maxW);
+  }
+  const rowHeights = rows.map(row => Math.max(...row.map(r => r.h)));
+
+  // Compute positions: absolute x,y for each room
+  const placed = []; // all placed rooms with x, y, w, h, etc.
+  const colX = []; // x start of each column cell
+  const rowY = []; // y start of each row cell
+
+  let cx = margin;
+  for (let ci = 0; ci < cols; ci++) {
+    colX.push(cx);
+    cx += colWidths[ci] + spacing;
+  }
+  let cy = margin;
+  for (let ri = 0; ri < rows.length; ri++) {
+    rowY.push(cy);
+    cy += rowHeights[ri] + spacing;
   }
 
-  // Compute actual map bounds
-  let maxX = hallX + hallW + marginX;
-  let maxY = hallY + hallH + marginY;
-  for (const r of placed) {
-    maxX = Math.max(maxX, r.x + r.w + marginX + 2);
-    maxY = Math.max(maxY, r.y + r.h + marginY + 2);
+  for (let ri = 0; ri < rows.length; ri++) {
+    const row = rows[ri];
+    for (let ci = 0; ci < row.length; ci++) {
+      const r = row[ci];
+      // Center room within its grid cell, plus small jitter
+      const cellCX = colX[ci] + Math.floor((colWidths[ci] - r.w) / 2);
+      const cellCY = rowY[ri] + Math.floor((rowHeights[ri] - r.h) / 2);
+      const jx = Math.floor(seededRandom(ci, ri, seed + 30) * 3) - 1;
+      const jy = Math.floor(seededRandom(ri, ci, seed + 31) * 3) - 1;
+      placed.push({
+        ...r,
+        x: cellCX + jx,
+        y: cellCY + jy,
+        rowIdx: ri,
+        colIdx: ci,
+      });
+    }
   }
-  const mapW = Math.min(estMapW, maxX);
-  const mapH = Math.min(estMapH, maxY);
+
+  // --- Entrance hall below all rooms ---
+  const hallW = 12, hallH = 8;
+  const totalWidth = cx - spacing + margin;
+  const hallX = Math.max(margin, Math.floor(totalWidth / 2) - Math.floor(hallW / 2));
+  const hallY = cy + 2;
+
+  // --- Compute map dimensions ---
+  let mapW = Math.max(hallX + hallW + margin + 2, totalWidth + 2);
+  let mapH = hallY + hallH + margin + 2;
+  for (const r of placed) {
+    mapW = Math.max(mapW, r.x + r.w + margin + 2);
+    mapH = Math.max(mapH, r.y + r.h + margin + 2);
+  }
 
   const map = Array.from({ length: mapH }, () => Array(mapW).fill(EMPTY));
   const tileRoomIdx = Array.from({ length: mapH }, () => Array(mapW).fill(-1));
-  const rooms = [];
 
-  // Draw entrance hall
-  fillRect(map, hallX, hallY, hallW, hallH, FLOOR);
-  addWalls(map, hallX, hallY, hallW, hallH);
-  fillRect(map, hallX + 2, hallY + 1, hallW - 4, hallH - 2, CARPET);
-  map[hallY + hallH - 1][Math.floor(hallX + hallW / 2)] = DOOR;
-  map[hallY + hallH - 1][Math.floor(hallX + hallW / 2) - 1] = DOOR;
-  map[hallY + 1][hallX + 1] = PLANT;
-  map[hallY + 1][hallX + hallW - 2] = PLANT;
-
-  // Carve corridors
-  const carveCorridor = (x1, y1, x2, y2) => {
-    const halfW = Math.floor(corridorW / 2);
-    // Horizontal segment
-    const minCX = Math.min(x1, x2);
-    const maxCX = Math.max(x1, x2);
-    const minCY = Math.min(y1, y2);
-    const maxCY = Math.max(y1, y2);
-
-    if (y1 === y2) {
-      // Horizontal
-      for (let cx = minCX - halfW; cx <= maxCX + halfW; cx++) {
-        for (let cy = y1 - halfW; cy <= y1 + halfW; cy++) {
-          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === EMPTY) {
-            map[cy][cx] = FLOOR;
-          }
+  // --- Corridor carving helpers (overwrite EMPTY and WALL) ---
+  const isCarveTarget = (tile) => tile === EMPTY || tile === WALL;
+  const carveH = (y, x1, x2) => {
+    const mn = Math.min(x1, x2), mx = Math.max(x1, x2);
+    for (let px = mn; px <= mx; px++) {
+      for (let dy = -halfC; dy <= halfC; dy++) {
+        const py = y + dy;
+        if (px >= 0 && px < mapW && py >= 0 && py < mapH && isCarveTarget(map[py][px])) {
+          map[py][px] = FLOOR;
         }
       }
-    } else if (x1 === x2) {
-      // Vertical
-      for (let cy = minCY; cy <= maxCY; cy++) {
-        for (let cx = x1 - halfW; cx <= x1 + halfW; cx++) {
-          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === EMPTY) {
-            map[cy][cx] = FLOOR;
-          }
-        }
-      }
-    } else {
-      // L-shaped: go horizontal first, then vertical
-      const midX = x2;
-      carveCorridor(x1, y1, midX, y1);
-      carveCorridor(midX, y1, midX, y2);
     }
   };
-
-  for (const seg of corridorSegments) {
-    carveCorridor(
-      Math.max(1, Math.min(mapW - 2, seg.x1)),
-      Math.max(1, Math.min(mapH - 2, seg.y1)),
-      Math.max(1, Math.min(mapW - 2, seg.x2)),
-      Math.max(1, Math.min(mapH - 2, seg.y2))
-    );
-  }
-
-  // Add carpet to main spine corridor
-  const spineHalfW = Math.floor(corridorW / 2);
-  for (let cy = spineTopY; cy <= hallY; cy++) {
-    for (let cx = spineX - spineHalfW + 1; cx < spineX + spineHalfW; cx++) {
-      if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === FLOOR) {
-        map[cy][cx] = CARPET;
+  const carveV = (x, y1, y2) => {
+    const mn = Math.min(y1, y2), mx = Math.max(y1, y2);
+    for (let py = mn; py <= mx; py++) {
+      for (let dx = -halfC; dx <= halfC; dx++) {
+        const px = x + dx;
+        if (px >= 0 && px < mapW && py >= 0 && py < mapH && isCarveTarget(map[py][px])) {
+          map[py][px] = FLOOR;
+        }
       }
     }
-  }
+  };
+  const carveL = (x1, y1, x2, y2) => {
+    carveH(y1, x1, x2);
+    carveV(x2, y1, y2);
+  };
 
-  // Draw rooms (sorted by origIdx to maintain category assignment)
+  // --- STEP 1: Draw all rooms (walls, floor, furniture) ---
   const sortedPlaced = [...placed].sort((a, b) => a.origIdx - b.origIdx);
-  sortedPlaced.forEach((r, sortIdx) => {
-    // Clamp room position to map bounds
-    r.x = Math.max(1, Math.min(mapW - r.w - 1, r.x));
-    r.y = Math.max(1, Math.min(mapH - r.h - 1, r.y));
+  const rooms = [];
 
+  sortedPlaced.forEach((r, sortIdx) => {
+    // Floor and walls
     fillRect(map, r.x, r.y, r.w, r.h, FLOOR);
     addWalls(map, r.x, r.y, r.w, r.h);
-    // Mark room tiles
+
+    // Room ownership
     for (let dy = 0; dy < r.h; dy++) {
       for (let dx = 0; dx < r.w; dx++) {
         if (r.y + dy < mapH && r.x + dx < mapW) tileRoomIdx[r.y + dy][r.x + dx] = sortIdx;
       }
     }
 
-    // Bookshelves (top wall + sides, varied amount based on room size)
+    // Bookshelves along inside of top wall and sides
     for (let bx = r.x + 1; bx < r.x + r.w - 1; bx++) {
-      if (map[r.y + 1][bx] !== DOOR) map[r.y + 1][bx] = BOOKSHELF;
+      map[r.y + 1][bx] = BOOKSHELF;
     }
-    const shelfLen = Math.min(r.h - 4, 3 + Math.floor(seededRandom(r.origIdx, 0, seed + 60) * 3));
+    const shelfLen = Math.min(r.h - 4, 2 + Math.floor(seededRandom(r.origIdx, 0, seed + 60) * 3));
     for (let sy = r.y + 2; sy < r.y + 2 + shelfLen; sy++) {
       if (sy < r.y + r.h - 1) {
         map[sy][r.x + 1] = BOOKSHELF;
@@ -353,63 +264,24 @@ function generateLibrary(categories) {
       }
     }
 
-    // Door placement: on the side facing the corridor connection
-    let doorX, doorY;
-    if (r.doorSide === 1) {
-      // Door on top wall
-      doorY = r.y;
-      doorX = Math.max(r.x + 2, Math.min(r.x + r.w - 3, r.corridorX));
-    } else {
-      // Door on bottom wall
-      doorY = r.y + r.h - 1;
-      doorX = Math.max(r.x + 2, Math.min(r.x + r.w - 3, r.corridorX));
-    }
-    if (doorX >= 0 && doorX < mapW && doorY >= 0 && doorY < mapH) {
-      map[doorY][doorX] = DOOR;
-      if (doorX + 1 < r.x + r.w - 1) map[doorY][doorX + 1] = DOOR;
-      // Torches next to door
-      if (doorX - 1 > r.x && map[doorY][doorX - 1] !== DOOR) map[doorY][doorX - 1] = TORCH;
-      if (doorX + 2 < r.x + r.w - 1) map[doorY][doorX + 2] = TORCH;
+    // Pillar
+    const pillarX = r.x + 3 + Math.floor(seededRandom(r.origIdx, 2, seed + 70) * Math.max(1, r.w - 6));
+    const pillarY = r.y + 3 + Math.floor(seededRandom(r.origIdx, 3, seed + 71) * Math.max(1, r.h - 5));
+    if (pillarX > r.x + 1 && pillarX < r.x + r.w - 2 && pillarY > r.y + 1 && pillarY < r.y + r.h - 2 && map[pillarY][pillarX] === FLOOR) {
+      map[pillarY][pillarX] = PILLAR;
     }
 
-    // Ensure corridor connects to the door
-    if (r.doorSide === 1) {
-      // Connect corridor down to door from above
-      for (let cy = Math.max(0, r.y - 4); cy <= r.y; cy++) {
-        for (let cx = doorX - 1; cx <= doorX + 1; cx++) {
-          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && (map[cy][cx] === EMPTY || map[cy][cx] === WALL)) {
-            map[cy][cx] = FLOOR;
-          }
-        }
-      }
-    } else {
-      // Connect corridor up to door from below
-      for (let cy = r.y + r.h - 1; cy <= Math.min(mapH - 1, r.y + r.h + 3); cy++) {
-        for (let cx = doorX - 1; cx <= doorX + 1; cx++) {
-          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && (map[cy][cx] === EMPTY || map[cy][cx] === WALL)) {
-            map[cy][cx] = FLOOR;
-          }
-        }
-      }
-    }
-
-    // Pillar (varied position within room)
-    const pillarX = r.x + 2 + Math.floor(seededRandom(r.origIdx, 2, seed + 70) * (r.w - 5));
-    const pillarY = r.y + 2 + Math.floor(seededRandom(r.origIdx, 3, seed + 71) * (r.h - 4));
-    if (map[pillarY][pillarX] === FLOOR) map[pillarY][pillarX] = PILLAR;
-
-    // Table (varied position)
-    const tableX = r.x + 2 + Math.floor(seededRandom(r.origIdx, 4, seed + 72) * (r.w - 5));
-    const tableY = r.y + r.h - 3 - Math.floor(seededRandom(r.origIdx, 5, seed + 73) * 2);
-    if (tableY > r.y + 1 && tableY < r.y + r.h - 1 && map[tableY][tableX] === FLOOR) {
+    // Table
+    const tableX = r.x + 3 + Math.floor(seededRandom(r.origIdx, 4, seed + 72) * Math.max(1, r.w - 6));
+    const tableY = r.y + r.h - 3;
+    if (tableY > r.y + 1 && tableY < r.y + r.h - 1 && tableX > r.x + 1 && tableX < r.x + r.w - 2 && map[tableY][tableX] === FLOOR) {
       map[tableY][tableX] = TABLE;
     }
 
-    // Extra plant in bigger rooms
+    // Plant in bigger rooms
     if (r.w >= 10 && r.h >= 8) {
-      const plantX = r.x + r.w - 2;
-      const plantY = r.y + r.h - 2;
-      if (map[plantY][plantX] === FLOOR) map[plantY][plantX] = PLANT;
+      const px = r.x + r.w - 2, py = r.y + r.h - 2;
+      if (map[py][px] === FLOOR) map[py][px] = PLANT;
     }
 
     rooms.push({
@@ -422,33 +294,141 @@ function generateLibrary(categories) {
     });
   });
 
-  // Corridor torches along the main spine (every 5-7 tiles, varied)
-  for (let cy = spineTopY + 2; cy < hallY - 2; cy += 5 + Math.floor(seededRandom(cy, 0, seed + 80) * 3)) {
-    const leftX = spineX - spineHalfW - 1;
-    const rightX = spineX + spineHalfW + 1;
-    if (leftX >= 0 && leftX < mapW && cy >= 0 && cy < mapH && map[cy][leftX] === EMPTY) {
-      map[cy][leftX] = TORCH;
+  // Draw entrance hall
+  fillRect(map, hallX, hallY, hallW, hallH, FLOOR);
+  addWalls(map, hallX, hallY, hallW, hallH);
+  fillRect(map, hallX + 2, hallY + 2, hallW - 4, hallH - 4, CARPET);
+  map[hallY + 1][hallX + 1] = PLANT;
+  map[hallY + 1][hallX + hallW - 2] = PLANT;
+  if (hallH >= 6) {
+    map[hallY + hallH - 2][hallX + 1] = PLANT;
+    map[hallY + hallH - 2][hallX + hallW - 2] = PLANT;
+  }
+
+  // --- STEP 2: Carve corridors AFTER rooms are drawn ---
+  // This ensures corridors punch through room walls properly.
+
+  // Helper: open a doorway in a room wall (clear wall + adjacent bookshelves)
+  const openDoor = (x, y, dir) => {
+    // dir: 'left', 'right', 'top', 'bottom' — which wall of the room
+    for (let d = -halfC; d <= halfC; d++) {
+      let px, py;
+      if (dir === 'left' || dir === 'right') {
+        px = x; py = y + d;
+      } else {
+        px = x + d; py = y;
+      }
+      if (px >= 0 && px < mapW && py >= 0 && py < mapH) {
+        const t = map[py][px];
+        if (t === WALL || t === BOOKSHELF) map[py][px] = DOOR;
+      }
     }
-    if (rightX >= 0 && rightX < mapW && cy >= 0 && cy < mapH && map[cy][rightX] === EMPTY) {
-      map[cy][rightX] = TORCH;
+  };
+
+  // Connect rooms within each row (horizontal corridors)
+  for (const row of rows) {
+    for (let ci = 0; ci < row.length - 1; ci++) {
+      const a = placed.find(p => p.origIdx === row[ci].origIdx);
+      const b = placed.find(p => p.origIdx === row[ci + 1].origIdx);
+      // Corridor y: midpoint of vertical overlap between rooms
+      const overlapTop = Math.max(a.y, b.y);
+      const overlapBot = Math.min(a.y + a.h, b.y + b.h);
+      const corrY = Math.floor((overlapTop + overlapBot) / 2);
+      // Carve from right wall of a to left wall of b
+      carveH(corrY, a.x + a.w - 1, b.x);
+      // Open doorways
+      openDoor(a.x + a.w - 1, corrY, 'right');
+      openDoor(b.x, corrY, 'left');
+      // Also clear bookshelves on the inside of the walls we just opened
+      for (let d = -halfC; d <= halfC; d++) {
+        const py = corrY + d;
+        if (py >= 0 && py < mapH) {
+          if (a.x + a.w - 2 >= 0 && map[py][a.x + a.w - 2] === BOOKSHELF) map[py][a.x + a.w - 2] = FLOOR;
+          if (b.x + 1 < mapW && map[py][b.x + 1] === BOOKSHELF) map[py][b.x + 1] = FLOOR;
+        }
+      }
     }
   }
 
-  // Wing corridor torches
-  for (const seg of corridorSegments) {
-    if (seg.y1 === seg.y2 && Math.abs(seg.x2 - seg.x1) > 6) {
-      // Horizontal corridor - add torches
-      const minSX = Math.min(seg.x1, seg.x2);
-      const maxSX = Math.max(seg.x1, seg.x2);
-      for (let cx = minSX + 3; cx < maxSX - 2; cx += 5 + Math.floor(seededRandom(cx, seg.y1, seed + 81) * 3)) {
-        const ty1 = seg.y1 - spineHalfW - 1;
-        const ty2 = seg.y1 + spineHalfW + 1;
-        if (ty1 >= 0 && cx >= 0 && cx < mapW && ty1 < mapH && map[ty1][cx] === EMPTY) {
-          map[ty1][cx] = TORCH;
+  // Connect rows vertically (one or two connections per row pair)
+  for (let ri = 0; ri < rows.length - 1; ri++) {
+    const topRow = rows[ri];
+    const botRow = rows[ri + 1];
+
+    // Primary connection: middle column
+    const midCI = Math.min(Math.floor(topRow.length / 2), botRow.length - 1);
+    const topRoom = placed.find(p => p.origIdx === topRow[Math.min(midCI, topRow.length - 1)].origIdx);
+    const botRoom = placed.find(p => p.origIdx === botRow[midCI].origIdx);
+    const tCX = Math.floor(topRoom.x + topRoom.w / 2);
+    const bCX = Math.floor(botRoom.x + botRoom.w / 2);
+    carveL(tCX, topRoom.y + topRoom.h - 1, bCX, botRoom.y);
+    openDoor(tCX, topRoom.y + topRoom.h - 1, 'bottom');
+    openDoor(bCX, botRoom.y, 'top');
+    // Clear bookshelves near opened top wall
+    for (let d = -halfC; d <= halfC; d++) {
+      const px = bCX + d;
+      if (px >= 0 && px < mapW && botRoom.y + 1 < mapH && map[botRoom.y + 1][px] === BOOKSHELF) {
+        map[botRoom.y + 1][px] = FLOOR;
+      }
+    }
+
+    // Secondary connection for wider grids
+    if (topRow.length >= 3 && botRow.length >= 2) {
+      const secCI = topRow.length - 1;
+      const secBCI = Math.min(secCI, botRow.length - 1);
+      const tR = placed.find(p => p.origIdx === topRow[secCI].origIdx);
+      const bR = placed.find(p => p.origIdx === botRow[secBCI].origIdx);
+      const tX = Math.floor(tR.x + tR.w / 2);
+      const bX = Math.floor(bR.x + bR.w / 2);
+      carveL(tX, tR.y + tR.h - 1, bX, bR.y);
+      openDoor(tX, tR.y + tR.h - 1, 'bottom');
+      openDoor(bX, bR.y, 'top');
+      for (let d = -halfC; d <= halfC; d++) {
+        const px = bX + d;
+        if (px >= 0 && px < mapW && bR.y + 1 < mapH && map[bR.y + 1][px] === BOOKSHELF) {
+          map[bR.y + 1][px] = FLOOR;
         }
-        if (ty2 < mapH && cx >= 0 && cx < mapW && map[ty2][cx] === EMPTY) {
-          map[ty2][cx] = TORCH;
-        }
+      }
+    }
+  }
+
+  // Connect last row to entrance hall
+  if (rows.length > 0) {
+    const lastRow = rows[rows.length - 1];
+    const connRoom = placed.find(p => p.origIdx === lastRow[Math.floor(lastRow.length / 2)].origIdx);
+    const roomCX = Math.floor(connRoom.x + connRoom.w / 2);
+    const hallCX = Math.floor(hallX + hallW / 2);
+    carveL(roomCX, connRoom.y + connRoom.h - 1, hallCX, hallY);
+    openDoor(roomCX, connRoom.y + connRoom.h - 1, 'bottom');
+    // Open hall top wall
+    for (let d = -halfC; d <= halfC; d++) {
+      const px = hallCX + d;
+      if (px >= 0 && px < mapW && map[hallY][px] === WALL) map[hallY][px] = DOOR;
+    }
+  }
+
+  // --- STEP 3: Add corridor decoration ---
+  // Torches on corridor edges
+  for (let y = 1; y < mapH - 1; y++) {
+    for (let x = 1; x < mapW - 1; x++) {
+      if (map[y][x] !== FLOOR || tileRoomIdx[y][x] >= 0) continue;
+      const adjEmpty = (map[y-1][x] === EMPTY ? 1 : 0) + (map[y+1][x] === EMPTY ? 1 : 0) +
+                       (map[y][x-1] === EMPTY ? 1 : 0) + (map[y][x+1] === EMPTY ? 1 : 0);
+      if (adjEmpty >= 1 && seededRandom(x, y, seed + 80) < 0.07) {
+        map[y][x] = TORCH;
+      }
+    }
+  }
+
+  // Carpet on corridor center tiles
+  for (let y = 1; y < mapH - 1; y++) {
+    for (let x = 1; x < mapW - 1; x++) {
+      if (map[y][x] !== FLOOR || tileRoomIdx[y][x] >= 0) continue;
+      const walkN = [FLOOR, CARPET, DOOR];
+      const adj = (walkN.includes(map[y-1]?.[x]) ? 1 : 0) + (walkN.includes(map[y+1]?.[x]) ? 1 : 0) +
+                  (walkN.includes(map[y][x-1]) ? 1 : 0) + (walkN.includes(map[y][x+1]) ? 1 : 0);
+      if (adj >= 3 && seededRandom(x, y, seed + 90) < 0.45) {
+        map[y][x] = CARPET;
       }
     }
   }
@@ -588,7 +568,7 @@ const LibraryPage = () => {
   const library = useMemo(() => generateLibrary(categories), [categories]);
   const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY } = library;
 
-  const SAVE_VERSION = 2; // Bump this when layout/map generation changes
+  const SAVE_VERSION = 3; // Bump this when layout/map generation changes
 
   // Save game state to localStorage
   const saveGameState = useCallback(() => {
@@ -4952,7 +4932,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.7.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.8.0</div>
         </div>
       )}
 
@@ -5008,7 +4988,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.7.0</div>
+        }}>v1.8.0</div>
       )}
 
       {/* Mobile: action button */}
