@@ -483,7 +483,7 @@ function isWalkable(map, px, py, mapW, mapH) {
 // ── Component ──
 const LibraryPage = () => {
   const navigate = useNavigate();
-  const { userData, getPrincipleProgress } = useUser();
+  const { userData, getPrincipleProgress, updatePreference } = useUser();
   const canvasRef = useRef(null);
   const keysRef = useRef(new Set());
   const playerRef = useRef({ x: 0, y: 0, dirX: 0, dirY: 1, bobTime: 0, moving: false });
@@ -553,6 +553,7 @@ const LibraryPage = () => {
   const pinchRef = useRef({ active: false, startDist: 0, startZoom: 1 });
 
   getPrincipleProgressRef.current = getPrincipleProgress;
+  const isRoomUnlockedRef = useRef(null);
 
   const categories = useMemo(() => getCategories('academic'), []);
 
@@ -567,6 +568,18 @@ const LibraryPage = () => {
 
   const library = useMemo(() => generateLibrary(categories), [categories]);
   const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY } = library;
+
+  // Progressive unlock: room N is unlocked if all principles in room N-1 are read
+  const isRoomUnlocked = useCallback((roomIndex) => {
+    if (!userData?.preferences?.progressiveUnlock) return true;
+    if (roomIndex <= 0) return true; // First room always unlocked
+    const prevRoom = rooms[roomIndex - 1];
+    if (!prevRoom) return true;
+    const prevPrinciples = roomPrinciplesMap[prevRoom.name] || [];
+    if (prevPrinciples.length === 0) return true;
+    return prevPrinciples.every(p => getPrincipleProgress(p.id)?.activities?.read);
+  }, [userData?.preferences?.progressiveUnlock, rooms, roomPrinciplesMap, getPrincipleProgress]);
+  isRoomUnlockedRef.current = isRoomUnlocked;
 
   const SAVE_VERSION = 3; // Bump this when layout/map generation changes
 
@@ -768,17 +781,25 @@ const LibraryPage = () => {
 
   const handleInteraction = useCallback(() => {
     const p = playerRef.current;
-    for (const room of rooms) {
+    for (let ri = 0; ri < rooms.length; ri++) {
+      const room = rooms[ri];
       const dx = p.x - room.centerX;
       const dy = p.y - room.centerY;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < (room.w / 2) * TILE) {
+        if (!isRoomUnlocked(ri)) {
+          const prevRoom = rooms[ri - 1];
+          setToastMessage({ text: `Vergrendeld! Voltooi eerst: ${prevRoom?.name || 'vorige sectie'}`, emoji: '🔒' });
+          if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+          toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
+          return;
+        }
         setSelectedRoom(room.name);
         interactPulseRef.current = 1.0;
         return;
       }
     }
-  }, [rooms]);
+  }, [rooms, isRoomUnlocked]);
 
   // Zoom handler
   useEffect(() => {
@@ -2228,6 +2249,31 @@ const LibraryPage = () => {
             ctx.beginPath();
             ctx.arc(cx, cy, 4, 0, Math.PI * 2);
             ctx.fill();
+          }
+        }
+      }
+
+      // Lock overlay on locked rooms (progressive unlock)
+      if (userData?.preferences?.progressiveUnlock) {
+        for (let ri = 0; ri < rooms.length; ri++) {
+          if (isRoomUnlockedRef.current(ri)) continue;
+          const room = rooms[ri];
+          const lx = room.centerX - camX;
+          const ly = room.centerY - camY;
+          if (lx > -200 && lx < viewW + 200 && ly > -200 && ly < viewH + 200) {
+            // Darken room
+            const rx = room.x * TILE - camX;
+            const ry = room.y * TILE - camY;
+            const rw = room.w * TILE;
+            const rh = room.h * TILE;
+            ctx.fillStyle = 'rgba(0,0,0,0.35)';
+            ctx.fillRect(rx, ry, rw, rh);
+            // Lock icon
+            const lockSize = 20;
+            ctx.font = `${lockSize}px sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.fillStyle = 'rgba(255,255,255,0.7)';
+            ctx.fillText('🔒', lx, ly + lockSize / 3);
           }
         }
       }
@@ -4295,12 +4341,16 @@ const LibraryPage = () => {
 
       // Interactie prompt
       if (nearRoom) {
+        const nearRoomIdx = rooms.indexOf(nearRoom);
+        const roomLocked = nearRoomIdx >= 0 && !isRoomUnlockedRef.current(nearRoomIdx);
         const promptY = py - 35;
         ctx.font = '600 13px Inter, sans-serif';
         ctx.textAlign = 'center';
-        const text = isMobileRef.current ? 'Tik op boek-knop' : '[ E ] Boeken bekijken';
+        const text = roomLocked
+          ? '🔒 Vergrendeld'
+          : (isMobileRef.current ? 'Tik op boek-knop' : '[ E ] Boeken bekijken');
         const tw = ctx.measureText(text).width;
-        ctx.fillStyle = 'rgba(0,0,0,0.75)';
+        ctx.fillStyle = roomLocked ? 'rgba(120,40,40,0.85)' : 'rgba(0,0,0,0.75)';
         ctx.beginPath();
         ctx.roundRect(px - tw / 2 - 10, promptY - 14, tw + 20, 26, 8);
         ctx.fill();

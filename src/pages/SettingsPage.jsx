@@ -210,7 +210,7 @@ const SettingsPage = () => {
           </div>
 
           {/* Theme */}
-          <div>
+          <div className="mb-6 pb-6 border-b border-border">
             <h3 className="font-semibold text-text text-sm mb-1">Thema</h3>
             <p className="text-xs text-text-muted mb-3">Kies het uiterlijk van de app</p>
             <div className="grid grid-cols-3 gap-3">
@@ -232,6 +232,34 @@ const SettingsPage = () => {
                   <div className="text-sm font-semibold text-text">{theme.label}</div>
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* Progressive Unlock */}
+          <div>
+            <h3 className="font-semibold text-text text-sm mb-1">Progressief Ontgrendelen</h3>
+            <p className="text-xs text-text-muted mb-3">In de bibliotheek zijn secties pas toegankelijk als je de vorige hebt afgerond. Deuren gaan open naarmate je vordert.</p>
+            <div className="inline-flex rounded-lg bg-bg-alt p-1 border border-border">
+              <button
+                onClick={() => handlePreferenceChange('progressiveUnlock', true)}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
+                  userData?.preferences?.progressiveUnlock
+                    ? 'bg-surface text-text shadow-sm border border-border'
+                    : 'text-text-muted hover:text-text'
+                }`}
+              >
+                Aan
+              </button>
+              <button
+                onClick={() => handlePreferenceChange('progressiveUnlock', false)}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
+                  !userData?.preferences?.progressiveUnlock
+                    ? 'bg-surface text-text shadow-sm border border-border'
+                    : 'text-text-muted hover:text-text'
+                }`}
+              >
+                Uit
+              </button>
             </div>
           </div>
         </motion.div>
