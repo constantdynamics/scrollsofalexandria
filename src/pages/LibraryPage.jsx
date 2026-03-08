@@ -395,6 +395,12 @@ const LibraryPage = () => {
   const puddleRippleRef = useRef([]); // { x, y, age, maxAge }
   const auroraRef = useRef({ active: false, phase: 0, intensity: 0 }); // Aurora borealis
   const constellationRef = useRef([]); // pre-computed constellation lines
+  const dustBunniesRef = useRef([]); // { x, y, vx, rot, age, size }
+  const spiderRef = useRef([]); // { x, y, targetY, age, swingPhase }
+  const musicalNotesRef = useRef([]); // { x, y, note, age, vx, vy }
+  const thunderRef = useRef(0); // Flash intensity for thunder
+  const owlRef = useRef(null); // { x, y, blinkPhase, headAngle }
+  const corridorFogRef = useRef([]); // { x, y, size, alpha, speed }
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
 
@@ -1116,6 +1122,35 @@ const LibraryPage = () => {
                 ctx.stroke();
               }
             }
+            // Glowing mushrooms in dark wall corners (very rare)
+            if (seededRandom(tx, ty, 560) > 0.95) {
+              const mushX = sx + seededRandom(tx, ty, 561) * TILE * 0.5 + TILE * 0.25;
+              const mushY = sy + TILE * 0.65 + seededRandom(tx, ty, 562) * TILE * 0.2;
+              const mushHue2 = 80 + seededRandom(tx, ty, 563) * 60; // green-cyan
+              const mushGlow = 0.08 + Math.sin(time * 1.5 + tx * 3) * 0.03;
+              // Glow
+              const mGlow = ctx.createRadialGradient(mushX, mushY, 0, mushX, mushY, 8);
+              mGlow.addColorStop(0, `hsla(${mushHue2}, 60%, 60%, ${mushGlow})`);
+              mGlow.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = mGlow;
+              ctx.fillRect(mushX - 8, mushY - 8, 16, 16);
+              // Stem
+              ctx.fillStyle = `hsla(${mushHue2}, 20%, 70%, 0.2)`;
+              ctx.fillRect(mushX - 1, mushY, 2, 4);
+              // Cap
+              ctx.fillStyle = `hsla(${mushHue2}, 50%, 55%, 0.25)`;
+              ctx.beginPath();
+              ctx.ellipse(mushX, mushY, 4, 2.5, 0, Math.PI, 0);
+              ctx.fill();
+              // Spots
+              ctx.fillStyle = `hsla(${mushHue2}, 30%, 75%, 0.15)`;
+              ctx.beginPath();
+              ctx.arc(mushX - 1, mushY - 1, 0.8, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.arc(mushX + 2, mushY - 0.5, 0.6, 0, Math.PI * 2);
+              ctx.fill();
+            }
           } else if (tile === BOOKSHELF) {
             // Kast achtergrond
             ctx.fillStyle = COLORS[BOOKSHELF];
@@ -1144,6 +1179,50 @@ const LibraryPage = () => {
             // Plank schaduw
             ctx.fillStyle = 'rgba(0,0,0,0.1)';
             ctx.fillRect(sx, sy + Math.floor(TILE / 2) + 2, TILE, 2);
+            // Bookworm peeking from shelves (rare)
+            if (seededRandom(tx, ty, 530) > 0.9) {
+              const wormX = sx + seededRandom(tx, ty, 531) * (TILE - 10) + 5;
+              const wormY = sy + TILE * 0.35 + seededRandom(tx, ty, 532) * 6;
+              const wormPeek = Math.sin(time * 1.5 + tx * 3) * 0.5 + 0.5;
+              ctx.fillStyle = 'rgba(180,220,120,0.35)';
+              // Body segment peeking out
+              ctx.beginPath();
+              ctx.arc(wormX, wormY + (1 - wormPeek) * 3, 2, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.arc(wormX, wormY - 2 + (1 - wormPeek) * 3, 1.8, 0, Math.PI * 2);
+              ctx.fill();
+              // Tiny eyes
+              if (wormPeek > 0.3) {
+                ctx.fillStyle = 'rgba(0,0,0,0.3)';
+                ctx.beginPath();
+                ctx.arc(wormX - 1, wormY - 2.5 + (1 - wormPeek) * 3, 0.5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(wormX + 1, wormY - 2.5 + (1 - wormPeek) * 3, 0.5, 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+            // Potion bottles on shelves (rare)
+            if (seededRandom(tx, ty, 540) > 0.88) {
+              const potX = sx + TILE - 8 - seededRandom(tx, ty, 541) * 6;
+              const potY = sy + 6 + seededRandom(tx, ty, 542) * 8;
+              const potHue = seededRandom(tx, ty, 543) * 360;
+              // Bottle shape
+              ctx.fillStyle = `hsla(${potHue}, 50%, 40%, 0.2)`;
+              ctx.fillRect(potX - 2, potY, 4, 7);
+              // Neck
+              ctx.fillRect(potX - 1, potY - 2, 2, 3);
+              // Cork
+              ctx.fillStyle = 'rgba(160,130,80,0.2)';
+              ctx.fillRect(potX - 1.5, potY - 3, 3, 2);
+              // Liquid glow
+              const potGlow = Math.sin(time * 1.2 + tx * 5 + potHue) * 0.02;
+              ctx.fillStyle = `hsla(${potHue}, 60%, 50%, ${0.03 + potGlow})`;
+              ctx.beginPath();
+              ctx.arc(potX, potY + 4, 4, 0, Math.PI * 2);
+              ctx.fill();
+            }
             // Bookshelf ladder (rare, deterministic)
             if (seededRandom(tx, ty, 700) > 0.85) {
               ctx.fillStyle = '#7a5a2a';
@@ -1240,6 +1319,25 @@ const LibraryPage = () => {
             ctx.strokeStyle = `hsla(${matHue}, 25%, 50%, 0.15)`;
             ctx.lineWidth = 0.5;
             ctx.strokeRect(sx, sy + TILE - 2, TILE, 4);
+            // Floating rune symbol above door
+            const runeFloat = Math.sin(time * 1.2 + tx * 5) * 3;
+            const runeAlpha2 = 0.08 + Math.sin(time * 2 + tx * 3) * 0.03;
+            const doorRIdx2 = tileRoomIdx[ty]?.[tx] ?? -1;
+            const runeHue = doorRIdx2 >= 0 && rooms[doorRIdx2] ? rooms[doorRIdx2].catHue : 200;
+            ctx.fillStyle = `hsla(${runeHue}, 50%, 65%, ${runeAlpha2})`;
+            ctx.font = '10px serif';
+            ctx.textAlign = 'center';
+            const runeChars = ['☽', '✦', '⚝', '◈', '❋', '✧'];
+            const runeChar = runeChars[Math.floor(seededRandom(tx, ty, 550) * runeChars.length)];
+            ctx.fillText(runeChar, sx + TILE / 2, sy - 4 + runeFloat);
+            // Engraved room name on floor near door
+            if (doorRIdx2 >= 0 && rooms[doorRIdx2]) {
+              const engRoom = rooms[doorRIdx2];
+              ctx.fillStyle = 'rgba(160,140,100,0.05)';
+              ctx.font = '500 5px Inter, sans-serif';
+              ctx.textAlign = 'center';
+              ctx.fillText(engRoom.name, sx + TILE / 2, sy + TILE + 8);
+            }
           } else if (tile === CARPET) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
@@ -1292,6 +1390,32 @@ const LibraryPage = () => {
             ctx.arc(sx + 8, sy + TILE - 8, 1.5, 0, Math.PI * 2);
             ctx.arc(sx + TILE - 8, sy + TILE - 8, 1.5, 0, Math.PI * 2);
             ctx.fill();
+            // Carpet tassels at corner edges
+            const leftCarpet = tx > 0 && map[ty][tx - 1] === CARPET;
+            const rightCarpet = tx < mapW - 1 && map[ty][tx + 1] === CARPET;
+            if (!leftCarpet && !aboveCarpet) {
+              // Top-left corner tassel
+              for (let ts = 0; ts < 3; ts++) {
+                const tsSwing = Math.sin(time * 1.5 + ts) * 1;
+                ctx.strokeStyle = 'rgba(180,140,60,0.15)';
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(sx, sy + ts * 2);
+                ctx.lineTo(sx - 3 + tsSwing, sy + ts * 2 + 4);
+                ctx.stroke();
+              }
+            }
+            if (!rightCarpet && !aboveCarpet) {
+              for (let ts = 0; ts < 3; ts++) {
+                const tsSwing = Math.sin(time * 1.5 + ts + 1) * 1;
+                ctx.strokeStyle = 'rgba(180,140,60,0.15)';
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(sx + TILE, sy + ts * 2);
+                ctx.lineTo(sx + TILE + 3 + tsSwing, sy + ts * 2 + 4);
+                ctx.stroke();
+              }
+            }
           } else if (tile === PILLAR) {
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
             ctx.fillRect(sx, sy, TILE, TILE);
@@ -1457,6 +1581,99 @@ const LibraryPage = () => {
               ctx.moveTo(gx, gy - 6);
               ctx.lineTo(gx, gy + 6);
               ctx.stroke();
+            }
+            // Animated hourglass on some tables
+            if (seededRandom(tx, ty, 500) > 0.85 && seededRandom(tx, ty, 480) <= 0.8) {
+              const hgx = sx + TILE / 2 - 14;
+              const hgy = sy + TILE / 2 - 6;
+              // Frame
+              ctx.strokeStyle = 'rgba(180,150,80,0.3)';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(hgx - 3, hgy);
+              ctx.lineTo(hgx + 3, hgy);
+              ctx.moveTo(hgx - 3, hgy + 10);
+              ctx.lineTo(hgx + 3, hgy + 10);
+              ctx.stroke();
+              // Glass shape
+              ctx.strokeStyle = 'rgba(200,220,240,0.2)';
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(hgx - 2.5, hgy + 1);
+              ctx.quadraticCurveTo(hgx, hgy + 5, hgx + 2.5, hgy + 1);
+              ctx.stroke();
+              ctx.beginPath();
+              ctx.moveTo(hgx - 2.5, hgy + 9);
+              ctx.quadraticCurveTo(hgx, hgy + 5, hgx + 2.5, hgy + 9);
+              ctx.stroke();
+              // Sand falling
+              const sandPhase = (time * 0.3 + tx) % 2;
+              const sandTop = Math.max(0, 1 - sandPhase);
+              const sandBot = Math.min(1, sandPhase);
+              ctx.fillStyle = 'rgba(220,190,120,0.25)';
+              ctx.fillRect(hgx - 2, hgy + 1, 4, sandTop * 3);
+              ctx.fillRect(hgx - 2, hgy + 9 - sandBot * 3, 4, sandBot * 3);
+              // Falling stream
+              if (sandPhase < 1.8) {
+                ctx.fillRect(hgx - 0.3, hgy + 4, 0.6, 2);
+              }
+            }
+            // Crystal ball on some tables
+            if (seededRandom(tx, ty, 510) > 0.9 && seededRandom(tx, ty, 480) <= 0.8 && seededRandom(tx, ty, 500) <= 0.85) {
+              const cbx = sx + 8;
+              const cby = sy + TILE / 2 - 1;
+              // Base
+              ctx.fillStyle = 'rgba(80,60,40,0.2)';
+              ctx.fillRect(cbx - 4, cby + 4, 8, 3);
+              // Ball
+              const cbGrad = ctx.createRadialGradient(cbx - 1, cby - 1, 0, cbx, cby, 5);
+              cbGrad.addColorStop(0, `rgba(180,160,255,${0.12 + Math.sin(time * 1.5 + tx) * 0.04})`);
+              cbGrad.addColorStop(0.5, 'rgba(120,100,200,0.08)');
+              cbGrad.addColorStop(1, 'rgba(60,40,120,0.04)');
+              ctx.fillStyle = cbGrad;
+              ctx.beginPath();
+              ctx.arc(cbx, cby, 5, 0, Math.PI * 2);
+              ctx.fill();
+              // Highlight
+              ctx.fillStyle = 'rgba(255,255,255,0.1)';
+              ctx.beginPath();
+              ctx.arc(cbx - 2, cby - 2, 1.5, 0, Math.PI * 2);
+              ctx.fill();
+              // Swirling inner mist
+              const mist1 = Math.sin(time * 2 + tx) * 2;
+              ctx.strokeStyle = `rgba(200,180,255,${0.06 + Math.sin(time + tx) * 0.02})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.arc(cbx + mist1 * 0.3, cby, 3, 0, Math.PI);
+              ctx.stroke();
+            }
+            // Telescope on rare tables
+            if (seededRandom(tx, ty, 520) > 0.92 && seededRandom(tx, ty, 510) <= 0.9) {
+              const tsx2 = sx + TILE - 14;
+              const tsy2 = sy + TILE / 2 - 4;
+              // Tripod legs
+              ctx.strokeStyle = 'rgba(100,80,50,0.2)';
+              ctx.lineWidth = 0.8;
+              ctx.beginPath();
+              ctx.moveTo(tsx2, tsy2 + 6);
+              ctx.lineTo(tsx2 - 3, tsy2 + 10);
+              ctx.moveTo(tsx2, tsy2 + 6);
+              ctx.lineTo(tsx2 + 3, tsy2 + 10);
+              ctx.moveTo(tsx2, tsy2 + 6);
+              ctx.lineTo(tsx2 + 1, tsy2 + 10);
+              ctx.stroke();
+              // Telescope tube
+              ctx.fillStyle = 'rgba(140,120,80,0.25)';
+              ctx.save();
+              ctx.translate(tsx2, tsy2 + 4);
+              ctx.rotate(-0.4);
+              ctx.fillRect(-1.5, -8, 3, 10);
+              // Lens
+              ctx.fillStyle = 'rgba(150,200,255,0.15)';
+              ctx.beginPath();
+              ctx.arc(0, -8, 2, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.restore();
             }
           } else if (tile === PLANT) {
             // Floor underneath
@@ -2754,6 +2971,19 @@ const LibraryPage = () => {
             plGlow.addColorStop(1, 'rgba(0,0,0,0)');
             ctx.fillStyle = plGlow;
             ctx.fillRect(plx - TILE, ply - TILE, TILE * 2, TILE * 2);
+            // Polished floor mirror reflection (player reflection near pillars)
+            const plPDist = Math.sqrt((player.x - (tx5 * TILE + TILE / 2)) ** 2 + (player.y - (ty5 * TILE + TILE / 2)) ** 2);
+            if (plPDist < TILE * 3) {
+              const refAlpha = Math.max(0, 0.04 - plPDist / (TILE * 80));
+              const refX = px + (plx - px) * 0.3;
+              const refY = ply + (ply - py) * 0.15 + 5;
+              ctx.globalAlpha = refAlpha;
+              ctx.fillStyle = 'rgba(92,79,207,0.5)';
+              ctx.beginPath();
+              ctx.ellipse(refX, refY, 6, 3, 0, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.globalAlpha = 1;
+            }
           }
         }
       }
@@ -3217,6 +3447,334 @@ const LibraryPage = () => {
         }
       }
 
+      // Owl perched on a bookshelf (one global owl)
+      if (!owlRef.current && rooms.length > 0) {
+        // Find a bookshelf tile to perch on
+        for (let oty = startTY; oty < endTY && !owlRef.current; oty++) {
+          for (let otx = startTX; otx < endTX; otx++) {
+            if (map[oty][otx] === BOOKSHELF && seededRandom(otx, oty, 570) > 0.98) {
+              owlRef.current = { x: otx * TILE + TILE / 2, y: oty * TILE - 5, blinkPhase: 0, headAngle: 0 };
+              break;
+            }
+          }
+        }
+      }
+      if (owlRef.current) {
+        const owl = owlRef.current;
+        owl.blinkPhase += 1 / 60;
+        // Head tracks player
+        const owlDx = player.x - owl.x;
+        const owlDy = player.y - owl.y;
+        owl.headAngle += (Math.atan2(owlDy, owlDx) - owl.headAngle) * 0.03;
+        const owlSX = owl.x - camX;
+        const owlSY = owl.y - camY;
+        if (owlSX > -30 && owlSX < viewW + 30 && owlSY > -30 && owlSY < viewH + 30) {
+          // Body
+          ctx.fillStyle = 'rgba(100,80,50,0.4)';
+          ctx.beginPath();
+          ctx.ellipse(owlSX, owlSY + 5, 6, 8, 0, 0, Math.PI * 2);
+          ctx.fill();
+          // Head (follows player)
+          ctx.save();
+          ctx.translate(owlSX, owlSY - 3);
+          const headTilt = Math.sin(owl.headAngle) * 0.15;
+          ctx.rotate(headTilt);
+          ctx.fillStyle = 'rgba(120,100,60,0.45)';
+          ctx.beginPath();
+          ctx.arc(0, 0, 5, 0, Math.PI * 2);
+          ctx.fill();
+          // Ear tufts
+          ctx.fillStyle = 'rgba(100,80,50,0.35)';
+          ctx.beginPath();
+          ctx.moveTo(-3, -4);
+          ctx.lineTo(-5, -8);
+          ctx.lineTo(-1, -5);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(3, -4);
+          ctx.lineTo(5, -8);
+          ctx.lineTo(1, -5);
+          ctx.fill();
+          // Eyes (blink occasionally)
+          const owlBlink = Math.sin(owl.blinkPhase * 0.5);
+          const eyeH = owlBlink > 0.97 ? 0.3 : 1.8;
+          ctx.fillStyle = 'rgba(255,200,50,0.5)';
+          ctx.beginPath();
+          ctx.ellipse(-2, 0, 1.8, eyeH, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.ellipse(2, 0, 1.8, eyeH, 0, 0, Math.PI * 2);
+          ctx.fill();
+          // Pupils
+          if (eyeH > 0.5) {
+            ctx.fillStyle = 'rgba(0,0,0,0.5)';
+            ctx.beginPath();
+            ctx.arc(-2, 0, 0.8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(2, 0, 0.8, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          // Beak
+          ctx.fillStyle = 'rgba(200,180,80,0.3)';
+          ctx.beginPath();
+          ctx.moveTo(0, 1);
+          ctx.lineTo(-1.5, 3);
+          ctx.lineTo(1.5, 3);
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      // Corridor fog/mist rolling
+      if (corridorFogRef.current.length < 12 && Math.random() < 0.005) {
+        const fogTx = Math.floor(player.x / TILE) + Math.floor(Math.random() * 20 - 10);
+        const fogTy = Math.floor(player.y / TILE) + Math.floor(Math.random() * 14 - 7);
+        if (fogTx > 0 && fogTx < mapW && fogTy > 0 && fogTy < mapH &&
+            (map[fogTy][fogTx] === FLOOR || map[fogTy][fogTx] === CARPET)) {
+          corridorFogRef.current.push({
+            x: fogTx * TILE + Math.random() * TILE, y: fogTy * TILE + Math.random() * TILE,
+            size: 20 + Math.random() * 30, alpha: 0, speed: 0.1 + Math.random() * 0.15,
+            life: 0, maxLife: 4 + Math.random() * 4,
+          });
+        }
+      }
+      for (let fgi = corridorFogRef.current.length - 1; fgi >= 0; fgi--) {
+        const fg = corridorFogRef.current[fgi];
+        fg.life += 1 / 60;
+        fg.x += fg.speed;
+        fg.alpha = Math.min(0.04, fg.life * 0.02) * Math.min(1, (fg.maxLife - fg.life) * 0.5);
+        if (fg.life >= fg.maxLife) { corridorFogRef.current.splice(fgi, 1); continue; }
+        const fgx = fg.x - camX;
+        const fgy = fg.y - camY;
+        if (fgx > -fg.size && fgx < viewW + fg.size && fgy > -fg.size && fgy < viewH + fg.size) {
+          const fogGrad = ctx.createRadialGradient(fgx, fgy, 0, fgx, fgy, fg.size);
+          fogGrad.addColorStop(0, `rgba(180,170,160,${fg.alpha})`);
+          fogGrad.addColorStop(1, 'rgba(180,170,160,0)');
+          ctx.fillStyle = fogGrad;
+          ctx.beginPath();
+          ctx.arc(fgx, fgy, fg.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Dust bunnies tumbling across floors
+      if (Math.random() < 0.003 && dustBunniesRef.current.length < 4) {
+        const dbx = player.x + (Math.random() - 0.5) * viewW;
+        const dby = player.y + (Math.random() - 0.5) * viewH * 0.5;
+        const dbtx = Math.floor(dbx / TILE);
+        const dbty = Math.floor(dby / TILE);
+        if (dbtx > 0 && dbtx < mapW && dbty > 0 && dbty < mapH && map[dbty][dbtx] === FLOOR) {
+          dustBunniesRef.current.push({
+            x: dbx, y: dby, vx: (Math.random() > 0.5 ? 1 : -1) * (0.5 + Math.random()),
+            rot: 0, age: 0, size: 3 + Math.random() * 3,
+          });
+        }
+      }
+      for (let dbi = dustBunniesRef.current.length - 1; dbi >= 0; dbi--) {
+        const db = dustBunniesRef.current[dbi];
+        db.age += 1 / 60;
+        db.x += db.vx;
+        db.rot += db.vx * 0.1;
+        if (db.age > 4) { dustBunniesRef.current.splice(dbi, 1); continue; }
+        const dbsx = db.x - camX;
+        const dbsy = db.y - camY;
+        const dbAlpha = Math.min(1, db.age * 2) * Math.max(0, 1 - db.age / 4) * 0.2;
+        ctx.save();
+        ctx.translate(dbsx, dbsy);
+        ctx.rotate(db.rot);
+        ctx.fillStyle = `rgba(180,160,130,${dbAlpha})`;
+        ctx.beginPath();
+        ctx.arc(0, 0, db.size, 0, Math.PI * 2);
+        ctx.fill();
+        // Fuzzy edges
+        ctx.strokeStyle = `rgba(160,140,110,${dbAlpha * 0.5})`;
+        ctx.lineWidth = 0.5;
+        for (let fz = 0; fz < 5; fz++) {
+          const fzAngle = (fz / 5) * Math.PI * 2;
+          ctx.beginPath();
+          ctx.moveTo(Math.cos(fzAngle) * db.size, Math.sin(fzAngle) * db.size);
+          ctx.lineTo(Math.cos(fzAngle) * (db.size + 2), Math.sin(fzAngle) * (db.size + 2));
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      // Spider descending from ceiling near cobwebs
+      if (Math.random() < 0.001 && spiderRef.current.length < 2) {
+        for (let spy2 = startTY; spy2 < endTY && spiderRef.current.length < 2; spy2++) {
+          for (let spx2 = startTX; spx2 < endTX; spx2++) {
+            if (map[spy2][spx2] === WALL && spx2 < mapW - 1 && map[spy2][spx2 + 1] === WALL &&
+                spy2 < mapH - 1 && map[spy2 + 1][spx2] === WALL && seededRandom(spx2, spy2, 430) > 0.7 && Math.random() < 0.01) {
+              spiderRef.current.push({
+                x: (spx2 + 1) * TILE, y: spy2 * TILE + TILE,
+                targetY: spy2 * TILE + TILE + TILE * (1 + Math.random() * 2),
+                age: 0, swingPhase: Math.random() * Math.PI * 2,
+              });
+              break;
+            }
+          }
+        }
+      }
+      for (let spi = spiderRef.current.length - 1; spi >= 0; spi--) {
+        const sp = spiderRef.current[spi];
+        sp.age += 1 / 60;
+        sp.swingPhase += 0.05;
+        const spProgress = Math.min(1, sp.age * 0.3);
+        const spCurY = sp.y + (sp.targetY - sp.y) * spProgress;
+        const spSwing = Math.sin(sp.swingPhase) * 3;
+        if (sp.age > 5) { spiderRef.current.splice(spi, 1); continue; }
+        const spSX = sp.x + spSwing - camX;
+        const spSY = spCurY - camY;
+        const spAlpha = Math.min(1, sp.age * 2) * Math.min(1, (5 - sp.age) * 0.5);
+        // Thread
+        ctx.strokeStyle = `rgba(200,200,200,${spAlpha * 0.1})`;
+        ctx.lineWidth = 0.3;
+        ctx.beginPath();
+        ctx.moveTo(sp.x - camX, sp.y - camY);
+        ctx.lineTo(spSX, spSY);
+        ctx.stroke();
+        // Spider body
+        ctx.fillStyle = `rgba(40,30,20,${spAlpha * 0.35})`;
+        ctx.beginPath();
+        ctx.arc(spSX, spSY, 2, 0, Math.PI * 2);
+        ctx.fill();
+        // Legs (4 pairs)
+        ctx.strokeStyle = `rgba(40,30,20,${spAlpha * 0.25})`;
+        ctx.lineWidth = 0.3;
+        for (let sl = 0; sl < 4; sl++) {
+          const slAngle = (sl / 4) * Math.PI - Math.PI / 4 + Math.sin(sp.swingPhase * 2 + sl) * 0.2;
+          ctx.beginPath();
+          ctx.moveTo(spSX, spSY);
+          ctx.lineTo(spSX + Math.cos(slAngle) * 5, spSY + Math.sin(slAngle) * 4);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(spSX, spSY);
+          ctx.lineTo(spSX - Math.cos(slAngle) * 5, spSY + Math.sin(slAngle) * 4);
+          ctx.stroke();
+        }
+      }
+
+      // Musical notes floating from rooms with high mastery
+      for (const room of rooms) {
+        const mnRP = roomPrinciplesMap[room.name] || [];
+        if (mnRP.length > 0) {
+          const mnAvg = mnRP.reduce((s, p) => s + (getPrincipleProgressRef.current(p.id)?.masteryPercentage || 0), 0) / mnRP.length;
+          if (mnAvg > 50 && Math.random() < 0.002) {
+            musicalNotesRef.current.push({
+              x: room.centerX + (Math.random() - 0.5) * TILE * 2,
+              y: room.centerY,
+              note: ['♪', '♫', '♬', '♩'][Math.floor(Math.random() * 4)],
+              age: 0, vx: (Math.random() - 0.5) * 0.5, vy: -0.5 - Math.random() * 0.3,
+            });
+          }
+        }
+      }
+      for (let mni = musicalNotesRef.current.length - 1; mni >= 0; mni--) {
+        const mn = musicalNotesRef.current[mni];
+        mn.age += 1 / 60;
+        mn.x += mn.vx + Math.sin(mn.age * 2) * 0.3;
+        mn.y += mn.vy;
+        if (mn.age > 3) { musicalNotesRef.current.splice(mni, 1); continue; }
+        const mnx = mn.x - camX;
+        const mny = mn.y - camY;
+        const mnAlpha = Math.min(1, mn.age * 3) * Math.max(0, 1 - mn.age / 3) * 0.25;
+        ctx.fillStyle = `rgba(200,170,100,${mnAlpha})`;
+        ctx.font = '12px serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(mn.note, mnx, mny);
+      }
+      if (musicalNotesRef.current.length > 20) musicalNotesRef.current.splice(0, musicalNotesRef.current.length - 20);
+
+      // Candelabra in room centers
+      for (const room of rooms) {
+        const cndX = room.centerX - camX;
+        const cndY = (room.y + 2) * TILE - camY;
+        if (cndX > -40 && cndX < viewW + 40 && cndY > -40 && cndY < viewH + 40) {
+          // Base stand
+          ctx.fillStyle = 'rgba(120,100,60,0.15)';
+          ctx.fillRect(cndX - 1, cndY + 5, 2, 10);
+          ctx.fillRect(cndX - 4, cndY + 14, 8, 2);
+          // Arms (3 candles)
+          const armPositions = [-10, 0, 10];
+          for (const armX of armPositions) {
+            // Arm
+            if (armX !== 0) {
+              ctx.strokeStyle = 'rgba(120,100,60,0.12)';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(cndX, cndY + 7);
+              ctx.quadraticCurveTo(cndX + armX * 0.5, cndY + 3, cndX + armX, cndY + 2);
+              ctx.stroke();
+            }
+            // Candle stub
+            ctx.fillStyle = 'rgba(230,220,190,0.2)';
+            ctx.fillRect(cndX + armX - 1, cndY, 2, 3);
+            // Tiny flame
+            const cfFlick = Math.sin(time * 10 + armX + room.x) * 0.8;
+            ctx.fillStyle = `rgba(255,200,80,${0.15 + Math.sin(time * 7 + armX) * 0.05})`;
+            ctx.beginPath();
+            ctx.ellipse(cndX + armX + cfFlick * 0.2, cndY - 2, 1.5, 2.5, 0, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      // Arrow path markings on corridor floors (pointing toward nearest room)
+      for (let aty = startTY; aty < endTY; aty += 4) {
+        for (let atx = startTX; atx < endTX; atx += 4) {
+          if (map[aty]?.[atx] === FLOOR && tileRoomIdx[aty]?.[atx] < 0 && seededRandom(atx, aty, 580) > 0.85) {
+            // Find nearest room
+            let nearestR = null;
+            let nearDist2 = Infinity;
+            for (const r of rooms) {
+              const ard = Math.abs(atx - r.x - r.w / 2) + Math.abs(aty - r.y - r.h / 2);
+              if (ard < nearDist2) { nearDist2 = ard; nearestR = r; }
+            }
+            if (nearestR) {
+              const arrSX = atx * TILE + TILE / 2 - camX;
+              const arrSY = aty * TILE + TILE / 2 - camY;
+              const arrAngle = Math.atan2(nearestR.centerY - aty * TILE, nearestR.centerX - atx * TILE);
+              ctx.save();
+              ctx.translate(arrSX, arrSY);
+              ctx.rotate(arrAngle);
+              ctx.fillStyle = 'rgba(160,140,100,0.03)';
+              ctx.beginPath();
+              ctx.moveTo(6, 0);
+              ctx.lineTo(-3, -3);
+              ctx.lineTo(-1, 0);
+              ctx.lineTo(-3, 3);
+              ctx.closePath();
+              ctx.fill();
+              ctx.restore();
+            }
+          }
+        }
+      }
+
+      // Mastery-based player aura glow
+      const getProgressAura = getPrincipleProgressRef.current;
+      const totalPrinciples2 = allPrinciples.length;
+      let totalMastery = 0;
+      for (const p of allPrinciples) {
+        totalMastery += (getProgressAura(p.id)?.masteryPercentage || 0);
+      }
+      const avgMastery2 = totalPrinciples2 > 0 ? totalMastery / totalPrinciples2 : 0;
+      if (avgMastery2 > 10) {
+        const auraRadius = 15 + (avgMastery2 / 100) * 20;
+        const auraHue = avgMastery2 >= 80 ? 45 : 260; // Gold or purple
+        const auraAlpha = (avgMastery2 / 100) * 0.06;
+        const auraGrad = ctx.createRadialGradient(px, py, 5, px, py, auraRadius);
+        auraGrad.addColorStop(0, `hsla(${auraHue}, 60%, 60%, ${auraAlpha})`);
+        auraGrad.addColorStop(0.7, `hsla(${auraHue}, 50%, 50%, ${auraAlpha * 0.3})`);
+        auraGrad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = auraGrad;
+        ctx.beginPath();
+        ctx.arc(px, py, auraRadius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       // Player emotion bubbles (thinking when idle)
       const emo = emotionRef.current;
       if (emo.age > 3) { emo.emoji = null; emo.age = 0; }
@@ -3417,6 +3975,10 @@ const LibraryPage = () => {
         }
         // Limit drops & auto-stop
         if (rain.drops.length > 200) rain.drops.splice(0, rain.drops.length - 200);
+        // Thunder flash during rain
+        if (rain.intensity > 0.5 && Math.random() < 0.001) {
+          thunderRef.current = 0.3 + Math.random() * 0.2;
+        }
         if (Math.random() < 0.0005) {
           rain.active = false;
         }
@@ -3480,6 +4042,13 @@ const LibraryPage = () => {
           ctx.fill();
         }
         snow.intensity = Math.max(0, snow.intensity - 0.003);
+      }
+
+      // Thunder flash (screen-space)
+      if (thunderRef.current > 0) {
+        ctx.fillStyle = `rgba(220,220,255,${thunderRef.current})`;
+        ctx.fillRect(0, 0, w, h);
+        thunderRef.current -= 0.02;
       }
 
       // Teleport arrival flash
@@ -3876,7 +4445,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.2.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.3.0</div>
         </div>
       )}
 
@@ -3932,7 +4501,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.2.0</div>
+        }}>v1.3.0</div>
       )}
 
       {/* Mobile: action button */}
