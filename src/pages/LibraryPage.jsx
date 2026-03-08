@@ -113,193 +113,343 @@ const CATEGORY_EMOJIS = {
   'Levenspsychologie': '🌻', 'Dieptepsychologie': '🌊',
 };
 
-// ── Bibliotheek layout genereren ──
+// ── Bibliotheek layout genereren (organisch, gerandomiseerd) ──
 function generateLibrary(categories) {
-  const roomsPerRow = 3;
-  const roomW = 10;
-  const roomH = 8;
-  const corridorW = 4;
-  const marginX = 2;
-  const marginY = 2;
+  const corridorW = 3;
+  const marginX = 3;
+  const marginY = 3;
+  const seed = categories.length * 7 + 42; // Deterministic based on category count
 
-  const rows = Math.ceil(categories.length / roomsPerRow);
-  const mapW = marginX * 2 + roomsPerRow * roomW + (roomsPerRow - 1) * corridorW + corridorW;
-  const mapH = marginY * 2 + rows * roomH + (rows + 1) * corridorW + 6; // +6 voor entreehal
+  // Randomize room sizes: width 8-12, height 7-10
+  const roomDefs = categories.map((cat, i) => ({
+    cat,
+    w: 8 + Math.floor(seededRandom(i, 0, seed + 1) * 5),   // 8-12
+    h: 7 + Math.floor(seededRandom(i, 1, seed + 2) * 4),   // 7-10
+  }));
+
+  // Shuffle room order for placement variety
+  const shuffled = roomDefs.map((r, i) => ({ ...r, origIdx: i }));
+  for (let si = shuffled.length - 1; si > 0; si--) {
+    const sj = Math.floor(seededRandom(si, 0, seed + 10) * (si + 1));
+    [shuffled[si], shuffled[sj]] = [shuffled[sj], shuffled[si]];
+  }
+
+  // Phase 1: Place rooms organically using a branching tree layout
+  // Start with entrance hall at the bottom center, then branch outward
+  const placed = []; // { x, y, w, h, cat, origIdx, catHue, connections: [] }
+
+  // Estimate map size generously
+  const estMapW = marginX * 2 + 80;
+  const estMapH = marginY * 2 + 80;
+
+  // Entrance hall
+  const hallW = 10;
+  const hallH = 5;
+  const hallX = Math.floor(estMapW / 2) - Math.floor(hallW / 2);
+  const hallY = estMapH - marginY - hallH;
+
+  // Place rooms in a branching pattern from the hall
+  // Use multiple "wings" that extend from the main corridor
+  const wingCount = 2 + Math.floor(seededRandom(0, 0, seed + 20) * 2); // 2-3 wings
+  const roomsPerWing = Math.ceil(shuffled.length / wingCount);
+
+  // Generate main spine going up from hall
+  const spineX = Math.floor(estMapW / 2);
+  const spineTopY = marginY + 4;
+
+  // Distribute rooms along wings branching from the spine
+  let wingRooms = [];
+  for (let wi = 0; wi < wingCount; wi++) {
+    wingRooms.push([]);
+  }
+  shuffled.forEach((r, i) => {
+    wingRooms[i % wingCount].push(r);
+  });
+
+  // Place rooms per wing with organic offsets
+  const corridorSegments = []; // { x1, y1, x2, y2 } for corridor carving
+
+  // Main vertical spine
+  corridorSegments.push({ x1: spineX, y1: spineTopY, x2: spineX, y2: hallY + 1 });
+
+  for (let wi = 0; wi < wingCount; wi++) {
+    const wing = wingRooms[wi];
+    // Wing branch point along the spine
+    const branchY = hallY - 6 - Math.floor((hallY - spineTopY - 10) * (wi / Math.max(1, wingCount - 1)));
+    // Wing direction: alternate left and right, some go both ways
+    const wingDir = wi % 2 === 0 ? -1 : 1;
+    const wingSpread = 14 + Math.floor(seededRandom(wi, 0, seed + 30) * 8); // How far the wing extends
+
+    // Wing horizontal corridor
+    const wingEndX = spineX + wingDir * wingSpread;
+    corridorSegments.push({ x1: spineX, y1: branchY, x2: wingEndX, y2: branchY });
+
+    // Place rooms along this wing
+    wing.forEach((r, ri) => {
+      // Distribute rooms along the wing corridor
+      const t = wing.length > 1 ? ri / (wing.length - 1) : 0.5;
+      const roomCorrX = Math.floor(spineX + wingDir * wingSpread * (0.2 + t * 0.8));
+
+      // Room goes above or below the wing corridor, alternating
+      const roomSide = ri % 2 === 0 ? -1 : 1;
+      const roomOffsetY = 1 + Math.floor(seededRandom(ri, wi, seed + 40) * 2);
+      const rx = roomCorrX - Math.floor(r.w / 2) + Math.floor(seededRandom(ri, wi, seed + 50) * 3 - 1);
+      const ry = branchY + roomSide * (corridorW + roomOffsetY);
+      if (roomSide === 1) {
+        // Room below corridor: corridor connects to top of room
+        corridorSegments.push({ x1: roomCorrX, y1: branchY, x2: roomCorrX, y2: ry + 1 });
+      } else {
+        // Room above corridor: corridor connects to bottom of room
+        corridorSegments.push({ x1: roomCorrX, y1: ry + r.h - 1, x2: roomCorrX, y2: branchY });
+      }
+
+      const catHash = r.cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+      placed.push({
+        x: Math.max(marginX, Math.min(estMapW - marginX - r.w, rx)),
+        y: Math.max(marginY, Math.min(estMapH - marginY - r.h - 5, ry)),
+        w: r.w, h: r.h,
+        cat: r.cat, origIdx: r.origIdx,
+        catHue: catHash % 360,
+        doorSide: roomSide, // -1 = door at bottom, 1 = door at top
+        corridorX: roomCorrX,
+      });
+    });
+  }
+
+  // Resolve overlaps: nudge rooms that overlap
+  for (let iter = 0; iter < 20; iter++) {
+    let anyOverlap = false;
+    for (let ai = 0; ai < placed.length; ai++) {
+      for (let bi = ai + 1; bi < placed.length; bi++) {
+        const a = placed[ai];
+        const b = placed[bi];
+        const overlapX = !(a.x + a.w + 1 < b.x || b.x + b.w + 1 < a.x);
+        const overlapY = !(a.y + a.h + 1 < b.y || b.y + b.h + 1 < a.y);
+        if (overlapX && overlapY) {
+          anyOverlap = true;
+          // Push rooms apart
+          const cx = (a.x + a.w / 2) - (b.x + b.w / 2);
+          const cy = (a.y + a.h / 2) - (b.y + b.h / 2);
+          const pushX = cx >= 0 ? 1 : -1;
+          const pushY = cy >= 0 ? 1 : -1;
+          if (Math.abs(cx) > Math.abs(cy)) {
+            a.x += pushX; b.x -= pushX;
+          } else {
+            a.y += pushY; b.y -= pushY;
+          }
+          // Clamp
+          a.x = Math.max(marginX, a.x);
+          a.y = Math.max(marginY, a.y);
+          b.x = Math.max(marginX, b.x);
+          b.y = Math.max(marginY, b.y);
+        }
+      }
+    }
+    if (!anyOverlap) break;
+  }
+
+  // Compute actual map bounds
+  let maxX = hallX + hallW + marginX;
+  let maxY = hallY + hallH + marginY;
+  for (const r of placed) {
+    maxX = Math.max(maxX, r.x + r.w + marginX + 2);
+    maxY = Math.max(maxY, r.y + r.h + marginY + 2);
+  }
+  const mapW = Math.min(estMapW, maxX);
+  const mapH = Math.min(estMapH, maxY);
 
   const map = Array.from({ length: mapH }, () => Array(mapW).fill(EMPTY));
   const tileRoomIdx = Array.from({ length: mapH }, () => Array(mapW).fill(-1));
   const rooms = [];
 
-  // Entreehal
-  const hallX = Math.floor(mapW / 2) - 5;
-  const hallY = mapH - marginY - 4;
-  const hallW = 10;
-  const hallH = 4;
+  // Draw entrance hall
   fillRect(map, hallX, hallY, hallW, hallH, FLOOR);
   addWalls(map, hallX, hallY, hallW, hallH);
-  // Tapijt in de hal
   fillRect(map, hallX + 2, hallY + 1, hallW - 4, hallH - 2, CARPET);
-  // Entree opening
-  map[hallY + hallH - 1][hallX + Math.floor(hallW / 2)] = DOOR;
-  map[hallY + hallH - 1][hallX + Math.floor(hallW / 2) - 1] = DOOR;
-  // Planten in de hal
+  map[hallY + hallH - 1][Math.floor(hallX + hallW / 2)] = DOOR;
+  map[hallY + hallH - 1][Math.floor(hallX + hallW / 2) - 1] = DOOR;
   map[hallY + 1][hallX + 1] = PLANT;
   map[hallY + 1][hallX + hallW - 2] = PLANT;
 
-  // Hoofdcorridor - verticaal
-  const corStartX = Math.floor(mapW / 2) - Math.floor(corridorW / 2);
-  for (let y = marginY; y < hallY + 1; y++) {
-    for (let x = corStartX; x < corStartX + corridorW; x++) {
-      if (x >= 0 && x < mapW && y >= 0 && y < mapH) {
-        map[y][x] = FLOOR;
+  // Carve corridors
+  const carveCorridor = (x1, y1, x2, y2) => {
+    const halfW = Math.floor(corridorW / 2);
+    // Horizontal segment
+    const minCX = Math.min(x1, x2);
+    const maxCX = Math.max(x1, x2);
+    const minCY = Math.min(y1, y2);
+    const maxCY = Math.max(y1, y2);
+
+    if (y1 === y2) {
+      // Horizontal
+      for (let cx = minCX - halfW; cx <= maxCX + halfW; cx++) {
+        for (let cy = y1 - halfW; cy <= y1 + halfW; cy++) {
+          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === EMPTY) {
+            map[cy][cx] = FLOOR;
+          }
+        }
+      }
+    } else if (x1 === x2) {
+      // Vertical
+      for (let cy = minCY; cy <= maxCY; cy++) {
+        for (let cx = x1 - halfW; cx <= x1 + halfW; cx++) {
+          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === EMPTY) {
+            map[cy][cx] = FLOOR;
+          }
+        }
+      }
+    } else {
+      // L-shaped: go horizontal first, then vertical
+      const midX = x2;
+      carveCorridor(x1, y1, midX, y1);
+      carveCorridor(midX, y1, midX, y2);
+    }
+  };
+
+  for (const seg of corridorSegments) {
+    carveCorridor(
+      Math.max(1, Math.min(mapW - 2, seg.x1)),
+      Math.max(1, Math.min(mapH - 2, seg.y1)),
+      Math.max(1, Math.min(mapW - 2, seg.x2)),
+      Math.max(1, Math.min(mapH - 2, seg.y2))
+    );
+  }
+
+  // Add carpet to main spine corridor
+  const spineHalfW = Math.floor(corridorW / 2);
+  for (let cy = spineTopY; cy <= hallY; cy++) {
+    for (let cx = spineX - spineHalfW + 1; cx < spineX + spineHalfW; cx++) {
+      if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && map[cy][cx] === FLOOR) {
+        map[cy][cx] = CARPET;
       }
     }
   }
-  // Tapijt in hoofdcorridor
-  for (let y = marginY + 1; y < hallY; y++) {
-    for (let x = corStartX + 1; x < corStartX + corridorW - 1; x++) {
-      if (x >= 0 && x < mapW) map[y][x] = CARPET;
-    }
-  }
 
-  // Verbinding hal naar corridor
-  for (let x = corStartX; x < corStartX + corridorW; x++) {
-    map[hallY][x] = FLOOR;
-  }
+  // Draw rooms (sorted by origIdx to maintain category assignment)
+  const sortedPlaced = [...placed].sort((a, b) => a.origIdx - b.origIdx);
+  sortedPlaced.forEach((r, sortIdx) => {
+    // Clamp room position to map bounds
+    r.x = Math.max(1, Math.min(mapW - r.w - 1, r.x));
+    r.y = Math.max(1, Math.min(mapH - r.h - 1, r.y));
 
-  // Kamers genereren
-  categories.forEach((cat, i) => {
-    const row = Math.floor(i / roomsPerRow);
-    const col = i % roomsPerRow;
-
-    const rx = marginX + col * (roomW + corridorW);
-    const ry = marginY + row * (roomH + corridorW);
-
-    // Kamer vloer
-    fillRect(map, rx, ry, roomW, roomH, FLOOR);
-    addWalls(map, rx, ry, roomW, roomH);
-    // Mark tiles as belonging to this room
-    for (let dy = 0; dy < roomH; dy++) {
-      for (let dx = 0; dx < roomW; dx++) {
-        if (ry + dy < mapH && rx + dx < mapW) tileRoomIdx[ry + dy][rx + dx] = i;
+    fillRect(map, r.x, r.y, r.w, r.h, FLOOR);
+    addWalls(map, r.x, r.y, r.w, r.h);
+    // Mark room tiles
+    for (let dy = 0; dy < r.h; dy++) {
+      for (let dx = 0; dx < r.w; dx++) {
+        if (r.y + dy < mapH && r.x + dx < mapW) tileRoomIdx[r.y + dy][r.x + dx] = sortIdx;
       }
     }
 
-    // Boekenkasten langs de muren (boven en zijkanten)
-    for (let x = rx + 1; x < rx + roomW - 1; x++) {
-      map[ry + 1][x] = BOOKSHELF; // Boven
+    // Bookshelves (top wall + sides, varied amount based on room size)
+    for (let bx = r.x + 1; bx < r.x + r.w - 1; bx++) {
+      if (map[r.y + 1][bx] !== DOOR) map[r.y + 1][bx] = BOOKSHELF;
     }
-    for (let y = ry + 2; y < ry + roomH - 2; y++) {
-      map[y][rx + 1] = BOOKSHELF; // Links
-      map[y][rx + roomW - 2] = BOOKSHELF; // Rechts
+    const shelfLen = Math.min(r.h - 4, 3 + Math.floor(seededRandom(r.origIdx, 0, seed + 60) * 3));
+    for (let sy = r.y + 2; sy < r.y + 2 + shelfLen; sy++) {
+      if (sy < r.y + r.h - 1) {
+        map[sy][r.x + 1] = BOOKSHELF;
+        map[sy][r.x + r.w - 2] = BOOKSHELF;
+      }
     }
 
-    // Deur (aan de kant die het dichtst bij de corridor is)
-    const doorY = ry + roomH - 1;
-    const doorX = rx + Math.floor(roomW / 2);
-    map[doorY][doorX] = DOOR;
-    map[doorY][doorX - 1] = DOOR;
+    // Door placement: on the side facing the corridor connection
+    let doorX, doorY;
+    if (r.doorSide === 1) {
+      // Door on top wall
+      doorY = r.y;
+      doorX = Math.max(r.x + 2, Math.min(r.x + r.w - 3, r.corridorX));
+    } else {
+      // Door on bottom wall
+      doorY = r.y + r.h - 1;
+      doorX = Math.max(r.x + 2, Math.min(r.x + r.w - 3, r.corridorX));
+    }
+    if (doorX >= 0 && doorX < mapW && doorY >= 0 && doorY < mapH) {
+      map[doorY][doorX] = DOOR;
+      if (doorX + 1 < r.x + r.w - 1) map[doorY][doorX + 1] = DOOR;
+      // Torches next to door
+      if (doorX - 1 > r.x && map[doorY][doorX - 1] !== DOOR) map[doorY][doorX - 1] = TORCH;
+      if (doorX + 2 < r.x + r.w - 1) map[doorY][doorX + 2] = TORCH;
+    }
 
-    // Horizontale corridor naar hoofdcorridor
-    const corY = ry + roomH - 1;
-    const startX = Math.min(rx, corStartX);
-    const endX = Math.max(rx + roomW, corStartX + corridorW);
-    for (let x = startX; x < endX; x++) {
-      for (let dy = 0; dy < 3; dy++) {
-        const cy = corY + dy;
-        if (cy < mapH && x >= 0 && x < mapW) {
-          if (map[cy][x] === EMPTY || map[cy][x] === WALL) {
-            map[cy][x] = FLOOR;
+    // Ensure corridor connects to the door
+    if (r.doorSide === 1) {
+      // Connect corridor down to door from above
+      for (let cy = Math.max(0, r.y - 4); cy <= r.y; cy++) {
+        for (let cx = doorX - 1; cx <= doorX + 1; cx++) {
+          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && (map[cy][cx] === EMPTY || map[cy][cx] === WALL)) {
+            map[cy][cx] = FLOOR;
+          }
+        }
+      }
+    } else {
+      // Connect corridor up to door from below
+      for (let cy = r.y + r.h - 1; cy <= Math.min(mapH - 1, r.y + r.h + 3); cy++) {
+        for (let cx = doorX - 1; cx <= doorX + 1; cx++) {
+          if (cx >= 0 && cx < mapW && cy >= 0 && cy < mapH && (map[cy][cx] === EMPTY || map[cy][cx] === WALL)) {
+            map[cy][cx] = FLOOR;
           }
         }
       }
     }
 
-    // Pilaar decoratie
-    if (roomW > 6) {
-      map[ry + Math.floor(roomH / 2)][rx + Math.floor(roomW / 2)] = PILLAR;
-    }
+    // Pillar (varied position within room)
+    const pillarX = r.x + 2 + Math.floor(seededRandom(r.origIdx, 2, seed + 70) * (r.w - 5));
+    const pillarY = r.y + 2 + Math.floor(seededRandom(r.origIdx, 3, seed + 71) * (r.h - 4));
+    if (map[pillarY][pillarX] === FLOOR) map[pillarY][pillarX] = PILLAR;
 
-    // Fakkels naast deur
-    if (doorX - 2 >= rx + 1) map[doorY][doorX - 2] = TORCH;
-    if (doorX + 1 < rx + roomW - 1) map[doorY][doorX + 1] = TORCH;
-
-    // Lestafel in kamer (als er ruimte is)
-    const tableY = ry + roomH - 3;
-    const tableX = rx + 3;
-    if (map[tableY][tableX] === FLOOR) {
+    // Table (varied position)
+    const tableX = r.x + 2 + Math.floor(seededRandom(r.origIdx, 4, seed + 72) * (r.w - 5));
+    const tableY = r.y + r.h - 3 - Math.floor(seededRandom(r.origIdx, 5, seed + 73) * 2);
+    if (tableY > r.y + 1 && tableY < r.y + r.h - 1 && map[tableY][tableX] === FLOOR) {
       map[tableY][tableX] = TABLE;
     }
 
-    // Categorie kleur voor boekenkasten (hash van naam)
-    const catHash = cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
-    const catHue = catHash % 360;
+    // Extra plant in bigger rooms
+    if (r.w >= 10 && r.h >= 8) {
+      const plantX = r.x + r.w - 2;
+      const plantY = r.y + r.h - 2;
+      if (map[plantY][plantX] === FLOOR) map[plantY][plantX] = PLANT;
+    }
 
     rooms.push({
-      name: cat,
-      emoji: CATEGORY_EMOJIS[cat] || '📚',
-      x: rx,
-      y: ry,
-      w: roomW,
-      h: roomH,
-      centerX: (rx + roomW / 2) * TILE,
-      centerY: (ry + roomH / 2) * TILE,
-      catHue,
+      name: r.cat,
+      emoji: CATEGORY_EMOJIS[r.cat] || '📚',
+      x: r.x, y: r.y, w: r.w, h: r.h,
+      centerX: (r.x + r.w / 2) * TILE,
+      centerY: (r.y + r.h / 2) * TILE,
+      catHue: r.catHue,
     });
   });
 
-  // Herstel hoofdcorridor - kamermuren kunnen deze overschreven hebben
-  for (let y = marginY; y < hallY + 1; y++) {
-    for (let x = corStartX; x < corStartX + corridorW; x++) {
-      if (x >= 0 && x < mapW && y >= 0 && y < mapH) {
-        if (map[y][x] !== FLOOR && map[y][x] !== CARPET && map[y][x] !== DOOR) {
-          map[y][x] = FLOOR;
-        }
-      }
+  // Corridor torches along the main spine (every 5-7 tiles, varied)
+  for (let cy = spineTopY + 2; cy < hallY - 2; cy += 5 + Math.floor(seededRandom(cy, 0, seed + 80) * 3)) {
+    const leftX = spineX - spineHalfW - 1;
+    const rightX = spineX + spineHalfW + 1;
+    if (leftX >= 0 && leftX < mapW && cy >= 0 && cy < mapH && map[cy][leftX] === EMPTY) {
+      map[cy][leftX] = TORCH;
+    }
+    if (rightX >= 0 && rightX < mapW && cy >= 0 && cy < mapH && map[cy][rightX] === EMPTY) {
+      map[cy][rightX] = TORCH;
     }
   }
 
-  // Herstel horizontale corridors - zorg dat ze niet geblokkeerd zijn
-  categories.forEach((cat, i) => {
-    const row = Math.floor(i / roomsPerRow);
-    const col = i % roomsPerRow;
-    const rx = marginX + col * (roomW + corridorW);
-    const ry = marginY + row * (roomH + corridorW);
-    const corY = ry + roomH - 1;
-    const startX = Math.min(rx, corStartX);
-    const endX = Math.max(rx + roomW, corStartX + corridorW);
-    for (let x = startX; x < endX; x++) {
-      for (let dy = 0; dy < 3; dy++) {
-        const cy = corY + dy;
-        if (cy < mapH && x >= 0 && x < mapW) {
-          if (map[cy][x] === WALL || map[cy][x] === EMPTY) {
-            map[cy][x] = FLOOR;
-          }
+  // Wing corridor torches
+  for (const seg of corridorSegments) {
+    if (seg.y1 === seg.y2 && Math.abs(seg.x2 - seg.x1) > 6) {
+      // Horizontal corridor - add torches
+      const minSX = Math.min(seg.x1, seg.x2);
+      const maxSX = Math.max(seg.x1, seg.x2);
+      for (let cx = minSX + 3; cx < maxSX - 2; cx += 5 + Math.floor(seededRandom(cx, seg.y1, seed + 81) * 3)) {
+        const ty1 = seg.y1 - spineHalfW - 1;
+        const ty2 = seg.y1 + spineHalfW + 1;
+        if (ty1 >= 0 && cx >= 0 && cx < mapW && ty1 < mapH && map[ty1][cx] === EMPTY) {
+          map[ty1][cx] = TORCH;
+        }
+        if (ty2 < mapH && cx >= 0 && cx < mapW && map[ty2][cx] === EMPTY) {
+          map[ty2][cx] = TORCH;
         }
       }
-    }
-  });
-
-  // Tapijt in hoofdcorridor herstellen
-  for (let y = marginY + 1; y < hallY; y++) {
-    for (let x = corStartX + 1; x < corStartX + corridorW - 1; x++) {
-      if (x >= 0 && x < mapW && map[y][x] === FLOOR) {
-        map[y][x] = CARPET;
-      }
-    }
-  }
-
-  // Corridor fakkels langs de hoofdcorridor (elke 6 tiles)
-  for (let y = marginY + 3; y < hallY - 2; y += 6) {
-    // Links van corridor
-    const leftX = corStartX - 1;
-    if (leftX >= 0 && leftX < mapW && y >= 0 && y < mapH && map[y][leftX] === EMPTY) {
-      map[y][leftX] = TORCH;
-    }
-    // Rechts van corridor
-    const rightX = corStartX + corridorW;
-    if (rightX >= 0 && rightX < mapW && y >= 0 && y < mapH && map[y][rightX] === EMPTY) {
-      map[y][rightX] = TORCH;
     }
   }
 
