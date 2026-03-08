@@ -381,6 +381,12 @@ const LibraryPage = () => {
   const fallingLeavesRef = useRef([]); // { x, y, vx, vy, rot, rotSpeed, age, hue }
   const emotionRef = useRef({ emoji: null, age: 0 }); // Current emotion bubble
   const shootingStarsRef = useRef([]); // { x, y, vx, vy, life, length }
+  const mothsRef = useRef([]); // { x, y, baseX, baseY, phase, speed, life }
+  const firefliesRef = useRef([]); // { x, y, baseX, baseY, phase, hue, life }
+  const echoRipplesRef = useRef([]); // { x, y, radius, maxRadius, age }
+  const bookDustRef = useRef([]); // { x, y, vx, vy, age, size }
+  const loosePageRef = useRef([]); // { x, y, vx, vy, rot, rotSpeed, age }
+  const rainRef = useRef({ active: false, intensity: 0, drops: [] }); // Weather system
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
 
@@ -818,6 +824,54 @@ const LibraryPage = () => {
               ctx.lineTo(sx + TILE * 0.7, sy + TILE * 0.6);
               ctx.stroke();
             }
+            // Cobblestone variation (subtle circular stone pattern)
+            if (seededRandom(tx, ty, 400) > 0.7) {
+              ctx.strokeStyle = 'rgba(0,0,0,0.03)';
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.arc(sx + TILE * seededRandom(tx, ty, 401), sy + TILE * seededRandom(tx, ty, 402),
+                3 + seededRandom(tx, ty, 403) * 4, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+            // Ancient scroll/map on floor (very rare)
+            if (seededRandom(tx, ty, 410) > 0.97 && tileRoomIdx[ty]?.[tx] >= 0) {
+              ctx.fillStyle = 'rgba(210,190,140,0.2)';
+              ctx.beginPath();
+              ctx.roundRect(sx + 8, sy + 10, TILE - 16, TILE - 20, 2);
+              ctx.fill();
+              // Scroll curl edges
+              ctx.strokeStyle = 'rgba(160,140,100,0.15)';
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.arc(sx + 8, sy + TILE / 2, 3, -Math.PI / 2, Math.PI / 2);
+              ctx.stroke();
+              ctx.beginPath();
+              ctx.arc(sx + TILE - 8, sy + TILE / 2, 3, Math.PI / 2, -Math.PI / 2);
+              ctx.stroke();
+              // Text lines
+              ctx.fillStyle = 'rgba(80,60,40,0.08)';
+              for (let tl = 0; tl < 3; tl++) {
+                ctx.fillRect(sx + 12, sy + 14 + tl * 5, TILE - 24 - seededRandom(tx, ty, 411 + tl) * 8, 1.5);
+              }
+            }
+            // Water puddle (rare, with subtle reflection)
+            if (seededRandom(tx, ty, 420) > 0.95) {
+              const pudW = 6 + seededRandom(tx, ty, 421) * 8;
+              const pudH = 4 + seededRandom(tx, ty, 422) * 5;
+              const pudX = sx + TILE / 2 - pudW / 2 + (seededRandom(tx, ty, 423) - 0.5) * 8;
+              const pudY = sy + TILE / 2 - pudH / 2 + (seededRandom(tx, ty, 424) - 0.5) * 6;
+              // Puddle base
+              ctx.fillStyle = 'rgba(80,100,130,0.1)';
+              ctx.beginPath();
+              ctx.ellipse(pudX + pudW / 2, pudY + pudH / 2, pudW / 2, pudH / 2, 0, 0, Math.PI * 2);
+              ctx.fill();
+              // Shimmer reflection
+              const shimmer = Math.sin(time * 2 + tx * 3 + ty) * 0.03;
+              ctx.fillStyle = `rgba(200,220,255,${0.05 + shimmer})`;
+              ctx.beginPath();
+              ctx.ellipse(pudX + pudW / 2 - 1, pudY + pudH / 2 - 1, pudW / 3, pudH / 3, 0, 0, Math.PI * 2);
+              ctx.fill();
+            }
           } else if (tile === WALL) {
             // Base wall with subtle color variation
             const wallVar = seededRandom(tx, ty, 300) * 8 - 4;
@@ -879,6 +933,60 @@ const LibraryPage = () => {
               // Frame highlight
               ctx.fillStyle = 'rgba(255,255,255,0.08)';
               ctx.fillRect(sx + 6, sy + 8, TILE - 12, 2);
+            }
+            // Cobwebs in corners (wall next to another wall = corner)
+            const hasWallRight = tx < mapW - 1 && map[ty][tx + 1] === WALL;
+            const hasWallBelow = ty < mapH - 1 && map[ty + 1][tx] === WALL;
+            if (hasWallRight && hasWallBelow && seededRandom(tx, ty, 430) > 0.7) {
+              ctx.strokeStyle = 'rgba(200,200,200,0.06)';
+              ctx.lineWidth = 0.3;
+              // Web strands from corner
+              const cwx = sx + TILE;
+              const cwy = sy + TILE;
+              for (let ws = 0; ws < 4; ws++) {
+                const angle = -Math.PI / 2 + (ws / 3) * (-Math.PI / 2);
+                ctx.beginPath();
+                ctx.moveTo(cwx, cwy);
+                ctx.quadraticCurveTo(
+                  cwx + Math.cos(angle) * 8 + Math.sin(time * 0.3) * 0.5,
+                  cwy + Math.sin(angle) * 8,
+                  cwx + Math.cos(angle) * 16,
+                  cwy + Math.sin(angle) * 16
+                );
+                ctx.stroke();
+              }
+              // Cross-threads
+              ctx.beginPath();
+              for (let ct = 0; ct < 3; ct++) {
+                const ctR = 5 + ct * 4;
+                ctx.arc(cwx, cwy, ctR, -Math.PI, -Math.PI / 2, false);
+              }
+              ctx.stroke();
+            }
+            // Glowing eyes in dark wall areas (very rare, spooky)
+            if (seededRandom(tx, ty, 440) > 0.97) {
+              const eyeAlpha = 0.08 + Math.sin(time * 0.8 + tx * 5) * 0.04;
+              const eyeY = sy + TILE * 0.45;
+              const eyeX1 = sx + TILE * 0.35;
+              const eyeX2 = sx + TILE * 0.65;
+              const blinkPhase = Math.sin(time * 0.3 + tx * 7);
+              if (blinkPhase > -0.95) { // Occasional blink
+                ctx.fillStyle = `rgba(180,255,100,${eyeAlpha})`;
+                ctx.beginPath();
+                ctx.ellipse(eyeX1, eyeY, 2, 1.2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.ellipse(eyeX2, eyeY, 2, 1.2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                // Tiny pupil
+                ctx.fillStyle = `rgba(0,0,0,${eyeAlpha * 1.5})`;
+                ctx.beginPath();
+                ctx.arc(eyeX1 + 0.5, eyeY, 0.7, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(eyeX2 + 0.5, eyeY, 0.7, 0, Math.PI * 2);
+                ctx.fill();
+              }
             }
           } else if (tile === BOOKSHELF) {
             // Kast achtergrond
@@ -1233,6 +1341,18 @@ const LibraryPage = () => {
             ctx.beginPath();
             ctx.ellipse(sx + TILE / 2 + flicker2, tipY, 2, 4, 0, 0, Math.PI * 2);
             ctx.fill();
+            // Torch smoke wisps rising above flame
+            for (let sw = 0; sw < 3; sw++) {
+              const smokeAge = (time * 0.5 + sw * 0.3 + tx * 0.7) % 1;
+              const smokeY = tipY - smokeAge * 18;
+              const smokeX = sx + TILE / 2 + Math.sin(time * 2 + sw * 2 + tx) * 3;
+              const smokeA = (1 - smokeAge) * 0.04;
+              const smokeSize = 2 + smokeAge * 4;
+              ctx.fillStyle = `rgba(100,100,110,${smokeA})`;
+              ctx.beginPath();
+              ctx.arc(smokeX, smokeY, smokeSize, 0, Math.PI * 2);
+              ctx.fill();
+            }
           }
         }
       }
@@ -1466,6 +1586,51 @@ const LibraryPage = () => {
           ctx.fillStyle = `rgba(200,180,140,${crAlpha * 2})`;
           ctx.fillText('N', 0, -22);
           ctx.restore();
+        }
+      }
+
+      // Hall banner/tapestry decorations
+      const bannerPositions = [
+        { bx: hallX + 2, by: hallY + 1 },
+        { bx: hallX + hallW - 3, by: hallY + 1 },
+      ];
+      for (const bp of bannerPositions) {
+        const bsx = bp.bx * TILE - camX;
+        const bsy = bp.by * TILE - camY;
+        if (bsx > -60 && bsx < viewW + 60 && bsy > -60 && bsy < viewH + 60) {
+          // Banner pole
+          ctx.fillStyle = '#8a7040';
+          ctx.fillRect(bsx + TILE / 2 - 12, bsy - 2, 24, 3);
+          // Fabric (gentle wave)
+          const wave = Math.sin(time * 0.7 + bp.bx) * 2;
+          ctx.fillStyle = 'rgba(120,40,50,0.4)';
+          ctx.beginPath();
+          ctx.moveTo(bsx + TILE / 2 - 10, bsy);
+          ctx.lineTo(bsx + TILE / 2 + 10, bsy);
+          ctx.lineTo(bsx + TILE / 2 + 8 + wave, bsy + TILE * 1.2);
+          ctx.lineTo(bsx + TILE / 2 + wave * 0.5, bsy + TILE * 1.4);
+          ctx.lineTo(bsx + TILE / 2 - 8 + wave, bsy + TILE * 1.2);
+          ctx.closePath();
+          ctx.fill();
+          // Gold trim
+          ctx.strokeStyle = 'rgba(200,170,80,0.25)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          // Emblem (circle)
+          ctx.fillStyle = 'rgba(200,170,80,0.2)';
+          ctx.beginPath();
+          ctx.arc(bsx + TILE / 2 + wave * 0.3, bsy + TILE * 0.5, 5, 0, Math.PI * 2);
+          ctx.fill();
+          // Gold fringe at bottom
+          for (let fr = 0; fr < 5; fr++) {
+            const fringeX = bsx + TILE / 2 - 7 + fr * 3.5 + wave;
+            ctx.strokeStyle = 'rgba(200,170,80,0.15)';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(fringeX, bsy + TILE * 1.35);
+            ctx.lineTo(fringeX + Math.sin(time + fr) * 0.5, bsy + TILE * 1.5);
+            ctx.stroke();
+          }
         }
       }
 
@@ -2272,6 +2437,221 @@ const LibraryPage = () => {
         }
       }
 
+      // Moths fluttering near torches
+      if (Math.random() < 0.005 && mothsRef.current.length < 6) {
+        // Find a visible torch tile
+        for (let mty = startTY; mty < endTY && mothsRef.current.length < 6; mty++) {
+          for (let mtx = startTX; mtx < endTX; mtx++) {
+            if (map[mty][mtx] === TORCH && Math.random() < 0.01) {
+              mothsRef.current.push({
+                x: mtx * TILE + TILE / 2, y: mty * TILE + TILE * 0.2,
+                baseX: mtx * TILE + TILE / 2, baseY: mty * TILE + TILE * 0.2,
+                phase: Math.random() * Math.PI * 2,
+                speed: 1 + Math.random() * 2,
+                life: 0, maxLife: 3 + Math.random() * 3,
+              });
+              break;
+            }
+          }
+        }
+      }
+      for (let moi = mothsRef.current.length - 1; moi >= 0; moi--) {
+        const moth = mothsRef.current[moi];
+        moth.life += 1 / 60;
+        moth.phase += moth.speed * 0.1;
+        moth.x = moth.baseX + Math.cos(moth.phase) * 12 + Math.sin(moth.phase * 1.7) * 5;
+        moth.y = moth.baseY + Math.sin(moth.phase * 0.8) * 8 - 5;
+        if (moth.life >= moth.maxLife) { mothsRef.current.splice(moi, 1); continue; }
+        const mox = moth.x - camX;
+        const moy = moth.y - camY;
+        if (mox > -10 && mox < viewW + 10 && moy > -10 && moy < viewH + 10) {
+          const moAlpha = Math.min(1, moth.life * 3) * Math.min(1, (moth.maxLife - moth.life) * 3);
+          ctx.fillStyle = `rgba(200,190,170,${moAlpha * 0.5})`;
+          // Wings (flapping)
+          const wingAngle = Math.sin(moth.phase * 6) * 0.5;
+          ctx.save();
+          ctx.translate(mox, moy);
+          ctx.rotate(Math.atan2(Math.cos(moth.phase * 1.7), -Math.sin(moth.phase)));
+          ctx.beginPath();
+          ctx.ellipse(-2, 0, 3, 1.5 * Math.abs(Math.cos(wingAngle)), wingAngle, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.ellipse(2, 0, 3, 1.5 * Math.abs(Math.cos(wingAngle)), -wingAngle, 0, Math.PI * 2);
+          ctx.fill();
+          // Body
+          ctx.fillStyle = `rgba(100,80,60,${moAlpha * 0.6})`;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, 1.5, 1, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      // Fireflies near plants
+      for (let ty6 = startTY; ty6 < endTY; ty6++) {
+        for (let tx6 = startTX; tx6 < endTX; tx6++) {
+          if (map[ty6][tx6] === PLANT && Math.random() < 0.002 && firefliesRef.current.length < 15) {
+            firefliesRef.current.push({
+              x: tx6 * TILE + TILE / 2, y: ty6 * TILE + TILE / 2,
+              baseX: tx6 * TILE + TILE / 2, baseY: ty6 * TILE + TILE / 2,
+              phase: Math.random() * Math.PI * 2,
+              hue: 50 + Math.random() * 30, // yellow-green
+              life: 0, maxLife: 2 + Math.random() * 4,
+            });
+          }
+        }
+      }
+      for (let fi = firefliesRef.current.length - 1; fi >= 0; fi--) {
+        const ff = firefliesRef.current[fi];
+        ff.life += 1 / 60;
+        ff.phase += 0.03;
+        ff.x = ff.baseX + Math.sin(ff.phase) * 20 + Math.cos(ff.phase * 0.7) * 10;
+        ff.y = ff.baseY + Math.cos(ff.phase * 1.2) * 15 - 10;
+        if (ff.life >= ff.maxLife) { firefliesRef.current.splice(fi, 1); continue; }
+        const ffx = ff.x - camX;
+        const ffy = ff.y - camY;
+        if (ffx > -10 && ffx < viewW + 10 && ffy > -10 && ffy < viewH + 10) {
+          const ffAlpha = Math.min(1, ff.life * 2) * Math.min(1, (ff.maxLife - ff.life) * 2);
+          const pulse = 0.3 + 0.7 * Math.max(0, Math.sin(ff.phase * 3));
+          // Glow
+          const ffGlow = ctx.createRadialGradient(ffx, ffy, 0, ffx, ffy, 8);
+          ffGlow.addColorStop(0, `hsla(${ff.hue}, 80%, 70%, ${ffAlpha * pulse * 0.15})`);
+          ffGlow.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = ffGlow;
+          ctx.fillRect(ffx - 8, ffy - 8, 16, 16);
+          // Dot
+          ctx.fillStyle = `hsla(${ff.hue}, 80%, 80%, ${ffAlpha * pulse * 0.8})`;
+          ctx.beginPath();
+          ctx.arc(ffx, ffy, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Echo ripples on room entry
+      for (let eri = echoRipplesRef.current.length - 1; eri >= 0; eri--) {
+        const rip = echoRipplesRef.current[eri];
+        rip.age += 1 / 60;
+        rip.radius += (rip.maxRadius - rip.radius) * 0.05;
+        if (rip.age > 1.5) { echoRipplesRef.current.splice(eri, 1); continue; }
+        const rpx = rip.x - camX;
+        const rpy = rip.y - camY;
+        const ripAlpha = (1 - rip.age / 1.5) * 0.08;
+        ctx.strokeStyle = `rgba(200,180,255,${ripAlpha})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(rpx, rpy, rip.radius, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Bookshelf dust puff when player passes close
+      const bkdx = Math.floor(player.x / TILE);
+      const bkdy = Math.floor(player.y / TILE);
+      if (player.moving) {
+        for (let bdy = bkdy - 1; bdy <= bkdy + 1; bdy++) {
+          for (let bdx = bkdx - 1; bdx <= bkdx + 1; bdx++) {
+            if (bdy >= 0 && bdy < mapH && bdx >= 0 && bdx < mapW && map[bdy][bdx] === BOOKSHELF) {
+              if (Math.random() < 0.02) {
+                bookDustRef.current.push({
+                  x: bdx * TILE + TILE / 2, y: bdy * TILE + TILE / 2,
+                  vx: (Math.random() - 0.5) * 0.8, vy: -0.3 - Math.random() * 0.5,
+                  age: 0, size: 1 + Math.random() * 2,
+                });
+              }
+            }
+          }
+        }
+      }
+      for (let bdi = bookDustRef.current.length - 1; bdi >= 0; bdi--) {
+        const bd = bookDustRef.current[bdi];
+        bd.age += 1 / 60;
+        bd.x += bd.vx;
+        bd.y += bd.vy;
+        bd.vy *= 0.98;
+        if (bd.age > 2) { bookDustRef.current.splice(bdi, 1); continue; }
+        const bdpx = bd.x - camX;
+        const bdpy = bd.y - camY;
+        const bdAlpha = (1 - bd.age / 2) * 0.15;
+        ctx.fillStyle = `rgba(180,160,130,${bdAlpha})`;
+        ctx.beginPath();
+        ctx.arc(bdpx, bdpy, bd.size + bd.age, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      if (bookDustRef.current.length > 30) bookDustRef.current.splice(0, bookDustRef.current.length - 30);
+
+      // Floating loose book pages in corridors
+      if (Math.random() < 0.003 && loosePageRef.current.length < 5) {
+        const lpx = player.x + (Math.random() - 0.5) * viewW * 0.8;
+        const lpy = player.y + (Math.random() - 0.5) * viewH * 0.8;
+        const lptx = Math.floor(lpx / TILE);
+        const lpty = Math.floor(lpy / TILE);
+        if (lptx >= 0 && lptx < mapW && lpty >= 0 && lpty < mapH &&
+            (map[lpty][lptx] === FLOOR || map[lpty][lptx] === CARPET)) {
+          loosePageRef.current.push({
+            x: lpx, y: lpy,
+            vx: (Math.random() - 0.5) * 0.3, vy: -0.1 - Math.random() * 0.2,
+            rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.04,
+            age: 0,
+          });
+        }
+      }
+      for (let lpi = loosePageRef.current.length - 1; lpi >= 0; lpi--) {
+        const lp = loosePageRef.current[lpi];
+        lp.age += 1 / 60;
+        lp.x += lp.vx + Math.sin(lp.age * 1.5) * 0.2;
+        lp.y += lp.vy + Math.sin(lp.age * 2) * 0.1;
+        lp.rot += lp.rotSpeed;
+        if (lp.age > 5) { loosePageRef.current.splice(lpi, 1); continue; }
+        const lpsx = lp.x - camX;
+        const lpsy = lp.y - camY;
+        if (lpsx > -20 && lpsx < viewW + 20 && lpsy > -20 && lpsy < viewH + 20) {
+          const lpAlpha = Math.min(1, lp.age * 2) * Math.max(0, 1 - lp.age / 5);
+          ctx.save();
+          ctx.translate(lpsx, lpsy);
+          ctx.rotate(lp.rot);
+          ctx.globalAlpha = lpAlpha * 0.3;
+          // Page
+          ctx.fillStyle = '#f0e8d8';
+          ctx.fillRect(-5, -4, 10, 8);
+          // Text lines
+          ctx.fillStyle = 'rgba(80,60,40,0.2)';
+          ctx.fillRect(-3, -2, 6, 1);
+          ctx.fillRect(-3, 0, 5, 1);
+          ctx.fillRect(-3, 2, 4, 1);
+          ctx.globalAlpha = 1;
+          ctx.restore();
+        }
+      }
+
+      // Dynamic player shadow from nearest light source
+      let nearestTorchDist = Infinity;
+      let nearestTorchX = 0;
+      let nearestTorchY = 0;
+      for (let sty = Math.max(0, bkdy - 6); sty < Math.min(mapH, bkdy + 6); sty++) {
+        for (let stx = Math.max(0, bkdx - 6); stx < Math.min(mapW, bkdx + 6); stx++) {
+          if (map[sty][stx] === TORCH) {
+            const stdx = player.x - (stx * TILE + TILE / 2);
+            const stdy = player.y - (sty * TILE + TILE / 2);
+            const std = Math.sqrt(stdx * stdx + stdy * stdy);
+            if (std < nearestTorchDist) {
+              nearestTorchDist = std;
+              nearestTorchX = stx * TILE + TILE / 2;
+              nearestTorchY = sty * TILE + TILE / 2;
+            }
+          }
+        }
+      }
+      if (nearestTorchDist < TILE * 5) {
+        const shAngle = Math.atan2(player.y - nearestTorchY, player.x - nearestTorchX);
+        const shLen = Math.min(20, 8 + (nearestTorchDist / TILE) * 2);
+        const shAlpha = Math.max(0.02, 0.08 - nearestTorchDist / (TILE * 80));
+        const shx = px + Math.cos(shAngle) * shLen;
+        const shy = py + Math.sin(shAngle) * shLen;
+        ctx.fillStyle = `rgba(0,0,0,${shAlpha})`;
+        ctx.beginPath();
+        ctx.ellipse(shx, shy, 8, 4, shAngle, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       // Player emotion bubbles (thinking when idle)
       const emo = emotionRef.current;
       if (emo.age > 3) { emo.emoji = null; emo.age = 0; }
@@ -2310,6 +2690,10 @@ const LibraryPage = () => {
         if (lastRoomRef.current !== nearRoom.name) {
           lastRoomRef.current = nearRoom.name;
           roomZoomPulseRef.current = 0.12; // Trigger zoom pulse
+          // Echo ripple on room entry
+          echoRipplesRef.current.push({
+            x: player.x, y: player.y, radius: 5, maxRadius: TILE * 3, age: 0,
+          });
           // Discovery toast on first visit
           if (!discoveredRoomsRef.current.has(nearRoom.name)) {
             discoveredRoomsRef.current.add(nearRoom.name);
@@ -2434,6 +2818,57 @@ const LibraryPage = () => {
       if (warmPhase > 0.01) {
         ctx.fillStyle = `rgba(255,180,60,${warmPhase})`;
         ctx.fillRect(0, 0, w, h);
+      }
+
+      // Ambient rain weather (rare, screen-space)
+      const rain = rainRef.current;
+      if (!rain.active && Math.random() < 0.0002) {
+        rain.active = true;
+        rain.intensity = 0;
+      }
+      if (rain.active) {
+        rain.intensity = Math.min(1, rain.intensity + 0.002);
+        // Spawn rain drops
+        const dropCount = Math.floor(rain.intensity * 4);
+        for (let rd = 0; rd < dropCount; rd++) {
+          rain.drops.push({
+            x: Math.random() * w,
+            y: -5,
+            speed: 4 + Math.random() * 3,
+            len: 6 + Math.random() * 8,
+          });
+        }
+        // Update and draw drops
+        ctx.strokeStyle = `rgba(150,170,200,${rain.intensity * 0.06})`;
+        ctx.lineWidth = 0.5;
+        for (let rdi = rain.drops.length - 1; rdi >= 0; rdi--) {
+          const rd = rain.drops[rdi];
+          rd.y += rd.speed;
+          if (rd.y > h + 10) { rain.drops.splice(rdi, 1); continue; }
+          ctx.beginPath();
+          ctx.moveTo(rd.x, rd.y);
+          ctx.lineTo(rd.x - 1, rd.y - rd.len);
+          ctx.stroke();
+        }
+        // Limit drops & auto-stop
+        if (rain.drops.length > 200) rain.drops.splice(0, rain.drops.length - 200);
+        if (Math.random() < 0.0005) {
+          rain.active = false;
+        }
+      } else if (rain.drops.length > 0) {
+        // Fade out remaining drops
+        ctx.strokeStyle = 'rgba(150,170,200,0.03)';
+        ctx.lineWidth = 0.5;
+        for (let rdi = rain.drops.length - 1; rdi >= 0; rdi--) {
+          const rd = rain.drops[rdi];
+          rd.y += rd.speed;
+          if (rd.y > h + 10) { rain.drops.splice(rdi, 1); continue; }
+          ctx.beginPath();
+          ctx.moveTo(rd.x, rd.y);
+          ctx.lineTo(rd.x - 1, rd.y - rd.len);
+          ctx.stroke();
+        }
+        rain.intensity = Math.max(0, rain.intensity - 0.005);
       }
 
       // Teleport arrival flash
@@ -2830,7 +3265,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.0.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.1.0</div>
         </div>
       )}
 
@@ -2886,7 +3321,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.0.0</div>
+        }}>v1.1.0</div>
       )}
 
       {/* Mobile: action button */}
