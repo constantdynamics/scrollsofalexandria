@@ -41,6 +41,18 @@ const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => ({
   alpha: 0.15 + seededRandom(i, 0, 22) * 0.2,
 }));
 
+// Parallax background stars (generated once)
+const NUM_STARS = 120;
+const stars = Array.from({ length: NUM_STARS }, (_, i) => ({
+  x: seededRandom(i, 0, 200) * 4000 - 500,
+  y: seededRandom(0, i, 201) * 4000 - 500,
+  size: 0.5 + seededRandom(i, i, 202) * 2,
+  twinkleSpeed: 1 + seededRandom(i, 0, 203) * 3,
+  twinkleOffset: seededRandom(i, 0, 204) * Math.PI * 2,
+  alpha: 0.2 + seededRandom(i, 0, 205) * 0.5,
+  hue: seededRandom(i, 0, 206) > 0.7 ? 220 + seededRandom(i, 0, 207) * 40 : 40 + seededRandom(i, 0, 208) * 20,
+}));
+
 // Kleuren
 const COLORS = {
   [EMPTY]: '#1a1520',
@@ -283,7 +295,11 @@ function generateLibrary(categories) {
     }
   }
 
-  return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH };
+  // Fountain position (center of entrance hall)
+  const fountainX = hallX + Math.floor(hallW / 2);
+  const fountainY = hallY + Math.floor(hallH / 2);
+
+  return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY };
 }
 
 function fillRect(map, x, y, w, h, tile) {
@@ -347,6 +363,8 @@ const LibraryPage = () => {
   const roomZoomPulseRef = useRef(0); // Camera zoom pulse on room entry
   const discoveredRoomsRef = useRef(new Set()); // Track discovered rooms
   const celebrationParticlesRef = useRef([]); // Golden celebration particles
+  const footprintsRef = useRef([]); // { x, y, angle, age }
+  const lastFootprintRef = useRef({ x: 0, y: 0 }); // Track distance for spacing
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
 
@@ -381,7 +399,7 @@ const LibraryPage = () => {
   }, [categories]);
 
   const library = useMemo(() => generateLibrary(categories), [categories]);
-  const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH } = library;
+  const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY } = library;
 
   // Init player positie (herstel uit sessionStorage als beschikbaar)
   useEffect(() => {
@@ -623,8 +641,23 @@ const LibraryPage = () => {
             vy: -0.3 - Math.random() * 0.3,
           });
         }
+        // Spawn footprints (spaced every ~20px)
+        const fpDx = player.x - lastFootprintRef.current.x;
+        const fpDy = player.y - lastFootprintRef.current.y;
+        if (fpDx * fpDx + fpDy * fpDy > 400) {
+          const angle = Math.atan2(dy, dx);
+          footprintsRef.current.push({ x: player.x, y: player.y + 10, angle, age: 0 });
+          lastFootprintRef.current = { x: player.x, y: player.y };
+          if (footprintsRef.current.length > 80) footprintsRef.current.shift();
+        }
       } else {
         player.moving = false;
+      }
+
+      // Update footprints
+      for (let i = footprintsRef.current.length - 1; i >= 0; i--) {
+        footprintsRef.current[i].age += 1 / 60;
+        if (footprintsRef.current[i].age > 8) footprintsRef.current.splice(i, 1);
       }
 
       // Update footstep dust
@@ -679,6 +712,19 @@ const LibraryPage = () => {
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = COLORS[EMPTY];
       ctx.fillRect(0, 0, w, h);
+
+      // Parallax star background (before zoom, screen-space with slow parallax)
+      for (const star of stars) {
+        const parallax = 0.15;
+        const spx = ((star.x - camX * parallax) % w + w) % w;
+        const spy = ((star.y - camY * parallax) % h + h) % h;
+        const twinkle = 0.5 + 0.5 * Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
+        const a = star.alpha * twinkle;
+        ctx.fillStyle = `hsla(${star.hue}, 60%, 80%, ${a})`;
+        ctx.beginPath();
+        ctx.arc(spx, spy, star.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
 
       // Apply zoom
       ctx.save();
@@ -764,13 +810,16 @@ const LibraryPage = () => {
             ctx.fillStyle = 'rgba(0,0,0,0.1)';
             ctx.fillRect(sx, sy + Math.floor(TILE / 2) + 2, TILE, 2);
           } else if (tile === DOOR) {
-            // Warm glow underneath door
+            // Category-colored glow underneath door
+            const doorRoomIdx = tileRoomIdx[ty]?.[tx] ?? -1;
+            const doorHue = doorRoomIdx >= 0 && rooms[doorRoomIdx] ? rooms[doorRoomIdx].catHue : 40;
             const doorGlow = ctx.createRadialGradient(
               sx + TILE / 2, sy + TILE / 2, 2,
-              sx + TILE / 2, sy + TILE / 2, TILE * 1.2
+              sx + TILE / 2, sy + TILE / 2, TILE * 1.5
             );
-            doorGlow.addColorStop(0, 'rgba(255,220,150,0.15)');
-            doorGlow.addColorStop(1, 'rgba(255,200,100,0)');
+            doorGlow.addColorStop(0, `hsla(${doorHue}, 60%, 60%, 0.2)`);
+            doorGlow.addColorStop(0.5, `hsla(${doorHue}, 50%, 50%, 0.08)`);
+            doorGlow.addColorStop(1, `hsla(${doorHue}, 40%, 40%, 0)`);
             ctx.fillStyle = doorGlow;
             ctx.fillRect(sx - TILE * 0.5, sy - TILE * 0.5, TILE * 2, TILE * 2);
             // Door base
@@ -961,6 +1010,80 @@ const LibraryPage = () => {
             glow.addColorStop(1, 'rgba(255,100,20,0)');
             ctx.fillStyle = glow;
             ctx.fillRect(sx - radius, sy - radius, radius * 2, radius * 2);
+          }
+        }
+      }
+
+      // Animated fountain in entrance hall
+      const ftx = fountainX * TILE - camX;
+      const fty = fountainY * TILE - camY;
+      if (ftx > -TILE * 2 && ftx < viewW + TILE * 2 && fty > -TILE * 2 && fty < viewH + TILE * 2) {
+        // Basin
+        ctx.fillStyle = 'rgba(100,140,180,0.3)';
+        ctx.beginPath();
+        ctx.ellipse(ftx + TILE / 2, fty + TILE * 0.7, TILE * 0.45, TILE * 0.2, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // Basin rim
+        ctx.strokeStyle = '#8a7a66';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        // Water ripples
+        for (let r = 0; r < 3; r++) {
+          const rippleR = (TILE * 0.15 + r * 6 + time * 8) % (TILE * 0.4);
+          const rippleA = Math.max(0, 0.3 - rippleR / (TILE * 0.5));
+          ctx.strokeStyle = `rgba(150,200,255,${rippleA})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.ellipse(ftx + TILE / 2, fty + TILE * 0.7, rippleR, rippleR * 0.45, 0, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        // Center pillar
+        ctx.fillStyle = '#8a7a66';
+        ctx.fillRect(ftx + TILE / 2 - 3, fty + TILE * 0.3, 6, TILE * 0.4);
+        // Water jet
+        const jetH = 8 + Math.sin(time * 4) * 3;
+        const jetGrad = ctx.createLinearGradient(ftx + TILE / 2, fty + TILE * 0.3 - jetH, ftx + TILE / 2, fty + TILE * 0.3);
+        jetGrad.addColorStop(0, 'rgba(150,200,255,0)');
+        jetGrad.addColorStop(0.5, 'rgba(150,200,255,0.5)');
+        jetGrad.addColorStop(1, 'rgba(150,200,255,0.3)');
+        ctx.fillStyle = jetGrad;
+        ctx.fillRect(ftx + TILE / 2 - 2, fty + TILE * 0.3 - jetH, 4, jetH);
+        // Water droplets
+        for (let d = 0; d < 4; d++) {
+          const dAngle = (time * 2 + d * 1.57) % (Math.PI * 2);
+          const dR = 4 + Math.sin(time * 3 + d) * 2;
+          const ddx = Math.cos(dAngle) * dR;
+          const ddy = Math.sin(dAngle) * 1.5 + (fty + TILE * 0.3 - jetH + 2);
+          ctx.fillStyle = 'rgba(150,200,255,0.6)';
+          ctx.beginPath();
+          ctx.arc(ftx + TILE / 2 + ddx, ddy + d * 3, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Floating book particles in rooms (subtle floating books)
+      for (const room of rooms) {
+        const rlx = room.centerX - camX;
+        const rly = room.centerY - camY;
+        if (rlx > -200 && rlx < viewW + 200 && rly > -200 && rly < viewH + 200) {
+          const rp = roomPrinciplesMap[room.name] || [];
+          if (rp.length > 0) {
+            const numBooks = Math.min(3, rp.length);
+            for (let bi = 0; bi < numBooks; bi++) {
+              const bx = room.centerX + Math.sin(time * 0.5 + bi * 2.1) * (room.w * TILE * 0.2) - camX;
+              const by = room.centerY + Math.cos(time * 0.7 + bi * 1.7) * (room.h * TILE * 0.15) - 10 + Math.sin(time * 1.2 + bi) * 4 - camY;
+              const bAngle = Math.sin(time * 0.8 + bi * 3) * 0.2;
+              ctx.save();
+              ctx.translate(bx, by);
+              ctx.rotate(bAngle);
+              ctx.globalAlpha = 0.15;
+              ctx.fillStyle = `hsl(${room.catHue}, 40%, 45%)`;
+              ctx.fillRect(-5, -3, 10, 6);
+              ctx.fillStyle = 'rgba(255,255,255,0.3)';
+              ctx.fillRect(-5, -3, 1, 6); // Spine
+              ctx.globalAlpha = 1;
+              ctx.restore();
+            }
           }
         }
       }
@@ -1268,6 +1391,28 @@ const LibraryPage = () => {
         ctx.textAlign = 'center';
         ctx.fillStyle = 'rgba(255,255,255,0.7)';
         ctx.fillText(userData.name, px, player.y - camY + 26);
+      }
+
+      // Footprint trail rendering
+      for (const fp of footprintsRef.current) {
+        const fpx = fp.x - camX;
+        const fpy = fp.y - camY;
+        if (fpx > -20 && fpx < viewW + 20 && fpy > -20 && fpy < viewH + 20) {
+          const fpAlpha = Math.max(0, 0.12 * (1 - fp.age / 8));
+          ctx.save();
+          ctx.translate(fpx, fpy);
+          ctx.rotate(fp.angle);
+          ctx.fillStyle = `rgba(80,60,40,${fpAlpha})`;
+          // Left foot
+          ctx.beginPath();
+          ctx.ellipse(-3, 0, 2.5, 4, 0, 0, Math.PI * 2);
+          ctx.fill();
+          // Right foot
+          ctx.beginPath();
+          ctx.ellipse(3, 0, 2.5, 4, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
       }
 
       // Footstep dust rendering
@@ -1850,7 +1995,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.7.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.8.0</div>
         </div>
       )}
 
@@ -1906,7 +2051,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.7.0</div>
+        }}>v0.8.0</div>
       )}
 
       {/* Mobile: action button */}
