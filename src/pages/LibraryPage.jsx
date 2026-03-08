@@ -387,6 +387,14 @@ const LibraryPage = () => {
   const bookDustRef = useRef([]); // { x, y, vx, vy, age, size }
   const loosePageRef = useRef([]); // { x, y, vx, vy, rot, rotSpeed, age }
   const rainRef = useRef({ active: false, intensity: 0, drops: [] }); // Weather system
+  const snowRef = useRef({ active: false, intensity: 0, flakes: [] }); // Snow weather
+  const libraryCatRef = useRef(null); // { x, y, tx, ty, state, stateTime, dir }
+  const ghostRef = useRef(null); // { x, y, tx, ty, alpha, phase, life }
+  const quillTrailRef = useRef([]); // { x, y, age, angle }
+  const doorCreakRef = useRef([]); // { x, y, age }
+  const puddleRippleRef = useRef([]); // { x, y, age, maxAge }
+  const auroraRef = useRef({ active: false, phase: 0, intensity: 0 }); // Aurora borealis
+  const constellationRef = useRef([]); // pre-computed constellation lines
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
 
@@ -748,6 +756,75 @@ const LibraryPage = () => {
         ctx.fill();
       }
 
+      // Constellation patterns connecting bright stars
+      if (constellationRef.current.length === 0) {
+        // Generate constellations once from bright stars
+        const brightStars = stars.filter(s => s.alpha > 0.5 && s.size > 1.5);
+        for (let ci = 0; ci < brightStars.length - 1; ci++) {
+          const s1 = brightStars[ci];
+          const s2 = brightStars[ci + 1];
+          const cdist = Math.sqrt((s1.x - s2.x) ** 2 + (s1.y - s2.y) ** 2);
+          if (cdist < 600 && cdist > 100) {
+            constellationRef.current.push({ x1: s1.x, y1: s1.y, x2: s2.x, y2: s2.y });
+          }
+        }
+      }
+      const constellAlpha = 0.015 + Math.sin(time * 0.2) * 0.005;
+      ctx.strokeStyle = `rgba(180,200,255,${constellAlpha})`;
+      ctx.lineWidth = 0.3;
+      for (const cl of constellationRef.current) {
+        const parallax = 0.15;
+        const cx1 = ((cl.x1 - camX * parallax) % w + w) % w;
+        const cy1 = ((cl.y1 - camY * parallax) % h + h) % h;
+        const cx2 = ((cl.x2 - camX * parallax) % w + w) % w;
+        const cy2 = ((cl.y2 - camY * parallax) % h + h) % h;
+        // Don't draw lines that wrap around screen
+        if (Math.abs(cx1 - cx2) < w * 0.4 && Math.abs(cy1 - cy2) < h * 0.4) {
+          ctx.beginPath();
+          ctx.moveTo(cx1, cy1);
+          ctx.lineTo(cx2, cy2);
+          ctx.stroke();
+        }
+      }
+
+      // Aurora borealis (rare, beautiful sky effect)
+      const aurora = auroraRef.current;
+      if (!aurora.active && Math.random() < 0.00008) {
+        aurora.active = true;
+        aurora.intensity = 0;
+        aurora.phase = 0;
+      }
+      if (aurora.active) {
+        aurora.phase += 0.005;
+        aurora.intensity = Math.min(1, aurora.intensity + 0.003);
+        const aH = h * 0.4;
+        for (let ab = 0; ab < 3; ab++) {
+          const bandY = 20 + ab * 35;
+          const bandAlpha = aurora.intensity * 0.04 * (1 - ab * 0.25);
+          ctx.beginPath();
+          ctx.moveTo(0, bandY);
+          for (let ax = 0; ax <= w; ax += 20) {
+            const wave = Math.sin(ax * 0.008 + aurora.phase * 2 + ab * 1.2) * 25
+              + Math.sin(ax * 0.015 + aurora.phase * 3) * 12;
+            ctx.lineTo(ax, bandY + wave);
+          }
+          ctx.lineTo(w, bandY + aH);
+          ctx.lineTo(0, bandY + aH);
+          ctx.closePath();
+          const aGrad = ctx.createLinearGradient(0, bandY, 0, bandY + aH);
+          const hue1 = 120 + ab * 40 + Math.sin(aurora.phase) * 20;
+          const hue2 = 160 + ab * 30;
+          aGrad.addColorStop(0, `hsla(${hue1}, 60%, 50%, ${bandAlpha})`);
+          aGrad.addColorStop(0.3, `hsla(${hue2}, 50%, 40%, ${bandAlpha * 0.5})`);
+          aGrad.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = aGrad;
+          ctx.fill();
+        }
+        if (Math.random() < 0.0003) aurora.active = false;
+      } else {
+        aurora.intensity = Math.max(0, aurora.intensity - 0.005);
+      }
+
       // Shooting stars (rare, screen-space)
       if (Math.random() < 0.002 && shootingStarsRef.current.length < 2) {
         const ssX = Math.random() * w;
@@ -852,6 +929,29 @@ const LibraryPage = () => {
               ctx.fillStyle = 'rgba(80,60,40,0.08)';
               for (let tl = 0; tl < 3; tl++) {
                 ctx.fillRect(sx + 12, sy + 14 + tl * 5, TILE - 24 - seededRandom(tx, ty, 411 + tl) * 8, 1.5);
+              }
+            }
+            // Floor mosaic in entrance hall
+            if (tx >= hallX + 2 && tx < hallX + hallW - 2 && ty >= hallY + 2 && ty < hallY + hallH - 2) {
+              const mosaicDist = Math.sqrt((tx - hallX - hallW / 2) ** 2 + (ty - hallY - hallH / 2) ** 2);
+              if (mosaicDist < Math.min(hallW, hallH) / 3) {
+                const mAngle = Math.atan2(ty - hallY - hallH / 2, tx - hallX - hallW / 2);
+                const mSector = Math.floor((mAngle + Math.PI) / (Math.PI / 4)) % 8;
+                const mHue = mSector * 45;
+                ctx.fillStyle = `hsla(${mHue}, 25%, 55%, 0.06)`;
+                ctx.fillRect(sx + 2, sy + 2, TILE - 4, TILE - 4);
+                // Diamond pattern overlay
+                if ((tx + ty) % 3 === 0) {
+                  ctx.strokeStyle = 'rgba(180,160,120,0.05)';
+                  ctx.lineWidth = 0.5;
+                  ctx.beginPath();
+                  ctx.moveTo(sx + TILE / 2, sy);
+                  ctx.lineTo(sx + TILE, sy + TILE / 2);
+                  ctx.lineTo(sx + TILE / 2, sy + TILE);
+                  ctx.lineTo(sx, sy + TILE / 2);
+                  ctx.closePath();
+                  ctx.stroke();
+                }
               }
             }
             // Water puddle (rare, with subtle reflection)
@@ -988,6 +1088,34 @@ const LibraryPage = () => {
                 ctx.fill();
               }
             }
+            // Wall sconce bracket (on walls adjacent to torch tiles)
+            const hasAdjacentTorch = (tx > 0 && map[ty][tx - 1] === TORCH) ||
+              (tx < mapW - 1 && map[ty][tx + 1] === TORCH) ||
+              (ty > 0 && map[ty - 1][tx] === TORCH) ||
+              (ty < mapH - 1 && map[ty + 1][tx] === TORCH);
+            if (hasAdjacentTorch && seededRandom(tx, ty, 450) > 0.5) {
+              ctx.fillStyle = 'rgba(100,80,50,0.2)';
+              ctx.fillRect(sx + TILE / 2 - 3, sy + TILE * 0.6, 6, 3);
+              ctx.fillStyle = 'rgba(80,60,40,0.15)';
+              ctx.beginPath();
+              ctx.arc(sx + TILE / 2, sy + TILE * 0.55, 4, Math.PI, 0);
+              ctx.fill();
+            }
+            // Hanging chains (very rare)
+            if (seededRandom(tx, ty, 460) > 0.96) {
+              ctx.strokeStyle = 'rgba(120,110,100,0.12)';
+              ctx.lineWidth = 1;
+              const chainX = sx + TILE * (0.3 + seededRandom(tx, ty, 461) * 0.4);
+              const chainLen = TILE * 0.5 + seededRandom(tx, ty, 462) * TILE * 0.3;
+              // Chain links
+              for (let cl = 0; cl < 4; cl++) {
+                const clY = sy + TILE * 0.2 + cl * (chainLen / 4);
+                const swing = Math.sin(time * 0.5 + tx + cl * 0.5) * 1;
+                ctx.beginPath();
+                ctx.ellipse(chainX + swing, clY, 2, 3, 0, 0, Math.PI * 2);
+                ctx.stroke();
+              }
+            }
           } else if (tile === BOOKSHELF) {
             // Kast achtergrond
             ctx.fillStyle = COLORS[BOOKSHELF];
@@ -1054,6 +1182,23 @@ const LibraryPage = () => {
                   ctx.lineTo(spkX - 1, spkY - 1);
                   ctx.closePath();
                   ctx.fill();
+                }
+              }
+            }
+            // Mastery glow aura on completed bookshelves
+            if (sparkRoomIdx >= 0 && rooms[sparkRoomIdx]) {
+              const glowRoom = rooms[sparkRoomIdx];
+              const glowRP = roomPrinciplesMap[glowRoom.name] || [];
+              if (glowRP.length > 0) {
+                const avgMastery = glowRP.reduce((s, p) => s + (getPrincipleProgressRef.current(p.id)?.masteryPercentage || 0), 0) / glowRP.length;
+                if (avgMastery >= 80) {
+                  const glowAlpha = (avgMastery / 100) * 0.06 * (0.8 + Math.sin(time * 1.5 + tx) * 0.2);
+                  const glowHue = avgMastery >= 100 ? 45 : glowRoom.catHue;
+                  const bsGlow = ctx.createRadialGradient(sx + TILE / 2, sy + TILE / 2, 0, sx + TILE / 2, sy + TILE / 2, TILE);
+                  bsGlow.addColorStop(0, `hsla(${glowHue}, 60%, 65%, ${glowAlpha})`);
+                  bsGlow.addColorStop(1, 'rgba(0,0,0,0)');
+                  ctx.fillStyle = bsGlow;
+                  ctx.fillRect(sx - TILE / 2, sy - TILE / 2, TILE * 2, TILE * 2);
                 }
               }
             }
@@ -1192,6 +1337,37 @@ const LibraryPage = () => {
               ctx.arc(rmx, rmy, 1.5, 0, Math.PI * 2);
               ctx.fill();
             }
+            // Gargoyle face detail on some pillars
+            if (seededRandom(tx, ty, 490) > 0.75) {
+              const gpx = sx + TILE / 2;
+              const gpy = sy + TILE / 3;
+              ctx.fillStyle = 'rgba(80,70,60,0.15)';
+              // Horns
+              ctx.beginPath();
+              ctx.moveTo(gpx - 5, gpy - 1);
+              ctx.lineTo(gpx - 7, gpy - 5);
+              ctx.lineTo(gpx - 4, gpy - 2);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.moveTo(gpx + 5, gpy - 1);
+              ctx.lineTo(gpx + 7, gpy - 5);
+              ctx.lineTo(gpx + 4, gpy - 2);
+              ctx.fill();
+              // Eyes
+              ctx.fillStyle = 'rgba(180,150,80,0.1)';
+              ctx.beginPath();
+              ctx.arc(gpx - 3, gpy, 1.5, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.arc(gpx + 3, gpy, 1.5, 0, Math.PI * 2);
+              ctx.fill();
+              // Mouth
+              ctx.strokeStyle = 'rgba(60,50,40,0.1)';
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.arc(gpx, gpy + 3, 3, 0, Math.PI);
+              ctx.stroke();
+            }
           } else if (tile === TABLE) {
             // Floor underneath
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
@@ -1238,6 +1414,50 @@ const LibraryPage = () => {
             ctx.beginPath();
             ctx.arc(candleX, candleY, TILE * 0.6, 0, Math.PI * 2);
             ctx.fill();
+            // Ink splatter stains near some tables
+            if (seededRandom(tx, ty, 470) > 0.6) {
+              const inkX = sx + seededRandom(tx, ty, 471) * 12 + 4;
+              const inkY = sy + TILE / 2 + seededRandom(tx, ty, 472) * 8;
+              ctx.fillStyle = 'rgba(20,15,40,0.08)';
+              ctx.beginPath();
+              ctx.ellipse(inkX, inkY, 2 + seededRandom(tx, ty, 473) * 3, 1.5 + seededRandom(tx, ty, 474) * 2, seededRandom(tx, ty, 475) * Math.PI, 0, Math.PI * 2);
+              ctx.fill();
+              // Ink droplets
+              if (seededRandom(tx, ty, 476) > 0.5) {
+                ctx.beginPath();
+                ctx.arc(inkX + 4, inkY + 2, 1, 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+            // Spinning globe on some tables
+            if (seededRandom(tx, ty, 480) > 0.8) {
+              const gx = sx + 8;
+              const gy = sy + TILE / 2 - 2;
+              // Stand
+              ctx.fillStyle = 'rgba(100,80,50,0.3)';
+              ctx.fillRect(gx - 1, gy + 4, 2, 4);
+              // Globe
+              ctx.strokeStyle = 'rgba(60,100,150,0.2)';
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.arc(gx, gy, 5, 0, Math.PI * 2);
+              ctx.stroke();
+              // Continents (rotating lines)
+              const globeRot = time * 0.3 + tx;
+              ctx.strokeStyle = 'rgba(80,140,80,0.15)';
+              ctx.beginPath();
+              ctx.ellipse(gx, gy, 5, 3, 0, 0, Math.PI * 2);
+              ctx.stroke();
+              ctx.beginPath();
+              ctx.ellipse(gx + Math.sin(globeRot) * 2, gy, 3, 5, 0, 0, Math.PI * 2);
+              ctx.stroke();
+              // Axis tilt
+              ctx.strokeStyle = 'rgba(100,80,50,0.15)';
+              ctx.beginPath();
+              ctx.moveTo(gx, gy - 6);
+              ctx.lineTo(gx, gy + 6);
+              ctx.stroke();
+            }
           } else if (tile === PLANT) {
             // Floor underneath
             ctx.fillStyle = (tx + ty) % 2 === 0 ? COLORS[FLOOR] : COLORS.floorAlt;
@@ -1542,6 +1762,107 @@ const LibraryPage = () => {
           ctx.fill();
           ctx.globalAlpha = 1;
           ctx.restore();
+        }
+      }
+
+      // Stained glass window effect + ceiling beams + crown + sound waves + golden dust in rooms
+      for (const room of rooms) {
+        const rwx = room.x * TILE - camX;
+        const rwy = room.y * TILE - camY;
+        if (rwx > -room.w * TILE && rwx < viewW + 50 && rwy > -room.h * TILE && rwy < viewH + 50) {
+          // Stained glass window effect (colored light on wall)
+          const sgx = (room.x + 1) * TILE - camX;
+          const sgy = (room.y) * TILE + TILE / 2 - camY;
+          const sgW = TILE * 1.2;
+          const sgH = TILE * 0.7;
+          // Window frame
+          ctx.strokeStyle = 'rgba(100,80,50,0.08)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.roundRect(sgx, sgy - sgH / 2, sgW, sgH, 4);
+          ctx.stroke();
+          // Colored glass panes
+          const sgHue = room.catHue;
+          const glassAlpha = 0.03 + Math.sin(time * 0.3 + room.x) * 0.01;
+          ctx.fillStyle = `hsla(${sgHue}, 40%, 60%, ${glassAlpha})`;
+          ctx.fillRect(sgx + 2, sgy - sgH / 2 + 2, sgW / 2 - 3, sgH - 4);
+          ctx.fillStyle = `hsla(${sgHue + 60}, 40%, 55%, ${glassAlpha})`;
+          ctx.fillRect(sgx + sgW / 2 + 1, sgy - sgH / 2 + 2, sgW / 2 - 3, sgH - 4);
+          // Cross divider
+          ctx.strokeStyle = 'rgba(80,60,40,0.06)';
+          ctx.beginPath();
+          ctx.moveTo(sgx + sgW / 2, sgy - sgH / 2);
+          ctx.lineTo(sgx + sgW / 2, sgy + sgH / 2);
+          ctx.moveTo(sgx, sgy);
+          ctx.lineTo(sgx + sgW, sgy);
+          ctx.stroke();
+          // Arch top
+          ctx.beginPath();
+          ctx.arc(sgx + sgW / 2, sgy - sgH / 2 + 4, sgW / 2, Math.PI, 0);
+          ctx.strokeStyle = 'rgba(100,80,50,0.05)';
+          ctx.stroke();
+
+          // Wooden ceiling beams across the room
+          const beamCount = Math.min(3, Math.floor(room.h / 3));
+          for (let cb = 0; cb < beamCount; cb++) {
+            const beamY2 = (room.y + 1 + cb * Math.floor(room.h / (beamCount + 1))) * TILE - camY;
+            const beamX1 = room.x * TILE - camX;
+            const beamX2 = (room.x + room.w) * TILE - camX;
+            ctx.fillStyle = 'rgba(90,70,45,0.04)';
+            ctx.fillRect(beamX1, beamY2 - 2, beamX2 - beamX1, 4);
+            ctx.fillStyle = 'rgba(255,255,255,0.015)';
+            ctx.fillRect(beamX1, beamY2 - 2, beamX2 - beamX1, 1);
+          }
+
+          // Floating crown above 100% mastered rooms
+          const crownRP = roomPrinciplesMap[room.name] || [];
+          if (crownRP.length > 0) {
+            const crownAvg = crownRP.reduce((s, p) => s + (getPrincipleProgressRef.current(p.id)?.masteryPercentage || 0), 0) / crownRP.length;
+            if (crownAvg >= 100) {
+              const crownX = room.centerX - camX;
+              const crownY = room.y * TILE - camY - 5 + Math.sin(time * 1.5) * 3;
+              const crownAlpha = 0.5 + Math.sin(time * 2) * 0.15;
+              ctx.globalAlpha = crownAlpha;
+              ctx.font = '16px sans-serif';
+              ctx.textAlign = 'center';
+              ctx.fillText('👑', crownX, crownY);
+              ctx.globalAlpha = 1;
+              // Gold glow
+              const crGlow = ctx.createRadialGradient(crownX, crownY, 0, crownX, crownY, 15);
+              crGlow.addColorStop(0, 'rgba(255,200,50,0.08)');
+              crGlow.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = crGlow;
+              ctx.beginPath();
+              ctx.arc(crownX, crownY, 15, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+
+          // Sound wave visual indicator (subtle pulse rings from room center)
+          const swx = room.centerX - camX;
+          const swy = room.centerY - camY;
+          const swPhase = (time * 0.8 + room.x * 0.5) % 3;
+          if (swPhase < 2) {
+            const swRadius = swPhase * TILE * 1.5;
+            const swAlpha = (1 - swPhase / 2) * 0.015;
+            ctx.strokeStyle = `hsla(${room.catHue}, 30%, 60%, ${swAlpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.arc(swx, swy, swRadius, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+
+          // Golden dust motes floating in light beams
+          for (let gd = 0; gd < 2; gd++) {
+            const gdPhase = time * 0.4 + gd * 1.5 + room.x * 0.3;
+            const gdx = room.centerX + Math.sin(gdPhase) * TILE * 2 - camX;
+            const gdy = room.centerY + Math.cos(gdPhase * 0.7) * TILE * 1.5 - camY;
+            const gdAlpha = 0.08 + Math.sin(gdPhase * 2) * 0.04;
+            ctx.fillStyle = `rgba(255,220,120,${gdAlpha})`;
+            ctx.beginPath();
+            ctx.arc(gdx, gdy, 1 + Math.sin(gdPhase * 3) * 0.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
         }
       }
 
@@ -2652,6 +2973,250 @@ const LibraryPage = () => {
         ctx.fill();
       }
 
+      // Library cat NPC wandering
+      const cat = libraryCatRef.current;
+      if (!cat) {
+        // Spawn cat in entrance hall
+        libraryCatRef.current = {
+          x: (hallX + hallW / 2) * TILE, y: (hallY + hallH / 2 + 2) * TILE,
+          tx: 0, ty: 0, state: 'idle', stateTime: 0, dir: 1, purr: 0,
+        };
+      } else {
+        cat.stateTime += 1 / 60;
+        if (cat.state === 'idle' && cat.stateTime > 3 + Math.random() * 4) {
+          // Pick new target
+          cat.tx = cat.x + (Math.random() - 0.5) * TILE * 6;
+          cat.ty = cat.y + (Math.random() - 0.5) * TILE * 4;
+          cat.state = 'walking';
+          cat.stateTime = 0;
+        } else if (cat.state === 'walking') {
+          const cdx = cat.tx - cat.x;
+          const cdy = cat.ty - cat.y;
+          const cDist = Math.sqrt(cdx * cdx + cdy * cdy);
+          if (cDist > 3) {
+            cat.x += (cdx / cDist) * 1.2;
+            cat.y += (cdy / cDist) * 1.2;
+            cat.dir = cdx > 0 ? 1 : -1;
+          } else {
+            cat.state = 'idle';
+            cat.stateTime = 0;
+          }
+          if (cat.stateTime > 5) { cat.state = 'idle'; cat.stateTime = 0; }
+        }
+        // Purr near player
+        const catPDist = Math.sqrt((cat.x - player.x) ** 2 + (cat.y - player.y) ** 2);
+        cat.purr = catPDist < TILE * 2 ? Math.min(1, cat.purr + 0.02) : Math.max(0, cat.purr - 0.01);
+
+        const catSX = cat.x - camX;
+        const catSY = cat.y - camY;
+        if (catSX > -30 && catSX < viewW + 30 && catSY > -30 && catSY < viewH + 30) {
+          // Cat body
+          ctx.fillStyle = 'rgba(60,50,40,0.5)';
+          ctx.beginPath();
+          ctx.ellipse(catSX, catSY, 8, 5, 0, 0, Math.PI * 2);
+          ctx.fill();
+          // Head
+          ctx.beginPath();
+          ctx.arc(catSX + 7 * cat.dir, catSY - 2, 4.5, 0, Math.PI * 2);
+          ctx.fill();
+          // Ears
+          ctx.beginPath();
+          ctx.moveTo(catSX + 5 * cat.dir, catSY - 5);
+          ctx.lineTo(catSX + 4 * cat.dir, catSY - 9);
+          ctx.lineTo(catSX + 8 * cat.dir, catSY - 5);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(catSX + 9 * cat.dir, catSY - 4);
+          ctx.lineTo(catSX + 9 * cat.dir, catSY - 8);
+          ctx.lineTo(catSX + 12 * cat.dir, catSY - 3);
+          ctx.fill();
+          // Eyes
+          ctx.fillStyle = 'rgba(180,200,80,0.5)';
+          ctx.beginPath();
+          ctx.ellipse(catSX + 6 * cat.dir, catSY - 3, 1.5, 1, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.ellipse(catSX + 10 * cat.dir, catSY - 3, 1.5, 1, 0, 0, Math.PI * 2);
+          ctx.fill();
+          // Tail
+          ctx.strokeStyle = 'rgba(60,50,40,0.4)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(catSX - 8 * cat.dir, catSY);
+          ctx.quadraticCurveTo(catSX - 14 * cat.dir, catSY - 5, catSX - 16 * cat.dir, catSY - 10 + Math.sin(time * 2) * 3);
+          ctx.stroke();
+          // Walking legs
+          if (cat.state === 'walking') {
+            ctx.fillStyle = 'rgba(60,50,40,0.4)';
+            for (let leg = 0; leg < 4; leg++) {
+              const legX = catSX + (leg < 2 ? -4 : 4) * cat.dir;
+              const legY = catSY + 4 + Math.sin(time * 8 + leg * Math.PI / 2) * 2;
+              ctx.fillRect(legX - 1, catSY + 3, 2, legY - catSY - 1);
+            }
+          }
+          // Purr hearts
+          if (cat.purr > 0.5) {
+            ctx.globalAlpha = (cat.purr - 0.5) * 0.6;
+            ctx.font = '10px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('💛', catSX + 2 * cat.dir, catSY - 14 + Math.sin(time * 3) * 2);
+            ctx.globalAlpha = 1;
+          }
+        }
+      }
+
+      // Ghost scholar (rare, transparent wanderer)
+      const ghost = ghostRef.current;
+      if (!ghost && Math.random() < 0.0003 && rooms.length > 0) {
+        const gRoom = rooms[Math.floor(Math.random() * rooms.length)];
+        ghostRef.current = {
+          x: gRoom.centerX, y: gRoom.centerY,
+          tx: gRoom.centerX + (Math.random() - 0.5) * TILE * 4,
+          ty: gRoom.centerY + (Math.random() - 0.5) * TILE * 3,
+          alpha: 0, phase: 0, life: 0, maxLife: 8 + Math.random() * 5,
+        };
+      }
+      if (ghost) {
+        ghost.life += 1 / 60;
+        ghost.phase += 0.03;
+        const gdx2 = ghost.tx - ghost.x;
+        const gdy2 = ghost.ty - ghost.y;
+        const gDist2 = Math.sqrt(gdx2 * gdx2 + gdy2 * gdy2);
+        if (gDist2 > 3) {
+          ghost.x += (gdx2 / gDist2) * 0.5;
+          ghost.y += (gdy2 / gDist2) * 0.5;
+        } else {
+          ghost.tx = ghost.x + (Math.random() - 0.5) * TILE * 5;
+          ghost.ty = ghost.y + (Math.random() - 0.5) * TILE * 3;
+        }
+        ghost.alpha = Math.min(0.15, ghost.life * 0.05) * Math.min(1, (ghost.maxLife - ghost.life) * 0.5);
+        if (ghost.life >= ghost.maxLife) { ghostRef.current = null; }
+        else {
+          const gsx = ghost.x - camX;
+          const gsy = ghost.y - camY + Math.sin(ghost.phase) * 3;
+          if (gsx > -30 && gsx < viewW + 30 && gsy > -30 && gsy < viewH + 30) {
+            ctx.globalAlpha = ghost.alpha;
+            // Ghostly robe
+            ctx.fillStyle = 'rgba(180,200,220,0.5)';
+            ctx.beginPath();
+            ctx.moveTo(gsx - 8, gsy + 15);
+            ctx.quadraticCurveTo(gsx - 10, gsy, gsx - 5, gsy - 10);
+            ctx.quadraticCurveTo(gsx, gsy - 15, gsx + 5, gsy - 10);
+            ctx.quadraticCurveTo(gsx + 10, gsy, gsx + 8, gsy + 15);
+            ctx.closePath();
+            ctx.fill();
+            // Head
+            ctx.beginPath();
+            ctx.arc(gsx, gsy - 12, 6, 0, Math.PI * 2);
+            ctx.fill();
+            // Glowing eyes
+            ctx.fillStyle = 'rgba(150,200,255,0.8)';
+            ctx.beginPath();
+            ctx.arc(gsx - 2.5, gsy - 13, 1.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(gsx + 2.5, gsy - 13, 1.5, 0, Math.PI * 2);
+            ctx.fill();
+            // Book in hands
+            ctx.fillStyle = 'rgba(160,140,100,0.4)';
+            ctx.fillRect(gsx - 4, gsy - 2, 8, 6);
+            // Ethereal trail
+            ctx.strokeStyle = 'rgba(180,200,220,0.2)';
+            ctx.lineWidth = 1;
+            for (let gt = 0; gt < 3; gt++) {
+              const gtx = gsx - (gdx2 / (gDist2 || 1)) * (gt + 1) * 8;
+              const gty = gsy + Math.sin(ghost.phase + gt) * 2;
+              ctx.globalAlpha = ghost.alpha * (0.5 - gt * 0.15);
+              ctx.beginPath();
+              ctx.arc(gtx, gty, 3 - gt * 0.5, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+            ctx.globalAlpha = 1;
+          }
+        }
+      }
+
+      // Quill pen trail when sprinting
+      const isSprinting = keysRef.current.has('shift');
+      if (isSprinting && player.moving) {
+        quillTrailRef.current.push({
+          x: player.x, y: player.y + 5,
+          age: 0, angle: Math.atan2(player.dirY, player.dirX),
+        });
+      }
+      for (let qi = quillTrailRef.current.length - 1; qi >= 0; qi--) {
+        const q = quillTrailRef.current[qi];
+        q.age += 1 / 60;
+        if (q.age > 0.8) { quillTrailRef.current.splice(qi, 1); continue; }
+        const qx = q.x - camX;
+        const qy = q.y - camY;
+        const qAlpha = (1 - q.age / 0.8) * 0.2;
+        // Ink stroke
+        ctx.strokeStyle = `rgba(30,20,60,${qAlpha})`;
+        ctx.lineWidth = 1 + (1 - q.age / 0.8);
+        ctx.beginPath();
+        ctx.moveTo(qx, qy);
+        ctx.lineTo(qx - Math.cos(q.angle) * 8, qy - Math.sin(q.angle) * 8);
+        ctx.stroke();
+      }
+      if (quillTrailRef.current.length > 30) quillTrailRef.current.splice(0, quillTrailRef.current.length - 30);
+
+      // Door creak visual (wobble lines when passing through doors)
+      const ptx2 = Math.floor(player.x / TILE);
+      const pty2 = Math.floor(player.y / TILE);
+      if (player.moving && ptx2 >= 0 && ptx2 < mapW && pty2 >= 0 && pty2 < mapH && map[pty2][ptx2] === DOOR) {
+        if (Math.random() < 0.1) {
+          doorCreakRef.current.push({ x: ptx2 * TILE + TILE / 2, y: pty2 * TILE, age: 0 });
+        }
+      }
+      for (let dci = doorCreakRef.current.length - 1; dci >= 0; dci--) {
+        const dc = doorCreakRef.current[dci];
+        dc.age += 1 / 60;
+        if (dc.age > 0.6) { doorCreakRef.current.splice(dci, 1); continue; }
+        const dcx = dc.x - camX;
+        const dcy = dc.y - camY;
+        const dcAlpha = (1 - dc.age / 0.6) * 0.15;
+        // Wobble lines radiating from door
+        ctx.strokeStyle = `rgba(160,140,100,${dcAlpha})`;
+        ctx.lineWidth = 0.5;
+        for (let dcl = 0; dcl < 3; dcl++) {
+          const dclR = 5 + dc.age * 20 + dcl * 6;
+          const dclAngle = dcl * 0.8 - 0.8;
+          ctx.beginPath();
+          ctx.arc(dcx, dcy + TILE / 2, dclR, dclAngle - 0.3, dclAngle + 0.3);
+          ctx.stroke();
+        }
+      }
+
+      // Puddle ripples when walking over water puddles
+      if (player.moving && ptx2 >= 0 && ptx2 < mapW && pty2 >= 0 && pty2 < mapH) {
+        if (map[pty2][ptx2] === FLOOR && seededRandom(ptx2, pty2, 420) > 0.95) {
+          if (Math.random() < 0.05) {
+            puddleRippleRef.current.push({ x: player.x, y: player.y, age: 0, maxAge: 0.8 });
+          }
+        }
+      }
+      for (let pri2 = puddleRippleRef.current.length - 1; pri2 >= 0; pri2--) {
+        const pr2 = puddleRippleRef.current[pri2];
+        pr2.age += 1 / 60;
+        if (pr2.age > pr2.maxAge) { puddleRippleRef.current.splice(pri2, 1); continue; }
+        const prx = pr2.x - camX;
+        const pry = pr2.y - camY;
+        const prAlpha = (1 - pr2.age / pr2.maxAge) * 0.1;
+        const prR = pr2.age / pr2.maxAge * 10;
+        ctx.strokeStyle = `rgba(150,180,220,${prAlpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.arc(prx, pry, prR, 0, Math.PI * 2);
+        ctx.stroke();
+        // Inner ripple
+        if (prR > 3) {
+          ctx.beginPath();
+          ctx.arc(prx, pry, prR * 0.5, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+      }
+
       // Player emotion bubbles (thinking when idle)
       const emo = emotionRef.current;
       if (emo.age > 3) { emo.emoji = null; emo.age = 0; }
@@ -2869,6 +3434,52 @@ const LibraryPage = () => {
           ctx.stroke();
         }
         rain.intensity = Math.max(0, rain.intensity - 0.005);
+      }
+
+      // Snow weather (rare, screen-space, alternate to rain)
+      const snow = snowRef.current;
+      if (!snow.active && !rainRef.current.active && Math.random() < 0.0001) {
+        snow.active = true;
+        snow.intensity = 0;
+      }
+      if (snow.active) {
+        snow.intensity = Math.min(1, snow.intensity + 0.001);
+        const flakeCount = Math.floor(snow.intensity * 3);
+        for (let sf = 0; sf < flakeCount; sf++) {
+          snow.flakes.push({
+            x: Math.random() * w,
+            y: -5,
+            speed: 0.8 + Math.random() * 1.2,
+            size: 1 + Math.random() * 2.5,
+            drift: (Math.random() - 0.5) * 0.5,
+            wobble: Math.random() * Math.PI * 2,
+          });
+        }
+        for (let sfi = snow.flakes.length - 1; sfi >= 0; sfi--) {
+          const sf2 = snow.flakes[sfi];
+          sf2.y += sf2.speed;
+          sf2.x += sf2.drift + Math.sin(sf2.wobble + time * 2) * 0.3;
+          sf2.wobble += 0.02;
+          if (sf2.y > h + 10) { snow.flakes.splice(sfi, 1); continue; }
+          ctx.fillStyle = `rgba(230,235,245,${snow.intensity * 0.12})`;
+          ctx.beginPath();
+          ctx.arc(sf2.x, sf2.y, sf2.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        if (snow.flakes.length > 300) snow.flakes.splice(0, snow.flakes.length - 300);
+        if (Math.random() < 0.0003) snow.active = false;
+      } else if (snow.flakes.length > 0) {
+        for (let sfi2 = snow.flakes.length - 1; sfi2 >= 0; sfi2--) {
+          const sf3 = snow.flakes[sfi2];
+          sf3.y += sf3.speed;
+          sf3.x += sf3.drift + Math.sin(sf3.wobble + time * 2) * 0.3;
+          if (sf3.y > h + 10) { snow.flakes.splice(sfi2, 1); continue; }
+          ctx.fillStyle = 'rgba(230,235,245,0.06)';
+          ctx.beginPath();
+          ctx.arc(sf3.x, sf3.y, sf3.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        snow.intensity = Math.max(0, snow.intensity - 0.003);
       }
 
       // Teleport arrival flash
@@ -3265,7 +3876,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.1.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.2.0</div>
         </div>
       )}
 
@@ -3321,7 +3932,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.1.0</div>
+        }}>v1.2.0</div>
       )}
 
       {/* Mobile: action button */}
