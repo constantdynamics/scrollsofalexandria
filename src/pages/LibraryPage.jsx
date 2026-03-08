@@ -345,6 +345,10 @@ const LibraryPage = () => {
   const torchSparksRef = useRef([]); // { x, y, vx, vy, life, maxLife, size }
   const lastRoomRef = useRef(null); // Track room entry for camera pulse
   const roomZoomPulseRef = useRef(0); // Camera zoom pulse on room entry
+  const discoveredRoomsRef = useRef(new Set()); // Track discovered rooms
+  const celebrationParticlesRef = useRef([]); // Golden celebration particles
+  const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
+  const toastTimeoutRef = useRef(null);
 
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
@@ -537,6 +541,9 @@ const LibraryPage = () => {
       }
       if (e.key === 'q' || e.key === 'Q') {
         setShowStats(prev => !prev);
+      }
+      if (e.key === 'Home' || e.key === 'h' || e.key === 'H') {
+        teleportTargetRef.current = { x: (hallX + hallW / 2) * TILE, y: (hallY + hallH / 2) * TILE };
       }
     };
     const handleKeyUp = (e) => {
@@ -958,6 +965,64 @@ const LibraryPage = () => {
         }
       }
 
+      // Corridor wall banners (decorative overlays on corridor walls)
+      const corCX = Math.floor(mapW / 2);
+      const corW2 = 4;
+      for (let ty = startTY; ty < endTY; ty++) {
+        // Left corridor wall banners
+        const lx = corCX - Math.floor(corW2 / 2) - 1;
+        if (lx >= 0 && lx < mapW && ty >= 0 && ty < mapH && map[ty][lx] === WALL) {
+          if (seededRandom(lx, ty, 777) > 0.85) {
+            const bsx = lx * TILE - camX;
+            const bsy = ty * TILE - camY;
+            const bannerHue = seededRandom(lx, ty, 123) * 360;
+            // Banner fabric
+            ctx.fillStyle = `hsla(${bannerHue}, 45%, 35%, 0.7)`;
+            ctx.fillRect(bsx + TILE * 0.3, bsy + 4, TILE * 0.4, TILE - 6);
+            // Banner emblem
+            ctx.fillStyle = `hsla(${bannerHue + 40}, 50%, 60%, 0.5)`;
+            ctx.beginPath();
+            ctx.arc(bsx + TILE * 0.5, bsy + TILE * 0.45, 5, 0, Math.PI * 2);
+            ctx.fill();
+            // Banner rod
+            ctx.fillStyle = '#8a7a66';
+            ctx.fillRect(bsx + TILE * 0.25, bsy + 2, TILE * 0.5, 3);
+            // Banner point
+            ctx.fillStyle = `hsla(${bannerHue}, 45%, 35%, 0.7)`;
+            ctx.beginPath();
+            ctx.moveTo(bsx + TILE * 0.3, bsy + TILE - 2);
+            ctx.lineTo(bsx + TILE * 0.5, bsy + TILE + 4);
+            ctx.lineTo(bsx + TILE * 0.7, bsy + TILE - 2);
+            ctx.closePath();
+            ctx.fill();
+          }
+        }
+        // Right corridor wall banners
+        const rx = corCX + Math.floor(corW2 / 2);
+        if (rx >= 0 && rx < mapW && ty >= 0 && ty < mapH && map[ty][rx] === WALL) {
+          if (seededRandom(rx, ty, 888) > 0.85) {
+            const bsx = rx * TILE - camX;
+            const bsy = ty * TILE - camY;
+            const bannerHue = seededRandom(rx, ty, 456) * 360;
+            ctx.fillStyle = `hsla(${bannerHue}, 45%, 35%, 0.7)`;
+            ctx.fillRect(bsx + TILE * 0.3, bsy + 4, TILE * 0.4, TILE - 6);
+            ctx.fillStyle = `hsla(${bannerHue + 40}, 50%, 60%, 0.5)`;
+            ctx.beginPath();
+            ctx.arc(bsx + TILE * 0.5, bsy + TILE * 0.45, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#8a7a66';
+            ctx.fillRect(bsx + TILE * 0.25, bsy + 2, TILE * 0.5, 3);
+            ctx.fillStyle = `hsla(${bannerHue}, 45%, 35%, 0.7)`;
+            ctx.beginPath();
+            ctx.moveTo(bsx + TILE * 0.3, bsy + TILE - 2);
+            ctx.lineTo(bsx + TILE * 0.5, bsy + TILE + 4);
+            ctx.lineTo(bsx + TILE * 0.7, bsy + TILE - 2);
+            ctx.closePath();
+            ctx.fill();
+          }
+        }
+      }
+
       // Torch spark particles - spawn from visible torches
       for (let ty = startTY; ty < endTY; ty++) {
         for (let tx = startTX; tx < endTX; tx++) {
@@ -1152,14 +1217,22 @@ const LibraryPage = () => {
       ctx.ellipse(px, player.y - camY + 14, 12 * shadowScale, 5 * shadowScale, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Lichaam
-      ctx.fillStyle = COLORS.player;
+      // Lichaam - color evolves with overall mastery
+      const allP = allPrinciples || [];
+      const overallMastery = allP.length > 0
+        ? allP.reduce((s, p) => s + (getPrincipleProgressRef.current(p.id)?.masteryPercentage || 0), 0) / allP.length
+        : 0;
+      // Interpolate from base purple (hsl 248) to gold (hsl 42) as mastery increases
+      const playerHue = 248 - (overallMastery / 100) * (248 - 42);
+      const playerSat = 50 + (overallMastery / 100) * 20;
+      const playerLit = 45 + (overallMastery / 100) * 10;
+      ctx.fillStyle = `hsl(${playerHue}, ${playerSat}%, ${playerLit}%)`;
       ctx.beginPath();
       ctx.arc(px, py, 14, 0, Math.PI * 2);
       ctx.fill();
 
       // Rand
-      ctx.strokeStyle = COLORS.playerOutline;
+      ctx.strokeStyle = `hsl(${playerHue}, ${playerSat + 10}%, ${playerLit - 12}%)`;
       ctx.lineWidth = 2;
       ctx.stroke();
 
@@ -1206,6 +1279,41 @@ const LibraryPage = () => {
         ctx.fill();
       }
 
+      // Celebration particles (golden burst for 100% rooms)
+      const celebs = celebrationParticlesRef.current;
+      for (let i = celebs.length - 1; i >= 0; i--) {
+        const c = celebs[i];
+        c.life += 1 / 60;
+        c.x += c.vx;
+        c.y += c.vy;
+        c.vy += 0.08; // gravity
+        c.vx *= 0.99;
+        if (c.life >= c.maxLife) { celebs.splice(i, 1); continue; }
+        const ct = 1 - c.life / c.maxLife;
+        const cpx = c.x - camX;
+        const cpy = c.y - camY;
+        if (cpx > -20 && cpx < viewW + 20 && cpy > -20 && cpy < viewH + 20) {
+          ctx.fillStyle = `hsla(${c.hue}, 80%, 55%, ${ct * 0.9})`;
+          ctx.beginPath();
+          // Star shape
+          ctx.save();
+          ctx.translate(cpx, cpy);
+          ctx.rotate(c.life * 3);
+          const sr = c.size * ct;
+          for (let si = 0; si < 5; si++) {
+            const a = (si / 5) * Math.PI * 2 - Math.PI / 2;
+            const ax = Math.cos(a) * sr;
+            const ay = Math.sin(a) * sr;
+            si === 0 ? ctx.moveTo(ax, ay) : ctx.lineTo(ax, ay);
+            const ia = a + Math.PI / 5;
+            ctx.lineTo(Math.cos(ia) * sr * 0.4, Math.sin(ia) * sr * 0.4);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
       // Interactie indicator
       let nearRoom = null;
       for (const room of rooms) {
@@ -1218,11 +1326,33 @@ const LibraryPage = () => {
         }
       }
 
-      // Update current room name + room entry pulse
+      // Update current room name + room entry pulse + discovery toast
       if (nearRoom) {
         if (lastRoomRef.current !== nearRoom.name) {
           lastRoomRef.current = nearRoom.name;
           roomZoomPulseRef.current = 0.12; // Trigger zoom pulse
+          // Discovery toast on first visit
+          if (!discoveredRoomsRef.current.has(nearRoom.name)) {
+            discoveredRoomsRef.current.add(nearRoom.name);
+            setToastMessage({ text: `Nieuwe kamer ontdekt: ${nearRoom.name}`, emoji: nearRoom.emoji });
+            if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+            toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
+          }
+          // Check for 100% mastery celebration
+          const celebRP = roomPrinciplesMap[nearRoom.name] || [];
+          if (celebRP.length > 0) {
+            const celebAvg = celebRP.reduce((s, p) => s + (getPrincipleProgressRef.current(p.id)?.masteryPercentage || 0), 0) / celebRP.length;
+            if (celebAvg >= 100) {
+              for (let ci = 0; ci < 30; ci++) {
+                celebrationParticlesRef.current.push({
+                  x: nearRoom.centerX, y: nearRoom.centerY,
+                  vx: (Math.random() - 0.5) * 6, vy: -2 - Math.random() * 4,
+                  life: 0, maxLife: 1 + Math.random() * 1.5,
+                  size: 2 + Math.random() * 3, hue: 40 + Math.random() * 20,
+                });
+              }
+            }
+          }
         }
         setCurrentRoomName(nearRoom.name);
       } else {
@@ -1686,6 +1816,23 @@ const LibraryPage = () => {
         </div>
       </div>
 
+      {/* Discovery toast */}
+      {toastMessage && (
+        <div style={{
+          position: 'absolute', top: 70, left: '50%', transform: 'translateX(-50%)',
+          background: 'rgba(0,0,0,0.85)', color: '#fff',
+          padding: '10px 20px', borderRadius: 12,
+          fontSize: '0.9rem', fontWeight: 600, zIndex: 30,
+          backdropFilter: 'blur(8px)',
+          border: '1px solid rgba(92,79,207,0.4)',
+          animation: 'slideDown 0.3s ease-out',
+          pointerEvents: 'none', whiteSpace: 'nowrap',
+        }}>
+          <style>{`@keyframes slideDown { from { opacity: 0; transform: translateX(-50%) translateY(-10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }`}</style>
+          {toastMessage.emoji} {toastMessage.text}
+        </div>
+      )}
+
       {/* Controls hint + versienummer — desktop only */}
       {!isMobile && (
         <div style={{
@@ -1701,8 +1848,9 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>F</span> Zoeken &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Q</span> Stats &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
+          <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.6.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.7.0</div>
         </div>
       )}
 
@@ -1758,7 +1906,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.6.0</div>
+        }}>v0.7.0</div>
       )}
 
       {/* Mobile: action button */}
