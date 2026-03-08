@@ -62,6 +62,7 @@ import { emotieregulatie7 } from './emotieregulatie7.js';
 import { emotieregulatie8 } from './emotieregulatie8.js';
 import { emotieregulatie9 } from './emotieregulatie9.js';
 import { emotieregulatie10 } from './emotieregulatie10.js';
+import { organisatie1 } from './organisatie1.js';
 import { extraPrinciples3 } from './principlesExtra3.js';
 import { extraPrinciples4 } from './principlesExtra4.js';
 import { extraPrinciples5 } from './principlesExtra5.js';
@@ -2443,6 +2444,7 @@ export const allPrinciples = [
   ...emotieregulatie9,
   ...emotieregulatie10,
   ...ethiek1,
+  ...organisatie1,
   ...extraPrinciples3,
   ...extraPrinciples4,
   ...extraPrinciples5,

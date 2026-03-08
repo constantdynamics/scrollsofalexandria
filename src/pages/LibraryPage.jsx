@@ -953,7 +953,14 @@ const LibraryPage = () => {
       if (nearRoom) {
         setCurrentRoomName(nearRoom.name);
       } else {
-        setCurrentRoomName('Gang');
+        // Check if player is in entreehal
+        const ptx = Math.floor(player.x / TILE);
+        const pty = Math.floor(player.y / TILE);
+        if (ptx >= hallX && ptx < hallX + hallW && pty >= hallY && pty < hallY + hallH) {
+          setCurrentRoomName('Entreehal');
+        } else {
+          setCurrentRoomName('Gang');
+        }
       }
 
       // Interactie prompt
@@ -985,6 +992,33 @@ const LibraryPage = () => {
       }
       ctx.globalAlpha = 1;
 
+      // Update minimap canvas (realtime player dot)
+      if (minimapCanvasRef.current && minimapImageRef.current) {
+        const mmScale = 3;
+        const mmW2 = mapW * mmScale;
+        const mmH2 = mapH * mmScale;
+        const mCtx = minimapCanvasRef.current.getContext('2d');
+        mCtx.clearRect(0, 0, mmW2, mmH2);
+        mCtx.drawImage(minimapImageRef.current, 0, 0);
+        // Room emojis
+        for (const room of rooms) {
+          mCtx.font = '7px sans-serif';
+          mCtx.textAlign = 'center';
+          mCtx.fillStyle = 'rgba(255,255,255,0.6)';
+          mCtx.fillText(room.emoji, (room.x + room.w / 2) * mmScale, (room.y + room.h / 2) * mmScale + 3);
+        }
+        // Player dot
+        const pTX = player.x / TILE * mmScale;
+        const pTY = player.y / TILE * mmScale;
+        mCtx.fillStyle = '#5c4fcf';
+        mCtx.beginPath();
+        mCtx.arc(pTX, pTY, 3, 0, Math.PI * 2);
+        mCtx.fill();
+        mCtx.strokeStyle = '#fff';
+        mCtx.lineWidth = 1;
+        mCtx.stroke();
+      }
+
       // Vignette overlay
       const vignetteGrad = ctx.createRadialGradient(w / 2, h / 2, h * 0.3, w / 2, h / 2, h * 0.9);
       vignetteGrad.addColorStop(0, 'rgba(0,0,0,0)');
@@ -999,10 +1033,11 @@ const LibraryPage = () => {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [map, mapW, mapH, rooms, hallW, hallX, hallY, tileRoomIdx, userData?.name]);
+  }, [map, mapW, mapH, rooms, hallW, hallH, hallX, hallY, tileRoomIdx, userData?.name]);
 
   // Minimap - canvas-based for showing corridors
   const minimapImageRef = useRef(null);
+  const minimapCanvasRef = useRef(null);
 
   // Generate minimap image once
   useEffect(() => {
@@ -1050,41 +1085,10 @@ const LibraryPage = () => {
         }}
       >
         <canvas
+          ref={minimapCanvasRef}
           width={mmW}
           height={mmH}
           style={{ width: mmW, height: mmH }}
-          ref={(el) => {
-            if (el && minimapImageRef.current) {
-              const mCtx = el.getContext('2d');
-              mCtx.clearRect(0, 0, mmW, mmH);
-              mCtx.drawImage(minimapImageRef.current, 0, 0);
-              // Highlight selected room
-              if (selectedRoom) {
-                const room = rooms.find(r => r.name === selectedRoom);
-                if (room) {
-                  mCtx.fillStyle = 'rgba(92,79,207,0.4)';
-                  mCtx.fillRect(room.x * scale, room.y * scale, room.w * scale, room.h * scale);
-                }
-              }
-              // Room labels on minimap
-              rooms.forEach(room => {
-                mCtx.font = '7px sans-serif';
-                mCtx.textAlign = 'center';
-                mCtx.fillStyle = 'rgba(255,255,255,0.6)';
-                mCtx.fillText(room.emoji, (room.x + room.w / 2) * scale, (room.y + room.h / 2) * scale + 3);
-              });
-              // Player dot (read ref inside callback, not during render)
-              const playerTX = Math.floor(playerRef.current.x / TILE);
-              const playerTY = Math.floor(playerRef.current.y / TILE);
-              mCtx.fillStyle = '#5c4fcf';
-              mCtx.beginPath();
-              mCtx.arc(playerTX * scale, playerTY * scale, 3, 0, Math.PI * 2);
-              mCtx.fill();
-              mCtx.strokeStyle = '#fff';
-              mCtx.lineWidth = 1;
-              mCtx.stroke();
-            }
-          }}
         />
       </div>
     );
@@ -1292,7 +1296,7 @@ const LibraryPage = () => {
         </div>
       </div>
 
-      {/* Controls hint — desktop only */}
+      {/* Controls hint + versienummer — desktop only */}
       {!isMobile && (
         <div style={{
           position: 'absolute', bottom: 16, left: 16,
@@ -1304,6 +1308,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>WASD</span> Bewegen &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>E</span> Interactie &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.1.0</div>
         </div>
       )}
 
@@ -1351,6 +1356,15 @@ const LibraryPage = () => {
             Sleep<br/>hier
           </span>
         </div>
+      )}
+
+      {/* Versienummer — mobile */}
+      {isMobile && (
+        <div style={{
+          position: 'absolute', bottom: 8, left: 8,
+          fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
+          zIndex: 10, pointerEvents: 'none',
+        }}>v0.1.0</div>
       )}
 
       {/* Mobile: action button */}
