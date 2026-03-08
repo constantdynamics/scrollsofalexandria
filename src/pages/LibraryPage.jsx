@@ -268,6 +268,20 @@ function generateLibrary(categories) {
     }
   }
 
+  // Corridor fakkels langs de hoofdcorridor (elke 6 tiles)
+  for (let y = marginY + 3; y < hallY - 2; y += 6) {
+    // Links van corridor
+    const leftX = corStartX - 1;
+    if (leftX >= 0 && leftX < mapW && y >= 0 && y < mapH && map[y][leftX] === EMPTY) {
+      map[y][leftX] = TORCH;
+    }
+    // Rechts van corridor
+    const rightX = corStartX + corridorW;
+    if (rightX >= 0 && rightX < mapW && y >= 0 && y < mapH && map[y][rightX] === EMPTY) {
+      map[y][rightX] = TORCH;
+    }
+  }
+
   return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH };
 }
 
@@ -327,6 +341,9 @@ const LibraryPage = () => {
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
   const [showMinimap, setShowMinimap] = useState(true);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef(null);
   const [isMobile, setIsMobile] = useState(() => {
     return typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
   });
@@ -339,6 +356,15 @@ const LibraryPage = () => {
   getPrincipleProgressRef.current = getPrincipleProgress;
 
   const categories = useMemo(() => getCategories('academic'), []);
+
+  // Cache: principles per category (static, computed once)
+  const roomPrinciplesMap = useMemo(() => {
+    const map = {};
+    for (const cat of categories) {
+      map[cat] = getPrinciplesByCategory(cat, 'academic');
+    }
+    return map;
+  }, [categories]);
 
   const library = useMemo(() => generateLibrary(categories), [categories]);
   const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH } = library;
@@ -446,6 +472,14 @@ const LibraryPage = () => {
   // Keyboard handlers
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Don't handle game keys when search is open
+      if (showSearch) {
+        if (e.key === 'Escape') {
+          setShowSearch(false);
+          setSearchQuery('');
+        }
+        return;
+      }
       if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd', 'W', 'A', 'S', 'D'].includes(e.key)) {
         e.preventDefault();
         keysRef.current.add(e.key.toLowerCase());
@@ -461,6 +495,11 @@ const LibraryPage = () => {
       if (e.key === 'm' || e.key === 'M') {
         setShowMinimap(prev => !prev);
       }
+      if (e.key === '/' || e.key === 'f' || e.key === 'F') {
+        e.preventDefault();
+        setShowSearch(true);
+        setTimeout(() => searchInputRef.current?.focus(), 50);
+      }
     };
     const handleKeyUp = (e) => {
       keysRef.current.delete(e.key.toLowerCase());
@@ -472,7 +511,7 @@ const LibraryPage = () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [handleInteraction]);
+  }, [handleInteraction, showSearch]);
 
   // Game loop
   useEffect(() => {
@@ -526,10 +565,10 @@ const LibraryPage = () => {
       if (isMoving) {
         player.dirX = dx;
         player.dirY = dy;
-        player.bobTime += 0.15;
+        player.bobTime += sprinting ? 0.22 : 0.15;
         player.moving = true;
-        // Spawn footstep dust
-        if (Math.random() < 0.3) {
+        // Spawn footstep dust (more when sprinting)
+        if (Math.random() < (sprinting ? 0.6 : 0.3)) {
           footstepDustRef.current.push({
             x: player.x + (Math.random() - 0.5) * 8,
             y: player.y + 12 + Math.random() * 4,
@@ -866,8 +905,8 @@ const LibraryPage = () => {
         const labelX = room.centerX - camX;
         const labelY = room.centerY - camY - 8;
         if (labelX > -200 && labelX < w + 200 && labelY > -100 && labelY < h + 100) {
-          // Compute room mastery
-          const roomPrinciples = getPrinciplesByCategory(room.name, 'academic');
+          // Compute room mastery (cached)
+          const roomPrinciples = roomPrinciplesMap[room.name] || [];
           const avgMastery = roomPrinciples.length > 0
             ? roomPrinciples.reduce((sum, p) => sum + (getProgress(p.id)?.masteryPercentage || 0), 0) / roomPrinciples.length
             : 0;
@@ -956,6 +995,23 @@ const LibraryPage = () => {
         ctx.beginPath();
         ctx.arc(px, py, 35, 0, Math.PI * 2);
         ctx.fill();
+      }
+
+      // Sprint speed lines
+      if (sprinting && isMoving) {
+        const normDx = dirMag > 0.1 ? player.dirX / dirMag : 0;
+        const normDy = dirMag > 0.1 ? player.dirY / dirMag : 0;
+        for (let i = 0; i < 3; i++) {
+          const offset = (i + 1) * 8;
+          const spread = (i - 1) * 6;
+          const lineAlpha = 0.2 - i * 0.05;
+          ctx.strokeStyle = `rgba(92,79,207,${lineAlpha})`;
+          ctx.lineWidth = 2 - i * 0.5;
+          ctx.beginPath();
+          ctx.moveTo(px - normDx * offset + normDy * spread, py - normDy * offset - normDx * spread);
+          ctx.lineTo(px - normDx * (offset + 12) + normDy * spread, py - normDy * (offset + 12) - normDx * spread);
+          ctx.stroke();
+        }
       }
 
       // Schaduw (smaller when bobbing up)
@@ -1105,7 +1161,7 @@ const LibraryPage = () => {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [map, mapW, mapH, rooms, hallW, hallH, hallX, hallY, tileRoomIdx, userData?.name]);
+  }, [map, mapW, mapH, rooms, hallW, hallH, hallX, hallY, tileRoomIdx, userData?.name, roomPrinciplesMap]);
 
   // Minimap - canvas-based for showing corridors
   const minimapImageRef = useRef(null);
@@ -1407,8 +1463,9 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>WASD</span> Bewegen &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Shift</span> Sprint &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>E</span> Interactie &nbsp;
+          <span style={{ fontWeight: 600, color: '#fff' }}>F</span> Zoeken &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.2.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.3.0</div>
         </div>
       )}
 
@@ -1464,7 +1521,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.2.0</div>
+        }}>v0.3.0</div>
       )}
 
       {/* Mobile: action button */}
@@ -1527,6 +1584,93 @@ const LibraryPage = () => {
 
       {renderMinimap()}
       {renderBookPanel()}
+
+      {/* Search overlay */}
+      {showSearch && (
+        <div
+          style={{
+            position: 'absolute', inset: 0,
+            background: 'rgba(0,0,0,0.7)',
+            display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
+            paddingTop: 80, zIndex: 60,
+          }}
+          onClick={() => { setShowSearch(false); setSearchQuery(''); }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: 'var(--color-surface, #fffef9)',
+              borderRadius: 16, padding: 20, width: '90%', maxWidth: 500,
+              maxHeight: '70vh', display: 'flex', flexDirection: 'column',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+              border: '1px solid var(--color-border, #e5d9c8)',
+            }}
+          >
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              placeholder="Zoek een kamer..."
+              style={{
+                width: '100%', padding: '10px 14px', borderRadius: 10,
+                border: '2px solid var(--color-primary, #5c4fcf)',
+                fontSize: '1rem', outline: 'none',
+                background: 'var(--color-bg, #fffef9)',
+                color: 'var(--color-text, #1c1510)',
+                marginBottom: 12,
+              }}
+            />
+            <div style={{ overflow: 'auto', flex: 1 }}>
+              {rooms
+                .filter(r => r.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                .slice(0, 20)
+                .map(r => {
+                  const rp = roomPrinciplesMap[r.name] || [];
+                  const readCount = rp.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+                  return (
+                    <button
+                      key={r.name}
+                      onClick={() => {
+                        playerRef.current.x = r.centerX;
+                        playerRef.current.y = r.centerY;
+                        cameraRef.current.x = r.centerX - window.innerWidth / 2;
+                        cameraRef.current.y = r.centerY - window.innerHeight / 2;
+                        setShowSearch(false);
+                        setSearchQuery('');
+                      }}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 10,
+                        width: '100%', padding: '10px 12px', borderRadius: 8,
+                        border: '1px solid var(--color-border, #e5d9c8)',
+                        background: 'var(--color-bg-alt, #f1e9dc)',
+                        cursor: 'pointer', textAlign: 'left', marginBottom: 6,
+                      }}
+                    >
+                      <span style={{ fontSize: '1.2rem' }}>{r.emoji}</span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--color-text, #1c1510)' }}>
+                          {r.name}
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted, #8a7a66)' }}>
+                          {rp.length} boeken · {readCount} gelezen
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              {rooms.filter(r => r.name.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
+                <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', padding: 20 }}>
+                  Geen kamers gevonden.
+                </p>
+              )}
+            </div>
+            <div style={{ marginTop: 8, fontSize: '0.7rem', color: 'var(--color-text-muted, #8a7a66)', textAlign: 'center' }}>
+              Druk op Escape om te sluiten
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
