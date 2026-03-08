@@ -337,6 +337,8 @@ const LibraryPage = () => {
   const footstepDustRef = useRef([]); // { x, y, age, size }
   const animFrameRef = useRef(null);
   const getPrincipleProgressRef = useRef(getPrincipleProgress);
+  const teleportTargetRef = useRef(null); // { x, y } smooth teleport destination
+  const zoomRef = useRef(1); // Camera zoom level
 
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
@@ -469,6 +471,17 @@ const LibraryPage = () => {
     }
   }, [rooms]);
 
+  // Zoom handler
+  useEffect(() => {
+    const handleWheel = (e) => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.05 : 0.05;
+      zoomRef.current = Math.max(0.4, Math.min(2, zoomRef.current + delta));
+    };
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
+
   // Keyboard handlers
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -596,12 +609,31 @@ const LibraryPage = () => {
       if (isWalkable(map, newX, player.y, mapW, mapH)) player.x = newX;
       if (isWalkable(map, player.x, newY, mapW, mapH)) player.y = newY;
 
-      // Smooth camera (lerp)
+      // Smooth teleport: move player towards target
+      const tp = teleportTargetRef.current;
+      if (tp) {
+        const tdx = tp.x - player.x;
+        const tdy = tp.y - player.y;
+        const tdist = Math.sqrt(tdx * tdx + tdy * tdy);
+        if (tdist < 5) {
+          player.x = tp.x;
+          player.y = tp.y;
+          teleportTargetRef.current = null;
+        } else {
+          const tSpeed = Math.max(15, tdist * 0.12);
+          player.x += (tdx / tdist) * tSpeed;
+          player.y += (tdy / tdist) * tSpeed;
+        }
+      }
+
+      // Smooth camera (lerp) with zoom
+      const zoom = zoomRef.current;
       const cam = cameraRef.current;
-      const targetCamX = player.x - w / 2;
-      const targetCamY = player.y - h / 2;
-      cam.x += (targetCamX - cam.x) * CAMERA_LERP;
-      cam.y += (targetCamY - cam.y) * CAMERA_LERP;
+      const lerpSpeed = tp ? 0.15 : CAMERA_LERP;
+      const targetCamX = player.x - w / 2 / zoom;
+      const targetCamY = player.y - h / 2 / zoom;
+      cam.x += (targetCamX - cam.x) * lerpSpeed;
+      cam.y += (targetCamY - cam.y) * lerpSpeed;
       const camX = cam.x;
       const camY = cam.y;
 
@@ -609,11 +641,19 @@ const LibraryPage = () => {
       ctx.fillStyle = COLORS[EMPTY];
       ctx.fillRect(0, 0, w, h);
 
-      // Visible tile range
-      const startTX = Math.max(0, Math.floor(camX / TILE) - 1);
-      const endTX = Math.min(mapW, Math.ceil((camX + w) / TILE) + 1);
-      const startTY = Math.max(0, Math.floor(camY / TILE) - 1);
-      const endTY = Math.min(mapH, Math.ceil((camY + h) / TILE) + 1);
+      // Apply zoom
+      ctx.save();
+      ctx.translate(w / 2, h / 2);
+      ctx.scale(zoom, zoom);
+      ctx.translate(-w / 2, -h / 2);
+
+      // Visible tile range (adjusted for zoom)
+      const viewW = w / zoom;
+      const viewH = h / zoom;
+      const startTX = Math.max(0, Math.floor(camX / TILE) - 2);
+      const endTX = Math.min(mapW, Math.ceil((camX + viewW) / TILE) + 2);
+      const startTY = Math.max(0, Math.floor(camY / TILE) - 2);
+      const endTY = Math.min(mapH, Math.ceil((camY + viewH) / TILE) + 2);
 
       // Draw tiles
       for (let ty = startTY; ty < endTY; ty++) {
@@ -886,6 +926,24 @@ const LibraryPage = () => {
         }
       }
 
+      // Floor/section numbers along corridor (use rooms[0,3,6,...] y positions)
+      const corCenterX = Math.floor(mapW / 2) * TILE + TILE / 2;
+      const seenRows = new Set();
+      for (let ri = 0; ri < rooms.length; ri++) {
+        const rowNum = Math.floor(ri / 3);
+        if (seenRows.has(rowNum)) continue;
+        seenRows.add(rowNum);
+        const ry = rooms[ri].y * TILE + TILE;
+        const sx = corCenterX - camX;
+        const sy = ry - camY;
+        if (sx > -100 && sx < viewW + 100 && sy > -50 && sy < viewH + 50) {
+          ctx.font = '700 9px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = 'rgba(255,255,255,0.18)';
+          ctx.fillText(`── Rij ${rowNum + 1} ──`, sx, sy);
+        }
+      }
+
       // Entreehal welkomsttekst
       const hallCenterX = (hallX + hallW / 2) * TILE - camX;
       const hallCenterY = (hallY + 1) * TILE - camY;
@@ -997,6 +1055,9 @@ const LibraryPage = () => {
         ctx.fill();
       }
 
+      // Direction magnitude (used for eyes + sprint lines)
+      const dirMag = Math.sqrt(player.dirX * player.dirX + player.dirY * player.dirY);
+
       // Sprint speed lines
       if (sprinting && isMoving) {
         const normDx = dirMag > 0.1 ? player.dirX / dirMag : 0;
@@ -1033,7 +1094,6 @@ const LibraryPage = () => {
       ctx.stroke();
 
       // Ogen - follow movement direction
-      const dirMag = Math.sqrt(player.dirX * player.dirX + player.dirY * player.dirY);
       const eyeDx = dirMag > 0.1 ? (player.dirX / dirMag) * 2 : 0;
       const eyeDy = dirMag > 0.1 ? (player.dirY / dirMag) * 1.5 : 0;
 
@@ -1147,7 +1207,10 @@ const LibraryPage = () => {
         mCtx.stroke();
       }
 
-      // Vignette overlay
+      // End zoom transform
+      ctx.restore();
+
+      // Vignette overlay (screen-space, not zoomed)
       const vignetteGrad = ctx.createRadialGradient(w / 2, h / 2, h * 0.3, w / 2, h / 2, h * 0.9);
       vignetteGrad.addColorStop(0, 'rgba(0,0,0,0)');
       vignetteGrad.addColorStop(1, 'rgba(0,0,0,0.3)');
@@ -1211,10 +1274,7 @@ const LibraryPage = () => {
       }
     }
     if (bestRoom) {
-      playerRef.current.x = bestRoom.centerX;
-      playerRef.current.y = bestRoom.centerY;
-      cameraRef.current.x = bestRoom.centerX - window.innerWidth / 2;
-      cameraRef.current.y = bestRoom.centerY - window.innerHeight / 2;
+      teleportTargetRef.current = { x: bestRoom.centerX, y: bestRoom.centerY };
     }
   }, [rooms]);
 
@@ -1464,8 +1524,9 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>Shift</span> Sprint &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>E</span> Interactie &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>F</span> Zoeken &nbsp;
-          <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.3.0</div>
+          <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
+          <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v0.4.0</div>
         </div>
       )}
 
@@ -1521,7 +1582,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v0.3.0</div>
+        }}>v0.4.0</div>
       )}
 
       {/* Mobile: action button */}
@@ -1624,6 +1685,16 @@ const LibraryPage = () => {
             <div style={{ overflow: 'auto', flex: 1 }}>
               {rooms
                 .filter(r => r.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                .sort((a, b) => {
+                  const aP = roomPrinciplesMap[a.name] || [];
+                  const bP = roomPrinciplesMap[b.name] || [];
+                  const aRead = aP.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+                  const bRead = bP.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+                  // Sort: partially read first, then unread, then empty
+                  if (aRead > 0 && bRead === 0) return -1;
+                  if (aRead === 0 && bRead > 0) return 1;
+                  return bP.length - aP.length; // Then by size
+                })
                 .slice(0, 20)
                 .map(r => {
                   const rp = roomPrinciplesMap[r.name] || [];
@@ -1632,10 +1703,7 @@ const LibraryPage = () => {
                     <button
                       key={r.name}
                       onClick={() => {
-                        playerRef.current.x = r.centerX;
-                        playerRef.current.y = r.centerY;
-                        cameraRef.current.x = r.centerX - window.innerWidth / 2;
-                        cameraRef.current.y = r.centerY - window.innerHeight / 2;
+                        teleportTargetRef.current = { x: r.centerX, y: r.centerY };
                         setShowSearch(false);
                         setSearchQuery('');
                       }}
