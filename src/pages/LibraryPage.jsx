@@ -532,6 +532,7 @@ const LibraryPage = () => {
   const thunderRef = useRef(0); // Flash intensity for thunder
   const owlRef = useRef(null); // { x, y, blinkPhase, headAngle }
   const corridorFogRef = useRef([]); // { x, y, size, alpha, speed }
+  const torchSmokeRef = useRef([]); // { x, y, vx, vy, age, maxAge, size }
   const fogOfWarRef = useRef(null); // 2D boolean array: true = revealed
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
@@ -968,7 +969,9 @@ const LibraryPage = () => {
           }
         }
       }
-      const fowRadius = 3;
+      // Kennis-aura: more principles read = larger fog reveal radius
+      const totalRead = allPrinciples.filter(p => getPrincipleProgressRef.current(p.id)?.activities?.read).length;
+      const fowRadius = 3 + Math.min(4, Math.floor(totalRead / 15)); // 3 base, +1 per 15 read, max 7
       const fowPTX = Math.floor(player.x / TILE);
       const fowPTY = Math.floor(player.y / TILE);
       for (let fy = fowPTY - fowRadius; fy <= fowPTY + fowRadius; fy++) {
@@ -1004,6 +1007,37 @@ const LibraryPage = () => {
         dust[i].x += dust[i].vx;
         dust[i].y += dust[i].vy;
         if (dust[i].age > 0.6) dust.splice(i, 1);
+      }
+
+      // Update torch smoke particles (wind-drifting puffs)
+      const smoke = torchSmokeRef.current;
+      // Spawn new smoke from visible torches
+      const ptx = Math.floor(player.x / TILE);
+      const pty = Math.floor(player.y / TILE);
+      for (let sy = pty - 8; sy <= pty + 8; sy++) {
+        for (let sx = ptx - 8; sx <= ptx + 8; sx++) {
+          if (sy >= 0 && sy < mapH && sx >= 0 && sx < mapW && map[sy][sx] === TORCH) {
+            if (Math.random() < 0.08 && smoke.length < 80) {
+              const windPhase = time * 0.3;
+              smoke.push({
+                x: sx * TILE + TILE / 2, y: sy * TILE + 4,
+                vx: Math.sin(windPhase) * 0.3 + (Math.random() - 0.5) * 0.2,
+                vy: -0.4 - Math.random() * 0.3,
+                age: 0, maxAge: 2 + Math.random() * 2,
+                size: 2 + Math.random() * 2,
+              });
+            }
+          }
+        }
+      }
+      for (let i = smoke.length - 1; i >= 0; i--) {
+        const s = smoke[i];
+        s.age += dt;
+        s.x += s.vx + Math.sin(time * 0.8 + s.x * 0.01) * 0.15; // wind drift
+        s.y += s.vy;
+        s.vy *= 0.99;
+        s.size += dt * 0.5;
+        if (s.age > s.maxAge) smoke.splice(i, 1);
       }
 
       const newX = player.x + dx;
@@ -1821,8 +1855,16 @@ const LibraryPage = () => {
             // Candle body
             ctx.fillStyle = '#e8d8b0';
             ctx.fillRect(candleX - 2, candleY - 6, 4, 8);
-            // Candle flame
-            const cFlicker = Math.sin(time * 10 + tx * 7) * 1.5;
+            // Candle flame — flickers harder when near door (wind draft)
+            let nearDoor = false;
+            for (let ddy = -2; ddy <= 2; ddy++) {
+              for (let ddx = -2; ddx <= 2; ddx++) {
+                const cy2 = ty + ddy, cx2 = tx + ddx;
+                if (cy2 >= 0 && cy2 < mapH && cx2 >= 0 && cx2 < mapW && map[cy2][cx2] === DOOR) nearDoor = true;
+              }
+            }
+            const windFactor = nearDoor ? 3.5 : 1;
+            const cFlicker = Math.sin(time * 10 * windFactor + tx * 7) * 1.5 * windFactor + (nearDoor ? Math.sin(time * 17 + ty) * 2 : 0);
             const cFlameGrad = ctx.createRadialGradient(
               candleX + cFlicker * 0.3, candleY - 9, 0,
               candleX, candleY - 8, 5
@@ -2095,6 +2137,19 @@ const LibraryPage = () => {
         }
       }
 
+      // Persistent torch smoke puffs (wind-drifting)
+      for (const s of torchSmokeRef.current) {
+        const spx = s.x - camX;
+        const spy = s.y - camY;
+        if (spx > -40 && spx < viewW + 40 && spy > -40 && spy < viewH + 40) {
+          const t = 1 - s.age / s.maxAge;
+          ctx.fillStyle = `rgba(90,85,100,${t * 0.06})`;
+          ctx.beginPath();
+          ctx.arc(spx, spy, s.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
       // Wall shadow casting onto adjacent floor tiles
       for (let ty = startTY; ty < endTY; ty++) {
         for (let tx = startTX; tx < endTX; tx++) {
@@ -2281,6 +2336,75 @@ const LibraryPage = () => {
             ctx.textAlign = 'center';
             ctx.fillStyle = 'rgba(255,255,255,0.7)';
             ctx.fillText('🔒', lx, ly + lockSize / 3);
+          }
+        }
+      }
+
+      // Cobwebs in corners of locked rooms
+      if (userData?.preferences?.progressiveUnlock !== false) {
+        for (let ri = 0; ri < rooms.length; ri++) {
+          if (isRoomUnlockedRef.current(ri)) continue;
+          const room = rooms[ri];
+          const rx = room.x * TILE - camX;
+          const ry = room.y * TILE - camY;
+          const rw = room.w * TILE;
+          const rh = room.h * TILE;
+          if (rx > -rw - 50 && rx < viewW + 50 && ry > -rh - 50 && ry < viewH + 50) {
+            // Draw cobweb in top-left and top-right corners
+            const webSize = 22;
+            const webAlpha = 0.12;
+            for (const [wcx, wcy, flipX] of [[rx + TILE + 2, ry + TILE + 2, 1], [rx + rw - TILE - 2, ry + TILE + 2, -1]]) {
+              ctx.save();
+              ctx.translate(wcx, wcy);
+              ctx.scale(flipX, 1);
+              ctx.strokeStyle = `rgba(200,200,210,${webAlpha})`;
+              ctx.lineWidth = 0.5;
+              // Radial threads
+              for (let t = 0; t < 5; t++) {
+                const angle = (t / 5) * Math.PI * 0.5;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(Math.cos(angle) * webSize, Math.sin(angle) * webSize);
+                ctx.stroke();
+              }
+              // Spiral threads
+              for (let ring = 0; ring < 3; ring++) {
+                const r = (ring + 1) * webSize / 3.5;
+                ctx.beginPath();
+                for (let t = 0; t <= 5; t++) {
+                  const angle = (t / 5) * Math.PI * 0.5;
+                  const sag = Math.sin(angle * 2 + ring) * 2;
+                  const px = Math.cos(angle) * (r + sag);
+                  const py = Math.sin(angle) * (r + sag);
+                  t === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+                }
+                ctx.stroke();
+              }
+              ctx.restore();
+            }
+          }
+        }
+      }
+
+      // Gold dust particles floating in unlocked rooms
+      for (let ri = 0; ri < rooms.length; ri++) {
+        if (userData?.preferences?.progressiveUnlock !== false && !isRoomUnlockedRef.current(ri)) continue;
+        const room = rooms[ri];
+        const rx = room.x * TILE - camX;
+        const ry = room.y * TILE - camY;
+        if (rx > -room.w * TILE - 50 && rx < viewW + 50 && ry > -room.h * TILE - 50 && ry < viewH + 50) {
+          const numMotes = Math.min(6, Math.floor(room.w * room.h / 15));
+          for (let gd = 0; gd < numMotes; gd++) {
+            const gdSeed = room.x * 17 + room.y * 31 + gd * 53;
+            const gdPhase = time * 0.25 + gd * 1.1 + gdSeed * 0.01;
+            const gdx = room.centerX + Math.sin(gdPhase + gd) * (room.w * TILE * 0.35) - camX;
+            const gdy = room.centerY + Math.cos(gdPhase * 0.6 + gd * 2) * (room.h * TILE * 0.3) - camY;
+            const gdAlpha = 0.06 + Math.sin(gdPhase * 2.5) * 0.03;
+            const gdSize = 1 + Math.sin(gdPhase * 1.5) * 0.5;
+            ctx.fillStyle = `rgba(255,215,100,${gdAlpha})`;
+            ctx.beginPath();
+            ctx.arc(gdx, gdy, gdSize, 0, Math.PI * 2);
+            ctx.fill();
           }
         }
       }
@@ -4989,7 +5113,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.0.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.1.0</div>
         </div>
       )}
 
@@ -5045,7 +5169,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v2.0.0</div>
+        }}>v2.1.0</div>
       )}
 
       {/* Mobile: action button */}
