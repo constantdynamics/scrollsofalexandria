@@ -14,7 +14,7 @@ const defaultUserData = {
     dailyReminder: false,
     reminderTime: '08:00',
     theme: 'classic',
-    progressiveUnlock: false
+    progressiveUnlock: true
   },
   learningStyleHistory: [],
   completedOnboarding: false,

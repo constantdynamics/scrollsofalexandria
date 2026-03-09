@@ -84,6 +84,14 @@ Tailwind CSS v4 with CSS-based configuration (no `tailwind.config.js`). The enti
 
 Custom utility classes defined in `index.css`: `.card`, `.btn-primary`, `.tag-pill`, `.progress-bar`, `.progress-fill`, `.decorative-border`, `.parchment`, `.scroll-reveal`.
 
+## Versioning
+
+**Always use semantic version numbers** when making changes:
+- Bump the UI version string in `LibraryPage.jsx` (e.g., `v1.8.0` → `v1.9.0`) on every change to the library game
+- Bump `SAVE_VERSION` in `LibraryPage.jsx` when map generation or save format changes
+- Use MAJOR.MINOR.PATCH: major = breaking/overhaul, minor = new features, patch = bugfixes
+- Never ship changes without updating the relevant version number
+
 ## Language
 
 The app UI and all principle content are in **Dutch**. Keep all user-facing text in Dutch.

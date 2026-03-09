@@ -2474,4 +2474,138 @@ export const getCategories = (system = 'academic') => {
   return [...new Set(allPrinciples.map(p => p[categoryKey]))];
 };
 
+// Curated learning path: core categories in pedagogical order, then supplementary
+// This defines the chain the player follows through the library
+export const CATEGORY_CHAIN_ORDER = [
+  // Tier 1: Foundations of reasoning
+  'Logica',
+  'Retorica',
+  'Epistemologie',
+  // Tier 2: Quantitative & empirical thinking
+  'Statistiek',
+  'Behavioral Economics',
+  // Tier 3: Mind & behavior
+  'Psychologie',
+  'Cognitieve Psychologie',
+  'Sociale Psychologie',
+  // Tier 4: Strategy & decisions
+  'Speltheorie',
+  'Besliskunde',
+  // Tier 5: Systems & society
+  'Systeemdenken',
+  'Organisatie',
+  'Ethiek',
+  // Tier 6: Science & philosophy
+  'Wetenschapsfilosofie',
+  'Filosofie',
+  'Filosofie & Ethiek',
+  'Metafysica',
+  'Levensfilosofie',
+  // Tier 7: Communication & language
+  'Communicatiewetenschap',
+  'Communicatie',
+  'Linguïstiek',
+  'Taalkunde',
+  'Communicatiewetenschappen',
+  'Narratologie',
+  'Cognitieve Taalkunde',
+  // Tier 8: Psychology branches
+  'Gedragspsychologie',
+  'Motivatiepsychologie',
+  'Positieve Psychologie',
+  'Ontwikkelingspsychologie',
+  'Klinische Psychologie',
+  'Existentiële Psychologie',
+  'Narratieve Psychologie',
+  'Omgevingspsychologie',
+  'Sportpsychologie',
+  'Evolutionaire Psychologie',
+  'Moraalpsychologie',
+  'Cross-culturele Psychologie',
+  'Culturele Psychologie',
+  'Leerpsychologie',
+  'Marketingpsychologie',
+  'Organisatiepsychologie',
+  // Tier 9: Organizations & leadership
+  'Organisatiekunde',
+  'Organisatieleer',
+  'Organisatiesociologie',
+  'Leiderschap',
+  'Leiderschapswetenschap',
+  'Bedrijfskunde',
+  'Managementwetenschap',
+  // Tier 10: Economics & politics
+  'Economie',
+  'Gedragseconomie',
+  'Politieke Economie',
+  'Economische Geschiedenis',
+  'Politicologie',
+  'Politieke Filosofie',
+  'Bestuurskunde',
+  'Rechtswetenschappen',
+  'Rechtsfilosofie',
+  // Tier 11: Science & innovation
+  'Experimenteel Onderzoek',
+  'Cognitieve Wetenschap',
+  'Neurowetenschappen',
+  'Complexiteitswetenschap',
+  'Systeemtheorie',
+  'Netwerkwetenschap',
+  'Wiskunde',
+  'Innovatiemanagement',
+  'Ontwerpleer',
+  'Creativiteitswetenschap',
+  // Tier 12: Society & culture
+  'Sociologie',
+  'Criminologie',
+  'Antropologie',
+  'Culturele Studies',
+  'Mediawetenschap',
+  'Geschiedenis',
+  'Geschiedfilosofie',
+  'Historiografie',
+  // Tier 13: Personal development & wellbeing
+  'Persoonlijke Ontwikkeling',
+  'Expertise-onderzoek',
+  'Productiviteitswetenschap',
+  'Tijdmanagement',
+  'Mindfulness',
+  'Zen-filosofie',
+  'Slaapwetenschap',
+  'Fysiologie',
+  'Chronobiologie',
+  'Somatische Psychologie',
+  'Embodied Cognition',
+  // Tier 14: Education & environment
+  'Pedagogie',
+  'Onderwijssociologie',
+  'Onderwijswetenschappen',
+  'Kunst & Esthetiek',
+  'Esthetiek',
+  'Risicobeheer',
+  'Aardwetenschappen',
+  'Ecologie',
+  'Duurzaamheidswetenschap',
+  'Milieuwetenschap',
+  'Landbouwwetenschappen',
+  'Energiewetenschappen',
+  'Evolutiebiologie',
+];
+
+// Returns categories in chain order for the library walking path.
+// Core categories first (curated), then any remaining categories not in the chain.
+export const getCategoryChainOrder = (system = 'academic') => {
+  const all = getCategories(system);
+  const ordered = [];
+  // Add categories in chain order (only if they actually exist)
+  for (const cat of CATEGORY_CHAIN_ORDER) {
+    if (all.includes(cat)) ordered.push(cat);
+  }
+  // Append any categories not in the chain (future-proofing)
+  for (const cat of all) {
+    if (!ordered.includes(cat)) ordered.push(cat);
+  }
+  return ordered;
+};
+
 export default allPrinciples;

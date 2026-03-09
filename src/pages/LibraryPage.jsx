@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
-import { allPrinciples, getCategories, getPrinciplesByCategory } from '../data/principles';
+import { allPrinciples, getCategories, getCategoryChainOrder, getPrinciplesByCategory } from '../data/principles';
 
 // ── Constanten ──
 const TILE = 40;
@@ -121,7 +121,7 @@ function generateLibrary(categories) {
   const halfC = Math.floor(corrW / 2);
   const spacing = 6;       // space between rooms for corridors
 
-  // --- Room definitions with varied sizes ---
+  // --- Room definitions with varied sizes (in chain order, no shuffle) ---
   const roomDefs = categories.map((cat, i) => ({
     cat, origIdx: i,
     w: 9 + Math.floor(seededRandom(i, 0, seed + 1) * 4),   // 9-12
@@ -129,19 +129,20 @@ function generateLibrary(categories) {
     catHue: cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 360,
   }));
 
-  // Shuffle for random-looking placement
-  const shuffled = [...roomDefs];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(seededRandom(i, 0, seed + 10) * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-
   // --- Arrange rooms in a grid pattern (rows x cols) ---
-  const cols = Math.ceil(Math.sqrt(shuffled.length));
-  const rowCount = Math.ceil(shuffled.length / cols);
+  // Rooms are placed bottom-up so the first categories (chain start)
+  // are in the bottom row nearest the entrance hall.
+  const cols = Math.ceil(Math.sqrt(roomDefs.length));
+  const rowCount = Math.ceil(roomDefs.length / cols);
   const rows = [];
+  // Fill rows bottom-up: last row gets first categories
+  const reversedRows = [];
   for (let ri = 0; ri < rowCount; ri++) {
-    rows.push(shuffled.slice(ri * cols, (ri + 1) * cols));
+    reversedRows.push(roomDefs.slice(ri * cols, (ri + 1) * cols));
+  }
+  // Reverse so row 0 (top of grid) = last categories, last row = first categories
+  for (let ri = reversedRows.length - 1; ri >= 0; ri--) {
+    rows.push(reversedRows[ri]);
   }
 
   // Compute column widths (max room width in each column) and row heights
@@ -555,7 +556,7 @@ const LibraryPage = () => {
   getPrincipleProgressRef.current = getPrincipleProgress;
   const isRoomUnlockedRef = useRef(null);
 
-  const categories = useMemo(() => getCategories('academic'), []);
+  const categories = useMemo(() => getCategoryChainOrder('academic'), []);
 
   // Cache: principles per category (static, computed once)
   const roomPrinciplesMap = useMemo(() => {
@@ -569,19 +570,22 @@ const LibraryPage = () => {
   const library = useMemo(() => generateLibrary(categories), [categories]);
   const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY } = library;
 
-  // Progressive unlock: room N is unlocked if all principles in room N-1 are read
+  // Progressive unlock chain: room N unlocks when ≥50% of room N-1 principles are read.
+  // Follows the walking path (bottom-up through the library).
   const isRoomUnlocked = useCallback((roomIndex) => {
-    if (!userData?.preferences?.progressiveUnlock) return true;
+    if (userData?.preferences?.progressiveUnlock === false) return true;
     if (roomIndex <= 0) return true; // First room always unlocked
     const prevRoom = rooms[roomIndex - 1];
     if (!prevRoom) return true;
     const prevPrinciples = roomPrinciplesMap[prevRoom.name] || [];
     if (prevPrinciples.length === 0) return true;
-    return prevPrinciples.every(p => getPrincipleProgress(p.id)?.activities?.read);
+    const readCount = prevPrinciples.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+    const threshold = Math.ceil(prevPrinciples.length / 2); // 50% of previous room
+    return readCount >= threshold;
   }, [userData?.preferences?.progressiveUnlock, rooms, roomPrinciplesMap, getPrincipleProgress]);
   isRoomUnlockedRef.current = isRoomUnlocked;
 
-  const SAVE_VERSION = 3; // Bump this when layout/map generation changes
+  const SAVE_VERSION = 4; // Bumped: chain-ordered rooms, bottom-up walking path
 
   // Save game state to localStorage
   const saveGameState = useCallback(() => {
@@ -789,7 +793,10 @@ const LibraryPage = () => {
       if (dist < (room.w / 2) * TILE) {
         if (!isRoomUnlocked(ri)) {
           const prevRoom = rooms[ri - 1];
-          setToastMessage({ text: `Vergrendeld! Voltooi eerst: ${prevRoom?.name || 'vorige sectie'}`, emoji: '🔒' });
+          const prevPrinciples = roomPrinciplesMap[prevRoom?.name] || [];
+          const readCount = prevPrinciples.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+          const needed = Math.ceil(prevPrinciples.length / 2);
+          setToastMessage({ text: `Vergrendeld! Lees nog ${needed - readCount} scroll(s) in ${prevRoom?.name || 'vorige sectie'}`, emoji: '🔒' });
           if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
           toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
           return;
@@ -2253,8 +2260,8 @@ const LibraryPage = () => {
         }
       }
 
-      // Lock overlay on locked rooms (progressive unlock)
-      if (userData?.preferences?.progressiveUnlock) {
+      // Lock overlay on locked rooms (progressive unlock, on by default)
+      if (userData?.preferences?.progressiveUnlock !== false) {
         for (let ri = 0; ri < rooms.length; ri++) {
           if (isRoomUnlockedRef.current(ri)) continue;
           const room = rooms[ri];
@@ -4982,7 +4989,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.8.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.0.0</div>
         </div>
       )}
 
@@ -5038,7 +5045,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.8.0</div>
+        }}>v2.0.0</div>
       )}
 
       {/* Mobile: action button */}

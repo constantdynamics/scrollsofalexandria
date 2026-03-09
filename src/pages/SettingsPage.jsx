@@ -238,7 +238,7 @@ const SettingsPage = () => {
           {/* Progressive Unlock */}
           <div>
             <h3 className="font-semibold text-text text-sm mb-1">Progressief Ontgrendelen</h3>
-            <p className="text-xs text-text-muted mb-3">In de bibliotheek zijn secties pas toegankelijk als je de vorige hebt afgerond. Deuren gaan open naarmate je vordert.</p>
+            <p className="text-xs text-text-muted mb-3">In de bibliotheek volg je een leerpad van basis naar gevorderd. Elke sectie ontgrendelt als je de helft van de vorige hebt gelezen.</p>
             <div className="inline-flex rounded-lg bg-bg-alt p-1 border border-border">
               <button
                 onClick={() => handlePreferenceChange('progressiveUnlock', true)}
