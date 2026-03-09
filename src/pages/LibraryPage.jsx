@@ -2884,6 +2884,83 @@ const LibraryPage = () => {
         ctx.fillRect(chX - TILE * 2.5, chY - TILE * 2.5, TILE * 5, TILE * 5);
       }
 
+      // Trophy-vitrine: glass display cases in entrance hall showing earned trophies
+      {
+        const trophies = [];
+        const stamps = userData?.libraryStamps || {};
+        const stampCount = Object.keys(stamps).length;
+        const totalRoomsCount = rooms.length;
+        const allReadCount = allPrinciples.filter(p => getPrincipleProgressRef.current(p.id)?.activities?.read).length;
+        const allPrincipleCount = allPrinciples.length;
+        const readPctTrophy = allPrincipleCount > 0 ? Math.floor((allReadCount / allPrincipleCount) * 100) : 0;
+        const streakDays = userData?.streak?.currentStreak || 0;
+        // Define trophies (earned or locked)
+        if (allReadCount >= 1) trophies.push({ emoji: '📜', label: 'Eerste Scroll', earned: true });
+        else trophies.push({ emoji: '📜', label: 'Eerste Scroll', earned: false });
+        if (stampCount >= 5) trophies.push({ emoji: '🗺️', label: 'Ontdekker', earned: true });
+        else trophies.push({ emoji: '🗺️', label: 'Ontdekker', earned: false });
+        if (allReadCount >= 10) trophies.push({ emoji: '📚', label: 'Boekenrat', earned: true });
+        else trophies.push({ emoji: '📚', label: 'Boekenrat', earned: false });
+        if (readPctTrophy >= 25) trophies.push({ emoji: '🥉', label: '25% Gelezen', earned: true });
+        else trophies.push({ emoji: '🥉', label: '25% Gelezen', earned: false });
+        if (readPctTrophy >= 50) trophies.push({ emoji: '🥈', label: 'Halverwege', earned: true });
+        else trophies.push({ emoji: '🥈', label: 'Halverwege', earned: false });
+        if (readPctTrophy >= 100) trophies.push({ emoji: '🥇', label: 'Alles Gelezen', earned: true });
+        else trophies.push({ emoji: '🥇', label: 'Alles Gelezen', earned: false });
+        if (streakDays >= 3) trophies.push({ emoji: '🔥', label: '3-Daagse Streak', earned: true });
+        else trophies.push({ emoji: '🔥', label: '3-Daagse Streak', earned: false });
+        if (stampCount >= totalRoomsCount && totalRoomsCount > 0) trophies.push({ emoji: '🏛️', label: 'Alle Kamers', earned: true });
+        else trophies.push({ emoji: '🏛️', label: 'Alle Kamers', earned: false });
+
+        // Position: along the bottom wall of the entrance hall
+        const vitrineY = (hallY + hallH - 2) * TILE;
+        const vitrineStartX = hallX * TILE + TILE * 1.5;
+        const vitrineSpacing = ((hallW - 3) * TILE) / Math.max(trophies.length, 1);
+
+        for (let ti = 0; ti < trophies.length; ti++) {
+          const trophy = trophies[ti];
+          const vx = vitrineStartX + ti * vitrineSpacing + vitrineSpacing / 2 - camX;
+          const vy = vitrineY - camY;
+          if (vx < -60 || vx > viewW + 60 || vy < -60 || vy > viewH + 60) continue;
+
+          // Glass case base
+          ctx.fillStyle = 'rgba(100,90,70,0.5)';
+          ctx.fillRect(vx - 12, vy + 8, 24, 4);
+          // Glass case (transparent box)
+          ctx.strokeStyle = trophy.earned ? 'rgba(200,170,80,0.4)' : 'rgba(120,120,120,0.2)';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(vx - 10, vy - 16, 20, 24);
+          // Glass reflection
+          ctx.fillStyle = 'rgba(255,255,255,0.05)';
+          ctx.fillRect(vx - 9, vy - 15, 8, 22);
+
+          if (trophy.earned) {
+            // Golden glow behind earned trophy
+            const tGlow = ctx.createRadialGradient(vx, vy - 4, 0, vx, vy - 4, 14);
+            tGlow.addColorStop(0, `rgba(201,136,15,${0.12 + Math.sin(time * 2 + ti) * 0.04})`);
+            tGlow.addColorStop(1, 'rgba(201,136,15,0)');
+            ctx.fillStyle = tGlow;
+            ctx.fillRect(vx - 14, vy - 18, 28, 28);
+            // Trophy emoji
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(trophy.emoji, vx, vy);
+          } else {
+            // Locked: dimmed silhouette
+            ctx.globalAlpha = 0.2;
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('🔒', vx, vy);
+            ctx.globalAlpha = 1;
+          }
+          // Label
+          ctx.font = '500 5px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = trophy.earned ? 'rgba(200,170,80,0.6)' : 'rgba(150,150,150,0.3)';
+          ctx.fillText(trophy.label, vx, vy + 18);
+        }
+      }
+
       // Animated fountain in entrance hall
       const ftx = fountainX * TILE - camX;
       const fty = fountainY * TILE - camY;
@@ -5102,33 +5179,76 @@ const LibraryPage = () => {
         const adx = nearestUnread.centerX - player.x;
         const ady = nearestUnread.centerY - player.y;
         const angle = Math.atan2(ady, adx);
-        // Compass circle
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        // Pulsing outer glow
+        const pulseAlpha = 0.15 + Math.sin(time * 3) * 0.08;
+        const outerGlow = ctx.createRadialGradient(compassX, compassY, 18, compassX, compassY, 34);
+        outerGlow.addColorStop(0, `rgba(92,79,207,${pulseAlpha})`);
+        outerGlow.addColorStop(1, 'rgba(92,79,207,0)');
+        ctx.fillStyle = outerGlow;
+        ctx.fillRect(compassX - 34, compassY - 34, 68, 68);
+        // Compass circle with ornate border
+        ctx.fillStyle = 'rgba(20,15,10,0.7)';
         ctx.beginPath();
-        ctx.arc(compassX, compassY, 22, 0, Math.PI * 2);
+        ctx.arc(compassX, compassY, 24, 0, Math.PI * 2);
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(200,170,80,0.4)';
+        ctx.lineWidth = 2;
         ctx.stroke();
-        // Arrow
+        ctx.strokeStyle = 'rgba(200,170,80,0.15)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(compassX, compassY, 27, 0, Math.PI * 2);
+        ctx.stroke();
+        // Cardinal tick marks
+        for (let ci = 0; ci < 8; ci++) {
+          const ca = (ci / 8) * Math.PI * 2 - Math.PI / 2;
+          const inner = ci % 2 === 0 ? 18 : 20;
+          ctx.strokeStyle = ci % 2 === 0 ? 'rgba(200,170,80,0.5)' : 'rgba(200,170,80,0.2)';
+          ctx.lineWidth = ci % 2 === 0 ? 1.5 : 0.8;
+          ctx.beginPath();
+          ctx.moveTo(compassX + Math.cos(ca) * inner, compassY + Math.sin(ca) * inner);
+          ctx.lineTo(compassX + Math.cos(ca) * 23, compassY + Math.sin(ca) * 23);
+          ctx.stroke();
+        }
+        // Arrow (dual-color compass needle)
         ctx.save();
         ctx.translate(compassX, compassY);
         ctx.rotate(angle);
+        // Front half (purple, pointing to target)
         ctx.fillStyle = '#5c4fcf';
         ctx.beginPath();
-        ctx.moveTo(14, 0);
-        ctx.lineTo(-6, -7);
-        ctx.lineTo(-3, 0);
-        ctx.lineTo(-6, 7);
+        ctx.moveTo(16, 0);
+        ctx.lineTo(-2, -5);
+        ctx.lineTo(0, 0);
+        ctx.lineTo(-2, 5);
         ctx.closePath();
         ctx.fill();
+        // Back half (darker)
+        ctx.fillStyle = 'rgba(60,50,80,0.6)';
+        ctx.beginPath();
+        ctx.moveTo(-12, 0);
+        ctx.lineTo(-2, -4);
+        ctx.lineTo(0, 0);
+        ctx.lineTo(-2, 4);
+        ctx.closePath();
+        ctx.fill();
+        // Center pin
+        ctx.fillStyle = 'rgba(200,170,80,0.7)';
+        ctx.beginPath();
+        ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
+        ctx.fill();
         ctx.restore();
-        // Distance label
-        const distLabel = nearestDist > 1000 ? `${(nearestDist / TILE).toFixed(0)}` : `${Math.round(nearestDist / TILE)}`;
-        ctx.font = '500 8px Inter, sans-serif';
+        // Room name + emoji
+        ctx.font = '600 7px Inter, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillStyle = 'rgba(255,255,255,0.5)';
-        ctx.fillText(distLabel + ' tiles', compassX, compassY + 34);
+        ctx.fillStyle = 'rgba(200,170,80,0.7)';
+        const compassLabel = nearestUnread.emoji + ' ' + (nearestUnread.name.length > 12 ? nearestUnread.name.slice(0, 11) + '…' : nearestUnread.name);
+        ctx.fillText(compassLabel, compassX, compassY + 34);
+        // Distance label
+        const distLabel = Math.round(nearestDist / TILE);
+        ctx.font = '400 6px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        ctx.fillText(distLabel + ' stappen', compassX, compassY + 43);
       }
 
       animFrameRef.current = requestAnimationFrame(gameLoop);
@@ -5761,7 +5881,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.5.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.6.0</div>
         </div>
       )}
 
@@ -5817,7 +5937,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v2.5.0</div>
+        }}>v2.6.0</div>
       )}
 
       {/* Mobile: action button */}
