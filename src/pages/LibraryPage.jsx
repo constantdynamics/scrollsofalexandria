@@ -4763,38 +4763,98 @@ const LibraryPage = () => {
         const mmH2 = mapH * mmScale;
         const mCtx = minimapCanvasRef.current.getContext('2d');
         mCtx.clearRect(0, 0, mmW2, mmH2);
+
+        // Schatkaart parchment background
+        mCtx.fillStyle = 'rgba(62,50,38,0.9)';
+        mCtx.fillRect(0, 0, mmW2, mmH2);
+        // Parchment noise texture overlay
+        for (let py = 0; py < mmH2; py += 6) {
+          for (let px = 0; px < mmW2; px += 6) {
+            const noise = seededRandom(px, py, 999) * 0.08;
+            mCtx.fillStyle = `rgba(180,160,120,${noise})`;
+            mCtx.fillRect(px, py, 6, 6);
+          }
+        }
+
         mCtx.drawImage(minimapImageRef.current, 0, 0);
-        // Fog of war on minimap
+
+        // Fog of war on minimap (parchment-colored fog instead of black)
         if (fogOfWarRef.current) {
           const fowMM = fogOfWarRef.current;
           for (let mmy = 0; mmy < mapH; mmy++) {
             for (let mmx = 0; mmx < mapW; mmx++) {
               const mmRevealed = fowMM[mmy]?.[mmx] ?? 0;
               if (mmRevealed < 1) {
-                mCtx.fillStyle = `rgba(0,0,0,${1 - mmRevealed})`;
+                mCtx.fillStyle = `rgba(40,32,24,${(1 - mmRevealed) * 0.85})`;
                 mCtx.fillRect(mmx * mmScale, mmy * mmScale, mmScale, mmScale);
               }
             }
           }
         }
-        // Room mastery tint + emojis
+
+        // Room tint with unlock color coding + progress bar per room
         const getProgressMM = getPrincipleProgressRef.current;
-        for (const room of rooms) {
+        for (let ri = 0; ri < rooms.length; ri++) {
+          const room = rooms[ri];
           const rp = roomPrinciplesMap[room.name] || [];
           const avg = rp.length > 0 ? rp.reduce((s, p) => s + (getProgressMM(p.id)?.masteryPercentage || 0), 0) / rp.length : 0;
-          if (avg > 0) {
-            const color = avg >= 100 ? 'rgba(201,136,15,0.35)' : `rgba(92,79,207,${0.1 + (avg / 100) * 0.25})`;
-            mCtx.fillStyle = color;
-            mCtx.fillRect(room.x * mmScale, room.y * mmScale, room.w * mmScale, room.h * mmScale);
+          const unlocked = !userData?.preferences?.progressiveUnlock || userData?.preferences?.progressiveUnlock === false || isRoomUnlockedRef.current(ri);
+          const rx = room.x * mmScale;
+          const ry = room.y * mmScale;
+          const rw = room.w * mmScale;
+          const rh = room.h * mmScale;
+
+          // Color coding: locked = red tint, unlocked = green/blue, mastered = gold
+          if (!unlocked) {
+            mCtx.fillStyle = 'rgba(120,40,40,0.25)';
+          } else if (avg >= 100) {
+            mCtx.fillStyle = 'rgba(201,168,15,0.35)';
+          } else if (avg > 0) {
+            mCtx.fillStyle = `rgba(92,79,207,${0.1 + (avg / 100) * 0.25})`;
+          } else {
+            mCtx.fillStyle = 'rgba(60,120,60,0.15)';
           }
+          mCtx.fillRect(rx, ry, rw, rh);
+
+          // Room emoji
           mCtx.font = '7px sans-serif';
           mCtx.textAlign = 'center';
-          mCtx.fillStyle = 'rgba(255,255,255,0.6)';
-          mCtx.fillText(room.emoji, (room.x + room.w / 2) * mmScale, (room.y + room.h / 2) * mmScale + 3);
+          mCtx.fillStyle = unlocked ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.25)';
+          mCtx.fillText(unlocked ? room.emoji : '🔒', (room.x + room.w / 2) * mmScale, (room.y + room.h / 2) * mmScale + 3);
+
+          // Progress bar below room (only for unlocked rooms with progress)
+          if (unlocked && avg > 0) {
+            const barW = rw - 2;
+            const barH = 2;
+            const barX = rx + 1;
+            const barY = ry + rh + 1;
+            // Background
+            mCtx.fillStyle = 'rgba(0,0,0,0.3)';
+            mCtx.fillRect(barX, barY, barW, barH);
+            // Fill (gradient from purple to gold)
+            const barFill = (avg / 100) * barW;
+            mCtx.fillStyle = avg >= 100 ? 'rgba(255,215,0,0.8)' : 'rgba(92,79,207,0.7)';
+            mCtx.fillRect(barX, barY, barFill, barH);
+          }
         }
-        // Player dot
+
+        // Player dot with direction indicator (triangle arrow)
         const pTX = player.x / TILE * mmScale;
         const pTY = player.y / TILE * mmScale;
+        // Direction arrow
+        const dirMag2 = Math.sqrt(player.dirX * player.dirX + player.dirY * player.dirY);
+        if (dirMag2 > 0.01) {
+          const ndx = player.dirX / dirMag2;
+          const ndy = player.dirY / dirMag2;
+          mCtx.fillStyle = 'rgba(255,255,255,0.6)';
+          mCtx.beginPath();
+          mCtx.moveTo(pTX + ndx * 6, pTY + ndy * 6);
+          mCtx.lineTo(pTX + ndy * 2.5, pTY - ndx * 2.5);
+          mCtx.lineTo(pTX - ndy * 2.5, pTY + ndx * 2.5);
+          mCtx.closePath();
+          mCtx.fill();
+        }
+        // Player circle
         mCtx.fillStyle = '#5c4fcf';
         mCtx.beginPath();
         mCtx.arc(pTX, pTY, 3, 0, Math.PI * 2);
@@ -4802,14 +4862,20 @@ const LibraryPage = () => {
         mCtx.strokeStyle = '#fff';
         mCtx.lineWidth = 1;
         mCtx.stroke();
+
         // Viewport rectangle
         const vpX = camX / TILE * mmScale;
         const vpY = camY / TILE * mmScale;
         const vpW = viewW / TILE * mmScale;
         const vpH = viewH / TILE * mmScale;
-        mCtx.strokeStyle = 'rgba(255,255,255,0.3)';
+        mCtx.strokeStyle = 'rgba(255,255,255,0.25)';
         mCtx.lineWidth = 1;
         mCtx.strokeRect(vpX, vpY, vpW, vpH);
+
+        // Parchment border decoration
+        mCtx.strokeStyle = 'rgba(180,150,100,0.3)';
+        mCtx.lineWidth = 2;
+        mCtx.strokeRect(1, 1, mmW2 - 2, mmH2 - 2);
       }
 
       // Fog of war overlay - black on unrevealed tiles, soft edge on partially revealed
@@ -5112,10 +5178,10 @@ const LibraryPage = () => {
           bottom: isMobile ? 180 : 16,
           right: isMobile ? 8 : 16,
           width: mmW, height: mmH,
-          background: 'rgba(0,0,0,0.75)', borderRadius: 8,
-          border: '1px solid rgba(255,255,255,0.2)',
+          background: 'rgba(62,50,38,0.92)', borderRadius: 6,
+          border: '2px solid rgba(180,150,100,0.4)',
           overflow: 'hidden', zIndex: 10,
-          boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.5), inset 0 0 12px rgba(0,0,0,0.3)',
           cursor: 'pointer',
         }}
       >
@@ -5366,7 +5432,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.2.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.3.0</div>
         </div>
       )}
 
@@ -5422,7 +5488,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v2.2.0</div>
+        }}>v2.3.0</div>
       )}
 
       {/* Mobile: action button */}
