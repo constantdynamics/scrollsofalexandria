@@ -53,6 +53,48 @@ const stars = Array.from({ length: NUM_STARS }, (_, i) => ({
   hue: seededRandom(i, 0, 206) > 0.7 ? 220 + seededRandom(i, 0, 207) * 40 : 40 + seededRandom(i, 0, 208) * 20,
 }));
 
+// Unlock chime sound (Web Audio API)
+function playUnlockChime() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const notes = [523.25, 659.25, 783.99]; // C5, E5, G5 (major chord)
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.12, ctx.currentTime + i * 0.12);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.12 + 0.6);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.12);
+      osc.stop(ctx.currentTime + i * 0.12 + 0.6);
+    });
+    setTimeout(() => ctx.close(), 2000);
+  } catch (e) { /* Audio not available */ }
+}
+
+// Milestone fanfare sound
+function playMilestoneFanfare() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const notes = [523.25, 587.33, 659.25, 783.99, 1046.5]; // C5 D5 E5 G5 C6
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.15, ctx.currentTime + i * 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.1 + 0.8);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.1);
+      osc.stop(ctx.currentTime + i * 0.1 + 0.8);
+    });
+    setTimeout(() => ctx.close(), 2000);
+  } catch (e) { /* Audio not available */ }
+}
+
 // Category floor symbols (Unicode geometric shapes per category type)
 const CATEGORY_FLOOR_SYMBOLS = {
   'Logica': '◇', 'Epistemologie': '◈', 'Psychologie': '◎',
@@ -191,11 +233,16 @@ function generateLibrary(categories) {
     }
   }
 
-  // --- Entrance hall below all rooms ---
-  const hallW = 12, hallH = 8;
+  // --- Central rotonde between rooms and entrance hall ---
+  const rotW = 10, rotH = 10;
   const totalWidth = cx - spacing + margin;
+  const rotX = Math.max(margin, Math.floor(totalWidth / 2) - Math.floor(rotW / 2));
+  const rotY = cy + 2;
+
+  // --- Entrance hall below rotonde ---
+  const hallW = 12, hallH = 8;
   const hallX = Math.max(margin, Math.floor(totalWidth / 2) - Math.floor(hallW / 2));
-  const hallY = cy + 2;
+  const hallY = rotY + rotH + 3;
 
   // --- Compute map dimensions ---
   let mapW = Math.max(hallX + hallW + margin + 2, totalWidth + 2);
@@ -295,6 +342,58 @@ function generateLibrary(categories) {
     });
   });
 
+  // Draw central rotonde (circular room where corridors converge)
+  fillRect(map, rotX, rotY, rotW, rotH, FLOOR);
+  addWalls(map, rotX, rotY, rotW, rotH);
+  // Make it circular: clear corners to empty, add pillars
+  for (let dy = 0; dy < rotH; dy++) {
+    for (let dx = 0; dx < rotW; dx++) {
+      const cdx = dx - rotW / 2 + 0.5;
+      const cdy = dy - rotH / 2 + 0.5;
+      if (Math.sqrt(cdx * cdx + cdy * cdy) > rotW / 2) {
+        if (rotY + dy < mapH && rotX + dx < mapW) {
+          map[rotY + dy][rotX + dx] = EMPTY;
+        }
+      }
+    }
+  }
+  // Re-add walls on the circular edge
+  for (let dy = 0; dy < rotH; dy++) {
+    for (let dx = 0; dx < rotW; dx++) {
+      const ry = rotY + dy, rx2 = rotX + dx;
+      if (ry >= mapH || rx2 >= mapW) continue;
+      if (map[ry][rx2] !== FLOOR) continue;
+      // Check if adjacent to EMPTY → wall
+      const adj = [[0, -1], [0, 1], [-1, 0], [1, 0]];
+      for (const [ax, ay] of adj) {
+        const ny = ry + ay, nx = rx2 + ax;
+        if (ny >= 0 && ny < mapH && nx >= 0 && nx < mapW && map[ny][nx] === EMPTY) {
+          map[ry][rx2] = WALL;
+          break;
+        }
+      }
+    }
+  }
+  // Carpet center
+  for (let dy = 2; dy < rotH - 2; dy++) {
+    for (let dx = 2; dx < rotW - 2; dx++) {
+      const cdx = dx - rotW / 2 + 0.5;
+      const cdy = dy - rotH / 2 + 0.5;
+      if (Math.sqrt(cdx * cdx + cdy * cdy) < rotW / 3 && map[rotY + dy][rotX + dx] === FLOOR) {
+        map[rotY + dy][rotX + dx] = CARPET;
+      }
+    }
+  }
+  // Pillars at cardinal points inside rotonde
+  const rotCX = rotX + Math.floor(rotW / 2);
+  const rotCY = rotY + Math.floor(rotH / 2);
+  for (const [pdx, pdy] of [[2, 0], [-2, 0], [0, 2], [0, -2]]) {
+    const ppx = rotCX + pdx, ppy = rotCY + pdy;
+    if (ppx > rotX && ppx < rotX + rotW - 1 && ppy > rotY && ppy < rotY + rotH - 1 && map[ppy][ppx] === FLOOR) {
+      map[ppy][ppx] = PILLAR;
+    }
+  }
+
   // Draw entrance hall
   fillRect(map, hallX, hallY, hallW, hallH, FLOOR);
   addWalls(map, hallX, hallY, hallW, hallH);
@@ -393,17 +492,41 @@ function generateLibrary(categories) {
     }
   }
 
-  // Connect last row to entrance hall
+  // Connect last row to central rotonde
   if (rows.length > 0) {
     const lastRow = rows[rows.length - 1];
     const connRoom = placed.find(p => p.origIdx === lastRow[Math.floor(lastRow.length / 2)].origIdx);
-    const roomCX = Math.floor(connRoom.x + connRoom.w / 2);
-    const hallCX = Math.floor(hallX + hallW / 2);
-    carveL(roomCX, connRoom.y + connRoom.h - 1, hallCX, hallY);
-    openDoor(roomCX, connRoom.y + connRoom.h - 1, 'bottom');
+    const roomCX2 = Math.floor(connRoom.x + connRoom.w / 2);
+    const rotCX2 = Math.floor(rotX + rotW / 2);
+    carveL(roomCX2, connRoom.y + connRoom.h - 1, rotCX2, rotY);
+    openDoor(roomCX2, connRoom.y + connRoom.h - 1, 'bottom');
+    // Open rotonde top wall
+    for (let d = -halfC; d <= halfC; d++) {
+      const px = rotCX2 + d;
+      if (px >= 0 && px < mapW && (map[rotY][px] === WALL || map[rotY + 1]?.[px] === WALL)) {
+        if (map[rotY][px] === WALL) map[rotY][px] = DOOR;
+        if (map[rotY + 1]?.[px] === WALL) map[rotY + 1][px] = DOOR;
+      }
+    }
+  }
+
+  // Connect rotonde to entrance hall
+  {
+    const rotBotCX = Math.floor(rotX + rotW / 2);
+    const hallTopCX = Math.floor(hallX + hallW / 2);
+    carveL(rotBotCX, rotY + rotH - 1, hallTopCX, hallY);
+    // Open rotonde bottom
+    for (let d = -halfC; d <= halfC; d++) {
+      const px = rotBotCX + d;
+      if (px >= 0 && px < mapW) {
+        for (let ry = rotY + rotH - 2; ry <= rotY + rotH; ry++) {
+          if (ry >= 0 && ry < mapH && map[ry][px] === WALL) map[ry][px] = DOOR;
+        }
+      }
+    }
     // Open hall top wall
     for (let d = -halfC; d <= halfC; d++) {
-      const px = hallCX + d;
+      const px = hallTopCX + d;
       if (px >= 0 && px < mapW && map[hallY][px] === WALL) map[hallY][px] = DOOR;
     }
   }
@@ -438,7 +561,7 @@ function generateLibrary(categories) {
   const fountainX = hallX + Math.floor(hallW / 2);
   const fountainY = hallY + Math.floor(hallH / 2);
 
-  return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY };
+  return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY, rotX, rotY, rotW, rotH };
 }
 
 function fillRect(map, x, y, w, h, tile) {
@@ -533,6 +656,10 @@ const LibraryPage = () => {
   const owlRef = useRef(null); // { x, y, blinkPhase, headAngle }
   const corridorFogRef = useRef([]); // { x, y, size, alpha, speed }
   const torchSmokeRef = useRef([]); // { x, y, vx, vy, age, maxAge, size }
+  const floatingPointsRef = useRef([]); // { x, y, text, age }
+  const lastUnlockedCountRef = useRef(0); // Track unlock count for sound trigger
+  const lastMilestoneRef = useRef(0); // Last celebrated milestone %
+  const milestoneParticlesRef = useRef([]); // { x, y, vx, vy, life, maxLife, size, hue }
   const fogOfWarRef = useRef(null); // 2D boolean array: true = revealed
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
@@ -569,7 +696,7 @@ const LibraryPage = () => {
   }, [categories]);
 
   const library = useMemo(() => generateLibrary(categories), [categories]);
-  const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY } = library;
+  const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY, rotX, rotY, rotW, rotH } = library;
 
   // Progressive unlock chain: room N unlocks when ≥50% of room N-1 principles are read.
   // Follows the walking path (bottom-up through the library).
@@ -586,7 +713,7 @@ const LibraryPage = () => {
   }, [userData?.preferences?.progressiveUnlock, rooms, roomPrinciplesMap, getPrincipleProgress]);
   isRoomUnlockedRef.current = isRoomUnlocked;
 
-  const SAVE_VERSION = 4; // Bumped: chain-ordered rooms, bottom-up walking path
+  const SAVE_VERSION = 5; // Bumped: added central rotonde
 
   // Save game state to localStorage
   const saveGameState = useCallback(() => {
@@ -992,6 +1119,64 @@ const LibraryPage = () => {
       // Auto-save every 10 seconds
       if (Math.floor(time) % 10 === 0 && Math.floor(time) !== Math.floor(time - dt)) {
         saveGameState();
+      }
+
+      // Check for new room unlocks → play chime
+      if (userData?.preferences?.progressiveUnlock !== false) {
+        let unlockedCount = 0;
+        for (let ri = 0; ri < rooms.length; ri++) {
+          if (isRoomUnlockedRef.current(ri)) unlockedCount++;
+        }
+        if (unlockedCount > lastUnlockedCountRef.current && lastUnlockedCountRef.current > 0) {
+          playUnlockChime();
+          setToastMessage({ text: `Nieuwe kamer ontgrendeld!`, emoji: '🔓' });
+          if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+          toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
+        }
+        lastUnlockedCountRef.current = unlockedCount;
+      }
+
+      // Milestone celebrations (25%, 50%, 75%, 100%)
+      const allP2 = allPrinciples || [];
+      const totalReadCount = allP2.filter(p => getPrincipleProgressRef.current(p.id)?.activities?.read).length;
+      const readPct = allP2.length > 0 ? Math.floor((totalReadCount / allP2.length) * 100) : 0;
+      const milestones = [25, 50, 75, 100];
+      for (const ms of milestones) {
+        if (readPct >= ms && lastMilestoneRef.current < ms) {
+          lastMilestoneRef.current = ms;
+          playMilestoneFanfare();
+          setToastMessage({ text: `Mijlpaal: ${ms}% van alle scrolls gelezen!`, emoji: '🏆' });
+          if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+          toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 4000);
+          // Spawn milestone particles around player
+          for (let mi = 0; mi < 50; mi++) {
+            const angle = Math.random() * Math.PI * 2;
+            const spd = 2 + Math.random() * 5;
+            milestoneParticlesRef.current.push({
+              x: player.x, y: player.y,
+              vx: Math.cos(angle) * spd, vy: Math.sin(angle) * spd - 2,
+              life: 0, maxLife: 1.5 + Math.random() * 1.5,
+              size: 2 + Math.random() * 4, hue: ms === 100 ? 42 : 270 + Math.random() * 60,
+            });
+          }
+        }
+      }
+
+      // Update floating points
+      for (let i = floatingPointsRef.current.length - 1; i >= 0; i--) {
+        floatingPointsRef.current[i].age += dt;
+        floatingPointsRef.current[i].y -= 30 * dt;
+        if (floatingPointsRef.current[i].age > 1.5) floatingPointsRef.current.splice(i, 1);
+      }
+
+      // Update milestone particles
+      for (let i = milestoneParticlesRef.current.length - 1; i >= 0; i--) {
+        const mp = milestoneParticlesRef.current[i];
+        mp.life += dt;
+        mp.x += mp.vx * dt * 60;
+        mp.y += mp.vy * dt * 60;
+        mp.vy += 0.05;
+        if (mp.life > mp.maxLife) milestoneParticlesRef.current.splice(i, 1);
       }
 
       // Update footprints
@@ -2312,6 +2497,35 @@ const LibraryPage = () => {
             ctx.arc(cx, cy, 4, 0, Math.PI * 2);
             ctx.fill();
           }
+        }
+      }
+
+      // Mastery badge on doors of 100% completed rooms
+      for (const room of rooms) {
+        const mbRP = roomPrinciplesMap[room.name] || [];
+        if (mbRP.length === 0) continue;
+        const mbAvg = mbRP.reduce((s, p) => s + (getPrincipleProgressRef.current(p.id)?.masteryPercentage || 0), 0) / mbRP.length;
+        if (mbAvg < 100) continue;
+        // Draw star badge at room entrance (bottom center of room)
+        const badgeX = room.centerX - camX;
+        const badgeY = (room.y + room.h - 1) * TILE + TILE / 2 - camY;
+        if (badgeX > -40 && badgeX < viewW + 40 && badgeY > -40 && badgeY < viewH + 40) {
+          const bPulse = 0.7 + Math.sin(time * 2) * 0.3;
+          // Star shape
+          ctx.save();
+          ctx.translate(badgeX, badgeY);
+          ctx.rotate(time * 0.3);
+          ctx.fillStyle = `rgba(255,215,0,${bPulse * 0.8})`;
+          ctx.beginPath();
+          for (let sp = 0; sp < 5; sp++) {
+            const outerAngle = (sp / 5) * Math.PI * 2 - Math.PI / 2;
+            const innerAngle = outerAngle + Math.PI / 5;
+            ctx.lineTo(Math.cos(outerAngle) * 8, Math.sin(outerAngle) * 8);
+            ctx.lineTo(Math.cos(innerAngle) * 4, Math.sin(innerAngle) * 4);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
         }
       }
 
@@ -4438,6 +4652,8 @@ const LibraryPage = () => {
             discoveredRoomsRef.current.add(nearRoom.name);
             setToastMessage({ text: `Nieuwe kamer ontdekt: ${nearRoom.name}`, emoji: nearRoom.emoji });
             emotionRef.current = { emoji: '✨', age: 0 };
+            // Floating points on discovery
+            floatingPointsRef.current.push({ x: player.x, y: player.y - 20, text: '+10 pts', age: 0 });
             if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
             toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
           }
@@ -4487,6 +4703,43 @@ const LibraryPage = () => {
         ctx.fill();
         ctx.fillStyle = '#fff';
         ctx.fillText(text, px, promptY + 2);
+      }
+
+      // Floating points text
+      for (const fp of floatingPointsRef.current) {
+        const fpx = fp.x - camX;
+        const fpy = fp.y - camY;
+        if (fpx > -100 && fpx < viewW + 100 && fpy > -100 && fpy < viewH + 100) {
+          const fpAlpha = Math.max(0, 1 - fp.age / 1.5);
+          ctx.font = '700 14px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = `rgba(255,215,0,${fpAlpha})`;
+          ctx.fillText(fp.text, fpx, fpy);
+        }
+      }
+
+      // Milestone celebration particles
+      for (const mp of milestoneParticlesRef.current) {
+        const mpx = mp.x - camX;
+        const mpy = mp.y - camY;
+        if (mpx > -20 && mpx < viewW + 20 && mpy > -20 && mpy < viewH + 20) {
+          const t = 1 - mp.life / mp.maxLife;
+          ctx.save();
+          ctx.translate(mpx, mpy);
+          ctx.rotate(mp.life * 4);
+          ctx.fillStyle = `hsla(${mp.hue}, 80%, 60%, ${t * 0.9})`;
+          ctx.beginPath();
+          // 5-point star
+          for (let sp = 0; sp < 5; sp++) {
+            const outerA = (sp / 5) * Math.PI * 2 - Math.PI / 2;
+            const innerA = outerA + Math.PI / 5;
+            ctx.lineTo(Math.cos(outerA) * mp.size, Math.sin(outerA) * mp.size);
+            ctx.lineTo(Math.cos(innerA) * mp.size * 0.4, Math.sin(innerA) * mp.size * 0.4);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        }
       }
 
       // Ambient dust particles
@@ -5113,7 +5366,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.1.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.2.0</div>
         </div>
       )}
 
@@ -5169,7 +5422,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v2.1.0</div>
+        }}>v2.2.0</div>
       )}
 
       {/* Mobile: action button */}
