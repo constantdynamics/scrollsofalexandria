@@ -2738,16 +2738,37 @@ const LibraryPage = () => {
             ctx.stroke();
           }
 
-          // Golden dust motes floating in light beams
-          for (let gd = 0; gd < 2; gd++) {
-            const gdPhase = time * 0.4 + gd * 1.5 + room.x * 0.3;
-            const gdx = room.centerX + Math.sin(gdPhase) * TILE * 2 - camX;
-            const gdy = room.centerY + Math.cos(gdPhase * 0.7) * TILE * 1.5 - camY;
-            const gdAlpha = 0.08 + Math.sin(gdPhase * 2) * 0.04;
-            ctx.fillStyle = `rgba(255,220,120,${gdAlpha})`;
-            ctx.beginPath();
-            ctx.arc(gdx, gdy, 1 + Math.sin(gdPhase * 3) * 0.5, 0, Math.PI * 2);
-            ctx.fill();
+          // Golden dust on floor of unlocked rooms
+          const gdRoomIdx = rooms.indexOf(room);
+          if (isRoomUnlockedRef.current && isRoomUnlockedRef.current(gdRoomIdx)) {
+            // Floor shimmer particles — scattered gold specks drifting slowly
+            const gdCount = Math.min(6, Math.max(3, Math.floor(room.w * room.h / 12)));
+            for (let gd = 0; gd < gdCount; gd++) {
+              const gdSeed = room.x * 31 + room.y * 17 + gd * 7;
+              const gdPhase = time * 0.25 + gd * 2.1 + gdSeed * 0.13;
+              // Scatter across floor area within room bounds
+              const gdFracX = (Math.sin(gdSeed * 1.3) * 0.5 + 0.5) * 0.7 + 0.15;
+              const gdFracY = (Math.cos(gdSeed * 0.9) * 0.5 + 0.5) * 0.6 + 0.25;
+              const gdx = (room.x + gdFracX * room.w) * TILE + Math.sin(gdPhase) * 4 - camX;
+              const gdy = (room.y + gdFracY * room.h) * TILE + Math.cos(gdPhase * 0.6) * 3 - camY;
+              // Twinkle: fade in and out gently
+              const twinkle = Math.sin(gdPhase * 1.8) * 0.5 + 0.5;
+              const gdAlpha = 0.04 + twinkle * 0.10;
+              const gdSize = 0.8 + twinkle * 1.0;
+              ctx.fillStyle = `rgba(255,210,80,${gdAlpha})`;
+              ctx.beginPath();
+              ctx.arc(gdx, gdy, gdSize, 0, Math.PI * 2);
+              ctx.fill();
+            }
+            // Subtle warm glow on room floor
+            const glowX = room.centerX - camX;
+            const glowY = room.centerY - camY;
+            const floorGlow = ctx.createRadialGradient(glowX, glowY, 0, glowX, glowY, Math.max(room.w, room.h) * TILE * 0.4);
+            const fgAlpha = 0.012 + Math.sin(time * 0.5 + room.x) * 0.004;
+            floorGlow.addColorStop(0, `rgba(255,200,60,${fgAlpha})`);
+            floorGlow.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = floorGlow;
+            ctx.fillRect(room.x * TILE - camX, room.y * TILE - camY, room.w * TILE, room.h * TILE);
           }
         }
       }
@@ -5881,7 +5902,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.6.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.6.1</div>
         </div>
       )}
 
@@ -5937,7 +5958,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v2.6.0</div>
+        }}>v2.6.1</div>
       )}
 
       {/* Mobile: action button */}
