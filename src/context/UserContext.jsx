@@ -37,6 +37,14 @@ export const UserProvider = ({ children }) => {
     }));
   };
 
+  // Generic update: merge partial data into userData
+  const updateUserField = (key, value) => {
+    setUserData(prev => ({
+      ...prev,
+      [key]: typeof value === 'function' ? value(prev[key]) : value
+    }));
+  };
+
   const getPrincipleProgress = (principleId) => {
     return userData?.principleProgress[principleId] || {
       masteryPercentage: 0,
@@ -215,6 +223,7 @@ export const UserProvider = ({ children }) => {
     userData,
     loading,
     updatePreference,
+    updateUserField,
     getPrincipleProgress,
     markPrincipleAsRead,
     trackLearningStyleChoice,

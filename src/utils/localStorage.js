@@ -22,7 +22,11 @@ const defaultUserData = {
     currentStreak: 0,
     longestStreak: 0,
     lastActiveDate: null
-  }
+  },
+  bookmarks: [], // Array of principle IDs bookmarked for quick navigation
+  libraryStamps: {}, // { [roomName]: timestamp } — collected stamps per room
+  dailyMissions: { date: null, missions: [], completed: [] }, // Daily missions system
+  characterLevel: { level: 1, title: 'Novice', xp: 0 }, // Character progression
 };
 
 function generateUserId() {
@@ -40,7 +44,11 @@ export const loadUserData = () => {
         ...data,
         preferences: { ...defaultUserData.preferences, ...(data.preferences || {}) },
         streak: { ...defaultUserData.streak, ...(data.streak || {}) },
-        principleStatuses: data.principleStatuses || {}
+        principleStatuses: data.principleStatuses || {},
+        bookmarks: data.bookmarks || [],
+        libraryStamps: data.libraryStamps || {},
+        dailyMissions: data.dailyMissions || defaultUserData.dailyMissions,
+        characterLevel: data.characterLevel || defaultUserData.characterLevel,
       };
     }
     return { ...defaultUserData };

@@ -607,7 +607,7 @@ function isWalkable(map, px, py, mapW, mapH) {
 // ── Component ──
 const LibraryPage = () => {
   const navigate = useNavigate();
-  const { userData, getPrincipleProgress, updatePreference } = useUser();
+  const { userData, getPrincipleProgress, updatePreference, updateUserField } = useUser();
   const canvasRef = useRef(null);
   const keysRef = useRef(new Set());
   const playerRef = useRef({ x: 0, y: 0, dirX: 0, dirY: 1, bobTime: 0, moving: false });
@@ -668,6 +668,7 @@ const LibraryPage = () => {
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
   const [showMinimap, setShowMinimap] = useState(true);
   const [showSearch, setShowSearch] = useState(false);
+  const [showStatsPanel, setShowStatsPanel] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showStats, setShowStats] = useState(false);
   const searchInputRef = useRef(null);
@@ -4654,6 +4655,10 @@ const LibraryPage = () => {
             emotionRef.current = { emoji: '✨', age: 0 };
             // Floating points on discovery
             floatingPointsRef.current.push({ x: player.x, y: player.y - 20, text: '+10 pts', age: 0 });
+            // Collect library stamp for this room
+            if (updateUserField && !userData?.libraryStamps?.[nearRoom.name]) {
+              updateUserField('libraryStamps', prev => ({ ...prev, [nearRoom.name]: Date.now() }));
+            }
             if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
             toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
           }
@@ -5347,6 +5352,19 @@ const LibraryPage = () => {
                   }}>
                     {diffLabels[p.difficulty] || '?'}
                   </span>
+                  <span
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const bm = userData?.bookmarks || [];
+                      const newBm = bm.includes(p.id) ? bm.filter(b => b !== p.id) : [...bm, p.id];
+                      updateUserField('bookmarks', newBm);
+                    }}
+                    style={{
+                      fontSize: '1.1rem', cursor: 'pointer', flexShrink: 0,
+                      opacity: (userData?.bookmarks || []).includes(p.id) ? 1 : 0.3,
+                    }}
+                    title={((userData?.bookmarks || []).includes(p.id)) ? 'Verwijder bladwijzer' : 'Bladwijzer toevoegen'}
+                  >🔖</span>
                 </button>
               );
             })}
@@ -5356,6 +5374,181 @@ const LibraryPage = () => {
               </p>
             )}
           </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Character level calculation
+  const characterLevel = useMemo(() => {
+    const totalRead = allPrinciples.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+    const xp = totalRead * 10 + (userData?.points || 0);
+    const levels = [
+      { level: 1, title: 'Novice', minXP: 0 },
+      { level: 2, title: 'Leerling', minXP: 100 },
+      { level: 3, title: 'Student', minXP: 300 },
+      { level: 4, title: 'Geleerde', minXP: 600 },
+      { level: 5, title: 'Scholar', minXP: 1000 },
+      { level: 6, title: 'Meester', minXP: 1500 },
+      { level: 7, title: 'Wijze', minXP: 2500 },
+      { level: 8, title: 'Sage', minXP: 4000 },
+      { level: 9, title: 'Orakel', minXP: 6000 },
+      { level: 10, title: 'Filosoof', minXP: 10000 },
+    ];
+    let current = levels[0];
+    let next = levels[1];
+    for (let i = levels.length - 1; i >= 0; i--) {
+      if (xp >= levels[i].minXP) {
+        current = levels[i];
+        next = levels[i + 1] || null;
+        break;
+      }
+    }
+    return { ...current, xp, nextXP: next?.minXP || current.minXP };
+  }, [userData?.points, allPrinciples, getPrincipleProgress]);
+
+  // Daily missions
+  const dailyMissions = useMemo(() => {
+    const today = new Date().toDateString();
+    const saved = userData?.dailyMissions;
+    if (saved?.date === today) return saved;
+    // Generate new missions for today
+    const seed = today.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+    const missionPool = [
+      { type: 'read', count: 2, text: 'Lees 2 nieuwe scrolls', emoji: '📜' },
+      { type: 'read', count: 3, text: 'Lees 3 nieuwe scrolls', emoji: '📜' },
+      { type: 'rooms', count: 2, text: 'Bezoek 2 kamers', emoji: '🚪' },
+      { type: 'rooms', count: 3, text: 'Bezoek 3 kamers', emoji: '🚪' },
+      { type: 'category', cat: categories[seed % categories.length], text: `Lees een scroll uit ${categories[seed % categories.length]}`, emoji: '📖' },
+    ];
+    const selected = [missionPool[seed % missionPool.length], missionPool[(seed * 3 + 7) % missionPool.length]];
+    const newMissions = { date: today, missions: selected, completed: [] };
+    if (updateUserField) updateUserField('dailyMissions', newMissions);
+    return newMissions;
+  }, [userData?.dailyMissions, categories, updateUserField]);
+
+  // Render stats panel (character level, stamps, missions, rankings)
+  const renderStatsPanel = () => {
+    if (!showStatsPanel) return null;
+    const stamps = userData?.libraryStamps || {};
+    const stampCount = Object.keys(stamps).length;
+    const totalRooms = rooms.length;
+    const totalRead = allPrinciples.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+    const totalPrinciples = allPrinciples.length;
+    const discoveredPct = totalRooms > 0 ? Math.round((stampCount / totalRooms) * 100) : 0;
+    const readPct = totalPrinciples > 0 ? Math.round((totalRead / totalPrinciples) * 100) : 0;
+
+    const panelStyle = {
+      position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50,
+      animation: 'fadeIn 0.2s ease-out',
+    };
+    const cardStyle = {
+      background: 'var(--color-surface, #fffef9)', borderRadius: 16, padding: 24,
+      maxWidth: 480, width: '90%', maxHeight: '80vh', overflow: 'auto',
+      boxShadow: '0 20px 60px rgba(0,0,0,0.3)', border: '1px solid var(--color-border, #e5d9c8)',
+      animation: 'slideUp 0.25s ease-out',
+    };
+    const sectionStyle = { marginBottom: 20 };
+    const headingStyle = { fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.1rem', marginBottom: 8, color: 'var(--color-text, #1c1510)' };
+
+    return (
+      <div style={panelStyle} onClick={() => setShowStatsPanel(false)}>
+        <div onClick={e => e.stopPropagation()} style={cardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.5rem', color: 'var(--color-text)' }}>
+              📊 Bibliotheek Statistieken
+            </h2>
+            <button onClick={() => setShowStatsPanel(false)} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'var(--color-text-muted)' }}>✕</button>
+          </div>
+
+          {/* Character Level */}
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>🎓 Niveau: {characterLevel.title} (Lvl {characterLevel.level})</h3>
+            <div style={{ height: 8, borderRadius: 4, background: 'var(--color-bg-alt, #f1e9dc)', overflow: 'hidden', marginBottom: 4 }}>
+              <div style={{
+                height: '100%', borderRadius: 4,
+                width: `${characterLevel.nextXP > characterLevel.xp ? ((characterLevel.xp - (characterLevel.minXP || 0)) / (characterLevel.nextXP - (characterLevel.minXP || 0))) * 100 : 100}%`,
+                background: 'linear-gradient(90deg, #5c4fcf, #c9880f)',
+              }} />
+            </div>
+            <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{characterLevel.xp} XP {characterLevel.nextXP > characterLevel.xp ? `/ ${characterLevel.nextXP} XP` : '(max!)'}</p>
+          </div>
+
+          {/* Library Rankings */}
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>📈 Voortgang</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              <div style={{ padding: 12, borderRadius: 8, background: 'var(--color-bg-alt)', textAlign: 'center' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text)' }}>{discoveredPct}%</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Ontdekt ({stampCount}/{totalRooms})</div>
+              </div>
+              <div style={{ padding: 12, borderRadius: 8, background: 'var(--color-bg-alt)', textAlign: 'center' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text)' }}>{readPct}%</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Gelezen ({totalRead}/{totalPrinciples})</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Daily Missions */}
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>🎯 Dagelijkse Missies</h3>
+            {(dailyMissions?.missions || []).map((m, i) => (
+              <div key={i} style={{
+                padding: '8px 12px', borderRadius: 8, marginBottom: 4,
+                background: (dailyMissions?.completed || []).includes(i) ? 'rgba(5,150,105,0.1)' : 'var(--color-bg-alt)',
+                border: `1px solid ${(dailyMissions?.completed || []).includes(i) ? 'rgba(5,150,105,0.3)' : 'var(--color-border)'}`,
+                display: 'flex', alignItems: 'center', gap: 8,
+              }}>
+                <span style={{ fontSize: '1.1rem' }}>{(dailyMissions?.completed || []).includes(i) ? '✅' : m.emoji}</span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--color-text)' }}>{m.text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Stamp Passport */}
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>📕 Stempelboek ({stampCount}/{totalRooms})</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {rooms.map(room => {
+                const hasStamp = !!stamps[room.name];
+                return (
+                  <div key={room.name} title={room.name} style={{
+                    width: 32, height: 32, borderRadius: 6,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: hasStamp ? 'var(--color-primary-50, #edeafc)' : 'var(--color-bg-alt)',
+                    border: `1px solid ${hasStamp ? 'var(--color-primary-100)' : 'var(--color-border)'}`,
+                    fontSize: hasStamp ? '1rem' : '0.8rem',
+                    opacity: hasStamp ? 1 : 0.4,
+                  }}>
+                    {hasStamp ? room.emoji : '?'}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Bookmarks */}
+          {(userData?.bookmarks || []).length > 0 && (
+            <div style={sectionStyle}>
+              <h3 style={headingStyle}>🔖 Bladwijzers</h3>
+              {(userData?.bookmarks || []).map(bid => {
+                const bp = allPrinciples.find(p => p.id === bid);
+                if (!bp) return null;
+                return (
+                  <button key={bid} onClick={() => { setShowStatsPanel(false); navigate(`/principle/${bid}`); }}
+                    style={{
+                      display: 'block', width: '100%', textAlign: 'left', padding: '8px 12px',
+                      borderRadius: 8, marginBottom: 4, cursor: 'pointer',
+                      background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)',
+                      fontSize: '0.85rem', color: 'var(--color-text)',
+                    }}>
+                    {bp.emoji} {bp.title}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     );
@@ -5432,7 +5625,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.3.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.4.0</div>
         </div>
       )}
 
@@ -5488,7 +5681,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v2.3.0</div>
+        }}>v2.4.0</div>
       )}
 
       {/* Mobile: action button */}
@@ -5531,6 +5724,19 @@ const LibraryPage = () => {
           {showMinimap ? '🗺️' : '🗺️'}
         </button>
       )}
+
+      {/* Stats button */}
+      <button
+        onClick={() => setShowStatsPanel(true)}
+        style={{
+          position: 'absolute', top: 56, left: 16,
+          width: 40, height: 40, borderRadius: 10, border: 'none',
+          background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)',
+          color: '#fff', fontSize: '1.1rem',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: 'pointer', zIndex: 20,
+        }}
+      >📊</button>
 
       {/* Back button */}
       <button
@@ -5606,6 +5812,7 @@ const LibraryPage = () => {
 
       {renderMinimap()}
       {renderBookPanel()}
+      {renderStatsPanel()}
 
       {/* Stats overlay */}
       {showStats && (
