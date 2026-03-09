@@ -27,6 +27,8 @@ const defaultUserData = {
   libraryStamps: {}, // { [roomName]: timestamp } — collected stamps per room
   dailyMissions: { date: null, missions: [], completed: [] }, // Daily missions system
   characterLevel: { level: 1, title: 'Novice', xp: 0 }, // Character progression
+  annotations: {}, // { [principleId]: string } — user notes per principle
+  timeCapsules: [], // [{ principleId, note, createdAt, revealAt }] — future reminders
 };
 
 function generateUserId() {
@@ -49,6 +51,8 @@ export const loadUserData = () => {
         libraryStamps: data.libraryStamps || {},
         dailyMissions: data.dailyMissions || defaultUserData.dailyMissions,
         characterLevel: data.characterLevel || defaultUserData.characterLevel,
+        annotations: data.annotations || {},
+        timeCapsules: data.timeCapsules || [],
       };
     }
     return { ...defaultUserData };

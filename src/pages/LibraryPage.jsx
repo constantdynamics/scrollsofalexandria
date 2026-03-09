@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { allPrinciples, getCategories, getCategoryChainOrder, getPrinciplesByCategory } from '../data/principles';
@@ -669,6 +669,10 @@ const LibraryPage = () => {
   const [showMinimap, setShowMinimap] = useState(true);
   const [showSearch, setShowSearch] = useState(false);
   const [showStatsPanel, setShowStatsPanel] = useState(false);
+  const [flashcardMode, setFlashcardMode] = useState(false);
+  const [flashcardIdx, setFlashcardIdx] = useState(0);
+  const [flashcardFlipped, setFlashcardFlipped] = useState(false);
+  const [showAnnotation, setShowAnnotation] = useState(null); // principleId or null
   const [searchQuery, setSearchQuery] = useState('');
   const [showStats, setShowStats] = useState(false);
   const searchInputRef = useRef(null);
@@ -4576,16 +4580,35 @@ const LibraryPage = () => {
         ctx.fillText(npcTheme.accessory, npcSX + 12, npcSY - 8 + npcBob + Math.sin(time * 1.5 + room.x) * 2);
         ctx.globalAlpha = 1;
 
-        // Speech bubble when player is close
+        // Speech bubble when player is close — NPC remembers visits
         if (npcDist < TILE * 3) {
           const roomPrinciples = roomPrinciplesMap[room.name] || [];
           const unreadPrinciples = roomPrinciples.filter(p => !getPrincipleProgressRef.current(p.id)?.activities?.read);
+          const readCount = roomPrinciples.length - unreadPrinciples.length;
+          const visitCount = Object.keys(userData?.libraryStamps || {}).length;
           let speechText;
-          if (unreadPrinciples.length > 0) {
+          if (roomPrinciples.length > 0 && unreadPrinciples.length === 0) {
+            // NPC-dank: all scrolls read — special gratitude messages
+            const thankMessages = [
+              'Dank je! Je hebt al mijn wijsheid tot je genomen! 🌟',
+              'Een ware geleerde! Alle scrolls voltooid! ✨',
+              'Meester, u kent dit domein door en door! 🏆',
+              `${room.name} heeft geen geheimen meer voor je!`,
+            ];
+            speechText = thankMessages[Math.floor(seededRandom(room.x, room.y, 700) * thankMessages.length)];
+          } else if (unreadPrinciples.length > 0 && readCount > 0) {
+            // Returning visitor with partial progress
+            const returnMessages = [
+              `Welkom terug! Nog ${unreadPrinciples.length} scrolls te gaan.`,
+              `Goed je weer te zien! Probeer "${unreadPrinciples[0].title}".`,
+              `Je bent al goed op weg — ${readCount}/${roomPrinciples.length} gelezen!`,
+            ];
+            speechText = returnMessages[Math.floor(seededRandom(room.x, room.y, 600 + Math.floor(time / 15)) * returnMessages.length)];
+          } else if (unreadPrinciples.length > 0) {
             const suggest = unreadPrinciples[Math.floor(seededRandom(room.x, room.y, 600 + Math.floor(time / 10)) * unreadPrinciples.length)];
-            speechText = `Lees "${suggest.title}"!`;
-          } else if (roomPrinciples.length > 0) {
-            speechText = 'Je hebt alles gelezen! ⭐';
+            speechText = visitCount > 3
+              ? `Ervaren reiziger! Lees "${suggest.title}".`
+              : `Lees "${suggest.title}"!`;
           } else {
             speechText = `Welkom in ${room.name}!`;
           }
@@ -5277,7 +5300,80 @@ const LibraryPage = () => {
             );
           })()}
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {/* Action buttons: Flashcard mode + Time capsule reveal */}
+          <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+            <button
+              onClick={() => { setFlashcardMode(!flashcardMode); setFlashcardIdx(0); setFlashcardFlipped(false); }}
+              style={{
+                flex: 1, padding: '8px 12px', borderRadius: 8, cursor: 'pointer',
+                background: flashcardMode ? 'var(--color-primary-50)' : 'var(--color-bg-alt)',
+                border: `1px solid ${flashcardMode ? 'var(--color-primary-100)' : 'var(--color-border)'}`,
+                fontSize: '0.85rem', color: 'var(--color-text)',
+              }}
+            >🃏 {flashcardMode ? 'Lijst' : 'Flashcards'}</button>
+            {(userData?.timeCapsules || []).filter(tc => new Date(tc.revealAt) <= new Date()).length > 0 && (
+              <button
+                onClick={() => {
+                  const revealed = (userData?.timeCapsules || []).filter(tc => new Date(tc.revealAt) <= new Date());
+                  if (revealed.length > 0) {
+                    const tc = revealed[0];
+                    const p = allPrinciples.find(pr => pr.id === tc.principleId);
+                    setToastMessage({ text: `Tijdcapsule: "${p?.title || tc.principleId}" — ${tc.note}`, emoji: '💌' });
+                    if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+                    toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 5000);
+                    // Remove revealed capsule
+                    updateUserField('timeCapsules', prev => (prev || []).filter(c => c !== tc));
+                  }
+                }}
+                style={{
+                  padding: '8px 12px', borderRadius: 8, cursor: 'pointer',
+                  background: 'rgba(255,215,0,0.15)', border: '1px solid rgba(255,215,0,0.3)',
+                  fontSize: '0.85rem', color: 'var(--color-text)',
+                }}
+              >💌 Tijdcapsule!</button>
+            )}
+          </div>
+
+          {/* Flashcard mode */}
+          {flashcardMode && principles.length > 0 ? (() => {
+            const p = principles[flashcardIdx % principles.length];
+            return (
+              <div style={{ marginBottom: 12 }}>
+                <div
+                  onClick={() => setFlashcardFlipped(!flashcardFlipped)}
+                  style={{
+                    padding: 24, borderRadius: 12, cursor: 'pointer', textAlign: 'center', minHeight: 120,
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    background: flashcardFlipped ? 'var(--color-primary-50)' : 'var(--color-bg-alt)',
+                    border: `2px solid ${flashcardFlipped ? 'var(--color-primary-100)' : 'var(--color-border)'}`,
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  {!flashcardFlipped ? (
+                    <>
+                      <div style={{ fontSize: '2rem', marginBottom: 8 }}>{p.emoji}</div>
+                      <div style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-text)' }}>{p.title}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: 4 }}>Tik om definitie te zien</div>
+                    </>
+                  ) : (
+                    <div style={{ fontSize: '0.9rem', color: 'var(--color-text)', lineHeight: 1.5 }}>
+                      {p.definition}
+                    </div>
+                  )}
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
+                  <button onClick={() => { setFlashcardIdx(Math.max(0, flashcardIdx - 1)); setFlashcardFlipped(false); }}
+                    style={{ padding: '6px 16px', borderRadius: 6, border: '1px solid var(--color-border)', background: 'var(--color-bg-alt)', cursor: 'pointer', color: 'var(--color-text)' }}>← Vorige</button>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', alignSelf: 'center' }}>{(flashcardIdx % principles.length) + 1} / {principles.length}</span>
+                  <button onClick={() => { setFlashcardIdx(flashcardIdx + 1); setFlashcardFlipped(false); }}
+                    style={{ padding: '6px 16px', borderRadius: 6, border: '1px solid var(--color-border)', background: 'var(--color-bg-alt)', cursor: 'pointer', color: 'var(--color-text)' }}>Volgende →</button>
+                </div>
+              </div>
+            );
+          })() : null}
+
+          {/* Principle list (hidden during flashcard mode) */}
+          {!flashcardMode && <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {principles.map(p => {
               const progress = getPrincipleProgress(p.id);
               const mastery = progress?.masteryPercentage || 0;
@@ -5285,8 +5381,8 @@ const LibraryPage = () => {
               const diffLabels = { 1: 'Basis', 2: 'Gemiddeld', 3: 'Gevorderd' };
 
               return (
+                <React.Fragment key={p.id}>
                 <button
-                  key={p.id}
                   onClick={() => {
                     sessionStorage.setItem('libraryPlayerPos', JSON.stringify({ x: playerRef.current.x, y: playerRef.current.y }));
                     saveGameState();
@@ -5365,7 +5461,47 @@ const LibraryPage = () => {
                     }}
                     title={((userData?.bookmarks || []).includes(p.id)) ? 'Verwijder bladwijzer' : 'Bladwijzer toevoegen'}
                   >🔖</span>
+                  <span
+                    onClick={(e) => { e.stopPropagation(); setShowAnnotation(showAnnotation === p.id ? null : p.id); }}
+                    style={{ fontSize: '1rem', cursor: 'pointer', flexShrink: 0, opacity: (userData?.annotations?.[p.id]) ? 1 : 0.3 }}
+                    title="Notitie"
+                  >📝</span>
                 </button>
+                {/* Annotation & time capsule expand */}
+                {showAnnotation === p.id && (
+                  <div style={{ padding: '8px 12px', background: 'var(--color-bg-alt)', borderRadius: 8, marginTop: -4, marginBottom: 4, border: '1px solid var(--color-border)' }}>
+                    <textarea
+                      placeholder="Schrijf je eigen notitie..."
+                      value={userData?.annotations?.[p.id] || ''}
+                      onChange={(e) => updateUserField('annotations', prev => ({ ...prev, [p.id]: e.target.value }))}
+                      onClick={(e) => e.stopPropagation()}
+                      style={{
+                        width: '100%', minHeight: 60, padding: 8, borderRadius: 6,
+                        border: '1px solid var(--color-border)', resize: 'vertical',
+                        fontFamily: 'Inter, sans-serif', fontSize: '0.85rem',
+                        background: 'var(--color-surface)', color: 'var(--color-text)',
+                      }}
+                    />
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const note = userData?.annotations?.[p.id] || '';
+                        if (!note.trim()) return;
+                        const revealAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(); // 1 week later
+                        updateUserField('timeCapsules', prev => [...(prev || []), { principleId: p.id, note, createdAt: new Date().toISOString(), revealAt }]);
+                        setToastMessage({ text: `Tijdcapsule bewaard! Verschijnt over 7 dagen.`, emoji: '💌' });
+                        if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+                        toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
+                      }}
+                      style={{
+                        marginTop: 4, padding: '4px 10px', borderRadius: 6, cursor: 'pointer',
+                        border: '1px solid var(--color-border)', background: 'var(--color-surface)',
+                        fontSize: '0.75rem', color: 'var(--color-text-muted)',
+                      }}
+                    >💌 Maak tijdcapsule (7 dagen)</button>
+                  </div>
+                )}
+              </React.Fragment>
               );
             })}
             {principles.length === 0 && (
@@ -5373,7 +5509,7 @@ const LibraryPage = () => {
                 Geen boeken in deze sectie gevonden.
               </p>
             )}
-          </div>
+          </div>}
         </div>
       </div>
     );
@@ -5625,7 +5761,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.4.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.5.0</div>
         </div>
       )}
 
@@ -5681,7 +5817,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v2.4.0</div>
+        }}>v2.5.0</div>
       )}
 
       {/* Mobile: action button */}
