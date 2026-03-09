@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
-import { allPrinciples, getCategories, getPrinciplesByCategory } from '../data/principles';
+import { allPrinciples, getCategories, getCategoryChainOrder, getPrinciplesByCategory } from '../data/principles';
 
 // ── Constanten ──
 const TILE = 40;
@@ -52,6 +52,48 @@ const stars = Array.from({ length: NUM_STARS }, (_, i) => ({
   alpha: 0.2 + seededRandom(i, 0, 205) * 0.5,
   hue: seededRandom(i, 0, 206) > 0.7 ? 220 + seededRandom(i, 0, 207) * 40 : 40 + seededRandom(i, 0, 208) * 20,
 }));
+
+// Unlock chime sound (Web Audio API)
+function playUnlockChime() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const notes = [523.25, 659.25, 783.99]; // C5, E5, G5 (major chord)
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.12, ctx.currentTime + i * 0.12);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.12 + 0.6);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.12);
+      osc.stop(ctx.currentTime + i * 0.12 + 0.6);
+    });
+    setTimeout(() => ctx.close(), 2000);
+  } catch (e) { /* Audio not available */ }
+}
+
+// Milestone fanfare sound
+function playMilestoneFanfare() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const notes = [523.25, 587.33, 659.25, 783.99, 1046.5]; // C5 D5 E5 G5 C6
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.15, ctx.currentTime + i * 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.1 + 0.8);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.1);
+      osc.stop(ctx.currentTime + i * 0.1 + 0.8);
+    });
+    setTimeout(() => ctx.close(), 2000);
+  } catch (e) { /* Audio not available */ }
+}
 
 // Category floor symbols (Unicode geometric shapes per category type)
 const CATEGORY_FLOOR_SYMBOLS = {
@@ -121,7 +163,7 @@ function generateLibrary(categories) {
   const halfC = Math.floor(corrW / 2);
   const spacing = 6;       // space between rooms for corridors
 
-  // --- Room definitions with varied sizes ---
+  // --- Room definitions with varied sizes (in chain order, no shuffle) ---
   const roomDefs = categories.map((cat, i) => ({
     cat, origIdx: i,
     w: 9 + Math.floor(seededRandom(i, 0, seed + 1) * 4),   // 9-12
@@ -129,19 +171,20 @@ function generateLibrary(categories) {
     catHue: cat.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 360,
   }));
 
-  // Shuffle for random-looking placement
-  const shuffled = [...roomDefs];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(seededRandom(i, 0, seed + 10) * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-
   // --- Arrange rooms in a grid pattern (rows x cols) ---
-  const cols = Math.ceil(Math.sqrt(shuffled.length));
-  const rowCount = Math.ceil(shuffled.length / cols);
+  // Rooms are placed bottom-up so the first categories (chain start)
+  // are in the bottom row nearest the entrance hall.
+  const cols = Math.ceil(Math.sqrt(roomDefs.length));
+  const rowCount = Math.ceil(roomDefs.length / cols);
   const rows = [];
+  // Fill rows bottom-up: last row gets first categories
+  const reversedRows = [];
   for (let ri = 0; ri < rowCount; ri++) {
-    rows.push(shuffled.slice(ri * cols, (ri + 1) * cols));
+    reversedRows.push(roomDefs.slice(ri * cols, (ri + 1) * cols));
+  }
+  // Reverse so row 0 (top of grid) = last categories, last row = first categories
+  for (let ri = reversedRows.length - 1; ri >= 0; ri--) {
+    rows.push(reversedRows[ri]);
   }
 
   // Compute column widths (max room width in each column) and row heights
@@ -190,11 +233,16 @@ function generateLibrary(categories) {
     }
   }
 
-  // --- Entrance hall below all rooms ---
-  const hallW = 12, hallH = 8;
+  // --- Central rotonde between rooms and entrance hall ---
+  const rotW = 10, rotH = 10;
   const totalWidth = cx - spacing + margin;
+  const rotX = Math.max(margin, Math.floor(totalWidth / 2) - Math.floor(rotW / 2));
+  const rotY = cy + 2;
+
+  // --- Entrance hall below rotonde ---
+  const hallW = 12, hallH = 8;
   const hallX = Math.max(margin, Math.floor(totalWidth / 2) - Math.floor(hallW / 2));
-  const hallY = cy + 2;
+  const hallY = rotY + rotH + 3;
 
   // --- Compute map dimensions ---
   let mapW = Math.max(hallX + hallW + margin + 2, totalWidth + 2);
@@ -294,6 +342,58 @@ function generateLibrary(categories) {
     });
   });
 
+  // Draw central rotonde (circular room where corridors converge)
+  fillRect(map, rotX, rotY, rotW, rotH, FLOOR);
+  addWalls(map, rotX, rotY, rotW, rotH);
+  // Make it circular: clear corners to empty, add pillars
+  for (let dy = 0; dy < rotH; dy++) {
+    for (let dx = 0; dx < rotW; dx++) {
+      const cdx = dx - rotW / 2 + 0.5;
+      const cdy = dy - rotH / 2 + 0.5;
+      if (Math.sqrt(cdx * cdx + cdy * cdy) > rotW / 2) {
+        if (rotY + dy < mapH && rotX + dx < mapW) {
+          map[rotY + dy][rotX + dx] = EMPTY;
+        }
+      }
+    }
+  }
+  // Re-add walls on the circular edge
+  for (let dy = 0; dy < rotH; dy++) {
+    for (let dx = 0; dx < rotW; dx++) {
+      const ry = rotY + dy, rx2 = rotX + dx;
+      if (ry >= mapH || rx2 >= mapW) continue;
+      if (map[ry][rx2] !== FLOOR) continue;
+      // Check if adjacent to EMPTY → wall
+      const adj = [[0, -1], [0, 1], [-1, 0], [1, 0]];
+      for (const [ax, ay] of adj) {
+        const ny = ry + ay, nx = rx2 + ax;
+        if (ny >= 0 && ny < mapH && nx >= 0 && nx < mapW && map[ny][nx] === EMPTY) {
+          map[ry][rx2] = WALL;
+          break;
+        }
+      }
+    }
+  }
+  // Carpet center
+  for (let dy = 2; dy < rotH - 2; dy++) {
+    for (let dx = 2; dx < rotW - 2; dx++) {
+      const cdx = dx - rotW / 2 + 0.5;
+      const cdy = dy - rotH / 2 + 0.5;
+      if (Math.sqrt(cdx * cdx + cdy * cdy) < rotW / 3 && map[rotY + dy][rotX + dx] === FLOOR) {
+        map[rotY + dy][rotX + dx] = CARPET;
+      }
+    }
+  }
+  // Pillars at cardinal points inside rotonde
+  const rotCX = rotX + Math.floor(rotW / 2);
+  const rotCY = rotY + Math.floor(rotH / 2);
+  for (const [pdx, pdy] of [[2, 0], [-2, 0], [0, 2], [0, -2]]) {
+    const ppx = rotCX + pdx, ppy = rotCY + pdy;
+    if (ppx > rotX && ppx < rotX + rotW - 1 && ppy > rotY && ppy < rotY + rotH - 1 && map[ppy][ppx] === FLOOR) {
+      map[ppy][ppx] = PILLAR;
+    }
+  }
+
   // Draw entrance hall
   fillRect(map, hallX, hallY, hallW, hallH, FLOOR);
   addWalls(map, hallX, hallY, hallW, hallH);
@@ -392,17 +492,41 @@ function generateLibrary(categories) {
     }
   }
 
-  // Connect last row to entrance hall
+  // Connect last row to central rotonde
   if (rows.length > 0) {
     const lastRow = rows[rows.length - 1];
     const connRoom = placed.find(p => p.origIdx === lastRow[Math.floor(lastRow.length / 2)].origIdx);
-    const roomCX = Math.floor(connRoom.x + connRoom.w / 2);
-    const hallCX = Math.floor(hallX + hallW / 2);
-    carveL(roomCX, connRoom.y + connRoom.h - 1, hallCX, hallY);
-    openDoor(roomCX, connRoom.y + connRoom.h - 1, 'bottom');
+    const roomCX2 = Math.floor(connRoom.x + connRoom.w / 2);
+    const rotCX2 = Math.floor(rotX + rotW / 2);
+    carveL(roomCX2, connRoom.y + connRoom.h - 1, rotCX2, rotY);
+    openDoor(roomCX2, connRoom.y + connRoom.h - 1, 'bottom');
+    // Open rotonde top wall
+    for (let d = -halfC; d <= halfC; d++) {
+      const px = rotCX2 + d;
+      if (px >= 0 && px < mapW && (map[rotY][px] === WALL || map[rotY + 1]?.[px] === WALL)) {
+        if (map[rotY][px] === WALL) map[rotY][px] = DOOR;
+        if (map[rotY + 1]?.[px] === WALL) map[rotY + 1][px] = DOOR;
+      }
+    }
+  }
+
+  // Connect rotonde to entrance hall
+  {
+    const rotBotCX = Math.floor(rotX + rotW / 2);
+    const hallTopCX = Math.floor(hallX + hallW / 2);
+    carveL(rotBotCX, rotY + rotH - 1, hallTopCX, hallY);
+    // Open rotonde bottom
+    for (let d = -halfC; d <= halfC; d++) {
+      const px = rotBotCX + d;
+      if (px >= 0 && px < mapW) {
+        for (let ry = rotY + rotH - 2; ry <= rotY + rotH; ry++) {
+          if (ry >= 0 && ry < mapH && map[ry][px] === WALL) map[ry][px] = DOOR;
+        }
+      }
+    }
     // Open hall top wall
     for (let d = -halfC; d <= halfC; d++) {
-      const px = hallCX + d;
+      const px = hallTopCX + d;
       if (px >= 0 && px < mapW && map[hallY][px] === WALL) map[hallY][px] = DOOR;
     }
   }
@@ -437,7 +561,7 @@ function generateLibrary(categories) {
   const fountainX = hallX + Math.floor(hallW / 2);
   const fountainY = hallY + Math.floor(hallH / 2);
 
-  return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY };
+  return { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY, rotX, rotY, rotW, rotH };
 }
 
 function fillRect(map, x, y, w, h, tile) {
@@ -483,7 +607,7 @@ function isWalkable(map, px, py, mapW, mapH) {
 // ── Component ──
 const LibraryPage = () => {
   const navigate = useNavigate();
-  const { userData, getPrincipleProgress, updatePreference } = useUser();
+  const { userData, getPrincipleProgress, updatePreference, updateUserField } = useUser();
   const canvasRef = useRef(null);
   const keysRef = useRef(new Set());
   const playerRef = useRef({ x: 0, y: 0, dirX: 0, dirY: 1, bobTime: 0, moving: false });
@@ -531,6 +655,11 @@ const LibraryPage = () => {
   const thunderRef = useRef(0); // Flash intensity for thunder
   const owlRef = useRef(null); // { x, y, blinkPhase, headAngle }
   const corridorFogRef = useRef([]); // { x, y, size, alpha, speed }
+  const torchSmokeRef = useRef([]); // { x, y, vx, vy, age, maxAge, size }
+  const floatingPointsRef = useRef([]); // { x, y, text, age }
+  const lastUnlockedCountRef = useRef(0); // Track unlock count for sound trigger
+  const lastMilestoneRef = useRef(0); // Last celebrated milestone %
+  const milestoneParticlesRef = useRef([]); // { x, y, vx, vy, life, maxLife, size, hue }
   const fogOfWarRef = useRef(null); // 2D boolean array: true = revealed
   const [toastMessage, setToastMessage] = useState(null); // { text, emoji, time }
   const toastTimeoutRef = useRef(null);
@@ -539,6 +668,11 @@ const LibraryPage = () => {
   const [currentRoomName, setCurrentRoomName] = useState('Entreehal');
   const [showMinimap, setShowMinimap] = useState(true);
   const [showSearch, setShowSearch] = useState(false);
+  const [showStatsPanel, setShowStatsPanel] = useState(false);
+  const [flashcardMode, setFlashcardMode] = useState(false);
+  const [flashcardIdx, setFlashcardIdx] = useState(0);
+  const [flashcardFlipped, setFlashcardFlipped] = useState(false);
+  const [showAnnotation, setShowAnnotation] = useState(null); // principleId or null
   const [searchQuery, setSearchQuery] = useState('');
   const [showStats, setShowStats] = useState(false);
   const searchInputRef = useRef(null);
@@ -555,7 +689,7 @@ const LibraryPage = () => {
   getPrincipleProgressRef.current = getPrincipleProgress;
   const isRoomUnlockedRef = useRef(null);
 
-  const categories = useMemo(() => getCategories('academic'), []);
+  const categories = useMemo(() => getCategoryChainOrder('academic'), []);
 
   // Cache: principles per category (static, computed once)
   const roomPrinciplesMap = useMemo(() => {
@@ -567,21 +701,24 @@ const LibraryPage = () => {
   }, [categories]);
 
   const library = useMemo(() => generateLibrary(categories), [categories]);
-  const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY } = library;
+  const { map, tileRoomIdx, mapW, mapH, rooms, hallX, hallY, hallW, hallH, fountainX, fountainY, rotX, rotY, rotW, rotH } = library;
 
-  // Progressive unlock: room N is unlocked if all principles in room N-1 are read
+  // Progressive unlock chain: room N unlocks when ≥50% of room N-1 principles are read.
+  // Follows the walking path (bottom-up through the library).
   const isRoomUnlocked = useCallback((roomIndex) => {
-    if (!userData?.preferences?.progressiveUnlock) return true;
+    if (userData?.preferences?.progressiveUnlock === false) return true;
     if (roomIndex <= 0) return true; // First room always unlocked
     const prevRoom = rooms[roomIndex - 1];
     if (!prevRoom) return true;
     const prevPrinciples = roomPrinciplesMap[prevRoom.name] || [];
     if (prevPrinciples.length === 0) return true;
-    return prevPrinciples.every(p => getPrincipleProgress(p.id)?.activities?.read);
+    const readCount = prevPrinciples.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+    const threshold = Math.ceil(prevPrinciples.length / 2); // 50% of previous room
+    return readCount >= threshold;
   }, [userData?.preferences?.progressiveUnlock, rooms, roomPrinciplesMap, getPrincipleProgress]);
   isRoomUnlockedRef.current = isRoomUnlocked;
 
-  const SAVE_VERSION = 3; // Bump this when layout/map generation changes
+  const SAVE_VERSION = 5; // Bumped: added central rotonde
 
   // Save game state to localStorage
   const saveGameState = useCallback(() => {
@@ -789,7 +926,10 @@ const LibraryPage = () => {
       if (dist < (room.w / 2) * TILE) {
         if (!isRoomUnlocked(ri)) {
           const prevRoom = rooms[ri - 1];
-          setToastMessage({ text: `Vergrendeld! Voltooi eerst: ${prevRoom?.name || 'vorige sectie'}`, emoji: '🔒' });
+          const prevPrinciples = roomPrinciplesMap[prevRoom?.name] || [];
+          const readCount = prevPrinciples.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+          const needed = Math.ceil(prevPrinciples.length / 2);
+          setToastMessage({ text: `Vergrendeld! Lees nog ${needed - readCount} scroll(s) in ${prevRoom?.name || 'vorige sectie'}`, emoji: '🔒' });
           if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
           toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
           return;
@@ -961,7 +1101,9 @@ const LibraryPage = () => {
           }
         }
       }
-      const fowRadius = 3;
+      // Kennis-aura: more principles read = larger fog reveal radius
+      const totalRead = allPrinciples.filter(p => getPrincipleProgressRef.current(p.id)?.activities?.read).length;
+      const fowRadius = 3 + Math.min(4, Math.floor(totalRead / 15)); // 3 base, +1 per 15 read, max 7
       const fowPTX = Math.floor(player.x / TILE);
       const fowPTY = Math.floor(player.y / TILE);
       for (let fy = fowPTY - fowRadius; fy <= fowPTY + fowRadius; fy++) {
@@ -984,6 +1126,64 @@ const LibraryPage = () => {
         saveGameState();
       }
 
+      // Check for new room unlocks → play chime
+      if (userData?.preferences?.progressiveUnlock !== false) {
+        let unlockedCount = 0;
+        for (let ri = 0; ri < rooms.length; ri++) {
+          if (isRoomUnlockedRef.current(ri)) unlockedCount++;
+        }
+        if (unlockedCount > lastUnlockedCountRef.current && lastUnlockedCountRef.current > 0) {
+          playUnlockChime();
+          setToastMessage({ text: `Nieuwe kamer ontgrendeld!`, emoji: '🔓' });
+          if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+          toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
+        }
+        lastUnlockedCountRef.current = unlockedCount;
+      }
+
+      // Milestone celebrations (25%, 50%, 75%, 100%)
+      const allP2 = allPrinciples || [];
+      const totalReadCount = allP2.filter(p => getPrincipleProgressRef.current(p.id)?.activities?.read).length;
+      const readPct = allP2.length > 0 ? Math.floor((totalReadCount / allP2.length) * 100) : 0;
+      const milestones = [25, 50, 75, 100];
+      for (const ms of milestones) {
+        if (readPct >= ms && lastMilestoneRef.current < ms) {
+          lastMilestoneRef.current = ms;
+          playMilestoneFanfare();
+          setToastMessage({ text: `Mijlpaal: ${ms}% van alle scrolls gelezen!`, emoji: '🏆' });
+          if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+          toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 4000);
+          // Spawn milestone particles around player
+          for (let mi = 0; mi < 50; mi++) {
+            const angle = Math.random() * Math.PI * 2;
+            const spd = 2 + Math.random() * 5;
+            milestoneParticlesRef.current.push({
+              x: player.x, y: player.y,
+              vx: Math.cos(angle) * spd, vy: Math.sin(angle) * spd - 2,
+              life: 0, maxLife: 1.5 + Math.random() * 1.5,
+              size: 2 + Math.random() * 4, hue: ms === 100 ? 42 : 270 + Math.random() * 60,
+            });
+          }
+        }
+      }
+
+      // Update floating points
+      for (let i = floatingPointsRef.current.length - 1; i >= 0; i--) {
+        floatingPointsRef.current[i].age += dt;
+        floatingPointsRef.current[i].y -= 30 * dt;
+        if (floatingPointsRef.current[i].age > 1.5) floatingPointsRef.current.splice(i, 1);
+      }
+
+      // Update milestone particles
+      for (let i = milestoneParticlesRef.current.length - 1; i >= 0; i--) {
+        const mp = milestoneParticlesRef.current[i];
+        mp.life += dt;
+        mp.x += mp.vx * dt * 60;
+        mp.y += mp.vy * dt * 60;
+        mp.vy += 0.05;
+        if (mp.life > mp.maxLife) milestoneParticlesRef.current.splice(i, 1);
+      }
+
       // Update footprints
       for (let i = footprintsRef.current.length - 1; i >= 0; i--) {
         footprintsRef.current[i].age += 1 / 60;
@@ -997,6 +1197,37 @@ const LibraryPage = () => {
         dust[i].x += dust[i].vx;
         dust[i].y += dust[i].vy;
         if (dust[i].age > 0.6) dust.splice(i, 1);
+      }
+
+      // Update torch smoke particles (wind-drifting puffs)
+      const smoke = torchSmokeRef.current;
+      // Spawn new smoke from visible torches
+      const ptx = Math.floor(player.x / TILE);
+      const pty = Math.floor(player.y / TILE);
+      for (let sy = pty - 8; sy <= pty + 8; sy++) {
+        for (let sx = ptx - 8; sx <= ptx + 8; sx++) {
+          if (sy >= 0 && sy < mapH && sx >= 0 && sx < mapW && map[sy][sx] === TORCH) {
+            if (Math.random() < 0.08 && smoke.length < 80) {
+              const windPhase = time * 0.3;
+              smoke.push({
+                x: sx * TILE + TILE / 2, y: sy * TILE + 4,
+                vx: Math.sin(windPhase) * 0.3 + (Math.random() - 0.5) * 0.2,
+                vy: -0.4 - Math.random() * 0.3,
+                age: 0, maxAge: 2 + Math.random() * 2,
+                size: 2 + Math.random() * 2,
+              });
+            }
+          }
+        }
+      }
+      for (let i = smoke.length - 1; i >= 0; i--) {
+        const s = smoke[i];
+        s.age += dt;
+        s.x += s.vx + Math.sin(time * 0.8 + s.x * 0.01) * 0.15; // wind drift
+        s.y += s.vy;
+        s.vy *= 0.99;
+        s.size += dt * 0.5;
+        if (s.age > s.maxAge) smoke.splice(i, 1);
       }
 
       const newX = player.x + dx;
@@ -1814,8 +2045,16 @@ const LibraryPage = () => {
             // Candle body
             ctx.fillStyle = '#e8d8b0';
             ctx.fillRect(candleX - 2, candleY - 6, 4, 8);
-            // Candle flame
-            const cFlicker = Math.sin(time * 10 + tx * 7) * 1.5;
+            // Candle flame — flickers harder when near door (wind draft)
+            let nearDoor = false;
+            for (let ddy = -2; ddy <= 2; ddy++) {
+              for (let ddx = -2; ddx <= 2; ddx++) {
+                const cy2 = ty + ddy, cx2 = tx + ddx;
+                if (cy2 >= 0 && cy2 < mapH && cx2 >= 0 && cx2 < mapW && map[cy2][cx2] === DOOR) nearDoor = true;
+              }
+            }
+            const windFactor = nearDoor ? 3.5 : 1;
+            const cFlicker = Math.sin(time * 10 * windFactor + tx * 7) * 1.5 * windFactor + (nearDoor ? Math.sin(time * 17 + ty) * 2 : 0);
             const cFlameGrad = ctx.createRadialGradient(
               candleX + cFlicker * 0.3, candleY - 9, 0,
               candleX, candleY - 8, 5
@@ -2088,6 +2327,19 @@ const LibraryPage = () => {
         }
       }
 
+      // Persistent torch smoke puffs (wind-drifting)
+      for (const s of torchSmokeRef.current) {
+        const spx = s.x - camX;
+        const spy = s.y - camY;
+        if (spx > -40 && spx < viewW + 40 && spy > -40 && spy < viewH + 40) {
+          const t = 1 - s.age / s.maxAge;
+          ctx.fillStyle = `rgba(90,85,100,${t * 0.06})`;
+          ctx.beginPath();
+          ctx.arc(spx, spy, s.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
       // Wall shadow casting onto adjacent floor tiles
       for (let ty = startTY; ty < endTY; ty++) {
         for (let tx = startTX; tx < endTX; tx++) {
@@ -2253,8 +2505,37 @@ const LibraryPage = () => {
         }
       }
 
-      // Lock overlay on locked rooms (progressive unlock)
-      if (userData?.preferences?.progressiveUnlock) {
+      // Mastery badge on doors of 100% completed rooms
+      for (const room of rooms) {
+        const mbRP = roomPrinciplesMap[room.name] || [];
+        if (mbRP.length === 0) continue;
+        const mbAvg = mbRP.reduce((s, p) => s + (getPrincipleProgressRef.current(p.id)?.masteryPercentage || 0), 0) / mbRP.length;
+        if (mbAvg < 100) continue;
+        // Draw star badge at room entrance (bottom center of room)
+        const badgeX = room.centerX - camX;
+        const badgeY = (room.y + room.h - 1) * TILE + TILE / 2 - camY;
+        if (badgeX > -40 && badgeX < viewW + 40 && badgeY > -40 && badgeY < viewH + 40) {
+          const bPulse = 0.7 + Math.sin(time * 2) * 0.3;
+          // Star shape
+          ctx.save();
+          ctx.translate(badgeX, badgeY);
+          ctx.rotate(time * 0.3);
+          ctx.fillStyle = `rgba(255,215,0,${bPulse * 0.8})`;
+          ctx.beginPath();
+          for (let sp = 0; sp < 5; sp++) {
+            const outerAngle = (sp / 5) * Math.PI * 2 - Math.PI / 2;
+            const innerAngle = outerAngle + Math.PI / 5;
+            ctx.lineTo(Math.cos(outerAngle) * 8, Math.sin(outerAngle) * 8);
+            ctx.lineTo(Math.cos(innerAngle) * 4, Math.sin(innerAngle) * 4);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      // Lock overlay on locked rooms (progressive unlock, on by default)
+      if (userData?.preferences?.progressiveUnlock !== false) {
         for (let ri = 0; ri < rooms.length; ri++) {
           if (isRoomUnlockedRef.current(ri)) continue;
           const room = rooms[ri];
@@ -2274,6 +2555,75 @@ const LibraryPage = () => {
             ctx.textAlign = 'center';
             ctx.fillStyle = 'rgba(255,255,255,0.7)';
             ctx.fillText('🔒', lx, ly + lockSize / 3);
+          }
+        }
+      }
+
+      // Cobwebs in corners of locked rooms
+      if (userData?.preferences?.progressiveUnlock !== false) {
+        for (let ri = 0; ri < rooms.length; ri++) {
+          if (isRoomUnlockedRef.current(ri)) continue;
+          const room = rooms[ri];
+          const rx = room.x * TILE - camX;
+          const ry = room.y * TILE - camY;
+          const rw = room.w * TILE;
+          const rh = room.h * TILE;
+          if (rx > -rw - 50 && rx < viewW + 50 && ry > -rh - 50 && ry < viewH + 50) {
+            // Draw cobweb in top-left and top-right corners
+            const webSize = 22;
+            const webAlpha = 0.12;
+            for (const [wcx, wcy, flipX] of [[rx + TILE + 2, ry + TILE + 2, 1], [rx + rw - TILE - 2, ry + TILE + 2, -1]]) {
+              ctx.save();
+              ctx.translate(wcx, wcy);
+              ctx.scale(flipX, 1);
+              ctx.strokeStyle = `rgba(200,200,210,${webAlpha})`;
+              ctx.lineWidth = 0.5;
+              // Radial threads
+              for (let t = 0; t < 5; t++) {
+                const angle = (t / 5) * Math.PI * 0.5;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(Math.cos(angle) * webSize, Math.sin(angle) * webSize);
+                ctx.stroke();
+              }
+              // Spiral threads
+              for (let ring = 0; ring < 3; ring++) {
+                const r = (ring + 1) * webSize / 3.5;
+                ctx.beginPath();
+                for (let t = 0; t <= 5; t++) {
+                  const angle = (t / 5) * Math.PI * 0.5;
+                  const sag = Math.sin(angle * 2 + ring) * 2;
+                  const px = Math.cos(angle) * (r + sag);
+                  const py = Math.sin(angle) * (r + sag);
+                  t === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+                }
+                ctx.stroke();
+              }
+              ctx.restore();
+            }
+          }
+        }
+      }
+
+      // Gold dust particles floating in unlocked rooms
+      for (let ri = 0; ri < rooms.length; ri++) {
+        if (userData?.preferences?.progressiveUnlock !== false && !isRoomUnlockedRef.current(ri)) continue;
+        const room = rooms[ri];
+        const rx = room.x * TILE - camX;
+        const ry = room.y * TILE - camY;
+        if (rx > -room.w * TILE - 50 && rx < viewW + 50 && ry > -room.h * TILE - 50 && ry < viewH + 50) {
+          const numMotes = Math.min(6, Math.floor(room.w * room.h / 15));
+          for (let gd = 0; gd < numMotes; gd++) {
+            const gdSeed = room.x * 17 + room.y * 31 + gd * 53;
+            const gdPhase = time * 0.25 + gd * 1.1 + gdSeed * 0.01;
+            const gdx = room.centerX + Math.sin(gdPhase + gd) * (room.w * TILE * 0.35) - camX;
+            const gdy = room.centerY + Math.cos(gdPhase * 0.6 + gd * 2) * (room.h * TILE * 0.3) - camY;
+            const gdAlpha = 0.06 + Math.sin(gdPhase * 2.5) * 0.03;
+            const gdSize = 1 + Math.sin(gdPhase * 1.5) * 0.5;
+            ctx.fillStyle = `rgba(255,215,100,${gdAlpha})`;
+            ctx.beginPath();
+            ctx.arc(gdx, gdy, gdSize, 0, Math.PI * 2);
+            ctx.fill();
           }
         }
       }
@@ -2532,6 +2882,83 @@ const LibraryPage = () => {
         chGlow.addColorStop(1, 'rgba(255,160,40,0)');
         ctx.fillStyle = chGlow;
         ctx.fillRect(chX - TILE * 2.5, chY - TILE * 2.5, TILE * 5, TILE * 5);
+      }
+
+      // Trophy-vitrine: glass display cases in entrance hall showing earned trophies
+      {
+        const trophies = [];
+        const stamps = userData?.libraryStamps || {};
+        const stampCount = Object.keys(stamps).length;
+        const totalRoomsCount = rooms.length;
+        const allReadCount = allPrinciples.filter(p => getPrincipleProgressRef.current(p.id)?.activities?.read).length;
+        const allPrincipleCount = allPrinciples.length;
+        const readPctTrophy = allPrincipleCount > 0 ? Math.floor((allReadCount / allPrincipleCount) * 100) : 0;
+        const streakDays = userData?.streak?.currentStreak || 0;
+        // Define trophies (earned or locked)
+        if (allReadCount >= 1) trophies.push({ emoji: '📜', label: 'Eerste Scroll', earned: true });
+        else trophies.push({ emoji: '📜', label: 'Eerste Scroll', earned: false });
+        if (stampCount >= 5) trophies.push({ emoji: '🗺️', label: 'Ontdekker', earned: true });
+        else trophies.push({ emoji: '🗺️', label: 'Ontdekker', earned: false });
+        if (allReadCount >= 10) trophies.push({ emoji: '📚', label: 'Boekenrat', earned: true });
+        else trophies.push({ emoji: '📚', label: 'Boekenrat', earned: false });
+        if (readPctTrophy >= 25) trophies.push({ emoji: '🥉', label: '25% Gelezen', earned: true });
+        else trophies.push({ emoji: '🥉', label: '25% Gelezen', earned: false });
+        if (readPctTrophy >= 50) trophies.push({ emoji: '🥈', label: 'Halverwege', earned: true });
+        else trophies.push({ emoji: '🥈', label: 'Halverwege', earned: false });
+        if (readPctTrophy >= 100) trophies.push({ emoji: '🥇', label: 'Alles Gelezen', earned: true });
+        else trophies.push({ emoji: '🥇', label: 'Alles Gelezen', earned: false });
+        if (streakDays >= 3) trophies.push({ emoji: '🔥', label: '3-Daagse Streak', earned: true });
+        else trophies.push({ emoji: '🔥', label: '3-Daagse Streak', earned: false });
+        if (stampCount >= totalRoomsCount && totalRoomsCount > 0) trophies.push({ emoji: '🏛️', label: 'Alle Kamers', earned: true });
+        else trophies.push({ emoji: '🏛️', label: 'Alle Kamers', earned: false });
+
+        // Position: along the bottom wall of the entrance hall
+        const vitrineY = (hallY + hallH - 2) * TILE;
+        const vitrineStartX = hallX * TILE + TILE * 1.5;
+        const vitrineSpacing = ((hallW - 3) * TILE) / Math.max(trophies.length, 1);
+
+        for (let ti = 0; ti < trophies.length; ti++) {
+          const trophy = trophies[ti];
+          const vx = vitrineStartX + ti * vitrineSpacing + vitrineSpacing / 2 - camX;
+          const vy = vitrineY - camY;
+          if (vx < -60 || vx > viewW + 60 || vy < -60 || vy > viewH + 60) continue;
+
+          // Glass case base
+          ctx.fillStyle = 'rgba(100,90,70,0.5)';
+          ctx.fillRect(vx - 12, vy + 8, 24, 4);
+          // Glass case (transparent box)
+          ctx.strokeStyle = trophy.earned ? 'rgba(200,170,80,0.4)' : 'rgba(120,120,120,0.2)';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(vx - 10, vy - 16, 20, 24);
+          // Glass reflection
+          ctx.fillStyle = 'rgba(255,255,255,0.05)';
+          ctx.fillRect(vx - 9, vy - 15, 8, 22);
+
+          if (trophy.earned) {
+            // Golden glow behind earned trophy
+            const tGlow = ctx.createRadialGradient(vx, vy - 4, 0, vx, vy - 4, 14);
+            tGlow.addColorStop(0, `rgba(201,136,15,${0.12 + Math.sin(time * 2 + ti) * 0.04})`);
+            tGlow.addColorStop(1, 'rgba(201,136,15,0)');
+            ctx.fillStyle = tGlow;
+            ctx.fillRect(vx - 14, vy - 18, 28, 28);
+            // Trophy emoji
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(trophy.emoji, vx, vy);
+          } else {
+            // Locked: dimmed silhouette
+            ctx.globalAlpha = 0.2;
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('🔒', vx, vy);
+            ctx.globalAlpha = 1;
+          }
+          // Label
+          ctx.font = '500 5px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = trophy.earned ? 'rgba(200,170,80,0.6)' : 'rgba(150,150,150,0.3)';
+          ctx.fillText(trophy.label, vx, vy + 18);
+        }
       }
 
       // Animated fountain in entrance hall
@@ -4230,16 +4657,35 @@ const LibraryPage = () => {
         ctx.fillText(npcTheme.accessory, npcSX + 12, npcSY - 8 + npcBob + Math.sin(time * 1.5 + room.x) * 2);
         ctx.globalAlpha = 1;
 
-        // Speech bubble when player is close
+        // Speech bubble when player is close — NPC remembers visits
         if (npcDist < TILE * 3) {
           const roomPrinciples = roomPrinciplesMap[room.name] || [];
           const unreadPrinciples = roomPrinciples.filter(p => !getPrincipleProgressRef.current(p.id)?.activities?.read);
+          const readCount = roomPrinciples.length - unreadPrinciples.length;
+          const visitCount = Object.keys(userData?.libraryStamps || {}).length;
           let speechText;
-          if (unreadPrinciples.length > 0) {
+          if (roomPrinciples.length > 0 && unreadPrinciples.length === 0) {
+            // NPC-dank: all scrolls read — special gratitude messages
+            const thankMessages = [
+              'Dank je! Je hebt al mijn wijsheid tot je genomen! 🌟',
+              'Een ware geleerde! Alle scrolls voltooid! ✨',
+              'Meester, u kent dit domein door en door! 🏆',
+              `${room.name} heeft geen geheimen meer voor je!`,
+            ];
+            speechText = thankMessages[Math.floor(seededRandom(room.x, room.y, 700) * thankMessages.length)];
+          } else if (unreadPrinciples.length > 0 && readCount > 0) {
+            // Returning visitor with partial progress
+            const returnMessages = [
+              `Welkom terug! Nog ${unreadPrinciples.length} scrolls te gaan.`,
+              `Goed je weer te zien! Probeer "${unreadPrinciples[0].title}".`,
+              `Je bent al goed op weg — ${readCount}/${roomPrinciples.length} gelezen!`,
+            ];
+            speechText = returnMessages[Math.floor(seededRandom(room.x, room.y, 600 + Math.floor(time / 15)) * returnMessages.length)];
+          } else if (unreadPrinciples.length > 0) {
             const suggest = unreadPrinciples[Math.floor(seededRandom(room.x, room.y, 600 + Math.floor(time / 10)) * unreadPrinciples.length)];
-            speechText = `Lees "${suggest.title}"!`;
-          } else if (roomPrinciples.length > 0) {
-            speechText = 'Je hebt alles gelezen! ⭐';
+            speechText = visitCount > 3
+              ? `Ervaren reiziger! Lees "${suggest.title}".`
+              : `Lees "${suggest.title}"!`;
           } else {
             speechText = `Welkom in ${room.name}!`;
           }
@@ -4307,6 +4753,12 @@ const LibraryPage = () => {
             discoveredRoomsRef.current.add(nearRoom.name);
             setToastMessage({ text: `Nieuwe kamer ontdekt: ${nearRoom.name}`, emoji: nearRoom.emoji });
             emotionRef.current = { emoji: '✨', age: 0 };
+            // Floating points on discovery
+            floatingPointsRef.current.push({ x: player.x, y: player.y - 20, text: '+10 pts', age: 0 });
+            // Collect library stamp for this room
+            if (updateUserField && !userData?.libraryStamps?.[nearRoom.name]) {
+              updateUserField('libraryStamps', prev => ({ ...prev, [nearRoom.name]: Date.now() }));
+            }
             if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
             toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
           }
@@ -4358,6 +4810,43 @@ const LibraryPage = () => {
         ctx.fillText(text, px, promptY + 2);
       }
 
+      // Floating points text
+      for (const fp of floatingPointsRef.current) {
+        const fpx = fp.x - camX;
+        const fpy = fp.y - camY;
+        if (fpx > -100 && fpx < viewW + 100 && fpy > -100 && fpy < viewH + 100) {
+          const fpAlpha = Math.max(0, 1 - fp.age / 1.5);
+          ctx.font = '700 14px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = `rgba(255,215,0,${fpAlpha})`;
+          ctx.fillText(fp.text, fpx, fpy);
+        }
+      }
+
+      // Milestone celebration particles
+      for (const mp of milestoneParticlesRef.current) {
+        const mpx = mp.x - camX;
+        const mpy = mp.y - camY;
+        if (mpx > -20 && mpx < viewW + 20 && mpy > -20 && mpy < viewH + 20) {
+          const t = 1 - mp.life / mp.maxLife;
+          ctx.save();
+          ctx.translate(mpx, mpy);
+          ctx.rotate(mp.life * 4);
+          ctx.fillStyle = `hsla(${mp.hue}, 80%, 60%, ${t * 0.9})`;
+          ctx.beginPath();
+          // 5-point star
+          for (let sp = 0; sp < 5; sp++) {
+            const outerA = (sp / 5) * Math.PI * 2 - Math.PI / 2;
+            const innerA = outerA + Math.PI / 5;
+            ctx.lineTo(Math.cos(outerA) * mp.size, Math.sin(outerA) * mp.size);
+            ctx.lineTo(Math.cos(innerA) * mp.size * 0.4, Math.sin(innerA) * mp.size * 0.4);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
       // Ambient dust particles
       ctx.fillStyle = 'rgba(220,200,170,0.25)';
       for (const p of particles) {
@@ -4379,38 +4868,98 @@ const LibraryPage = () => {
         const mmH2 = mapH * mmScale;
         const mCtx = minimapCanvasRef.current.getContext('2d');
         mCtx.clearRect(0, 0, mmW2, mmH2);
+
+        // Schatkaart parchment background
+        mCtx.fillStyle = 'rgba(62,50,38,0.9)';
+        mCtx.fillRect(0, 0, mmW2, mmH2);
+        // Parchment noise texture overlay
+        for (let py = 0; py < mmH2; py += 6) {
+          for (let px = 0; px < mmW2; px += 6) {
+            const noise = seededRandom(px, py, 999) * 0.08;
+            mCtx.fillStyle = `rgba(180,160,120,${noise})`;
+            mCtx.fillRect(px, py, 6, 6);
+          }
+        }
+
         mCtx.drawImage(minimapImageRef.current, 0, 0);
-        // Fog of war on minimap
+
+        // Fog of war on minimap (parchment-colored fog instead of black)
         if (fogOfWarRef.current) {
           const fowMM = fogOfWarRef.current;
           for (let mmy = 0; mmy < mapH; mmy++) {
             for (let mmx = 0; mmx < mapW; mmx++) {
               const mmRevealed = fowMM[mmy]?.[mmx] ?? 0;
               if (mmRevealed < 1) {
-                mCtx.fillStyle = `rgba(0,0,0,${1 - mmRevealed})`;
+                mCtx.fillStyle = `rgba(40,32,24,${(1 - mmRevealed) * 0.85})`;
                 mCtx.fillRect(mmx * mmScale, mmy * mmScale, mmScale, mmScale);
               }
             }
           }
         }
-        // Room mastery tint + emojis
+
+        // Room tint with unlock color coding + progress bar per room
         const getProgressMM = getPrincipleProgressRef.current;
-        for (const room of rooms) {
+        for (let ri = 0; ri < rooms.length; ri++) {
+          const room = rooms[ri];
           const rp = roomPrinciplesMap[room.name] || [];
           const avg = rp.length > 0 ? rp.reduce((s, p) => s + (getProgressMM(p.id)?.masteryPercentage || 0), 0) / rp.length : 0;
-          if (avg > 0) {
-            const color = avg >= 100 ? 'rgba(201,136,15,0.35)' : `rgba(92,79,207,${0.1 + (avg / 100) * 0.25})`;
-            mCtx.fillStyle = color;
-            mCtx.fillRect(room.x * mmScale, room.y * mmScale, room.w * mmScale, room.h * mmScale);
+          const unlocked = !userData?.preferences?.progressiveUnlock || userData?.preferences?.progressiveUnlock === false || isRoomUnlockedRef.current(ri);
+          const rx = room.x * mmScale;
+          const ry = room.y * mmScale;
+          const rw = room.w * mmScale;
+          const rh = room.h * mmScale;
+
+          // Color coding: locked = red tint, unlocked = green/blue, mastered = gold
+          if (!unlocked) {
+            mCtx.fillStyle = 'rgba(120,40,40,0.25)';
+          } else if (avg >= 100) {
+            mCtx.fillStyle = 'rgba(201,168,15,0.35)';
+          } else if (avg > 0) {
+            mCtx.fillStyle = `rgba(92,79,207,${0.1 + (avg / 100) * 0.25})`;
+          } else {
+            mCtx.fillStyle = 'rgba(60,120,60,0.15)';
           }
+          mCtx.fillRect(rx, ry, rw, rh);
+
+          // Room emoji
           mCtx.font = '7px sans-serif';
           mCtx.textAlign = 'center';
-          mCtx.fillStyle = 'rgba(255,255,255,0.6)';
-          mCtx.fillText(room.emoji, (room.x + room.w / 2) * mmScale, (room.y + room.h / 2) * mmScale + 3);
+          mCtx.fillStyle = unlocked ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.25)';
+          mCtx.fillText(unlocked ? room.emoji : '🔒', (room.x + room.w / 2) * mmScale, (room.y + room.h / 2) * mmScale + 3);
+
+          // Progress bar below room (only for unlocked rooms with progress)
+          if (unlocked && avg > 0) {
+            const barW = rw - 2;
+            const barH = 2;
+            const barX = rx + 1;
+            const barY = ry + rh + 1;
+            // Background
+            mCtx.fillStyle = 'rgba(0,0,0,0.3)';
+            mCtx.fillRect(barX, barY, barW, barH);
+            // Fill (gradient from purple to gold)
+            const barFill = (avg / 100) * barW;
+            mCtx.fillStyle = avg >= 100 ? 'rgba(255,215,0,0.8)' : 'rgba(92,79,207,0.7)';
+            mCtx.fillRect(barX, barY, barFill, barH);
+          }
         }
-        // Player dot
+
+        // Player dot with direction indicator (triangle arrow)
         const pTX = player.x / TILE * mmScale;
         const pTY = player.y / TILE * mmScale;
+        // Direction arrow
+        const dirMag2 = Math.sqrt(player.dirX * player.dirX + player.dirY * player.dirY);
+        if (dirMag2 > 0.01) {
+          const ndx = player.dirX / dirMag2;
+          const ndy = player.dirY / dirMag2;
+          mCtx.fillStyle = 'rgba(255,255,255,0.6)';
+          mCtx.beginPath();
+          mCtx.moveTo(pTX + ndx * 6, pTY + ndy * 6);
+          mCtx.lineTo(pTX + ndy * 2.5, pTY - ndx * 2.5);
+          mCtx.lineTo(pTX - ndy * 2.5, pTY + ndx * 2.5);
+          mCtx.closePath();
+          mCtx.fill();
+        }
+        // Player circle
         mCtx.fillStyle = '#5c4fcf';
         mCtx.beginPath();
         mCtx.arc(pTX, pTY, 3, 0, Math.PI * 2);
@@ -4418,14 +4967,20 @@ const LibraryPage = () => {
         mCtx.strokeStyle = '#fff';
         mCtx.lineWidth = 1;
         mCtx.stroke();
+
         // Viewport rectangle
         const vpX = camX / TILE * mmScale;
         const vpY = camY / TILE * mmScale;
         const vpW = viewW / TILE * mmScale;
         const vpH = viewH / TILE * mmScale;
-        mCtx.strokeStyle = 'rgba(255,255,255,0.3)';
+        mCtx.strokeStyle = 'rgba(255,255,255,0.25)';
         mCtx.lineWidth = 1;
         mCtx.strokeRect(vpX, vpY, vpW, vpH);
+
+        // Parchment border decoration
+        mCtx.strokeStyle = 'rgba(180,150,100,0.3)';
+        mCtx.lineWidth = 2;
+        mCtx.strokeRect(1, 1, mmW2 - 2, mmH2 - 2);
       }
 
       // Fog of war overlay - black on unrevealed tiles, soft edge on partially revealed
@@ -4624,33 +5179,76 @@ const LibraryPage = () => {
         const adx = nearestUnread.centerX - player.x;
         const ady = nearestUnread.centerY - player.y;
         const angle = Math.atan2(ady, adx);
-        // Compass circle
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        // Pulsing outer glow
+        const pulseAlpha = 0.15 + Math.sin(time * 3) * 0.08;
+        const outerGlow = ctx.createRadialGradient(compassX, compassY, 18, compassX, compassY, 34);
+        outerGlow.addColorStop(0, `rgba(92,79,207,${pulseAlpha})`);
+        outerGlow.addColorStop(1, 'rgba(92,79,207,0)');
+        ctx.fillStyle = outerGlow;
+        ctx.fillRect(compassX - 34, compassY - 34, 68, 68);
+        // Compass circle with ornate border
+        ctx.fillStyle = 'rgba(20,15,10,0.7)';
         ctx.beginPath();
-        ctx.arc(compassX, compassY, 22, 0, Math.PI * 2);
+        ctx.arc(compassX, compassY, 24, 0, Math.PI * 2);
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(200,170,80,0.4)';
+        ctx.lineWidth = 2;
         ctx.stroke();
-        // Arrow
+        ctx.strokeStyle = 'rgba(200,170,80,0.15)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(compassX, compassY, 27, 0, Math.PI * 2);
+        ctx.stroke();
+        // Cardinal tick marks
+        for (let ci = 0; ci < 8; ci++) {
+          const ca = (ci / 8) * Math.PI * 2 - Math.PI / 2;
+          const inner = ci % 2 === 0 ? 18 : 20;
+          ctx.strokeStyle = ci % 2 === 0 ? 'rgba(200,170,80,0.5)' : 'rgba(200,170,80,0.2)';
+          ctx.lineWidth = ci % 2 === 0 ? 1.5 : 0.8;
+          ctx.beginPath();
+          ctx.moveTo(compassX + Math.cos(ca) * inner, compassY + Math.sin(ca) * inner);
+          ctx.lineTo(compassX + Math.cos(ca) * 23, compassY + Math.sin(ca) * 23);
+          ctx.stroke();
+        }
+        // Arrow (dual-color compass needle)
         ctx.save();
         ctx.translate(compassX, compassY);
         ctx.rotate(angle);
+        // Front half (purple, pointing to target)
         ctx.fillStyle = '#5c4fcf';
         ctx.beginPath();
-        ctx.moveTo(14, 0);
-        ctx.lineTo(-6, -7);
-        ctx.lineTo(-3, 0);
-        ctx.lineTo(-6, 7);
+        ctx.moveTo(16, 0);
+        ctx.lineTo(-2, -5);
+        ctx.lineTo(0, 0);
+        ctx.lineTo(-2, 5);
         ctx.closePath();
         ctx.fill();
+        // Back half (darker)
+        ctx.fillStyle = 'rgba(60,50,80,0.6)';
+        ctx.beginPath();
+        ctx.moveTo(-12, 0);
+        ctx.lineTo(-2, -4);
+        ctx.lineTo(0, 0);
+        ctx.lineTo(-2, 4);
+        ctx.closePath();
+        ctx.fill();
+        // Center pin
+        ctx.fillStyle = 'rgba(200,170,80,0.7)';
+        ctx.beginPath();
+        ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
+        ctx.fill();
         ctx.restore();
-        // Distance label
-        const distLabel = nearestDist > 1000 ? `${(nearestDist / TILE).toFixed(0)}` : `${Math.round(nearestDist / TILE)}`;
-        ctx.font = '500 8px Inter, sans-serif';
+        // Room name + emoji
+        ctx.font = '600 7px Inter, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillStyle = 'rgba(255,255,255,0.5)';
-        ctx.fillText(distLabel + ' tiles', compassX, compassY + 34);
+        ctx.fillStyle = 'rgba(200,170,80,0.7)';
+        const compassLabel = nearestUnread.emoji + ' ' + (nearestUnread.name.length > 12 ? nearestUnread.name.slice(0, 11) + '…' : nearestUnread.name);
+        ctx.fillText(compassLabel, compassX, compassY + 34);
+        // Distance label
+        const distLabel = Math.round(nearestDist / TILE);
+        ctx.font = '400 6px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        ctx.fillText(distLabel + ' stappen', compassX, compassY + 43);
       }
 
       animFrameRef.current = requestAnimationFrame(gameLoop);
@@ -4728,10 +5326,10 @@ const LibraryPage = () => {
           bottom: isMobile ? 180 : 16,
           right: isMobile ? 8 : 16,
           width: mmW, height: mmH,
-          background: 'rgba(0,0,0,0.75)', borderRadius: 8,
-          border: '1px solid rgba(255,255,255,0.2)',
+          background: 'rgba(62,50,38,0.92)', borderRadius: 6,
+          border: '2px solid rgba(180,150,100,0.4)',
           overflow: 'hidden', zIndex: 10,
-          boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.5), inset 0 0 12px rgba(0,0,0,0.3)',
           cursor: 'pointer',
         }}
       >
@@ -4822,7 +5420,80 @@ const LibraryPage = () => {
             );
           })()}
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {/* Action buttons: Flashcard mode + Time capsule reveal */}
+          <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+            <button
+              onClick={() => { setFlashcardMode(!flashcardMode); setFlashcardIdx(0); setFlashcardFlipped(false); }}
+              style={{
+                flex: 1, padding: '8px 12px', borderRadius: 8, cursor: 'pointer',
+                background: flashcardMode ? 'var(--color-primary-50)' : 'var(--color-bg-alt)',
+                border: `1px solid ${flashcardMode ? 'var(--color-primary-100)' : 'var(--color-border)'}`,
+                fontSize: '0.85rem', color: 'var(--color-text)',
+              }}
+            >🃏 {flashcardMode ? 'Lijst' : 'Flashcards'}</button>
+            {(userData?.timeCapsules || []).filter(tc => new Date(tc.revealAt) <= new Date()).length > 0 && (
+              <button
+                onClick={() => {
+                  const revealed = (userData?.timeCapsules || []).filter(tc => new Date(tc.revealAt) <= new Date());
+                  if (revealed.length > 0) {
+                    const tc = revealed[0];
+                    const p = allPrinciples.find(pr => pr.id === tc.principleId);
+                    setToastMessage({ text: `Tijdcapsule: "${p?.title || tc.principleId}" — ${tc.note}`, emoji: '💌' });
+                    if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+                    toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 5000);
+                    // Remove revealed capsule
+                    updateUserField('timeCapsules', prev => (prev || []).filter(c => c !== tc));
+                  }
+                }}
+                style={{
+                  padding: '8px 12px', borderRadius: 8, cursor: 'pointer',
+                  background: 'rgba(255,215,0,0.15)', border: '1px solid rgba(255,215,0,0.3)',
+                  fontSize: '0.85rem', color: 'var(--color-text)',
+                }}
+              >💌 Tijdcapsule!</button>
+            )}
+          </div>
+
+          {/* Flashcard mode */}
+          {flashcardMode && principles.length > 0 ? (() => {
+            const p = principles[flashcardIdx % principles.length];
+            return (
+              <div style={{ marginBottom: 12 }}>
+                <div
+                  onClick={() => setFlashcardFlipped(!flashcardFlipped)}
+                  style={{
+                    padding: 24, borderRadius: 12, cursor: 'pointer', textAlign: 'center', minHeight: 120,
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    background: flashcardFlipped ? 'var(--color-primary-50)' : 'var(--color-bg-alt)',
+                    border: `2px solid ${flashcardFlipped ? 'var(--color-primary-100)' : 'var(--color-border)'}`,
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  {!flashcardFlipped ? (
+                    <>
+                      <div style={{ fontSize: '2rem', marginBottom: 8 }}>{p.emoji}</div>
+                      <div style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-text)' }}>{p.title}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: 4 }}>Tik om definitie te zien</div>
+                    </>
+                  ) : (
+                    <div style={{ fontSize: '0.9rem', color: 'var(--color-text)', lineHeight: 1.5 }}>
+                      {p.definition}
+                    </div>
+                  )}
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
+                  <button onClick={() => { setFlashcardIdx(Math.max(0, flashcardIdx - 1)); setFlashcardFlipped(false); }}
+                    style={{ padding: '6px 16px', borderRadius: 6, border: '1px solid var(--color-border)', background: 'var(--color-bg-alt)', cursor: 'pointer', color: 'var(--color-text)' }}>← Vorige</button>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', alignSelf: 'center' }}>{(flashcardIdx % principles.length) + 1} / {principles.length}</span>
+                  <button onClick={() => { setFlashcardIdx(flashcardIdx + 1); setFlashcardFlipped(false); }}
+                    style={{ padding: '6px 16px', borderRadius: 6, border: '1px solid var(--color-border)', background: 'var(--color-bg-alt)', cursor: 'pointer', color: 'var(--color-text)' }}>Volgende →</button>
+                </div>
+              </div>
+            );
+          })() : null}
+
+          {/* Principle list (hidden during flashcard mode) */}
+          {!flashcardMode && <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {principles.map(p => {
               const progress = getPrincipleProgress(p.id);
               const mastery = progress?.masteryPercentage || 0;
@@ -4830,8 +5501,8 @@ const LibraryPage = () => {
               const diffLabels = { 1: 'Basis', 2: 'Gemiddeld', 3: 'Gevorderd' };
 
               return (
+                <React.Fragment key={p.id}>
                 <button
-                  key={p.id}
                   onClick={() => {
                     sessionStorage.setItem('libraryPlayerPos', JSON.stringify({ x: playerRef.current.x, y: playerRef.current.y }));
                     saveGameState();
@@ -4897,7 +5568,60 @@ const LibraryPage = () => {
                   }}>
                     {diffLabels[p.difficulty] || '?'}
                   </span>
+                  <span
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const bm = userData?.bookmarks || [];
+                      const newBm = bm.includes(p.id) ? bm.filter(b => b !== p.id) : [...bm, p.id];
+                      updateUserField('bookmarks', newBm);
+                    }}
+                    style={{
+                      fontSize: '1.1rem', cursor: 'pointer', flexShrink: 0,
+                      opacity: (userData?.bookmarks || []).includes(p.id) ? 1 : 0.3,
+                    }}
+                    title={((userData?.bookmarks || []).includes(p.id)) ? 'Verwijder bladwijzer' : 'Bladwijzer toevoegen'}
+                  >🔖</span>
+                  <span
+                    onClick={(e) => { e.stopPropagation(); setShowAnnotation(showAnnotation === p.id ? null : p.id); }}
+                    style={{ fontSize: '1rem', cursor: 'pointer', flexShrink: 0, opacity: (userData?.annotations?.[p.id]) ? 1 : 0.3 }}
+                    title="Notitie"
+                  >📝</span>
                 </button>
+                {/* Annotation & time capsule expand */}
+                {showAnnotation === p.id && (
+                  <div style={{ padding: '8px 12px', background: 'var(--color-bg-alt)', borderRadius: 8, marginTop: -4, marginBottom: 4, border: '1px solid var(--color-border)' }}>
+                    <textarea
+                      placeholder="Schrijf je eigen notitie..."
+                      value={userData?.annotations?.[p.id] || ''}
+                      onChange={(e) => updateUserField('annotations', prev => ({ ...prev, [p.id]: e.target.value }))}
+                      onClick={(e) => e.stopPropagation()}
+                      style={{
+                        width: '100%', minHeight: 60, padding: 8, borderRadius: 6,
+                        border: '1px solid var(--color-border)', resize: 'vertical',
+                        fontFamily: 'Inter, sans-serif', fontSize: '0.85rem',
+                        background: 'var(--color-surface)', color: 'var(--color-text)',
+                      }}
+                    />
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const note = userData?.annotations?.[p.id] || '';
+                        if (!note.trim()) return;
+                        const revealAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(); // 1 week later
+                        updateUserField('timeCapsules', prev => [...(prev || []), { principleId: p.id, note, createdAt: new Date().toISOString(), revealAt }]);
+                        setToastMessage({ text: `Tijdcapsule bewaard! Verschijnt over 7 dagen.`, emoji: '💌' });
+                        if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+                        toastTimeoutRef.current = setTimeout(() => setToastMessage(null), 3000);
+                      }}
+                      style={{
+                        marginTop: 4, padding: '4px 10px', borderRadius: 6, cursor: 'pointer',
+                        border: '1px solid var(--color-border)', background: 'var(--color-surface)',
+                        fontSize: '0.75rem', color: 'var(--color-text-muted)',
+                      }}
+                    >💌 Maak tijdcapsule (7 dagen)</button>
+                  </div>
+                )}
+              </React.Fragment>
               );
             })}
             {principles.length === 0 && (
@@ -4905,7 +5629,182 @@ const LibraryPage = () => {
                 Geen boeken in deze sectie gevonden.
               </p>
             )}
+          </div>}
+        </div>
+      </div>
+    );
+  };
+
+  // Character level calculation
+  const characterLevel = useMemo(() => {
+    const totalRead = allPrinciples.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+    const xp = totalRead * 10 + (userData?.points || 0);
+    const levels = [
+      { level: 1, title: 'Novice', minXP: 0 },
+      { level: 2, title: 'Leerling', minXP: 100 },
+      { level: 3, title: 'Student', minXP: 300 },
+      { level: 4, title: 'Geleerde', minXP: 600 },
+      { level: 5, title: 'Scholar', minXP: 1000 },
+      { level: 6, title: 'Meester', minXP: 1500 },
+      { level: 7, title: 'Wijze', minXP: 2500 },
+      { level: 8, title: 'Sage', minXP: 4000 },
+      { level: 9, title: 'Orakel', minXP: 6000 },
+      { level: 10, title: 'Filosoof', minXP: 10000 },
+    ];
+    let current = levels[0];
+    let next = levels[1];
+    for (let i = levels.length - 1; i >= 0; i--) {
+      if (xp >= levels[i].minXP) {
+        current = levels[i];
+        next = levels[i + 1] || null;
+        break;
+      }
+    }
+    return { ...current, xp, nextXP: next?.minXP || current.minXP };
+  }, [userData?.points, allPrinciples, getPrincipleProgress]);
+
+  // Daily missions
+  const dailyMissions = useMemo(() => {
+    const today = new Date().toDateString();
+    const saved = userData?.dailyMissions;
+    if (saved?.date === today) return saved;
+    // Generate new missions for today
+    const seed = today.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+    const missionPool = [
+      { type: 'read', count: 2, text: 'Lees 2 nieuwe scrolls', emoji: '📜' },
+      { type: 'read', count: 3, text: 'Lees 3 nieuwe scrolls', emoji: '📜' },
+      { type: 'rooms', count: 2, text: 'Bezoek 2 kamers', emoji: '🚪' },
+      { type: 'rooms', count: 3, text: 'Bezoek 3 kamers', emoji: '🚪' },
+      { type: 'category', cat: categories[seed % categories.length], text: `Lees een scroll uit ${categories[seed % categories.length]}`, emoji: '📖' },
+    ];
+    const selected = [missionPool[seed % missionPool.length], missionPool[(seed * 3 + 7) % missionPool.length]];
+    const newMissions = { date: today, missions: selected, completed: [] };
+    if (updateUserField) updateUserField('dailyMissions', newMissions);
+    return newMissions;
+  }, [userData?.dailyMissions, categories, updateUserField]);
+
+  // Render stats panel (character level, stamps, missions, rankings)
+  const renderStatsPanel = () => {
+    if (!showStatsPanel) return null;
+    const stamps = userData?.libraryStamps || {};
+    const stampCount = Object.keys(stamps).length;
+    const totalRooms = rooms.length;
+    const totalRead = allPrinciples.filter(p => getPrincipleProgress(p.id)?.activities?.read).length;
+    const totalPrinciples = allPrinciples.length;
+    const discoveredPct = totalRooms > 0 ? Math.round((stampCount / totalRooms) * 100) : 0;
+    const readPct = totalPrinciples > 0 ? Math.round((totalRead / totalPrinciples) * 100) : 0;
+
+    const panelStyle = {
+      position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50,
+      animation: 'fadeIn 0.2s ease-out',
+    };
+    const cardStyle = {
+      background: 'var(--color-surface, #fffef9)', borderRadius: 16, padding: 24,
+      maxWidth: 480, width: '90%', maxHeight: '80vh', overflow: 'auto',
+      boxShadow: '0 20px 60px rgba(0,0,0,0.3)', border: '1px solid var(--color-border, #e5d9c8)',
+      animation: 'slideUp 0.25s ease-out',
+    };
+    const sectionStyle = { marginBottom: 20 };
+    const headingStyle = { fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.1rem', marginBottom: 8, color: 'var(--color-text, #1c1510)' };
+
+    return (
+      <div style={panelStyle} onClick={() => setShowStatsPanel(false)}>
+        <div onClick={e => e.stopPropagation()} style={cardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.5rem', color: 'var(--color-text)' }}>
+              📊 Bibliotheek Statistieken
+            </h2>
+            <button onClick={() => setShowStatsPanel(false)} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'var(--color-text-muted)' }}>✕</button>
           </div>
+
+          {/* Character Level */}
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>🎓 Niveau: {characterLevel.title} (Lvl {characterLevel.level})</h3>
+            <div style={{ height: 8, borderRadius: 4, background: 'var(--color-bg-alt, #f1e9dc)', overflow: 'hidden', marginBottom: 4 }}>
+              <div style={{
+                height: '100%', borderRadius: 4,
+                width: `${characterLevel.nextXP > characterLevel.xp ? ((characterLevel.xp - (characterLevel.minXP || 0)) / (characterLevel.nextXP - (characterLevel.minXP || 0))) * 100 : 100}%`,
+                background: 'linear-gradient(90deg, #5c4fcf, #c9880f)',
+              }} />
+            </div>
+            <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{characterLevel.xp} XP {characterLevel.nextXP > characterLevel.xp ? `/ ${characterLevel.nextXP} XP` : '(max!)'}</p>
+          </div>
+
+          {/* Library Rankings */}
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>📈 Voortgang</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              <div style={{ padding: 12, borderRadius: 8, background: 'var(--color-bg-alt)', textAlign: 'center' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text)' }}>{discoveredPct}%</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Ontdekt ({stampCount}/{totalRooms})</div>
+              </div>
+              <div style={{ padding: 12, borderRadius: 8, background: 'var(--color-bg-alt)', textAlign: 'center' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text)' }}>{readPct}%</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Gelezen ({totalRead}/{totalPrinciples})</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Daily Missions */}
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>🎯 Dagelijkse Missies</h3>
+            {(dailyMissions?.missions || []).map((m, i) => (
+              <div key={i} style={{
+                padding: '8px 12px', borderRadius: 8, marginBottom: 4,
+                background: (dailyMissions?.completed || []).includes(i) ? 'rgba(5,150,105,0.1)' : 'var(--color-bg-alt)',
+                border: `1px solid ${(dailyMissions?.completed || []).includes(i) ? 'rgba(5,150,105,0.3)' : 'var(--color-border)'}`,
+                display: 'flex', alignItems: 'center', gap: 8,
+              }}>
+                <span style={{ fontSize: '1.1rem' }}>{(dailyMissions?.completed || []).includes(i) ? '✅' : m.emoji}</span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--color-text)' }}>{m.text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Stamp Passport */}
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>📕 Stempelboek ({stampCount}/{totalRooms})</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {rooms.map(room => {
+                const hasStamp = !!stamps[room.name];
+                return (
+                  <div key={room.name} title={room.name} style={{
+                    width: 32, height: 32, borderRadius: 6,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: hasStamp ? 'var(--color-primary-50, #edeafc)' : 'var(--color-bg-alt)',
+                    border: `1px solid ${hasStamp ? 'var(--color-primary-100)' : 'var(--color-border)'}`,
+                    fontSize: hasStamp ? '1rem' : '0.8rem',
+                    opacity: hasStamp ? 1 : 0.4,
+                  }}>
+                    {hasStamp ? room.emoji : '?'}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Bookmarks */}
+          {(userData?.bookmarks || []).length > 0 && (
+            <div style={sectionStyle}>
+              <h3 style={headingStyle}>🔖 Bladwijzers</h3>
+              {(userData?.bookmarks || []).map(bid => {
+                const bp = allPrinciples.find(p => p.id === bid);
+                if (!bp) return null;
+                return (
+                  <button key={bid} onClick={() => { setShowStatsPanel(false); navigate(`/principle/${bid}`); }}
+                    style={{
+                      display: 'block', width: '100%', textAlign: 'left', padding: '8px 12px',
+                      borderRadius: 8, marginBottom: 4, cursor: 'pointer',
+                      background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)',
+                      fontSize: '0.85rem', color: 'var(--color-text)',
+                    }}>
+                    {bp.emoji} {bp.title}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     );
@@ -4982,7 +5881,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v1.8.0</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.6.0</div>
         </div>
       )}
 
@@ -5038,7 +5937,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v1.8.0</div>
+        }}>v2.6.0</div>
       )}
 
       {/* Mobile: action button */}
@@ -5081,6 +5980,19 @@ const LibraryPage = () => {
           {showMinimap ? '🗺️' : '🗺️'}
         </button>
       )}
+
+      {/* Stats button */}
+      <button
+        onClick={() => setShowStatsPanel(true)}
+        style={{
+          position: 'absolute', top: 56, left: 16,
+          width: 40, height: 40, borderRadius: 10, border: 'none',
+          background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)',
+          color: '#fff', fontSize: '1.1rem',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: 'pointer', zIndex: 20,
+        }}
+      >📊</button>
 
       {/* Back button */}
       <button
@@ -5156,6 +6068,7 @@ const LibraryPage = () => {
 
       {renderMinimap()}
       {renderBookPanel()}
+      {renderStatsPanel()}
 
       {/* Stats overlay */}
       {showStats && (
