@@ -19,12 +19,7 @@ const MultipleChoiceExercise = ({ principle, exercise, onComplete }) => {
     setAttempts(prev => prev + 1);
 
     if (correct && !alreadyCompleted) {
-      const points = markMultipleChoiceCorrect(principle.id);
-      const { checkAndUnlockPrinciples } = require('../utils/localStorage');
-      const newlyUnlocked = checkAndUnlockPrinciples(principle.id);
-      if (newlyUnlocked.length > 0) {
-        onComplete?.(newlyUnlocked);
-      }
+      markMultipleChoiceCorrect(principle.id);
     } else if (!correct) {
       setSocraticStep(prev => prev + 1);
     }

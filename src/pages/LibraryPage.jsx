@@ -5902,7 +5902,7 @@ const LibraryPage = () => {
           <span style={{ fontWeight: 600, color: '#fff' }}>M</span> Minimap &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>H</span> Entree &nbsp;
           <span style={{ fontWeight: 600, color: '#fff' }}>Scroll</span> Zoom
-          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.6.1</div>
+          <div style={{ marginTop: 4, fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)' }}>v2.6.2</div>
         </div>
       )}
 
@@ -5958,7 +5958,7 @@ const LibraryPage = () => {
           position: 'absolute', bottom: 8, left: 8,
           fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)',
           zIndex: 10, pointerEvents: 'none',
-        }}>v2.6.1</div>
+        }}>v2.6.2</div>
       )}
 
       {/* Mobile: action button */}
@@ -5998,7 +5998,7 @@ const LibraryPage = () => {
             touchAction: 'none',
           }}
         >
-          {showMinimap ? '🗺️' : '🗺️'}
+          🗺️
         </button>
       )}
 

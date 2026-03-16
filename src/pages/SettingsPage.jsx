@@ -94,7 +94,7 @@ const SettingsPage = () => {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             <StatCard value={stats.points} label="Punten" color="text-primary" />
-            <StatCard value={stats.unlockedCount} label="Ontgrendeld" color="text-primary" />
+            <StatCard value={stats.totalPrinciples} label="Bezig" color="text-primary" />
             <StatCard value={stats.completedPrinciples} label="Beheerst" color="text-success" />
             <StatCard value={`${stats.averageMastery}%`} label="Gem. Beheersing" color="text-accent-dark" />
             <StatCard value={stats.currentStreak > 0 ? stats.currentStreak : '—'} label="Huidige reeks" color="text-accent-dark" icon={stats.currentStreak > 0 ? '🔥' : null} />

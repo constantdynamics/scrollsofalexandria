@@ -85,22 +85,111 @@ export const UserProvider = ({ children }) => {
   const markPrincipleAsRead = (principleId) => {
     const progress = getPrincipleProgress(principleId);
     if (progress.activities.read) return 0;
-    progress.activities.read = true;
-    progress.masteryPercentage = 100;
-    progress.lastVisited = new Date().toISOString();
 
     updateStreak();
 
-    setUserData(prev => ({
-      ...prev,
-      points: prev.points + 10,
-      principleProgress: {
-        ...prev.principleProgress,
-        [principleId]: progress
-      }
-    }));
+    setUserData(prev => {
+      const existing = prev.principleProgress[principleId] || {
+        masteryPercentage: 0,
+        completed: false,
+        activities: { read: false },
+        lastVisited: null,
+        timesReviewed: 0
+      };
+      return {
+        ...prev,
+        points: prev.points + 10,
+        principleProgress: {
+          ...prev.principleProgress,
+          [principleId]: {
+            ...existing,
+            activities: { ...existing.activities, read: true },
+            masteryPercentage: 100,
+            lastVisited: new Date().toISOString(),
+          }
+        }
+      };
+    });
 
     return 10;
+  };
+
+  const markMultipleChoiceCorrect = (principleId) => {
+    setUserData(prev => {
+      const existing = prev.principleProgress[principleId] || {
+        masteryPercentage: 0,
+        completed: false,
+        activities: { read: false },
+        lastVisited: null,
+        timesReviewed: 0
+      };
+      if (existing.activities.multipleChoiceCorrect) return prev;
+      return {
+        ...prev,
+        points: prev.points + 15,
+        principleProgress: {
+          ...prev.principleProgress,
+          [principleId]: {
+            ...existing,
+            activities: { ...existing.activities, multipleChoiceCorrect: true },
+            lastVisited: new Date().toISOString(),
+          }
+        }
+      };
+    });
+    return 15;
+  };
+
+  const markOwnExample = (principleId) => {
+    setUserData(prev => {
+      const existing = prev.principleProgress[principleId] || {
+        masteryPercentage: 0,
+        completed: false,
+        activities: { read: false },
+        lastVisited: null,
+        timesReviewed: 0
+      };
+      if (existing.activities.ownExample) return prev;
+      return {
+        ...prev,
+        points: prev.points + 25,
+        principleProgress: {
+          ...prev.principleProgress,
+          [principleId]: {
+            ...existing,
+            activities: { ...existing.activities, ownExample: true },
+            lastVisited: new Date().toISOString(),
+          }
+        }
+      };
+    });
+    return { points: 25, newlyUnlocked: [] };
+  };
+
+  const markAiAssistedExample = (principleId) => {
+    setUserData(prev => {
+      const existing = prev.principleProgress[principleId] || {
+        masteryPercentage: 0,
+        completed: false,
+        activities: { read: false },
+        lastVisited: null,
+        timesReviewed: 0
+      };
+      if (existing.activities.aiAssistedExample) return prev;
+      return {
+        ...prev,
+        points: prev.points + 20,
+        principleProgress: {
+          ...prev.principleProgress,
+          [principleId]: {
+            ...existing,
+            activities: { ...existing.activities, aiAssistedExample: true },
+            lastVisited: new Date().toISOString(),
+          }
+        }
+      };
+    });
+    return { points: 20, newlyUnlocked: [] };
   };
 
   const trackLearningStyleChoice = (choice) => {
@@ -226,6 +315,9 @@ export const UserProvider = ({ children }) => {
     updateUserField,
     getPrincipleProgress,
     markPrincipleAsRead,
+    markMultipleChoiceCorrect,
+    markOwnExample,
+    markAiAssistedExample,
     trackLearningStyleChoice,
     getRecommendedLearningStyle,
     completeOnboarding,
